@@ -1,1 +1,1 @@
-{"source/main.ptx": ["my-great-book"], "source/frontmatter.ptx": ["frontmatter", "front-colophon"], "source/ch-chapter-title.ptx": ["ch-chapter-title"], "source/sec-section-name.ptx": ["sec-section-name"], "source/backmatter.ptx": ["backmatter"]}
+{"source/main.ptx": ["my-great-book", "frontmatter", "front-colophon", "c_foundations", "s_sets_tuples", "s_functions", "s_logic", "s_proof_technique", "c_291-1", "appendix-notation", "appendix-exercises", "appendix-defs", "appendix-thms", "appendix-egs", "appendix-sage", "appendix-figures", "appendix-matnras"]}
