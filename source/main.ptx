@@ -5,18 +5,55 @@
   <xi:include href="./docinfo.ptx" />
 
   <book xml:id="my-great-book">
-    <title>My Great Book</title>
-    <subtitle>An example to get you started</subtitle>
+    <title>Linear algebra</title>
+    <subtitle>A Kursobjekt for Math 291-1</subtitle>
 
     <!-- Include frontmatter -->
     <xi:include href="./frontmatter.ptx" />
+    
 
     <!-- Include chapters -->
-    <xi:include href="./ch-chapter-title.ptx" />
-
-
+    <xi:include href="./c_foundations.ptx"/>
+    <xi:include href="./c_291-1.ptx"/>
     <!-- Include backmatter -->
-    <xi:include href="./backmatter.ptx" />
+    <backmatter>
+      <title>Backmatter</title>
+       <!-- <solutions divisional="hint"> <title>Selected Hints</title> </solutions> -->
 
+  <!-- <solutions divisional="solution"> <title>Selected Solutions</title> </solutions> -->
+      <appendix xml:id="appendix-notation">
+        <title>Notation</title>
+        <notation-list/>
+      </appendix>
+      <appendix xml:id="appendix-exercises">
+        <title>Exercises</title>
+        <list-of elements="exercise" divisions="section" />
+      </appendix>
+      <appendix xml:id="appendix-defs">
+        <title>Definitions</title>
+        <list-of elements="definition" divisions="section" />
+      </appendix>
+      <appendix xml:id="appendix-thms">
+        <title>Theory and procedures</title>
+        <list-of elements="theorem proposition lemma corollary algorithm" divisions="section" />
+      </appendix>
+
+      <appendix xml:id="appendix-egs">
+        <title>Examples</title>
+        <list-of elements="example" divisions="section" />
+      </appendix>
+      <appendix xml:id="appendix-sage" >
+        <title>Sage examples</title>
+        <list-of elements="project" divisions="section" />
+    </appendix>
+      <appendix xml:id="appendix-figures">
+        <title>Figures and video examples</title>
+        <list-of elements="figure" divisions="section" />
+      </appendix>
+      <appendix xml:id="appendix-matnras">
+        <title>Mantras and fiats</title>
+        <list-of elements="principle assumption"  />
+      </appendix>
+</backmatter>
   </book>
 </pretext>

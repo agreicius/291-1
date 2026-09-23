@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_reals_integers_rationals" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Reals, integers,rationals</title>
+<subsection xml:id="ss_reals">
+<title>Real numbers</title>
+<p>
+    The typical high school math course makes heavy use of the set of real numbers, denoted <m>\R</m>, without ever telling you exactly what this set is or how it is constructed. There is a good reason for this. In fact, there was not a satisfactorily rigorous construction of the reals until the 19th century. Furthermore, the two most commonly used constructions are not immediately intuitive and are somewhat technical in nature.  
+</p>
+<p>
+    We will follow suit in this course and not construct the reals explicitly. That task is reserved for our (the first quarter of) our sequences in real analysis: Math 320-1 and Math 321-1. What. we will do is identify some of the important key properties of the reals that we will take for granted.   
+</p>
+<p>
+    The first set of properties we will discuss are the two main operations of addition and multiplication:
+    <md number="yes">
+        <mrow xml:id="eq_real_ops">+\colon \R\times\R \amp \rightarrow \R \amp \bullet\colon \R\times\R\amp\rightarrow \R</mrow>
+        <mrow>(r,s) \amp \mapsto r+s \amp (r,s)\amp \mapsto r\cdot s</mrow>
+    </md>.
+</p>
+<remark xml:id="rm_real_ops_notation">
+    <title>Anatomy lesson: function and Cartesian product notation</title>
+    <p>
+    The expressions <xref ref="eq_real_ops"/> used in the definition of the real number operations use a combination of function notation (see <xref ref="d_function"/>) and Cartesian product notation (see <xref ref="d_cartesian_product"/>). Let's break it down. 
+    </p>
+    <p>
+        Firstly, in general, given sets <m>A</m> and <m>B</m>, the set <m>A\times B</m>, called the Cartesian product of <m>A</m> and <m>B</m>, is defined as the set of all pairs <m>(a,b)</m>, where <m>a\in A</m> and <m>b\in B</m>: <ie/>, 
+        <md>
+            A\times B=\{(a,b)\mid a\in A, b\in B\}.
+        </md>.
+         Next, the notation <m>f\colon C\rightarrow D</m> denotes a function named <m>f</m> whose domain is the set <m>C</m> and whose codomain is the set <m>D</m>. When we want to give more information about how the function is evaluated on inputs, we include a separate line below using the <q>mapsto</q> symbol <m>\mapsto</m>:
+         <md>
+            <mrow>f\colon C \amp \rightarrow D</mrow>
+            <mrow>c \amp \mapsto f(c)</mrow>
+         </md>.
+      Putting the two notations together, the expression
+    <md>
+        <mrow> A\times B\amp \rightarrow C\amp </mrow>
+        <mrow>(a,b) \amp \mapsto c</mrow>
+    </md>
+    denotes a function that takes as input a pair of elements <m>(a,b)</m>, where <m>a\in A</m> and <m>b\in B</m>, and returns as output an element <m>c\in C</m>.
+    </p>
+    </remark>
+
+</subsection>
+    
+
+</section>

@@ -71,10 +71,16 @@
     <!-- The next elements say how the levels deep to break up the    -->
     <!-- numbering of the respective elements. Can't be more than the -->
     <!-- @level on divisions above.                                   -->
-      <!--<blocks level="2" />-->
-      <!--<projects level="2" />-->
-      <!--<equations level="2" />-->
-      <!--<footnotes level="2" />-->
+     <divisions chapter-start="0" level="3"/>
+    <blocks level="2"/>
+    <examples level="3"/>
+    <definitions level="3"/>
+    <theorems level="3"/>
+    <corollaries level="3"/>
+    <projects level="0"/>
+    <activity level="0"/>
+    <equations level="2"/>
+    <footnotes level="3"/>
   </numbering>
 
   <!-- LaTeX specific options: set @print="yes" to get pdf set up   -->
@@ -121,32 +127,42 @@
 
     <!-- Whether to knowl a particular elements is set here    -->
     <!-- Lots of elements have this possibility; see the guide -->
-      <!--<knowl
-        theorem="no"
-        proof="yes"
-        definition="no"
-        example="yes"
-        example-solution="yes"
-        project="no"
-        task="no"
-        remark="no"
-        objectives="no"
-        outcomes="no"
-        figure="no"
-        table="no"
-        listing="no"
-        list="no"
-        exercise-inline="yes"
-        exercise-divisional="no"
-        exercise-worksheet="no"
-        exercise-readingquestion="no"
-      />-->
+      <knowl
+      theorem="no"
+      fact="no"
+      proof="yes"
+      definition="no"
+      example="no"
+      example-solution="yes"
+      project="yes"
+      task="no"
+      remark="no"
+      objectives="no"
+      outcomes="no"
+      figure="no"
+      table="no"
+      listing="no"
+      list="no"
+      exercise-inline="yes"
+      exercise-divisional="no"
+      exercise-worksheet="no"
+      exercise-readingquestion="no"
+    />
 
     <!-- Specify the theme for the html by giving names to     -->
     <!-- override defaults.  Ex:<css theme="denver"/>          -->
     <!-- See also                                              -->
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
-      <!--<css theme="denver"/>-->
+      <css theme="default-modern" palette="blue-green"/>
+    <!-- <css theme="default-modern" palette="green-blue"/> -->
+    <!-- <css theme="default-modern" primary-color="#4E2A84" secondary-color="#836EAA"/>   -->
+    <!-- <css theme="default-modern" primary-color="darkgreen" secondary-color="seagreen"/>   -->
+    <!-- <css theme="default-modern" primary-color="#228B22" secondary-color="#009E60"/> -->
+      <!-- <css theme="boulder"/> -->
+      <!-- <css theme="denver"/> -->
+      <!-- <css theme="greeley" primary-color="midnightblue" secondary-color="azure"/> -->
+      <!-- <css theme="salem"/> -->
+      <!-- <css theme="tacoma"/> -->
 
     <!-- Search can be default or none, or you can use a Google-cx number to use google's search
     feature (but then variant should be set to none to avoid conflict) -->
@@ -165,19 +181,19 @@
     <!-- Embedded calculators.  For math, this could be geogebra-classic, geogebra-graphing,
     geogebra-geometry, and geogebra-3d.  For ActiveCode, you can specify a language (python,
     javascript, etc).  -->
-      <!--<calculator model="geogebra-classic" activecode="python" />-->
+      <calculator model="geogebra-classic" activecode="python" />
 
     <!-- Set the base URL of where the online version is hosted to have links in other formats -->
       <!-- <baseurl href="https://changetomywebsite.org"/> -->
 
     <!-- Control behavior of online WeBWorK, per type: -->
-      <!--<webwork
+     <webwork
         inline="dynamic"
         divisional="dynamic"
         reading="static"
         worksheet="static"
         project="dynamic"
-      />-->
+      />
 
     <!-- Use the tabbed viewer for tasks in exercises. "project" and "reading" can be added to the list of types in the @tabbed-tasks attribute (but not worksheet). -->
       <!--<exercises tabbed-tasks="inline divisional"/>-->
@@ -208,7 +224,7 @@
 
 
   <!-- To use WeBWorK, you need a server.  -->
-    <!-- <webwork server="https://webwork-ptx.aimath.org" /> -->
+    <webwork server="https://webwork-ptx.aimath.org" />
     <!-- @course, @coursepassword, @user, and @userpassword can also be set. -->
     <!-- You can also set how tasks are revealed for webwork problems using the @task-reveal attribute on the above-->
 
