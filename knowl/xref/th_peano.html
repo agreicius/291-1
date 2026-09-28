@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h3 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.1.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Peano Axioms.</span>
+</h3>
+<div class="para logical">
+<div class="para">There is a set <span class="process-math">\(\N\)</span> satisfying the following properties.</div>
+<ol class="decimal" id="th_peano-2-1-2">
+<li>
+<div class="para">There is a function <span class="process-math">\(S\colon \N\rightarrow \N\)</span> defined on <span class="process-math">\(\N\)</span> called the <dfn class="terminology">successor function</dfn>.<div class="autopermalink" data-description="Paragraph"><a href="#th_peano-2-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#th_peano-2-1-2-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li>
+<div class="para">There is an element <span class="process-math">\(0\in \N\)</span> such that <span class="process-math">\(0\ne S(n)\)</span> for all <span class="process-math">\(n\in \N\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_peano-2-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#th_peano-2-1-2-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li>
+<div class="para logical">
+<div class="para">The successor function is injective: i.e., for all <span class="process-math">\(m,n\in \N\text{,}\)</span> if <span class="process-math">\(S(m)=S(n)\text{,}\)</span> then <span class="process-math">\(m=n\text{.}\)</span> Using logical shorthand, this means</div>
+<div class="displaymath process-math">
+\begin{equation*}
+m\ne n \implies S(m)\ne S(n)\text{,}
+\end{equation*}
+</div>
+<div class="para">or equivalently,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+S(m)=S(n) \implies m=n
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(m,n\in \N\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_peano-2-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#th_peano-2-1-2-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+<li>
+<span class="heading li--heading"><span class="title li--heading-title">Induction principle.</span></span><div class="para logical">
+<div class="para">If <span class="process-math">\(A\)</span> is a subset of <span class="process-math">\(\N\)</span> satisfying</div>
+<ol class="lower-roman ol-marker-1" id="th_peano-2-1-2-4-2-3">
+<li>
+<div class="para">
+<span class="process-math">\(0\in A\text{,}\)</span> and<div class="autopermalink" data-description="Paragraph"><a href="#th_peano-2-1-2-4-2-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.i"><a href="#th_peano-2-1-2-4-2-3-1" title="Copy heading and permalink for Item 4.i" aria-label="Copy heading and permalink for Item 4.i">🔗</a></div>
+</li>
+<li>
+<div class="para">for all <span class="process-math">\(n\in \N\text{,}\)</span> if <span class="process-math">\(n\in A\text{,}\)</span> then <span class="process-math">\(S(n)\in A\text{,}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_peano-2-1-2-4-2-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4.ii"><a href="#th_peano-2-1-2-4-2-3-2" title="Copy heading and permalink for Item 4.ii" aria-label="Copy heading and permalink for Item 4.ii">🔗</a></div>
+</li>
+</ol>
+<div class="para">then <span class="process-math">\(A=\N\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_peano-2-1-2-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4: Induction principle"><a href="#th_peano-2-1-2-4" title="Copy heading and permalink for Item 4: Induction principle" aria-label="Copy heading and permalink for Item 4: Induction principle">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_peano-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.1.1: Peano Axioms"><a href="#th_peano" title="Copy heading and permalink for Theorem 1.1.1: Peano Axioms" aria-label="Copy heading and permalink for Theorem 1.1.1: Peano Axioms">🔗</a></div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h3 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3></summary><article class="hiddenproof knowl__content"><div class="para"><div class="autopermalink" data-description="Paragraph"><a href="#th_peano-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
+<div class="autopermalink" data-description="Proof 1.1.1.1"><a href="#th_peano-3" title="Copy heading and permalink for Proof 1.1.1.1" aria-label="Copy heading and permalink for Proof 1.1.1.1">🔗</a></div></article></details><span class="incontext"><a class="internal" href="s_natural_numbers.html#th_peano">in-context</a></span>
+</body>
+</html>
