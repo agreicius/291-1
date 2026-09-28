@@ -1,26 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <section xml:id="s_reals_integers_rationals" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <title>Reals, integers,rationals</title>
+    <title>Reals, rationals, fields</title>
 <subsection xml:id="ss_reals">
 <title>Real numbers</title>
 <p>
-    The typical high school math course makes heavy use of the set of real numbers, denoted <m>\R</m>, without ever telling you exactly what this set is or how it is constructed. There is a good reason for this. In fact, there was not a satisfactorily rigorous construction of the reals until the 19th century. Furthermore, the two most commonly used constructions are not immediately intuitive and are somewhat technical in nature.  
+    Having established the existence of the natural numbers <m>\N</m> and integers <m>\Z</m> with a reasonable degree of rigor, we now move on to build larger number systems. We will proceed somewhat nonlinearly, beginning with the real numbers <m>\R</m> and then defining the rational numbers <m>\Q</m> as a subset of <m>\R</m>. In so doing, we are acting in blatant disregard of the fact that the standard constructions build the reals <m>\R</m> out of the rationals <m>\Q</m>. Those constructions are landmark results in the history of mathematics, and it might come as a surprise that mathematicians didn't hit upon a rigorous construction of <m>\R</m> until the 19th century. The tools and concepts involved in these constructions, however, are properly the domain of real analysis, and as such, we do not tackle that task until the first quarter of our Math 320 or Math 321 sequence. Instead, we state without proof an existence theorem of <m>\R</m> that articulates some (but not all) key properties of this number system, as well as its relation to <m>\Z</m>. 
 </p>
+<theorem xml:id="th_reals">
+<title>Real numbers</title>
+<statement>
 <p>
-    We will follow suit in this course and not construct the reals explicitly. That task is reserved for our (the first quarter of) our sequences in real analysis: Math 320-1 and Math 321-1. What. we will do is identify some of the important key properties of the reals that we will take for granted.   
+There is a set <m>\R</m> satisfying the following properties.
+<ol>
+    <li>
+        <p>
+            <m>\R</m> contains the integers <m>\Z</m> as a subset: <ie/>, <m>\Z\subseteq \R</m>. 
+        </p>
+    </li>
+    <li>
+        <title>Field</title>
+        <p>
+            The addition and multiplication operations of <m>\Z</m> extend to addition and multiplication operations on <m>\R</m> satisfying the field axioms of <xref ref="d_field"/>. 
+        </p>
+    </li>
+    <li>
+        <title>Ordered field</title>
+        <p>
+        The the <q>less than</q> relation <m>&lt; </m> of the integers extends to a relation <m>&lt; </m> on <m>\R</m> satisfying the following properties. 
+        <ol>
+            <li>
+                <p>
+                    For all <m>a,b,c\in \Z</m>, if <m>a&lt; b</m>, then <m>a+c&lt; b+c</m>. 
+                </p>
+            </li>
+            <li>
+                <p>
+                    For all <m>a,b\in \R</m> and <m>c\in \R</m> with <m>c&gt; 0</m>, if <m>a&lt; b</m>, then <m>ac&lt; bc</m>.  
+                </p>
+            </li>
+        </ol>
+        </p>
+    </li>
+<li>
+    <title>Archimedean property</title>
+    <p>
+        For all real numbers <m>r\in \R</m>, there is a natural number <m>n\in \N</m> such that <m>r&lt; n</m>. 
+    </p>
+</li>
+</ol>
 </p>
+</statement>
+</theorem>
+<remark>
+<title>Ordered archimedean field</title>
 <p>
-    The first set of properties we will discuss are the two main operations of addition and multiplication:
-    <md number="yes">
-        <mrow xml:id="eq_real_ops">+\colon \R\times\R \amp \rightarrow \R \amp \bullet\colon \R\times\R\amp\rightarrow \R</mrow>
-        <mrow>(r,s) \amp \mapsto r+s \amp (r,s)\amp \mapsto r\cdot s</mrow>
-    </md>.
+The stated properties of <xref ref="th_reals"/> establishes <m>\R</m> as an <em>ordered archimedean field</em>. It turns out that these properties alone are not enough to uniquely characterize <m>\R</m>. Indeed, it is easy to see that the rationals <m>\Q</m> also satisfy these properties. However, it turns out that we can pin down <m>\R</m> uniquely with one additional property: the <em>least upper bound property</em>. We state it here for your reference, but again, this topic is really the domain of a real analysis course. 
+<ul>
+    <li>
+        <title>Least upper bound property</title>
+        <p>
+            Given any nonempty subset <m>A\subseteq \R</m>, if <m>A</m> has an <em>upper bound</em> in <m>\R</m> (<ie/>, there is a real number <m>r</m> such that <m>a\leq r</m> for all <m>a\in A</m>), then <m>A</m> has a <em>least upper bound</em> in <m>\R</m> (<ie/>, there is a real number <m>s\in \R</m> such that <m>s</m> is an upper bound for <m>A</m>, and if <m>t\in \R</m> is any other upper bound for <m>A</m>, then <m>s\leq t</m>).
+        </p>
+    </li>
+</ul>
+It is the existence of least upper bounds, as defined above, that make <m>\R</m> a much richer number system containing <m>\Z</m> then say <m>\Q</m>. For example, taking the set 
+<md>
+    A=\{q\in \Q\mid q^2\leq 2\}
+</md>,
+it is easy to see that <m>A</m> has an upper bound (<eg/>, <m>2</m>), and thus that there is a real number <m>s\in \R</m> that is a <em>least</em> upper bound. You can then show that we must have <m>s^2=2</m>, and hence that <m>s</m> is a square root of <m>2</m>. 
 </p>
+</remark>
+<p>
+   The following corollary of the archimedean property follows from the induction principle of <m>\N</m> (or equivalently, the well-ordered property).
+</p>
+<corollary xml:id="cor_archimedean">
+    <title>Archimedean principle</title>
+    <statement>
+        <p>
+            For any real number <m>r\in \R</m>, there is a unique integer <m>n\in \Z</m> such that 
+            <md number="yes">
+                <mrow>n \amp \leq r &lt; n+1</mrow>
+            </md>.
+        </p>
+    </statement>
+    <proof>
+        <p>
+            This is left as a homework exercise. 
+        </p>
+    </proof>
+</corollary>
+<definition xml:id="d_floor">
+<title>Floor function</title>
+<statement>
+<p>
+Given <m>r\in \R</m>, we denote by <m>\floor{r}</m> the unique integer <m>n\in \Z</m> satisfying <m>n\leq r&lt; n+1</m>. The function 
+<md>
+    <mrow>\floor{\phantom{x}}\colon \R \amp \rightarrow \R</mrow>
+    <mrow>r \amp \mapsto \floor{r}</mrow>
+</md>
+is called the <term>floor function</term>. 
+</p>
+</statement>
+</definition>
+
+</subsection>
+<subsection xml:id="ss_fields">
+<title>Fields</title>
+
+
+<definition xml:id="d_field">
+<title>Field</title>
+<statement>
+<p>
+ A <term>field</term> is a set <m>F</m> together with two operations
+<md>
+  <mrow> +\colon F\times F \amp\rightarrow F \amp \times\colon F\times F\amp \rightarrow F </mrow> 
+  <mrow>(a,b)\amp\mapsto a+b \amp (a,b)\amp \mapsto a\,b </mrow> 
+</md>
+called <term>addition</term> and <term>multiplication</term> respectively, satisfying the following axioms.
+<ol marker="(i)">
+    <li>
+        <title>Commutativity</title>
+        <p>
+            For all <m>a,b\in F</m> we have
+        
+        <md>
+           <mrow>a+b \amp = b+a \amp ab=ba</mrow>
+        </md>.
+        </p>
+    </li>
+
+    <li>
+        <title>Associativity</title>
+        <p>
+            For all <m>a,b,c \in F</m> we have
+        <md>
+            <mrow>a+(b+c)\amp =(a+b)+c \amp a(bc)=(ab)c</mrow>
+        </md>.
+        </p>
+    </li>
+
+    <li>
+        <title>Distributivity</title>
+        <p>
+            For all <m>a,b,c \in F</m> we have
+        <md>
+          a(b+c)=ab+ac
+        </md>.
+        </p>
+    </li>
+
+    <li>
+       <title>Additive identity</title>
+        <p>
+            There is an element <m>0\in F</m> satisfying
+        <md>
+           0+a=a
+        </md>
+            for all <m>a\in F</m>.
+            The element <m>0</m> is called the <term>additive identity</term>.
+        </p>
+    </li>
+
+    <li>
+       <title>Additive inverse</title>
+        <p>
+            For all <m>a\in F</m> there is an element <m>-a\in F</m> satisfying
+       
+        <md>
+            a+ -a=0
+        </md>.
+            The element <m>-a</m> is called the <term>additive inverse</term> of <m>a</m>.
+        </p>
+    </li>
+
+    <li>
+        <title>Multiplicative identity</title>
+        
+        
+
+        <p>
+            There is an element <m>1\in F</m> satisfying
+       
+        <md>
+           1\times a=a
+        </md>
+            for all <m>a\in F</m>.
+            The element <m>1</m> is called the <term>multiplicative identity</term>.
+        </p>
+    </li>
+
+    <li>
+        <title>Multiplicative inverse</title>
+        
+        
+
+        <p>
+            For all nonzero elements <m>a\in F</m> (i.e., <m>a\ne 0</m>) there is an element <m>a^{-1}\in F</m> satisfying
+        
+        <md>
+            a\,a^{-1}=1
+        </md>.
+
+            The element <m>a^{-1}</m>, also denoted <m>1/a</m>, is called the <term>multiplicative inverse</term> of <m>a</m>.
+        </p>
+    </li>
+</ol>
+</p>
+</statement>
+</definition>
 <remark xml:id="rm_real_ops_notation">
     <title>Anatomy lesson: function and Cartesian product notation</title>
     <p>
-    The expressions <xref ref="eq_real_ops"/> used in the definition of the real number operations use a combination of function notation (see <xref ref="d_function"/>) and Cartesian product notation (see <xref ref="d_cartesian_product"/>). Let's break it down. 
+    The expressions
+    <md>
+        <mrow>+\colon F\times F\colon \amp \rightarrow F \amp \times\colon F\times F\colon \amp\rightarrow F</mrow>
+    </md>
+    used in <xref ref="d_field"/> use a combination of function notation (see <xref ref="d_function"/>) and Cartesian product notation (see <xref ref="d_cartesian_product"/>). Let's break it down. 
     </p>
     <p>
         Firstly, in general, given sets <m>A</m> and <m>B</m>, the set <m>A\times B</m>, called the Cartesian product of <m>A</m> and <m>B</m>, is defined as the set of all pairs <m>(a,b)</m>, where <m>a\in A</m> and <m>b\in B</m>: <ie/>, 
@@ -40,6 +237,261 @@
     denotes a function that takes as input a pair of elements <m>(a,b)</m>, where <m>a\in A</m> and <m>b\in B</m>, and returns as output an element <m>c\in C</m>.
     </p>
     </remark>
+<remark>
+    <title>Arithmetic and existential axioms</title>
+    <p>
+        We will call Axioms (i)-(iii) the <em>arithmetic axioms</em>, as they stipulate that our operations satisfy some familiar properties from arithmetic. Additionally, we will call Axioms (iv)-(vii) the <em>existential axioms</em> as they posit the existence of certain special elements inside the underlying set <m>F</m> of the field: namely, special elements denoted <m>0</m> and <m>1</m> satisfying Axioms (iv) and (vi), for each element <m>a\in F</m> a special associated element <m>-a</m> satisfying Axiom (v), and for each nonzero element <m>a\ne 0</m> a special associated element <m>a^{-1}</m> satisfying Axiom (vii). 
+    </p>
+</remark>
+<warning xml:id="warning_names_fields">
+    <title>Names and prejudices</title>
+    <p>
+        We use familiar looking notation to describe the special elements of a field <m>F</m> (<eg/>, <m>0,1,-a, 1/a</m>), but keep in mind that these are just <em>names</em> for certain special elements satisfying various axioms in <xref ref="d_field"/>.  
+    </p>
+    <p>
+        When verifying whether a given set <m>F</m> with given operations <m>+</m> and <m>\times</m> is a field, we make no assumptions beforehand as to which elements of <m>F</m> serve as these special elements. It is up to us to identify these special elements and verify that they satisfy the relevant axioms. As such, it is important each time we are confronted with a new potential field, that we come with no prejudices as to which elements serve as additive/multiplicate identities/inverses; these roles depend on how the operations themselves are defined.  <xref ref="eg_F2"/> is a nice illustration of this approach. 
+    </p>
+</warning>
+<p>
+    From the two field operations of addition and multiplication, along with the field axioms, we can define some simple additional operations like substraction, division, and integer exponentiation. 
+</p>
+<definition xml:id="d_field_subt_quot">
+<title>Subtraction, division, integer powers</title>
+<statement>
+<p>
+Let <m>F</m> be a field. 
+<ol>
+    <li>
+        <title>Subtraction</title>
+        <p>
+            Given elements <m>a, b</m>, we define their <term>difference</term> <m>a-b</m> as 
+            <md>
+                a-b=a+\, -b
+            </md>.
+        </p>
+    </li>
+    <li>
+        <title>Division</title>
+        <p>
+            Given elements <m>a,b\in F</m> with <m>b\ne 0</m>, we define their <term>quotient</term> <m>a/b</m> as 
+            <md>
+                a/b=a\, b^{-1}
+            </md>.
+        </p>
+    </li>
+    <li>
+        <title>Integer powers</title>
+        <p>
+            Given any <m>a\in F</m>, we define <m>a^0=1</m> and 
+            <md>
+                a^{n}=\underset{n \text{ times}}{\underbrace{a\cdot a \cdots a}}
+            </md>
+            where <m>n</m> is any positive integer. 
+        </p>
+        <p>
+            Furthermore, if <m>a\ne 0</m> and <m>n\geq 0</m>, we define 
+            <md>
+                a^{-n}=(a^{-1})^n
+            </md>.
+        </p>
+    </li>
+</ol>
+</p>
+</statement>
+</definition>
+<example xml:id="eg_R">
+<title>Real numbers</title>
+<statement>
+<p>
+Thanks to <xref ref="th_reals"/> the set <m>\R</m>,together with the operations of real number addition and real number multiplication, constitutes a field. 
+</p>
+</statement>
+</example>
+<p>
+As mentioned above, the rationals <m>\Q</m> are another field containing <m>\Z</m>: in fact, another <em>ordered archimedean field</em>. We define them now as a subset of <m>\R</m>. 
+</p>
+<definition xml:id="d_rationals">
+    <statement>
+        <p>
+            The set <m>\Q</m> of rational numbers is the subset of <m>\R</m> defined as 
+            <md number="yes">
+                <mrow>\Q \amp =\{q\in \R\mid q=m/n \text{ for some } m,n\in \Z\}</mrow>
+            </md>.
+        </p>
+    </statement>
+</definition>
+<proposition xml:id="prop_rationals_field">
+    <title><m>\Q</m> is a field</title>
+    <statement>
+        <p>
+           Real number addition and multiplication restrict to well-defined operations 
+           <md>
+            <mrow>+\colon \Q\times \Q \amp \rightarrow \Q \amp \times\colon \Q\times \Q\amp\rightarrow \Q</mrow>
+           </md> 
+           that give <m>\Q</m> the structure of a field. 
+        </p>
+    </statement>
+    <proof>
+        <p>
+<ol>
+    <li>
+        <p>
+            It is clear that we can add and multiply two rational numbers; what we need to show is that the result of applying either of these operations to two rational numbers is again a rational number. In other words, we must show that the sum of two rational numbers is a rational number, and the product of two rational numbers is a rational number. To this end, let <m>r,s\in \Q</m>, and write <m>r=m/n</m> and <m>s=p/q</m>, where <m>m,n,p,q\in \Z</m>. We then have 
+            <md>
+                <mrow>r+s \amp = \frac{mq+pn}{mn} \amp rs\amp=\frac{mp}{nq}</mrow>
+            </md>.
+            Since <m>mq+pn,mn, mp, nq\in \Z</m>, we see that <m>r+s, rs\in \Q</m>, as desired. 
+        </p>
+    </li>
+    <li>
+        <p>
+            Once we know that real number addition and multiplication restrict to well-defined operations on <m>\Q</m>, that these restricted operations satisfy the field axioms follows directly from the fact that the original operations on <m>\R</m> satisfy these axioms. For example, since addition and multiplication are satisfy Axiom (i) <em>for all real numbers</em>, they certainly satisfy Axiom (i) <em>for all rational numbers</em>. 
+        </p>
+        <p>
+            Similarly, the existential Axioms (iv)-(vii) are easily seen to be satisfied for the operations restricted to <m>\Q</m> once we observe that <m>0,1\in \Q</m>, and that given any nonzero <m>r=m/n\in \Q</m>, we have <m>r^{-1}=n/m\in \Q</m>. 
+        </p>
+    </li>
+</ol>
+</p>
+    </proof>
+</proposition>
+
+<example xml:id="eg_integers">
+<title>Integers</title>
+<statement>
+<p>
+Explain why <m>\Z</m> is not a field with respect to interger addition and multiplication. More specifically, which field axioms are satisfied, and which fail?
+</p>
+</statement>
+<solution>
+<p>
+<ol>
+    <li>
+        <p>
+            An argument very similar to the one in <xref ref="prop_rationals_field"/> shows that the sum and product of two integers is again an integer, and hence that restricting these operations to <m>\Z</m> yields a well-defined operation on <m>\Z</m>. 
+        </p>
+    </li>
+    <li>
+        <p>
+            The integers fail to be a field with respect to these operations as Axiom (vii) fails. To this end, by way of counterexample, we claim that the integer <m>2</m> does not have a multiplicative inverse in <m>\Z</m>. Indeed, if there were an integer <m>n</m> such that <m>2n=1</m>, then we'd have <m>n\ne 0</m> and 
+            <md>\abs{2n}=2\abs{n}=\abs{1}=1</md>.
+            But for all nonzero integers <m>n\in \Z</m>, we have <m>\abs{n}\geq 1</m>, and hence 
+            <md>
+                2\abs{n}\geq 2\cdot 1=1&gt; 1
+            </md>,
+            a contradiction. We conclude that there is no integer <m>n</m> satisfying <m>2n=1</m>, and hence that <m>2</m> has no multiplicative inverse in <m>\Z</m>. Thus <m>\Z</m> is not a field with respect to these operations. 
+        </p>
+        <p>
+            As it turns out, Axiom (vii) is the only field axiom that <m>\Z</m> fails, making it still a pretty darn good number system to work with. In fact, we have a name for number systems that satisfy at least Axioms (i)-(vi) of the field axioms: they are called <em>rings</em>. 
+        </p>
+    </li>
+</ol>
+</p>
+</solution>
+</example>
+<example xml:id="eg_F2">
+<title>Field of two elements</title>
+<statement>
+<p>
+Let <m>F=\{a,b\}</m> be a set containing two distinct elements. Define addition and multiplication on <m>F</m> as follows: 
+<md>
+    <mrow>a+a \amp = a \amp a+b\amp = b \amp  b+a \amp = b \amp b+b\amp = a</mrow>
+    <mrow>aa \amp = a \amp ab\amp= a \amp ba\amp = a \amp bb=b</mrow>
+</md>.
+Verify that <m>F</m>, together with these two operations, constitutes a field. Make explicit which elements of <m>F</m> serve as the additive/multiplicative identities/inverses. 
+</p>
+</statement>
+<solution>
+<p>
+Since <m>F</m> only has two elements, showing that Axioms (i)-(iii) hold is a simple matter of looking at all the possible cases: in other words, we can resort to a proof by exhaustion for these axioms. For example, verifying commutativity of multiplication requires looking at just 4 different cases. Furthermore, since it is trivially true that <m>a a=aa</m> and <m>bb=bb</m>, we need only look at the <q>mixed products</q> <m>ab</m> and <m>ba</m>; and in this case we see by the definition that
+<md>
+    ab=a=ba
+</md>.
+Similar arguments can be mounted for the rest of these arithmetic axioms. 
+</p>
+<p>
+    We now turn to the existential axioms. First, we claim that <m>a</m> serves as the additive identity in this case: <ie/>, we have <m>0=a</m> for this field. To verify this, we need to show that <m>a</m> satisfies the defining axiom of the additive identity: namely, that <m>a+a=a</m> for any <m>a\in F</m>. But this follows directly from the very definition of addition on <m>F</m>, as we declared that 
+    <m>a+a=a</m> and<m>a+b=b</m>. A similar argument shows that the element <m>b</m> acts as the multiplicative identity in this field: <ie/>, we have <m>1=b</m>. 
+</p>
+<p>
+    Lastly we must show that each element of <m>F</m> has an additive inverse satisfying Axiom (v), and that each nonzero element of <m>F</m> has a multiplicative inverse satisfying Axiom (vii). Again, this is accomplished simply by inspection, building on our already established result that <m>a=0</m> and <m>b=1</m>. In detail, since <m>a+a=a=0</m> and <m>b+b=a=0</m>, we see that <m>-a=a</m> and <m>-b=b</m>. Turning at last to multiplicative inverses, note first that <m>b</m> is the only nonzero element of <m>F</m> (since <m>a=0</m>). Furthermore, since <m>bb=b=1</m>, we see that <m>b^{-1}=b</m>. 
+</p>
+<p>
+    Since the operations on <m>F</m> satisfy the field axioms, we conclude that <m>F</m> is a field with respect to these operations. Having identified <m>a=0</m> and <m>b=1</m>, we can summarize the arithemetic rules of this particular field as follows:
+    <md>
+        <mrow>0+0 \amp =0 \amp 0+1\amp=1+0=1 \amp 1+1\amp =0 </mrow>
+        <mrow>0\cdot 0 \amp = 0 \amp 0\cdot 1\amp =1\cdot 0=0 \amp 1\cdot 1\amp =1</mrow>
+        <mrow>-0 \amp =0 \amp -1\amp =1 \amp 1^{-1}\amp =1</mrow>
+    </md>.
+</p>
+</solution>
+</example>
+<p>
+    Take a moment to take in the exotic nature of the field in <xref ref="eg_F2"/>. Unlike <m>\Q</m> and  <m>\R</m>, its underlying set is finite! Further peculiar attributes of this field is that every element is its own additive inverse. Crazy! Clearly, this example is important enough to warrant its own name. 
+</p>
+<definition xml:id="d_F2">
+<title>Field of two elements</title>
+<statement>
+<p>
+The set <m>\F_2=\{0,1\}</m>, together with the operations 
+<md>
+    <mrow>0+0 \amp = 0 \amp 0+1\amp=1+0=0 \amp 1+1\amp =0</mrow>
+    <mrow>0\cdot 0\amp =0\amp 0\cdot 1\amp=1\cdot 0=0 \amp 1\cdot 1\amp = 1 </mrow>
+</md>,
+is called the <term>field of two elements</term>. 
+</p>
+</statement>
+</definition>
+<remark>
+    <title>Finite fields</title>
+    <p>
+        It turns out that any <em>finite field</em> (<ie/>, a field <m>F</m> with finitely many elements) has prime cardinality. In other words if <m>F</m> is finite and we can define operations on <m>F</m> satisfying the field axioms, then <m>\abs{F}=p</m>, where <m>p</m> is a prime integer. 
+    </p>
+    <p>
+        Furthermore, given any prime integer <m>p</m>, we can define addition and multiplication operations on the set <m>\F_p=\{0,1,\dots, p-1\}</m> that satisfy the field axioms. In other words, for every prime <m>p</m> there is a field of <m>p</m> elements. (These are things you learn in the Math 330/331 sequences.) 
+    </p>
+</remark>
+<p>
+    We end with a proposition listing some basic further properties enjoyed by any field. Since we assume nothing about the underlying set <m>F</m> of the field, our proofs of these properties can invoke only the field axioms themselves. 
+</p>
+<proposition xml:id="p_field_properties">
+    <title>Basic properties of fields</title>
+    <statement>
+        <p>
+            Let <m>F</m> be a field. 
+        
+        <ol>
+            <li>
+                <p>
+                    The additive and multiplicative identities <m>0</m> and <m>1</m> are <em>unique</em>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    For all <m>a\in F</m>, we have <m>0\cdot a=0</m> and <m>(-1)a=-a</m>. 
+                </p>
+            </li>
+            <li>
+                <p>
+                    For all <m>a,b,c\in F</m> we have 
+                    <m>a=b</m> if and only if <m>a+c=b+c</m>. 
+                </p>
+            </li>
+            <li>
+                <p>
+                    For all <m>a,b\in F</m> and for all nonzero elements <m>c\in F</m>, we have 
+                    <m>a=b</m> if and only if <m>ac=bc</m>. 
+                </p>
+            </li>
+            <li>
+                <p>
+                    For all <m>a,b\in F</m>, if <m>ab=0</m>, then <m>a=0</m> or <m>b=0</m>. 
+                </p>
+            </li>
+        </ol>
+        </p>
+    </statement>
+</proposition>
 
 </subsection>
     

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_natural_numbers" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Natural numbers: Peano axioms</title>
+
+    <theorem xml:id="th_peano">
+    <title>Peano Axioms</title>
+    <statement>
+    <p>
+    There is a set <m>\N</m> satisfying the following properties. 
+    <ol>
+        <li>
+            <p>
+                There is a function <m>S\colon \N\rightarrow \N</m> defined on <m>\N</m> called the <term>successor function</term>. 
+            </p>
+        </li>
+        <li>
+            <p>
+                There is an element <m>0\in \N</m> such that <m>0\ne S(n)</m> for all <m>n\in \N</m>. 
+            </p>
+        </li>
+        <li>
+            <p>
+                The successor function is injective: i.e., for all <m>m,n\in \N</m>, if <m>S(m)=S(n)</m>, then <m>m=n</m>. Using logical shorthand, this means 
+                <md>
+                    m\ne n \implies S(m)\ne S(n)
+                </md>,                
+                or equivalently, 
+                <md>
+                    S(m)=S(n) \implies m=n
+                </md>
+                for all <m>m,n\in \N</m>. 
+            </p>
+        </li>
+        <li>
+            <title>Induction principle</title>
+            <p>
+                If <m>A</m> is a subset of <m>\N</m> satisfying 
+                <ol marker="(i)">
+                    <li>
+                        <p>
+                            <m>0\in A</m>, and 
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            for all <m>n\in \N</m>, if <m>n\in A</m>, then <m>S(n)\in A</m>,
+                        </p>
+                    </li>
+                </ol>
+            then <m>A=\N</m>. 
+            </p>
+        </li>
+    </ol>
+    </p>
+    </statement>
+    <proof>
+    <p>
+    </p>
+    </proof>
+    </theorem>
+    <p>
+        Once we have a set <m>\N</m> satisfying the properties of <xref ref="th_peano"/>, called the <term>Peano axioms</term>, we can recognize our old friend <m>\{0,1,2,\dots, \}</m> by introducing the notation <m>S(n)=n+1</m> for all <m>n\in \N</m>, and adding some additional names of elements resulting from successive application of <m>S</m> starting with <m>0</m>: <eg/>,
+        <md>
+            <mrow>1 \amp =S(0)=0+1 \amp 2\amp =S(1)=1+1 \amp 3\amp=S(2)=2+1</mrow>
+            <mrow>4 \amp = S(3)=3+1 \amp 5\amp=S(4)=4+1 \amp 6\amp=S(5)=5+1</mrow>
+            <mrow>7 \amp = S(6)=6+1 \amp 8\amp=S(7)=7+1 \amp 9\amp=S(8)=8+1</mrow>
+        </md>.
+        Next with the help of the induction principle, we can define not just a successor function, but further a full-blown addition operation 
+        <md>
+            <mrow>+\colon \N\times\N \amp \rightarrow \N</mrow>
+            <mrow>(m,n) \amp\mapsto m+n</mrow>
+        </md>.
+        We will not do this in detail, as it a tad technical (involving a further <em>recursive principle</em>), but roughly speaking <m>m+n</m> is defined as applying the successor function <m>n</m> times to <m>m</m>: <ie/>, 
+        <md>
+            m+n=\underset{n \text{ times}}{\underbrace{S(S(\dots S(m)))}}
+        </md>.
+        At this point we are well on our way to reconstructing the usual arithmetic on <m>\N</m>; we can give a similar type of definition for the multiplication operation 
+        <md>
+            (m,n)\mapsto m\cdot n
+        </md>.
+        Next we can construct <m>\Z</m> as 
+        <m></m>
+        
+        
+    </p>
+   <corollary xml:id="cor_generalized_induction">
+    <statement>
+        <p>
+            Let <m>a\in \Z</m>, and let <m>A</m> be a subset of <m>\Z_{\geq a}</m>. If <m>A</m> satisfies 
+            <ol marker="(i)">
+                <li>
+                    <p>
+                        <m>a\in A</m>, and 
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        for all <m>n\geq a</m>, if <m>n\in A</m>, then <m>n+1\in A</m>,
+                    </p>
+                </li>
+            </ol>
+        then <m>A=\Z_{\geq a}</m>.
+        </p>
+    </statement>
+   </corollary>
+    <p>
+    The fourth property of <xref ref="th_peano"/> directly gives rise to a proof technique for showing that a given subset <m>A</m> of <m>\N</m> is actually all of <m>\N</m>: namely, show that (i) <m>0\in \N</m>, and (ii) show that for all <m>n\in \N</m>, if <m>n\in A</m>, then <m>n+1\in A</m>. As stated, this is a proof technique for showing an <em>equality of sets</em> (<m>A=\N</m>). It is useful, however to give an equivalent formulation of this principle that yields a technique for proving a technique for proving universal quantifications of the form
+    <md>
+      \text{For all integers } n\geq b, \, P(n)
+    </md>,
+    where <m>b</m> is a fixed starting integer, called the <term>base</term>, and <m>P</m> is a predicate defined on the integers. Using logical shorthand, we seek a proof technique for showing that propositions of the form 
+    <md>
+        \forall n\in \Z_{\geq b}\  P(n)
+    </md>.
+    The technique in question is called <term>proof by induction</term>. 
+   </p> 
+   <algorithm xml:id="proof_by_induction">
+   <title>Proof by induction</title>
+   <statement>
+   <p>
+   Let <m>b</m> be an integer, and let <m>P(x)</m> be a predicate defined on all integers <m>n\geq b</m>. To prove the proposition
+   <md>
+        \forall n\in \Z_{\geq b}\  P(n)
+    </md>, 
+ proceed as follows. 
+    <ul>
+        <li>
+            <title>Base step</title>
+            <p>
+                Prove that <m>P(b)</m> is true. 
+            </p>
+        </li>
+        <li>
+            <title>Induction step</title>
+            <p>
+                Prove that for all integers <m>n\geq b</m>, if <m>P(n)</m> is true, then <m>P(n+1)</m> is true. Using logical: prove the proposition
+                <md number="yes" xml:id="eq_induction_implication">
+                  \forall n\geq b \  P(n)\implies P(n+1)
+                </md>.
+            </p>
+        </li>
+    </ul>
+   </p>
+   </statement>
+   </algorithm>
+   <example xml:id="eg_induction_sum_of_integers">
+      <title>Induction: sum of first <m>n</m> integers</title>
+      <statement>
+        <p>
+          Prove the identity
+          <md>
+            \sum_{k=1}^n k=\frac{n(n+1)}{2}
+          </md>
+          for all <m>n\geq 1</m>. Recall:
+          <md>
+            \sum_{k=1}^n k=1+2+\cdots +n
+          </md>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We prove the proposition by induction.
+        </p>
+        <case>
+         <title>Step 0: preparation</title>
+        <p>
+          The proposition is modeled logically as <m>\forall n\geq 1 \, P(n)</m>, where <m>P(n)</m> is the proposition that
+          <md>
+            \sum_{k=1}^n k=\frac{n(n+1)}{2}
+          </md>.
+        </p>
+        </case>
+        <case>
+         <title>Base step: <m>n=1</m></title>
+        <p>
+        The proposition <m>P(1)</m> is the statement that
+        <md>
+          1=\frac{1(1+1)}{2}
+        </md>,
+        which is true since 
+      <md>
+        \frac{1(1+1)}{2}=\frac{2}{2}=1
+      </md>.
+        </p>
+        </case>
+        <case>
+         <title>Induction step</title>
+        <p>
+        We must show the universal implication
+        <md>
+          \forall n\in \Z_{\geq 1}\ P(n)\implies P(n+1)
+        </md>.
+        Let <m>n\geq 1</m>, and assume <m>P(n)</m> is true: <ie />,
+        <md>
+          \sum_{k=1}^n k=\frac{n(n+1)}{2}
+        </md>
+        The proposition <m>P(n+1)</m> states that
+        <md>
+          \sum_{k=1}^{n+1} k=\frac{(n+1)(n+2)}{2}
+        </md>. We prove this, assuming <m>P(n)</m>, via a chain of equalities:
+        <md>
+          <mrow> \sum_{k=1}^{n+1} k\amp= \sum_{k=1}^{n} k+(n+1) </mrow>
+          <mrow> \amp=\frac{n(n+1)}{2}+n+1\amp (\text{induction hyp.}) </mrow>
+          <mrow>  \amp =\frac{n(n+1)+2(n+1)}{2}</mrow>
+          <mrow>  \amp =\frac{(n+1)(n+2)}{2}</mrow>
+        </md>,
+        as desired.
+        </p>
+        </case>
+        <p>
+          Having completed our base and induction steps, our proof is now finished.
+        </p>
+      </solution>
+    </example>
+   <algorithm xml:id="proof_by_strong_induction">
+   <title>Proof by strong induction</title>
+   <statement>
+   <p>
+   Let <m>b</m> be an integer, and let <m>P(x)</m> be a predicate defined on all integers <m>n\geq b</m>. To prove the proposition
+   <md>
+        \forall n\in \Z_{\geq b}\  P(n)
+    </md>, 
+ proceed as follows. 
+    <ul>
+        <li>
+            <title>Base step</title>
+            <p>
+                Prove that <m>P(b)</m> is true. 
+            </p>
+        </li>
+        <li>
+            <title>Strong induction step</title>
+            <p>
+                Prove that for all integers <m>n\geq b</m>, if <m>P(x)</m> is true for all integers <m>b\leq x\leq n</m>, then <m>P(n+1)</m> is true. Using logical: prove the proposition
+                <md number="yes" xml:id="eq_strong_induction_implication">
+   \forall n\geq b\, \left(P(b)\land P(b+1)\cdots \land P(n)\right) \implies P(n+1)
+ </md>.  
+            </p>
+        </li>
+    </ul>
+   </p>
+   </statement>
+   </algorithm>
+   
+    <theorem xml:id="th_well-ordering">
+    <title>Well-ordering princple</title>
+    <statement>
+    <p>
+    Let <m>b</m> be an integer. Given any nonempty subset <m>A</m> of <m>\Z_{\geq b}</m>, <m>A</m> has a least element: <ie/>, there is an element <m>a\in A</m> such that <m>a\leq a'</m> for all <m>a'\in A</m>. 
+    </p>
+    </statement>
+    <proof>
+    <p>
+        This is left as a homework exercise. 
+    </p>
+    </proof>
+    </theorem>
+
+
+</section>

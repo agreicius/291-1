@@ -21,6 +21,7 @@
   <!-- it defines. -->
   <macros> 
     \newcommand{\Z}{{\mathbb Z}}
+    \newcommand{\N}{{\mathbb N}}
     \newcommand{\Q}{{\mathbb Q}}
     \newcommand{\R}{{\mathbb R}}
     \newcommand{\C}{{\mathbb C}}
@@ -245,7 +246,7 @@
 
   <!-- Specify the default type of cross reference: -->
   <!-- <cross-references text="type-global" /> -->
-  <rename element="convention">Notation</rename>
+  <rename element="convention">{Proof technique}</rename>
   <rename element="algorithm">Procedure</rename>
   <rename element="principle">Mantra</rename>
   <rename element="assumption">Fiat</rename>

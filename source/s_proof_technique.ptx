@@ -368,7 +368,10 @@ To show <m>f</m> is bijective directly using <xref ref="d_injective_surjective_b
         <md>
           1=\frac{1(1+1)}{2}
         </md>,
-        which is clearly true.
+        which is true since 
+      <md>
+        \frac{1(1+1)}{2}=\frac{2}{2}=1
+      </md>.
         </p>
         </case>
         <case>
@@ -376,7 +379,7 @@ To show <m>f</m> is bijective directly using <xref ref="d_injective_surjective_b
         <p>
         We must show the universal implication
         <md>
-          \forall n\geq 1\, P(n)\implies P(n+1)
+          \forall n\in \Z_{\geq}\ P(n)\implies P(n+1)
         </md>.
         Let <m>n\geq 1</m>, and assume <m>P(n)</m> is true: <ie />,
         <md>

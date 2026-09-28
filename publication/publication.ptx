@@ -128,6 +128,7 @@
     <!-- Whether to knowl a particular elements is set here    -->
     <!-- Lots of elements have this possibility; see the guide -->
       <knowl
+      activity="no"
       theorem="no"
       fact="no"
       proof="yes"
