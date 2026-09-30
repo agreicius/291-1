@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Complex numbers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Linear algebra">
+<meta property="book:author" content="Aaron Greicius">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = true;
+eBookConfig.acDefaultLanguage = 'python';
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.2';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.6ad113829064d43a.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.02090e9f6a81e70e.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="NUlinearalgfirstcourse" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/images/im_holycomm.svg" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Linear algebra</span> <span class="subtitle">A Kursobjekt for Math 291-1</span></a></h1>
+<p class="byline">Aaron Greicius</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="calculator-toggle" class="calculator-toggle button" title="Show calculator" aria-expanded="false" aria-controls="calculator-container"><span class="icon material-symbols-outlined" aria-hidden="true">&#xea5f;</span><span class="name">Calc</span></button><div id="calculator-container" class="calculator-container" style="display: none; z-index:100;"><div id="geogebra-calculator"></div></div>
+<script>
+var ggbApp = new GGBApplet({"appName": "classic",
+    "width": 330,
+    "height": 600,
+    "showToolBar": true,
+    "showAlgebraInput": true,
+    "perspective": "G/A",
+    "algebraInputPosition": "bottom",
+    "scaleContainerClass": "calculator-container",
+    "allowUpscale": true,
+    "autoHeight": true,
+    "disableAutoScale": false},
+true);
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_reals_integers_rationals.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\compose}{\circ}
+\newcommand{\bolda}{{\mathbf a}}
+\newcommand{\boldb}{{\mathbf b}}
+\newcommand{\boldc}{{\mathbf c}}
+\newcommand{\boldd}{{\mathbf d}}
+\newcommand{\bolde}{{\mathbf e}}
+\newcommand{\boldi}{{\mathbf i}}
+\newcommand{\boldj}{{\mathbf j}}
+\newcommand{\boldk}{{\mathbf k}}
+\newcommand{\boldn}{{\mathbf n}}
+\newcommand{\boldp}{{\mathbf p}}
+\newcommand{\boldq}{{\mathbf q}}
+\newcommand{\boldr}{{\mathbf r}}
+\newcommand{\bolds}{{\mathbf s}}
+\newcommand{\boldt}{{\mathbf t}}
+\newcommand{\boldu}{{\mathbf u}}
+\newcommand{\boldv}{{\mathbf v}}
+\newcommand{\boldw}{{\mathbf w}}
+\newcommand{\boldx}{{\mathbf x}}
+\newcommand{\boldy}{{\mathbf y}}
+\newcommand{\boldz}{{\mathbf z}}
+\newcommand{\boldzero}{{\mathbf 0}}
+\newcommand{\boldmod}{\boldsymbol{ \bmod }}
+\newcommand{\boldT}{{\mathbf T}}
+\newcommand{\boldN}{{\mathbf N}}
+\newcommand{\boldB}{{\mathbf B}}
+\newcommand{\boldF}{{\mathbf F}}
+\newcommand{\boldS}{{\mathbf S}}
+\newcommand{\boldG}{{\mathbf G}}
+\newcommand{\boldK}{{\mathbf K}}
+\newcommand{\boldL}{{\mathbf L}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\NS}{null}
+\DeclareMathOperator{\RS}{row}
+\DeclareMathOperator{\CS}{col}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\mdeg}{mdeg}
+\DeclareMathOperator{\Lt}{Lt}
+\DeclareMathOperator{\Lc}{Lc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\diver}{div}
+\DeclareMathOperator{\flux}{flux}
+\def\Gal{\operatorname{Gal}}
+\def\ord{\operatorname{ord}}
+\def\ML{\operatorname{M}}
+\def\GL{\operatorname{GL}}
+\def\PGL{\operatorname{PGL}}
+\def\SL{\operatorname{SL}}
+\def\PSL{\operatorname{PSL}}
+\def\GSp{\operatorname{GSp}}
+\def\PGSp{\operatorname{PGSp}}
+\def\Sp{\operatorname{Sp}}
+\def\PSp{\operatorname{PSp}}
+\def\Aut{\operatorname{Aut}}
+\def\Inn{\operatorname{Inn}}
+\def\Hom{\operatorname{Hom}}
+\def\End{\operatorname{End}}
+\def\ch{\operatorname{char}}
+\def\Zp{\Z/p\Z}
+\def\Zm{\Z/m\Z}
+\def\Zn{\Z/n\Z}
+\def\Fp{\F_p}
+\newcommand{\surjects}{\twoheadrightarrow}
+\newcommand{\injects}{\hookrightarrow}
+\newcommand{\bijects}{\leftrightarrow}
+\newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+\newcommand{\mclass}[2][m]{[#2]_{#1}}
+\newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+\newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\normalin}{\trianglelefteq}
+\newcommand{\angvec}[1]{\langle #1\rangle}
+\newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+\newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+\newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+\def\ntoinfty{\lim_{n\rightarrow\infty}}
+\def\xtoinfty{\lim_{x\rightarrow\infty}}
+\def\ii{\item}
+\def\bb{\begin{enumerate}}
+\def\ee{\end{enumerate}}
+\def\ds{\displaystyle}
+\def\p{\partial}
+\newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+}
+\newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+\newenvironment{linsys}[2][m]{
+\begin{array}[#1]{*{#2}{rc}c}
+}{
+\end{array}}
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+a_{m,1}x_{1}\amp +\amp a_{m,2}x_{2}\amp +\,\cdots\,+\amp a_{m,n}x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+e_1:\amp  a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+e_2: \amp a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+e_m: \amp a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp 0\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp 0\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp 0
+\end{array}
+}
+\newcommand{\vareqsys}[4]{
+\begin{array}{ccccccc}
+#3_{1,1}\,x_{1}\amp +\amp #3_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  #3_{1,#2}\,x_{#2}\amp =\amp #4_1\\
+#3_{2,1}\,x_{1}\amp +\amp #3_{2,2}\,x_{2}\amp +\,\cdots\,+\amp #3_{2,#2}\,x_{#2}\amp =\amp #4_2\\
+\vdots \amp \amp \vdots \amp  \amp \vdots \ amp =\amp  \\
+#3_{#1, 1}\,x_{1}\amp +\amp #3_{#1, 2}\,x_{2}\amp +\,\cdots\,+\amp #3_{#1, #2}\,x_{#2}\amp =\amp #4_{#1}
+\end{array}
+}
+\newcommand{\genmatrix}[1][a]{
+\begin{bmatrix}
+#1_{1,1} \amp  #1_{1,2} \amp  \cdots \amp  #1_{1,n} \\
+#1_{2,1} \amp  #1_{2,2} \amp  \cdots \amp  #1_{2,n} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#1_{m,1} \amp  #1_{m,2} \amp  \cdots \amp  #1_{m,n}
+\end{bmatrix}
+}
+\newcommand{\varmatrix}[3]{
+\begin{bmatrix}
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}
+\end{bmatrix}
+}
+\newcommand{\augmatrix}{
+\begin{amatrix}[cccc|c]
+a_{1,1} \amp  a_{1,2} \amp  \cdots \amp  a_{1,n} \amp b_{1}\\
+a_{2,1} \amp  a_{2,2} \amp  \cdots \amp  a_{2,n} \amp b_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
+\end{amatrix}
+}
+\newcommand{\varaugmatrix}[4]{
+\begin{amatrix}[cccc|c]
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \amp #4_{1}\\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \amp #4_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}\amp #4_{#1}
+\end{amatrix}
+}
+\newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+\newcommand{\generalmatrix}[3]{
+\left(
+\begin{array}{cccc}
+#1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+#1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+\amp \vdots                         \\
+#1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+\end{array}
+\right)  }
+\newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+\newcommand{\rowvec}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\DeclareMathOperator{\size}{size}
+\DeclareMathOperator{\adjoint}{adj}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+\renewcommand{\Re}{\operatorname{Re}}
+ \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="c_foundations.html" class="internal"><span class="codenumber">0</span> <span class="title">Foundations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_sets_tuples.html" class="internal"><span class="codenumber">0.1</span> <span class="title">Sets and tuples</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#s_sets" class="internal"><span class="codenumber">0.1.1</span> <span class="title">Sets</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#ss_tuples" class="internal"><span class="codenumber">0.1.2</span> <span class="title">Tuples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_functions.html" class="internal"><span class="codenumber">0.2</span> <span class="title">Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_functions_definitions" class="internal"><span class="codenumber">0.2.1</span> <span class="title">Definition and notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_function_image_properties" class="internal"><span class="codenumber">0.2.2</span> <span class="title">Function image, injections, surjections, bijections</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_logic.html" class="internal"><span class="codenumber">0.3</span> <span class="title">Logic</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_propositional_calculus" class="internal"><span class="codenumber">0.3.1</span> <span class="title">Propositional logic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_predicate_logic" class="internal"><span class="codenumber">0.3.2</span> <span class="title">Predicate logic</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_proof_technique.html" class="internal"><span class="codenumber">0.4</span> <span class="title">Proof techniques</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_logical_structure" class="internal"><span class="codenumber">0.4.1</span> <span class="title">Logical structure</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_implication" class="internal"><span class="title">Implication</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_disjunction" class="internal"><span class="title">Disjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_equivalence" class="internal"><span class="title">Equivalence</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_logical_chains" class="internal"><span class="title">Chains of implications/equivalences</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_proof_by_contradiction" class="internal"><span class="title">Proof by contradiction</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_Equalities" class="internal"><span class="codenumber">0.4.2</span> <span class="title">Equalities</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_chain_equalities" class="internal"><span class="title">Chain of equalities</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_set_properties" class="internal"><span class="codenumber">0.4.3</span> <span class="title">Basic set properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_inclusion" class="internal"><span class="title">Set inclusion</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_equality" class="internal"><span class="title">Set equality</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_function_properties" class="internal"><span class="codenumber">0.4.4</span> <span class="title">Basic function properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_function_equality" class="internal"><span class="title">Function equality</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_injective_surjective_bijective" class="internal"><span class="title">Injective, surjective, bijective</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_mathematical_induction" class="internal"><span class="codenumber">0.4.5</span> <span class="title">Mathematical induction</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_weak_induction" class="internal"><span class="title">Proof by induction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_strong_induction" class="internal"><span class="title">Proof by strong induction</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="c_291-1.html" class="internal"><span class="codenumber">1</span> <span class="title">Math 291-1</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s_natural_numbers.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Natural numbers: Peano axioms</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_reals_integers_rationals.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Reals, rationals, fields</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_reals" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Real numbers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_fields" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Fields</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="s_complex.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Complex numbers</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_complex_def" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Complex arithmetic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_modulus_conjugation" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Further complex operations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_geometry_complex" class="internal"><span class="codenumber">1.3.3</span> <span class="title">Geometry of <span class="process-math">\(\C\)</span> and polar form</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="my-great-book-6.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-notation.html" class="internal"><span class="codenumber">A</span> <span class="title">Notation</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-exercises.html" class="internal"><span class="codenumber">B</span> <span class="title">Exercises</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-defs.html" class="internal"><span class="codenumber">C</span> <span class="title">Definitions</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-thms.html" class="internal"><span class="codenumber">D</span> <span class="title">Theory and procedures</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-egs.html" class="internal"><span class="codenumber">E</span> <span class="title">Examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-sage.html" class="internal"><span class="codenumber">F</span> <span class="title">Sage examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-figures.html" class="internal"><span class="codenumber">G</span> <span class="title">Figures and video examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-matnras.html" class="internal"><span class="codenumber">H</span> <span class="title">Mantras and fiats</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="s_complex"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex numbers</span>
+</h2>
+<section class="introduction" id="s_complex-2"><div class="para logical" id="s_complex-2-1">
+<div class="para">In <a href="s_reals_integers_rationals.html" class="internal" title="Section 1.2: Reals, rationals, fields">Section 1.2</a> we defined the rational numbers as a number system sitting between the integers and the real numbers:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/s_reals_integers_rationals.html" id="s_complex-2-1-2">
+\begin{align*}
+\Z \amp \subseteq \Q\subseteq \R\text{.}
+\end{align*}
+</div>
+<div class="para">In that chain of set inclusions, the arithmetic operations (addition and multiplication) of each new number system extend those of the previous one. Furthermore, each new number system can be seen as an improvement of its predecessor in some sense. For example, <span class="process-math">\(\Q\)</span> can be thought of as the result of adding multiplicative inverses to all the nonzero elements of <span class="process-math">\(\Z\text{.}\)</span> Furthermore, in a manner that is made more precise in real analysis, <span class="process-math">\(\R\)</span> “completes” <span class="process-math">\(\Q\)</span> by adding many additional numbers like <span class="process-math">\(\sqrt{q}\)</span> for all positive <span class="process-math">\(q\in \Q\text{.}\)</span> In this section we give a careful construction of the complex numbers <span class="process-math">\(\C\text{,}\)</span> itself a field extending the arithmetic operations of <span class="process-math">\(\R\text{,}\)</span> thus adding yet another number system to our chain of inclusions:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/s_reals_integers_rationals.html" id="s_complex-2-1-12">
+\begin{equation*}
+\Z\subseteq \Q\subseteq \R\subseteq \C\text{.}
+\end{equation*}
+</div>
+<div class="para">As such, this is as fitting place as any to include a classic quote from Leopold Kronecker:</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#s_complex-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<blockquote class="blockquote" id="s_complex-2-2">
+<div class="para" id="s_complex-2-2-1">Die ganzen Zahlen hat der liebe Gott gemacht, alles andere ist Menschenwerk.<div class="autopermalink" data-description="Paragraph"><a href="#s_complex-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="s_complex-2-2-2">[Tr. God created the integers. Everything else is the work of man.]<div class="autopermalink" data-description="Paragraph"><a href="#s_complex-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Quotation"><a href="#s_complex-2-2" title="Copy heading and permalink for Quotation" aria-label="Copy heading and permalink for Quotation">🔗</a></div>
+</blockquote></section><section class="subsection" id="ss_complex_def"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex arithmetic</span>
+</h3>
+<article class="definition definition-like" id="d_complex_numbers"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex numbers, real and imaginary parts.</span>
+</h4>
+<div class="para logical" id="d_complex_numbers-2-1">
+<div class="para">The <dfn class="terminology">complex numbers</dfn> is the set of all formal expressions of the form <span class="process-math">\(a+ib\text{,}\)</span> where <span class="process-math">\(a,b\in \R\text{:}\)</span> i.e.,</div>
+<div class="displaymath process-math" id="d_complex_numbers-2-1-5">
+\begin{equation*}
+\C=\{a+ib\colon a,b\in \R\}\text{.}
+\end{equation*}
+</div>
+<div class="para">Given a complex number <span class="process-math">\(z=a+ib\text{,}\)</span> we call <span class="process-math">\(a\)</span> its <dfn class="terminology">real part</dfn>, denoted <span class="process-math">\(\Re z\text{,}\)</span> and we call <span class="process-math">\(b\)</span> its <dfn class="terminology">imaginary part</dfn>, denoted <span class="process-math">\(\Im z\text{:}\)</span> i.e., we have</div>
+<div class="displaymath process-math" id="d_complex_numbers-2-1-14">
+\begin{align*}
+\Re z \amp = a \amp \Im z\amp = b\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_complex_numbers-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.1: Complex numbers, real and imaginary parts"><a href="#d_complex_numbers" title="Copy heading and permalink for Definition 1.3.1: Complex numbers, real and imaginary parts" aria-label="Copy heading and permalink for Definition 1.3.1: Complex numbers, real and imaginary parts">🔗</a></div></article><article class="convention remark-like" id="ss_complex_def-3"><h4 class="heading">
+<span class="type">Convention</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex numbers.</span>
+</h4>
+<div class="para" id="ss_complex_def-3-2">When introducing a complex number as <span class="process-math">\(z=a+ib\text{,}\)</span> unless specified otherwise, it is assumed that <span class="process-math">\(a,b\in \R\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_complex_def-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Convention 1.3.2: Complex numbers"><a href="#ss_complex_def-3" title="Copy heading and permalink for Convention 1.3.2: Complex numbers" aria-label="Copy heading and permalink for Convention 1.3.2: Complex numbers">🔗</a></div></article><div class="para logical" id="ss_complex_def-4">
+<div class="para">You are justified in wondering what exactly is meant by a “formal expression”. A more correct formulation would be that a complex number is really just a pair <span class="process-math">\((a,b)\in \R^2\)</span> of real numbers that for various reasons we denote as <span class="process-math">\(a+ib\text{.}\)</span> Since it is somewhat awkward to write a complex number as <span class="process-math">\(z=(a,b)\text{,}\)</span> we will live with the ambiguity of <a href="s_complex.html#d_complex_numbers" class="xref" data-knowl="./knowl/xref/d_complex_numbers.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.3.1: Complex numbers, real and imaginary parts">Definition 1.3.1</a>, and <em class="emphasis">identify</em> complex numbers <span class="process-math">\(z=a+ib\)</span> as pairs of real numbers via the map</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_complex_numbers.html" id="ss_complex_def-4-8">
+\begin{align*}
+\C \amp \longleftrightarrow \R^2\\
+a+ib \amp \longmapsto (a,b)\text{.}
+\end{align*}
+</div>
+<div class="para">To ensure that this is a well-defined bijection between <span class="process-math">\(\C\)</span> and <span class="process-math">\(\R^2\text{,}\)</span> we make official when two of our “formal expressions” are defined to be equal.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_complex_def-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_complex_equality"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex equality.</span>
+</h4>
+<div class="para logical" id="d_complex_equality-2-1">
+<div class="para">Complex numbers <span class="process-math">\(z=a+ib\)</span> and <span class="process-math">\(w=c+id\)</span> are <dfn class="terminology">equal</dfn>, denoted <span class="process-math">\(z=w\text{,}\)</span> if</div>
+<div class="displaymath process-math" id="d_complex_equality-2-1-5">
+\begin{gather*}
+a=c \text{ and } b=d\text{.}
+\end{gather*}
+</div>
+<div class="para">In other words, we have</div>
+<div class="displaymath process-math" id="d_complex_equality-2-1-6">
+\begin{align*}
+z=w \amp \iff \Re z=\Re w \text{ and } \Im z=\Im w\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_complex_equality-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.3: Complex equality"><a href="#d_complex_equality" title="Copy heading and permalink for Definition 1.3.3: Complex equality" aria-label="Copy heading and permalink for Definition 1.3.3: Complex equality">🔗</a></div></article><div class="para" id="ss_complex_def-6">For reasons that will be made more clear below, it is natural to identify the set of real numbers <span class="process-math">\(\R\)</span> with the set of complex numbers of the form <span class="process-math">\(a+0i\text{.}\)</span> This is the motivation behind the next definition.<div class="autopermalink" data-description="Paragraph"><a href="#ss_complex_def-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_real_imaginary"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Real and imaginary numbers.</span>
+</h4>
+<div class="para logical" id="d_real_imaginary-2-1">
+<div class="para">Let <span class="process-math">\(z=a+ib\)</span> be a complex number. We say that <span class="process-math">\(z\)</span> is <dfn class="terminology">real</dfn> if <span class="process-math">\(b=\Im z=0\text{,}\)</span> and <dfn class="terminology">(purely) imaginary</dfn> if <span class="process-math">\(a=\Re z=0\text{.}\)</span> Henceforth we identify the real numbers <span class="process-math">\(\R\)</span> with the real complex numbers: i.e., we declare that</div>
+<div class="displaymath process-math" id="d_real_imaginary-2-1-9">
+\begin{equation*}
+\R=\{z\in \C\colon \Im z=0\}=\{a+0i\colon a\in \R\}\text{.}
+\end{equation*}
+</div>
+<div class="para">Furthermore we will use the following abbreviations for various real and purely imaginary complex numbers:</div>
+<div class="displaymath process-math" id="d_real_imaginary-2-1-10">
+\begin{align*}
+a+i\,0 \amp =a \amp  0+ib\amp =ib\\
+a+i(-b) \amp =a-ib \amp a+i(\pm 1)\amp = a\pm i\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_real_imaginary-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.4: Real and imaginary numbers"><a href="#d_real_imaginary" title="Copy heading and permalink for Definition 1.3.4: Real and imaginary numbers" aria-label="Copy heading and permalink for Definition 1.3.4: Real and imaginary numbers">🔗</a></div></article><article class="definition definition-like" id="d_sum_product"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex addition and multiplication.</span>
+</h4>
+<div class="para logical" id="d_sum_product-2-1">
+<div class="para">Let <span class="process-math">\(z=a+ib\)</span> and <span class="process-math">\(w=c+id\)</span> be complex numbers.</div>
+<ul class="disc" id="d_sum_product-2-1-3">
+<li id="d_sum_product-2-1-3-1">
+<span class="heading li--heading"><span class="title li--heading-title">Complex addition.</span></span><div class="para logical" id="d_sum_product-2-1-3-1-2">
+<div class="para">We define the <dfn class="terminology">sum</dfn>  of <span class="process-math">\(z\)</span> and <span class="process-math">\(w\text{,}\)</span> denoted <span class="process-math">\(z+w\text{,}\)</span> as</div>
+<div class="displaymath process-math" id="d_sum_product-2-1-3-1-2-5">
+\begin{align}
+z+w \amp =(a+c)+i(b+d)\text{.}\tag{1.3.1}
+\end{align}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_sum_product-2-1-3-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Complex addition"><a href="#d_sum_product-2-1-3-1" title="Copy heading and permalink for Item: Complex addition" aria-label="Copy heading and permalink for Item: Complex addition">🔗</a></div>
+</li>
+<li id="d_sum_product-2-1-3-2">
+<span class="heading li--heading"><span class="title li--heading-title">Complex multiplication.</span></span><div class="para logical" id="d_sum_product-2-1-3-2-2">
+<div class="para">We define the <dfn class="terminology">product</dfn>  of <span class="process-math">\(z\)</span> and <span class="process-math">\(w\text{,}\)</span> denoted <span class="process-math">\(z\,w\)</span> (or sometimes <span class="process-math">\(z\cdot w\)</span>) as</div>
+<div class="displaymath process-math" id="d_sum_product-2-1-3-2-2-6">
+\begin{align}
+z\,w \amp= (ac-bd)+i(ad+bc) \text{.}\tag{1.3.2}
+\end{align}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_sum_product-2-1-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Complex multiplication"><a href="#d_sum_product-2-1-3-2" title="Copy heading and permalink for Item: Complex multiplication" aria-label="Copy heading and permalink for Item: Complex multiplication">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_sum_product-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.5: Complex addition and multiplication"><a href="#d_sum_product" title="Copy heading and permalink for Definition 1.3.5: Complex addition and multiplication" aria-label="Copy heading and permalink for Definition 1.3.5: Complex addition and multiplication">🔗</a></div></article><article class="example example-like" id="eg_arithmetic"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex arithmetic.</span>
+</h4>
+<div class="para logical" id="eg_arithmetic-2-1">
+<div class="para">Let <span class="process-math">\(z=-2+3i\text{,}\)</span> <span class="process-math">\(w=4+i\text{.}\)</span> Compute the following complex numbers. Your answer must be expressed in the form <span class="process-math">\(a+ib\text{,}\)</span> where <span class="process-math">\(a,b\in \R\text{.}\)</span>
+</div>
+<ol class="decimal" id="eg_arithmetic-2-1-5">
+<li id="eg_arithmetic-2-1-5-1">
+<div class="para" id="eg_arithmetic-2-1-5-1-1">
+<span class="process-math">\(\displaystyle z+w\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_arithmetic-2-1-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg_arithmetic-2-1-5-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eg_arithmetic-2-1-5-2">
+<div class="para" id="eg_arithmetic-2-1-5-2-1">
+<span class="process-math">\(\displaystyle z\,w\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_arithmetic-2-1-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg_arithmetic-2-1-5-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_arithmetic-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eg_arithmetic-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="eg_arithmetic-3-1">
+<ol class="decimal" id="eg_arithmetic-3-1-1">
+<li id="eg_arithmetic-3-1-1-1">
+<div class="para logical" id="eg_arithmetic-3-1-1-1-1">
+<div class="para">We have</div>
+<div class="displaymath process-math" id="eg_arithmetic-3-1-1-1-1-1">
+\begin{align*}
+z+w \amp =(-2+4)+i(3+1)\\
+\amp = 2+i\,4\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_arithmetic-3-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg_arithmetic-3-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eg_arithmetic-3-1-1-2">
+<div class="para logical" id="eg_arithmetic-3-1-1-2-1">
+<div class="para">We have</div>
+<div class="displaymath process-math" id="eg_arithmetic-3-1-1-2-1-1">
+\begin{align*}
+z\,w \amp = (-2\cdot 4-3\cdot 1)+i(-2\cdot 1+3\cdot 4)\\
+\amp = -11+i\,10\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_arithmetic-3-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg_arithmetic-3-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_arithmetic-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.3.6.1"><a href="#eg_arithmetic-3" title="Copy heading and permalink for Solution 1.3.6.1" aria-label="Copy heading and permalink for Solution 1.3.6.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.3.6: Complex arithmetic"><a href="#eg_arithmetic" title="Copy heading and permalink for Example 1.3.6: Complex arithmetic" aria-label="Copy heading and permalink for Example 1.3.6: Complex arithmetic">🔗</a></div></article><article class="example example-like" id="eg_squareroot_minusone"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(i^2\)</span>.</span>
+</h4>
+<div class="para" id="eg_squareroot_minusone-2-1">Compute <span class="process-math">\(i^2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_squareroot_minusone-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eg_squareroot_minusone-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="eg_squareroot_minusone-3-1">
+<div class="para">We have, using the definition of multiplication,</div>
+<div class="displaymath process-math" id="eg_squareroot_minusone-3-1-1">
+\begin{equation*}
+i^2=(0+1\, i)(0+1\, i)=(0-1)+0i=-1\text{.}
+\end{equation*}
+</div>
+<div class="para">Thus the element <span class="process-math">\(i\)</span> is seen to be a square-root of <span class="process-math">\(-1\text{!}\)</span> With a little more work, we can show that any complex number <span class="process-math">\(z=a+ib\)</span> has a complex square-root. More on that later.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_squareroot_minusone-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.3.7.1"><a href="#eg_squareroot_minusone-3" title="Copy heading and permalink for Solution 1.3.7.1" aria-label="Copy heading and permalink for Solution 1.3.7.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.3.7: i^2"><a href="#eg_squareroot_minusone" title="Copy heading and permalink for Example 1.3.7: i^2" aria-label="Copy heading and permalink for Example 1.3.7: i^2">🔗</a></div></article><article class="remark remark-like" id="rem_complex_arith"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex arithmetic as extension of real arithmetic.</span>
+</h4>
+<div class="para logical" id="rem_complex_arith-2">
+<div class="para">Using the definition of complex multiplication, it is easy to see that given any real complex number <span class="process-math">\(a=a+0i\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="rem_complex_arith-2-2">
+\begin{align*}
+a(c+di) \amp =ac+adi=(c+di)a \text{.}
+\end{align*}
+</div>
+<div class="para">In particular, given any two real complex numbers <span class="process-math">\(a=a+0i\)</span> and <span class="process-math">\(b=b+0i\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="rem_complex_arith-2-5">
+\begin{equation*}
+(a+0i)(b+0i)=ab+0i=ab\text{.}
+\end{equation*}
+</div>
+<div class="para">In other words, when we restrict complex multiplication to the real complex numbers, we recover our familiar real multiplication operation. A similar statement applies for complex addition and real addition. In this sense, complex arithmetic is understood as an <em class="emphasis">extension</em> of real arithmetic.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#rem_complex_arith-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.3.8: Complex arithmetic as extension of real arithmetic"><a href="#rem_complex_arith" title="Copy heading and permalink for Remark 1.3.8: Complex arithmetic as extension of real arithmetic" aria-label="Copy heading and permalink for Remark 1.3.8: Complex arithmetic as extension of real arithmetic">🔗</a></div></article><div class="para" id="ss_complex_def-12">Somewhat surprisingly, despite the somewhat nonintuitive definition of complex multiplication, <span class="process-math">\(\C\)</span> turns out to be a field with respect to its addition and multiplication.<div class="autopermalink" data-description="Paragraph"><a href="#ss_complex_def-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="th_complex_field"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(\C\)</span> is a field.</span>
+</h4>
+<div class="para" id="th_complex_field-2-1">The set <span class="process-math">\(\C\)</span> of all complex numbers, together with the operations of complex addition and multiplication defined in <a href="s_complex.html#d_sum_product" class="xref" data-knowl="./knowl/xref/d_sum_product.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.3.5: Complex addition and multiplication">Definition 1.3.5</a>, constitutes a field.<div class="autopermalink" data-description="Paragraph"><a href="#th_complex_field-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="th_complex_field-2-2">
+<div class="para">In more detail, with respect to these operations, the additive and multiplicative identities are <span class="process-math">\(0=0+i\,0\)</span> and <span class="process-math">\(1=1+i\,0\text{,}\)</span> respectively, and given any <span class="process-math">\(z=a+ib\in \Z\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="th_complex_field-2-2-4">
+\begin{align*}
+-z \amp = -a-ib\\
+z^{-1} \amp = \frac{a}{a^2+b^2}-i\frac{b}{a^2+b^2} \amp (\text{assuming } z\ne 0)\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_complex_field-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.3.9: \C is a field"><a href="#th_complex_field" title="Copy heading and permalink for Theorem 1.3.9: \C is a field" aria-label="Copy heading and permalink for Theorem 1.3.9: \C is a field">🔗</a></div></article><details id="th_complex_field-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_complex_field-3-1">We must show that <span class="process-math">\(\C\)</span> satisfies the seven field axioms of <a href="s_reals_integers_rationals.html#d_field" class="xref" data-knowl="./knowl/xref/d_field.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.5: Field">Definition 1.2.5</a>. For the sake of demonstration, we will do some of that work here, but will leave most of it as a homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#th_complex_field-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="case" id="th_complex_field-3-2"><h5 class="heading">Addition is commutative (half of Axiom i).</h5>
+<div class="para logical" id="th_complex_field-3-2-2">
+<div class="para">Given <span class="process-math">\(z=a+ib\)</span> and <span class="process-math">\(w=c+id\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="th_complex_field-3-2-2-3">
+\begin{align*}
+z+w \amp =(a+ib)+(c+id)\\
+\amp = (a+c)+(i(b+d)) \amp (\text{def.})\\
+\amp = (c+a)+i(d+b) \amp (\text{comm. of real add.})\\
+\amp = (c+id)+(a+ib) \amp (\text{def.})\\
+\amp = w+z\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_complex_field-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Addition is commutative (half of Axiom i)"><a href="#th_complex_field-3-2" title="Copy heading and permalink for Case: Addition is commutative (half of Axiom i)" aria-label="Copy heading and permalink for Case: Addition is commutative (half of Axiom i)">🔗</a></div></article><article class="case" id="th_complex_field-3-3"><h5 class="heading">Axiom iv.</h5>
+<div class="para logical" id="th_complex_field-3-3-2">
+<div class="para">For all <span class="process-math">\(z=a+ib\in \C\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="th_complex_field-3-3-2-2">
+\begin{align*}
+0+z \amp = (0+i0)+(a+ib)\\
+\amp (0+a)+i(0+b) \amp (\text{def.})\\
+\amp = (a+ib) \amp \\
+\amp = z\text{.}
+\end{align*}
+</div>
+<div class="para">Thus, as claimed, the complex number <span class="process-math">\(0=0+i0\)</span> satisfies the additive identity property.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_complex_field-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Axiom iv"><a href="#th_complex_field-3-3" title="Copy heading and permalink for Case: Axiom iv" aria-label="Copy heading and permalink for Case: Axiom iv">🔗</a></div></article><article class="case" id="th_complex_field-3-4"><h5 class="heading">Multiplicative identity.</h5>
+<div class="para logical" id="th_complex_field-3-4-2">
+<div class="para">For all <span class="process-math">\(z=a+ib\in \C\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="th_complex_field-3-4-2-2">
+\begin{align*}
+(1+0i)\cdot z \amp = (1+0i)(a+ib)\\
+\amp = (1\cdot a-0\cdot b)+i(0\cdot a+1\cdot b) \amp (\text{def.})\\
+\amp =a+ib\\
+\amp = z\text{.}
+\end{align*}
+</div>
+<div class="para">Thus, as claimed, the complex number <span class="process-math">\(1=1+i0\)</span> satisfies the multiplicative identity property.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_complex_field-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Multiplicative identity"><a href="#th_complex_field-3-4" title="Copy heading and permalink for Case: Multiplicative identity" aria-label="Copy heading and permalink for Case: Multiplicative identity">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.3.9.1"><a href="#th_complex_field-3" title="Copy heading and permalink for Proof 1.3.9.1" aria-label="Copy heading and permalink for Proof 1.3.9.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.3.1: Complex arithmetic"><a href="#ss_complex_def" title="Copy heading and permalink for Subsection 1.3.1: Complex arithmetic" aria-label="Copy heading and permalink for Subsection 1.3.1: Complex arithmetic">🔗</a></div></section><section class="subsection" id="ss_modulus_conjugation"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Further complex operations</span>
+</h3>
+<div class="para" id="ss_modulus_conjugation-2">Two further complex operations, the <em class="emphasis">modulus</em> and <em class="emphasis">complex conjugation</em>, will prove to be invaluable when doing complex arithmetic.<div class="autopermalink" data-description="Paragraph"><a href="#ss_modulus_conjugation-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_modulus"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex modulus.</span>
+</h4>
+<div class="para logical" id="d_modulus-2-1">
+<div class="para">The <dfn class="terminology">modulus</dfn> (or <dfn class="terminology">absolute value</dfn>) of a complex number <span class="process-math">\(z=a+ib\text{,}\)</span> denoted <span class="process-math">\(\abs{z}\text{,}\)</span> is defined as</div>
+<div class="displaymath process-math" id="d_modulus-2-1-5">
+\begin{equation*}
+\abs{z}=\sqrt{a^2+b^2}\text{.}
+\end{equation*}
+</div>
+<div class="para">If <span class="process-math">\(\abs{z}=1\text{,}\)</span> we say that <span class="process-math">\(z\)</span> has <dfn class="terminology">unit length</dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_modulus-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.10: Complex modulus"><a href="#d_modulus" title="Copy heading and permalink for Definition 1.3.10: Complex modulus" aria-label="Copy heading and permalink for Definition 1.3.10: Complex modulus">🔗</a></div></article><article class="definition definition-like" id="d_conj"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Complex conjugation.</span>
+</h4>
+<div class="para logical" id="d_conj-2-1">
+<div class="para">Given the complex number <span class="process-math">\(z=a+ib\text{,}\)</span> its <dfn class="terminology">(complex) conjugate</dfn> <span class="process-math">\(\overline{z}\)</span> is defined as</div>
+<div class="displaymath process-math" id="d_conj-2-1-4">
+\begin{equation*}
+\overline{z}=a-ib\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_conj-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.11: Complex conjugation"><a href="#d_conj" title="Copy heading and permalink for Definition 1.3.11: Complex conjugation" aria-label="Copy heading and permalink for Definition 1.3.11: Complex conjugation">🔗</a></div></article><article class="theorem theorem-like" id="th_conj"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Conjugation properties.</span>
+</h4>
+<div class="para logical" id="th_conj-2-1">
+<div class="para">Let <span class="process-math">\(z\)</span> and <span class="process-math">\(w\)</span> be complex numbers.</div>
+<ol class="decimal cols2 multicolumn" id="th_conj-2-1-3">
+<li id="th_conj-2-1-3-1">
+<div class="para" id="th_conj-2-1-3-1-1">
+<span class="process-math">\(\overline{z+w}=\overline{z}+\overline{w}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#th_conj-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="th_conj-2-1-3-2">
+<div class="para" id="th_conj-2-1-3-2-1">
+<span class="process-math">\(\overline{z\, w}=\overline{z}\, \overline{w}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#th_conj-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="th_conj-2-1-3-3">
+<div class="para" id="th_conj-2-1-3-3-1">
+<span class="process-math">\(\overline{\overline{z}}=z\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#th_conj-2-1-3-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+<li id="th_conj-2-1-3-4">
+<div class="para" id="th_conj-2-1-3-4-1">
+<span class="process-math">\(\abs{\overline{z}}=\abs{z}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4"><a href="#th_conj-2-1-3-4" title="Copy heading and permalink for Item 4" aria-label="Copy heading and permalink for Item 4">🔗</a></div>
+</li>
+<li id="th_conj-2-1-3-5">
+<div class="para" id="th_conj-2-1-3-5-1">
+<span class="process-math">\(\Re z=\frac{z+\overline{z}}{2}\)</span> and <span class="process-math">\(\Im z=\frac{z-\overline{z}}{2i}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 5"><a href="#th_conj-2-1-3-5" title="Copy heading and permalink for Item 5" aria-label="Copy heading and permalink for Item 5">🔗</a></div>
+</li>
+<li id="th_conj-2-1-3-6">
+<div class="para" id="th_conj-2-1-3-6-1">
+<span class="process-math">\(z\in \R\)</span> if and only if <span class="process-math">\(\overline{z}=z\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 6"><a href="#th_conj-2-1-3-6" title="Copy heading and permalink for Item 6" aria-label="Copy heading and permalink for Item 6">🔗</a></div>
+</li>
+<li id="th_conj-2-1-3-7">
+<div class="para" id="th_conj-2-1-3-7-1">
+<span class="process-math">\(\displaystyle z\, \overline{z}=\abs{z}^2\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 7"><a href="#th_conj-2-1-3-7" title="Copy heading and permalink for Item 7" aria-label="Copy heading and permalink for Item 7">🔗</a></div>
+</li>
+<li id="th_conj-2-1-3-8">
+<div class="para" id="th_conj-2-1-3-8-1">If <span class="process-math">\(z\ne 0\text{,}\)</span> then <span class="process-math">\(\displaystyle z^{-1}=\frac{\overline{z}}{\abs{z}^2}=\frac{\overline{z}}{z\overline{z}}
+\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1-3-8-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 8"><a href="#th_conj-2-1-3-8" title="Copy heading and permalink for Item 8" aria-label="Copy heading and permalink for Item 8">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_conj-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.3.12: Conjugation properties"><a href="#th_conj" title="Copy heading and permalink for Theorem 1.3.12: Conjugation properties" aria-label="Copy heading and permalink for Theorem 1.3.12: Conjugation properties">🔗</a></div></article><details id="th_conj-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_conj-3-1">This is left as a homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#th_conj-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.3.12.1"><a href="#th_conj-3" title="Copy heading and permalink for Proof 1.3.12.1" aria-label="Copy heading and permalink for Proof 1.3.12.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.3.2: Further complex operations"><a href="#ss_modulus_conjugation" title="Copy heading and permalink for Subsection 1.3.2: Further complex operations" aria-label="Copy heading and permalink for Subsection 1.3.2: Further complex operations">🔗</a></div></section><section class="subsection" id="ss_geometry_complex"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Geometry of <span class="process-math">\(\C\)</span> and polar form</span>
+</h3>
+<div class="para logical" id="ss_geometry_complex-2">
+<div class="para">
+<a href="s_complex.html#d_complex_equality" class="xref" data-knowl="./knowl/xref/d_complex_equality.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.3.3: Complex equality">Definition 1.3.3</a> ensures that the map</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_complex_equality.html" id="ss_geometry_complex-2-2">
+\begin{equation*}
+a+ib\mapsto (a,b)
+\end{equation*}
+</div>
+<div class="para">defines a bijection between <span class="process-math">\(\C\)</span> and <span class="process-math">\(\R\text{,}\)</span> allowing us to identify complex numbers as pairs of real numbers. This identification in turn gives rise to a visual representation of complex numbers as points in the Cartesian plane <span class="process-math">\(\R^2\text{,}\)</span> called the <dfn class="terminology">complex plane</dfn> in this context. To make clear that we are using <span class="process-math">\(\R^2\)</span> to visualize <span class="process-math">\(\C\text{,}\)</span> we label the horizontal and vertical axes as <span class="process-math">\(\Re\)</span> and <span class="process-math">\(\Im\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_geometry_complex-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig_complex_plane"><div class="image-box" style="width: 75%; margin-left: 12.5%; margin-right: 12.5%;"><img src="generated/sageplot/fig_complex_plane-2.svg" role="img" class="contained" alt="Complex plane: points"></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.13<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Complex plane<div class="autopermalink" data-description="Figure 1.3.13"><a href="#fig_complex_plane" title="Copy heading and permalink for Figure 1.3.13" aria-label="Copy heading and permalink for Figure 1.3.13">🔗</a></div></figcaption></figure><div class="para logical" id="ss_geometry_complex-4">
+<div class="para">Using our identification</div>
+<div class="displaymath process-math" id="ss_geometry_complex-4-1">
+\begin{equation*}
+\R=\{z\in \C\colon \Im z=0\}\text{,}
+\end{equation*}
+</div>
+<div class="para">we see that the real numbers are represented geometrically as the <span class="process-math">\(x\)</span>-axis of the complex plane. Similarly, the purely imaginary complex numbers are represented geometrically as the the <span class="process-math">\(y\)</span>-axis of the complex plane. As you will see, we will get a lot of mileage out of this geometric representation of complex numbers.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_geometry_complex-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="ss_geometry_complex-5">
+<div class="para">Recall that for any pair <span class="process-math">\((a,b)\in \R^2\)</span> we can write</div>
+<div class="displaymath process-math" id="ss_geometry_complex-5-2">
+\begin{equation*}
+(a,b)=(r\cos\theta, r\sin\theta)
+\end{equation*}
+</div>
+<div class="para">for some <span class="process-math">\(r,\theta\in \R\text{,}\)</span> and we call <span class="process-math">\(r\)</span> and <span class="process-math">\(\theta\)</span> <em class="emphasis">polar coordinates</em> of the point <span class="process-math">\((a,b)\)</span> in this case. These polar coordinates are not unique, but we do have the following fact: if <span class="process-math">\((a,b)\)</span> is nonzero, and we have</div>
+<div class="displaymath process-math" id="ss_geometry_complex-5-9">
+\begin{equation*}
+(a,b)=(r\cos\theta,r\sin\theta)=(s\cos\psi,s\sin\psi)
+\end{equation*}
+</div>
+<div class="para">with <span class="process-math">\(r\geq 0\)</span> and <span class="process-math">\(s\geq 0\text{,}\)</span> then <span class="process-math">\(r=s=\sqrt{a^2+b^2}\)</span> and <span class="process-math">\(\psi=\theta+2\pi k\)</span> for some integer <span class="process-math">\(k\in \Z\text{.}\)</span> This leads directly to the following result about complex numbers.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_geometry_complex-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="th_polar_form"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polar form.</span>
+</h4>
+<div class="para logical" id="th_polar_form-2-1">
+<div class="para">Let <span class="process-math">\(z=a+ib\)</span> be a complex number.</div>
+<ol class="decimal" id="th_polar_form-2-1-2">
+<li id="th_polar_form-2-1-2-1">
+<div class="para logical" id="th_polar_form-2-1-2-1-1">
+<div class="para">We have</div>
+<div class="displaymath process-math" id="th_polar_form-2-1-2-1-1-1">
+\begin{equation}
+z=r\cos\theta+ri\sin\theta=r(\cos\theta+i\sin\theta)\tag{1.3.3}
+\end{equation}
+</div>
+<div class="para">for some nonnegative <span class="process-math">\(r\geq 0\)</span> and <span class="process-math">\(\theta\in \R\text{.}\)</span> The choice of <span class="process-math">\(r\)</span> here is unique; in fact, we have</div>
+<div class="displaymath process-math" id="th_polar_form-2-1-2-1-1-5">
+\begin{equation*}
+r=\sqrt{a^2+b^2}=\abs{z}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_form-2-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#th_polar_form-2-1-2-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="th_polar_form-2-1-2-2">
+<div class="para logical" id="th_polar_form-2-1-2-2-1">
+<div class="para">If <span class="process-math">\(z\ne 0\)</span> and we have</div>
+<div class="displaymath process-math" id="th_polar_form-2-1-2-2-1-2">
+\begin{equation*}
+z=r(\cos\theta+i\sin\theta)=r(\cos\psi+i\sin\psi)
+\end{equation*}
+</div>
+<div class="para">for <span class="process-math">\(r&gt; 0\text{,}\)</span> then <span class="process-math">\(\psi=\theta+2\pi k\)</span> for some integer <span class="process-math">\(k\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_form-2-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#th_polar_form-2-1-2-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_form-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.3.14: Polar form"><a href="#th_polar_form" title="Copy heading and permalink for Theorem 1.3.14: Polar form" aria-label="Copy heading and permalink for Theorem 1.3.14: Polar form">🔗</a></div></article><article class="definition definition-like" id="d_polar"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polar form.</span>
+</h4>
+<div class="para logical" id="d_polar-2-1">
+<div class="para">Let <span class="process-math">\(z\)</span> be a complex number, and suppose <span class="process-math">\(r\geq 0\)</span> and <span class="process-math">\(\theta\in \R\)</span> satisfy</div>
+<div class="displaymath process-math" id="eq_polar">
+\begin{equation}
+z=r(\cos\theta+i\sin\theta)\text{.}\tag{1.3.4}
+\end{equation}
+</div>
+<div class="para">We call the expression <span class="process-math">\(r(\cos\theta+i\sin\theta)\)</span> a <dfn class="terminology">polar form</dfn> of <span class="process-math">\(z\)</span> and we call <span class="process-math">\(\theta\)</span> an <dfn class="terminology">argument</dfn> of <span class="process-math">\(z\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_polar-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.3.15: Polar form"><a href="#d_polar" title="Copy heading and permalink for Definition 1.3.15: Polar form" aria-label="Copy heading and permalink for Definition 1.3.15: Polar form">🔗</a></div></article><article class="example example-like" id="eg_polar"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polar form.</span>
+</h4>
+<div class="para logical" id="eg_polar-2-1">
+<div class="para">Find a polar form for the given <span class="process-math">\(z\text{.}\)</span>
+</div>
+<ol class="decimal" id="eg_polar-2-1-2">
+<li id="eg_polar-2-1-2-1">
+<div class="para" id="eg_polar-2-1-2-1-1">
+<span class="process-math">\(\displaystyle z=-\sqrt{3}-i\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_polar-2-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg_polar-2-1-2-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eg_polar-2-1-2-2">
+<div class="para" id="eg_polar-2-1-2-2-1">
+<span class="process-math">\(\displaystyle z=3-4i\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_polar-2-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg_polar-2-1-2-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_polar-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eg_polar-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="eg_polar-3-1"><div class="autopermalink" data-description="Paragraph"><a href="#eg_polar-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
+<div class="autopermalink" data-description="Solution 1.3.16.1"><a href="#eg_polar-3" title="Copy heading and permalink for Solution 1.3.16.1" aria-label="Copy heading and permalink for Solution 1.3.16.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.3.16: Polar form"><a href="#eg_polar" title="Copy heading and permalink for Example 1.3.16: Polar form" aria-label="Copy heading and permalink for Example 1.3.16: Polar form">🔗</a></div></article><article class="theorem theorem-like" id="th_polar_mult"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polar form properties.</span>
+</h4>
+<div class="para logical" id="th_polar_mult-2-1">
+<div class="para">Let <span class="process-math">\(z=r(\cos\theta+i\sin\theta)\)</span> and <span class="process-math">\(w=s(\cos\psi+i\sin\psi)\)</span> where <span class="process-math">\(r,s\geq 0\text{.}\)</span>
+</div>
+<ol class="decimal" id="th_polar_mult-2-1-4">
+<li id="th_polar_mult-2-1-4-1">
+<div class="para logical" id="th_polar_mult-2-1-4-1-1">
+<div class="displaymath process-math" id="eq_polar_mod">
+\begin{equation}
+\abs{z}=r\tag{1.3.5}
+\end{equation}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_mult-2-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#th_polar_mult-2-1-4-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="th_polar_mult-2-1-4-2">
+<div class="para logical" id="th_polar_mult-2-1-4-2-1">
+<div class="displaymath process-math" id="eq_polar_conj">
+\begin{equation}
+\overline{z}=r(\cos(-\theta)+i\sin(-\theta))\text{.}\tag{1.3.6}
+\end{equation}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_mult-2-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#th_polar_mult-2-1-4-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="th_polar_mult-2-1-4-3">
+<div class="para logical" id="th_polar_mult-2-1-4-3-1">
+<div class="displaymath process-math" id="eq_polar_mult">
+\begin{equation}
+zw=rs(\cos(\theta+\psi)+i\sin(\theta+\psi))\text{.}\tag{1.3.7}
+\end{equation}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_mult-2-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#th_polar_mult-2-1-4-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+<li id="th_polar_mult-2-1-4-4">
+<div class="para logical" id="th_polar_mult-2-1-4-4-1">
+<div class="para">If <span class="process-math">\(z\ne 0\text{,}\)</span> then</div>
+<div class="displaymath process-math" id="eq_polar_inv">
+\begin{equation}
+z^{-1}=\frac{1}{r}\left(\cos(-\theta)+i\sin(-\theta)\right)\text{.}\tag{1.3.8}
+\end{equation}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_mult-2-1-4-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4"><a href="#th_polar_mult-2-1-4-4" title="Copy heading and permalink for Item 4" aria-label="Copy heading and permalink for Item 4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_polar_mult-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.3.17: Polar form properties"><a href="#th_polar_mult" title="Copy heading and permalink for Theorem 1.3.17: Polar form properties" aria-label="Copy heading and permalink for Theorem 1.3.17: Polar form properties">🔗</a></div></article><article class="remark remark-like" id="ss_geometry_complex-10"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Geometric interpretation of complex operations.</span>
+</h4>
+<div class="para" id="ss_geometry_complex-10-2">Each of the identities of <a href="s_complex.html#th_polar_mult" class="xref" data-knowl="./knowl/xref/th_polar_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.3.17: Polar form properties">Theorem 1.3.17</a> can be understood as providing a geometric interpretation of one of our complex operations.<div class="autopermalink" data-description="Paragraph"><a href="#ss_geometry_complex-10-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ss_geometry_complex-10-3">In particular, statement (3) provides us with a more satisfying description of complex multiplication than the algebraic formula given by <a href="s_complex.html#d_sum_product-2-1-3-2-2-6" class="xref" data-knowl="./knowl/xref/eq_product.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.3.2">(1.3.2)</a>. Roughly speaking, the identity <a href="s_complex.html#eq_polar_mult" class="xref" data-knowl="./knowl/xref/eq_polar_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.3.7">(1.3.7)</a> tells us that to multiply two complex numbers, we (a) add their arguments and (b) multiply their moduli.<div class="autopermalink" data-description="Paragraph"><a href="#ss_geometry_complex-10-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ss_geometry_complex-10-4">Alternatively, <a href="s_complex.html#eq_polar_mult" class="xref" data-knowl="./knowl/xref/eq_polar_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.3.7">(1.3.7)</a> tells us that to multiply <span class="process-math">\(w=s(\cos\psi+i\sin\psi)\)</span> by <span class="process-math">\(z=r(\cos\theta+i\sin\theta)\text{,}\)</span> we (a) rotate <span class="process-math">\(w\)</span> (considered as a point) by an angle <span class="process-math">\(\theta\)</span> about the origin, and (b) scale its distance from the origin by <span class="process-math">\(r\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_geometry_complex-10-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ss_geometry_complex-10-5">Similarly, <a href="s_complex.html#eq_polar_inv" class="xref" data-knowl="./knowl/xref/eq_polar_inv.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.3.8">(1.3.8)</a> tells us that the inverse of a complex number is obtained by taking the reciprocal of its modulus (the <span class="process-math">\(1/r\)</span> in the formula), and “flipping” its argument (the <span class="process-math">\(-\theta\)</span> in the formula).<div class="autopermalink" data-description="Paragraph"><a href="#ss_geometry_complex-10-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.3.18: Geometric interpretation of complex operations"><a href="#ss_geometry_complex-10" title="Copy heading and permalink for Remark 1.3.18: Geometric interpretation of complex operations" aria-label="Copy heading and permalink for Remark 1.3.18: Geometric interpretation of complex operations">🔗</a></div></article><article class="example example-like" id="eg_polar_form_"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.3.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polar form arithmetic.</span>
+</h4>
+<div class="para logical" id="eg_polar_form_-2-1">
+<div class="para">Let <span class="process-math">\(z=-1+\sqrt{3}i\)</span> and <span class="process-math">\(w=1-i\text{.}\)</span> Compute the following complex numbers. Your answer should be expressed in polar form.</div>
+<ol class="decimal" id="eg_polar_form_-2-1-3">
+<li id="eg_polar_form_-2-1-3-1">
+<div class="para" id="eg_polar_form_-2-1-3-1-1">
+<span class="process-math">\(zw\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_polar_form_-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg_polar_form_-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="eg_polar_form_-2-1-3-2">
+<div class="para" id="eg_polar_form_-2-1-3-2-1">
+<span class="process-math">\(z/w\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_polar_form_-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg_polar_form_-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_polar_form_-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eg_polar_form_-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="eg_polar_form_-3-1"><div class="autopermalink" data-description="Paragraph"><a href="#eg_polar_form_-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
+<div class="autopermalink" data-description="Solution 1.3.19.1"><a href="#eg_polar_form_-3" title="Copy heading and permalink for Solution 1.3.19.1" aria-label="Copy heading and permalink for Solution 1.3.19.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.3.19: Polar form arithmetic"><a href="#eg_polar_form_" title="Copy heading and permalink for Example 1.3.19: Polar form arithmetic" aria-label="Copy heading and permalink for Example 1.3.19: Polar form arithmetic">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.3.3: Geometry of \C and polar form"><a href="#ss_geometry_complex" title="Copy heading and permalink for Subsection 1.3.3: Geometry of \C and polar form" aria-label="Copy heading and permalink for Subsection 1.3.3: Geometry of \C and polar form">🔗</a></div></section><div class="autopermalink" data-description="Section 1.3: Complex numbers"><a href="#s_complex" title="Copy heading and permalink for Section 1.3: Complex numbers" aria-label="Copy heading and permalink for Section 1.3: Complex numbers">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="s_reals_integers_rationals.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

@@ -121,7 +121,7 @@ var ptx_lunr_docs = [
   "id": "not_tuple_notation",
   "level": "2",
   "url": "s_sets_tuples.html#not_tuple_notation",
-  "type": "{Proof technique}",
+  "type": "Convention",
   "number": "0.1.12",
   "title": "Tuple notation.",
   "body": " Tuple notation  Different index sets give rise to different notational conventions for denoting tuples and sets of tuples .   When for some positive integer , we will write for , and will use any of the following notations for a tuple of : . In this case we call an -tuple with values in , and we call the length of the -tuple. Moreover, we use the following terminology for : a -tuple is a called a pair of elements of , a -tuple is called a triple of elements of .    When , we will write for , and will use any of the following notations for a tuple of : . In this context a tuple of is often called an infinite sequence of elements of .     "
@@ -782,6 +782,195 @@ var ptx_lunr_docs = [
   "number": "1.2.17",
   "title": "Basic properties of fields.",
   "body": " Basic properties of fields   Let be a field.   The additive and multiplicative identities and are unique .    For all , we have and .    For all we have if and only if .    For all and for all nonzero elements , we have if and only if .    For all , if , then or .      "
+},
+{
+  "id": "s_complex",
+  "level": "1",
+  "url": "s_complex.html",
+  "type": "Section",
+  "number": "1.3",
+  "title": "Complex numbers",
+  "body": " Complex numbers   In we defined the rational numbers as a number system sitting between the integers and the real numbers: . In that chain of set inclusions, the arithmetic operations (addition and multiplication) of each new number system extend those of the previous one. Furthermore, each new number system can be seen as an improvement of its predecessor in some sense. For example, can be thought of as the result of adding multiplicative inverses to all the nonzero elements of . Furthermore, in a manner that is made more precise in real analysis,  completes  by adding many additional numbers like for all positive . In this section we give a careful construction of the complex numbers , itself a field extending the arithmetic operations of , thus adding yet another number system to our chain of inclusions: . As such, this is as fitting place as any to include a classic quote from Leopold Kronecker:   Die ganzen Zahlen hat der liebe Gott gemacht, alles andere ist Menschenwerk.  [Tr. God created the integers. Everything else is the work of man.]     Complex arithmetic   Complex numbers, real and imaginary parts   The complex numbers is the set of all formal expressions of the form , where : , . Given a complex number , we call its real part , denoted , and we call its imaginary part , denoted : , we have .     Complex numbers  When introducing a complex number as , unless specified otherwise, it is assumed that .   You are justified in wondering what exactly is meant by a formal expression . A more correct formulation would be that a complex number is really just a pair of real numbers that for various reasons we denote as . Since it is somewhat awkward to write a complex number as , we will live with the ambiguity of , and identify complex numbers as pairs of real numbers via the map . To ensure that this is a well-defined bijection between and , we make official when two of our formal expressions are defined to be equal.   Complex equality   Complex numbers and are equal , denoted , if . In other words, we have .    For reasons that will be made more clear below, it is natural to identify the set of real numbers with the set of complex numbers of the form . This is the motivation behind the next definition.   Real and imaginary numbers   Let be a complex number. We say that is real if , and (purely) imaginary if . Henceforth we identify the real numbers with the real complex numbers: , we declare that . Furthermore we will use the following abbreviations for various real and purely imaginary complex numbers: .     Complex addition and multiplication   Let and be complex numbers.   Complex addition  We define the sum of and , denoted , as .    Complex multiplication  We define the product of and , denoted (or sometimes ) as .        Complex arithmetic   Let , . Compute the following complex numbers. Your answer must be expressed in the form , where .                   We have .    We have .          Compute .    We have, using the definition of multiplication, . Thus the element is seen to be a square-root of ! With a little more work, we can show that any complex number has a complex square-root. More on that later.     Complex arithmetic as extension of real arithmetic  Using the definition of complex multiplication, it is easy to see that given any real complex number , we have . In particular, given any two real complex numbers and , we have . In other words, when we restrict complex multiplication to the real complex numbers, we recover our familiar real multiplication operation. A similar statement applies for complex addition and real addition. In this sense, complex arithmetic is understood as an extension of real arithmetic.   Somewhat surprisingly, despite the somewhat nonintuitive definition of complex multiplication, turns out to be a field with respect to its addition and multiplication.   is a field   The set of all complex numbers, together with the operations of complex addition and multiplication defined in , constitutes a field.  In more detail, with respect to these operations, the additive and multiplicative identities are and , respectively, and given any , we have .    We must show that satisfies the seven field axioms of . For the sake of demonstration, we will do some of that work here, but will leave most of it as a homework exercise.   Addition is commutative (half of Axiom i)  Given and , we have .    Axiom iv  For all , we have . Thus, as claimed, the complex number satisfies the additive identity property.    Multiplicative identity  For all , we have . Thus, as claimed, the complex number satisfies the multiplicative identity property.        Further complex operations  Two further complex operations, the modulus and complex conjugation , will prove to be invaluable when doing complex arithmetic.   Complex modulus   The modulus (or absolute value ) of a complex number , denoted , is defined as . If , we say that has unit length .     Complex conjugation   Given the complex number , its (complex) conjugate  is defined as .     Conjugation properties   Let and be complex numbers.    .     .     .     .     and .     if and only if .         If , then .       This is left as a homework exercise.      Geometry of and polar form   ensures that the map defines a bijection between and , allowing us to identify complex numbers as pairs of real numbers. This identification in turn gives rise to a visual representation of complex numbers as points in the Cartesian plane , called the complex plane in this context. To make clear that we are using to visualize , we label the horizontal and vertical axes as and .   Complex plane   Complex plane: points     Using our identification , we see that the real numbers are represented geometrically as the -axis of the complex plane. Similarly, the purely imaginary complex numbers are represented geometrically as the the -axis of the complex plane. As you will see, we will get a lot of mileage out of this geometric representation of complex numbers.  Recall that for any pair we can write for some , and we call and  polar coordinates of the point in this case. These polar coordinates are not unique, but we do have the following fact: if is nonzero, and we have with and , then and for some integer . This leads directly to the following result about complex numbers.   Polar form   Let be a complex number.   We have for some nonnegative and . The choice of here is unique; in fact, we have .    If and we have for , then for some integer .        Polar form   Let be a complex number, and suppose and satisfy . We call the expression a polar form of and we call an argument of .     Polar form   Find a polar form for the given .                     Polar form properties   Let and where .         .     .    If , then .        Geometric interpretation of complex operations  Each of the identities of can be understood as providing a geometric interpretation of one of our complex operations.  In particular, statement (3) provides us with a more satisfying description of complex multiplication than the algebraic formula given by . Roughly speaking, the identity tells us that to multiply two complex numbers, we (a) add their arguments and (b) multiply their moduli.  Alternatively, tells us that to multiply by , we (a) rotate (considered as a point) by an angle about the origin, and (b) scale its distance from the origin by .  Similarly, tells us that the inverse of a complex number is obtained by taking the reciprocal of its modulus (the in the formula), and flipping its argument (the in the formula).    Polar form arithmetic   Let and . Compute the following complex numbers. Your answer should be expressed in polar form.    .     .            "
+},
+{
+  "id": "d_complex_numbers",
+  "level": "2",
+  "url": "s_complex.html#d_complex_numbers",
+  "type": "Definition",
+  "number": "1.3.1",
+  "title": "Complex numbers, real and imaginary parts.",
+  "body": " Complex numbers, real and imaginary parts   The complex numbers is the set of all formal expressions of the form , where : , . Given a complex number , we call its real part , denoted , and we call its imaginary part , denoted : , we have .   "
+},
+{
+  "id": "ss_complex_def-3",
+  "level": "2",
+  "url": "s_complex.html#ss_complex_def-3",
+  "type": "Convention",
+  "number": "1.3.2",
+  "title": "Complex numbers.",
+  "body": " Complex numbers  When introducing a complex number as , unless specified otherwise, it is assumed that .  "
+},
+{
+  "id": "d_complex_equality",
+  "level": "2",
+  "url": "s_complex.html#d_complex_equality",
+  "type": "Definition",
+  "number": "1.3.3",
+  "title": "Complex equality.",
+  "body": " Complex equality   Complex numbers and are equal , denoted , if . In other words, we have .   "
+},
+{
+  "id": "d_real_imaginary",
+  "level": "2",
+  "url": "s_complex.html#d_real_imaginary",
+  "type": "Definition",
+  "number": "1.3.4",
+  "title": "Real and imaginary numbers.",
+  "body": " Real and imaginary numbers   Let be a complex number. We say that is real if , and (purely) imaginary if . Henceforth we identify the real numbers with the real complex numbers: , we declare that . Furthermore we will use the following abbreviations for various real and purely imaginary complex numbers: .   "
+},
+{
+  "id": "d_sum_product",
+  "level": "2",
+  "url": "s_complex.html#d_sum_product",
+  "type": "Definition",
+  "number": "1.3.5",
+  "title": "Complex addition and multiplication.",
+  "body": " Complex addition and multiplication   Let and be complex numbers.   Complex addition  We define the sum of and , denoted , as .    Complex multiplication  We define the product of and , denoted (or sometimes ) as .      "
+},
+{
+  "id": "eg_arithmetic",
+  "level": "2",
+  "url": "s_complex.html#eg_arithmetic",
+  "type": "Example",
+  "number": "1.3.6",
+  "title": "Complex arithmetic.",
+  "body": " Complex arithmetic   Let , . Compute the following complex numbers. Your answer must be expressed in the form , where .                   We have .    We have .      "
+},
+{
+  "id": "eg_squareroot_minusone",
+  "level": "2",
+  "url": "s_complex.html#eg_squareroot_minusone",
+  "type": "Example",
+  "number": "1.3.7",
+  "title": "<span class=\"process-math\">\\(i^2\\)<\/span>.",
+  "body": "   Compute .    We have, using the definition of multiplication, . Thus the element is seen to be a square-root of ! With a little more work, we can show that any complex number has a complex square-root. More on that later.   "
+},
+{
+  "id": "rem_complex_arith",
+  "level": "2",
+  "url": "s_complex.html#rem_complex_arith",
+  "type": "Remark",
+  "number": "1.3.8",
+  "title": "Complex arithmetic as extension of real arithmetic.",
+  "body": " Complex arithmetic as extension of real arithmetic  Using the definition of complex multiplication, it is easy to see that given any real complex number , we have . In particular, given any two real complex numbers and , we have . In other words, when we restrict complex multiplication to the real complex numbers, we recover our familiar real multiplication operation. A similar statement applies for complex addition and real addition. In this sense, complex arithmetic is understood as an extension of real arithmetic.  "
+},
+{
+  "id": "th_complex_field",
+  "level": "2",
+  "url": "s_complex.html#th_complex_field",
+  "type": "Theorem",
+  "number": "1.3.9",
+  "title": "<span class=\"process-math\">\\(\\C\\)<\/span> is a field.",
+  "body": " is a field   The set of all complex numbers, together with the operations of complex addition and multiplication defined in , constitutes a field.  In more detail, with respect to these operations, the additive and multiplicative identities are and , respectively, and given any , we have .    We must show that satisfies the seven field axioms of . For the sake of demonstration, we will do some of that work here, but will leave most of it as a homework exercise.   Addition is commutative (half of Axiom i)  Given and , we have .    Axiom iv  For all , we have . Thus, as claimed, the complex number satisfies the additive identity property.    Multiplicative identity  For all , we have . Thus, as claimed, the complex number satisfies the multiplicative identity property.    "
+},
+{
+  "id": "d_modulus",
+  "level": "2",
+  "url": "s_complex.html#d_modulus",
+  "type": "Definition",
+  "number": "1.3.10",
+  "title": "Complex modulus.",
+  "body": " Complex modulus   The modulus (or absolute value ) of a complex number , denoted , is defined as . If , we say that has unit length .   "
+},
+{
+  "id": "d_conj",
+  "level": "2",
+  "url": "s_complex.html#d_conj",
+  "type": "Definition",
+  "number": "1.3.11",
+  "title": "Complex conjugation.",
+  "body": " Complex conjugation   Given the complex number , its (complex) conjugate  is defined as .   "
+},
+{
+  "id": "th_conj",
+  "level": "2",
+  "url": "s_complex.html#th_conj",
+  "type": "Theorem",
+  "number": "1.3.12",
+  "title": "Conjugation properties.",
+  "body": " Conjugation properties   Let and be complex numbers.    .     .     .     .     and .     if and only if .         If , then .       This is left as a homework exercise.   "
+},
+{
+  "id": "ss_geometry_complex-2",
+  "level": "2",
+  "url": "s_complex.html#ss_geometry_complex-2",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "complex plane "
+},
+{
+  "id": "fig_complex_plane",
+  "level": "2",
+  "url": "s_complex.html#fig_complex_plane",
+  "type": "Figure",
+  "number": "1.3.13",
+  "title": "",
+  "body": " Complex plane   Complex plane: points    "
+},
+{
+  "id": "th_polar_form",
+  "level": "2",
+  "url": "s_complex.html#th_polar_form",
+  "type": "Theorem",
+  "number": "1.3.14",
+  "title": "Polar form.",
+  "body": " Polar form   Let be a complex number.   We have for some nonnegative and . The choice of here is unique; in fact, we have .    If and we have for , then for some integer .      "
+},
+{
+  "id": "d_polar",
+  "level": "2",
+  "url": "s_complex.html#d_polar",
+  "type": "Definition",
+  "number": "1.3.15",
+  "title": "Polar form.",
+  "body": " Polar form   Let be a complex number, and suppose and satisfy . We call the expression a polar form of and we call an argument of .   "
+},
+{
+  "id": "eg_polar",
+  "level": "2",
+  "url": "s_complex.html#eg_polar",
+  "type": "Example",
+  "number": "1.3.16",
+  "title": "Polar form.",
+  "body": " Polar form   Find a polar form for the given .                   "
+},
+{
+  "id": "th_polar_mult",
+  "level": "2",
+  "url": "s_complex.html#th_polar_mult",
+  "type": "Theorem",
+  "number": "1.3.17",
+  "title": "Polar form properties.",
+  "body": " Polar form properties   Let and where .         .     .    If , then .      "
+},
+{
+  "id": "ss_geometry_complex-10",
+  "level": "2",
+  "url": "s_complex.html#ss_geometry_complex-10",
+  "type": "Remark",
+  "number": "1.3.18",
+  "title": "Geometric interpretation of complex operations.",
+  "body": " Geometric interpretation of complex operations  Each of the identities of can be understood as providing a geometric interpretation of one of our complex operations.  In particular, statement (3) provides us with a more satisfying description of complex multiplication than the algebraic formula given by . Roughly speaking, the identity tells us that to multiply two complex numbers, we (a) add their arguments and (b) multiply their moduli.  Alternatively, tells us that to multiply by , we (a) rotate (considered as a point) by an angle about the origin, and (b) scale its distance from the origin by .  Similarly, tells us that the inverse of a complex number is obtained by taking the reciprocal of its modulus (the in the formula), and flipping its argument (the in the formula).  "
+},
+{
+  "id": "eg_polar_form_",
+  "level": "2",
+  "url": "s_complex.html#eg_polar_form_",
+  "type": "Example",
+  "number": "1.3.19",
+  "title": "Polar form arithmetic.",
+  "body": " Polar form arithmetic   Let and . Compute the following complex numbers. Your answer should be expressed in polar form.    .     .          "
 },
 {
   "id": "appendix-notation",
