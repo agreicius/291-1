@@ -246,7 +246,6 @@
 
   <!-- Specify the default type of cross reference: -->
   <!-- <cross-references text="type-global" /> -->
-  <rename element="convention">{Proof technique}</rename>
   <rename element="algorithm">Procedure</rename>
   <rename element="principle">Mantra</rename>
   <rename element="assumption">Fiat</rename>

@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_complex" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Complex numbers</title>
+<introduction>
+    <p>
+    In <xref ref="s_reals_integers_rationals"/> we defined the rational numbers as a number system sitting between the integers and the real numbers: 
+    <md>
+        <mrow>\Z \amp \subseteq \Q\subseteq \R</mrow>
+    </md>.
+    In that chain of set inclusions, the arithmetic operations (addition and multiplication) of each new number system extend those of the previous one. Furthermore, each new number system can be seen as an improvement of its predecessor in some sense. For example, <m>\Q</m> can be thought of as the result of adding multiplicative inverses to all the nonzero elements of <m>\Z</m>. Furthermore, in a manner that is made more precise in real analysis, <m>\R</m> <q>completes</q> <m>\Q</m> by adding many additional numbers like <m>\sqrt{q}</m> for all positive <m>q\in \Q</m>. In this section we give a careful construction of the complex numbers <m>\C</m>, itself a field extending the arithmetic operations of <m>\R</m>, thus adding yet another number system to our chain of inclusions: 
+    <md>
+        \Z\subseteq \Q\subseteq \R\subseteq \C
+    </md>.
+    As such, this is as fitting place as any to include a classic quote from Leopold Kronecker:
+</p>
+<blockquote>
+        <p>
+            Die ganzen Zahlen hat der liebe Gott gemacht, alles andere ist Menschenwerk.
+        </p>
+        <p>
+            [Tr. God created the integers. Everything else is the work of man.]
+        </p>
+    </blockquote>
+</introduction>
+    
+
+<subsection xml:id="ss_complex_def">
+<title>Complex arithmetic</title>
+<definition xml:id="d_complex_numbers">
+<title>Complex numbers, real and imaginary parts</title>
+<statement>
+<p>
+The <term>complex numbers</term> is the set of all formal expressions of the form <m>a+ib</m>, where <m>a,b\in \R</m>: <ie/>, 
+<md>
+    \C=\{a+ib\colon a,b\in \R\}
+</md>.
+Given a complex number <m>z=a+ib</m>, we call <m>a</m> its <term>real part</term>, denoted <m>\Re z</m>, and we call <m>b</m> its <term>imaginary part</term>, denoted <m>\Im z</m>: <ie/>, we have 
+<md>
+    <mrow>\Re z \amp = a \amp \Im z\amp = b</mrow>
+</md>.
+</p>
+</statement>
+</definition>
+
+<convention>
+    <title>Complex numbers</title>
+    <p>
+      When introducing a complex number as <m>z=a+ib</m>, unless specified otherwise, it is assumed that <m>a,b\in \R</m>. 
+    </p>
+</convention>
+<p>
+    You are justified in wondering what exactly is meant by a <q>formal expression</q>. A more correct formulation would be that a complex number is really just a pair <m>(a,b)\in \R^2</m> of real numbers that for various reasons we denote as <m>a+ib</m>. Since it is somewhat awkward to write a complex number as <m>z=(a,b)</m>, we will live with the ambiguity of <xref ref="d_complex_numbers"/>, and <em>identify</em> complex numbers <m>z=a+ib</m> as pairs of real numbers via the map 
+    <md>
+        <mrow>\C \amp \longleftrightarrow \R^2</mrow>
+        <mrow>a+ib \amp \longmapsto (a,b)</mrow>
+    </md>.
+    To ensure that this is a well-defined bijection between <m>\C</m> and <m>\R^2</m>, we make official when two of our <q>formal expressions</q> are defined to be equal.     
+</p>
+<definition xml:id="d_complex_equality">
+<title>Complex equality</title>
+<statement>
+<p>
+Complex numbers <m>z=a+ib</m> and <m>w=c+id</m> are <term>equal</term>, denoted <m>z=w</m>, if <md>
+    <mrow>a=c \text{ and } b=d</mrow>
+</md>.
+In other words, we have 
+<md>
+    <mrow>z=w \amp \iff \Re z=\Re w \text{ and } \Im z=\Im w</mrow>
+</md>.
+</p>
+</statement>
+</definition>
+<p>
+    For reasons that will be made more clear below, it is natural to identify the set of real numbers <m>\R</m> with the set of complex numbers of the form <m>a+0i</m>. This is the motivation behind the next definition. 
+</p>
+<definition xml:id="d_real_imaginary">
+<title>Real and imaginary numbers</title>
+<statement>
+<p>
+Let <m>z=a+ib</m> be a complex number. We say that <m>z</m> is <term>real</term> if <m>b=\Im z=0</m>, and <term>(purely) imaginary</term> if <m>a=\Re z=0</m>. Henceforth we identify the real numbers <m>\R</m> with the real complex numbers: <ie/>, we declare that 
+<md>
+    \R=\{z\in \C\colon \Im z=0\}=\{a+0i\colon a\in \R\}
+</md>.
+Furthermore we will use the following abbreviations for various real and purely imaginary complex numbers: 
+<md>
+    <mrow>a+i\,0 \amp =a \amp  0+ib\amp =ib</mrow>
+    <mrow>a+i(-b) \amp =a-ib \amp a+i(\pm 1)\amp = a\pm i</mrow>
+</md>.
+</p>
+</statement>
+</definition>
+ 
+
+    <definition xml:id="d_sum_product">
+        <title>Complex addition and multiplication</title>
+        <statement>
+            <p>
+                Let <m>z=a+ib</m> and <m>w=c+id</m> be complex numbers. 
+                <ul>
+                    <li>
+                        <title>Complex addition</title>
+                        <p>
+                            We define the <term>sum</term>  of <m>z</m> and <m>w</m>, denoted <m>z+w</m>, as 
+                            <md number="yes" >
+                                <mrow xml:id="eq_sum">z+w \amp =(a+c)+i(b+d)</mrow>
+                            </md>.
+                        </p>
+                    </li>
+                    
+                    <li>
+                        <title>Complex multiplication</title>
+                        <p>
+                           We define the <term>product</term>  of <m>z</m> and <m>w</m>, denoted <m>z\,w</m> (or sometimes <m>z\cdot w</m>) as
+                            <md number="yes" >
+                                <mrow xml:id="eq_product">z\,w \amp= (ac-bd)+i(ad+bc) </mrow>
+                            </md>.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </statement>
+    </definition>
+    <example xml:id="eg_arithmetic">
+    <title>Complex arithmetic</title>
+    <statement>
+    <p>
+    Let <m>z=-2+3i</m>, <m>w=4+i</m>. Compute the following complex numbers. Your answer must be expressed in the form <m>a+ib</m>, where <m>a,b\in \R</m>. 
+    <ol>
+        <li>
+            <p>
+                <m>z+w</m>
+            </p>
+        </li>
+
+        <li>
+            <p>
+                <m>z\,w</m>
+            </p>
+        </li>
+    </ol>
+    </p>
+    </statement>
+    <solution>
+    <p>
+    <ol>
+        <li>
+            <p>
+                We have 
+                <md>
+                    <mrow>z+w \amp =(-2+4)+i(3+1)</mrow>
+                    <mrow> \amp = 2+i\,4</mrow>
+                </md>.
+            </p>
+        </li>
+
+        <li>
+            <p>
+                We have 
+                <md>
+                    <mrow>z\,w \amp = (-2\cdot 4-3\cdot 1)+i(-2\cdot 1+3\cdot 4)</mrow>
+                    <mrow> \amp = -11+i\,10</mrow>
+                </md>.
+            </p>
+        </li>
+        
+    </ol>
+    </p>
+    </solution>
+    </example>
+    <example xml:id="eg_squareroot_minusone">
+    <title><m>i^2</m></title>
+    <statement>
+    <p>
+    Compute <m>i^2</m>. 
+    </p>
+    </statement>
+    <solution>
+    <p>
+    We have, using the definition of multiplication,
+    <md>
+        i^2=(0+1\, i)(0+1\, i)=(0-1)+0i=-1
+    </md>.
+    Thus the element <m>i</m> is seen to be a square-root of <m>-1</m>! With a little more work, we can show that any complex number <m>z=a+ib</m> has a complex square-root. More on that later. 
+    </p>
+    </solution>
+    </example>
+    <remark xml:id="rem_complex_arith">
+    <title>Complex arithmetic as extension of real arithmetic</title>
+    <p>
+        Using the definition of complex multiplication, it is easy to see that given any real complex number <m>a=a+0i</m>, we have 
+        <md>
+            <mrow>a(c+di) \amp =ac+adi=(c+di)a </mrow>
+        </md>.
+        In particular, given any two real complex numbers <m>a=a+0i</m> and <m>b=b+0i</m>, we have 
+        <md>
+            (a+0i)(b+0i)=ab+0i=ab
+        </md>.
+        In other words, when we restrict complex multiplication to the real complex numbers, we recover our familiar real multiplication operation. A similar statement applies for complex addition and real addition. In this sense, complex arithmetic is understood as an <em>extension</em> of real arithmetic.
+    </p>
+    </remark>
+    <p>
+        Somewhat surprisingly, despite the somewhat nonintuitive definition of complex multiplication, <m>\C</m> turns out to be a field with respect to its addition and multiplication. 
+    </p>
+    <theorem xml:id="th_complex_field">
+    <title><m>\C</m> is a field</title>
+    <statement>
+    <p>
+    The set <m>\C</m> of all complex numbers, together with the operations of complex addition and multiplication defined in <xref ref="d_sum_product"/>, constitutes a field. 
+    </p>
+    <p>
+        In more detail, with respect to these operations, the additive and multiplicative identities are <m>0=0+i\,0</m> and <m>1=1+i\,0</m>, respectively, and given any <m>z=a+ib\in \Z</m>, we have 
+        <md>
+            <mrow>-z \amp = -a-ib</mrow>
+            <mrow>z^{-1} \amp = \frac{a}{a^2+b^2}-i\frac{b}{a^2+b^2} \amp (\text{assuming } z\ne 0)</mrow>
+        </md>.
+    </p>
+    </statement>
+    <proof>
+    <p>
+        We must show that <m>\C</m> satisfies the seven field axioms of <xref ref="d_field"/>. For the sake of demonstration, we will do some of that work here, but will leave most of it as a homework exercise. 
+    </p>
+    <case>
+        <title>Addition is commutative (half of Axiom i)</title>
+        <p>
+            Given <m>z=a+ib</m> and <m>w=c+id</m>, we have 
+            <md>
+                <mrow>z+w \amp =(a+ib)+(c+id)</mrow>
+                <mrow> \amp = (a+c)+(i(b+d)) \amp (\text{def.})</mrow>
+                <mrow> \amp = (c+a)+i(d+b) \amp (\text{comm. of real add.})</mrow>
+                <mrow> \amp = (c+id)+(a+ib) \amp (\text{def.})</mrow>
+                <mrow> \amp = w+z</mrow>
+            </md>.
+        </p>
+    </case>
+    <case>
+    <title>Axiom iv</title>
+    <p>
+    For all <m>z=a+ib\in \C</m>, we have 
+    <md>
+        <mrow>0+z \amp = (0+i0)+(a+ib)</mrow>
+        <mrow> \amp (0+a)+i(0+b) \amp (\text{def.})</mrow>
+        <mrow> \amp = (a+ib) \amp </mrow>
+        <mrow> \amp = z</mrow>
+    </md>.
+    Thus, as claimed, the complex number <m>0=0+i0</m> satisfies the additive identity property. 
+    </p>
+    </case>
+    <case>
+    <title>Multiplicative identity</title>
+    <p>
+    For all <m>z=a+ib\in \C</m>, we have 
+    <md>
+        <mrow>(1+0i)\cdot z \amp = (1+0i)(a+ib)</mrow>
+        <mrow> \amp = (1\cdot a-0\cdot b)+i(0\cdot a+1\cdot b) \amp (\text{def.})</mrow>
+        <mrow> \amp =a+ib</mrow>
+        <mrow> \amp = z</mrow>
+    </md>.
+    Thus, as claimed, the complex number <m>1=1+i0</m> satisfies the multiplicative identity property.
+    </p>
+    </case>
+    </proof>
+    </theorem>
+    <!-- <convention>
+        <title><m>a+ib=a+bi</m></title>
+       <p>
+        As you will show yourself in homework, complex multiplication is commutative (<ie/>, we have <m>zw=wz</m> for all <m>z,w\in \C</m>). As a result, we are free to write a complex number <m>z=a+ib</m> as <m>z=a+bi</m>. Oftentimes one of these expressions simply looks better typographically than the other. 
+        </p>
+        <p>
+            Note that when writing <m>z=a+bi</m> and <m>w=c+di</m>, where <m>a,b,c,d\in \R</m>, it is still the case that <m>z=w</m> if and only if <m>a=b</m> and <m>c=d</m>.
+       </p> 
+    </convention> -->
+    
+    
+</subsection> 
+<subsection xml:id="ss_modulus_conjugation">
+<title>Further complex operations</title>
+<p>
+    Two further complex operations, the <em>modulus</em> and <em>complex conjugation</em>, will prove to be invaluable when doing complex arithmetic. 
+</p>
+<definition xml:id="d_modulus">
+<title>Complex modulus</title>
+<statement>
+<p>
+The <term>modulus</term> (or <term>absolute value</term>) of a complex number <m>z=a+ib</m>, denoted <m>\abs{z}</m>, is defined as 
+<md>
+    \abs{z}=\sqrt{a^2+b^2}
+</md>.
+If <m>\abs{z}=1</m>, we say that <m>z</m> has <term>unit length</term>. 
+</p>
+</statement>
+</definition>
+<definition xml:id="d_conj">
+    <title>Complex conjugation</title>
+    <statement>
+    <p>
+        Given the complex number <m>z=a+ib</m>, its <term>(complex) conjugate</term> <m>\overline{z}</m> is defined as 
+        <md>
+            \overline{z}=a-ib
+        </md>.
+    </p>
+    </statement>
+    </definition>
+    <theorem xml:id="th_conj">
+        <title>Conjugation properties</title>
+        <statement>
+            <p>
+               Let <m>z</m> and <m>w</m> be complex numbers. 
+               <ol cols="2">
+                <li>
+                    <p>
+                        <m>\overline{z+w}=\overline{z}+\overline{w}</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>\overline{z\, w}=\overline{z}\, \overline{w}</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>\overline{\overline{z}}=z</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>\abs{\overline{z}}=\abs{z}</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>\Re z=\frac{z+\overline{z}}{2}</m> and <m>\Im z=\frac{z-\overline{z}}{2i}</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>z\in \R</m> if and only if <m>\overline{z}=z</m>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <m>z\, \overline{z}=\abs{z}^2</m>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        If <m>z\ne 0</m>, then 
+                        <m>
+                            \displaystyle z^{-1}=\frac{\overline{z}}{\abs{z}^2}=\frac{\overline{z}}{z\overline{z}}
+                        </m>.
+                    </p>
+                </li>
+               </ol> 
+            </p>
+        </statement>
+        <proof>
+            <p>
+                This is left as a homework exercise. 
+            </p>
+        </proof>
+    </theorem>
+</subsection>
+<subsection xml:id="ss_geometry_complex">
+<title>Geometry of <m>\C</m> and polar form</title>
+<p>
+    <xref ref="d_complex_equality"/> ensures that the map 
+    <md>
+        a+ib\mapsto (a,b)
+    </md>
+    defines a bijection between <m>\C</m> and <m>\R</m>, allowing us to identify complex numbers as pairs of real numbers. This identification in turn gives rise to a visual representation of complex numbers as points in the Cartesian plane <m>\R^2</m>, called the <term>complex plane</term> in this context. To make clear that we are using <m>\R^2</m> to visualize <m>\C</m>, we label the horizontal and vertical axes as <m>\Re</m> and <m>\Im</m>. 
+</p>
+<figure xml:id="fig_complex_plane">
+    <caption>Complex plane</caption>
+    <image width="75%">
+        <shortdescription>Complex plane: points</shortdescription>
+        <sageplot>
+P=point((1,2),color="blue", size=50,axes_labels=["$\\operatorname{Re}$","$\\operatorname{Im}$"],ticks=[list(range(-1,2)),list(range(-2,3))],tick_formatter=[["-1","0","$\\operatorname{Re} z=1$"],[-2,-1,0,1,"$\\operatorname{Im} z=2$"]],aspect_ratio=.5)
+Q=point((0,-2),color="blue", size=50)
+R=point((-1,0),color="blue", size=50)
+t1=text("$z=1+2i$",(1.2,2.2),color="black",fontsize=16)
+t2=text("$w=-2i$",(0.4,-2),color="black",fontsize=16)
+t3=text("$a=-1$",(-1,0.2),color="black",fontsize=16)
+l1=line([(0,2),(1,2)],color="red",linestyle="dotted")
+l2=line([(1,0),(1,2)],color="red",linestyle="dotted")
+P+Q+R+t1+t2+t3+l1+l2
+        </sageplot>
+    </image>
+</figure>
+<p>
+Using our identification 
+<md>
+    \R=\{z\in \C\colon \Im z=0\}
+</md>,
+we see that the real numbers are represented geometrically as the <m>x</m>-axis of the complex plane. Similarly, the purely imaginary complex numbers are represented geometrically as the the <m>y</m>-axis of the complex plane. As you will see, we will get a lot of mileage out of this geometric representation of complex numbers. 
+</p>
+<p>
+        Recall that for any pair <m>(a,b)\in \R^2</m> we can write
+        <md>
+            (a,b)=(r\cos\theta, r\sin\theta)
+        </md>
+        for some <m>r,\theta\in \R</m>, and we call <m>r</m> and <m>\theta</m> <em>polar coordinates</em> of the point <m>(a,b)</m> in this case. These polar coordinates are not unique, but we do have the following fact: if <m>(a,b)</m> is nonzero, and we have 
+        <md>
+            (a,b)=(r\cos\theta,r\sin\theta)=(s\cos\psi,s\sin\psi)
+        </md>
+        with <m>r\geq 0</m> and <m>s\geq 0</m>, then <m>r=s=\sqrt{a^2+b^2}</m> and <m>\psi=\theta+2\pi k</m> for some integer <m>k\in \Z</m>. 
+        This leads directly to the following result about complex numbers. 
+    </p>
+    <theorem xml:id="th_polar_form">
+        <title>Polar form</title>
+        <statement>
+            <p>
+              Let <m>z=a+ib</m> be a complex number.
+              <ol>
+                <li>
+                    <p>
+                        We have 
+                        <md number="yes">
+                            z=r\cos\theta+ri\sin\theta=r(\cos\theta+i\sin\theta)
+                        </md>
+                        for some nonnegative <m>r\geq 0</m> and <m>\theta\in \R</m>. The choice of <m>r</m> here is unique; in fact, we have 
+                        <md>
+                            r=\sqrt{a^2+b^2}=\abs{z}
+                        </md>.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        If <m>z\ne 0</m> and we have 
+                        <md>
+                            z=r(\cos\theta+i\sin\theta)=r(\cos\psi+i\sin\psi)
+                        </md>
+                        for <m>r&gt; 0</m>, then <m>\psi=\theta+2\pi k</m> for some integer <m>k</m>.
+                    </p>
+                </li>
+              </ol>   
+            </p>
+        </statement>
+    </theorem>
+    
+    <definition xml:id="d_polar">
+    <title>Polar form</title>
+    <statement>
+    <p>
+    Let <m>z</m> be a complex number, and suppose <m>r\geq 0</m> and <m>\theta\in \R</m> satisfy 
+    <md number="yes" xml:id="eq_polar">z=r(\cos\theta+i\sin\theta)</md>. 
+    We call the expression <m>r(\cos\theta+i\sin\theta)</m> a <term>polar form</term> of <m>z</m> and we call <m>\theta</m> an <term>argument</term> of <m>z</m>.
+    </p>
+    </statement>
+    </definition>
+    <example xml:id="eg_polar">
+    <title>Polar form</title>
+    <statement>
+    <p>
+    Find a polar form for the given <m>z</m>. 
+    <ol>
+        <li>
+            <p>
+                <m>z=-\sqrt{3}-i</m>
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>z=3-4i</m>
+            </p>
+        </li>
+    </ol>
+    </p>
+    </statement>
+    <solution>
+    <p>
+    
+    </p>
+    </solution>
+    </example>
+    
+    <theorem xml:id="th_polar_mult">
+        <title>Polar form properties</title>
+        <statement>
+            <p>
+                Let <m>z=r(\cos\theta+i\sin\theta)</m> and <m>w=s(\cos\psi+i\sin\psi)</m> where <m>r,s\geq 0</m>. 
+                <ol>
+                    <li>
+                        <p>
+                            <md number="yes" xml:id="eq_polar_mod">\abs{z}=r</md>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <md number="yes" xml:id="eq_polar_conj">\overline{z}=r(\cos(-\theta)+i\sin(-\theta))</md>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <md number="yes" xml:id="eq_polar_mult">zw=rs(\cos(\theta+\psi)+i\sin(\theta+\psi))</md>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            If <m>z\ne 0</m>, then 
+                            <md number="yes" xml:id="eq_polar_inv">
+                                z^{-1}=\frac{1}{r}\left(\cos(-\theta)+i\sin(-\theta)\right)
+                            </md>.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+    </theorem>
+    <remark>
+        <title>Geometric interpretation of complex operations</title>
+        <p>
+            Each of the identities of <xref ref="th_polar_mult"/> can be understood as providing a geometric interpretation of one of our complex operations. 
+            </p>
+            <p>
+                In particular, statement (3) provides us with a more satisfying description of complex multiplication than the algebraic formula given by <xref ref="eq_product"/>. Roughly speaking, the identity <xref ref="eq_polar_mult"/> tells us that to multiply two complex numbers, we (a) add their arguments and (b) multiply their moduli.
+            </p>
+            <p>
+                Alternatively, <xref ref="eq_polar_mult"/> tells us that to multiply <m>w=s(\cos\psi+i\sin\psi)</m> by <m>z=r(\cos\theta+i\sin\theta)</m>, we (a) rotate <m>w</m> (considered as a point) by an angle <m>\theta</m> about the origin, and (b) scale its distance from the origin by <m>r</m>.
+        </p>
+        <p>
+            Similarly, <xref ref="eq_polar_inv"/> tells us that the inverse of a complex number is obtained by taking the reciprocal of its modulus (the <m>1/r</m> in the formula), and <q>flipping</q> its argument (the <m>-\theta</m> in the formula). 
+        </p>
+    </remark>
+    <example xml:id="eg_polar_form_">
+    <title>Polar form arithmetic</title>
+    <statement>
+    <p>
+    Let <m>z=-1+\sqrt{3}i</m> and <m>w=1-i</m>. Compute the following complex numbers. Your answer should be expressed in polar form. 
+    <ol>
+        <li>
+            <p>
+                <m>zw</m>.
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>z/w</m>.
+            </p>
+        </li>
+    </ol>
+    </p>
+    </statement>
+    <solution>
+    <p>
+    
+    </p>
+    </solution>
+    </example>
+</subsection>
+</section>
