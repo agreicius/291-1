@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Vector spaces</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Linear algebra">
+<meta property="book:author" content="Aaron Greicius">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = true;
+eBookConfig.acDefaultLanguage = 'python';
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.3';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.dd07797f77620576.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.11d27cdc38930c2c.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.347e2ecdeacfed99.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="NUlinearalgfirstcourse" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/images/im_holycomm.svg" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Linear algebra</span> <span class="subtitle">A Kursobjekt for Math 291-1</span></a></h1>
+<p class="byline">Aaron Greicius</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="calculator-toggle" class="calculator-toggle button" title="Show calculator" aria-expanded="false" aria-controls="calculator-container"><span class="icon material-symbols-outlined" aria-hidden="true">&#xea5f;</span><span class="name">Calc</span></button><div id="calculator-container" class="calculator-container" style="display: none; z-index:100;"><div id="geogebra-calculator"></div></div>
+<script>
+var ggbApp = new GGBApplet({"appName": "classic",
+    "width": 330,
+    "height": 600,
+    "showToolBar": true,
+    "showAlgebraInput": true,
+    "perspective": "G/A",
+    "algebraInputPosition": "bottom",
+    "scaleContainerClass": "calculator-container",
+    "allowUpscale": true,
+    "autoHeight": true,
+    "disableAutoScale": false},
+true);
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_complex.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\compose}{\circ}
+\newcommand{\bolda}{{\mathbf a}}
+\newcommand{\boldb}{{\mathbf b}}
+\newcommand{\boldc}{{\mathbf c}}
+\newcommand{\boldd}{{\mathbf d}}
+\newcommand{\bolde}{{\mathbf e}}
+\newcommand{\boldi}{{\mathbf i}}
+\newcommand{\boldj}{{\mathbf j}}
+\newcommand{\boldk}{{\mathbf k}}
+\newcommand{\boldn}{{\mathbf n}}
+\newcommand{\boldp}{{\mathbf p}}
+\newcommand{\boldq}{{\mathbf q}}
+\newcommand{\boldr}{{\mathbf r}}
+\newcommand{\bolds}{{\mathbf s}}
+\newcommand{\boldt}{{\mathbf t}}
+\newcommand{\boldu}{{\mathbf u}}
+\newcommand{\boldv}{{\mathbf v}}
+\newcommand{\boldw}{{\mathbf w}}
+\newcommand{\boldx}{{\mathbf x}}
+\newcommand{\boldy}{{\mathbf y}}
+\newcommand{\boldz}{{\mathbf z}}
+\newcommand{\boldzero}{{\mathbf 0}}
+\newcommand{\boldmod}{\boldsymbol{ \bmod }}
+\newcommand{\boldT}{{\mathbf T}}
+\newcommand{\boldN}{{\mathbf N}}
+\newcommand{\boldB}{{\mathbf B}}
+\newcommand{\boldF}{{\mathbf F}}
+\newcommand{\boldS}{{\mathbf S}}
+\newcommand{\boldG}{{\mathbf G}}
+\newcommand{\boldK}{{\mathbf K}}
+\newcommand{\boldL}{{\mathbf L}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\NS}{null}
+\DeclareMathOperator{\RS}{row}
+\DeclareMathOperator{\CS}{col}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\mdeg}{mdeg}
+\DeclareMathOperator{\Lt}{Lt}
+\DeclareMathOperator{\Lc}{Lc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\diver}{div}
+\DeclareMathOperator{\flux}{flux}
+\def\Gal{\operatorname{Gal}}
+\def\ord{\operatorname{ord}}
+\def\ML{\operatorname{M}}
+\def\GL{\operatorname{GL}}
+\def\PGL{\operatorname{PGL}}
+\def\SL{\operatorname{SL}}
+\def\PSL{\operatorname{PSL}}
+\def\GSp{\operatorname{GSp}}
+\def\PGSp{\operatorname{PGSp}}
+\def\Sp{\operatorname{Sp}}
+\def\PSp{\operatorname{PSp}}
+\def\Aut{\operatorname{Aut}}
+\def\Inn{\operatorname{Inn}}
+\def\Hom{\operatorname{Hom}}
+\def\End{\operatorname{End}}
+\def\ch{\operatorname{char}}
+\def\Zp{\Z/p\Z}
+\def\Zm{\Z/m\Z}
+\def\Zn{\Z/n\Z}
+\def\Fp{\F_p}
+\newcommand{\surjects}{\twoheadrightarrow}
+\newcommand{\injects}{\hookrightarrow}
+\newcommand{\bijects}{\leftrightarrow}
+\newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+\newcommand{\mclass}[2][m]{[#2]_{#1}}
+\newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+\newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\normalin}{\trianglelefteq}
+\newcommand{\angvec}[1]{\langle #1\rangle}
+\newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+\newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+\newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+\def\ntoinfty{\lim_{n\rightarrow\infty}}
+\def\xtoinfty{\lim_{x\rightarrow\infty}}
+\def\ii{\item}
+\def\bb{\begin{enumerate}}
+\def\ee{\end{enumerate}}
+\def\ds{\displaystyle}
+\def\p{\partial}
+\newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+}
+\newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+\newenvironment{linsys}[2][m]{
+\begin{array}[#1]{*{#2}{rc}c}
+}{
+\end{array}}
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+a_{m,1}x_{1}\amp +\amp a_{m,2}x_{2}\amp +\,\cdots\,+\amp a_{m,n}x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+e_1:\amp  a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+e_2: \amp a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+e_m: \amp a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp 0\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp 0\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp 0
+\end{array}
+}
+\newcommand{\vareqsys}[4]{
+\begin{array}{ccccccc}
+#3_{1,1}\,x_{1}\amp +\amp #3_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  #3_{1,#2}\,x_{#2}\amp =\amp #4_1\\
+#3_{2,1}\,x_{1}\amp +\amp #3_{2,2}\,x_{2}\amp +\,\cdots\,+\amp #3_{2,#2}\,x_{#2}\amp =\amp #4_2\\
+\vdots \amp \amp \vdots \amp  \amp \vdots \ amp =\amp  \\
+#3_{#1, 1}\,x_{1}\amp +\amp #3_{#1, 2}\,x_{2}\amp +\,\cdots\,+\amp #3_{#1, #2}\,x_{#2}\amp =\amp #4_{#1}
+\end{array}
+}
+\newcommand{\genmatrix}[1][a]{
+\begin{bmatrix}
+#1_{1,1} \amp  #1_{1,2} \amp  \cdots \amp  #1_{1,n} \\
+#1_{2,1} \amp  #1_{2,2} \amp  \cdots \amp  #1_{2,n} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#1_{m,1} \amp  #1_{m,2} \amp  \cdots \amp  #1_{m,n}
+\end{bmatrix}
+}
+\newcommand{\varmatrix}[3]{
+\begin{bmatrix}
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}
+\end{bmatrix}
+}
+\newcommand{\augmatrix}{
+\begin{amatrix}[cccc|c]
+a_{1,1} \amp  a_{1,2} \amp  \cdots \amp  a_{1,n} \amp b_{1}\\
+a_{2,1} \amp  a_{2,2} \amp  \cdots \amp  a_{2,n} \amp b_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
+\end{amatrix}
+}
+\newcommand{\varaugmatrix}[4]{
+\begin{amatrix}[cccc|c]
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \amp #4_{1}\\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \amp #4_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}\amp #4_{#1}
+\end{amatrix}
+}
+\newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+\newcommand{\generalmatrix}[3]{
+\left(
+\begin{array}{cccc}
+#1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+#1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+\amp \vdots                         \\
+#1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+\end{array}
+\right)  }
+\newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+\newcommand{\rowvec}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\DeclareMathOperator{\size}{size}
+\DeclareMathOperator{\adjoint}{adj}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+\renewcommand{\Re}{\operatorname{Re}}
+ \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="c_foundations.html" class="internal"><span class="codenumber">0</span> <span class="title">Foundations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_sets_tuples.html" class="internal"><span class="codenumber">0.1</span> <span class="title">Sets and tuples</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#s_sets" class="internal"><span class="codenumber">0.1.1</span> <span class="title">Sets</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#ss_tuples" class="internal"><span class="codenumber">0.1.2</span> <span class="title">Tuples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_functions.html" class="internal"><span class="codenumber">0.2</span> <span class="title">Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_functions_definitions" class="internal"><span class="codenumber">0.2.1</span> <span class="title">Definition and notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_function_image_properties" class="internal"><span class="codenumber">0.2.2</span> <span class="title">Function image, injections, surjections, bijections</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_logic.html" class="internal"><span class="codenumber">0.3</span> <span class="title">Logic</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_propositional_calculus" class="internal"><span class="codenumber">0.3.1</span> <span class="title">Propositional logic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_predicate_logic" class="internal"><span class="codenumber">0.3.2</span> <span class="title">Predicate logic</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_proof_technique.html" class="internal"><span class="codenumber">0.4</span> <span class="title">Proof techniques</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_logical_structure" class="internal"><span class="codenumber">0.4.1</span> <span class="title">Logical structure</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_implication" class="internal"><span class="title">Implication</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_disjunction" class="internal"><span class="title">Disjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_equivalence" class="internal"><span class="title">Equivalence</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_logical_chains" class="internal"><span class="title">Chains of implications/equivalences</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_proof_by_contradiction" class="internal"><span class="title">Proof by contradiction</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_Equalities" class="internal"><span class="codenumber">0.4.2</span> <span class="title">Equalities</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_chain_equalities" class="internal"><span class="title">Chain of equalities</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_set_properties" class="internal"><span class="codenumber">0.4.3</span> <span class="title">Basic set properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_inclusion" class="internal"><span class="title">Set inclusion</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_equality" class="internal"><span class="title">Set equality</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_function_properties" class="internal"><span class="codenumber">0.4.4</span> <span class="title">Basic function properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_function_equality" class="internal"><span class="title">Function equality</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_injective_surjective_bijective" class="internal"><span class="title">Injective, surjective, bijective</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_mathematical_induction" class="internal"><span class="codenumber">0.4.5</span> <span class="title">Mathematical induction</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_weak_induction" class="internal"><span class="title">Proof by induction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_strong_induction" class="internal"><span class="title">Proof by strong induction</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="c_291-1.html" class="internal"><span class="codenumber">1</span> <span class="title">Math 291-1</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s_natural_numbers.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Natural numbers: Peano axioms</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_reals_integers_rationals.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Reals, rationals, fields</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_reals" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Real numbers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_fields" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Fields</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_complex.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Complex numbers</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_complex_def" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Complex arithmetic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_modulus_conjugation" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Further complex operations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_geometry_complex" class="internal"><span class="codenumber">1.3.3</span> <span class="title">Geometry of <span class="process-math">\(\C\)</span> and polar form</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="s_vector_space.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_vector_space.html#ss_vector_space" class="internal"><span class="codenumber">1.4.1</span> <span class="title">Definition and first examples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_vector_space.html#" class="internal"><span class="codenumber">1.4.2</span> <span class="title">Vector space properties</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="my-great-book-6.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-notation.html" class="internal"><span class="codenumber">A</span> <span class="title">Notation</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-exercises.html" class="internal"><span class="codenumber">B</span> <span class="title">Exercises</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-defs.html" class="internal"><span class="codenumber">C</span> <span class="title">Definitions</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-thms.html" class="internal"><span class="codenumber">D</span> <span class="title">Theory and procedures</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-egs.html" class="internal"><span class="codenumber">E</span> <span class="title">Examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-sage.html" class="internal"><span class="codenumber">F</span> <span class="title">Sage examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-figures.html" class="internal"><span class="codenumber">G</span> <span class="title">Figures and video examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-matnras.html" class="internal"><span class="codenumber">H</span> <span class="title">Mantras and fiats</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="s_vector_space"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector spaces</span>
+</h2>
+<section class="introduction" id="s_vector_space-2"><div class="para" id="s_vector_space-2-1">In the last sections we’ve been busy with isolating familiar arithmetic properties of <span class="process-math">\(\R\)</span> and generalizing them in the form of our axiomatic definition of a field (<a href="s_reals_integers_rationals.html#d_field" class="xref" data-knowl="./knowl/xref/d_field.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.5: Field">Definition 1.2.5</a>). In introducing <em class="emphasis">vector spaces</em> in this section, we will go at things the other way around: we will axiomatically define a mathematical object called a vector space without having an original inspirational model, and then start building up a collection examples that you may not have been exposed to before.<div class="autopermalink" data-description="Paragraph"><a href="#s_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="subsection" id="ss_vector_space"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Definition and first examples</span>
+</h3>
+<article class="assumption theorem-like" id="fiat_F_field"><h4 class="heading">
+<span class="type">Fiat</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(F\)</span> stands for field.</span>
+</h4>
+<div class="para" id="fiat_F_field-2-1">Henceforth, unless stated otherwise, <span class="process-math">\(F\)</span> will always denote a field and all statements of theory formulated in terms of <span class="process-math">\(F\)</span> are understood to be valid for any field.<div class="autopermalink" data-description="Paragraph"><a href="#fiat_F_field-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Fiat 1.4.1: F stands for field"><a href="#fiat_F_field" title="Copy heading and permalink for Fiat 1.4.1: F stands for field" aria-label="Copy heading and permalink for Fiat 1.4.1: F stands for field">🔗</a></div></article><article class="definition definition-like" id="d_vector_space"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector space.</span>
+</h4>
+<div class="para logical" id="d_vector_space-6-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field.  A <dfn class="terminology">vector space over <span class="process-math">\(F\)</span></dfn> (or <dfn class="terminology"><span class="process-math">\(F\)</span>-vector space</dfn>) is a set <span class="process-math">\(V\)</span> together with two operations</div>
+<div class="displaymath process-math" id="d_vector_space-6-1-5">
+\begin{align*}
+V\times V \amp \rightarrow V \amp F\times V\amp \rightarrow V\\
+(v,w) \amp\mapsto v+w \amp (c,v)\amp \mapsto cv \text{,}
+\end{align*}
+</div>
+<div class="para">called respectively <dfn class="terminology">vector addition</dfn> and <dfn class="terminology">scalar multiplication</dfn>, that satisfy the following <dfn class="terminology">vector space axioms</dfn>.</div>
+<ol class="lower-roman ol-marker-1 cols2 multicolumn" id="d_vector_space-6-1-9">
+<li id="d_vector_space-6-1-9-1">
+<span class="heading li--heading"><span class="title li--heading-title">Vector addition is commutative.</span></span><div class="para" id="d_vector_space-6-1-9-1-2">
+<span class="process-math">\(v+w=w+v\)</span> for all <span class="process-math">\(v,w\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_vector_space-6-1-9-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item i: Vector addition is commutative"><a href="#d_vector_space-6-1-9-1" title="Copy heading and permalink for Item i: Vector addition is commutative" aria-label="Copy heading and permalink for Item i: Vector addition is commutative">🔗</a></div>
+</li>
+<li id="d_vector_space-6-1-9-2">
+<span class="heading li--heading"><span class="title li--heading-title">Vector addition is associative.</span></span><div class="para" id="d_vector_space-6-1-9-2-2">
+<span class="process-math">\((u+v)+w=u+(v+w)\)</span> for all <span class="process-math">\(u, v, w\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_vector_space-6-1-9-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item ii: Vector addition is associative"><a href="#d_vector_space-6-1-9-2" title="Copy heading and permalink for Item ii: Vector addition is associative" aria-label="Copy heading and permalink for Item ii: Vector addition is associative">🔗</a></div>
+</li>
+<li id="eq_d_zero_vector">
+<span class="heading li--heading"><span class="title li--heading-title">Zero vector.</span></span><div class="para logical" id="eq_d_zero_vector-2">
+<div class="para">There is an element <span class="process-math">\(\boldzero\in V\)</span> such that for all <span class="process-math">\(v\in V\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="eq_zero_vector">
+\begin{equation}
+\boldzero+v=v\text{.}\tag{1.4.1}
+\end{equation}
+</div>
+<div class="para">We call <span class="process-math">\(\boldzero\)</span> the <dfn class="terminology">zero vector</dfn>  of <span class="process-math">\(V\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eq_d_zero_vector-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item iii: Zero vector"><a href="#eq_d_zero_vector" title="Copy heading and permalink for Item iii: Zero vector" aria-label="Copy heading and permalink for Item iii: Zero vector">🔗</a></div>
+</li>
+<li id="eq_d_vec_inverse">
+<span class="heading li--heading"><span class="title li--heading-title">Vector inverses.</span></span><div class="para logical" id="eq_d_vec_inverse-2">
+<div class="para">For all <span class="process-math">\(v\in V\text{,}\)</span> there is another element <span class="process-math">\(-v\)</span> satisfying</div>
+<div class="displaymath process-math" id="eq_vec_inv">
+\begin{equation}
+-v+v=\boldzero\text{.}\tag{1.4.2}
+\end{equation}
+</div>
+<div class="para">We call <span class="process-math">\(-v\)</span> the <dfn class="terminology">vector inverse</dfn>  of <span class="process-math">\(v\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eq_d_vec_inverse-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item iv: Vector inverses"><a href="#eq_d_vec_inverse" title="Copy heading and permalink for Item iv: Vector inverses" aria-label="Copy heading and permalink for Item iv: Vector inverses">🔗</a></div>
+</li>
+<li id="d_vector_space-6-1-9-5">
+<span class="heading li--heading"><span class="title li--heading-title">Distribution over vector addition.</span></span><div class="para" id="d_vector_space-6-1-9-5-2">
+<span class="process-math">\(c(v+w)=cv+cw\)</span> for all <span class="process-math">\(c\in F\)</span> and <span class="process-math">\(v, w\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_vector_space-6-1-9-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item v: Distribution over vector addition"><a href="#d_vector_space-6-1-9-5" title="Copy heading and permalink for Item v: Distribution over vector addition" aria-label="Copy heading and permalink for Item v: Distribution over vector addition">🔗</a></div>
+</li>
+<li id="d_vector_space-6-1-9-6">
+<span class="heading li--heading"><span class="title li--heading-title">Distribution over scalar addition.</span></span><div class="para" id="d_vector_space-6-1-9-6-2">
+<span class="process-math">\((c+d)v=cv+dv\)</span> for all <span class="process-math">\(c,d\in F\)</span> and <span class="process-math">\(v\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_vector_space-6-1-9-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item vi: Distribution over scalar addition"><a href="#d_vector_space-6-1-9-6" title="Copy heading and permalink for Item vi: Distribution over scalar addition" aria-label="Copy heading and permalink for Item vi: Distribution over scalar addition">🔗</a></div>
+</li>
+<li id="d_vector_space-6-1-9-7">
+<span class="heading li--heading"><span class="title li--heading-title">Scalar multiplication is associative.</span></span><div class="para" id="d_vector_space-6-1-9-7-2">
+<span class="process-math">\(c(dv)=(cd)v\)</span> for all <span class="process-math">\(c,d\in F\)</span> and all <span class="process-math">\(v\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_vector_space-6-1-9-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item vii: Scalar multiplication is associative"><a href="#d_vector_space-6-1-9-7" title="Copy heading and permalink for Item vii: Scalar multiplication is associative" aria-label="Copy heading and permalink for Item vii: Scalar multiplication is associative">🔗</a></div>
+</li>
+<li id="d_vector_space-6-1-9-8">
+<span class="heading li--heading"><span class="title li--heading-title">Scalar multiplication identity.</span></span><div class="para" id="d_vector_space-6-1-9-8-2">
+<span class="process-math">\(1\,v=v\)</span> for all <span class="process-math">\(v\in V\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_vector_space-6-1-9-8-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item viii: Scalar multiplication identity"><a href="#d_vector_space-6-1-9-8" title="Copy heading and permalink for Item viii: Scalar multiplication identity" aria-label="Copy heading and permalink for Item viii: Scalar multiplication identity">🔗</a></div>
+</li>
+</ol>
+<div class="para">We call elements of the vector space <span class="process-math">\(V\)</span> <dfn class="terminology">vectors</dfn> and the elements of <span class="process-math">\(F\)</span> <dfn class="terminology">scalars</dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_vector_space-6-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.4.2: Vector space"><a href="#d_vector_space" title="Copy heading and permalink for Definition 1.4.2: Vector space" aria-label="Copy heading and permalink for Definition 1.4.2: Vector space">🔗</a></div></article><article class="remark remark-like" id="ss_vector_space-4"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Arithmetic and existential axioms.</span>
+</h4>
+<div class="para" id="ss_vector_space-4-2">As with the axioms in <a href="s_reals_integers_rationals.html#d_field" class="xref" data-knowl="./knowl/xref/d_field.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.5: Field">Definition 1.2.5</a> we divide the vector space axioms into the <em class="emphasis">arithmetic axioms</em> (Axioms (i)-(ii),(v)-(vi),(vii)) and the <em class="emphasis">existential axioms</em> (Axioms (iii)-(iv)).<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.4.3: Arithmetic and existential axioms"><a href="#ss_vector_space-4" title="Copy heading and permalink for Remark 1.4.3: Arithmetic and existential axioms" aria-label="Copy heading and permalink for Remark 1.4.3: Arithmetic and existential axioms">🔗</a></div></article><article class="remark remark-like" id="ss_vector_space-5"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Scalar multiplication: a hybrid operation.</span>
+</h4>
+<div class="para" id="ss_vector_space-5-2">There are certainly some similarities between <a href="s_vector_space.html#d_vector_space" class="xref" data-knowl="./knowl/xref/d_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.4.2: Vector space">Definition 1.4.2</a> and <a href="s_reals_integers_rationals.html#d_field" class="xref" data-knowl="./knowl/xref/d_field.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.2.5: Field">Definition 1.2.5</a>, but we should point out one very important <em class="emphasis">qualitative</em> difference between the structural operations that define these two mathematical objects. Namely, note that the scalar multiplication operation that forms part of the definition of a vector space is a <em class="emphasis">hybrid</em> operation in the sense that it takes as input a pair <span class="process-math">\((c,v)\text{,}\)</span> where <span class="process-math">\(c\in F\)</span> is an element of the field (or <em class="emphasis">scalar</em> as we now call it), and <span class="process-math">\(v\in V\)</span> is an element of the vector space, and outputs a new element <span class="process-math">\(cv\)</span> of the vector space.<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.4.4: Scalar multiplication: a hybrid operation"><a href="#ss_vector_space-5" title="Copy heading and permalink for Remark 1.4.4: Scalar multiplication: a hybrid operation" aria-label="Copy heading and permalink for Remark 1.4.4: Scalar multiplication: a hybrid operation">🔗</a></div></article><div class="para" id="ss_vector_space-6">We now proceed to a litany of examples. Each one will be stated as a definition (for reference purposes), but nonetheless requires a proof that the given structure does indeed constitute a vector space. In a classic mathematical move, we begin with the simplest of all vector spaces, the <em class="emphasis">zero space</em>. Elementary as this example is, it serves well to illustrate the axiomatic nature of <a href="s_vector_space.html#d_vector_space" class="xref" data-knowl="./knowl/xref/d_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.4.2: Vector space">Definition 1.4.2</a>.<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_zero_space"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Zero space.</span>
+</h4>
+<div class="para logical" id="d_zero_space-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(V=\{\bot\}\text{,}\)</span> a set containing exactly one element. There is a unique <span class="process-math">\(F\)</span>-vector space structure that can be given to <span class="process-math">\(V\text{,}\)</span> defined as follows.</div>
+<ul class="disc" id="d_zero_space-2-1-5">
+<li id="d_zero_space-2-1-5-1">
+<span class="heading li--heading"><span class="title li--heading-title">Vector operations.</span></span><div class="para" id="d_zero_space-2-1-5-1-2">Vector addition on <span class="process-math">\(V\)</span> is defined as <span class="process-math">\(\bot+\bot=\bot\text{;}\)</span> scalar multiplication on <span class="process-math">\(V\)</span> is defined as <span class="process-math">\(c\cdot \bot=\bot\)</span> for all <span class="process-math">\(c\in F\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_zero_space-2-1-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Vector operations"><a href="#d_zero_space-2-1-5-1" title="Copy heading and permalink for Item: Vector operations" aria-label="Copy heading and permalink for Item: Vector operations">🔗</a></div>
+</li>
+<li id="d_zero_space-2-1-5-2">
+<span class="heading li--heading"><span class="title li--heading-title">Zero vector.</span></span><div class="para" id="d_zero_space-2-1-5-2-2">The zero vector of <span class="process-math">\(V\)</span> is <span class="process-math">\(\bot\text{:}\)</span> i.e., <span class="process-math">\(\boldzero=\bot\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_zero_space-2-1-5-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Zero vector"><a href="#d_zero_space-2-1-5-2" title="Copy heading and permalink for Item: Zero vector" aria-label="Copy heading and permalink for Item: Zero vector">🔗</a></div>
+</li>
+<li id="d_zero_space-2-1-5-3">
+<span class="heading li--heading"><span class="title li--heading-title">Vector inverses.</span></span><div class="para" id="d_zero_space-2-1-5-3-2">The vector inverse of <span class="process-math">\(\bot\)</span> is <span class="process-math">\(\bot\text{:}\)</span> i.e., <span class="process-math">\(-\bot=\bot\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_zero_space-2-1-5-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Vector inverses"><a href="#d_zero_space-2-1-5-3" title="Copy heading and permalink for Item: Vector inverses" aria-label="Copy heading and permalink for Item: Vector inverses">🔗</a></div>
+</li>
+</ul>
+<div class="para">Since the unique element <span class="process-math">\(\bot\in V\)</span> ends up serving as the zero vector, we have <span class="process-math">\(V=\{\boldzero\}\)</span>and call <span class="process-math">\(V\)</span> a <dfn class="terminology">zero space</dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_zero_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.4.5: Zero space"><a href="#d_zero_space" title="Copy heading and permalink for Definition 1.4.5: Zero space" aria-label="Copy heading and permalink for Definition 1.4.5: Zero space">🔗</a></div></article><div class="para" id="ss_vector_space-8">
+<a href="s_vector_space.html#d_zero_space" class="xref" data-knowl="./knowl/xref/d_zero_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.4.5: Zero space">Definition 1.4.5</a> makes two claims: that the given operations make <span class="process-math">\(V=\{\bot\}\)</span> into a vector space, and that this is the <em class="emphasis">only</em> way to make <span class="process-math">\(V=\{\bot\}\)</span> into a vector space. As with all claims in mathematics, these need to be proved, but as you will see, the proof is a very light affair.<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<details id="ss_vector_space-9" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="title">Proof for Definition 1.4.5.</span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="ss_vector_space-9-2">Since <span class="process-math">\(V=\{\bot\}\)</span> only has one item, there is no choice for what vector addition <span class="process-math">\(V\times V\rightarrow V\)</span> and scalar multiplication <span class="process-math">\(F\times V\rightarrow V\)</span> can be. They must be defined in the manner given in <a href="s_vector_space.html#d_zero_space" class="xref" data-knowl="./knowl/xref/d_zero_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.4.5: Zero space">Definition 1.4.5</a>. Similarly, we must have <span class="process-math">\(\boldzero=\bot\)</span> and <span class="process-math">\(-\bot=\bot\text{,}\)</span> as once again, <span class="process-math">\(\bot\)</span> is the only element of <span class="process-math">\(V\text{!}\)</span> This shows that there can be <em class="emphasis">at most</em> one way of giving <span class="process-math">\(V\)</span> a vector space structure.<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-9-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="ss_vector_space-9-3">
+<div class="para">It is now easy to see that these choices do indeed satisfy the vector space axioms. That <span class="process-math">\(\bot\)</span> satisfies the identity of <a href="s_vector_space.html#eq_d_zero_vector" class="xref" data-knowl="./knowl/xref/eq_d_zero_vector.html" data-reveal-label="Reveal" data-close-label="Close" title="Item iii: Zero vector">Axiom iii</a> defining the zero vector <span class="process-math">\(\boldzero\)</span> follows from the fact that for all <span class="process-math">\(v\in V\)</span> we have <span class="process-math">\(v=\bot\)</span> (since <span class="process-math">\(V=\{\bot\}\)</span>), and thus</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_d_zero_vector.html" id="ss_vector_space-9-3-7">
+\begin{align*}
+\bot+v \amp =\bot+\bot\\
+\amp = \bot\\
+\amp =v\text{.}
+\end{align*}
+</div>
+<div class="para">Thus <span class="process-math">\(\bot=\boldzero\)</span> is the zero vector of the space.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-9-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="ss_vector_space-9-4">
+<div class="para">Similarly, to show all elements of <span class="process-math">\(V\)</span> have vector inverses amounts to showing that <span class="process-math">\(\bot\)</span> has a vector inverse, since this is the only element of <span class="process-math">\(V\text{.}\)</span> It is claimed that <span class="process-math">\(-\bot=\bot\)</span> (i.e., <span class="process-math">\(\bot\)</span> is its own vector inverse), which follows from the fact that</div>
+<div class="displaymath process-math" id="ss_vector_space-9-4-7">
+\begin{align*}
+-\bot+\bot \amp = \bot+\bot\\
+\amp = \bot\\
+\amp = \boldzero\text{.}
+\end{align*}
+</div>
+<div class="para">Lastly, the identities of Axioms (i)-(ii) and (v)-(viii) in this setting all reduce to trivial statements of the form <span class="process-math">\(\bot+\bot=\bot+\bot\text{.}\)</span> Consider Axiom (vii), for example. For all <span class="process-math">\(v,w\in V\text{,}\)</span> we have <span class="process-math">\(v=w=\bot\text{,}\)</span> in which case</div>
+<div class="displaymath process-math" id="ss_vector_space-9-4-11">
+\begin{align*}
+c(v+w) \amp =c(\bot+\bot) \\
+\amp =c\cdot \bot\\
+\amp = \bot \amp \text{(def. of sc. mult.)}
+\end{align*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math" id="ss_vector_space-9-4-12">
+\begin{align*}
+cv+dw \amp =c\cdot \bot+d\cdot \bot\\
+\amp = \bot+\bot\\
+\amp =\bot\text{.}
+\end{align*}
+</div>
+<div class="para">Thus</div>
+<div class="displaymath process-math" id="ss_vector_space-9-4-13">
+\begin{equation*}
+c(v+w)=\bot=cv+dw 
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(v, w\in V\)</span> and <span class="process-math">\(c\in F\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-9-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ss_vector_space-9-5">We leave verification of the rest of the axioms to the reader.<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-9-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.4.1.1: Proof for Definition 1.4.5"><a href="#ss_vector_space-9" title="Copy heading and permalink for Proof 1.4.1.1: Proof for Definition 1.4.5" aria-label="Copy heading and permalink for Proof 1.4.1.1: Proof for Definition 1.4.5">🔗</a></div></article></details><div class="para" id="ss_vector_space-10">It is worth formalizing the proof technique used above into an official procedure for showing whether something is a vector space.<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="algorithm theorem-like" id="proc_vector_space"><h4 class="heading">
+<span class="type">Procedure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector space verification.</span>
+</h4>
+<div class="para logical" id="proc_vector_space-2-1">
+<div class="para">To decide whether a given set and operations is a vector space, proceed as follows.</div>
+<ol class="decimal" id="proc_vector_space-2-1-1">
+<li id="proc_vector_space-2-1-1-1">
+<div class="para" id="proc_vector_space-2-1-1-1-1">Make explicit the underlying set <span class="process-math">\(V\)</span> of the proposed vector space.<div class="autopermalink" data-description="Paragraph"><a href="#proc_vector_space-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#proc_vector_space-2-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="proc_vector_space-2-1-1-2">
+<div class="para" id="proc_vector_space-2-1-1-2-1">Make explicit what the scalar multiplication and vector addition operations are.<div class="autopermalink" data-description="Paragraph"><a href="#proc_vector_space-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#proc_vector_space-2-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="proc_vector_space-2-1-1-3">
+<div class="para" id="proc_vector_space-2-1-1-3-1">Identify an element of <span class="process-math">\(V\)</span> that serves as the zero vector (i.e., satisfies <a href="s_vector_space.html#eq_zero_vector" class="xref" data-knowl="./knowl/xref/eq_zero_vector.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.4.1">(1.4.1)</a>) and for each <span class="process-math">\(\boldv\in V\)</span> show that there is a vector <span class="process-math">\(-\boldv\)</span> satisfying <a href="s_vector_space.html#eq_vec_inv" class="xref" data-knowl="./knowl/xref/eq_vec_inv.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.4.2">(1.4.2)</a>.<div class="autopermalink" data-description="Paragraph"><a href="#proc_vector_space-2-1-1-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#proc_vector_space-2-1-1-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+<li id="proc_vector_space-2-1-1-4">
+<div class="para" id="proc_vector_space-2-1-1-4-1">Show that the two vector operations and our choice of zero vector and vector inverses satisfy the axioms of <a href="s_vector_space.html#d_vector_space" class="xref" data-knowl="./knowl/xref/d_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.4.2: Vector space">Definition 1.4.2</a>.<div class="autopermalink" data-description="Paragraph"><a href="#proc_vector_space-2-1-1-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4"><a href="#proc_vector_space-2-1-1-4" title="Copy heading and permalink for Item 4" aria-label="Copy heading and permalink for Item 4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#proc_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Procedure 1.4.6: Vector space verification"><a href="#proc_vector_space" title="Copy heading and permalink for Procedure 1.4.6: Vector space verification" aria-label="Copy heading and permalink for Procedure 1.4.6: Vector space verification">🔗</a></div></article><article class="remark remark-like" id="ss_vector_space-12"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector space verification.</span>
+</h4>
+<div class="para" id="ss_vector_space-12-2">Think of steps (1)-(3) of <a href="s_vector_space.html#proc_vector_space" class="xref" data-knowl="./knowl/xref/proc_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.4.6: Vector space verification">Procedure 1.4.6</a> as the issuing of official declarations about the makeup of our proposed vector space: “The underlying set shall be as stated”; “We declare the vector operations thusly”; “The zero vector shall be this element here, and vector inverses shall be assigned in this manner”. Step (4) is where we get down to the nitty gritty of showing that the proposed vector space structure articulated in (1)-(3) does indeed satisfy all the necessary properties.<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-12-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ss_vector_space-12-3">In each of the remaining examples below we carefully lay out the details of items (1)-(3) while often leaving much of the work of item (4) to you. You will meet these vector spaces frequently throughout the rest of your life. Each time you do, it will be helpful for orientation purposes to mentally run through items (1)-(3). Ask yourself: What is the underlying set? What are vector operations? What acts as the zero vector, and how do I assign vector inverses?<div class="autopermalink" data-description="Paragraph"><a href="#ss_vector_space-12-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.4.7: Vector space verification"><a href="#ss_vector_space-12" title="Copy heading and permalink for Remark 1.4.7: Vector space verification" aria-label="Copy heading and permalink for Remark 1.4.7: Vector space verification">🔗</a></div></article><article class="example example-like" id="eg_fields_vector_space"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Fields are vector spaces.</span>
+</h4>
+<div class="para" id="eg_fields_vector_space-2-1">Show that a field <span class="process-math">\(F\)</span> is a vector space, where vector addition is field addition, and scalar multiplication is field multiplication.<div class="autopermalink" data-description="Paragraph"><a href="#eg_fields_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eg_fields_vector_space-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para" id="eg_fields_vector_space-3-1">The underlying set and operations have already been specified. We add that the field element <span class="process-math">\(0\in F\)</span> will serve as the zero vector (i.e., we have <span class="process-math">\(\boldzero=0\)</span>), and for each <span class="process-math">\(a\in F\text{,}\)</span> its <em class="emphasis">vector inverse</em> will be the field additive inverse <span class="process-math">\(-a\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_fields_vector_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="eg_fields_vector_space-3-2">That our proposed vector space operations, zero vector, and vector inverses satisfy the axioms of <a href="s_vector_space.html#d_vector_space" class="xref" data-knowl="./knowl/xref/d_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.4.2: Vector space">Definition 1.4.2</a> now follows essentially immediately from the field axioms satisfied by <span class="process-math">\(F\text{!}\)</span> For example, the vector space arithmetic axioms (i)-(ii), (v)-(viii) in this context are simply restatements that field addition is commutative and associative, that field multiplication distributes over field addition, that field multiplication is associative, and that <span class="process-math">\(1\in F\)</span> satisfies the multiplicative identity property. Similarly, the zero vector identity is identical to the additive identity property of fields, giving us axiom (iii), and the vector inverse identity is identical to the additive inverse property of fields, giving us axiom (iv).<div class="autopermalink" data-description="Paragraph"><a href="#eg_fields_vector_space-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.4.8.1"><a href="#eg_fields_vector_space-3" title="Copy heading and permalink for Solution 1.4.8.1" aria-label="Copy heading and permalink for Solution 1.4.8.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.4.8: Fields are vector spaces"><a href="#eg_fields_vector_space" title="Copy heading and permalink for Example 1.4.8: Fields are vector spaces" aria-label="Copy heading and permalink for Example 1.4.8: Fields are vector spaces">🔗</a></div></article><article class="example example-like" id="eg_F2_vector_space"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(F^2\)</span> is a vector space.</span>
+</h4>
+<div class="para" id="eg_F2_vector_space-2-1">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(F^2=F\times F\)</span> be the set of all pairs of elements of <span class="process-math">\(F\text{:}\)</span> i.e., <span class="process-math">\(F^2=\{(a,b)\mid a,b\in F\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="eg_F2_vector_space-2-2">
+<div class="para">Define vector addition and scalar multiplication on <span class="process-math">\(F^2\)</span> as follows:</div>
+<ul class="disc" id="eg_F2_vector_space-2-2-2">
+<li id="eg_F2_vector_space-2-2-2-1">
+<div class="para" id="eg_F2_vector_space-2-2-2-1-1">given <span class="process-math">\(v=(a,b), w=(c,d)\in F^2\text{,}\)</span> define <span class="process-math">\(v+w=(a+c,b+d)\text{;}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#eg_F2_vector_space-2-2-2-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="eg_F2_vector_space-2-2-2-2">
+<div class="para" id="eg_F2_vector_space-2-2-2-2-1">given <span class="process-math">\(c\in F\)</span> and <span class="process-math">\(v=(a,b)\in F^2\text{,}\)</span> define <span class="process-math">\(cv=(ca,cb)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-2-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#eg_F2_vector_space-2-2-2-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">Show that <span class="process-math">\(F^2\)</span> is a vector space with respect to these two operations.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="eg_F2_vector_space-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="eg_F2_vector_space-3-1">
+<div class="para">Let’s follow the steps of <a href="s_vector_space.html#proc_vector_space" class="xref" data-knowl="./knowl/xref/proc_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.4.6: Vector space verification">Procedure 1.4.6</a>. Once again, the underlying set and vector operations have been specified. We further declare that the zero vector of <span class="process-math">\(F^2\)</span> will be <span class="process-math">\(\boldzero=(0,0)\text{,}\)</span> and that given any <span class="process-math">\(v=(a,b)\in F^2\text{,}\)</span> its vector inverse shall be <span class="process-math">\(-v=(-a,-b)\text{.}\)</span> Let’s verify some of the axioms. Let <span class="process-math">\(v=(a,b), w=(c,d), u=(e,f)\in F^2\text{.}\)</span> We have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_vector_space.html" id="eg_F2_vector_space-3-1-7">
+\begin{align*}
+v+w \amp =(a+c,b+d)\\
+\amp =(c+a,d+b) \amp \text{(field add. comm.)}\\
+\amp =w+v\\
+v+(w+u) \amp = (a,b)+(c+e,d+f)\\
+\amp = (a+(c+e), b+(d+f))\\
+\amp = ((a+c)+e, (b+d)+f) \amp \text{(field add. assoc.)}\\
+\amp = (a+c,b+d)+(e,f)\\
+\amp = (v+w)+u\text{,}
+\end{align*}
+</div>
+<div class="para">showing that axioms (i)-(ii) hold. Axioms (v)-(viii) follow in a similar manner, ultimately citing some arithmetic properties of <span class="process-math">\(F\)</span> itself. We leave those to the reader, and instead verify axioms (iii)-(iv). For all <span class="process-math">\(v=(a,b)\in F^2\text{,}\)</span> we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_vector_space.html" id="eg_F2_vector_space-3-1-10">
+\begin{align*}
+(0,0)+v \amp =(0+a, 0+b)\\
+\amp = (a,b) \amp (\text{field add. ident.}) \\
+(-a,-b)+(a,b) \amp =(-a+a, -b+b)\\
+\amp =(0,0) \amp (\text{field add. inv.})\text{,}
+\end{align*}
+</div>
+<div class="para">showing that <span class="process-math">\(\boldzero=(0,0)\)</span> satisfies the zero vector identity, and <span class="process-math">\(-v=(-a,-b)\)</span> satifies the vector inverse identity for <span class="process-math">\(v=(a,b)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.4.9.1"><a href="#eg_F2_vector_space-3" title="Copy heading and permalink for Solution 1.4.9.1" aria-label="Copy heading and permalink for Solution 1.4.9.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.4.9: F^2 is a vector space"><a href="#eg_F2_vector_space" title="Copy heading and permalink for Example 1.4.9: F^2 is a vector space" aria-label="Copy heading and permalink for Example 1.4.9: F^2 is a vector space">🔗</a></div></article><article class="definition definition-like" id="d_function_vector_space"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector space of <span class="process-math">\(F\)</span>-valued functions.</span>
+</h4>
+<div class="para" id="d_function_vector_space-2-1">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(X\)</span> be a set. We denote by <span class="process-math">\(\mathcal{F}(X, F)\)</span> or <span class="process-math">\(F^X\)</span> the set of all functions <span class="process-math">\(f\colon X\rightarrow F\)</span> with domain <span class="process-math">\(X\)</span> and codomain <span class="process-math">\(F\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_function_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="d_function_vector_space-2-2">
+<ul class="disc" id="d_function_vector_space-2-2-1">
+<li id="d_function_vector_space-2-2-1-1">
+<span class="heading li--heading"><span class="title li--heading-title">Vector operations.</span></span><div class="para logical" id="d_function_vector_space-2-2-1-1-2">
+<div class="para">Given functions <span class="process-math">\(f,g\in \mathcal{F}(X,F)\)</span> and scalar <span class="process-math">\(c\in F\text{,}\)</span> we let <span class="process-math">\(f+g\)</span> be the function in <span class="process-math">\(\mathcal{F}(X,F)\)</span> defined as</div>
+<div class="displaymath process-math" id="d_function_vector_space-2-2-1-1-2-5">
+\begin{equation*}
+(f+g)(x) =f(x)+g(x)
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(x\in X\text{,}\)</span> and we let <span class="process-math">\(cf\)</span> be the function in <span class="process-math">\(\mathcal{F}(X,F)\)</span> defined as</div>
+<div class="displaymath process-math" id="d_function_vector_space-2-2-1-1-2-9">
+\begin{align*}
+(cf)(x)\amp =c f(x)\text{.}
+\end{align*}
+</div>
+<div class="para">The operations</div>
+<div class="displaymath process-math" id="d_function_vector_space-2-2-1-1-2-10">
+\begin{align*}
+\mathcal{F}(X,F)\times \mathcal{F}(X,F)  \amp \rightarrow \mathcal{F}(X,F) \amp F\times \mathcal{F}(X,F)\amp \rightarrow \mathcal{F}(X,F) \\
+(f,g) \amp \mapsto f+g \amp (c,f)\amp \mapsto cf
+\end{align*}
+</div>
+<div class="para">are called <dfn class="terminology">function addition</dfn> and <dfn class="terminology">function scalar multiplication</dfn>, respectively.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_function_vector_space-2-2-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Vector operations"><a href="#d_function_vector_space-2-2-1-1" title="Copy heading and permalink for Item: Vector operations" aria-label="Copy heading and permalink for Item: Vector operations">🔗</a></div>
+</li>
+<li id="d_function_vector_space-2-2-1-2">
+<span class="heading li--heading"><span class="title li--heading-title">Zero vector.</span></span><div class="para" id="d_function_vector_space-2-2-1-2-2">The zero vector of <span class="process-math">\(\mathcal{F}(X,F)\)</span> is the <dfn class="terminology">zero function</dfn> <span class="process-math">\(0_X\colon X\rightarrow F\)</span> defined as <span class="process-math">\(0_X(x)=0\)</span> for all <span class="process-math">\(x\in X\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_function_vector_space-2-2-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Zero vector"><a href="#d_function_vector_space-2-2-1-2" title="Copy heading and permalink for Item: Zero vector" aria-label="Copy heading and permalink for Item: Zero vector">🔗</a></div>
+</li>
+<li id="d_function_vector_space-2-2-1-3">
+<span class="heading li--heading"><span class="title li--heading-title">Vector inverses.</span></span><div class="para logical" id="d_function_vector_space-2-2-1-3-2">
+<div class="para">Given a function <span class="process-math">\(f\in \mathcal{F}(X,F)\text{,}\)</span> its vector inverse is the function <span class="process-math">\(-f\in \mathcal{F}(X,F)\)</span> defined as</div>
+<div class="displaymath process-math" id="d_function_vector_space-2-2-1-3-2-3">
+\begin{equation*}
+(-f)(x)=-f(x)
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(x\in X\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_function_vector_space-2-2-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Vector inverses"><a href="#d_function_vector_space-2-2-1-3" title="Copy heading and permalink for Item: Vector inverses" aria-label="Copy heading and permalink for Item: Vector inverses">🔗</a></div>
+</li>
+</ul>
+<div class="para">We call <span class="process-math">\(\mathcal{X,F}\text{,}\)</span> together with these vector operations, the <dfn class="terminology">space of functions from <span class="process-math">\(X\)</span> to <span class="process-math">\(F\)</span></dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_function_vector_space-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.4.10: Vector space of F-valued functions"><a href="#d_function_vector_space" title="Copy heading and permalink for Definition 1.4.10: Vector space of F-valued functions" aria-label="Copy heading and permalink for Definition 1.4.10: Vector space of F-valued functions">🔗</a></div></article><article class="theorem theorem-like" id="th_function_space_vector_space"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Function spaces are vector spaces.</span>
+</h4>
+<div class="para" id="th_function_space_vector_space-2-1">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(X\)</span> be a set. The set <span class="process-math">\(\mathcal{F}(X,F)\)</span> is a vector space with respect to function addition and function scalar multiplication.<div class="autopermalink" data-description="Paragraph"><a href="#th_function_space_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.4.11: Function spaces are vector spaces"><a href="#th_function_space_vector_space" title="Copy heading and permalink for Theorem 1.4.11: Function spaces are vector spaces" aria-label="Copy heading and permalink for Theorem 1.4.11: Function spaces are vector spaces">🔗</a></div></article><details id="th_function_space_vector_space-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_function_space_vector_space-3-1"><div class="autopermalink" data-description="Paragraph"><a href="#th_function_space_vector_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
+<div class="autopermalink" data-description="Proof 1.4.11.1"><a href="#th_function_space_vector_space-3" title="Copy heading and permalink for Proof 1.4.11.1" aria-label="Copy heading and permalink for Proof 1.4.11.1">🔗</a></div></article></details><article class="example example-like" id="eg_real_functions"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Real-valued functions.</span>
+</h4>
+<div class="para" id="eg_real_functions-2-1">Let <span class="process-math">\(I=[a,b]\subseteq \R \)</span> be an interval in the real line. The vector operations on <span class="process-math">\(\mathcal{F}(I,\R)\)</span> correspond to the function-arithmetic operations you met in precalculus and calculus: i.e., given functions <span class="process-math">\(f,g\in\mathcal{F}(I,\R)\text{,}\)</span> their vector sum <span class="process-math">\(f+g\)</span> is the function defined as <span class="process-math">\((f+g)(x)=f(x)+g(x)\)</span> for all <span class="process-math">\(x\in [a,b]\text{.}\)</span> Similarly, given a scalar <span class="process-math">\(c\in \R\)</span> and function <span class="process-math">\(f\in \mathcal{F}(I,\R)\text{,}\)</span> the vector scalar multiple <span class="process-math">\(cf\)</span> is the function defined as <span class="process-math">\((cf)(x)=cf(x)\)</span> for all <span class="process-math">\(x\in \R\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_real_functions-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="eg_real_functions-2-2">In this context it is possible to visualize our vector operations in terms of the graphs of the functions on the interval <span class="process-math">\([a,b]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_real_functions-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <figure class="figure figure-like" id="fig_func_arith"><div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;grid-template-columns:50% 50%;column-gap:0%;">
+<div class="sbspanel sbspanel--top top" style=""><figure class="figure figure-like" id="fig_func_add"><div class="image-box"><img src="generated/sageplot/fig_func_add-2.svg" role="img" class="contained" alt="Visualizing function addition"></div>
+<figcaption><span class="codenumber">(a)</span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Visualizing <span class="process-math">\(f+g\)</span><div class="autopermalink" data-description="Figure 1.4.13.(a)"><a href="#fig_func_add" title="Copy heading and permalink for Figure 1.4.13.(a)" aria-label="Copy heading and permalink for Figure 1.4.13.(a)">🔗</a></div></figcaption></figure></div>
+<div class="sbspanel sbspanel--top top" style=""><figure class="figure figure-like" id="fig_func_scale"><div class="image-box"><img src="generated/sageplot/fig_func_scale-2.svg" role="img" class="contained" alt="Visualizing function scalar multiplication"></div>
+<figcaption><span class="codenumber">(b)</span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Visualizing <span class="process-math">\(cf\)</span><div class="autopermalink" data-description="Figure 1.4.13.(b)"><a href="#fig_func_scale" title="Copy heading and permalink for Figure 1.4.13.(b)" aria-label="Copy heading and permalink for Figure 1.4.13.(b)">🔗</a></div></figcaption></figure></div>
+</div></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.13<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Visualizing function arithmetic in <span class="process-math">\(\mathcal{F}(I,\R)\)</span><div class="autopermalink" data-description="Figure 1.4.13"><a href="#fig_func_arith" title="Copy heading and permalink for Figure 1.4.13" aria-label="Copy heading and permalink for Figure 1.4.13">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Example 1.4.12: Real-valued functions"><a href="#eg_real_functions" title="Copy heading and permalink for Example 1.4.12: Real-valued functions" aria-label="Copy heading and permalink for Example 1.4.12: Real-valued functions">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.4.1: Definition and first examples"><a href="#ss_vector_space" title="Copy heading and permalink for Subsection 1.4.1: Definition and first examples" aria-label="Copy heading and permalink for Subsection 1.4.1: Definition and first examples">🔗</a></div></section><section class="subsection" id=""><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector space properties</span>
+</h3>
+<div class="para" id="-2">We end this section with a few elementary vector space properties. Since these statements involve a general vector space (as opposed to a specific type of vector space), we will make no assumptions about <span class="process-math">\(V\)</span> and the base field <span class="process-math">\(F\text{,}\)</span> other than that <span class="process-math">\(V\)</span> satisfies the vector space axioms and <span class="process-math">\(F\)</span> satisfies the field axioms.<div class="autopermalink" data-description="Paragraph"><a href="#-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop_zero_inv_unique"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Uniqueness of zero vector and inverses.</span>
+</h4>
+<div class="para logical" id="prop_zero_inv_unique-2-1">
+<div class="para">Let <span class="process-math">\(V\)</span> be an <span class="process-math">\(F\)</span>-vector space.</div>
+<ol class="decimal" id="prop_zero_inv_unique-2-1-3">
+<li id="prop_zero_inv_unique-2-1-3-1">
+<div class="para" id="prop_zero_inv_unique-2-1-3-1-1">The zero vector in <span class="process-math">\(V\)</span> is unique: i.e., there is one and only one element of <span class="process-math">\(V\)</span> that satisfies <a href="s_vector_space.html#eq_zero_vector" class="xref" data-knowl="./knowl/xref/eq_zero_vector.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.4.1">(1.4.1)</a>.<div class="autopermalink" data-description="Paragraph"><a href="#prop_zero_inv_unique-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#prop_zero_inv_unique-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="prop_zero_inv_unique-2-1-3-2">
+<div class="para" id="prop_zero_inv_unique-2-1-3-2-1">Inverse vectors are unique: i.e., for all <span class="process-math">\(v\in V\)</span> there is one and only one vector <span class="process-math">\(-v\)</span> satisfying <a href="s_vector_space.html#eq_vec_inv" class="xref" data-knowl="./knowl/xref/eq_vec_inv.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.4.2">(1.4.2)</a>.<div class="autopermalink" data-description="Paragraph"><a href="#prop_zero_inv_unique-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#prop_zero_inv_unique-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_zero_inv_unique-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.4.14: Uniqueness of zero vector and inverses"><a href="#prop_zero_inv_unique" title="Copy heading and permalink for Proposition 1.4.14: Uniqueness of zero vector and inverses" aria-label="Copy heading and permalink for Proposition 1.4.14: Uniqueness of zero vector and inverses">🔗</a></div></article><details id="prop_zero_inv_unique-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop_zero_inv_unique-3-1">
+<ol class="decimal" id="prop_zero_inv_unique-3-1-1">
+<li id="prop_zero_inv_unique-3-1-1-1">
+<div class="para logical" id="prop_zero_inv_unique-3-1-1-1-1">
+<div class="para">If <span class="process-math">\(w\in V\)</span> satisfies <span class="process-math">\(w+v=v\)</span> for all <span class="process-math">\(v\in V\text{,}\)</span> then in particular, taking <span class="process-math">\(v=\boldzero\text{,}\)</span> we see that <span class="process-math">\(w+\boldzero=\boldzero\text{.}\)</span> But since <span class="process-math">\(w+\boldzero=w\)</span> (using the defining property of <span class="process-math">\(\boldzero)\text{,}\)</span> we see that</div>
+<div class="displaymath process-math" id="prop_zero_inv_unique-3-1-1-1-1-8">
+\begin{align*}
+w+\boldzero=\boldzero \amp \implies w=\boldzero\text{.}
+\end{align*}
+</div>
+<div class="para">We conclude that <span class="process-math">\(w=\boldzero\text{,}\)</span> as desired.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_zero_inv_unique-3-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#prop_zero_inv_unique-3-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="prop_zero_inv_unique-3-1-1-2">
+<div class="para logical" id="prop_zero_inv_unique-3-1-1-2-1">
+<div class="para">Let <span class="process-math">\(v\in V\text{.}\)</span> Given <span class="process-math">\(w\in V\)</span> we have</div>
+<div class="displaymath process-math" id="prop_zero_inv_unique-3-1-1-2-1-3">
+\begin{align*}
+w+v =\boldzero \amp \implies w+v=-v+v \amp (-v+v=\boldzero) \\
+\amp \implies w+v+(-v)=-v+v+(-v)\\
+\amp \implies w+\boldzero=-v+\boldzero \amp (v+(-v)=\boldzero)\\
+\amp \implies w=-v \amp (\text{prop. of } \boldzero)\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_zero_inv_unique-3-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#prop_zero_inv_unique-3-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_zero_inv_unique-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.4.14.1"><a href="#prop_zero_inv_unique-3" title="Copy heading and permalink for Proof 1.4.14.1" aria-label="Copy heading and permalink for Proof 1.4.14.1">🔗</a></div></article></details><article class="proposition theorem-like" id="prop_vs_props"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector space properties.</span>
+</h4>
+<div class="para logical" id="prop_vs_props-2-1">
+<div class="para">Let <span class="process-math">\(V\)</span> be an <span class="process-math">\(F\)</span>-vector space.</div>
+<ol class="decimal" id="prop_vs_props-2-1-3">
+<li id="prop_vs_props-2-1-3-1">
+<div class="para" id="prop_vs_props-2-1-3-1-1">For all <span class="process-math">\(v\in V\text{,}\)</span> we have <span class="process-math">\(0\boldv=\boldzero\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#prop_vs_props-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="prop_vs_props-2-1-3-2">
+<div class="para" id="prop_vs_props-2-1-3-2-1">For all <span class="process-math">\(c\in F\text{,}\)</span> we have <span class="process-math">\(c\boldzero=\boldzero\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#prop_vs_props-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="prop_vs_props-2-1-3-3">
+<div class="para" id="prop_vs_props-2-1-3-3-1">For all <span class="process-math">\(v\in V\text{,}\)</span> we have <span class="process-math">\((-1)\boldv=-\boldv\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#prop_vs_props-2-1-3-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+<li id="prop_vs_props-2-1-3-4">
+<div class="para" id="prop_vs_props-2-1-3-4-1">For all <span class="process-math">\(v\in V\)</span> and <span class="process-math">\(c\in F\text{,}\)</span> if <span class="process-math">\(cv=\boldzero\text{,}\)</span> then <span class="process-math">\(c=0\)</span> or <span class="process-math">\(v=\boldzero\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-2-1-3-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 4"><a href="#prop_vs_props-2-1-3-4" title="Copy heading and permalink for Item 4" aria-label="Copy heading and permalink for Item 4">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.4.15: Vector space properties"><a href="#prop_vs_props" title="Copy heading and permalink for Proposition 1.4.15: Vector space properties" aria-label="Copy heading and permalink for Proposition 1.4.15: Vector space properties">🔗</a></div></article><details id="prop_vs_props-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="prop_vs_props-3-1">We provide proofs of (1) and (3), leaving (2) and (4) to the reader.<div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="prop_vs_props-3-2">
+<div class="para">Our proof of (1) is almost identical to a similar statement in <a href="s_reals_integers_rationals.html#p_field_properties" class="xref" data-knowl="./knowl/xref/p_field_properties.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.2.17: Basic properties of fields">Proposition 1.2.17</a>. For any <span class="process-math">\(v\in V\text{,}\)</span> we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/p_field_properties.html" id="prop_vs_props-3-2-3">
+\begin{align*}
+0v \amp = (0+0)v \amp (\text{field prop. of } F)\\
+\amp 0v+0v \amp (\text{dist. prop. of } V)\text{.}
+\end{align*}
+</div>
+<div class="para">But then we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/p_field_properties.html" id="prop_vs_props-3-2-4">
+\begin{align*}
+0v\amp = 0v+0v \\
+-(0v)+0v\amp=-(0v)+0v+0v \amp (\text{add } -(0v)\text{ to both sides}) \\
+\boldzero\amp=\boldzero+0v \amp (\text{vec. inv. prop.})\\
+\boldzero\amp=0v \amp (\text{prop. of } \boldzero)\text{,}
+\end{align*}
+</div>
+<div class="para">as desired.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="prop_vs_props-3-3">
+<div class="para">Let <span class="process-math">\(v\in V\text{.}\)</span> To prove (2), we will show that <span class="process-math">\((-1)v\)</span> satisfies the defining property <a href="s_vector_space.html#eq_vec_inv" class="xref" data-knowl="./knowl/xref/eq_vec_inv.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.4.2">(1.4.2)</a> of <span class="process-math">\(-v\text{;}\)</span> since each vector has a unique vector inverse (<a href="s_vector_space.html#prop_zero_inv_unique" class="xref" data-knowl="./knowl/xref/prop_zero_inv_unique.html" data-reveal-label="Reveal" data-close-label="Close" title="Proposition 1.4.14: Uniqueness of zero vector and inverses">Proposition 1.4.14</a>), it will then follow that <span class="process-math">\((-1)v=-v\text{.}\)</span> To show <span class="process-math">\((-1)v\)</span> satisfies <a href="s_vector_space.html#eq_vec_inv" class="xref" data-knowl="./knowl/xref/eq_vec_inv.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.4.2">(1.4.2)</a>, we observe that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_vec_inv.html ./knowl/xref/prop_zero_inv_unique.html ./knowl/xref/eq_vec_inv.html" id="prop_vs_props-3-3-9">
+\begin{align*}
+(-1)v+v \amp =(-1)v+1v \amp (\text{Axiom (viii)})\\
+\amp = (-1+1)v \amp (\text{Axiom (vii)})\\
+\amp =0v\\
+\amp = \boldzero (\text{by (1)})\text{.}
+\end{align*}
+</div>
+<div class="para">Thus <span class="process-math">\((-1)v=-v\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_vs_props-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.4.15.1"><a href="#prop_vs_props-3" title="Copy heading and permalink for Proof 1.4.15.1" aria-label="Copy heading and permalink for Proof 1.4.15.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.4.2: Vector space properties"><a href="#" title="Copy heading and permalink for Subsection 1.4.2: Vector space properties" aria-label="Copy heading and permalink for Subsection 1.4.2: Vector space properties">🔗</a></div></section><div class="autopermalink" data-description="Section 1.4: Vector spaces"><a href="#s_vector_space" title="Copy heading and permalink for Section 1.4: Vector spaces" aria-label="Copy heading and permalink for Section 1.4: Vector spaces">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="s_complex.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.4.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(F^2\)</span> is a vector space.</span>
+</h4>
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(F^2=F\times F\)</span> be the set of all pairs of elements of <span class="process-math">\(F\text{:}\)</span> i.e., <span class="process-math">\(F^2=\{(a,b)\mid a,b\in F\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical">
+<div class="para">Define vector addition and scalar multiplication on <span class="process-math">\(F^2\)</span> as follows:</div>
+<ul class="disc" id="eg_F2_vector_space-2-2-2">
+<li>
+<div class="para">given <span class="process-math">\(v=(a,b), w=(c,d)\in F^2\text{,}\)</span> define <span class="process-math">\(v+w=(a+c,b+d)\text{;}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-2-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#eg_F2_vector_space-2-2-2-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li>
+<div class="para">given <span class="process-math">\(c\in F\)</span> and <span class="process-math">\(v=(a,b)\in F^2\text{,}\)</span> define <span class="process-math">\(cv=(ca,cb)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-2-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#eg_F2_vector_space-2-2-2-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">Show that <span class="process-math">\(F^2\)</span> is a vector space with respect to these two operations.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical">
+<div class="para">Let’s follow the steps of <a href="s_vector_space.html#proc_vector_space" class="xref" data-knowl="./knowl/xref/proc_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.4.6: Vector space verification">Procedure 1.4.6</a>. Once again, the underlying set and vector operations have been specified. We further declare that the zero vector of <span class="process-math">\(F^2\)</span> will be <span class="process-math">\(\boldzero=(0,0)\text{,}\)</span> and that given any <span class="process-math">\(v=(a,b)\in F^2\text{,}\)</span> its vector inverse shall be <span class="process-math">\(-v=(-a,-b)\text{.}\)</span> Let’s verify some of the axioms. Let <span class="process-math">\(v=(a,b), w=(c,d), u=(e,f)\in F^2\text{.}\)</span> We have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_vector_space.html">
+\begin{align*}
+v+w \amp =(a+c,b+d)\\
+\amp =(c+a,d+b) \amp \text{(field add. comm.)}\\
+\amp =w+v\\
+v+(w+u) \amp = (a,b)+(c+e,d+f)\\
+\amp = (a+(c+e), b+(d+f))\\
+\amp = ((a+c)+e, (b+d)+f) \amp \text{(field add. assoc.)}\\
+\amp = (a+c,b+d)+(e,f)\\
+\amp = (v+w)+u\text{,}
+\end{align*}
+</div>
+<div class="para">showing that axioms (i)-(ii) hold. Axioms (v)-(viii) follow in a similar manner, ultimately citing some arithmetic properties of <span class="process-math">\(F\)</span> itself. We leave those to the reader, and instead verify axioms (iii)-(iv). For all <span class="process-math">\(v=(a,b)\in F^2\text{,}\)</span> we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_vector_space.html">
+\begin{align*}
+(0,0)+v \amp =(0+a, 0+b)\\
+\amp = (a,b) \amp (\text{field add. ident.}) \\
+(-a,-b)+(a,b) \amp =(-a+a, -b+b)\\
+\amp =(0,0) \amp (\text{field add. inv.})\text{,}
+\end{align*}
+</div>
+<div class="para">showing that <span class="process-math">\(\boldzero=(0,0)\)</span> satisfies the zero vector identity, and <span class="process-math">\(-v=(-a,-b)\)</span> satifies the vector inverse identity for <span class="process-math">\(v=(a,b)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_F2_vector_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.4.9.1"><a href="#eg_F2_vector_space-3" title="Copy heading and permalink for Solution 1.4.9.1" aria-label="Copy heading and permalink for Solution 1.4.9.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.4.9: F^2 is a vector space"><a href="#eg_F2_vector_space" title="Copy heading and permalink for Example 1.4.9: F^2 is a vector space" aria-label="Copy heading and permalink for Example 1.4.9: F^2 is a vector space">🔗</a></div></article><span class="incontext"><a class="internal" href="s_vector_space.html#eg_F2_vector_space">in-context</a></span>
+</body>
+</html>
