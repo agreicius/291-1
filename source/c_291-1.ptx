@@ -5,5 +5,6 @@
     <xi:include href="s_natural_numbers.ptx" />
     <xi:include href="s_reals_integers_rationals.ptx" />
     <xi:include href="s_complex.ptx" />
+    <xi:include href="s_vector_space.ptx" />
 
 </chapter>

@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_vector_space" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Vector spaces</title>
+
+   <introduction> <p>
+            In the last sections we've been busy with isolating familiar arithmetic properties of <m>\R</m> and generalizing them in the form of our axiomatic definition of a field (<xref ref="d_field"/>). In introducing <em>vector spaces</em> in this section, we will go at things the other way around: we will axiomatically define a mathematical object called a vector space without having an original inspirational model, and then start building up a collection examples that you may not have been exposed to before.
+        </p>
+    </introduction>
+        <subsection xml:id="ss_vector_space">
+        <title>Definition and first examples</title>
+        
+        
+     <assumption xml:id="fiat_F_field">
+            <title><m>F</m> stands for field</title>
+            <statement>
+                <p>
+                    Henceforth, unless stated otherwise, <m>F</m> will always denote a field and all statements of theory formulated in terms of <m>F</m> are understood to be valid for any field. 
+                </p>
+            </statement>
+    </assumption>
+    <definition xml:id="d_vector_space">
+        <title>Vector space</title>
+        <idx><h>vector space</h><h>definition</h></idx>
+        <idx><h>vector space</h><h>zero vector</h></idx>
+        <idx><h>vector space</h><h>vector inverse</h></idx>
+        <idx><h>vector space</h><h>vector</h></idx>
+          <statement>
+            <p>
+              Let <m>F</m> be a field.  A <term>vector space over <m>F</m></term> (or <term><m>F</m>-vector space</term>) is a set <m>V</m> together with two operations
+              <md>
+                <mrow>V\times V \amp \rightarrow V \amp F\times V\amp \rightarrow V</mrow>
+                <mrow>(v,w) \amp\mapsto v+w \amp (c,v)\amp \mapsto cv </mrow>
+              </md>, 
+              called respectively <term>vector addition</term> and <term>scalar multiplication</term>, that satisfy the following <term>vector space axioms</term>. 
+            <ol marker="(i)" cols="2">
+              <li>
+                <title>Vector addition is commutative</title>
+                <p>
+                <m>v+w=w+v</m> for all <m>v,w\in V</m>.
+                </p>
+              </li>
+              <li>
+                <title>Vector addition is associative</title>
+                <p>
+                    <m>(u+v)+w=u+(v+w)</m> for all <m>u, v, w\in V</m>.
+                </p>
+              </li>
+              <li xml:id="eq_d_zero_vector">
+                <title>Zero vector</title>
+                <p>
+                  There is an element <m>\boldzero\in V</m> such that for all <m>v\in V</m>, we have
+                  <md number="yes" xml:id="eq_zero_vector">
+                    \boldzero+v=v
+                  </md>. We call <m>\boldzero</m> the <term>zero vector</term>  of <m>V</m>.
+                </p>
+              </li>
+              <li xml:id="eq_d_vec_inverse">
+                <title>Vector inverses</title>
+                <p>
+                For all <m>v\in V</m>, there is another element <m>-v</m> satisfying
+                <md number="yes" xml:id="eq_vec_inv">
+                  -v+v=\boldzero
+                </md>.
+                We call <m>-v</m> the <term>vector inverse</term>  of <m>v</m>.
+                </p>
+              </li>
+              <li>
+                <title>Distribution over vector addition</title>
+                <p>
+                <m>
+                  c(v+w)=cv+cw
+                </m> for all <m>c\in F</m> and <m>v, w\in V</m>.
+                </p>
+              </li>
+              <li>
+                <title>Distribution over scalar addition</title>
+                <p>
+                  <m>
+                    (c+d)v=cv+dv
+                  </m>
+                  for all <m>c,d\in F</m> and <m>v\in V</m>.
+                </p>
+              </li>
+              <li>
+                <title>Scalar multiplication is associative</title>
+                <p>
+                <m>
+                  c(dv)=(cd)v
+                </m>
+                for all <m>c,d\in F</m> and all <m>v\in V</m>.
+                </p>
+              </li>
+              <li>
+                <title>Scalar multiplication identity</title>
+                <p>
+                    <m>
+                        1\,v=v
+                      </m> for all <m>v\in V</m>.
+                </p>
+              </li>
+            </ol>
+          We call elements of the vector space <m>V</m> <term>vectors</term> and the elements of <m>F</m> <term>scalars</term>. 
+          </p>
+      </statement>
+        </definition>
+        <remark>
+            <title>Arithmetic and existential axioms</title>
+            <p>
+                As with the axioms in <xref ref="d_field"/> we divide the vector space axioms into the <em>arithmetic axioms</em> (Axioms (i)-(ii),(v)-(vi),(vii)) and the <em>existential axioms</em> (Axioms (iii)-(iv)). 
+            </p>
+        </remark>
+        <remark>
+        <title>Scalar multiplication: a hybrid operation</title>
+        <p>
+        There are certainly some similarities between <xref ref="d_vector_space"/> and <xref ref="d_field"/>, but we should point out one very important <em>qualitative</em> difference between the structural operations that define these two mathematical objects. Namely, note that the scalar multiplication operation that forms part of the definition of a vector space is a <em>hybrid</em> operation in the sense that it takes as input a pair <m>(c,v)</m>, where <m>c\in F</m> is an element of the field (or <em>scalar</em> as we now call it), and <m>v\in V</m> is an element of the vector space, and outputs a new element <m>cv</m> of the vector space. 
+        </p>
+        </remark>
+        
+        <p>
+            We now proceed to a litany of examples. Each one will be stated as a definition (for reference purposes), but nonetheless requires a proof that the given structure does indeed constitute a vector space. In a classic mathematical move, we begin with the simplest of all vector spaces, the <em>zero space</em>. Elementary as this example is, it serves well to illustrate the axiomatic nature of <xref ref="d_vector_space"/>. 
+        </p>
+          <definition xml:id="d_zero_space">
+            <title>Zero space</title>
+            <statement>
+                <p>
+                    Let <m>F</m> be a field, and let <m>V=\{\bot\}</m>, a set containing exactly one element. There is a unique <m>F</m>-vector space structure that can be given to <m>V</m>, defined as follows. 
+                    <ul>
+                        <li>
+                            <title>Vector operations</title>
+                            <p>
+                                Vector addition on <m>V</m> is defined as <m>\bot+\bot=\bot</m>; scalar multiplication on <m>V</m> is defined as <m>c\cdot \bot=\bot</m> for all <m>c\in F</m>. 
+                            </p>
+                        </li>
+                        <li>
+                            <title>Zero vector</title>
+                            <p>
+                                The zero vector of <m>V</m> is <m>\bot</m>: <ie/>, <m>\boldzero=\bot</m>.
+                            </p>
+                        </li>
+                        <li>
+                            <title>Vector inverses</title>
+                            <p>
+                                The vector inverse of <m>\bot</m> is <m>\bot</m>: <ie/>, <m>-\bot=\bot</m>. 
+                            </p>
+                        </li>
+                    </ul>
+                    Since the unique element <m>\bot\in V</m> ends up serving as the zero vector, we have <m>V=\{\boldzero\}</m>and call <m>V</m> a <term>zero space</term>. 
+                </p>   
+            </statement>
+        </definition>
+        <p>
+            <xref ref="d_zero_space"/> makes two claims: that the given operations make <m>V=\{\bot\}</m> into a vector space, and that this is the <em>only</em> way to make <m>V=\{\bot\}</m> into a vector space. As with all claims in mathematics, these need to be proved, but as you will see, the proof is a very light affair. 
+        </p>
+        <proof>
+            <title>Proof for <xref ref="d_zero_space"/></title>
+            <p>
+                Since <m>V=\{\bot\}</m> only has one item, there is no choice for what vector addition <m>V\times V\rightarrow V</m> and scalar multiplication <m>F\times V\rightarrow V</m> can be. They must be defined in the manner given in <xref ref="d_zero_space"/>. Similarly, we must have <m>\boldzero=\bot</m> and <m>-\bot=\bot</m>, as once again, <m>\bot</m> is the only element of <m>V</m>! This shows that there can be <em>at most</em> one way of giving <m>V</m> a vector space structure. 
+            </p>
+            <p>
+                It is now easy to see that these choices do indeed satisfy the vector space axioms. That <m>\bot</m> satisfies the identity of <xref ref="eq_d_zero_vector">Axiom</xref> defining the zero vector <m>\boldzero</m> follows from the fact that 
+                for all <m>v\in V</m> we have <m>v=\bot</m> (since <m>V=\{\bot\}</m>), and thus 
+                    <md>
+                        <mrow>\bot+v \amp =\bot+\bot</mrow>
+                        <mrow> \amp = \bot</mrow>
+                        <mrow> \amp =v</mrow>
+                    </md>.
+                    Thus <m>\bot=\boldzero</m> is the zero vector of the space. 
+            </p>
+            <p>
+                Similarly, to show all elements of <m>V</m> have vector inverses amounts to showing that <m>\bot</m> has a vector inverse, since this is the only element of <m>V</m>. It is claimed that <m>-\bot=\bot</m> (<ie/>, <m>\bot</m> is its own vector inverse), which follows from the fact that 
+                <md>
+                    <mrow>-\bot+\bot \amp = \bot+\bot</mrow>
+                    <mrow> \amp = \bot</mrow>
+                    <mrow> \amp = \boldzero</mrow>
+                </md>.
+                Lastly, the identities of Axioms (i)-(ii) and (v)-(viii) in this setting all reduce to trivial statements of the form <m>\bot+\bot=\bot+\bot</m>. Consider Axiom (vii), for example. For all <m>v,w\in V</m>, we have <m>v=w=\bot</m>, in which case
+                <md>
+                    <mrow>c(v+w) \amp =c(\bot+\bot) </mrow>
+                    <mrow> \amp =c\cdot \bot</mrow>
+                    <mrow> \amp = \bot \amp \text{(def. of sc. mult.)}</mrow>
+                </md> and 
+                <md>
+                    <mrow>cv+dw \amp =c\cdot \bot+d\cdot \bot</mrow>
+                    <mrow> \amp = \bot+\bot</mrow>
+                    <mrow> \amp =\bot</mrow>
+                </md>.
+                Thus 
+                <md>
+                    c(v+w)=\bot=cv+dw 
+                </md>
+                for all <m>v, w\in V</m> and <m>c\in F</m>. 
+            </p>
+            <p>
+                We leave verification of the rest of the axioms to the reader. 
+            </p>
+        </proof>
+    <p>
+        It is worth formalizing the proof technique used above into an official procedure for showing whether something is a vector space. 
+    </p>
+    <algorithm xml:id="proc_vector_space">
+        <title>Vector space verification</title>
+        
+        <statement>
+            <p>
+To decide whether a given set and operations is a vector space, proceed as follows. 
+<ol>
+  <li>
+    <p>
+      Make explicit the underlying set <m>V</m> of the proposed vector space.
+    </p>
+  </li>
+  <li>
+    <p>
+      Make explicit what the scalar multiplication and vector addition operations are.
+    </p>
+  </li>
+  <li>
+    <p>
+      Identify an element of <m>V</m> that serves as the zero vector (<ie/>, satisfies <xref ref="eq_zero_vector"/>) and for each <m>\boldv\in V</m> show that there is a vector <m>-\boldv</m> satisfying <xref ref="eq_vec_inv"/>.
+    </p>
+  </li>
+  <li>
+    <p>
+      Show that the two vector operations and our choice of zero vector and vector inverses satisfy the axioms of <xref ref="d_vector_space"/>.
+    </p>
+  </li>
+</ol>
+</p>
+    </statement>
+    </algorithm>
+<remark>
+    <title>Vector space verification</title>
+    <p>
+        Think of steps (1)-(3) of <xref ref="proc_vector_space"/> as the issuing of official declarations about the makeup of our proposed vector space: <q>The underlying set shall be as stated</q>; <q>We declare the vector operations thusly</q>; <q>The zero vector shall be this element here, and vector inverses shall be assigned in this manner</q>. Step (4) is where we get down to the nitty gritty of showing that the proposed vector space structure articulated in (1)-(3) does indeed satisfy all the necessary properties.
+</p>
+<p>
+In each of the remaining examples below we carefully lay out the details of items (1)-(3) while often leaving much of the work of item (4) to you. You will meet these vector spaces frequently throughout the rest of your life. Each time you do, it will be helpful for orientation purposes to mentally run through items (1)-(3). Ask yourself: What is the underlying set? What are vector operations? What acts as the zero vector, and how do I assign vector inverses?
+    </p>
+</remark>
+<example xml:id="eg_fields_vector_space">
+<title>Fields are vector spaces</title>
+<statement>
+<p>
+Show that a field <m>F</m> is a vector space, where vector addition is field addition, and scalar multiplication is field multiplication. 
+</p>
+</statement>
+<solution>
+<p>
+The underlying set and operations have already been specified. We add that the field element <m>0\in F</m> will serve as the zero vector (<ie/>, we have <m>\boldzero=0</m>), and for each <m>a\in F</m>, its <em>vector inverse</em> will be the field additive inverse <m>-a</m>. 
+</p>
+<p>
+    That our proposed vector space operations, zero vector, and vector inverses satisfy the axioms of <xref ref="d_vector_space"/> now follows essentially immediately from the field axioms satisfied by <m>F</m>! For example, the vector space arithmetic axioms (i)-(ii), (v)-(viii) in this context are simply restatements that field addition is commutative and associative, that field multiplication distributes over field addition, that field multiplication is associative, and that <m>1\in F</m> satisfies the multiplicative identity property. Similarly, the zero vector identity is identical to the additive identity property of fields, giving us axiom (iii), and the vector inverse identity is identical to the additive inverse property of fields, giving us axiom (iv).
+</p>
+</solution>
+</example>
+<example xml:id="eg_F2_vector_space">
+<title><m>F^2</m> is a vector space</title>
+<statement>
+<p>
+Let <m>F</m> be a field, and let <m>F^2=F\times F</m> be the set of all pairs of elements of <m>F</m>: <ie/>, <m>F^2=\{(a,b)\mid a,b\in F\}</m>.
+</p>
+<p>
+    Define vector addition and scalar multiplication on <m>F^2</m> as follows: 
+    <ul>
+        <li>
+            <p>
+                given <m>v=(a,b), w=(c,d)\in F^2</m>, define <m>v+w=(a+c,b+d)</m>; 
+            </p>
+        </li>
+        <li>
+            <p>
+                given <m>c\in F</m> and <m>v=(a,b)\in F^2</m>, define <m>cv=(ca,cb)</m>.
+            </p>
+        </li>
+    </ul>
+    Show that <m>F^2</m> is a vector space with respect to these two operations. 
+</p>
+</statement>
+<solution>
+<p>
+Let's follow the steps of <xref ref="proc_vector_space"/>. Once again, the underlying set and vector operations have been specified. We further declare that the zero vector of <m>F^2</m> will be <m>\boldzero=(0,0)</m>, and that given any <m>v=(a,b)\in F^2</m>, its vector inverse shall be <m>-v=(-a,-b)</m>. Let's verify some of the axioms. Let <m>v=(a,b), w=(c,d), u=(e,f)\in F^2</m>. We have 
+<md>
+    <mrow>v+w \amp =(a+c,b+d)</mrow>
+    <mrow> \amp =(c+a,d+b) \amp \text{(field add. comm.)}</mrow>
+    <mrow> \amp =w+v</mrow>
+    <mrow>v+(w+u) \amp = (a,b)+(c+e,d+f)</mrow>
+    <mrow> \amp = (a+(c+e), b+(d+f))</mrow>
+    <mrow> \amp = ((a+c)+e, (b+d)+f) \amp \text{(field add. assoc.)}</mrow>
+    <mrow> \amp = (a+c,b+d)+(e,f)</mrow>
+    <mrow> \amp = (v+w)+u</mrow>
+</md>,
+showing that axioms (i)-(ii) hold. Axioms (v)-(viii) follow in a similar manner, ultimately citing some arithmetic properties of <m>F</m> itself. We leave those to the reader, and instead verify axioms (iii)-(iv). For all <m>v=(a,b)\in F^2</m>, we have 
+<md>
+    <mrow>(0,0)+v \amp =(0+a, 0+b)</mrow>
+    <mrow> \amp = (a,b) \amp (\text{field add. ident.}) </mrow>
+    <mrow>(-a,-b)+(a,b) \amp =(-a+a, -b+b)</mrow>
+    <mrow> \amp =(0,0) \amp (\text{field add. inv.})</mrow>
+</md>,
+showing that <m>\boldzero=(0,0)</m> satisfies the zero vector identity, and <m>-v=(-a,-b)</m> satifies the vector inverse identity for <m>v=(a,b)</m>. 
+</p>
+</solution>
+</example>
+<definition xml:id="d_function_vector_space">
+<title>Vector space of <m>F</m>-valued functions</title>
+<statement>
+<p>
+Let <m>F</m> be a field, and let <m>X</m> be a set. We denote by <m>\mathcal{F}(X, F)</m> or <m>F^X</m> the set of all functions <m>f\colon X\rightarrow F</m> with domain <m>X</m> and codomain <m>F</m>. 
+</p>
+<p>
+    <ul>
+    <li>
+        <title>Vector operations</title>
+        <p>
+            Given functions <m>f,g\in \mathcal{F}(X,F)</m> and scalar <m>c\in F</m>, we let <m>f+g</m> be the function in <m>\mathcal{F}(X,F)</m> defined as 
+            <md>
+                (f+g)(x) =f(x)+g(x)
+            </md>
+            for all <m>x\in X</m>, and we let <m>cf</m> be the function in <m>\mathcal{F}(X,F)</m> defined as
+            <md>
+                <mrow>(cf)(x)\amp =c f(x)</mrow>
+            </md>.
+            The operations
+            <md>
+                <mrow>\mathcal{F}(X,F)\times \mathcal{F}(X,F)  \amp \rightarrow \mathcal{F}(X,F) \amp F\times \mathcal{F}(X,F)\amp \rightarrow \mathcal{F}(X,F) </mrow>
+                <mrow>(f,g) \amp \mapsto f+g \amp (c,f)\amp \mapsto cf</mrow>
+            </md> 
+            are called <term>function addition</term> and <term>function scalar multiplication</term>, respectively. 
+        </p>
+    </li>
+    <li>
+        <title>Zero vector</title>
+        <p>
+        The zero vector of <m>\mathcal{F}(X,F)</m> is the <term>zero function</term> <m>0_X\colon X\rightarrow F</m> defined as <m>0_X(x)=0</m> for all <m>x\in X</m>.
+        </p>
+    </li>
+    <li>
+        <title>Vector inverses</title>
+        <p>
+            Given a function <m>f\in \mathcal{F}(X,F)</m>, its vector inverse is the function <m>-f\in \mathcal{F}(X,F)</m> defined as
+            <md>
+                (-f)(x)=-f(x)
+            </md>
+            for all <m>x\in X</m>. 
+        </p>
+    </li>
+</ul>
+We call <m>\mathcal{X,F}</m>, together with these vector operations, the <term>space of functions from <m>X</m> to <m>F</m></term>. 
+</p>
+</statement>
+</definition>
+<theorem xml:id="th_function_space_vector_space">
+<title>Function spaces are vector spaces</title>
+<statement>
+<p>
+Let <m>F</m> be a field, and let <m>X</m> be a set. The set <m>\mathcal{F}(X,F)</m> is a vector space with respect to function addition and function scalar multiplication. 
+</p>
+</statement>
+<proof>
+        <p> Left as a homework exercise. 
+            <!-- Consider the arithmetic axioms first. We will verify that Axioms (i), (ii), and (v) are satisfied. Given <m>f=(f(i))_{i\in I},g=(g(i))_{i\in I},h=(h(i))_{i\in I}\in F^I</m> and <m>c\in F</m>, we have 
+        <md>
+            <mrow> f+g \amp = (f(i)+g(i))_{i\in I} \amp (\text{def. vec. add.}) </mrow>
+            <mrow> \amp = (g(i)+f(i))_{i\in I} \amp (\text{field prop.})</mrow>
+            <mrow> \amp = g+f \amp (\text{def. vec. add.})</mrow>
+            <mrow> \amp </mrow>
+            <mrow>f+(g+h) \amp = (f(i)+(g+h)(i))_{i\in I} \amp (\text{def. vec. add.})</mrow>
+            <mrow> \amp = (f(i)+(g(i)+h(i)))_{i\in I} \amp (\text{def. vec. add.})</mrow>
+            <mrow> \amp = ((f(i)+g(i))+h(i))_{i\in I} \amp (\text{field prop.})</mrow>
+            <mrow> \amp = ((f+g)(i)+h(i))_{i\in I} \amp  (\text{def. vec. add.})</mrow>
+            <mrow> \amp = (f+g)+h \amp  (\text{def. vec. add.})</mrow>
+            <mrow> \amp </mrow>
+            <mrow>c(f+g) \amp =(c(f+g)(i))_{i\in I} \amp (\text{def. scal. mult})</mrow>
+            <mrow> \amp = (c(f(i)+g(i)))_{i\in I} \amp (\text{def. vec. add.})</mrow>
+            <mrow> \amp = (cf(i)+cg(i))_{i\in I} \amp (\text{field prop.})</mrow>
+            <mrow> \amp =((cf)(i)+(cg)(i))_{i\in I} \amp (\text{def. scal. mult})</mrow>
+            <mrow> \amp = cf+cg \amp (\text{def. vec. add.})</mrow>
+        </md>.
+        Lastly we will show that <m>0_I</m> does indeed satisfy the additive identity axiom (Axiom (iii)), leaving the verification of Axiom (iv) to the reader. Given any element <m>f=(f(i))_{i\in I}\in F^I</m>, we have 
+        <md>
+            <mrow>0_I+f \amp =(0_I(i)+f(i))_{i\in I} \amp (\text{def. vec. add.})</mrow>
+            <mrow> \amp = (0+f(i))_{i\in I}\amp (\text{def. of } 0_I)</mrow>
+            <mrow> \amp = (f(i))_{i\in I} \amp (\text{field prop.})</mrow>
+            <mrow> \amp = f</mrow>
+        </md>,
+        as desired.  -->
+    </p>
+</proof>
+</theorem>
+<example xml:id="eg_real_functions">
+<title>Real-valued functions</title>
+<statement>
+<p>
+Let <m>I=[a,b]\subseteq \R </m> be an interval in the real line. The vector operations on <m>\mathcal{F}(I,\R)</m> correspond to the function-arithmetic operations you met in precalculus and calculus: <ie/>, given functions <m>f,g\in\mathcal{F}(I,\R)</m>, their vector sum <m>f+g</m> is the function defined as 
+<m>(f+g)(x)=f(x)+g(x)</m> for all <m>x\in [a,b]</m>. Similarly, given a scalar <m>c\in \R</m> and function <m>f\in \mathcal{F}(I,\R)</m>, the vector scalar multiple <m>cf</m> is the function defined as <m>(cf)(x)=cf(x)</m> for all <m>x\in \R</m>. 
+</p>
+<p>
+    In this context it is possible to visualize our vector operations in terms of the graphs of the functions on the interval <m>[a,b]</m>. 
+</p>
+<figure xml:id="fig_func_arith">
+    <caption>Visualizing function arithmetic in <m>\mathcal{F}(I,\R)</m></caption>
+    <sidebyside>
+        <figure xml:id="fig_func_add">
+        <caption>Visualizing <m>f+g</m></caption>
+        <image>
+            <shortdescription>Visualizing function addition</shortdescription>
+           <sageplot>
+        f=plot(x,x,-1,1,color="blue")
+        g=plot(sin(pi*x),x,-1,1,color="red")
+        h=plot(x+sin(pi*x),x,-1,1,color="green")
+        s=text("$f$",(.5,.7),color="black",fontsize=16)
+        r=text("$g$",(.5,1.2),color="black",fontsize=16)
+        t=text("$f+g$",(.5,1.7),color="black",fontsize=16)
+        f+g+h+s+r+t
+        </sageplot> 
+        </image>
+        </figure>
+         <figure xml:id="fig_func_scale">
+        <caption>Visualizing <m>cf</m></caption>
+        <image>
+            <shortdescription>Visualizing function scalar multiplication</shortdescription>
+           <sageplot>
+        f=plot(sin(pi*x),x,-1,1,color="blue")
+        g=plot(.5*sin(pi*x),x,-1,1,color="red")
+        h=plot(-1.5*sin(pi*x),x,-1,1,color="green")
+        s=text("$\\frac{1}{2}\\,f$",(.5,.7),color="black",fontsize=16)
+        r=text("$f$",(.5,1.2),color="black",fontsize=16)
+        t=text("$-\\frac{3}{2}\\, f$",(.5,-1.3),color="black",fontsize=16)
+        f+g+h+s+r+t
+        </sageplot> 
+        </image>
+        </figure>
+    </sidebyside>
+</figure>
+
+</statement>
+</example>
+
+</subsection>
+<subsection xml:id="">
+<title>Vector space properties</title>
+<p>
+    We end this section with a few elementary vector space properties. Since these statements involve a general vector space (as opposed to a specific type of vector space), we will make no assumptions about <m>V</m> and the base field <m>F</m>, other than that <m>V</m> satisfies the vector space axioms and <m>F</m> satisfies the field axioms. 
+</p>
+<proposition xml:id="prop_zero_inv_unique">
+<title>Uniqueness of zero vector and inverses</title>
+<statement>
+<p>
+Let <m>V</m> be an <m>F</m>-vector space. 
+<ol>
+    <li>
+        <p>
+            The zero vector in <m>V</m> is unique: <ie/>, there is one and only one element of <m>V</m> that satisfies <xref ref="eq_zero_vector"/>.
+        </p>
+    </li>
+    <li>
+        <p>
+            Inverse vectors are unique: <ie/>, for all <m>v\in V</m> there is one and only one vector <m>-v</m> satisfying <xref ref="eq_vec_inv"/>.
+        </p>
+    </li>
+</ol>
+</p>
+</statement>
+<proof>
+<p>
+    <ol>
+        <li>
+            <p>
+                If <m>w\in V</m> satisfies <m>w+v=v</m> for all <m>v\in V</m>, then in particular, taking <m>v=\boldzero</m>, we see that <m>w+\boldzero=\boldzero</m>. But since <m>w+\boldzero=w</m> (using the defining property of <m>\boldzero)</m>, we see that 
+                <md>
+                    <mrow>w+\boldzero=\boldzero \amp \implies w=\boldzero</mrow>
+                </md>.
+                We conclude that <m>w=\boldzero</m>, as desired. 
+            </p>
+        </li>
+        <li>
+            <p>
+                Let <m>v\in V</m>. Given <m>w\in V</m> we have 
+                <md>
+                    <mrow>w+v =\boldzero \amp \implies w+v=-v+v \amp (-v+v=\boldzero) </mrow>
+                    <mrow> \amp \implies w+v+(-v)=-v+v+(-v)</mrow>
+                    <mrow> \amp \implies w+\boldzero=-v+\boldzero \amp (v+(-v)=\boldzero)</mrow>
+                    <mrow> \amp \implies w=-v \amp (\text{prop. of } \boldzero)</mrow>
+                </md>. 
+            </p>
+        </li>
+    </ol>
+
+</p>
+</proof>
+</proposition>
+
+
+
+<proposition xml:id="prop_vs_props">
+<title>Vector space properties</title>
+<statement>
+<p>
+Let <m>V</m> be an <m>F</m>-vector space. 
+ <ol>
+    <li>
+        <p>
+            For all <m>v\in V</m>, we have <m>0\boldv=\boldzero</m>.
+        </p>
+    </li>
+
+    <li>
+        <p>
+            For all <m>c\in F</m>, we have <m>c\boldzero=\boldzero</m>.
+        </p>
+    </li>
+
+    <li>
+        <p>
+            For all <m>v\in V</m>, we have <m>(-1)\boldv=-\boldv</m>.
+        </p>
+    </li>
+
+    <li>
+        <p>
+            For all <m>v\in V</m> and <m>c\in F</m>, if <m>cv=\boldzero</m>, then <m>c=0</m> or <m>v=\boldzero</m>.
+        </p>
+    </li>
+</ol>
+</p>
+</statement>
+<proof>
+<p>
+    We provide proofs of (1), leaving the rest as homework. 
+  Our proof is almost identical to a similar statement in <xref ref="p_field_properties"/>. For any <m>v\in V</m>, we have 
+  <md>
+    <mrow>0v \amp = (0+0)v \amp (\text{field prop. of } F)</mrow>
+    <mrow> \amp 0v+0v \amp (\text{dist. prop. of } V)</mrow>
+  </md>.
+  But then we have 
+  <md>
+        <mrow>0v\amp = 0v+0v </mrow>
+        <mrow>-(0v)+0v\amp=-(0v)+0v+0v \amp (\text{add } -(0v)\text{ to both sides}) </mrow>
+        <mrow>  \boldzero\amp=\boldzero+0v \amp (\text{vec. inv. prop.})</mrow>
+        <mrow> \boldzero\amp=0v \amp (\text{prop. of } \boldzero)</mrow>
+    </md>,
+    as desired.
+</p>
+<!-- <p>
+    Let <m>v\in V</m>. To prove (3), we will show that <m>(-1)v</m> satisfies the defining property <xref ref="eq_vec_inv"/> of <m>-v</m>; since each vector has a unique vector inverse (<xref ref="prop_zero_inv_unique"/>), it will then follow that <m>(-1)v=-v</m>. To show <m>(-1)v</m> satisfies <xref ref="eq_vec_inv"/>, we observe that 
+    <md>
+        <mrow>(-1)v+v \amp =(-1)v+1v \amp (\text{Axiom (viii)})</mrow>
+        <mrow> \amp = (-1+1)v \amp (\text{Axiom (vii)})</mrow>
+        <mrow> \amp =0v</mrow>
+        <mrow> \amp = \boldzero (\text{by (1)})</mrow>
+    </md>.
+    Thus <m>(-1)v=-v</m>. 
+</p> -->
+</proof>
+</proposition>
+
+</subsection>
+</section>
