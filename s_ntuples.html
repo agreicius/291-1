@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Vector space of n-tuples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Linear algebra">
+<meta property="book:author" content="Aaron Greicius">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = true;
+eBookConfig.acDefaultLanguage = 'python';
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.4';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.7e4cb14f24eb489b.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.54371ed119fe41be.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.40d828091d93b733.css">
+<script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="NUlinearalgfirstcourse" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/images/im_holycomm.svg" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Linear algebra</span> <span class="subtitle">A Kursobjekt for Math 291-1</span></a></h1>
+<p class="byline">Aaron Greicius</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="calculator-toggle" class="calculator-toggle button" title="Show calculator" aria-expanded="false" aria-controls="calculator-container"><span class="icon material-symbols-outlined" aria-hidden="true">&#xea5f;</span><span class="name">Calc</span></button><div id="calculator-container" class="calculator-container" style="display: none; z-index:100;"><div id="geogebra-calculator"></div></div>
+<script>
+var ggbApp = new GGBApplet({"appName": "classic",
+    "width": 330,
+    "height": 600,
+    "showToolBar": true,
+    "showAlgebraInput": true,
+    "perspective": "G/A",
+    "algebraInputPosition": "bottom",
+    "scaleContainerClass": "calculator-container",
+    "allowUpscale": true,
+    "autoHeight": true,
+    "disableAutoScale": false},
+true);
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_vector_space.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\compose}{\circ}
+\newcommand{\bolda}{{\mathbf a}}
+\newcommand{\boldb}{{\mathbf b}}
+\newcommand{\boldc}{{\mathbf c}}
+\newcommand{\boldd}{{\mathbf d}}
+\newcommand{\bolde}{{\mathbf e}}
+\newcommand{\boldi}{{\mathbf i}}
+\newcommand{\boldj}{{\mathbf j}}
+\newcommand{\boldk}{{\mathbf k}}
+\newcommand{\boldn}{{\mathbf n}}
+\newcommand{\boldp}{{\mathbf p}}
+\newcommand{\boldq}{{\mathbf q}}
+\newcommand{\boldr}{{\mathbf r}}
+\newcommand{\bolds}{{\mathbf s}}
+\newcommand{\boldt}{{\mathbf t}}
+\newcommand{\boldu}{{\mathbf u}}
+\newcommand{\boldv}{{\mathbf v}}
+\newcommand{\boldw}{{\mathbf w}}
+\newcommand{\boldx}{{\mathbf x}}
+\newcommand{\boldy}{{\mathbf y}}
+\newcommand{\boldz}{{\mathbf z}}
+\newcommand{\boldzero}{{\mathbf 0}}
+\newcommand{\boldmod}{\boldsymbol{ \bmod }}
+\newcommand{\boldT}{{\mathbf T}}
+\newcommand{\boldN}{{\mathbf N}}
+\newcommand{\boldB}{{\mathbf B}}
+\newcommand{\boldF}{{\mathbf F}}
+\newcommand{\boldS}{{\mathbf S}}
+\newcommand{\boldG}{{\mathbf G}}
+\newcommand{\boldK}{{\mathbf K}}
+\newcommand{\boldL}{{\mathbf L}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\NS}{null}
+\DeclareMathOperator{\RS}{row}
+\DeclareMathOperator{\CS}{col}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\mdeg}{mdeg}
+\DeclareMathOperator{\Lt}{Lt}
+\DeclareMathOperator{\Lc}{Lc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\diver}{div}
+\DeclareMathOperator{\flux}{flux}
+\def\Gal{\operatorname{Gal}}
+\def\ord{\operatorname{ord}}
+\def\ML{\operatorname{M}}
+\def\GL{\operatorname{GL}}
+\def\PGL{\operatorname{PGL}}
+\def\SL{\operatorname{SL}}
+\def\PSL{\operatorname{PSL}}
+\def\GSp{\operatorname{GSp}}
+\def\PGSp{\operatorname{PGSp}}
+\def\Sp{\operatorname{Sp}}
+\def\PSp{\operatorname{PSp}}
+\def\Aut{\operatorname{Aut}}
+\def\Inn{\operatorname{Inn}}
+\def\Hom{\operatorname{Hom}}
+\def\End{\operatorname{End}}
+\def\ch{\operatorname{char}}
+\def\Zp{\Z/p\Z}
+\def\Zm{\Z/m\Z}
+\def\Zn{\Z/n\Z}
+\def\Fp{\F_p}
+\newcommand{\surjects}{\twoheadrightarrow}
+\newcommand{\injects}{\hookrightarrow}
+\newcommand{\bijects}{\leftrightarrow}
+\newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+\newcommand{\mclass}[2][m]{[#2]_{#1}}
+\newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+\newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\normalin}{\trianglelefteq}
+\newcommand{\angvec}[1]{\langle #1\rangle}
+\newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+\newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+\newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+\def\ntoinfty{\lim_{n\rightarrow\infty}}
+\def\xtoinfty{\lim_{x\rightarrow\infty}}
+\def\ii{\item}
+\def\bb{\begin{enumerate}}
+\def\ee{\end{enumerate}}
+\def\ds{\displaystyle}
+\def\p{\partial}
+\newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+}
+\newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+\newenvironment{linsys}[2][m]{
+\begin{array}[#1]{*{#2}{rc}c}
+}{
+\end{array}}
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+a_{m,1}x_{1}\amp +\amp a_{m,2}x_{2}\amp +\,\cdots\,+\amp a_{m,n}x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+e_1:\amp  a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+e_2: \amp a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+e_m: \amp a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp 0\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp 0\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp 0
+\end{array}
+}
+\newcommand{\vareqsys}[4]{
+\begin{array}{ccccccc}
+#3_{1,1}\,x_{1}\amp +\amp #3_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  #3_{1,#2}\,x_{#2}\amp =\amp #4_1\\
+#3_{2,1}\,x_{1}\amp +\amp #3_{2,2}\,x_{2}\amp +\,\cdots\,+\amp #3_{2,#2}\,x_{#2}\amp =\amp #4_2\\
+\vdots \amp \amp \vdots \amp  \amp \vdots \ amp =\amp  \\
+#3_{#1, 1}\,x_{1}\amp +\amp #3_{#1, 2}\,x_{2}\amp +\,\cdots\,+\amp #3_{#1, #2}\,x_{#2}\amp =\amp #4_{#1}
+\end{array}
+}
+\newcommand{\genmatrix}[1][a]{
+\begin{bmatrix}
+#1_{1,1} \amp  #1_{1,2} \amp  \cdots \amp  #1_{1,n} \\
+#1_{2,1} \amp  #1_{2,2} \amp  \cdots \amp  #1_{2,n} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#1_{m,1} \amp  #1_{m,2} \amp  \cdots \amp  #1_{m,n}
+\end{bmatrix}
+}
+\newcommand{\varmatrix}[3]{
+\begin{bmatrix}
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}
+\end{bmatrix}
+}
+\newcommand{\augmatrix}{
+\begin{amatrix}[cccc|c]
+a_{1,1} \amp  a_{1,2} \amp  \cdots \amp  a_{1,n} \amp b_{1}\\
+a_{2,1} \amp  a_{2,2} \amp  \cdots \amp  a_{2,n} \amp b_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
+\end{amatrix}
+}
+\newcommand{\varaugmatrix}[4]{
+\begin{amatrix}[cccc|c]
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \amp #4_{1}\\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \amp #4_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}\amp #4_{#1}
+\end{amatrix}
+}
+\newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+\newcommand{\generalmatrix}[3]{
+\left(
+\begin{array}{cccc}
+#1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+#1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+\amp \vdots                         \\
+#1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+\end{array}
+\right)  }
+\newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+\newcommand{\rowvec}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\DeclareMathOperator{\size}{size}
+\DeclareMathOperator{\adjoint}{adj}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+\renewcommand{\Re}{\operatorname{Re}}
+ \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="c_foundations.html" class="internal"><span class="codenumber">0</span> <span class="title">Foundations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_sets_tuples.html" class="internal"><span class="codenumber">0.1</span> <span class="title">Sets and tuples</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#s_sets" class="internal"><span class="codenumber">0.1.1</span> <span class="title">Sets</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#ss_tuples" class="internal"><span class="codenumber">0.1.2</span> <span class="title">Tuples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_functions.html" class="internal"><span class="codenumber">0.2</span> <span class="title">Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_functions_definitions" class="internal"><span class="codenumber">0.2.1</span> <span class="title">Definition and notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_function_image_properties" class="internal"><span class="codenumber">0.2.2</span> <span class="title">Function image, injections, surjections, bijections</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_logic.html" class="internal"><span class="codenumber">0.3</span> <span class="title">Logic</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_propositional_calculus" class="internal"><span class="codenumber">0.3.1</span> <span class="title">Propositional logic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_predicate_logic" class="internal"><span class="codenumber">0.3.2</span> <span class="title">Predicate logic</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_proof_technique.html" class="internal"><span class="codenumber">0.4</span> <span class="title">Proof techniques</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_logical_structure" class="internal"><span class="codenumber">0.4.1</span> <span class="title">Logical structure</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_implication" class="internal"><span class="title">Implication</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_disjunction" class="internal"><span class="title">Disjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_equivalence" class="internal"><span class="title">Equivalence</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_logical_chains" class="internal"><span class="title">Chains of implications/equivalences</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_proof_by_contradiction" class="internal"><span class="title">Proof by contradiction</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_Equalities" class="internal"><span class="codenumber">0.4.2</span> <span class="title">Equalities</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_chain_equalities" class="internal"><span class="title">Chain of equalities</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_set_properties" class="internal"><span class="codenumber">0.4.3</span> <span class="title">Basic set properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_inclusion" class="internal"><span class="title">Set inclusion</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_equality" class="internal"><span class="title">Set equality</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_function_properties" class="internal"><span class="codenumber">0.4.4</span> <span class="title">Basic function properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_function_equality" class="internal"><span class="title">Function equality</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_injective_surjective_bijective" class="internal"><span class="title">Injective, surjective, bijective</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_mathematical_induction" class="internal"><span class="codenumber">0.4.5</span> <span class="title">Mathematical induction</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_weak_induction" class="internal"><span class="title">Proof by induction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_strong_induction" class="internal"><span class="title">Proof by strong induction</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="c_291-1.html" class="internal"><span class="codenumber">1</span> <span class="title">Math 291-1</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s_natural_numbers.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Natural numbers: Peano axioms</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_reals_integers_rationals.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Reals, rationals, fields</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_reals" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Real numbers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_fields" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Fields</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_complex.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Complex numbers</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_complex_def" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Complex arithmetic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_modulus_conjugation" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Further complex operations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_geometry_complex" class="internal"><span class="codenumber">1.3.3</span> <span class="title">Geometry of <span class="process-math">\(\C\)</span> and polar form</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_vector_space.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_vector_space.html#ss_vector_space" class="internal"><span class="codenumber">1.4.1</span> <span class="title">Definition and first examples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_vector_space.html#" class="internal"><span class="codenumber">1.4.2</span> <span class="title">Vector space properties</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="s_ntuples.html" class="internal"><span class="codenumber">1.5</span> <span class="title">Vector space of <span class="process-math">\(n\)</span>-tuples</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_ntuples.html#ss_ntuples" class="internal"><span class="codenumber">1.5.1</span> <span class="title"><span class="process-math">\(n\)</span>-tuples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_ntuples.html#ss_Rn_visual" class="internal"><span class="codenumber">1.5.2</span> <span class="title">Visualizing <span class="process-math">\(\R^n\)</span></span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="my-great-book-6.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-notation.html" class="internal"><span class="codenumber">A</span> <span class="title">Notation</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-exercises.html" class="internal"><span class="codenumber">B</span> <span class="title">Exercises</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-defs.html" class="internal"><span class="codenumber">C</span> <span class="title">Definitions</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-thms.html" class="internal"><span class="codenumber">D</span> <span class="title">Theory and procedures</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-egs.html" class="internal"><span class="codenumber">E</span> <span class="title">Examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-sage.html" class="internal"><span class="codenumber">F</span> <span class="title">Sage examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-figures.html" class="internal"><span class="codenumber">G</span> <span class="title">Figures and video examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-matnras.html" class="internal"><span class="codenumber">H</span> <span class="title">Mantras and fiats</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="s_ntuples"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector space of <span class="process-math">\(n\)</span>-tuples</span>
+</h2>
+<section class="subsection" id="ss_ntuples"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(n\)</span>-tuples</span>
+</h3>
+<article class="definition definition-like" id="d_ntuples"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(F\)</span>-valued <span class="process-math">\(n\)</span>-tuples.</span>
+</h4>
+<div class="para logical" id="d_ntuples-3-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(n\)</span> be a positive integer. An <dfn class="terminology"><span class="process-math">\(F\)</span>-valued <span class="process-math">\(n\)</span>-tuple</dfn> is a function <span class="process-math">\(f\colon \{1,2,\dots, n\}\rightarrow F\text{.}\)</span> In this setting, we will use an alternative <dfn class="terminology">tuple notation</dfn>, writing</div>
+<div class="displaymath process-math" id="d_ntuples-3-1-6">
+\begin{equation*}
+f=(a_i)_{i=1}^n=(a_1,a_2,\dots, a_n)\text{,}
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(a_i=f(i)\text{,}\)</span> the value of <span class="process-math">\(f\)</span> at <span class="process-math">\(i\text{,}\)</span> for all <span class="process-math">\(i\in \{1,2,\dots, n\}\text{.}\)</span> We will also favor letters like <span class="process-math">\(v,w,u\)</span> to denote <span class="process-math">\(n\)</span>-tuples, as opposed to <span class="process-math">\(f,g,h\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_ntuples-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="d_ntuples-3-2">Given an <span class="process-math">\(n\)</span>-tuple <span class="process-math">\(v=(a_i)_{i=1}^n\text{,}\)</span> we call <span class="process-math">\(n\)</span> the <dfn class="terminology">length</dfn> of <span class="process-math">\(v\text{,}\)</span> and for each index <span class="process-math">\(i\in \{1,2,\dots, n\}\text{,}\)</span> we call <span class="process-math">\(a_i\)</span> the <span class="process-math">\(i\)</span>-th <dfn class="terminology">component</dfn> (or <dfn class="terminology">coordinate</dfn>, or <dfn class="terminology">entry</dfn>, or <dfn class="terminology">term</dfn>) of <span class="process-math">\(v\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_ntuples-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="d_ntuples-3-3">
+<div class="para">The set of all <span class="process-math">\(F\)</span>-valued <span class="process-math">\(n\)</span>-tuples is denoted <span class="process-math">\(F^n\text{:}\)</span> i.e.,</div>
+<div class="displaymath process-math" id="d_ntuples-3-3-5">
+\begin{equation*}
+F^n=\{(a_i)_{i=1}^n\mid a_i\in \F \text{ for all } i=1,2,\dots, n\}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_ntuples-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.5.1: F-valued n-tuples"><a href="#d_ntuples" title="Copy heading and permalink for Definition 1.5.1: F-valued n-tuples" aria-label="Copy heading and permalink for Definition 1.5.1: F-valued n-tuples">🔗</a></div></article><div class="para logical" id="ss_ntuples-3">
+<div class="para">Observe that by definition, <span class="process-math">\(F^n\)</span> is just a special instance of our function space construction <span class="process-math">\(\mathcal{F}(X,F)\text{.}\)</span> In more detail, an <span class="process-math">\(n\)</span>-tuple <span class="process-math">\((a_i)_{i=1}^n\)</span> is by definition a function <span class="process-math">\(f\colon \{1,2,\dots, n\}\rightarrow F\)</span> defined as <span class="process-math">\(f(i)=a_i\)</span> for all <span class="process-math">\(1\leq i\leq n\text{,}\)</span> and thus the set <span class="process-math">\(F^n\)</span> is precisely the function space <span class="process-math">\(\mathcal{F}(I, F)\text{,}\)</span> where <span class="process-math">\(I=\{1,2,\dots, n\}\text{.}\)</span> As a first convenient consequence of this fact, our definition of <span class="process-math">\(n\)</span>-tuples comes equipped with a well-defined notion of equality from their fundamental nature as functions: namely, we have</div>
+<div class="displaymath process-math" id="ss_ntuples-3-12">
+\begin{equation*}
+(a_1,a_2,\dots, a_n)=(b_1,b_2,\dots, b_n)
+\end{equation*}
+</div>
+<div class="para">if and only if <span class="process-math">\(a_i=b_i\)</span> for all <span class="process-math">\(1\leq i\leq n\text{.}\)</span> In other words, our rigorous notions of <span class="process-math">\(n\)</span>-tuples captures the often casually introduced notion of an <em class="emphasis">ordered sequence</em>. We record this as an official fact to make this prominent.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_ntuples-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop_ntuple_equality"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(n\)</span>-tuple equality.</span>
+</h4>
+<div class="para logical" id="prop_ntuple_equality-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(n\)</span> be a positive integer. Given <span class="process-math">\(v=(a_i)_{i=1}^n, w=(b_i)_{i=1}^n\in F^n\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="prop_ntuple_equality-2-1-4">
+\begin{equation}
+v=w \text{ if and only if } a_i=b_i \text{ for all } i\in \{1,2,\dots, n\}\text{.}\tag{1.5.1}
+\end{equation}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_ntuple_equality-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.5.2: n-tuple equality"><a href="#prop_ntuple_equality" title="Copy heading and permalink for Proposition 1.5.2: n-tuple equality" aria-label="Copy heading and permalink for Proposition 1.5.2: n-tuple equality">🔗</a></div></article><div class="para" id="ss_ntuples-5">Another consequence of <span class="process-math">\(F^n\)</span> being defined as <span class="process-math">\(\mathcal{F}(I,F)\)</span> for <span class="process-math">\(I=\{1,2,\dots, n\}\text{,}\)</span> is that, thanks to <a href="s_vector_space.html#th_function_space_vector_space" class="xref" data-knowl="./knowl/xref/th_function_space_vector_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.4.11: Function spaces are vector spaces">Theorem 1.4.11</a>, <span class="process-math">\(F^n\)</span> automatically inherits the structure of a vector space. The theorem below makes this explicit, and rearticulates the function addition and scalar multiplication operations using tuple notation.<div class="autopermalink" data-description="Paragraph"><a href="#ss_ntuples-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="th_ntuples_vector_space"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"><span class="process-math">\(F^n\)</span> vector space structure.</span>
+</h4>
+<div class="para logical" id="th_ntuples_vector_space-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(n\)</span> be a positive integer. The set <span class="process-math">\(F^n\)</span> of all <span class="process-math">\(F\)</span>-valued <span class="process-math">\(n\)</span>-tuples is a vector space with respect to the operations defined as</div>
+<div class="displaymath process-math" id="th_ntuples_vector_space-2-1-6">
+\begin{align*}
+(a_i)_{i=1}^n+(b_i)_{i=1}^n\amp =(a_i)_{i=1}^n+(b_i)_{i=1}^n \\
+c(a_i)_{i=1}^n\amp =(ca_i)_{i=1}^n 
+\end{align*}
+</div>
+<div class="para">for all <span class="process-math">\((a_i)_{i=1}^n, (b_i)_{i=1}^n\in F^n\)</span> and <span class="process-math">\(c\in F\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_ntuples_vector_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.5.3: F^n vector space structure"><a href="#th_ntuples_vector_space" title="Copy heading and permalink for Theorem 1.5.3: F^n vector space structure" aria-label="Copy heading and permalink for Theorem 1.5.3: F^n vector space structure">🔗</a></div></article><details id="th_ntuples_vector_space-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_ntuples_vector_space-3-1"><div class="autopermalink" data-description="Paragraph"><a href="#th_ntuples_vector_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div></div>
+<div class="autopermalink" data-description="Proof 1.5.3.1"><a href="#th_ntuples_vector_space-3" title="Copy heading and permalink for Proof 1.5.3.1" aria-label="Copy heading and permalink for Proof 1.5.3.1">🔗</a></div></article></details><article class="definition definition-like" id="d_tuples_special_elements"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Special elements of <span class="process-math">\(F^n\)</span>.</span>
+</h4>
+<div class="para logical" id="d_tuples_special_elements-4-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(n\)</span> be a positive integer.</div>
+<ul class="disc" id="d_tuples_special_elements-4-1-3">
+<li id="d_tuples_special_elements-4-1-3-1">
+<span class="heading li--heading"><span class="title li--heading-title">Zero vector.</span></span><div class="para" id="d_tuples_special_elements-4-1-3-1-2">The <dfn class="terminology">zero vector</dfn> of <span class="process-math">\(F^n\text{,}\)</span> denoted <span class="process-math">\(\boldzero_n\)</span> (or <span class="process-math">\(\boldzero\)</span> for short), is the <span class="process-math">\(n\)</span>-tuple, all of whose entries are equal to <span class="process-math">\(0\text{:}\)</span> i.e., <span class="process-math">\(\boldzero_n=(0)_{i=1}^n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_special_elements-4-1-3-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Zero vector"><a href="#d_tuples_special_elements-4-1-3-1" title="Copy heading and permalink for Item: Zero vector" aria-label="Copy heading and permalink for Item: Zero vector">🔗</a></div>
+</li>
+<li id="d_tuples_special_elements-4-1-3-2">
+<span class="heading li--heading"><span class="title li--heading-title">Vector inverse.</span></span><div class="para logical" id="d_tuples_special_elements-4-1-3-2-2">
+<div class="para">Given an <span class="process-math">\(n\)</span>-tuple <span class="process-math">\(v=(a_i)_{i=1}^n\in F^n\text{,}\)</span> the <dfn class="terminology">vector inverse</dfn> of <span class="process-math">\(v\text{,}\)</span> denoted <span class="process-math">\(-v\text{,}\)</span> is the element of <span class="process-math">\(F^n\)</span> defined as</div>
+<div class="displaymath process-math" id="d_tuples_special_elements-4-1-3-2-2-7">
+\begin{equation*}
+-v=(-a_i)_{i=1}^n\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_special_elements-4-1-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Vector inverse"><a href="#d_tuples_special_elements-4-1-3-2" title="Copy heading and permalink for Item: Vector inverse" aria-label="Copy heading and permalink for Item: Vector inverse">🔗</a></div>
+</li>
+<li id="d_tuples_special_elements-4-1-3-3">
+<span class="heading li--heading"><span class="title li--heading-title">Indicator vectors.</span></span><div class="para" id="d_tuples_special_elements-4-1-3-3-2">For each <span class="process-math">\(i\in \{1,2,\dots, n\}\text{,}\)</span> the <dfn class="terminology"><span class="process-math">\(i\)</span>-th standard basis element</dfn> of <span class="process-math">\(F^n\text{,}\)</span> denoted <span class="process-math">\(\bolde_i\text{,}\)</span> is the <span class="process-math">\(n\)</span>-tuple whose <span class="process-math">\(i\)</span>-th entry is equal to <span class="process-math">\(1\)</span> and whose <span class="process-math">\(j\)</span>-th entry is equal to <span class="process-math">\(0\)</span> for all <span class="process-math">\(j\ne i\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_special_elements-4-1-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Indicator vectors"><a href="#d_tuples_special_elements-4-1-3-3" title="Copy heading and permalink for Item: Indicator vectors" aria-label="Copy heading and permalink for Item: Indicator vectors">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_special_elements-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.5.4: Special elements of F^n"><a href="#d_tuples_special_elements" title="Copy heading and permalink for Definition 1.5.4: Special elements of F^n" aria-label="Copy heading and permalink for Definition 1.5.4: Special elements of F^n">🔗</a></div></article><article class="definition definition-like" id="d_lin_comb"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Linear combination.</span>
+</h4>
+<div class="para logical" id="d_lin_comb-2-1">
+<div class="para">Let <span class="process-math">\(V\)</span> be a vector space, and let <span class="process-math">\(S\)</span> be a nonempty subset of <span class="process-math">\(V\text{.}\)</span> A <dfn class="terminology">linear combination</dfn> of <span class="process-math">\(S\)</span> is a vector of the form</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_lin_comb.html ./knowl/xref/eq_lin_comb.html" id="eq_lin_comb">
+\begin{equation}
+c_1v_1+c_2v_2+\cdots +c_nv_n\text{,}\tag{1.5.2}
+\end{equation}
+</div>
+<div class="para">where <span class="process-math">\(v_i\in S\)</span> and <span class="process-math">\(c_i\in \R\)</span> for all <span class="process-math">\(1\leq i\leq n\text{.}\)</span> The scalars <span class="process-math">\(c_i\)</span> appearing in <a href="s_ntuples.html#eq_lin_comb" class="xref" data-knowl="./knowl/xref/eq_lin_comb.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.5.2">(1.5.2)</a> are called the <dfn class="terminology">coefficients</dfn> of the linear combination. The linear combination <a href="s_ntuples.html#eq_lin_comb" class="xref" data-knowl="./knowl/xref/eq_lin_comb.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.5.2">(1.5.2)</a> is <dfn class="terminology">trivial</dfn> if <span class="process-math">\(c_i=0\)</span> for all <span class="process-math">\(1\leq i\leq n\text{,}\)</span> and <dfn class="terminology">nontrivial</dfn> if <span class="process-math">\(c_i\ne 0\)</span> for some <span class="process-math">\(1\leq i\leq n\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_lin_comb-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="d_lin_comb-2-2">In the special case where <span class="process-math">\(S\)</span> is described enumeratively as <span class="process-math">\(S=\{v_1,v_2,\dots, v_n\}\)</span> or <span class="process-math">\(S=\{v_1,v_2,\dots\}\text{,}\)</span> we will call a linear combination of <span class="process-math">\(S\)</span> a linear combination of the <span class="process-math">\(v_i\)</span> for short.<div class="autopermalink" data-description="Paragraph"><a href="#d_lin_comb-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="d_lin_comb-2-3">
+<div class="para">We will sometimes use sigma notation for linear combinations, writing</div>
+<div class="displaymath process-math" id="d_lin_comb-2-3-1">
+\begin{equation*}
+\sum_{i=1}^nc_iv_i
+\end{equation*}
+</div>
+<div class="para">for the linear combination of the vectors <span class="process-math">\(v_1,v_2,\dots, v_n\)</span> whose <span class="process-math">\(i\)</span>-th coefficient is <span class="process-math">\(c_i\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_lin_comb-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.5.5: Linear combination"><a href="#d_lin_comb" title="Copy heading and permalink for Definition 1.5.5: Linear combination" aria-label="Copy heading and permalink for Definition 1.5.5: Linear combination">🔗</a></div></article><article class="example example-like" id="ss_ntuples-9"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Linear combination: <span class="process-math">\(n\)</span>-vectors.</span>
+</h4>
+<div class="para" id="ss_ntuples-9-2-1">Show that every vector in <span class="process-math">\(F^3\)</span> is a linear combination of the standard basis vectors <span class="process-math">\(\bolde_1\text{,}\)</span> <span class="process-math">\(\bolde_2\text{,}\)</span> and <span class="process-math">\(\bolde_3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_ntuples-9-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="ss_ntuples-9-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ss_ntuples-9-3-1">
+<div class="para">Given any vector <span class="process-math">\(v=(a,b,c)\in F^3\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="ss_ntuples-9-3-1-2">
+\begin{align*}
+v\amp =a\bolde_1+b\bolde_2+c\bolde_3  \text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_ntuples-9-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.5.6.1"><a href="#ss_ntuples-9-3" title="Copy heading and permalink for Solution 1.5.6.1" aria-label="Copy heading and permalink for Solution 1.5.6.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.5.6: Linear combination: n-vectors"><a href="#ss_ntuples-9" title="Copy heading and permalink for Example 1.5.6: Linear combination: n-vectors" aria-label="Copy heading and permalink for Example 1.5.6: Linear combination: n-vectors">🔗</a></div></article><article class="definition definition-like" id="d_vec_difference"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Vector difference.</span>
+</h4>
+<div class="para logical" id="d_vec_difference-2-1">
+<div class="para">Let <span class="process-math">\(V\)</span> be a vector space. Given vectors <span class="process-math">\(v,w\in V\text{,}\)</span> we define their <dfn class="terminology">difference</dfn> <span class="process-math">\(v-w\)</span> as</div>
+<div class="displaymath process-math" id="d_vec_difference-2-1-5">
+\begin{equation*}
+v-w=v+(-w)\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_vec_difference-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.5.7: Vector difference"><a href="#d_vec_difference" title="Copy heading and permalink for Definition 1.5.7: Vector difference" aria-label="Copy heading and permalink for Definition 1.5.7: Vector difference">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.5.1: n-tuples"><a href="#ss_ntuples" title="Copy heading and permalink for Subsection 1.5.1: n-tuples" aria-label="Copy heading and permalink for Subsection 1.5.1: n-tuples">🔗</a></div></section><section class="subsection" id="ss_Rn_visual"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Visualizing <span class="process-math">\(\R^n\)</span></span>
+</h3>
+<div class="para" id="ss_Rn_visual-2">We will only explicitly visualize (or graph) elements of <span class="process-math">\(\R^n\)</span> for <span class="process-math">\(n=2\)</span> and <span class="process-math">\(n=3\text{.}\)</span> However, these special cases bring to light an important <em class="emphasis">point-vector duality</em> in how we conceive of <span class="process-math">\(n\)</span>-tuples that carries over into higher values of <span class="process-math">\(n\text{.}\)</span> Fix <span class="process-math">\(n=3\)</span> for now. We will sometimes conceive of a triple <span class="process-math">\((a,b,c)\in \R^3\)</span> as a <em class="emphasis">point</em>, in which case we will use capital letters to denote the triple (e.g., <span class="process-math">\(P=(a,b,c)\)</span>), and will represent the point visually with respect to a coordinate system as the point in <span class="process-math">\(3\)</span>-space reached by starting at the origin <span class="process-math">\(O=(0,0,0)\)</span> and moving a directed distance <span class="process-math">\(a\)</span> units in the <span class="process-math">\(x\)</span>-direction, <span class="process-math">\(b\)</span> units in the <span class="process-math">\(y\)</span>-direction and <span class="process-math">\(c\)</span> units in the <span class="process-math">\(z\)</span>-direction.<div class="autopermalink" data-description="Paragraph"><a href="#ss_Rn_visual-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig_point"><div class="interactive-iframe-container"><iframe id="geogebra_point" style="width:600px; height:450px; display: block; " src="geogebra_point-if.html"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Point visualization of triple. Made with <a class="external" href="https://www.geogebra.org" target="_blank">GeoGebra</a>.<div class="autopermalink" data-description="Figure 1.5.8"><a href="#fig_point" title="Copy heading and permalink for Figure 1.5.8" aria-label="Copy heading and permalink for Figure 1.5.8">🔗</a></div></figcaption></figure><div class="para" id="ss_Rn_visual-4">Alternatively, when conceiving of a triple <span class="process-math">\((a,b,c)\)</span> as a <em class="emphasis">vector</em>, we will use lowercase bold letters to denote it (e.g., <span class="process-math">\(\boldx=(a,b,c)\)</span> or <span class="process-math">\(\boldv=(a,b,c)\)</span>), and represent it visually as a directed line segment (i.e., an arrow). In more detail, given the 3-vector <span class="process-math">\(\boldx=(a,b,c)\text{,}\)</span> we choose an <dfn class="terminology">initial point</dfn> <span class="process-math">\(Q=(x_0,y_0,z_0)\)</span> and represent <span class="process-math">\(\boldx\)</span> as the directed line segment <span class="process-math">\(\overrightarrow{QR}\)</span> that starts at <span class="process-math">\(Q\)</span> and ends at the point <span class="process-math">\(R=(x_0+a,y_0+b,z_0+c)\text{,}\)</span> the <dfn class="terminology">terminal point</dfn> of <span class="process-math">\(\overrightarrow{QR}\text{.}\)</span> Note that in this manner we get infinitely-many different graphical representations of <span class="process-math">\(\boldx\text{:}\)</span>  one for each choice of starting point <span class="process-math">\(Q\text{.}\)</span> Although these are technically different arrows (they have different starting points), we consider them to be equal as <em class="emphasis">vectors</em>. You can think of each particular choice of arrow-representation <span class="process-math">\(\boldx=\overrightarrow{QR}\)</span> as an instance or incarnation of the vector <span class="process-math">\(\boldx=(a,b,c)\text{.}\)</span> When the initial point of our arrow representation is chosen to be the origin <span class="process-math">\(O=(0,0,0)\text{,}\)</span> we have <span class="process-math">\(\boldx=\overrightarrow{OP}\text{,}\)</span> where <span class="process-math">\(P=(a,b,c)\text{.}\)</span> We call <span class="process-math">\(\overrightarrow{OP}\)</span> the <dfn class="terminology">position vector</dfn> of the point <span class="process-math">\(P\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_Rn_visual-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig_vec_vis"><div class="interactive-iframe-container"><iframe id="geogebra_vec_vis" style="width:600px; height:450px; display: block; " src="geogebra_vec_vis-if.html"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Vector visualization of triple <span class="process-math">\(\boldx=\overrightarrow{OP}=\overrightarrow{QR}\text{.}\)</span> Drag <span class="process-math">\(P\)</span> to change the vector <span class="process-math">\(\boldx\text{.}\)</span> Drag <span class="process-math">\(Q\)</span> to change the initial point of <span class="process-math">\(\overrightarrow{QR}\text{.}\)</span> Made with <a class="external" href="https://www.geogebra.org" target="_blank">GeoGebra</a>.<div class="autopermalink" data-description="Figure 1.5.9"><a href="#fig_vec_vis" title="Copy heading and permalink for Figure 1.5.9" aria-label="Copy heading and permalink for Figure 1.5.9">🔗</a></div></figcaption></figure><div class="para logical" id="ss_Rn_visual-6">
+<div class="para">The representation of vectors as arrows gives rise to the so-called <em class="emphasis">tip-to-tail</em> interpretation of vector addition. Let <span class="process-math">\(\boldx=(a,b,c)\)</span> and <span class="process-math">\(\boldy=(d,e,f)\text{.}\)</span> Starting with an initial point <span class="process-math">\(P=(x_0,y_0,z_0)\text{,}\)</span> we can represent <span class="process-math">\(\boldx\)</span> as <span class="process-math">\(\overrightarrow{PQ}\text{,}\)</span> where <span class="process-math">\(Q=(x_0+a,y_0+b,z_0+c)\text{,}\)</span> and <span class="process-math">\(\boldy=\overrightarrow{QR}\text{,}\)</span> where <span class="process-math">\(R=(x_0+a+d,y_0+b+e,z_0+c+f)\text{.}\)</span> But then we have</div>
+<div class="displaymath process-math" id="ss_Rn_visual-6-10">
+\begin{equation*}
+\boldx+\boldy=(a+d,b+e,c+f)=\overrightarrow{PR}\text{,}
+\end{equation*}
+</div>
+<div class="para">or alternatively,</div>
+<div class="displaymath process-math" id="eq_tip_tail">
+\begin{equation}
+\overrightarrow{PQ}+\overrightarrow{QR}=\overrightarrow{PR}\text{.}\tag{1.5.3}
+\end{equation}
+</div>
+<div class="para">In other words, if we choose our arrow representations so that the terminal point (the tip) of <span class="process-math">\(\boldx=\overrightarrow{PQ}\)</span>  is placed at the initial point (the tail) of <span class="process-math">\(\boldy=\overrightarrow{QR}\)</span> , then <span class="process-math">\(\boldx+\boldy\)</span> is represented by the arrow whose initial point is <span class="process-math">\(P\text{,}\)</span> and whose terminal point is reached by first traveling along <span class="process-math">\(\boldx\text{,}\)</span> and then traveling along <span class="process-math">\(\boldy\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_Rn_visual-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig_tip_tail"><div class="interactive-iframe-container"><iframe id="geogebra_tip_tail" style="width:600px; height:450px; display: block; " src="geogebra_tip_tail-if.html"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Tip-to-tail visualization of vector addition. Made with <a class="external" href="https://www.geogebra.org" target="_blank">GeoGebra</a>.<div class="autopermalink" data-description="Figure 1.5.10"><a href="#fig_tip_tail" title="Copy heading and permalink for Figure 1.5.10" aria-label="Copy heading and permalink for Figure 1.5.10">🔗</a></div></figcaption></figure><div class="para logical" id="ss_Rn_visual-8">
+<div class="para">The tip-to-tail visualization of vector addition gives rise to a similar conceptualization of vector difference. Performing a little vector algebra on the definition</div>
+<div class="displaymath process-math" id="ss_Rn_visual-8-1">
+\begin{equation*}
+\boldy-\boldx=\boldy+ (-\boldx)\text{,}
+\end{equation*}
+</div>
+<div class="para">we see that</div>
+<div class="displaymath process-math" id="ss_Rn_visual-8-2">
+\begin{equation*}
+\boldx+(\boldy-\boldx)=\boldy\text{.}
+\end{equation*}
+</div>
+<div class="para">Using tip-to-tail terminology, this means if we represent <span class="process-math">\(\boldx=\overrightarrow{PQ}\)</span> and <span class="process-math">\(\boldy=\overrightarrow{PR}\text{,}\)</span> then <span class="process-math">\(\boldy-\boldx\)</span> is the arrow <span class="process-math">\(\overrightarrow{QR}\)</span> that starts at the tip of <span class="process-math">\(\boldx\)</span> and ends at the tip of <span class="process-math">\(\boldy\text{.}\)</span> We thus have a <em class="emphasis">tip-to-tip</em> description of vector difference.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_Rn_visual-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig_tip_tip"><div class="interactive-iframe-container"><iframe id="geogebra_tip_tip" style="width:600px; height:450px; display: block; " src="geogebra_tip_tip-if.html"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.11<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Tip-to-tip visualization of vector difference. Made with <a class="external" href="https://www.geogebra.org" target="_blank">GeoGebra</a>.<div class="autopermalink" data-description="Figure 1.5.11"><a href="#fig_tip_tip" title="Copy heading and permalink for Figure 1.5.11" aria-label="Copy heading and permalink for Figure 1.5.11">🔗</a></div></figcaption></figure><div class="para" id="ss_Rn_visual-10">Next consider scalar multiplication. Given a vector <span class="process-math">\(\boldx=(a,b,c)=\overrightarrow{PQ}\)</span> and a scalar <span class="process-math">\(k\in \R\text{,}\)</span> the scalar multiple <span class="process-math">\(k\boldx=(ka,kb,kc)\)</span> can be represented as an arrow that starts at <span class="process-math">\(P\)</span> and points along the line containing <span class="process-math">\(\overrightarrow{PQ}\text{.}\)</span> As we will see in the next section, the length of the resulting arrow is multiplied by the factor <span class="process-math">\(\abs{k}\text{,}\)</span> resulting in a stretched arrow if <span class="process-math">\(\abs{k}&gt; 1\)</span> and a shrunk arrow if <span class="process-math">\(\abs{k}&lt; 1\text{.}\)</span> Furthermore, if <span class="process-math">\(k\geq 0\text{,}\)</span> then the arrow representing <span class="process-math">\(k\boldx\)</span> points in the same direction as <span class="process-math">\(\overline{PQ}\text{;}\)</span> if <span class="process-math">\(k&lt; 0\text{,}\)</span> it points in the opposite direction.<div class="autopermalink" data-description="Paragraph"><a href="#ss_Rn_visual-10" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<figure class="figure figure-like" id="fig_scal_mult"><div class="interactive-iframe-container"><iframe id="geogebra_scal_mult" style="width:600px; height:450px; display: block; " src="geogebra_scal_mult-if.html"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.5.12<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Visualization of scalar multiplication. Drag point labeled <span class="process-math">\(k\)</span> to change scalar. Made with <a class="external" href="https://www.geogebra.org" target="_blank">GeoGebra</a>.<div class="autopermalink" data-description="Figure 1.5.12"><a href="#fig_scal_mult" title="Copy heading and permalink for Figure 1.5.12" aria-label="Copy heading and permalink for Figure 1.5.12">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Subsection 1.5.2: Visualizing \R^n"><a href="#ss_Rn_visual" title="Copy heading and permalink for Subsection 1.5.2: Visualizing \R^n" aria-label="Copy heading and permalink for Subsection 1.5.2: Visualizing \R^n">🔗</a></div></section><div class="autopermalink" data-description="Section 1.5: Vector space of n-tuples"><a href="#s_ntuples" title="Copy heading and permalink for Section 1.5: Vector space of n-tuples" aria-label="Copy heading and permalink for Section 1.5: Vector space of n-tuples">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="s_vector_space.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>
