@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_ntuples" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Vector space of <m>n</m>-tuples</title>
+
+<subsection xml:id="ss_ntuples">
+<title><m>n</m>-tuples</title>
+<definition xml:id="d_ntuples">
+<title><m>F</m>-valued <m>n</m>-tuples</title>
+<notation>
+    <usage><m>F^n</m></usage>
+<description>set of <m>F</m>-valued <m>n</m>-tuples</description>
+</notation>
+<statement>
+<p>
+Let <m>F</m> be a field, and let <m>n</m> be a positive integer. An <term><m>F</m>-valued <m>n</m>-tuple</term> is a function <m>f\colon \{1,2,\dots, n\}\rightarrow F</m>. In this setting, we will use an alternative <term>tuple notation</term>, writing 
+<md>
+    f=(a_i)_{i=1}^n=(a_1,a_2,\dots, a_n)
+</md>,
+where <m>a_i=f(i)</m>, the value of <m>f</m> at <m>i</m>, for all <m>i\in \{1,2,\dots, n\}</m>. We will also favor letters like <m>v,w,u</m> to denote <m>n</m>-tuples, as opposed to <m>f,g,h</m>.
+</p>
+<p>
+    Given an <m>n</m>-tuple <m>v=(a_i)_{i=1}^n</m>, we call <m>n</m> the <term>length</term> of <m>v</m>, and for each index <m>i\in \{1,2,\dots, n\}</m>, we call <m>a_i</m> the <m>i</m>-th <term>component</term> (or <term>coordinate</term>, or <term>entry</term>, or <term>term</term>) of <m>v</m>. 
+      </p>
+      <p>
+    The set of all <m>F</m>-valued <m>n</m>-tuples is denoted <m>F^n</m>: <ie/>, 
+        <md>
+          F^n=\{(a_i)_{i=1}^n\mid a_i\in \F \text{ for all } i=1,2,\dots, n\}
+        </md>. 
+    </p>
+</statement>
+</definition>
+<p>
+    Observe that by definition, <m>F^n</m> is just a special instance of our function space construction <m>\mathcal{F}(X,F)</m>. In more detail, an <m>n</m>-tuple <m>(a_i)_{i=1}^n</m> is by definition a function <m>f\colon \{1,2,\dots, n\}\rightarrow F</m> defined as <m>f(i)=a_i</m> for all <m>1\leq i\leq n</m>, and thus the set <m>F^n</m> is precisely the function space <m>\mathcal{F}(I, F)</m>, where <m>I=\{1,2,\dots, n\}</m>. As a first convenient consequence of this fact, our definition of <m>n</m>-tuples comes equipped with a well-defined notion of equality from their fundamental nature as functions: namely, we have 
+    <md>
+        (a_1,a_2,\dots, a_n)=(b_1,b_2,\dots, b_n)
+    </md>
+    if and only if <m>a_i=b_i</m> for all <m>1\leq i\leq n</m>. In other words, our rigorous notions of <m>n</m>-tuples captures the often casually introduced notion of an <em>ordered sequence</em>. We record this as an official fact to make this prominent. 
+</p>
+<proposition xml:id="prop_ntuple_equality">
+    <title><m>n</m>-tuple equality</title>
+    <statement>
+        <p>
+            Let <m>F</m> be a field, and let <m>n</m> be a positive integer. Given <m>v=(a_i)_{i=1}^n, w=(b_i)_{i=1}^n\in F^n</m>, we have
+            <md number="yes">
+                v=w \text{ if and only if } a_i=b_i \text{ for all } i\in \{1,2,\dots, n\}
+            </md>.
+        </p>
+    </statement>
+</proposition>
+<p>
+    Another consequence of <m>F^n</m> being defined as <m>\mathcal{F}(I,F)</m> for <m>I=\{1,2,\dots, n\}</m>, is that, thanks to <xref ref="th_function_space_vector_space"/>, <m>F^n</m> automatically inherits the structure of a vector space. The theorem below makes this explicit, and rearticulates the function addition and scalar multiplication operations using tuple notation. 
+</p>
+
+<theorem xml:id="th_ntuples_vector_space">
+<title><m>F^n</m> vector space structure</title>
+<statement>
+<p>
+Let <m>F</m> be a field, and let <m>n</m> be a positive integer. The set <m>F^n</m> of all <m>F</m>-valued <m>n</m>-tuples is a vector space with respect to the operations defined as  
+<md>
+    <mrow>(a_i)_{i=1}^n+(b_i)_{i=1}^n\amp =(a_i)_{i=1}^n+(b_i)_{i=1}^n </mrow>
+    <mrow>c(a_i)_{i=1}^n\amp =(ca_i)_{i=1}^n </mrow>
+</md>
+for all <m>(a_i)_{i=1}^n, (b_i)_{i=1}^n\in F^n</m> and <m>c\in F</m>.
+</p>
+</statement>
+<proof>
+<p>
+</p>
+</proof>
+</theorem>
+
+
+<definition xml:id="d_tuples_special_elements">
+    <title>Special elements of <m>F^n</m></title>
+    <notation>
+        <usage><m>\boldzero_n</m></usage>
+      <description>zero vector of <m>F^n</m></description>
+    </notation>
+    <notation>
+        <usage><m>\bolde_i</m></usage>
+    <description><m>i</m>-th standard basis element of <m>F^n</m></description>
+    </notation>
+    <statement>
+    <p>
+    Let <m>F</m> be a field, and let <m>n</m> be a positive integer. 
+    <ul>
+        <li>
+        <title>Zero vector</title>
+            <p>
+                The <term>zero vector</term> of <m>F^n</m>, denoted <m>\boldzero_n</m> (or <m>\boldzero</m> for short), is the <m>n</m>-tuple, all of whose entries are equal to <m>0</m>: <ie/>, <m>\boldzero_n=(0)_{i=1}^n</m>. 
+            </p>
+        </li>
+        <li>
+            <title>Vector inverse</title>
+            <p>
+                Given an <m>n</m>-tuple <m>v=(a_i)_{i=1}^n\in F^n</m>, the <term>vector inverse</term> of <m>v</m>, denoted <m>-v</m>, is the element of <m>F^n</m> defined as
+                <md>
+                    -v=(-a_i)_{i=1}^n
+                </md>.
+            </p>
+        </li>
+        <li>
+            <title>Indicator vectors</title>
+            <p>
+                For each <m>i\in \{1,2,\dots, n\}</m>, the <term><m>i</m>-th standard basis element</term> of <m>F^n</m>, denoted <m>\bolde_i</m>, is the <m>n</m>-tuple whose <m>i</m>-th entry is equal to <m>1</m> and whose <m>j</m>-th entry is equal to <m>0</m> for all <m>j\ne i</m>. 
+            </p>
+        </li>
+    </ul>
+    </p>
+    </statement>
+    </definition>
+<definition xml:id="d_lin_comb">
+                <title>Linear combination</title>
+                <statement>
+                    <p>
+                        Let <m>V</m> be a vector space, and let <m>S</m> be a nonempty subset of <m>V</m>. A <term>linear combination</term> of <m>S</m> is a vector of the form 
+                        <md number="yes" xml:id="eq_lin_comb">
+                            c_1v_1+c_2v_2+\cdots +c_nv_n
+                        </md>,
+                    where <m>v_i\in S</m> and <m>c_i\in \R</m> for all <m>1\leq i\leq n</m>. The scalars <m>c_i</m> appearing in <xref ref="eq_lin_comb"/> are called the <term>coefficients</term> of the linear combination. The linear combination <xref ref="eq_lin_comb"/> is <term>trivial</term> if <m>c_i=0</m> for all <m>1\leq i\leq n</m>, and <term>nontrivial</term> if <m>c_i\ne 0</m> for some <m>1\leq i\leq n</m>. 
+                    </p> 
+                    <p>
+                        In the special case where <m>S</m> is described enumeratively as <m>S=\{v_1,v_2,\dots, v_n\}</m> or <m>S=\{v_1,v_2,\dots\}</m>, we will call a linear combination of <m>S</m> a linear combination of the <m>v_i</m> for short. 
+                    </p>
+                    <p>
+                        We will sometimes use sigma notation for linear combinations, writing 
+                        <md>
+                            \sum_{i=1}^nc_iv_i
+                        </md>
+                        for the linear combination of the vectors <m>v_1,v_2,\dots, v_n</m> whose <m>i</m>-th coefficient is <m>c_i</m>.
+                    </p>
+                </statement>
+            </definition> 
+            <example>
+                <title>Linear combination: <m>n</m>-vectors</title>
+                <statement>
+                    <p>
+                        Show that every vector in <m>F^3</m> is a linear combination of the standard basis vectors <m>\bolde_1</m>, <m>\bolde_2</m>, and <m>\bolde_3</m>. 
+                    </p>
+                </statement>
+                <solution>
+                    <p>
+                        Given any vector <m>v=(a,b,c)\in F^3</m>, we have 
+                        <md>
+                            <mrow>v\amp =a\bolde_1+b\bolde_2+c\bolde_3  </mrow>
+                        </md>.
+                    </p>
+                </solution>
+            </example>
+
+            <definition xml:id="d_vec_difference">
+                <title>Vector difference</title>
+                <statement>
+                    <p>
+                       Let <m>V</m> be a vector space. Given vectors <m>v,w\in V</m>, we define their <term>difference</term> <m>v-w</m> as 
+                       <md>
+                        v-w=v+(-w)
+                       </md>.
+                    </p>
+                </statement>
+            </definition>
+</subsection>
+<subsection xml:id="ss_Rn_visual">
+    <title>Visualizing <m>\R^n</m></title>
+    <p>
+         We will only explicitly visualize (or graph) elements of <m>\R^n</m> for <m>n=2</m> and <m>n=3</m>. However, these special cases bring to light an important <em>point-vector duality</em> in how we conceive of <m>n</m>-tuples that carries over into higher values of <m>n</m>. Fix <m>n=3</m> for now. We will sometimes conceive of a triple <m>(a,b,c)\in \R^3</m> as a <em>point</em>, in which case we will use capital letters to denote the triple (<eg/>, <m>P=(a,b,c)</m>), and will represent the point visually with respect to a coordinate system as the point in <m>3</m>-space reached by starting at the origin <m>O=(0,0,0)</m> and moving a directed distance <m>a</m> units in the <m>x</m>-direction, <m>b</m> units in the <m>y</m>-direction and <m>c</m> units in the <m>z</m>-direction.  
+    </p>
+    <figure xml:id="fig_point">
+        <caption>Point visualization of triple. Made with <url href="https://www.geogebra.org" visual="geogebra.org">GeoGebra</url>.</caption>
+        <interactive xml:id="geogebra_point" platform="geogebra" width="100%" aspect="4:3">
+          <slate surface="geogebra" material="qdrz2sge" aspect="4:3" marker="train-distance">
+          enableLabelDrags(false);
+          </slate>
+        </interactive>
+        
+      </figure>
+    <p>
+    Alternatively, when conceiving of a triple <m>(a,b,c)</m> as a <em>vector</em>, we will use lowercase bold letters to denote it (<eg/>, <m>\boldx=(a,b,c)</m> or <m>\boldv=(a,b,c)</m>), and represent it visually as a directed line segment (<ie/>, an arrow). In more detail, given the 3-vector <m>\boldx=(a,b,c)</m>, we choose an <term>initial point</term> <m>Q=(x_0,y_0,z_0)</m> and represent <m>\boldx</m> as the directed line segment <m>\overrightarrow{QR}</m> that starts at <m>Q</m> and ends at the point <m>R=(x_0+a,y_0+b,z_0+c)</m>, the <term>terminal point</term> of <m>\overrightarrow{QR}</m>. Note that in this manner we get infinitely-many different graphical representations of <m>\boldx</m>:  one for each choice of starting point <m>Q</m>. Although these are technically different arrows (they have different starting points), we consider them to be equal as <em>vectors</em>. You can think of each particular choice of arrow-representation <m>\boldx=\overrightarrow{QR}</m> as an instance or incarnation of the vector <m>\boldx=(a,b,c)</m>. When the initial point of our arrow representation is chosen to be the origin <m>O=(0,0,0)</m>, we have <m>\boldx=\overrightarrow{OP}</m>, where <m>P=(a,b,c)</m>. We call <m>\overrightarrow{OP}</m> the <term>position vector</term> of the point <m>P</m>. 
+    </p>
+    <figure xml:id="fig_vec_vis">
+      <caption>Vector visualization of triple <m>\boldx=\overrightarrow{OP}=\overrightarrow{QR}</m>. Drag <m>P</m> to change the vector <m>\boldx</m>. Drag <m>Q</m> to change the initial point of <m>\overrightarrow{QR}</m>. Made with <url href="https://www.geogebra.org" visual="geogebra.org">GeoGebra</url>.</caption>
+      <interactive xml:id="geogebra_vec_vis" platform="geogebra" width="100%" aspect="4:3">
+        <slate surface="geogebra" material="ef9phreh" aspect="4:3" marker="train-distance">
+        enableLabelDrags(false);
+        </slate>
+      </interactive>
+      
+  </figure>
+    <p>
+        The representation of vectors as arrows gives rise to the so-called <em>tip-to-tail</em> interpretation of vector addition. Let <m>\boldx=(a,b,c)</m> and <m>\boldy=(d,e,f)</m>. Starting with an initial point <m>P=(x_0,y_0,z_0)</m>, we can represent <m>\boldx</m> as <m>\overrightarrow{PQ}</m>, where <m>Q=(x_0+a,y_0+b,z_0+c)</m>, and <m>\boldy=\overrightarrow{QR}</m>, where <m>R=(x_0+a+d,y_0+b+e,z_0+c+f)</m>. But then we have 
+        <md>
+            \boldx+\boldy=(a+d,b+e,c+f)=\overrightarrow{PR}
+        </md>,
+        or alternatively, 
+        <md number="yes" xml:id="eq_tip_tail">
+            \overrightarrow{PQ}+\overrightarrow{QR}=\overrightarrow{PR}
+        </md>.
+        In other words, if we choose our arrow representations so that the terminal point (the tip) of <m>\boldx=\overrightarrow{PQ}</m>  is placed at the initial point (the tail) of <m>\boldy=\overrightarrow{QR}</m> , then <m>\boldx+\boldy</m> is represented by the arrow whose initial point is <m>P</m>, and whose terminal point is reached by first traveling along <m>\boldx</m>, and then traveling along <m>\boldy</m>.
+    </p>
+    <figure xml:id="fig_tip_tail">
+        <caption>Tip-to-tail visualization of vector addition. Made with <url href="https://www.geogebra.org" visual="geogebra.org">GeoGebra</url>.</caption>
+        <interactive xml:id="geogebra_tip_tail" platform="geogebra" width="100%" aspect="4:3">
+          <slate surface="geogebra" material="nrkjwppk" aspect="4:3" marker="train-distance">
+          enableLabelDrags(false);
+          </slate>
+        </interactive>
+        
+    </figure>
+    <p>
+      The tip-to-tail visualization of vector addition gives rise to a similar conceptualization of vector difference. Performing a little vector algebra on the definition 
+      <md>
+        \boldy-\boldx=\boldy+ (-\boldx)
+      </md>,
+      we see that 
+      <md>
+        \boldx+(\boldy-\boldx)=\boldy
+      </md>.
+      Using tip-to-tail terminology, this means if we represent <m>\boldx=\overrightarrow{PQ}</m> and <m>\boldy=\overrightarrow{PR}</m>, then <m>\boldy-\boldx</m> is the arrow <m>\overrightarrow{QR}</m> that starts at the tip of <m>\boldx</m> and ends at the tip of <m>\boldy</m>. We thus have a <em>tip-to-tip</em> description of vector difference. 
+    </p>
+    <figure xml:id="fig_tip_tip">
+      <caption>Tip-to-tip visualization of vector difference. Made with <url href="https://www.geogebra.org" visual="geogebra.org">GeoGebra</url>.</caption>
+      <interactive xml:id="geogebra_tip_tip" platform="geogebra" width="100%" aspect="4:3">
+        <slate surface="geogebra" material="nzgvx2kv" aspect="4:3" marker="train-distance">
+        enableLabelDrags(false);
+        </slate>
+      </interactive>
+      
+  </figure>
+    <p>
+        Next consider scalar multiplication. Given a vector <m>\boldx=(a,b,c)=\overrightarrow{PQ}</m> and a scalar <m>k\in \R</m>, the scalar multiple <m>k\boldx=(ka,kb,kc)</m> can be represented as an arrow that starts at <m>P</m> and points along the line containing <m>\overrightarrow{PQ}</m>. As we will see in the next section, the length of the resulting arrow is multiplied by the factor <m>\abs{k}</m>, resulting in a stretched arrow if <m>\abs{k}&gt; 1</m> and a shrunk arrow if <m>\abs{k}&lt; 1</m>. Furthermore, if <m>k\geq 0</m>, then the arrow representing <m>k\boldx</m> points in the same direction as <m>\overline{PQ}</m>; if <m>k&lt; 0</m>, it points in the opposite direction. 
+    </p>
+    <figure xml:id="fig_scal_mult">
+        <caption>Visualization of scalar multiplication. Drag point labeled <m>k</m> to change scalar. Made with <url href="https://www.geogebra.org" visual="geogebra.org">GeoGebra</url>.</caption>
+        <interactive xml:id="geogebra_scal_mult" platform="geogebra" width="100%" aspect="4:3">
+          <slate surface="geogebra" material="w7sqxgre" aspect="4:3" marker="train-distance">
+          enableLabelDrags(false);
+          </slate>
+        </interactive>
+        
+    </figure>
+   </subsection>
+    
+
+</section>
