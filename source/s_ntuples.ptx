@@ -114,11 +114,11 @@ for all <m>(a_i)_{i=1}^n, (b_i)_{i=1}^n\in F^n</m> and <m>c\in F</m>.
                 <title>Linear combination</title>
                 <statement>
                     <p>
-                        Let <m>V</m> be a vector space, and let <m>S</m> be a nonempty subset of <m>V</m>. A <term>linear combination</term> of <m>S</m> is a vector of the form 
+                        Let <m>V</m> be an <m>F</m>-vector space, and let <m>S</m> be a nonempty subset of <m>V</m>. A <term>linear combination</term> of <m>S</m> is a vector of the form 
                         <md number="yes" xml:id="eq_lin_comb">
                             c_1v_1+c_2v_2+\cdots +c_nv_n
                         </md>,
-                    where <m>v_i\in S</m> and <m>c_i\in \R</m> for all <m>1\leq i\leq n</m>. The scalars <m>c_i</m> appearing in <xref ref="eq_lin_comb"/> are called the <term>coefficients</term> of the linear combination. The linear combination <xref ref="eq_lin_comb"/> is <term>trivial</term> if <m>c_i=0</m> for all <m>1\leq i\leq n</m>, and <term>nontrivial</term> if <m>c_i\ne 0</m> for some <m>1\leq i\leq n</m>. 
+                    where <m>v_i\in S</m> and <m>c_i\in F</m> for all <m>1\leq i\leq n</m>. The scalars <m>c_i</m> appearing in <xref ref="eq_lin_comb"/> are called the <term>coefficients</term> of the linear combination. The linear combination <xref ref="eq_lin_comb"/> is <term>trivial</term> if <m>c_i=0</m> for all <m>1\leq i\leq n</m>, and <term>nontrivial</term> if <m>c_i\ne 0</m> for some <m>1\leq i\leq n</m>. 
                     </p> 
                     <p>
                         In the special case where <m>S</m> is described enumeratively as <m>S=\{v_1,v_2,\dots, v_n\}</m> or <m>S=\{v_1,v_2,\dots\}</m>, we will call a linear combination of <m>S</m> a linear combination of the <m>v_i</m> for short. 
