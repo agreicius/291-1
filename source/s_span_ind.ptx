@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_span_ind" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Span and linear independence</title>
+
+    <introduction>
+        <p>
+            An <m>F</m>-vector space <m>V</m> is typically a very large set. Indeed, if the field <m>F</m> is infinite (<eg/>, <m>\Q</m>, <m>\R</m>, <m>\C</m>), and <m>V</m> is not the zero space, then <m>V</m> will also be infinite (as you can show with the help of <xref ref="prop_vs_props"/>). In developing our theory of vector spaces, one thing we will be concerned with is whether a smallish subset <m>S\subseteq V</m> can be used to <em>generate</em> the larger vector space <m>V</m>, where by generate we mean that every element of <m>V</m> can be written as a linear combination of elements of <m>S</m>. Using the terminology introduced below, we call <m>S</m> a <em>spanning set</em> of <m>V</m> in this case, and write <m>V=\Span S</m>.
+        </p>
+        <p>
+            Take the real vector space <m>\R^3</m>, for example. We saw in the last section that the set <m>S=\{\bolde_1, \bolde_2, \bolde_3\}</m> generates <m>\R^3</m> in precisely this sense. The utility of this state of affairs, is that any linear algebraic question about the (uncountably) infinite vector space <m>\R^3</m> can usually be reduced to a simple algebraic question about our finite set <m>S=\{\bolde_1,\bolde_2,\bolde_3\}</m>.  
+        </p>
+        <p>
+            So where does <em>linear independence</em> fit in this picture. As you will quickly see, in general a nonzero vector space will have many different spanning sets. For example, the sets 
+            <md>
+                <mrow>S_1 \amp =\{\bolde_1,\bolde_2,\bolde_3\} \amp S_2\amp =S_1\cup \{(1,1,1)\} \amp S_3=\R^3</mrow>
+            </md>
+            are all examples of spanning sets of <m>\R^3</m>. But with the aim of finding as small a spanning set as possible, we see that <m>S_1</m> is preferable to <m>S_2</m> and <m>S_3</m>. Put another way, the spanning sets <m>S_2</m> and <m>S_3</m> have what you might call redundancies: <eg/>, do we really need to include <m>(1,1,1)</m> when it is already a linear combination of the <m>\bolde_i</m>? This gives way to a host of important questions we could ask. Can we do better than <m>S_1</m>?  Is there a spanning set of <m>\R^3</m> with fewer than three elements? It turns out that the concept of <em>linear independence</em> defined below is exactly what we need to answer these redundancy-type questions. 
+        </p>
+    </introduction>
+<subsection xml:id="ss_span">
+<title>Span</title>
+<p>
+    As defined below, <em>span</em> of a set of vectors is just the set of all linear combinations of those vectors. 
+</p>
+<definition xml:id="d_span">
+    <title>Span</title>
+    <statement>
+    <p>
+    Let <m>S</m> be a subset of the <m>F</m>-vector space <m>V</m>.  The <term>span</term> of <m>S</m>, denoted <m>\Span S</m>, is defined as follows. 
+    <ul>
+        <li>
+            <p>
+                If <m>S=\emptyset</m>, then we define
+                <md xml:id="eq_span_empty">
+                    \Span S=\Span\emptyset=\{\boldzero\}
+                </md>.
+            </p>
+        </li>
+        <li>
+            <p>
+                If <m>S\ne \emptyset</m>, then we define <m>\Span S</m> as  the set of all linear combinations of the vectors in <m>S</m>: <ie/>, 
+    <md xml:id="eq_span">
+     \Span S=\{v\in V\colon v=\sum_{k=1}^nc_{k}v_{k} \text{ for some } n\in \Z_+, v_k\in S, c_{k}\in F\}  
+    </md>.
+            </p>
+        </li>
+    </ul>
+    </p>
+    </statement>
+    </definition>
+    <remark xml:id="rm_span">
+        <p>
+        Let <m>S</m> be tuple of vectors in <m>V</m>. 
+        <ol>
+          <li>
+            <p>
+              The zero vector is always an element of <m>\Span S</m>. We treat the cases where <m>S</m> is empty or nonempty separately.
+            </p>
+            <p>
+                If <m>S=\emptyset</m>, then <m>\Span S=\{\boldzero\}</m> by definition. 
+            </p>
+            <p>
+                If <m>S\ne \emptyset</m>, then it contains some element <m>v\in S</m>, in which case by definition <m>S</m> contains all its scalar multiples <m>cv</m>, <m>c\in F</m>. By <xref ref="prop_vs_props"/>, we have <m>\boldzero=0v</m>, showing that <m>\boldzero\in \Span S</m>. 
+            </p>
+          </li>
+          <li>
+              <p>
+                The set <m>S</m> is contained in <m>\Span S</m>. Indeed, given any <m>v\in S</m>, we have <m>v=1v\in \Span S</m>.
+              </p>
+          </li>
+
+          <li>
+            <p>
+              For any singleton <m>S=\{v\}</m>, we have <m>\Span(v)=\{cv\colon c\in F\}</m>, the set of all scalar multiples of <m>v</m>. 
+            </p>
+          </li>
+        </ol>
+        </p>
+      </remark>
+    <example xml:id="eg_span_2space">
+      <title>Examples in <m>\R^2</m></title>
+      <statement>
+        <p>
+        Let <m>V=\R^2</m>. For subset <m>S\subseteq V</m>, identify <m>\Span S</m> as a familiar geometric object. Use the visualization methods discussed in <xref ref="ss_Rn_visual"/>.
+        <ol>
+          <li>
+            <p>
+              <m>S=\emptyset</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S=\{\boldzero\}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S=\{(a,b)\}</m>, <m>(a,b)\ne (0,0)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S=\{(1,0),(0,1)\}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S=\{(1,1),(2,2)\}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S=\{(1,1),(1,2)\}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S=\R^2</m>
+            </p>
+          </li>
+        </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+        <ol>
+          <li>
+            <p>
+              <m>\Span \emptyset=\{(0,0)\}</m>, the set containing just the origin, by definition.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Span\{\boldzero\}</m> is the set of all scalar multiples of <m>\boldzero</m>. Thus <m>\Span\{\boldzero\}=\{\boldzero\}</m>, the set containing just the origin.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Span\{(a,b)\}</m> is the set of all scalar multiples of the nonzero vector <m>(a,b)</m>. Geometrically, this is the line that passes through the the origin and the point <m>(a,b)</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              By definition
+              <md>
+                <mrow> \Span\{(1,0),(0,1)\}\amp =\{a(1,0)+b(0,1)\colon a,b\in \R\} </mrow>
+                <mrow> \amp =\{(a,b)\colon a,b\in\R\}\amp</mrow>
+                <mrow> \amp = \R^2</mrow>
+              </md>.
+            </p>
+          </li>
+          <li>
+            <p>
+              By definition
+              <md>
+                <mrow> \Span\{(1,1),(2,2)\}\amp =\{a(1,1)+b(2,2)\colon a,b\in \R\}</mrow>
+                <mrow> \amp =\{(a+2b,a+2b)\colon a,b\in\R\} \amp </mrow>
+              </md>.
+              It is easy to see that this set is equal to 
+              <md>
+                \ell=\{(c,c)\colon t\in \R\}=\{(x,y)\in \R^2\mid x=y\}
+            </md>, the line with equation <m>y=x</m>. Indeed, we have <m>\Span S\subseteq \ell</m>, since using our description above any element of <m>\Span S</m> is of the form <m>(a+2b,a+2b)</m>, which satisfies <m>x=y</m>, and thus lies in <m>\ell</m>. Going the other way, given any <m>(c,c)\in \ell</m>, we have <m>(c,c)=(a+2b, a+2b)</m>, where <m>a=1</m> and <m>b=0</m>, showing <m>(c,c)\in \Span S</m> and thus <m>\ell\subseteq \Span S</m>. Since <m>\Span S\subseteq \ell</m> and <m>\ell\subseteq \Span S</m>, we conclude that <m>\Span S=\ell</m>. 
+        </p>
+        <p> 
+            Note that in this case we have 
+              <md>
+                \Span\{(1,1), (2,2)\}=\Span \{(1,1)\}
+              </md>,
+              and thus that the vector <m>(2,2)</m> is in some sense redundant with respect to the span operation.
+            </p>
+          </li>
+          <li>
+            <p>
+              By definition
+              <md>
+                <mrow>\Span S\amp =\{a(1,1)+b(1,2)\colon a,b\in \R\}</mrow>
+                <mrow> \amp =\{(a+b,a+2b)\colon a,b\in\R\} \amp </mrow>
+              </md>.
+              Claim: <m>\Span S=\R^2</m>. Since clearly, <m>\Span S\subseteq \R^2</m>, it remains only to show that <m>\R^2\subseteq \Span S</m>: <ie/>, we must show that given any <m>(c,d)\in \R^2</m> there exist <m>a,b\in \R</m> such that <m>(a+b, a+2b)=(c,d)</m>, or 
+              <md>
+                \begin{array}{ccccc}
+                  a \amp +\amp b \amp =\amp c\\
+                  a \amp +\amp 2b \amp =\amp d
+                \end{array}
+              </md>.
+                Interesting. To answer the question we need to show that for all <m>(c,d)\in \R^2</m>, the linear system 
+                <md>
+                    \begin{linsys}{2}
+                      x + y = c\\
+                      x + 2y = d
+                    \end{linsys}
+                </md>
+                has a solution <m>(x,y)=(a,b)</m>. In the next section we will develop a systematic approach for answering such questions. For now we can proceed in an <foreign>ad hoc</foreign> manner: namely, the first equation implies <m>x=c-y</m>; substituting this for <m>x</m> in the second equation yields the equality <m>y=d-c</m>. We conclude that <m>(x,y)=(2c-d,-c+d)</m> is a solution. Tracing back through our logic we conclude that 
+                <md number="yes">
+                    <mrow>(c,d) \amp = (2c-d)(1,1)+(-c+d)(1,2)</mrow>
+                </md>,
+                and thus that <m>(c,d)\in \Span S</m> for all <m>(c,d)\in \R^2</m>, as desired. 
+              </p>
+            </li>
+            <li>
+              <p>
+            From our remark above, we have <m>\R^2=S\subseteq \Span S</m>. Since <m>\Span S\subseteq \R^2</m> by definition, we conclude that <m>\Span S=\R^2</m>. 
+              </p>
+            </li>
+        </ol>
+      </p>
+      </solution>
+    </example>
+    <definition xml:id="d_spanning_tuple">
+    <title>Spanning set</title>
+    <statement>
+    <p>
+    A subset <m>S</m> of an <m>F</m>-vector space <m>V</m> is called a <term>spanning set</term> (or is said to <term>span <m>S</m></term>) if <m>\Span S=V</m>. 
+    </p>
+    </statement>
+    </definition>
+    <p>
+        When getting to know a vector space, one of the first things we will do is identify a convenient spanning set. Below we identify some <em>standard spanning sets</em> for some of the vector spaces we have introduced. 
+    </p>
+    <example xml:id="eg_spanning_sets">
+    <title>Standard spanning sets</title>
+    <p>
+      For most of the vector spaces we've introduced there is a natural spanning set that comes to mind. We will refer to these loosely as <em>standard</em> spanning sets.
+      <ul>
+        <li>
+          <title>Zero space</title>
+          <p>
+          Let <m>V=\{\boldzero\}</m>. By definition the empty set <m>S=\emptyset</m> is a spanning set of <m>V</m>. We call this the standard spanning set of the zero space. 
+          </p>
+        </li>
+        <li>
+          <title><m>n</m>-tuples</title>
+          <p>
+          Let <m>V=F^n</m>. We claim <m>S=\{\bolde_1,\bolde_2,\dots, \bolde_n\}</m> is a spanning set for <m>V</m>, which we call its standard spanning set. Indeed, given any <m>(a_1,a_2,\dots, a_n)\in F^n</m> it is easy to see that 
+          <md>
+            (a_1,a_2,\dots, a_n)=\sum_{i=1}^na_i\bolde_i
+          </md>.
+          </p>
+        </li>
+        <li>
+          <title>Function space, finite domain</title>
+          <p>
+          Recall that  by definition <m>F^n</m> is simply notation for the function space <m>\mathcal{F}(I,F)</m>, where <m>I=\{1,2,\dots, n\}</m>. Thinking of the elements <m>\bolde_i</m> as functions <m>f_i\colon I\rightarrow F</m>, we see they are defined as <m>f_i(j)=1</m> if <m>j=i</m> and <m>f_i(j)=0</m>, otherwise. Such functions are called <term>indicator functions</term> (or <term>characteristic functions</term>) on the set <m>I</m>. As such we can generalize our result about <m>F^n</m> as follows.
+          </p>
+          <p>
+            Let <m>V=\mathcal{F}(I,F)</m>, where <m>I</m> is a <em>finite</em> nonempty set. For each <m>i\in I</m> define the function <m>\chi_i\colon I\rightarrow F</m> as follows: 
+                      <md>
+                        <mrow>\chi_i(j)=\begin{cases} 1\amp \text{if } j=i\\ 0\amp\text{if } j\ne i\end{cases} \amp </mrow>
+                      </md>.
+                      We claim that the set <m>S=\{\chi_i\mid i\in I\}</m> is a spanning set for <m>\mathcal{F}(I,F)</m>. Indeed given any function <m>f\colon I\rightarrow F</m>, consider the function 
+                      <md>
+                        g=\sum_{i\in I}f(i)\chi_i\in \Span S
+                      </md>.
+                      For all <m>j\in I</m>, we have 
+                      <md>
+                        <mrow>g(j) \amp =\sum_{i\in I}f(i)\chi_i(j)</mrow>
+                        <mrow> \amp = f(j)\chi_j(j) \amp (\chi_i(j)=0 \text{ for } i\ne j)</mrow>
+                    <mrow> \amp = f(j)\cdot 1 \amp (\chi_j(j)=1)</mrow>
+                        <mrow> \amp = f(j)</mrow>
+                      </md>.
+                      We conclude that <m>f=g</m> and thus that <m>f\in \Span S</m>. 
+          </p>
+        </li>
+        <!-- <li>
+          <title>Polynomials</title>
+          <p>
+          Let <m>F\in \{\R,\C\}</m>, and let <m>I</m> be an infinite subset of <m>F</m>. The tuple <m>S=(x^{i})_{i=0}^n=(1,x,x^2,\dots, x^n)</m> is a spanning set <m>P_n(I)</m>, as by definition the elements of <m>P_n(I)</m> are functions of the form <m>f(x)=\anpoly</m>. 
+          </p>
+          <p>
+            Similarly, the tuple <m>(x^i)_{i=0}^\infty=(1,x,x^2,\dots)</m> is a spanning set of <m>P(I)</m>. 
+          </p>
+        </li> -->
+      </ul>
+      </p>
+    </example>
+    <p>
+      A crucial detail in the last example was that <m>I</m> was a <em>finite set</em>. Indeed, since by definition a linear combination is a <em>finite</em> sum of scalar multiples of vectors, the expression <m>g=\sum_{i\in I}c_i \chi_i</m> only makes sense if <m>I</m> is finite. Since there is no finiteness condition on <m>S</m> in the definition of <m>\Span S</m>, however, we can still ask whether <m>S=\{\chi_i\mid i\in I\}</m> is a spanning set of <m>\mathcal{F}(I,F)</m> in general. As the next example shows, the answer is no! 
+    </p>
+    <example xml:id="eg_span_func_space_infinite">
+    <title>Function space, infinite domain</title>
+    <statement>
+    <p>
+    Let <m>F</m> be a field, let <m>V=\mathcal{F}(\N, F)</m>, the set of functions from <m>\N=\{0,1,\dots\}</m> to <m>F</m>, and for all <m>i\in \N</m>, let <m>\chi_i\colon \N\rightarrow F</m> be the indicator function defined as <m>\chi_i(n)=1</m> if <m>n=1</m> and <m>\chi_i(n)=0</m> if <m>n\ne i</m>. Show that <m>S=\{\chi_i\mid i\in \N\}</m> does not span <m>V</m> by producing an explicit function <m>f\colon \N\rightarrow F</m> that cannot be written as a linear combination of the <m>\chi_i</m>. 
+    </p>
+    </statement>
+    <solution>
+    <p>
+    Consider the function <m>f\colon \N\rightarrow F</m> defined by <m>f(n)=1</m> for all <m>n\in \N</m>. We claim that <m>f\notin \Span S</m>. In fact, we will show that any <m>g\in \Span S</m> satisfies <m>g(n)=0</m> for all but finitely many <m>n\in \N</m>. It then follows that <m>f\notin\Span S</m> since <m>f</m> is nonzero for <em>all</em> <m>n\in N</m>. 
+    </p>
+    <p>
+        To prove the claim, note that by definition, any <m>g\in \Span S</m>, is of the form 
+        <md>
+            g=\sum_{j=1}^k c_{i_j}\chi_{i_j}
+        </md>.
+        But then for all <m>n</m> in the infinite set 
+        <md>
+            \N-\{i_1,i_2,\dots, i_k\}
+        </md>,
+        we have 
+        <md>
+            <mrow>g(n) \amp =\sum_{j=1}^kc_{i_j}\chi_{i_j}(n)</mrow>
+            <mrow> \amp =\sum_{j-1}^kc_{i_j}0 \amp (n\ne i_j\implies \chi_{i_j}(n)=0)</mrow>
+            <mrow> \amp = 0</mrow>
+        </md>,
+        showing that <m>g(n)=0</m> for all but finitely many <m>n\in \N</m>. 
+    </p>
+    </solution>
+    </example>
+    
+</subsection>
+<subsection xml:id="ss_lin_ind">
+    <title>Linear independence</title>
+    <p>
+      As mentioned above, the notion of <em>linear independence</em> is precisely what we need to guarantee that a given spanning set <m>S</m> has no <q>redundancies</q>. This is not immediately evident from <xref ref="d_lin_ind"/>, but will be made clear in <xref ref="th_span_ind"/>. 
+    </p>
+    <p>
+    It turns out that, unlike the notion of span, linear independence is best understood as a property not of a set of vectors, but rather of a <em>tuple</em> of vectors. As such, we will first go full tuple here before getting to the actual definition.  
+    </p>
+    <definition xml:id="d_tuples_redux">
+    <title>Tuples</title>
+    <statement>
+    <p>
+        Let <m>I</m> and <m>A</m> be sets. An <term><m>A</m>-valued tuple indexed by <m>I</m></term> is a function <m>f\colon I\rightarrow A</m>. The set of all <m>A</m>-valued tuples indexed by <m>I</m> is denoted <m>A^I</m>: <ie/>, 
+        <md>
+            A^I=\mathcal{F}(I,A)
+        </md>.
+        In this setting we will use an alternative <term>tuple notation</term>, writing 
+        <md>
+            f=(a_i)_{i\in I}
+        </md>
+        to denote the function <m>f\colon I\rightarrow A</m> defined as <m>f(i)=a_i</m> for all <m>i\in I</m>.
+    </p>
+    <p>
+        Given a tuple <m>v=(a_i)_{i\in I}</m>, we call <m>a_i</m> the <term><m>i</m>-th component</term> (or <term>coordinate</term>, or <term>entry</term>, or <term>term</term>)
+    </p>
+    </statement>
+    </definition>
+    <p>
+        having gotten the general notion of a tuple out of the way, we can now define linear independence as a property that either holds or does not hold for a given tuple of vectors <m>(v_i)_{i\in I}</m> in a vector space. 
+    </p>
+    <definition xml:id="d_lin_ind">
+    <title>Linear independence</title>
+    <statement>
+    <p>
+    Let <m>V</m> be an <m>F</m>-vector space. A tuple <m>S=(v_i)_{i\in i}</m> of vectors of <m>V</m> is <term>linearly independent</term> if there is no nontrivial linear combination of the <m>v_i</m> equal to <m>\boldzero</m>: <ie/>, if <m>\sum_{j=1}^nc_{i_j}v_{i_j}=\boldzero</m> for some set of indices <m>\{i_1,i_2,\dots, i_n\}\subset I</m> and scalars <m>c_{i_j}</m>, then <m>c_i=0</m> for all <m>i\in I</m>. Using logical shorthand: 
+    <md xml:id="eq_lin_ind" number="yes">
+      \sum_{j=1}^nc_{i_j}v_{i_j}=\boldzero\implies c_{i_j}=0 \text{ for all } i_j\in \{i_1,i_2,\dots, i_n\}
+    </md>.
+    We say <m>(v_i)_{i\in I}</m> is <term>linearly dependent</term> if it is not linearly independent: <ie/>, if there is a nontrivial linear combination <m>\sum_{j=1}^nc_{i_j}v_{i_j}=\boldzero</m>. 
+    </p>
+    <p>
+        Lastly, observe that in the case where <m>I=\emptyset</m>,  an empty tuple <m>S=()</m> of vectors is linearly independent as it satisfies the implication <xref ref="eq_lin_ind"/> vacuously. 
+    </p>
+    </statement>
+    </definition>
+    
+    <!-- <algorithm xml:id="proc_linear_independence">
+  <title>Linear independence of a finite set</title>
+  <statement>
+    <p>Let <m>S=(v_i)_{i\in I}</m> be a tuple of vectors of the vector space <m>V</m>. To decide whether <m>S</m> is linearly independent, proceed as follows. 
+    <ol>
+      <li>
+        <p>
+          Write out the general expression for a linear combination of the form
+          <me>
+          c_{i_1}\boldv_{i_1}+c_{i_2}\boldv_{i_2}+\cdots +c_{i_n}\boldv_{i_n}=\boldzero
+          </me>.
+        </p>
+      </li>
+      <li>
+        <p>
+          If possible, translate this vector equation into a homogeneous system of linear equations in the unknowns <m>c_{i_1},c_{i_2},\dots, c_{i_n}</m>, using the definition of equality for your vector space.
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide, using Gaussian elimination, whether this system has any nonzero (<ie />, nontrivial) solutions. If it has no nontrivial solution, <m>S</m> is linearly independent; if it has a nontrivial solution, <m>S</m> is linearly dependent. 
+        </p>
+      </li>
+    </ol>
+  </p>
+  </statement>
+</algorithm> -->
+    <example xml:id="eg_lin_ind">
+    <title>Linear independence</title>
+    <statement>
+    <p>
+    For each tuple <m>t=(v_i)_{i\in I}</m> of the given vector space <m>V</m>, decide whether <m>(v_i)_{i\in I}</m> is linearly independent.
+    <ol>
+        <li>
+            <p>
+                <m>V=F^n</m>, <m>t=(\bolde_i)_{i=1}^n</m>
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>V=\mathcal{F}(I, F)</m>, <m>t=(\chi_i)_{i\in I}</m>, where as usual, <m>\chi_i</m> is the <m>i</m>-th indicator function. 
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>V=\R^3</m>, <m>t=(v_1,v_2,v_3)</m>, where 
+                <md>
+                    <mrow>v_1 \amp = (1,0,2) \amp v_2\amp =(-1,0,2) \amp v_3=(1,0,6) </mrow>
+                </md>.
+            </p>
+        </li>
+    </ol>
+    </p>
+    </statement>
+    <solution>
+    <p>
+    
+    </p>
+    </solution>
+    </example>
+    
+    <!-- <example xml:id="ex_linear_independence">
+    <title>Linear independence</title>
+    <statement>
+      <p>
+        For each tuple <m>S</m> of the given vector space <m>V</m>, decide whether <m>S</m> is linearly independent.
+      <ol>
+        <li>
+          <p>
+            <m>V=\R^2</m>, <m>S=((1,1,2),(1,0,1), (-2,1,-1))</m>
+          </p>
+        </li>
+  
+        <li>
+          <p>
+            <m>V=\R^{2,2}</m>, <m>S=(A_1, A_2, A_3)</m>, where
+            <md>
+              A_1=\begin{bmatrix}3\amp 1\\ 2\amp -3 \end{bmatrix} , A_2= \begin{bmatrix}0\amp 4\\ 2\amp 0 \end{bmatrix} , A_3=\begin{bmatrix}-2\amp -2\\ -2\amp 2 \end{bmatrix}
+            </md>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>V=P(\R)</m>, <m>S=(x^i)_{i=0}^\infty=(1,x,x^2,\dots)</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+    </statement>
+    <solution>
+    <p>
+      <ol>
+      <li>
+        <p>
+        We have
+        <md>
+          a(1,1,2)+b(1,0,1)+c(-2,1,-1)=(0,0,0)
+        </md>
+        if and only if
+        <md>
+          \begin{linsys}{3}
+            a \amp +\amp b\amp -\amp 2c\amp =0\\
+            a \amp \amp \amp +\amp c\amp =0\\
+            2a \amp +\amp b\amp -\amp c\amp =0\\
+          \end{linsys}
+        </md>.
+        After a little Gaussian elimination we see that
+        <m>(a,b,c)=(1,-3,-1)</m> is a nonzero solution to this system, and thus that
+        <md>
+          (1,1,2)-3(1,0,1)-(-2,1,-1)=(0,0,0)
+        </md>
+        is a nontrivial linear combination equal to <m>\boldzero</m>. We conclude that <m>S</m> is linearly dependent.
+        </p>
+      </li>
+      
+      <li>
+        <p>
+          We have  <m>aA_1+bA_2+cA_3=\boldzero</m> if and only if 
+          <md>
+            <mrow>a\begin{bmatrix}3\amp 1\\ 2\amp -3 \end{bmatrix} +b\begin{bmatrix}0\amp 4\\ 2\amp 0 \end{bmatrix} +c\begin{bmatrix}-2\amp -2\\ -2\amp 2 \end{bmatrix}\amp = \begin{bmatrix}0\amp 0\\0\amp 0 \end{bmatrix}
+            \amp </mrow>
+          </md>,
+          if and only if 
+          <md>
+            <mrow>
+            \begin{bmatrix}3a-2c\amp a+4b-2c\\ 2a+2b-2c\amp -3a+2c \end{bmatrix}\amp =\begin{bmatrix}0\amp 0\\0\amp 0 \end{bmatrix} \amp </mrow>
+          </md>.
+          Gaussian elimination reveals that the corresponding system of equations 
+          <md>
+             \begin{linsys}{3} 3a\amp \amp \amp -\amp 2c\amp =\amp 0\\ a\amp +\amp 4b\amp -\amp 2c\amp =\amp 0\\ 2a\amp +\amp 2b \amp -\amp 2c \amp =\amp 0\\ -3a\amp \amp \amp +\amp 2c\amp =\amp 0 \end{linsys} 
+          </md>
+         has infinitely many solutions, and thus nontrivial solutions (<eg/>, <m>(a,b,c)=(2,1,3)</m>). We conclude that there is a nontrivial combination of the <m>A_i</m> equal to <m>\boldzero</m>, and hence that <m>S</m> is linearly dependent.
+        </p>
+      </li>
+    </ol>
+    </p>
+    </solution>
+  </example> -->
+  <theorem xml:id="th_span_ind">
+  <title>Span and independence</title>
+  <statement>
+  <p>
+  Let <m>S=(v_i)_{i\in I}</m> be a nonempty tuple of vectors of the vector space <m>V</m>. The following statements are equivalent. 
+  <ol>
+    <li>
+        <p>
+            <m>S</m> is linearly dependent.
+        </p>
+    </li>
+    <li>
+        <p>
+            There is an index <m>i_{0}\in I</m> such that <m>v_{i_{0}}</m> can be written as a linear combination of the other <m>v_i</m>'s: <ie/>, there exists <m>i_k\in I</m> and and a finite set of indices <m>J</m> not containing <m>i_0</m>, such that 
+            <md>
+                v_{i_0}=\sum_{j\in J}c_jv_j
+            </md>
+            for some <m>c_j\in F</m>. 
+        </p>
+        <p>
+            Additionally, when this is the case we have 
+            <md number="yes" xml:id="eq_span_ind">
+                \Span\{v_i\mid i\in I\}=\Span\{v_i\mid i\in I-\{i_k\}\}
+            </md>.
+        </p>
+    </li>
+    
+  </ol>
+  </p>
+  </statement>
+  <proof>
+  <p>
+    If the tuple <m>S=(v_i)_{i\in I}</m> is linearly dependent, then there is a nontrivial linear combination 
+    <md>
+      c_{i_1}v_1+c_{i_2}v_2+\cdots +c_{i_n}v_{i_n}=\boldzero
+    </md>,
+    where <m>i_j\in I</m>. 
+    Since the linear combination is nontrivial, we have <m>c_{i_k}\ne 0</m> for some <m>1\leq k\leq n</m>. After a little vector arithmetic, we can then solve for <m>v_{i_k}</m>: 
+    <md>
+      v_{i_k}=\sum_{j\ne k}\frac{c_{i_j}}{c_{i_k}}v_{i_j}
+    </md>.
+    This shows <m>v_{i_k}</m> is a linear combination of the vectors <m>v_i</m>, where <m>i\ne i_k</m>, and thus that <m>v_{i_k}\in \Span(v_i)_{i\in I-\{i_k\}}</m>.
+  </p>
+  <p>
+    Conversely, if we have <m>v_{i_k}\in \Span(v_i)_{i\in I-\{i_k\}}</m>, then we have 
+    <md number="yes" xml:id="eq_span_ind_proof">
+      v_{i_k}=\sum_{j=1}^nd_{i_j}v_{i_j}
+    </md>
+    for some <m>i_j\in I</m> and <m>d_{i_j}\in F</m>, whence it follows that 
+    <md>
+      -d_{i_1}v_{i_1}-d_{i_2}v_{i_2}-\cdots --d_{i_n}v_{i_n}+v_{i_k}=\boldzero
+    </md>
+    is a nontrivial linear combination of the <m>v_i</m> equal to <m>\boldzero</m>. We conclude that <m>S=(v_i)_{i\in i}</m> is linearly dependent.
+  </p>
+  <p>
+    We have thus proved that <m>S</m> is linearly dependent if and only if some <m>v_{i_k}</m> can be written as a linear combination of the other vectors <m>v_i</m>. We now prove that when this is the case, we have 
+    <md>
+      \Span\{v_i\mid i\in I-\{i_k\}\}=\Span\{v_i\mid i\in I\}
+    </md>.
+    It is clear that 
+    <md>
+      \Span\{v_i\mid i\in I-\{i_k\}\}\subseteq \Span\{v_i\mid i\in I\}
+    </md>. 
+    Indeed, more generally, if <m>S\subseteq S'\subseteq V</m>, then clearly <m>\Span S\subseteq \Span S'</m>, since any linear combination of the smaller set <m>S</m> is also a linear combination of the larger set <m>S'</m>. 
+</p>
+<p>
+    For the other direction, take <m>v\in \Span\{v_i\mid i\in I\}</m>. By definition, we can write <m>v</m> as a finite linear combination of the vectors <m>v_i</m>. It follows that can write 
+    <md>
+      v=c_{i_k}v_{i_k}+\sum_{i\in J}c_iv_i
+    </md>,
+    where <m>J</m> is a finite subset of <m>I</m> not containing <m>i_k</m>. (Note that <m>c_{i_k}</m> is allowed to be 0 here.) Since <m>v_{i_k}</m> is assumed to be a linear combination of the other vectors <m>v_i</m>, we can express <m>v_{i_k}</m> as in <xref ref="eq_span_ind_proof"/>, in which case we have 
+    <md>
+      v=\sum_{j=1}^nc_{i_k}d_{i_j}v_{i_j}+\sum_{i\in J}c_iv_i
+    </md>.
+    Since <m>i_j\ne i_k</m> for all <m>1\leq j\leq n</m>, and since <m>i_k\notin J</m>, we see that this is a linear combination of the tuple <m>(v_i)_{i\in I-\{i_k\}}</m>. Thus <m>v\in \Span(v_i)_{i\in I-\{i_k\}}</m>, showing that 
+    <md>
+      \Span\{v_i\mid i\in I\}\subseteq \Span\{v_i\mid i\in I-\{i_k\}\}
+    </md>,
+    as desired.
+  </p>
+  </proof>
+  </theorem>
+  <!-- <p>
+    <xref ref="th_span_ind"/> is a precise articulation of the fact that a tuple <m>S=(v_i)_{i\in I}</m> is linearly dependent if and only if one of the vectors <m>v_{i_0}</m> is <q>redundant</q>. In more detail, it says that there is an index <m>i_0</m> such that 
+    <md>
+        v_{i_0}=c_{i_1}v_{i_1}+c_{i_2}v_{i_1}+\cdots +c_{i_n}v_{i_1}
+    </md>
+    where <m>i_k\ne i_0</m> for all <m>1\leq k\leq n</m>, and furthermore, that in terms of the span operation, this <q>redundant</q> vector <m>v_{i_0}</m> can be dropped. We will most often apply this result in the case where we have a tuple of finite length. We record the result in this special case as a corollary.
+  </p>
+  <corollary xml:id="cor_span_ind">
+    <title>Span and independence</title>
+    <statement>
+        <p>
+            Let <m>S=(v_1,v_2,\dots, v_n)</m> be an <m>n</m>-tuple of vectors of the vector space <m>V</m>. The following statements are equivalent. 
+            <ol>
+                <li>
+                    <p>
+                        <m>S</m> is linearly dependent. 
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        There exists <m>k\in \{1,2,\dots, n\}</m> such that 
+                        <men>
+                            v_k\in \Span(v_1,v_2,\dots, v_{k-1})
+                        </men>.
+                        Furthermore, when this is the case we have 
+                        <men xml:id="eq_span_ind_finite">
+                            \Span(v_1,v_2,\dots, v_n)=\Span(v_i)_{i\ne k}
+                        </men>.
+                        In other words, the span of the vectors is unchanged when we drop the <q>redundant</q> vector <m>v_k</m>. 
+                    </p>
+                </li>
+            </ol>
+        </p>
+    </statement>
+  </corollary>
+  <remark>
+    <p>
+      For the case <m>k=1</m> in the statement of <xref ref="cor_span_ind"/>, we interpret the assertion 
+    <md>
+      v_k\in \Span(v_1,v_2,\dots, v_{k-1})
+    </md>
+    as <m>v_1\in \Span()</m>. In this somewhat degenerate case, it turns out that we must have <m>v_1=\boldzero</m>. See the proof below. 
+  </p>
+  </remark>
+  <proof>
+    <title>Proof of corollary</title>
+    <p>
+      The corollary is for the most part simply a special case of <xref ref="th_span_ind"/>. It remains only to prove that if <m>S=(v_1,v_2,\dots, v_n)</m> is linearly dependent, then there is a <m>1\leq k\leq n</m> such that 
+      <md>
+        v_k\in\Span(v_1,v_2,\dots, v_{k-1})
+      </md>.
+      This is proven as follows: if <m>S</m> is linearly dependent, then we have a nontrivial linear combination
+      <md>
+        c_1v_1+c_2v_2+\cdots +c_nv_n=\boldzero
+      </md>.
+      Since <m>c_i\ne 0</m> for <em>some</em> <m>i</m>, we can set <m>k</m> to be the largest such <m>i</m>: <ie/>, 
+      <md>
+        k=\max\{i\in \{1,2,\dots, n\}\colon c_i\ne 0\}
+      </md>.
+      We now treat the cases <m>k=1</m> and <m>k&gt; 1</m> separately. If <m>k=1</m>, then by definition of <m>k</m>, we have <m>c_1v_1=\boldzero</m> and <m>c_1\ne 0</m>. Using <xref ref="th_vs_props"/>, we conclude that <m>v_1=\boldzero</m> in this case, and hence that <m>v_1\in \Span()=\{\boldzero\}</m>. (When <m>k=1</m> we interpret <m>\Span(v_1,\dots, v_{k-1})</m> as <m>\Span()</m>.)
+    </p>
+      <p>
+        Now assume <m>k\geq 2</m>. By definition of <m>k</m>, we have 
+      <md>
+        c_1v_1+\cdots +c_kv_k=\boldzero
+      </md>
+      and <m>c_k\ne 0</m>, from whence it follows that  
+      <md>
+        v_k=-\frac{c_1}{c_k}v_1+\cdots -\frac{c_{k-1}}{c_k}v_{k-1}\in \Span(v_1,v_2,\dots, v_{k-1})
+      </md>,
+      as desired.
+    </p>
+  </proof> -->
+  
+  
+  
+    </subsection>
+
+</section>

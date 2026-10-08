@@ -7,5 +7,6 @@
     <xi:include href="s_complex.ptx" />
     <xi:include href="s_vector_space.ptx" />
     <xi:include href="s_ntuples.ptx" />
+    <xi:include href="s_span_ind.ptx" />
 
 </chapter>
