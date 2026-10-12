@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<script>// Make *any* div with class 'sagecell-sage' an executable Sage cell
+// Their results will be linked, only within language type
+sagecell.makeSagecell({
+  "inputLocation": "div.sagecell-sage",
+  "linked": true,
+  "linkKey": "linked-sage",
+  "autoeval": false,
+  "languages": [
+    "sage"
+  ],
+  "evalButtonText": "Evaluate (Sage)"
+});
+</script>
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.7.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Span of two vectors.</span>
+</h4>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(S=\{v,w\}\subseteq \R^3\text{,}\)</span> where <span class="process-math">\(v=(1,-2,1)\)</span> and <span class="process-math">\(w=(3,-2,-1)\text{,}\)</span> and let <span class="process-math">\(W=\Span S\text{.}\)</span>
+</div>
+<ol class="decimal" id="eg_span_two_vectors-2-1-5">
+<li>
+<div class="para">Describe visually the set <span class="process-math">\(W\text{,}\)</span> using our geometric interpretations of vector operations. What sort of geometric is <span class="process-math">\(W\text{?}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_span_two_vectors-2-1-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg_span_two_vectors-2-1-5-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li>
+<div class="para logical">
+<div class="para">Show that <span class="process-math">\(W\)</span> can be described as the set of all solutions to the equation <span class="process-math">\(x+y+z=0\text{:}\)</span> i.e.,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W=\{(a,b,c)\in \R\mid a+b+c=0\}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_two_vectors-2-1-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg_span_two_vectors-2-1-5-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_two_vectors-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para">First observe that <span class="process-math">\(W\)</span> contains <span class="process-math">\(\Span \{v\}=\ell_1\text{,}\)</span> the line passing through <span class="process-math">\(\boldzero\)</span> and <span class="process-math">\((1,-2,1)\text{,}\)</span> and <span class="process-math">\(\Span \{w\}=\ell_2\text{,}\)</span> the line passing through <span class="process-math">\(\boldzero\)</span> and <span class="process-math">\((3,-2,-1)\text{.}\)</span> Next, an arbitrary element <span class="process-math">\(cv+dw\)</span> of <span class="process-math">\(W=\Span \{v,w\}\)</span> can be visualized as traveling a along the line through <span class="process-math">\(v\)</span> a certain distance and direction (determined by the scalar <span class="process-math">\(c\)</span>), and then traveling in a line parallel to the line through <span class="process-math">\(w\)</span> a certain distance and direction (determined by the scalar <span class="process-math">\(d\)</span>). Put another way, starting with the point <span class="process-math">\(cv\)</span> on <span class="process-math">\(\ell_1\text{,}\)</span> adding arbitrary scalar multiples <span class="process-math">\(dw\)</span> of <span class="process-math">\(w\text{,}\)</span> yields an entire line passing through <span class="process-math">\(cv\)</span> and parallel to <span class="process-math">\(\ell_2\text{.}\)</span> This gives rise to a conception of <span class="process-math">\(W\)</span> as a union of a bunch of lines parallel to <span class="process-math">\(\ell_2\text{,}\)</span> obtained by translation in the direction <span class="process-math">\(v=(1,1,1)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_span_two_vectors-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div id="eg_span_two_vectors-3-2" class="ptx-sagecell sagecell-sage"><script type="text/x-sage">from sage.plot.plot3d.plot3d import axes
+a=axes(3,1,color='black',ticks=[(0,1,2),(0,1,2),(0,1,2)])
+(u,v,r)=var('u v r')
+v1=vector([1,-2,1]).normalized()
+v2=vector([3,-2,-1]).normalized()
+S=parametric_plot3d(u*v1+v*v2,(u,-3,3),(v,-3,3), color='red',opacity=.1)
+gridu=sum(line([r*v2-3*v1,r*v2+3*v1],color='red') for r in srange(-3,4,1))
+gridv=sum(line([r*v1-3*v2,r*v1+3*v2],color='blue') for r in srange(-3,4,1))
+t1=text3d("v",.5*2*v1+vector([0,0,.2]), fontsize=16)
+t2=text3d("w",.5*2*v2+vector([0,0,.2]), fontsize=16)
+ar1=arrow([0,0,0],2*v1, color="green", width=2)
+ar2=arrow([0,0,0],2*v2, color="green", width=2)
+show(S+gridu+gridv+t1+t2+a+ar1+ar2)
+</script></div>
+<div class="autopermalink" data-description="Solution 1.7.1.1"><a href="#eg_span_two_vectors-3" title="Copy heading and permalink for Solution 1.7.1.1" aria-label="Copy heading and permalink for Solution 1.7.1.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.7.1: Span of two vectors"><a href="#eg_span_two_vectors" title="Copy heading and permalink for Example 1.7.1: Span of two vectors" aria-label="Copy heading and permalink for Example 1.7.1: Span of two vectors">🔗</a></div></article><span class="incontext"><a class="internal" href="s_systems.html#eg_span_two_vectors">in-context</a></span>
+</body>
+</html>

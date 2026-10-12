@@ -1342,6 +1342,150 @@ var ptx_lunr_docs = [
   "body": " Span and independence   Let be a nonempty tuple of vectors of the vector space . The following statements are equivalent.    is linearly dependent.    There is an index such that can be written as a linear combination of the other 's: , there exists and and a finite set of indices not containing , such that for some .  Additionally, when this is the case we have .       If the tuple is linearly dependent, then there is a nontrivial linear combination , where . Since the linear combination is nontrivial, we have for some . After a little vector arithmetic, we can then solve for : . This shows is a linear combination of the vectors , where , and thus that .  Conversely, if we have , then we have for some and , whence it follows that is a nontrivial linear combination of the equal to . We conclude that is linearly dependent.  We have thus proved that is linearly dependent if and only if some can be written as a linear combination of the other vectors . We now prove that when this is the case, we have . It is clear that . Indeed, more generally, if , then clearly , since any linear combination of the smaller set is also a linear combination of the larger set .  For the other direction, take . By definition, we can write as a finite linear combination of the vectors . It follows that can write , where is a finite subset of not containing . (Note that is allowed to be 0 here.) Since is assumed to be a linear combination of the other vectors , we can express as in , in which case we have . Since for all , and since , we see that this is a linear combination of the tuple . Thus , showing that , as desired.   "
 },
 {
+  "id": "s_systems",
+  "level": "1",
+  "url": "s_systems.html",
+  "type": "Section",
+  "number": "1.7",
+  "title": "Systems of linear equations",
+  "body": " Systems of linear equations   In computing examples of within vector spaces, we were lead naturally to a system of linear equations . In the next few sections we dedicate ourselves to the study of such systems. In addition to yielding a complete theory of the solutions to linear systems, as well as a systematic procedure for determining (and expressing) these solutions, our study will also give us more opportunities to practice our proof writing.    Systems of linear equations  Let's begin with a motivating example.   Span of two vectors   Let , where and , and let .   Describe visually the set , using our geometric interpretations of vector operations. What sort of geometric is ?    Show that can be described as the set of all solutions to the equation : , .       First observe that contains , the line passing through and , and , the line passing through and . Next, an arbitrary element of can be visualized as traveling a along the line through a certain distance and direction (determined by the scalar ), and then traveling in a line parallel to the line through a certain distance and direction (determined by the scalar ). Put another way, starting with the point on , adding arbitrary scalar multiples of , yields an entire line passing through and parallel to . This gives rise to a conception of as a union of a bunch of lines parallel to , obtained by translation in the direction .      Linear equations  linear equation   Let be a field. A linear expression over in the unknowns is an expression of the form , where .  A linear equation in the unknowns is an equation that can be simplified, using only addition and subtraction, to an equation of the form which we call its standard form . An equation in the unknowns is nonlinear if it cannot be simplified to the form using only addition and subtraction.  A linear equation in standard form is nontrivial if for some . It is homogeneous if and nonhomogeneous if .     Linear and nonlinear equations      Consider . This is a linear equation in the unknowns . Its standard form is . Since the right-hand side is nonzero, we see that the equation is nonhomogeneous.    The equation is a nonlinear equation in the unknowns and .    The equation is nonlinear. Interestingly, however, the set of solutions to this equation is equal to the set of solutions to the linear equation . This illustrates that is concerned strictly with the form of an equation, and not with the solutions to that equation.       We next provide a precise definition of a solution of a linear equation.   Solutions to linear equations   Let be a field. A solution to a linear equation over  is an -tuple such that . We say  solves the equation in this case.    A system of linear equations (or linear system), is simply a collection of linear equations.   Systems of linear equations  linear system   Let bea field. A system of linear equations (or linear system ) over is a set of linear equations. The scalars are called the coefficients of the system. The linear system is homogeneous if each of its equations is homogeneous: , if for all .  A solution to the system is an -tuple that is a solution to each of the system's equations. We say  solves the system in this case.  A linear system is consistent if a solution to the system exists, and inconsistent otherwise.    When displaying a system of equations in the unknowns , we typically write each equation in standard form and align the corresponding terms of each equation into columns: A homogeneous system is thus typically written as:    Displaying linear systems  As indicated in , when displaying a system of equations in the unknowns , we typically write each individual equation in standard form and align the corresponding terms of each equation into columns. The presence of multiple equations and multiple unknowns necessitates the use of double-indexing for the coefficients appearing in the system. The following breakdown will hopefully help you orient yourself with respect to the double-indexing:   The appearing in and indicates the -th row in our displayed system, or equivalently, the -th equation.    The appearing in indicates the -th column in our displayed system, which is associated to the -th variable, for .       Solutions to elementary systems   For each linear system over below, determine the set of solutions to the system.                 The first equation implies . Substituting for in the second equation, we would then have , a contradiction. Thus there are no solutions: i.e., is the empty set, denoted or .    The first equation implies . Making this substitution in the second equation yields , or . Thus is the unique solution, and .    The second equation is just twice the first. It follows that both equations have the exact same set of solutions, and so we need only find all solutions to . Note that we can set for any real number . Solving for in terms of we get for any , and thus , an infinite set!       The solutions to the the three linear systems of can be described qualitatively as follows: nonexistent, unique, and infinite. This turns out to be characteristic more generally of any linear system over an infinite field . In other words, given a linear system over an infinite field , the set of solutions will take one of three qualitative forms:    : , there are no solutions and the system is inconsistent.     contains exactly one element: , there is a unique solution.     is infinite: , there are infinitely many solutions.   We will prove this in full rigor later. However, we get an inkling of why this should be true in the case of two or three unknowns, where we can put our geometric understanding to work. For example, consider a general system of equations in just two unknowns and : Assume for simplicity that each equation in the system is nontrivial, and thus that for each , the -th equation of this system defines a line . A solution of the system, being a solution of each equation , must lie on each of the lines . In other words, the set of solutions to the system is precisely the set of points lying in the common intersection of all of these lines. Thus our qualitative description of the set of solutions to this system amounts to the geometric fact that the intersection of any collection of lines in is either empty, contains a unique point, or is infinite. We illustrate this by reexamining from a geometric point of view.   Solutions to elementary systems (again)   For each system in , use a geometric argument to determine how many solutions there are.    We proceed geometrically by observing that each equation in a given system defines a line, that a pair is a solution to the given equation if and only if it is a point on the corresponding line, and thus that a pair is a solution to both equations if and only if it is a point lying on both lines. Thus, geometrically speaking, the set of solutions to a given system is equal to the intersection of the two corresponding lines.   In this case the two lines and are parallel (and not equal to one another). It follows that their intersection is empty. We conclude that there are no solutions to the system.    In this case the two lines and are nonparallel. It follows that they intersect in a single point. We conclude that the system has a unique solution.    In this case the two equations and define the same line , and thus that their intersection is also equal to . The set of solutions to the system is then equal to the set of points of , which is infinite.         Row operations  In we were able to combine some simple logic and arithmetic to solve each system completely. Of course, things get more complicated as the number of equations and\/or unknowns in the system increases.  For example, consider the system Observe first that the triple is not a solution to the system; one easily checks that is satisfies the first and second equations, but not the third. Similarly, it is easy to verify that and are both solutions to the system. The question remains: How do we find all solutions to the linear system in a systematic way?   Notice the somewhat funny spacing in . This is in force in order to align the unknowns in separate columns. In general, when handed a linear system in the wild, your first step should be to write each equation in standard form, and make sure the unknowns are aligned vertically in this manner.    Some systems are easier to solve than others  Below you find two systems of three equations in three unknowns. The staircase pattern of allows us to solve easily by backwards substitution . In more detail:   Equation 3 in tells us that .    Now substitute into Equation 2 of and solve for to get .    Finally, substitute and into Equation 1 of and solve for to get . We conclude that is a solution to .    Furthermore, since at each step we had no choice in the matter ( must be equal to 2, then must be equal to 4, etc.), we see that in fact is the only solution to .   Our method for solving a more complicated system, like above, will be to transform it to a simpler system like .   Key point . In order for this method to work, we need to make sure that the transformed system has exactly the same solutions as the original system! To this end we will restrict our permissible transformations to the elementary operations define below.   Elementary operations on linear systems  elementary operations linear systems  elementary operations linear systems scalar multiplication  elementary operations linear systems equation swap  elementary operations linear systems equation addition  row reduction of systems   An elementary operation (or elementary row operation ) is one of the three types of operations on linear systems described below.   Scalar multiplication  Multiply an equation by a nonzero number : i.e., replace the -th equation of the system with for . Note: is the result of multiplying the left and right sides of equation by .    Equation swap  Swap the -th and -th equations of the system, : i.e., replace equation of the system with , and replace equation with .    Equation addition  Add a multiple of one equation to another: i.e., replace with for some , , and .   The act of transforming a system of equations using elementary operations is called reduction (or row reduction ).    After reducing a linear system using elementary operations, we are left with a new system . The systems and will generally look very different from one another. Note, however, that the two systems will have the same number of equations, and the same number of variables. More importantly, the two systems will have identical sets of solutions; that is, the set of solutions of the new system is identical to the set of solutions to !  To convince ourselves of this last assertion, it suffices to show that the application of any one of these elementary row operations produces a new system with exactly the same set of solutions as ; if this is so, then performing any finite sequence of elementary row operations must also preserve the set of solutions in this sense. makes this argument official. First we introduce the notion of equivalent linear systems , mainly to spare ourselves from the mouthful that is obtained by applying a finite sequence of elementary row operations .   Row equivalent linear systems   We say two systems of linear equations are row equivalent if the one can be obtained from the other by a finite sequence of elementary operations.     Row equivalence theorem   Row equivalent systems of linear equations have identical sets of solutions.    We prove by induction that if system is the result of applying elementary operations to system , , then and have the same set of solutions.   Base case:  In this case (we have applied no operations) and the statement is obvious.    Induction step  Assume that applying a sequence of elementary operations to a linear system preserves the set of solutions.  Suppose is the result of applying elementary operations to the system . Let be the result of applying the first of these operations. By the induction hypothesis, systems and have the same set of solutions.  Since the system is obtained from by applying exactly one elementary operation, it now suffices to show that applying a single row operation does not change the set of solutions to a linear system. We now show this for each of the three types of elementary operations.   Scalar multiplication      Row swap      Row addition     We conclude that and have the same set of solutions, as desired.       Complete example  Consider again the linear system   We transform the system as as follows:   Now put the logic together. Our original linear system was transformed by a sequence of elementary row operations to a new system :   We saw already that the second system has exactly one solution, namely the triple .  Since transforming a system by row operations preserves solutions, the first and second systems have exactly the same solutions .  Thus is the only solution to the original system!    Elementary operation notation  As we will see later, keeping track of the exact sequence of row operations is important in some situations. The notation used in the last example is useful for this bookkeeping. Let's explicate the notation somewhat.  The notation indicates that system is obtained from by replacing equation with .  The notation indicates that system is obtained from by swapping rows and .  The notation indicates that system is obtained from by replacing equation with .    Mandate  You may be tempted to do multiple operations in a single step during this procedure. Resist this temptation for now until we have a better understanding of things.  Furthermore, if later on you do give in to this temptation, make sure that the two (or more row operations) you perform are independent of one another. For example, do not swap with and replace with in the same step.    "
+},
+{
+  "id": "eg_span_two_vectors",
+  "level": "2",
+  "url": "s_systems.html#eg_span_two_vectors",
+  "type": "Example",
+  "number": "1.7.1",
+  "title": "Span of two vectors.",
+  "body": " Span of two vectors   Let , where and , and let .   Describe visually the set , using our geometric interpretations of vector operations. What sort of geometric is ?    Show that can be described as the set of all solutions to the equation : , .       First observe that contains , the line passing through and , and , the line passing through and . Next, an arbitrary element of can be visualized as traveling a along the line through a certain distance and direction (determined by the scalar ), and then traveling in a line parallel to the line through a certain distance and direction (determined by the scalar ). Put another way, starting with the point on , adding arbitrary scalar multiples of , yields an entire line passing through and parallel to . This gives rise to a conception of as a union of a bunch of lines parallel to , obtained by translation in the direction .    "
+},
+{
+  "id": "d_lin-equation",
+  "level": "2",
+  "url": "s_systems.html#d_lin-equation",
+  "type": "Definition",
+  "number": "1.7.2",
+  "title": "Linear equations.",
+  "body": " Linear equations  linear equation   Let be a field. A linear expression over in the unknowns is an expression of the form , where .  A linear equation in the unknowns is an equation that can be simplified, using only addition and subtraction, to an equation of the form which we call its standard form . An equation in the unknowns is nonlinear if it cannot be simplified to the form using only addition and subtraction.  A linear equation in standard form is nontrivial if for some . It is homogeneous if and nonhomogeneous if .   "
+},
+{
+  "id": "ss_linear_equations-5",
+  "level": "2",
+  "url": "s_systems.html#ss_linear_equations-5",
+  "type": "Example",
+  "number": "1.7.3",
+  "title": "Linear and nonlinear equations.",
+  "body": " Linear and nonlinear equations      Consider . This is a linear equation in the unknowns . Its standard form is . Since the right-hand side is nonzero, we see that the equation is nonhomogeneous.    The equation is a nonlinear equation in the unknowns and .    The equation is nonlinear. Interestingly, however, the set of solutions to this equation is equal to the set of solutions to the linear equation . This illustrates that is concerned strictly with the form of an equation, and not with the solutions to that equation.      "
+},
+{
+  "id": "d_lin_eq_sol",
+  "level": "2",
+  "url": "s_systems.html#d_lin_eq_sol",
+  "type": "Definition",
+  "number": "1.7.4",
+  "title": "Solutions to linear equations.",
+  "body": " Solutions to linear equations   Let be a field. A solution to a linear equation over  is an -tuple such that . We say  solves the equation in this case.   "
+},
+{
+  "id": "d_lin-sys",
+  "level": "2",
+  "url": "s_systems.html#d_lin-sys",
+  "type": "Definition",
+  "number": "1.7.5",
+  "title": "Systems of linear equations.",
+  "body": " Systems of linear equations  linear system   Let bea field. A system of linear equations (or linear system ) over is a set of linear equations. The scalars are called the coefficients of the system. The linear system is homogeneous if each of its equations is homogeneous: , if for all .  A solution to the system is an -tuple that is a solution to each of the system's equations. We say  solves the system in this case.  A linear system is consistent if a solution to the system exists, and inconsistent otherwise.   "
+},
+{
+  "id": "ss_linear_equations-11",
+  "level": "2",
+  "url": "s_systems.html#ss_linear_equations-11",
+  "type": "Remark",
+  "number": "1.7.6",
+  "title": "Displaying linear systems.",
+  "body": " Displaying linear systems  As indicated in , when displaying a system of equations in the unknowns , we typically write each individual equation in standard form and align the corresponding terms of each equation into columns. The presence of multiple equations and multiple unknowns necessitates the use of double-indexing for the coefficients appearing in the system. The following breakdown will hopefully help you orient yourself with respect to the double-indexing:   The appearing in and indicates the -th row in our displayed system, or equivalently, the -th equation.    The appearing in indicates the -th column in our displayed system, which is associated to the -th variable, for .     "
+},
+{
+  "id": "s_systems_eg_2eqns2varss",
+  "level": "2",
+  "url": "s_systems.html#s_systems_eg_2eqns2varss",
+  "type": "Example",
+  "number": "1.7.7",
+  "title": "Solutions to elementary systems.",
+  "body": " Solutions to elementary systems   For each linear system over below, determine the set of solutions to the system.                 The first equation implies . Substituting for in the second equation, we would then have , a contradiction. Thus there are no solutions: i.e., is the empty set, denoted or .    The first equation implies . Making this substitution in the second equation yields , or . Thus is the unique solution, and .    The second equation is just twice the first. It follows that both equations have the exact same set of solutions, and so we need only find all solutions to . Note that we can set for any real number . Solving for in terms of we get for any , and thus , an infinite set!      "
+},
+{
+  "id": "eg_system_of_lines",
+  "level": "2",
+  "url": "s_systems.html#eg_system_of_lines",
+  "type": "Example",
+  "number": "1.7.8",
+  "title": "Solutions to elementary systems (again).",
+  "body": " Solutions to elementary systems (again)   For each system in , use a geometric argument to determine how many solutions there are.    We proceed geometrically by observing that each equation in a given system defines a line, that a pair is a solution to the given equation if and only if it is a point on the corresponding line, and thus that a pair is a solution to both equations if and only if it is a point lying on both lines. Thus, geometrically speaking, the set of solutions to a given system is equal to the intersection of the two corresponding lines.   In this case the two lines and are parallel (and not equal to one another). It follows that their intersection is empty. We conclude that there are no solutions to the system.    In this case the two lines and are nonparallel. It follows that they intersect in a single point. We conclude that the system has a unique solution.    In this case the two equations and define the same line , and thus that their intersection is also equal to . The set of solutions to the system is then equal to the set of points of , which is infinite.      "
+},
+{
+  "id": "ss_row_equivalence-4",
+  "level": "2",
+  "url": "s_systems.html#ss_row_equivalence-4",
+  "type": "Remark",
+  "number": "1.7.9",
+  "title": "",
+  "body": " Notice the somewhat funny spacing in . This is in force in order to align the unknowns in separate columns. In general, when handed a linear system in the wild, your first step should be to write each equation in standard form, and make sure the unknowns are aligned vertically in this manner.  "
+},
+{
+  "id": "d_eqops",
+  "level": "2",
+  "url": "s_systems.html#d_eqops",
+  "type": "Definition",
+  "number": "1.7.10",
+  "title": "Elementary operations on linear systems.",
+  "body": " Elementary operations on linear systems  elementary operations linear systems  elementary operations linear systems scalar multiplication  elementary operations linear systems equation swap  elementary operations linear systems equation addition  row reduction of systems   An elementary operation (or elementary row operation ) is one of the three types of operations on linear systems described below.   Scalar multiplication  Multiply an equation by a nonzero number : i.e., replace the -th equation of the system with for . Note: is the result of multiplying the left and right sides of equation by .    Equation swap  Swap the -th and -th equations of the system, : i.e., replace equation of the system with , and replace equation with .    Equation addition  Add a multiple of one equation to another: i.e., replace with for some , , and .   The act of transforming a system of equations using elementary operations is called reduction (or row reduction ).   "
+},
+{
+  "id": "d_rowequivalent",
+  "level": "2",
+  "url": "s_systems.html#d_rowequivalent",
+  "type": "Definition",
+  "number": "1.7.11",
+  "title": "Row equivalent linear systems.",
+  "body": " Row equivalent linear systems   We say two systems of linear equations are row equivalent if the one can be obtained from the other by a finite sequence of elementary operations.   "
+},
+{
+  "id": "s_systems_th_rowops",
+  "level": "2",
+  "url": "s_systems.html#s_systems_th_rowops",
+  "type": "Theorem",
+  "number": "1.7.12",
+  "title": "Row equivalence theorem.",
+  "body": " Row equivalence theorem   Row equivalent systems of linear equations have identical sets of solutions.    We prove by induction that if system is the result of applying elementary operations to system , , then and have the same set of solutions.   Base case:  In this case (we have applied no operations) and the statement is obvious.    Induction step  Assume that applying a sequence of elementary operations to a linear system preserves the set of solutions.  Suppose is the result of applying elementary operations to the system . Let be the result of applying the first of these operations. By the induction hypothesis, systems and have the same set of solutions.  Since the system is obtained from by applying exactly one elementary operation, it now suffices to show that applying a single row operation does not change the set of solutions to a linear system. We now show this for each of the three types of elementary operations.   Scalar multiplication      Row swap      Row addition     We conclude that and have the same set of solutions, as desired.    "
+},
+{
+  "id": "eg_systems_eg_long",
+  "level": "2",
+  "url": "s_systems.html#eg_systems_eg_long",
+  "type": "Example",
+  "number": "1.7.13",
+  "title": "Complete example.",
+  "body": " Complete example  Consider again the linear system   We transform the system as as follows:   Now put the logic together. Our original linear system was transformed by a sequence of elementary row operations to a new system :   We saw already that the second system has exactly one solution, namely the triple .  Since transforming a system by row operations preserves solutions, the first and second systems have exactly the same solutions .  Thus is the only solution to the original system!  "
+},
+{
+  "id": "s_systems_notation_rowops",
+  "level": "2",
+  "url": "s_systems.html#s_systems_notation_rowops",
+  "type": "Remark",
+  "number": "1.7.14",
+  "title": "Elementary operation notation.",
+  "body": " Elementary operation notation  As we will see later, keeping track of the exact sequence of row operations is important in some situations. The notation used in the last example is useful for this bookkeeping. Let's explicate the notation somewhat.  The notation indicates that system is obtained from by replacing equation with .  The notation indicates that system is obtained from by swapping rows and .  The notation indicates that system is obtained from by replacing equation with .  "
+},
+{
+  "id": "s_systems_rm_oneoperation",
+  "level": "2",
+  "url": "s_systems.html#s_systems_rm_oneoperation",
+  "type": "Remark",
+  "number": "1.7.15",
+  "title": "Mandate.",
+  "body": " Mandate  You may be tempted to do multiple operations in a single step during this procedure. Resist this temptation for now until we have a better understanding of things.  Furthermore, if later on you do give in to this temptation, make sure that the two (or more row operations) you perform are independent of one another. For example, do not swap with and replace with in the same step.  "
+},
+{
   "id": "appendix-notation",
   "level": "1",
   "url": "appendix-notation.html",
