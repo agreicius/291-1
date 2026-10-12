@@ -8,5 +8,6 @@
     <xi:include href="s_vector_space.ptx" />
     <xi:include href="s_ntuples.ptx" />
     <xi:include href="s_span_ind.ptx" />
+    <xi:include href="s_systems.ptx" />
 
 </chapter>

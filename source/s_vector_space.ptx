@@ -437,7 +437,7 @@ Let <m>I=[a,b]\subseteq \R </m> be an interval in the real line. The vector oper
 </example>
 
 </subsection>
-<subsection xml:id="">
+<subsection xml:id="ss_vector_space_props">
 <title>Vector space properties</title>
 <p>
     We end this section with a few elementary vector space properties. Since these statements involve a general vector space (as opposed to a specific type of vector space), we will make no assumptions about <m>V</m> and the base field <m>F</m>, other than that <m>V</m> satisfies the vector space axioms and <m>F</m> satisfies the field axioms. 

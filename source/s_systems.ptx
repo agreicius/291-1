@@ -6,6 +6,7 @@
    </p>
   </introduction>
   <subsection xml:id="ss_linear_equations">
+  <title>Systems of linear equations</title>
   <p>
     Let's begin with a motivating example.
   </p>
@@ -24,7 +25,7 @@
       <p>
         Show that <m>W</m> can be described as the set of all solutions to the equation <m>x+y+z=0</m>: <ie/>, 
         <md>
-          W=\{(a,b,c)\in \R\mid a+b+c=0}
+          W=\{(a,b,c)\in \R\mid a+b+c=0\}
         </md>.
       </p>
     </li>
@@ -33,55 +34,48 @@
   </statement>
   <solution>
   <p>
-  First observe that <m>W</m> contains <m>\Span \{v}=\ell_1</m>, the line passing through <m>\boldzero</m> and <m>(1,-2,1)</m>, and <m>\Span \{w\}=\ell_2</m>, the line passing through <m>\boldzero</m> and <m>(3,-2,-1)</m>. Next, an arbitrary element <m>cv+dw</m> of <m>W=\Span \{v,w\}</m> can be visualized as traveling a along the line through <m>v</m> a certain distance and direction (determined by the scalar <m>c</m>), and then traveling in a line parallel to the line through <m>w</m> a certain distance and direction (determined by the scalar <m>d</m>). Put another way, starting with the point <m>cv</m> on <m>\ell_1</m>, adding arbitrary scalar multiples <m>dw</m> of <m>w</m>, yields an entire line passing through <m>cv</m> and parallel to <m>\ell_2</m>. This gives rise to a conception of <m>W</m> as a union of a bunch of lines parallel to <m>\ell_2</m>, obtained by translation in the direction <m>v=(1,1,1)</m>. 
+  First observe that <m>W</m> contains <m>\Span \{v\}=\ell_1</m>, the line passing through <m>\boldzero</m> and <m>(1,-2,1)</m>, and <m>\Span \{w\}=\ell_2</m>, the line passing through <m>\boldzero</m> and <m>(3,-2,-1)</m>. Next, an arbitrary element <m>cv+dw</m> of <m>W=\Span \{v,w\}</m> can be visualized as traveling a along the line through <m>v</m> a certain distance and direction (determined by the scalar <m>c</m>), and then traveling in a line parallel to the line through <m>w</m> a certain distance and direction (determined by the scalar <m>d</m>). Put another way, starting with the point <m>cv</m> on <m>\ell_1</m>, adding arbitrary scalar multiples <m>dw</m> of <m>w</m>, yields an entire line passing through <m>cv</m> and parallel to <m>\ell_2</m>. This gives rise to a conception of <m>W</m> as a union of a bunch of lines parallel to <m>\ell_2</m>, obtained by translation in the direction <m>v=(1,1,1)</m>. 
   </p>
-  <image>
-    <shortdescription>SagePlot of a plane through the vectors v and w</shortdescription>
-    <sageplot>
-    (u,v,r)=var('u v r')
-n=[1,1,1] #normal vector
-A=matrix([n])
-d=vector([5]) # d in ax+by+cz=d
-P=A.solve_right(d) #Find a point
-B=A.right_kernel().basis()
-v1=B[0] #Two vectors orth. to n that
-v2=B[1] #are not scalar multiples
-w1=B[0].normalized()
-w2=B[1].normalized()
-r(u,v)=P+u*v1+v*v2 #The parametrization
-S=parametric_plot3d(P+u*w1+v*w2,(u,-3,3),(v,-3,3), color='red',opacity=.1)
-gridu=sum(line([P+r*w2-3*w1,P+r*w2+3*w1],color='red') for r in srange(-3,4,1))
-gridv=sum(line([P+r*w1-3*w2,P+r*w1+3*w2],color='blue') for r in srange(-3,4,1))
-t1=text3d("w1",P+.75*w1+vector([0,0,.2]), fontsize=16)
-t2=text3d("w2",P+.75*w2+vector([0,0,.2]), fontsize=16)
-t3=text3d("P",P+vector([0,0,.2]), fontsize=16)
-t4=text3d("n",P+1.2*vector(n).normalized(), fontsize=16)
-print("r(u,v)=",r(u,v))
-show(S+point3d(P,size=10, opacity=1)+arrow(P,P+w1)+arrow(P,P+w2)+gridu+gridv+arrow(P,P+vector(n).normalized(),color='red')+t1+t2+t3+t4)
-    </sageplot>
-  </image>
+<sage>
+  <input>    
+from sage.plot.plot3d.plot3d import axes
+a=axes(3,1,color='black',ticks=[(0,1,2),(0,1,2),(0,1,2)])
+(u,v,r)=var('u v r')
+v1=vector([1,-2,1]).normalized()
+v2=vector([3,-2,-1]).normalized()
+S=parametric_plot3d(u*v1+v*v2,(u,-3,3),(v,-3,3), color='red',opacity=.1)
+gridu=sum(line([r*v2-3*v1,r*v2+3*v1],color='red') for r in srange(-3,4,1))
+gridv=sum(line([r*v1-3*v2,r*v1+3*v2],color='blue') for r in srange(-3,4,1))
+t1=text3d("v",.5*2*v1+vector([0,0,.2]), fontsize=16)
+t2=text3d("w",.5*2*v2+vector([0,0,.2]), fontsize=16)
+ar1=arrow([0,0,0],2*v1, color="green", width=2)
+ar2=arrow([0,0,0],2*v2, color="green", width=2)
+show(S+gridu+gridv+t1+t2+a+ar1+ar2)
+  </input>
+  <output>
+    
+  </output>
+</sage>
   </solution>
-  </example>
+  </example>  
   
-  <title>Systems of linear equations</title>
-    <definition xml:id="d_lin-equation" >
+  <definition xml:id="d_lin-equation" >
     <title>Linear equations</title>
     <idx><h>linear equation</h></idx>
     <statement>
       <p>
-        A <term>linear expression</term> in the <m>n</m> unknowns
-        (or variables)
+        Let <m>F</m> be a field. A <term>linear expression</term> over <m>F</m> in the <m>n</m> unknowns
         <m>x_1,x_2,\dots x_n</m> is an expression of the form
         <md>
           a_1x_1+a_2x_2+\cdots +a_nx_n+c
         </md>,
-        where <m>a_1,a_2,\dots, a_n,c</m> are fixed real numbers.
+        where <m>a_1,a_2,\dots, a_n,c\in F</m>.
       </p>
       <p>A <term>linear equation</term> in the unknowns <m>x_1,x_2,\dots, x_n</m> is an equation that can be simplified, using only addition and subtraction, to an equation of the form
         <md number="yes" xml:id="eq_std_form">
           a_1x_1+a_2x_2+\cdots a_nx_n=b,
         </md>
-        which we call its <term>standard form </term>. An equation in the unknowns <m>x_1,x_2,\dots, x_n</m> is <term>nonlinear</term> if it cannot be simplified to the form <xref ref="eq_std_form"/> using only addition and subtraction.
+        which we call its <term>standard form</term>. An equation in the unknowns <m>x_1,x_2,\dots, x_n</m> is <term>nonlinear</term> if it cannot be simplified to the form <xref ref="eq_std_form"/> using only addition and subtraction.
       </p>
       <p>
         A linear equation in standard form <xref ref="eq_std_form"/> is <term>nontrivial</term> if <m>a_i\ne 0</m> for some <m>1\leq i\leq n</m>. It is <term>homogeneous</term> if <m>b=0</m> and <term>nonhomogeneous</term> if <m>b\ne 0</m>.
@@ -125,19 +119,19 @@ show(S+point3d(P,size=10, opacity=1)+arrow(P,P+w1)+arrow(P,P+w2)+gridu+gridv+arr
     </statement>
   </example>
   <p>
-    We next provide a precise definition of a solution of a linear equation. This definition will involve <m>n</m>-tuples <m>(s_1,s_2,\dots, s_n)</m> of real numbers. 
+    We next provide a precise definition of a solution of a linear equation. 
   </p>
   <definition xml:id="d_lin_eq_sol">
     <title>Solutions to linear equations</title>
     <statement>
       <p>
-        A <term>solution to a linear equation</term>
+        Let <m>F</m> be a field. A <term>solution to a linear equation</term> over <m>F</m>
         <md>
           a_1x_1+a_2x_2+\cdots a_nx_n=b
         </md>
         is an <m>n</m>-tuple
         <m>(s_1,s_2,\dots,
-        s_n)</m> of real numbers for which the variable assignment <m>x_1=s_1, x_2=s_2,\dots, x_n=s_n</m> makes the equation true: <ie/>, the tuple <m>(s_1,s_2,\dots, s_n)</m> satisfies  
+        s_n)\in F^n</m> such that  
         <md>
           a_1s_1+a_2s_2+\cdots a_ns_n=b
         </md>.
@@ -146,153 +140,24 @@ show(S+point3d(P,size=10, opacity=1)+arrow(P,P+w1)+arrow(P,P+w2)+gridu+gridv+arr
     </statement>
   </definition>
   <p>
-    Given a linear equation <xref ref="eq_std_form"/>, we will be interested in finding and describing the set 
-    <m>S</m> of <em>all</em> of its solutions. As you may recall, a (nontrivial) linear equation in two unknowns defines a line in <m>\R^2</m>, and a (nontrivial) equation in three unknowns defines a plane in <m>\R^3</m>. These types of subsets (of <m>\R^2</m> and <m>\R^3</m>, respectively) have distinctive geometric properties that we will elucidate in coming sections. Generalizing this notion to an arbitrary number of unknowns leads to the notion of a <em>hyperplane</em>. 
-  </p>
-  <definition xml:id="d_hyperplane">
-    <title>Hyperplane</title>
-    <statement>
-      <p> A linear equation 
-        <md number="yes" xml:id="eq_hyper">a_1x_1+a_2x_2+\cdots a_nx_n=b</md> 
-        is <term>nontrivial</term> if <m>a_i\ne 0</m> for some <m>1\leq i\leq n</m>. Given a nontrivial equation <xref ref="eq_hyper"/>, the set of solutions 
-      <md>
-        S=\{(s_1,s_2,\dots, s_n)\in \R^n\colon a_1s_1+\cdots+a_ns_n=b \}
-      </md>
-      is called a <term>hyperplane</term> in <m>\R^n</m>. We have the two following special cases, corresponding to <m>n=2</m> and <m>n=3</m>:
-      <ul>
-        <li>
-          <p>
-            A hyperplane in <m>\R^2</m> is the set of solutions to a nontrivial equation <m>ax+by=c</m>, and is called a <term>line</term>.
-          </p>
-        </li>
-        <li>
-          <p>
-            A hyperplane in <m>\R^3</m> is the set of solutions to a nontrivial equation <m>ax+by+cz=d</m>, and is called a <term>plane</term>. 
-          </p>
-        </li>
-      </ul>
-    </p> 
-    </statement>
-  </definition>
-  <example xml:id="eg_vis_lines_R2">
-    <title>Visualizing lines in <m>\R^2</m></title>
-    <p>
-      Let <m>\ell\subseteq \R^2</m> be a line: <ie/>, <m>\ell</m> is the solution to some nontrivial linear equation <m>ax+by=c</m>. Since the equation is nontrivial, we have <m>a\ne 0</m> or <m>b\ne 0</m>. If <m>b\ne 0</m>, we may put the equation in the form 
-      <md>
-        y=-\frac{a}{b}x+\frac{c}{b}
-      </md>, 
-      in which case we recognize <m>m=-a/b</m> as the slope of <m>\ell</m> and <m>c/b</m> as the <m>y</m>-intercept. 
-    </p>
-    <p>
-      If <m>b=0</m>, then <m>a\ne 0</m>, and the equation can be solved as <m>x=c/a</m>, which we recognize as the vertical line passing through the point <m>(c/a,0)</m>.
-    </p>
-    
-    <figure xml:id="fig_lines">
-      <caption>Lines in <m>\R^2</m></caption>
-      <image xml:id="im_lines_R2" width="50%">
-        <shortdescription>Lines in R2</shortdescription>
-        <sageplot>
-          g(t)=(3/4,t)
-          l1=plot(-x+1/2,(x,-1/2,1),color='red', ticks=[[],[]],aspect_ratio=1)
-          l3=plot(x/1.5,(-1/2,1),color="green")
-          l2=parametric_plot(g(t),(t,-1/2,1), color='blue')
-          t1=text(r'$ax+by=c$',(-.35,.6),fontsize=12,color='black')
-          t2=text(r'$ax=c$',(.6,.7),fontsize=12,color='black')
-          t3=text(r'$ax+by=0$',(-.35,-.4),fontsize=12,color='black')
-          l1+l2+t1+t2+l3+t3
-        </sageplot>
-      </image>
-    </figure>
-  </example>
-  <example xml:id="eg_vis_plane">
-    <title>Visualizing planes in <m>\R^3</m></title>
-    <p>
-      Let <m>\mathcal{P}\subseteq \R^3</m> be a plane defined by the nontrivial equation 
-      <md number="yes" xml:id="eq_vis_plane">
-        ax+by+cz=d
-      </md>. 
-      We will describe two methods of visualizing <m>\mathcal{P}</m>. The first, more elementary approach might be described as the <em>triangle method</em>. This entails first finding by inspection three <em>non-colinear</em> points <m>P,Q,R</m> satisfying equation <xref ref="eq_vis_plane"/>. The plane <m>\mathcal{P}</m> is then visualized by sketching the triangle <m>\triangle PQR</m> in <m>\R^3</m> they define, and envisioning <m>\mathcal{P}</m> as the plane in <m>\R^3</m> containing this triangle. In practice we can find three such points by picking arbitrary values for two of the three variables, and solving for the third variable using <xref ref="eq_vis_plane"/>.
-    </p>
-    <p>
-      For example, if <m>\mathcal{P}</m> is the plane with equation <m>x+y+z=2</m>, we see easily that <m>P=(2,0,0), Q=(0,2,0), R=(0,0,2)</m> lie on <m>\mathcal{P}</m>, allowing us to produce the graph in <xref ref="fig_visualize_plane"/>. 
-    </p>
-    <figure xml:id="fig_visualize_plane">
-      <title>Using Sage to visualize <m>\mathcal{P}\colon ax+by+cz=d</m> via normal vector <m>\boldn=(a,b,c)</m></title>
-      <caption>Visualizing <m>\mathcal{P}\colon x+y+z=2</m></caption>
-      <image xml:id="im_plane" width="75%">
-        <sageplot variant="3d" aspect="1.0">
-x,y,z=var('x y z')
-from sage.plot.plot3d.plot3d import axes
-a=axes(2,1/2,color='black',ticks=[(0,1,2),(0,1,2),(0,1,2)])
-P=implicit_plot3d(x+y+z==2,(x,-1,2),(y,-1,2),(z,-1,2),color='green', opacity=.3)
-p1=point3d((2,0,0),size=10)
-p2=point3d((0,2,0),size=10)
-p3=point3d((0,0,2),size=10)
-T1=text3d("P=(2,0,0)",[2.1,0,.1],color="black",fontsize=15)
-T2=text3d("Q=(0,2,0)",[0,2.1,.1],color="black",fontsize=15)
-T3=text3d("R=(0,0,2)",[0,0,2.1],color="black",fontsize=15)
-T=polygon3d([[2,0,0],[0,2,0],[0,0,2]], color='green', opacity=.3, frame=False)
-T+p1+p2+p3+T1+T2+T3+a
-        </sageplot>
-      </image>
-    </figure>
-    <p>
-        Leaning on your multivariable calculus background, we also recall a method of visualization using normal vectors. Since the equation <xref ref="eq_vis_plane"/> is nontrivial, the vector <m>\boldn=(a,b,c)</m> is nonzero and is called a <term>normal vector</term> to the plane <m>\mathcal{P}</m>. The <em>normal vector method</em> for visualizing <m>\mathcal{P}</m> proceeds as follows: pick any point <m>P=(x_0,y_0,z_0)\in \mathcal{P}</m>, and visualize <m>\mathcal{P}</m> as the set of all points <m>Q=(x,y,z)</m> such that the vector <m>\overrightarrow{PQ}=(x-x_0, y-y_0, z-z_0)</m> is orthogonal to <m>\mathcal{n}</m>. This allows us to identify <m>\mathcal{P}</m> as the plane passing through <m>P</m> and orthogonal to <m>\boldn</m>.
-    </p>
-    <figure xml:id="fig_visualize_plane_normal">
-      <title>Using Sage to visualize <m>\mathcal{P}\colon ax+by+cz=d</m> via normal vector <m>\boldn=(a,b,c)</m></title>
-      <caption>Visualizing <m>\mathcal{P}\colon ax+by+cz=d</m> via normal vector <m>\boldn=(a,b,c)</m></caption>
-      <image xml:id="im_plane_normal" width="75%">
-<shortdescription>A plane and its normal vector</shortdescription>
-<sageplot variant="3d" aspect="1.0">
-a=-8
-b=3
-c=10
-d=3
-#Following finds two points, P and Q on plane
-n=matrix([a,b,c])
-NS=n.right_kernel()
-P=vector(n.solve_right(matrix([d])))
-Q=NS.basis()[0].normalized()
-#The rest produces graphics and labels
-Pt1=point(P, color="blue", size=10)
-Pt2=point(vector(P)+2*NS.basis()[0].normalized(), color="red", size=10)
-Ar1=arrow3d(P,P+2*Q, color="green")
-Ar2=arrow3d(P,P+2*vector(n).normalized(), color="red")
-T1=text3d("P",P+vector([0,0,.25]),color="black",fontsize=20)
-T2=text3d("Q",P+2*Q+vector([0,0,.25]),color="black",fontsize=20)
-T3=text3d("n",P+vector(n).normalized()+vector([0,0,.25]),color="black",fontsize=20)
-var("x y z")
-Plane=implicit_plot3d(a*x+b*y+c*z-d,(x,P[0]-2,P[0]+2),(y,P[1]-2,P[1]+2),(z,P[2]-2,P[2]+2), color="green", opacity=".3")
-Pt1+Pt2+Ar1+Ar2+T1+T2+T3+Plane
-</sageplot>
-
-</image>
-
-    </figure>
-    <p>
-      Note: by invoking orthogonality, we might be accused of having gotten ahead of ourselves somewhat. Although we will take up the notion of orthogonality in full generality in <xref ref="c_innerproductspaces"/>, we are justified in using it in the context of <m>\R^3</m>, since this is treated in standard multivariable calculus courses. 
-    </p>
-  </example>
-  <p>
-    As is driven home by our visualizations of lines and planes, the set of solutions to a single nontrivial linear equation is <em>infinite</em>. This begs the question of how best to describe this infinite set. We will take this up in <xref ref="s_solving"/>. For now we move on from a single linear equation to a <em>systems of linear equations</em>, which are just collections of linear equations. 
+    A system of linear equations (or linear system), is simply a collection of linear equations. 
   </p>
   <definition xml:id="d_lin-sys">
     <title>Systems of linear equations</title>
     <idx><h>linear system</h></idx>
     <statement>
       <p>
-        A <term>system of linear equations</term>
-        (or <term>linear system</term>)
+        Let <m>F</m> bea field. A <term>system of linear equations</term> 
+        (or <term>linear system</term>) over <m>F</m>
         is a set of linear equations.
         <md number="yes" xml:id="eq_lin_syst">
           \eqsys
         </md>
-        The linear system <xref ref="eq_lin_syst"/> is <term>homogeneous</term> if each of its equations is homogeneous: <ie/>, if <m>b_i=0</m> for all <m>1\leq i\leq m</m>.
+        The scalars <m>a_{i,j}</m> are called the <term>coefficients</term> of the system.  The linear system <xref ref="eq_lin_syst"/> is <term>homogeneous</term> if each of its equations is homogeneous: <ie/>, if <m>b_i=0</m> for all <m>1\leq i\leq m</m>.
       </p>
       <p>
         A <term>solution</term> to the system <xref ref="eq_lin_syst"/>
-        is an <m>n</m>-tuple <m>(s_1,s_2,\dots,s_n)</m> that is a solution to each of the system's <m>m</m> equations.
+        is an <m>n</m>-tuple <m>(s_1,s_2,\dots,s_n)\in F^n</m> that is a solution to each of the system's <m>m</m> equations.
         We say <m>(s_1,s_2,\dots,
         s_n)</m> <term>solves the system</term> in this case.
       </p>
@@ -318,12 +183,12 @@ A homogeneous system is thus typically written as:
   <ul>
     <li>
       <p>
-        The <m>i</m> appearing in <m>a_{ij}</m> and <m>b_i</m> indicates the <m>i</m>-th row in our displayed system, or equivalently, the <m>i</m>-th equation.
+        The <m>i</m> appearing in <m>a_{i,j}</m> and <m>b_i</m> indicates the <m>i</m>-th row in our displayed system, or equivalently, the <m>i</m>-th equation.
       </p>
     </li>
     <li>
       <p>
-        The <m>j</m> appearing in <m>a_{ij}</m>
+        The <m>j</m> appearing in <m>a_{i,j}</m>
         indicates the <m>j</m>-th column in our displayed system, which is associated to the <m>j</m>-th variable, for <m>1\leq j\leq n</m>.
       </p>
     </li>
@@ -334,7 +199,7 @@ A homogeneous system is thus typically written as:
   <title>Solutions to elementary systems</title>
   <statement>
   <p>
-  For each system, compute the set of solutions.
+  For each linear system over <m>\R</m> below, determine the set of solutions <m>S</m> to the system. 
   <ol>
     <li>
       <md>\begin{linsys}{2} x\amp -\amp y\amp =\amp 0\\ x\amp -\amp y\amp =\amp 1\end{linsys}</md>
@@ -380,7 +245,7 @@ A homogeneous system is thus typically written as:
 </solution>
 </example>
 <p>
-    The solutions to the the three linear systems of <xref ref="s_systems_eg_2eqns2varss"/> can be described <em>qualitatively</em> as follows: nonexistent, unique, and infinite. This turns out to be characteristic more generally of all linear systems. In other words, given a linear system <m>L</m>, the set of solutions <m>S</m> will take one of three qualitative forms:
+    The solutions to the the three linear systems of <xref ref="s_systems_eg_2eqns2varss"/> can be described <em>qualitatively</em> as follows: nonexistent, unique, and infinite. This turns out to be characteristic more generally of any linear system over an infinite field <m>F</m>. In other words, given a linear system <m>L</m> over an infinite field <m>F</m>, the set of solutions <m>S</m> will take one of three qualitative forms:
     <ol>
       <li>
         <p>
@@ -398,7 +263,7 @@ A homogeneous system is thus typically written as:
         </p>
       </li>
     </ol>
-    We will prove this in full rigor in <xref ref="s_solving"/>. However, we get an inkling of why this should be true in the case of two or three unknowns, where we can put our geometric understanding to work. For example, consider a general system of <m>m</m> equations in just two unknowns <m>x</m> and <m>y</m>: 
+    We will prove this in full rigor later. However, we get an inkling of why this should be true in the case of two or three unknowns, where we can put our geometric understanding to work. For example, consider a general system of <m>m</m> equations in just two unknowns <m>x</m> and <m>y</m>: 
     <md>
       \begin{linsys}{2} 
       a_{11}x\amp +\amp a_{12}y\amp =\amp b_1 \\ 
@@ -412,7 +277,7 @@ A homogeneous system is thus typically written as:
     <md number="yes" xml:id="eq_sys_line">
       \ell_i\colon a_{i1}x+a_{i2}y=b_i
     </md>.
-    A solution <m>P=(s_1,s_2,\dots, s_n)</m> of the system, being a solution of each equation <xref ref="eq_sys_line"/>, must lie on each of the <m>m</m> lines <m>\ell_i</m>. In other words, the set of solutions to the system is precisely the set of points <m>P</m> lying in the common intersection of all of these lines. Thus our qualitative description of the set of solutions to this system amounts to the <em>geometric</em> fact that the intersection of any collection of lines in <m>\R^2</m> is either empty, contains a unique point, or is infinite. <xref ref="ex_solving_sys_geom"/> has you prove this geometric fact, as well as the analogous statement for systems of equations in three unknowns. For now we illustrate this by reexamining <xref ref="s_systems_eg_2eqns2varss"/> from a geometric point of view. 
+    A solution <m>P=(s_1,s_2,\dots, s_n)</m> of the system, being a solution of each equation <xref ref="eq_sys_line"/>, must lie on each of the <m>m</m> lines <m>\ell_i</m>. In other words, the set of solutions to the system is precisely the set of points <m>P</m> lying in the common intersection of all of these lines. Thus our qualitative description of the set of solutions to this system amounts to the <em>geometric</em> fact that the intersection of any collection of lines in <m>\R^2</m> is either empty, contains a unique point, or is infinite. We illustrate this by reexamining <xref ref="s_systems_eg_2eqns2varss"/> from a geometric point of view. 
   </p>
 <example xml:id="eg_system_of_lines">
 <title>Solutions to elementary systems (again)</title>
@@ -512,7 +377,7 @@ A homogeneous system is thus typically written as:
     <statement>
       <p>
         An <term>elementary operation</term> (or <term>elementary row operation</term>) is one of the three types of operations on linear systems described below.
-        <dl>
+        <ul>
           <li xml:id="d_eq_scale">
             <title>Scalar multiplication</title>
               <p> Multiply an equation by a <em>nonzero</em> number <m>c\ne 0</m>:
@@ -533,7 +398,7 @@ A homogeneous system is thus typically written as:
               replace <m>e_i</m> with <m>e_i+ce_j</m> for some <m>c</m>, <m>i</m>, and <m>j</m>.
             </p>
           </li>
-        </dl>
+        </ul>
       The act of transforming a system of equations using elementary operations is called <term>reduction</term> (or <term>row reduction</term>).
     </p>
     </statement>
@@ -578,8 +443,27 @@ A homogeneous system is thus typically written as:
         Suppose <m>L'</m> is the result of applying <m>n+1</m> elementary operations to the system <m>L</m>. Let <m>L''</m> be the result of applying the first <m>n</m> of these operations. By the induction hypothesis, systems <m>L</m> and <m>L''</m> have the same set of solutions.
       </p>
       <p>
-        Since the system <m>L'</m> is obtained from <m>L''</m> by applying exactly one elementary operation, it now suffices to show that applying a single row operation does not change the set of solutions to a linear system. This is the result of <xref ref="ex_row_ops_preserve"/>. (Note that a solution is provided to that exercise.)
+        Since the system <m>L'</m> is obtained from <m>L''</m> by applying exactly one elementary operation, it now suffices to show that applying a single row operation does not change the set of solutions to a linear system. We now show this for each of the three types of elementary operations.
       </p>
+    </case>
+      <case>
+        <title>Scalar multiplication</title>
+        <p>
+         
+        </p>
+      </case>
+      <case>
+        <title>Row swap</title>
+        <p>
+         
+        </p>
+      </case>
+      <case>
+        <title>Row addition</title>
+        <p>
+         
+        </p>
+      </case>
       <p>
         We conclude that <m>L</m> and <m>L'</m> have the same set of solutions, as desired.
       </p>
@@ -694,35 +578,4 @@ A homogeneous system is thus typically written as:
 
 
 
-<subsection xml:id="ss_systems_ww">
-  <title>WeBWork Exercises</title>
-
-<exercise>
-      <!-- 1. Systems of equations in 2 variables -->
-      <webwork source="Library/TCNJ/TCNJ_LinearSystems/problem1.pg" />
-    </exercise>
-    
-    <exercise>
-      <!-- 2. System of equations in 2 variable with unknown constant -->
-      <webwork source="Library/TCNJ/TCNJ_RowReduction/problem5.pg" />
-    </exercise>
-    
-    <exercise>
-      <!-- 3. System of equations in 3 variables -->
-      <webwork source="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/holt_01_01_024.pg" />
-    </exercise>
-    
-    <exercise>
-      <!-- 5. Geometry in 2 variables -->
-      <webwork source="Library/TCNJ/TCNJ_LinearSystems/problem3.pg" />
-    </exercise>
-    
-    <exercise>
-      <!-- 6. Geometry in 3 variables -->      
-      <webwork source="Library/TCNJ/TCNJ_LinearSystems/problem4.pg" />
-    </exercise>
-
-</subsection>
-
-  <xi:include  href="s_systems_ex.ptx"/>
 </section>
