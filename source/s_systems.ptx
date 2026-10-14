@@ -464,10 +464,11 @@ A homogeneous system is thus typically written as:
          
         </p>
       </case>
+      
       <p>
         We conclude that <m>L</m> and <m>L'</m> have the same set of solutions, as desired.
       </p>
-      </case>
+
     </proof>
   </theorem>
   </paragraphs>

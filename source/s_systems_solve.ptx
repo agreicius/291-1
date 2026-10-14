@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_linsys_solve" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Solving linear systems</title>
+<introduction>
+    <p>
+      In <xref ref="s_systems"/> we sketched a procedure for solving a linear system <m>L</m>. That procedure involved applying a sequence of row operations to <m>L</m> to obtain a <q>simpler</q> system <m>L'</m>.
+    </p>
+    <p>
+      We will fill out this sketch in the next two sections. Specifically, we will: 
+      <ul>
+        <li>
+          <p>
+          describe precisely what we mean by a <q>simpler</q> system (see <xref ref="d_row_echelon"/>); 
+          </p>
+        </li>
+        <li>
+          <p>
+            provide an algorithm (or recipe) that decides exactly what sequence of row operations to apply to obtain this simpler system (see <xref ref="proc_GE"/>);
+          </p>
+        </li>
+        <li>
+          <p>
+            explain how to find <em>all</em> solutions of the resulting simpler system (see <xref ref="ss_solveSystem"/>).
+          </p>
+        </li>
+      </ul>
+    </p>
+   </introduction> 
+
+<subsection xml:id="ss_ge_row_echelon">
+  <title>Row echelon matrices</title>
+  <p>
+    Our first step in this direction will be to introduce a notational convenience. As you may have noticed, when performing row operations on a system of equations, we essentially treat the unknowns, as well as the plus and equals symbols, as placeholders; the only things that actually change in a given step are the coefficients in the equations. The <em>augmented matrix associated to a linear system</em> is a formal way of extracting just the information of the coefficients from a linear system. Of course, before introducing an augmented matrix we must at last introduce the notion of a matrix itself. As defined below, a matrix is just an <m>I</m>-tuple where the index set <m>I</m> is of the special form 
+<md>
+    <mrow>I \amp = \{1,2,\dots, m\}\times \{1,2,\dots, n\}=\{(i,j)\mid 1\leq i\leq m, 1\leq j\leq n\} </mrow>
+</md>. 
+As with <m>n</m>-tuples, we will introduce special notational conventions for this particular type of tuple. 
+  </p>
+<definition xml:id="d_matrix">
+<title>Matrices</title>
+<notation>
+<usage><m>\ML_{m,n}(F)</m></usage>
+  <description>set of <m>m\times n matrices</m> with entries in <m>F</m></description>
+</notation>
+<statement>
+<p>
+Let <m>F</m> be a field, let <m>m</m> and <m>n</m> be positive integers, and let 
+<md>
+    I = \{1,2,\dots, m\}\times \{1,2,\dots, n\}=\{(i,j)\mid 1\leq i\leq m, 1\leq j\leq n\} 
+</md>.
+An <term><m>F</m>-valued matrix</term> of <term>size</term> (or <term>dimension</term>) <m>m\times n</m> is an <m>F</m>-valued tuple <m>(a_{(i,j)})_{(i,j)\in I}</m> indexed by <m>I</m>. We will write <m>a_{i,j}</m> instead of <m>a_{(i,j)}</m>, and call <m>a_{i,j}</m> the <term><m>i,j</m>-th entry</term> of the matrix. Additionally, to distinguish matrices from <m>n</m>-tuples, one the following bracket notations will be used:
+<md>
+<mrow>    [a_{i,j}]_{(i,j)\in I} \amp \amp [a_{i,j}]_{\substack{1\leq i\leq m\\ 1\leq j\leq n}} \amp \amp [a_{i,j}]_{m\times n} </mrow>
+</md>.
+We will favor capital letters (<ie/>, <m>A, B, C,\dots</m>) when naming matrices, and will often display a matrix <m>A=[a_{i,j}]_{m\times n}</m> as a rectangular array as 
+<md>
+     A=\genmatrix
+</md>,
+where the entry in the <m>i</m>-th row and <m>j</m>-th column of the array is <m>a_{i,j}</m>. The set <m>F^I</m> of all <m>F</m>-valued  <m>m\times n</m> matrices is denoted <m>\ML_{m,n}(F)</m>: <ie/>, 
+<md number="yes" xml:id="eq_ML">
+    \ML_{m,n}(F)=\{[a_{i,j}]_{m\times n}\mid a_{i,j}\in F \text{ for all } 1\leq i\leq m, 1\leq j\leq n\}
+</md>.
+</p>
+</statement>
+</definition>
+<definition xml:id="d_augmented_matrix">
+  <title>Augmented matrix</title>
+  <idx><h>augmented matrix</h></idx>
+<notation>
+  <usage><m>\begin{amatrix}[c|c]A\amp \mathbb{b}\end{amatrix}</m></usage>
+  <description>augmented matrix</description>
+</notation>
+  <statement>
+    <p>
+      Let <m>L</m> be the linear system
+      <md>
+     \eqsys
+      </md>.
+      The <term>augmented matrix associated to</term> <m>L</m> is the matrix
+      <md>
+        \augmatrix
+      </md>.
+
+    </p>
+  </statement>
+
+
+</definition>
+
+<remark>
+  <p>
+    Note that a system of <m>m</m> equations in <m>n</m> unknowns gives rise to an augmented matrix that has <m>m</m> rows (one row for each equation) and <m>n+1</m> columns (one column for each unknown and an additional column for the right-hand side constants <m>b_1,b_2,\dots, b_m</m>). The vertical line in the augmented matrix helps distinguish between the columns corresponding to unknowns (to the left of the vertical line) and the column of constants (to the right of the vertical line). When we wish to further emphasize this distinction among the columns, we will label the first <m>n</m> columns with their corresponding variable name as in <xref ref="fig_aug_mat"/>.  
+  </p>
+  <figure xml:id="fig_aug_mat">
+    <caption>Augmented matrix with labeled columns</caption>
+<image xml:id="im_aug_mat" width="40%">
+  <shortdescription>Augmented matrix with labeled columns</shortdescription>
+  <latex-image>
+    \begin{tikzpicture}[
+    Brace/.style={
+        decorate,
+        decoration={
+            brace,
+            raise=-2pt
+        }
+    },
+    DL/.style={
+       left delimiter=[,
+       right delimiter=],
+       inner sep=-2pt,
+   }
+]
+
+ \matrix[% General option for all nodes
+    matrix of math nodes,
+    text height=2.5ex,
+    text depth=0.75ex,
+    text width=3.25ex,
+    align=center,
+%        left delimiter=(,
+%        right delimiter= ),
+    column sep=5pt,
+    row sep=5pt,
+    %nodes={draw=black!10}, % Uncoment to see the square nodes.
+    nodes in empty cells,
+] at (0,0) (M){ % Matrix contents  
+   \amp x_1  \amp x_2  \amp\dots  \amp x_n \amp  \\
+ \amp a_{11} \amp a_{12} \amp \dots  \amp a_{n1} \amp  b_1\\
+ \amp a_{21} \amp a_{22} \amp \dots  \amp a_{21} \amp  b_2\\ 
+ \amp\vdots \amp \vdots \amp \ddots \amp\vdots \amp\vdots \\
+\amp a_{m1} \amp a_{m2} \amp \dots  \amp a_{m1} \amp  b_m \\
+   };
+% Drawing the sectors using matrix coordinate names.    
+% Drawing the braces.  
+\node[DL,fit=(M-2-2)(M-5-6)](subM-1){};
+\draw[black] (M-2-5.east) -- (M-5-5.south east);
+    \end{tikzpicture}
+  </latex-image>
+</image>
+  </figure>
+</remark>
+ <p>
+   Here is our precise formulation of a <q>simple</q> linear system; it is a system whose associated augmented matrix is in <em>row echelon form</em>, as described below.
+</p>
+<definition xml:id="d_row_echelon">
+  <title>Row echelon form</title>
+
+  <statement>
+    <p>
+      A <term>zero row</term> of a matrix, is a row whose entries are all equal to zero; a <term>nonzero row</term> is a row that contains at least one nonzero entry.
+    </p>
+    <p>
+      A matrix <m>A\in \ML_{m,n}(F)</m> is in <term>row echelon form</term> if the following conditions hold.
+      <ul>
+        <li><title>Zero rows at bottom</title>
+    <p> If the <m>i</m>-th row of <m>A</m> is a zero matrix, then for all <m>i\leq j\leq m</m>, the <m>j</m>-th row of <m>A</m> is also a zero row: <ie/>, all zero rows are grouped at the bottom of <m>A</m>. 
+            </p>
+          </li>
+        <li>
+          <title>Leading ones</title>
+        <p>
+        For all <m>1\leq i\leq m</m>, if the <m>i</m>-th row of <m>A</m> is nonzero, then the first (<ie/>, leftmost) nonzero entry of this row is equal to <m>1</m>. Such an entry is called a <term>leading one</term> of the row: <ie/>, it is the first nonzero entry of the row, and is equal to <m>1</m>. 
+        </p>
+        </li>
+        
+          <li>
+            <title>Staircase pattern</title>
+            <p>
+              For all <m>1\leq i&lt; i'\leq m</m> if the <m>i</m>-th and <m>i'</m>-th rows of <m>A</m> are nonzero, then the leading one of the <m>i'</m>-th row lies strictly to the right of the leading one in the <m>i</m>-th row. In more detail: if the leading ones of the two rows are the <m>i,j</m>-th and <m>i',j'</m>-th entries of <m>A</m>, respectively, then <m>j&lt; j'</m>. 
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        A matrix is in <term>reduced row echelon form</term>
+        if it is in row echelon form and additionally  satisfies the following condition.
+        <ul>
+          <li>
+            <title>Reduced row echelon form</title>
+            <p>
+              For all <m>1\leq j\leq n</m>, if the <m>j</m>-th column of <m>A</m> contains a leading one, then all other entries of that column are equal to zero. 
+            </p>
+          </li>
+        </ul>
+      </p>
+      <p>
+        A linear system <m>L</m> is in <term>row echelon form</term> (resp. <term>reduced row echelon form</term>) if its augmented matrix is in row echelon form (resp. reduced row echelon form).
+      </p>
+    </statement>
+  </definition>
+  <p>
+    A matrix in row echelon form displays a staircase pattern of ones as illustrated in <xref ref="fig_echelon"/>.
+  </p>
+    <figure xml:id="fig_echelon">
+      <caption>Staircase pattern of row echelon form</caption>
+      <image xml:id="im_echelon" width="30%">
+        <shortdescription>Staircase pattern of row echelon form</shortdescription>
+        <latex-image>
+          \begin{tikzpicture}
+  \matrix (mymatrix) [matrix of math nodes,left delimiter={[},right
+delimiter={]}]
+  {
+    0\amp1\amp*\amp*\amp*\amp*\amp*\\
+    0\amp0\amp0\amp1\amp*\amp*\amp*\\
+    0\amp0\amp0\amp0\amp1\amp*\amp*\\
+    0\amp0\amp0\amp0\amp0\amp0\amp1\\
+    0\amp0\amp0\amp0\amp0\amp0\amp0 \\
+  };
+\draw[black] (mymatrix-1-2.north west) -- (mymatrix-1-2.south west) -- (mymatrix-1-4.south west) -- (mymatrix-2-4.south west)
+-- (mymatrix-2-5.south west) -- (mymatrix-3-5.south west) -- (mymatrix-3-7.south west) -- (mymatrix-4-7.south west) -- (mymatrix-4-7.south east) ;
+\end{tikzpicture}
+
+        </latex-image>
+      </image>
+    </figure>
+    <p>
+      In practice to decide whether a matrix is in in (reduced) row echelon form,
+    follow these steps:
+    <ol>
+      <li>
+        <p>
+          First verify whether all zero rows are at the bottom.
+        </p>
+      </li>
+      <li>
+        <p>
+          For each nonzero row,
+          determine whether the first nonzero entry is a 1, and put a box around it.
+        </p>
+      </li>
+      <li>
+        <p>
+          Make sure your boxes make a staircase pattern.
+        </p>
+      </li>
+      <li>
+        <p>
+          (For reduced row echelon form only.) Decide whether each column with a box has 0's everywhere else.
+        </p>
+      </li>
+    </ol>
+  </p>
+
+<example>
+  <title>Row echelon versus reduced row echelon form</title>
+
+  <statement>
+    <p>
+    For each matrix decide (a) whether it is in row echelon form, and (b) whether it is in reduced row echelon form.
+    
+    <ol>
+      <li>
+        <p>
+          <md>
+            \begin{bmatrix}0\amp 2\amp 1\amp 0\amp 0\\
+            0\amp 0\amp 0\amp 0\amp 0\\
+            0\amp 1\amp 0\amp 0\amp 1\\
+            1\amp 0\amp 0\amp 0\amp 0\\
+            0\amp 0\amp 0\amp 0\amp 0
+            \end{bmatrix}
+          </md>
+        </p>
+      </li>
+      <li>
+        <p>
+          <md>
+            \begin{bmatrix}1\amp 0\amp 0\amp -3\amp -7\\
+            0\amp 0\amp 1\amp 2\amp 0\\
+            0\amp 0\amp 0\amp 0\amp 1\\
+            0\amp 0\amp 0\amp 0\amp 0\\
+            0\amp 0\amp 0\amp 0\amp 0
+            \end{bmatrix}
+          </md>
+        </p>
+      </li>
+    </ol>
+    </p>
+  </statement>
+  <solution>
+      <p>
+        <ol>
+        <li>
+          <p>
+            Below you find the matrix with leading ones boxed. This matrix fails to be in row echelon form (and hence also reduced row echelon form) for a variety of reasons: the zero rows are not all grouped at the bottom; the first row is nonzero, but does not have a leading one; the leading one of the fourth row is to the left of the leading one of the leading one in the row above it.
+            <md>
+              \begin{bmatrix}0\amp 2\amp 1\amp 0\amp 0\\
+              0\amp 0\amp 0\amp 0\amp 0\\
+              0\amp \boxed{1}\amp 0\amp 0\amp 1\\
+              \boxed{1}\amp 0\amp 0\amp 0\amp 0\\
+              0\amp 0\amp 0\amp 0\amp 0
+              \end{bmatrix}
+            </md>
+
+          </p>
+        </li>
+        <li>
+          <p> Below you find the matrix with leading ones boxed. This matrix is in row echelon form: the zero rows (rows 4 and 5) are grouped at the bottom; each nonzero row has a leading one (boxed in the matrix below); the leading ones step strictly to the right as we move down the rows.
+            <md>
+              \begin{bmatrix}\boxed{1}\amp 0\amp 0\amp -3\amp -7\\
+              0\amp 0\amp \boxed{1}\amp 2\amp 0\\
+              0\amp 0\amp 0\amp 0\amp \boxed{1}\\
+              0\amp 0\amp 0\amp 0\amp 0\\
+              0\amp 0\amp 0\amp 0\amp 0
+              \end{bmatrix}
+            </md>
+          The matrix is <em>not</em> in reduced row echelon form, as the last column contains a leading one in its third row, and a nonzero entry in its first row.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </solution>
+</example>
+</subsection>
+
+<subsection xml:id="ss_gaussian_elimination">
+  <title>Gaussian elimination</title>
+  <p>
+  We will now describe a systematic procedure, called <em>Gaussian elimination</em>, that allows us to reduce a given linear system <m>L</m> to a system <m>L'</m>in row echelon form.
+  In keeping with the foregoing discussion, we will identify a system <m>L</m> with its augmented matrix <m>A</m>. Furthermore, reducing a linear system using elementary operations on equations is now cast as performing <em>elementary row operations</em> on matrices. At the risk of redundancy we now officially translate a number of our former notions regarding reduction of linear systems to the setting of matrices.
+  </p>
+  <definition  xml:id="d_rowops">
+    <title>Elementary row operations on matrices</title>
+    <idx><h>elementary row operations</h></idx>
+    <idx><h>elementary row operations</h><h>scalar multiplication</h></idx>
+    <idx><h>elementary row operations</h><h>row swap</h></idx>
+    <idx><h>elementary row operations</h><h>row addition</h></idx>
+    <idx><h>row reduction</h><h>of matrices</h></idx>
+    <idx><h>row equivalence</h><h>of matrices</h></idx>
+    <statement>
+      <p>
+        An <term>elementary row operation</term> is one of the three following types of matrix operations. In what follows, we let <m>A=[a_{i,j}]_{m\times n}\in \ML_{m,n}(F)</m>. 
+      
+        <ul>
+          <li xml:id="d_row_scale">
+            <title>Scalar multiplication</title>
+            <p>
+              Given <m>1\leq i\leq m</m> and nonzero <m>c\ne 0\in F</m>, multiply all entries of the <m>i</m>-th row by <m>c</m>: <ie/>, replace <m>a_{i,j}</m> with <m>ca_{i,j}</m> for all <m>1\leq j\leq n</m>. 
+            </p>
+          </li>
+          <li xml:id="d_row_swap">
+            <title>Row swap</title>
+            <p>
+              Given <m>1\leq i, j\leq m</m>, swap the <m>i</m>-th and <m>j</m>-th rows of <m>A</m>: <ie/>, replace <m>a_{i,k}</m> with <m>a_{j,k}</m> and <m>a_{j,k}</m> with <m>a_{i,k}</m> for all <m>1\leq k\leq n</m>.
+            </p>
+          </li>
+          <li xml:id="d_row_add">
+            <title>Row addition</title>
+            <p>
+              Given <m>1\leq i,j\leq m</m> and <m>c\in F</m>, replace the <m>i</m>-th row of <m>A</m> with the sum of the <m>i</m>-th row and <m>c</m> times the <m>j</m>-th row: <ie/>, replace <m>a_{i,k}</m> with <m>a_{i,k}+ca_{j,k}</m> for all <m>1\leq k\leq n</m>.
+            </p>
+          </li>
+        </ul>
+      The act of transforming a matrix using elementary row operations is called <term>row reduction</term>.
+    </p>
+    <p>
+      Two matrices are <term>row equivalent</term> if the one can be obtained from the other by performing a finite sequence of elementary row operations.
+    </p>
+    </statement>
+  </definition>
+  <remark xml:id="rm_ge_notation">
+    <title>Row operation notation</title>
+    <p>
+      Our former elementary operation notation easily transfers to row operations on matrices. The expressions
+    <md>
+      <mrow>A\amp \xrightarrow{c\,r_i} B \amp A\amp \xrightarrow{r_i\leftrightarrow r_j} B\amp A\amp\xrightarrow{r_i+c\,r_j} B</mrow>
+    </md>
+    denote the operations that replace row <m>r_i</m> in <m>A</m> with <m>c\, r_i</m>, swap rows <m>r_i</m> and <m>r_j</m> in <m>A</m>, and replace <m>r_i</m> in <m>A</m> with <m>r_i+c\, r_j</m>, respectively.
+  </p>
+  </remark>
+  <p>
+  At last we are ready to define Gaussian elimination. In its essence this is simply a procedure, or <em>algorithm</em>, that takes an input matrix <m>A</m> and row reduces it to a matrix <m>B</m> in row echelon form. It is important to note that although we employ Gaussian elimination in this chapter primarily to the end of simplifying and solving linear systems, this is not its only application. Indeed, we will come back to the procedure again and again, in a great variety of contexts and to greatly diverse ends. Gaussian elimination is one of linear algebra's most important tools. We memorialize this here as an official principle.
+  </p>
+  <principle xml:id="princ_GE">
+    <title>Gaussian elimination mantra</title>
+    <statement>
+      <p>
+        Gaussian elimination is the workhorse of linear algebra.
+      </p>
+    </statement>
+  </principle>
+  <algorithm xml:id="proc_GE">
+  <title>Gaussian elimination</title>
+    <idx><h>Gaussian elimination</h></idx>
+    <statement>
+      <p>
+        <term>Gaussian elimination</term>
+        is the algorithm described below. It takes as an input a matrix <m>A\in M_{m,n}(F)</m> and returns as an output a row equivalent matrix <m>U</m> in row echelon form.
+     
+
+  <ol>
+    <li>
+     
+      <p>
+        If <m>A</m> is the zero matrix, then return <m>A</m>. Otherwise, find the first nonzero column of <m>A</m>: <ie/>, find the smallest integer <m>j\in \{1,2,\dots, n\}</m> for which the <m>j</m>-th column is nonzero. Let <m>i</m> be the smallest integer in <m>\{1,2,\dots, m\}</m> such that <m>a_{i,j}\ne 0</m>. Use a row swap to move <m>a_{i,j}</m> to the top of the column. 
+      </p>
+    </li>
+    <li>
+      <p>
+        Scale the new top row to produce a leading one in the <m>(1,j)-th</m> entry of the matrix. 
+      </p>
+    </li>
+    <li>
+      <p>
+        For each <m>1&lt; i\leq m</m>, perform a row operation of the form <m>r_i+c\,r</m> to replace <m>a_{i,j}</m> with <m>0</m>: <ie/>, make all the entries below the leading one produced in Step 2 equal to zero. 
+      </p>
+    </li>
+    <li>
+      <p>
+        If <m>A</m> consists of one row, stop. Otherwise, apply steps 1-4 to the submatrix of <m>A</m> obtained by deleting its first row. In more detail, let <m>A'=[a_{i+1,j}]\in \ML_{m-1,n}(F)</m>, apply steps 1-4 to <m>A'</m> to obtain a matrix <m>U'=[u'_{i,j}]\in \ML_{m-1,n}(F)</m>, and replace <m>a_{i,j}</m> with <m>u'_{i-1,j}</m> for all <m>2\leq i\leq m</m>.   
+      </p>
+    </li>
+  </ol>
+   </p>
+  </statement>
+</algorithm>
+</subsection>
+  <subsection>
+    <title> Model example</title>
+    <p>
+    Use the following example as a model of how to both perform and annotate the steps in Gaussian elimination. When first learning this procedure, make sure to follow it <em>to the letter</em>. In particular, in the spirit of the mandate issued in <xref ref="s_systems_rm_oneoperation"/>, you should only perform one row operation at a time, and only in the sequence prescribed in Steps 1-4 of <xref ref="proc_GE"/>.
+    </p>
+    <example xml:id="eg_model_example">
+      <title>Row echelon form</title>
+      <p>
+        We use Gaussian elimination to reduce the linear system 
+        <md>
+          \begin{array}{rcc}
+      -2x_3+7x_5\amp =\amp 12 \\
+      2x_1+4x_2-10x_3+6x_4+12x_5\amp = \amp 28 \\
+      2x_1+4x_2-5x_3+6x_4-5x_5\amp =\amp -1
+    \end{array}
+        </md>
+        to a system in row echelon form. 
+      </p>
+      <p>
+        First we apply Gaussian elimination to the augmented matrix associated to our system. 
+        <md>
+      <mrow>
+      \begin{bmatrix}0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+      2\amp 4\amp -10\amp 6\amp 12\amp 28\\
+      2\amp 4\amp -5\amp 6\amp -5\amp -1
+      \end{bmatrix}
+      \amp \xrightarrow[\hspace{35pt}]{r_1\leftrightarrow r_2}
+      \begin{bmatrix}2\amp 4\amp -10\amp 6\amp 12\amp 28\\
+      0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+      2\amp 4\amp -5\amp 6\amp -5\amp -1
+      \end{bmatrix}</mrow>
+      <mrow>\amp \xrightarrow[\hspace{35pt}]{\frac{1}{2}r_1}
+      \begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 6\amp 14\\
+      0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+      2\amp 4\amp -5\amp 6\amp -5\amp -1
+      \end{bmatrix}</mrow>
+      <mrow>\amp \xrightarrow[\hspace{35pt}]{r_3-2r_1}
+      \begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 6\amp 14\\
+      0\amp 0\amp -2\amp 0\amp 7\amp 12\\
+      0\amp 0\amp 5\amp 0\amp -17\amp -29
+      \end{bmatrix}\amp
+      \text{ (now done with first row) }</mrow>
+      <mrow>\amp \xrightarrow[\hspace{35pt}]{-\frac{1}{2}r_2}
+      \begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 6\amp 14\\
+      0\amp 0\amp \boxed{1}\amp 0\amp -7/2\amp -6\\
+      0\amp 0\amp 5\amp 0\amp -17\amp -29
+      \end{bmatrix}</mrow>
+      <mrow>\amp \xrightarrow[\hspace{35pt}]{r_3+(-5)r_2}
+      \begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 6\amp 14\\
+      0\amp 0\amp \boxed{1}\amp 0\amp -7/2\amp -6\\
+      0\amp 0\amp 0\amp 0\amp 1/2\amp 1
+      \end{bmatrix}\amp
+      \text{ (now done with 2nd row)}</mrow>
+      <mrow>\amp \xrightarrow[\hspace{35pt}]{2r_3}
+      \begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 6\amp 14\\
+      0\amp 0\amp \boxed{1}\amp 0\amp -7/2\amp -6\\
+      0\amp 0\amp 0\amp 0\amp \boxed{1}\amp 2
+      \end{bmatrix}</mrow>
+    </md>.
+    We conclude that our original system is equivalent to the system 
+  <md>
+    \begin{array}{rcc} x_1+2x_2-5x_3+3x_4+6x_5\amp =\amp 14\\
+    x_3-\frac{7}{2}x_5\amp =\amp -6\\
+    x_5\amp =\amp 2 \end{array}
+  </md>,
+  which is in row echelon form.   
+  </p>
+    </example>
+    
+  <p>
+  The matrix outputted by Gaussian elimination is guaranteed to be in row echelon form, but it may not be in <em>reduced</em> row echelon form. <em>Gauss-Jordan elimination</em> describes a systematic way to continue reducing to this even simpler state.
+</p>
+
+<algorithm xml:id="proc_GaussJordan">
+      <title>Gauss-Jordan elimination</title>
+      <statement>
+        <p>
+        <term>Gauss-Jordan elimination</term> is the algorithm described below. It takes as an input a matrix <m>A\in \ML_{m\times n}(F)</m> and returns a row equivalent matrix <m>U</m> in reduced row echelon form.
+        <ol>
+          <li>
+            <p>
+              Apply Gaussian elimination to transform <m>A</m> to a matrix <m>B</m> in row echelon form.
+            </p>
+          </li>
+          <li>
+            <p>
+          Let <m>1\leq j_1&lt; j_2&lt;\dots &lt; j_r\leq n</m> be the indices of the columns of <m>B</m> that contain leading ones. Beginning with the <m>j_r</m>-th column and working backwards, use row operations to replace all entries above the leading one in that column with zeros. 
+            </p>
+          </li>
+        </ol>
+      </p>
+      </statement>
+    </algorithm>
+    <example xml:id="eg_model_rref">
+      <title>Reduced row echelon form</title>
+      
+    <p>
+      We continue our work in <xref ref="eg_model_example"/> to reach a matrix in reduced row echelon form. 
+      <md>
+        <mrow>\begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 6\amp 14\\ 0\amp 0\amp \boxed{1}\amp 0\amp -7/2\amp -6\\ 0\amp 0\amp 0\amp 0\amp \boxed{1}\amp 2 \end{bmatrix}  \amp \xrightarrow[\hspace{35pt}]{r_2+7/2r_3}\amp \begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 6\amp 14\\ 0\amp 0\amp \boxed{1}\amp 0\amp 0\amp 1\\ 0\amp 0\amp 0\amp 0\amp \boxed{1}\amp 2 \end{bmatrix}</mrow>
+        <mrow>\amp \xrightarrow[\hspace{35pt}]{r_1-6r_3}\amp \begin{bmatrix}\boxed{1}\amp 2\amp -5\amp 3\amp 0\amp 2\\ 0\amp 0\amp \boxed{1}\amp 0\amp 0\amp 1\\ 0\amp 0\amp 0\amp 0\amp \boxed{1}\amp 2 \end{bmatrix}</mrow>
+        <mrow>\amp \xrightarrow[\hspace{35pt}]{r_1+5r_2}\amp \begin{bmatrix}\boxed{1}\amp 2\amp 0\amp 3\amp 0\amp 7\\ 0\amp 0\amp \boxed{1}\amp 0\amp 0\amp 1\\ 0\amp 0\amp 0\amp 0\amp \boxed{1}\amp 2 \end{bmatrix} </mrow>
+      </md>.
+      Notice that the resulting system is slightly simpler than the system in row echelon form of <xref ref="eg_model_example"/>: 
+      <md>
+         \begin{linsys}{5} x_1\amp+\amp 2x_2\amp \amp \amp+\amp 3x_4\amp +\amp 6x_5\amp =\amp 7\\
+    \amp \amp \amp \amp x_3\amp \amp \amp \amp \amp =\amp 1\\
+    \amp \amp \amp \amp \amp \amp \amp \amp x_5\amp =\amp 2 \end{linsys}
+      </md>.      
+    </p>
+    </example>
+  <p>
+   <xref ref="proc_GE"/> and <xref ref="proc_GaussJordan"/> are really theorems in disguise: implicit in both procedure descriptions is (a) that the procedure terminates, and (b) that itproduces a matrix that is row equivalent to the original one in row echelon (resp., reduced row echelon) form. Let's make this explicit. 
+ </p>
+<theorem xml:id="th_matrixforms">
+  <title>Row equivalent matrix forms</title>
+  <statement>
+    <p>
+    <ol>
+      <li xml:id="th_REexistence">
+        <title>Row echelon forms exist</title>
+        <p>
+        Any matrix <m>A</m> is row equivalent to a matrix in row echelon form. Indeed, applying <xref ref="proc_GE" text="custom">Gaussian elimination</xref> to <m>A</m> produces a matrix in row echelon form that is row equivalent to <m>A</m>. 
+        </p>
+      </li>
+      <li xml:id="th_RREexistence">
+        <title>Reduced row echelon forms exist</title>
+        <p>
+        Any matrix <m>A</m> is row equivalent to a matrix in reduced row echelon form. Indeed, applying <xref ref="proc_GaussJordan" text="custom">Gauss-Jordan elimination</xref> to <m>A</m> produces a matrix in reduced row echelon form that is row equivalent to <m>A</m>.
+        </p>
+      </li>
+      <li xml:id="th_RREuniqueness">
+        <title>Reduced row echelon forms are unique</title>
+        <p>
+        Any matrix <m>A</m> is row equivalent to a <em>unique</em> matrix in reduced row echelon form.
+        </p>
+      </li>
+    </ol>
+  </p>
+  </statement>
+</theorem>
+
+<p>We will make heavy use of the first two results of <xref ref="th_matrixforms"/>. The proofs of these statements are not difficult, but not especially illuminating. Accordingly we omit them here, and point the interested reader to Robert Beezer's <url href="https://linear.pugetsound.edu/fcla" visual="linear.pugetsound.edu/fcla"><em>A First Course in Linear Algebra </em></url>. (See <url href="https://linear.pugetsound.edu/fcla/section-RREF.html#theorem-REMEF">Theorem REMEF</url>.)
+</p>
+<p>The third statement of <xref ref="th_matrixforms"/>, that every matrix is row equivalent to a <em>unique</em> matrix in reduced row echelon form, does in fact have an enlightening proof. We will postpone this proof, however, until we have a little more theory at our disposal.  Until then we will conscientiously <em>not</em> make use of this fact when developing any of our further theory.</p>
+<example xml:id="s_ge_ex_REFnotunique">
+  <title>Row echelon form is not unique</title>
+  <statement>
+    <p>Show that a matrix <m>A</m> may be row equivalent to two or more matrices in row echelon form.
+    </p>
+  </statement>
+  <solution>
+    <p>
+      Take <m>A=\begin{bmatrix} 1 \amp 1 \\
+      1 \amp 2  \end{bmatrix}</m>. This row reduces to <m>B=\begin{bmatrix} 1 \amp 1  \\
+      0 \amp 1  \end{bmatrix}</m> using Gaussian elimination; and it row reduces further to <m>C=\begin{bmatrix}1\amp 0\\ 0\amp 1\end{bmatrix}</m> using Gauss-Jordan elimination. Thus we see that <m>A</m> is row equivalent to two different matrices in row echelon form. (According to <xref ref="th_matrixforms"/>, the matrix <m>C</m> is the only matrix in <em>reduced</em> row echelon that is row equivalent to <m>A</m>.)
+    </p>
+  </solution>
+</example>
+<project xml:id="sage_ge">
+  <title>Gaussian elimination</title>
+<p>
+In the first Sage cell below you find a recursive implementation of Gaussian elimination in Sage that includes explanatory comments. Evaluate this cell in order to load the <c>row_echelon_form</c> function. The second cell allows you to apply the Gaussian elimination algorithm to a matrix of your choosing. As you can see, the <c>show</c> function provides a nice <latex /> version of the output.
+</p>
+<sage>
+<input>
+  def row_echelon_form(A):
+    m,n=A.dimensions()
+    R=A.base_ring()
+    K=R.fraction_field()
+    A=A.change_ring(K)
+    if A.is_zero() or m==0 or n==0: return A
+    else:
+        j=0 #column number
+        while A.column(j).is_zero(): #Find first nonzero column of A
+            j+=1
+        i=0
+        while A[i,j]==0: #Find first nonzero entry in nonzero column
+            i+=1
+        c=A[i,j]
+        A.swap_rows(0,i) #Bring nonzero entry to top
+        A.rescale_row(0,1/c) #Make nonzero entry a leading one
+        for k in range(i+1,m): #Clear entries below leading one
+            A.add_multiple_of_row(k,0,-A[k,j])
+        B=A[1:,:] #Concentrate on matrix below first row
+        A[1:,:]=row_echelon_form(B) #Apply recursion
+        return A
+</input>
+<output>
+</output>
+</sage>
+<sage>
+<input>
+  A=matrix([[0,0,3],[0,2,5],[0,3,3]])
+  B=row_echelon_form(A)
+  show(B)
+  B
+</input>
+<output>
+[  0   1 5/2]
+[  0   0   1]
+[  0   0   0]
+</output>
+</sage>
+<p>
+  Sage has its own row reduction method, <c>rref</c>, which transforms a matrix to <em>reduced</em> row echelon form. Let's compare the outputs of these two algorithms.
+</p>
+<sage>
+<input>
+  A=matrix([[0,0,3],[0,2,5],[0,3,3]])
+  B=row_echelon_form(A)
+  C=A.rref()
+  show(B)
+  show(C)
+  B is C
+</input>
+<output>
+[  0   1 5/2]
+[  0   0   1]
+[  0   0   0]
+</output>
+</sage>
+<p>
+  The function <c>row_echelon_form_steps()</c> defined below ia a non-recursive implementation of Gaussian elimination that also displays all the steps of the algorithm. The last cell applies this function to a random <m>3\times 4</m> matrix (with a significant number of zero entries). By modifying this cell appropriately, you can check your work when performing Gaussian elimination to the letter on a given matrix. 
+</p>
+<sage>
+<input>
+def row_echelon_form_steps(A):
+    m,n=A.dimensions()
+    R=A.base_ring()
+    K=R.fraction_field()
+    A=A.change_ring(K)
+    show(A)
+    if A.is_zero() or m==0 or n==0: return A
+    else:
+        i,j=0,0
+        while i&lt; m and j&lt; n and not A[i:,:].is_zero():
+            while A[i:,:].column(j).is_zero():
+                j+=1
+            if A[i,j]==0:
+                k=i
+                while A[k,j]==0:
+                    k+=1
+                A.swap_rows(i,k)
+                show(A)
+            if not A[i,j]==1:
+                A.rescale_row(i,1/A[i,j])
+                show(A)
+            for k in range(i+1,m):
+                if A[k,j] != 0:
+                    A.add_multiple_of_row(k,i,-A[k,j])
+                    show(A)
+            i+=1
+    return(A)
+</input>
+<output>
+
+</output>
+</sage>
+<sage>
+  <input>
+    A=random_matrix(ZZ,3,4, density=0.5)
+    row_echelon_form_steps(A)
+  </input>
+  <output>
+    
+  </output>
+</sage>
+</project>
+</subsection>
+<subsection xml:id="ss_workingExample">
+  <title>Model example continued</title>
+  <p> We begin by illustrating the general method for solving a linear system, continuing with our <xref ref="eg_model_example" text="custom">model example</xref>.  A careful  description of the procedure, along with a proof of its validity, is found in <xref ref="proc_solveSystem"/>.
+</p>
+<p>
+  A key first step involves separating the variables of the system into <em>free</em> and <em>leading</em> variables.
+</p>
+<definition xml:id="d_free-leading">
+  <title>Free and leading variables</title>
+  <idx>
+    <h>variables</h>
+    <h>leading</h>
+  </idx>
+  <idx>
+    <h>variables</h>
+    <h>free</h>
+  </idx>
+  <statement>
+    <p>
+      Let <m>L</m> be a linear system in the unknowns <m>x_1,x_2,\dots, x_n</m>, and let <m>A</m> be its associated augmented matrix. Assume <m>L</m> (and hence <m>A</m>) is in row echelon form.
+    </p>
+    <p>
+      The unknown <m>x_j</m> is a <term>leading variable</term> if the corresponding column in <m>A</m> (i.e., the <m>i</m>-th column) contains a leading one; it is a <term>free variable</term> if the corresponding column in <m>A</m> does not contain a leading one.
+    </p>
+  </statement>
+</definition>
+<example xml:id="s_solving_eg_free-leading">
+<title>Free and leading variables</title>
+  <statement>
+    <p>
+      Let <m>L</m> be the linear system in the unknowns <m>x_1, x_2, x_3, x_4</m> with augmented matrix
+      <md>
+      A=\begin{amatrix}[cccc|r]\boxed{1}\amp1\amp3\amp2\amp4\\
+      0\amp\boxed{1}\amp1\amp2\amp3\\
+      0\amp0\amp0\amp\boxed{1}\amp-5
+    \end{amatrix}
+    </md>.
+    Then <m>x_1, x_2, x_4</m> are leading variables, since the first, second, and fourth columns of <m>A</m> have leading ones, as indicated by the boxes. The variable <m>x_3</m> is free since the third column of <m>A</m> has no leading one.
+  </p>
+</statement>
+</example>
+<example xml:id="eg_solving_system">
+  <title>Solving linear systems</title>
+  <p>
+  In our model example we transformed the original system <m>L</m> to the equivalent system <m>L'</m> below:
+  <md>
+  \begin{array}{rcrcrcrcrcl} x_1\amp +\amp 2x_2\amp-\amp 5x_3\amp+\amp 3x_4 \amp +\amp 6x_5\amp =\amp 14\\
+    \amp \amp \amp \amp x_3\amp-\amp \amp \amp \frac{7}{2}x_5\amp =\amp -6\\
+    \amp \amp \amp \amp \amp \amp \amp \amp  x_5\amp =\amp 2 \end{array}
+    </md>.
+    The free variables of <m>L'</m> are <m>x_2</m> and <m>x_4</m>; the leading variables are <m>x_1, x_3</m>, and <m>x_5</m>. 
+  </p>
+  <p>
+    Starting with the last equation and working our way backwards   we can express each <em>leading variable</em> <m>x_i</m> (<m>i=1,3,5</m>) in terms of the of the <em>free variables</em> <m>x_2</m> and <m>x_4</m> (and possibly a constant): 
+    <md>
+      <mrow>x_5 \amp = 2</mrow>
+      <mrow>x_3 \amp = -6+\tfrac{7}{2}x_5=1</mrow>
+      <mrow>x_1 \amp = 14-2x_2-3x_4-6x_5=7-2x_2-3x_4</mrow>
+    </md>.
+    It follows that <em>any</em> assignment of values to the free variables of the form 
+    <md>
+      <mrow>x_2\amp =s, x_4=t \amp s,t\amp \in \R</mrow>
+    </md>
+    extends to a <em>unique</em> solution of <m>L'</m> of the form 
+    <md>
+      <mrow>\text{Free variables}\amp \colon\amp  x_2\amp =s, x_4=t </mrow>
+      <mrow>\text{Leading variables}\amp \colon \amp  x_1\amp =7-2s-3t, x_3=1, x_5=2</mrow>
+    </md>.
+     Thus for any choice of real numbers <m>s</m> and <m>t</m> we get a unique solution of the form
+      <md>
+      (x_1,x_2,x_3,x_4,x_5)=(7-2s-3t, s, 1, t, 2)
+      </md>.
+      We conclude the set <m>S</m> of solutions to <m>L</m> is given as
+      <md number="yes" xml:id="eq_setnotation">
+        S=\left\{(7-2s-3t, s, 1, t, 2)\colon s, t\in\R\right\}.
+      </md>
+      Alternatively, we can give a <em>parametric equations</em> description of the solutions to <m>L</m>:
+      <md number="yes">
+       <mrow xml:id="eq_parametric"> x_1\amp =7-2s-3t, x_2=s, x_3=1, x_4=t, x_5=2 \amp t,s\in\R </mrow>
+      </md>.
+    </p>
+</example>
+
+    <remark xml:id="s_solving_rm_parametric">
+      <title>Mandate</title>
+      <idx><h>parametric equations</h></idx>
+        <p>
+          Get used to describing solutions to linear systems using either the set notation form of <xref ref="eq_setnotation"/> or the parametric equation form of <xref ref="eq_parametric"/>.
+        </p>
+        <p>
+          Note also the distinct roles played by free and leading variables in the description of solutions. We assign each free variable <em>freely</em> to any choice of real parameters (<m>s</m> and <m>t</m> in our example), and then solve for the leading variables in terms of these parameters in a unique manner. In particular, the leading variables are completely determined by our assignment of free variables.
+        </p>
+    </remark>
+  </subsection>
+  <subsection xml:id="ss_solveSystem">
+    <title>General method for solving linear systems</title>
+    <p>
+      The procedure used in <xref ref="eg_solving_system"/> is easily generalized to yield a systematic method for finding all solutions to a linear system. In a nutshell we proceed as follows: reduce the system to one in row echelon form, sort the unknowns into free and leading variables, express the leading variables in terms of the free variables, assign any real values to each free variable and determine the corresponding values of the leading variables. <xref ref="proc_solveSystem"/> provides a more precise description, as well as a proof that the method is valid. 
+    </p>
+    <algorithm xml:id="proc_solveSystem">
+      <title>Solving linear systems</title>
+
+      <statement>
+        <p>
+          Let <m>L</m> be a linear system in the unknowns <m>x_1,x_2,\dots, x_n</m>, and let <m>S</m> be the set of all solutions of <m>L</m>. We compute <m>S</m> as follows.
+        
+        <ol>
+          <li>
+            <title>Gaussian elimination</title>  
+            <p>
+              Apply Gaussian elimination to reduce <m>L</m> to an equivalent system <m>L'</m> in row echelon form with augmented matrix <m>U</m>. 
+            </p>
+          </li>
+          <li>
+            <title>No solutions</title>
+            <p>
+               If the last column of <m>U</m> has a leading one, then <m>L</m> is inconsistent: <ie />, <m>S=\{ \}</m> is the empty set. Otherwise, proceed to the next step.
+            </p>
+          </li>
+          <li>
+           <title>Sort variables</title>
+            <p>
+              Determine which of the unknowns are leading variables and which are free variables by applying <xref ref="d_free-leading"/> to <m>L'</m>. 
+            </p>
+          </li>
+            <li>
+            <title>Unique solution</title>
+            <p>
+              If there are no free variables, solve for each unknown starting with the last equation and working backwards  . In this case there is a unique solution to <m>L</m>.
+            </p>
+          </li>
+          <li>
+          <title>Infinite solutions</title>
+            <p>
+              Otherwise, let <m>x_{i_1}, x_{i_2},\dots , x_{i_r}</m> be the leading variables of <m>L'</m>, and let <m>x_{j_1},x_{j_2},\dots, x_{j_s}</m> be the free variables. Starting with the last nonzero equation and working backwards  , express the leading variables as functions <m>x_{i_k}=F_k(x_{j_1},x_{j_2},\dots, x_{j_s})</m> of the free variables: 
+              <md>
+              <mrow> x_{i_r}\amp=F_r(x_{j_1},x_{j_2},\dots, x_{j_s}) </mrow>
+              <mrow> x_{i_{r-1}}\amp =F_{r-1}(x_{j_1},x_{j_2},\dots, x_{j_s}) </mrow>
+              <mrow>  \vdots \amp </mrow>
+              <mrow> x_{i_1} \amp =F_1(x_{j_1},x_{j_2},\dots, x_{j_s})
+              </mrow>
+              </md>.
+            Each solution of <m>L</m> corresponds to a <em>unique</em> assignment of values to the free variables. In more detail, for each choice of assignments 
+            <md number="yes">
+              <mrow xml:id="eq_assign_free"> x_{j_1}\amp=t_{1}, \ x_{j_2}=t_{2},\dots, x_{j_s}=t_{s} \amp t_i\in F </mrow>
+            </md>,
+            we get the corresponding solution to <m>L'</m> described parametrically as follows:
+            <md number="yes">
+            <mrow xml:id="eq_assign_free_sol">\text{Free variables}\amp \colon \amp  x_{j_1}\amp =t_{1}, x_{j_2}=t_{2},\dots, x_{j_s}=t_{s}</mrow>
+            <mrow xml:id="eq_determine_lead"> \text{Leading variables}\amp \colon \amp  x_{i_1}\amp=F_1(t_1,\dots, t_s), x_{i_2} =F_2(t_1,\dots, t_s), \dots, x_{i_r}=F_r(t_1,\dots, t_s) </mrow>
+            </md>.
+          </p>
+        </li>
+      </ol>
+      </p>
+    </statement>
+  </algorithm>
+  <proof>
+    <p>
+      First recall that <m>L</m> and <m>L'</m> have the same set of solutions (<xref ref="s_systems_th_rowops"/>). So it suffices to show that the algorithm returns the correct set of solutions to <m>L'</m>.
+    </p>
+    <p>
+      Regarding consistency: if the last column of the augmented matrix <m>U</m> associated to <m>L'</m> has a leading one in the <m>i</m>-th row, then the corresponding equation in <m>L'</m> is
+      <md>
+      0x_1+0x_2+\cdots 0x_n=1.
+      </md>
+      Clearly this equation has no solutions, and hence the set of solutions to <m>L'</m> is empty.
+    </p>
+    <p>
+      Suppose now that the last column of <m>U</m> does not have a leading one.
+    </p>
+    <p>
+      Consider first the case where there are no free variables, so that <m>x_1,x_2,\dots, x_n</m> are all leading variables. It follows that, starting at the <m>n</m>-th equation of <m>L'</m>, we have equations of the form 
+      <md>
+        <mrow>x_n \amp = b_n</mrow>
+        <mrow>x_{n-1}+c_{n-1, n}x_n \amp =b_{n-1}</mrow>
+        <mrow> \amp \vdots </mrow>
+        <mrow>x_1+c_{1,2}x_2+\cdots +c_{1,n}x_n \amp =b_1</mrow>
+      </md>
+      and that all other equations of <m>L'</m> are of the form
+          <m>0x_1+0x_2+\cdots 0x_n=0</m>, and as such may be disregarded since they are satisfied by any choice of the <m>x_i</m>. Starting with the last equation <m>x_n=b_n</m> and working backwards to solve for each previous variable, it is clear that there is a unique choice of assignments to the variables <m>x_1,x_2,\dots x_n</m> yielding a solution. Indeed, we have 
+           <md>
+          <mrow> x_n \amp =b_n </mrow>
+          <mrow>  x_{n-1}\amp =b_{n-1}-c_{n-1,n}x_n=b_{n-1}-c_{n-1,n}b_n </mrow>
+          <mrow>  x_{n-2}\amp = b_{n-2}-c_{n-2,n}x_{n}-c_{n-2,n-1}x_{n-1}</mrow>
+          </md>,
+          and so on down to <m>x_1</m>. This intuitive argument can be made rigorous using a simple induction argument summarized as follows: assume we have shown that we must have  <m>x_{i+1}=s_{i+1}, x_{i+2}=s_{i+2},\dots, x_{n}=s_{n}</m> for some unique values <m>s_{i+1},\dots, s_{n}</m>; then <m>x_i</m> is uniquely determined as 
+          <md>
+
+            <mrow>x_i\amp=b_i-c_{i,i+1}x_{i+1}-c_{i,i+2}x_{i+2}-\cdots -c_{i,n}x_{n}</mrow>
+            <mrow>\amp =b_i-c_{i,i+1}s_{i+1}-c_{i,i+2}s_{i+2}-\cdots -c_{i,n}s_{n}=s_i</mrow>
+          </md>.
+        Suppose now that there are free variables, let <m>x_{i_1}, x_{i_2},\dots , x_{i_r}</m> be the leading variables of <m>L'</m>, and let <m>x_{j_1}, x_{j_2},\dots, x_{j_s}</m> be the free variables. Again, since <m>U</m> does not have a leading one in the last column, there are exactly <m>r</m> nonzero equations in <m>L'</m>: one for each leading variable. After bringing any terms involving free variables to the right, the <m>k</m>-th such equation takes the form
+        <md>
+        x_{i_k}+c_{k,k+1}x_{i_{k+1}}+\cdots c_{k,r}x_{i_{r}}=d_k+G_k(x_{j_1},x_{j_2},\dots, x_{j_s})
+        </md>. As in the previous case, back-substitution now allows us to express each leading variable as a function only of the free variables, yielding an equivalent system of the form
+        <md>
+        <mrow> x_{i_r}\amp =d_r-G_r(x_{j_1},x_{j_2},\dots, x_{j_s})=F_r(x_{j_1},x_{j_2},\dots, x_{j_s})</mrow>
+        <mrow> x_{i_{r-1}}\amp=d_{r-1}-c_{r}x_{i_r}-G_{r-1}(x_{j_1},x_{j_2},\dots, x_{j_s})</mrow>
+        <mrow>  \amp = d_{r-1}-c_{r}F_r(x_{j_1},x_{j_2},\dots, x_{j_s})-G_{r-1}(x_{j_1},x_{j_2},\dots, x_{j_s})</mrow>
+        <mrow>  \amp =F_{r-1}(x_{j_1},x_{j_2},\dots, x_{j_s})</mrow>
+        <mrow>  \amp \vdots </mrow>
+        <mrow> x_1 \amp=F_1(x_{j_1},x_{j_2},\dots, x_{j_s}) </mrow>
+        </md>.
+       We conclude that any assignment of the free variables
+        <md>
+          x_{j_1}=t_1, x_{j_2}=t_2,\dots, x_{j_s}=t_s
+        </md>
+        extends to a solution of <m>L</m> for which the leading variables <m>must</m> satisfy 
+        <md>
+          x_{i_1}=F_1(t_1,t_2,\dots, t_s), x_{i_2}=F_2(t_1,t_2,\dots, t_s), \dots, x_r=F_r(t_1,t_2,\dots, t_s)
+        </md>.
+      </p>
+      <p>
+        Lastly, we must show that every solution of <m>L</m> is described as above. To this end, suppose <m>\boldu=(u_1,u_2,\dots, u_n)</m> is a solution. From the discussion above, we know that corresponding to the free variable assignment 
+        <md>
+          x_{j_1}=u_{j_1}, x_{j_2}=u_{j_2},\dots, x_{j_s}=u_{j_s}
+        </md>
+      there is a <em>unique</em> solution of <m>L</m>, and that the free variables for this solution satisfy <m>x_{i_k}=F_k(u_{j_1},u_{j_2},\dots, u_{j_s})</m>. Thus <m>\boldu</m> must be this same solution.
+      </p>
+  </proof>
+<remark xml:id="rm_free_versus_leading">
+  <title>Free versus leading</title>
+  <p>
+  We observe again the important difference in the role played by free and leading variables in this procedure. Once we determine the free variables of the system (using Gaussian elimination), the general solution is obtained in a twofold manner: <em>first</em> assign arbitrary values to the free variables as in <xref ref="eq_assign_free"/>, <em>then</em> determine the values of the leading variables in terms of these assignments as in <xref ref="eq_determine_lead"/>. In this manner, we see that we can freely assign any real value to the free variables, but for each such assignment, the values of the leading variables in a solution are then completely determined. 
+  </p>
+  </remark>
+  <example xml:id="eg_solve_sys">
+  <title>Solving linear systems</title>
+  <statement>
+  <p>
+  Use <xref ref="proc_solveSystem"/> to describe the set of solutions <m>S</m> to the given linear system. Express your answer both in set notation form and, when appropriate, parametric equation form. 
+<ol>
+  <li>
+    <p>
+      <md>
+        3x-y=6-x-y-z=x+z-1
+      </md>
+    </p>
+  </li>
+  <li>
+    <p>
+      <md>
+        \begin{linsys}{4}
+        x\amp +\amp y\amp +\amp z\amp +\amp w\amp =\amp 1\\
+        2x\amp +\amp 2y\amp +\amp 2z\amp +\amp 2w\amp = \amp  3 \\
+        2x\amp +\amp 2y\amp -\amp z\amp \amp \amp =\amp -2 \\
+        3x\amp +\amp 3y\amp +\amp 2z\amp\amp \amp =\amp 0
+        \end{linsys}
+      </md>
+    </p>
+  </li>
+  <li>
+    <p>
+      <md>
+  \begin{linsys}{5}
+        x_1\amp +\amp x_2\amp +\amp x_3\amp +\amp x_4+\amp x_5 \amp =\amp 1\\
+        \amp +\amp \amp +\amp x_3\amp -\amp x_4\amp+\amp 2x_5\amp =\amp 1\\
+        x_1\amp + \amp x_2 \amp +\amp 2x_3\amp \amp \amp+\amp 3x_5\amp =\amp 2
+  \end{linsys}
+      </md>
+    </p>
+  </li>
+</ol>  
+</p>
+  </statement>
+  <solution>
+  <p>
+  <ol>
+    <li>
+      <p>
+        First observe, using the fact that equality is transitive, that <m>(x,y,z)</m> solves this chain of two equalities if and only if it solves the system 
+        <md>
+          \begin{linsys}{2}
+          3x\amp -\amp y\amp =\amp 6-x-y-z\\
+          3x\amp -\amp y\amp =\amp x+z-1
+          \end{linsys}
+        </md>,
+        which in standard form is 
+        <md>
+          \begin{linsys}{3}
+          4x\amp \amp \amp +\amp z\amp =\amp 6\\
+          2x\amp -\amp y\amp -\amp z\amp =\amp -1
+          \end{linsys}
+        </md>.
+        The augmented matrix of the system row reduces as 
+        <md>
+          \begin{amatrix}[rrr|l]
+          4\amp 0\amp 1\amp 6\\
+          2\amp -1\amp -1\amp -1
+          \end{amatrix}
+          \xrightarrow[]{\text{row ops}}\begin{amatrix}[rrr|l]
+          \boxed{1}\amp 0\amp \frac{1}{4}\amp \frac{3}{2}\\
+          0\amp \boxed{1}\amp \frac{3}{2}\amp 4
+          \end{amatrix}
+        </md>,
+        as you can check yourself (or with the help of <xref ref="sage_ge"/>). 
+      </p>
+      <p>
+        Since the leading ones of the reduced matrix appear only in the first two columns, the first two unknowns <m>x</m> and <m>y</m> are leading variables, and the last unknown <m>z</m> is free. Taking the corresponding system 
+        <md>
+          \begin{linsys}{3}
+          x\amp  \amp +\amp \frac{1}{4}z\amp =\amp \frac{3}{2}\\
+          \amp \amp y\amp +\amp \frac{3}{2}z\amp =\amp 4
+          \end{linsys}
+        </md>
+        and solving for the leading variables in terms of the free variables yields 
+        <md>
+          <mrow>x \amp = \frac{3}{2}-\frac{1}{4}z </mrow>
+          <mrow>y \amp = 4-\frac{3}{2}z</mrow>
+        </md>.
+        The parametric equations description of the general solution is then 
+        <md>
+          <mrow>z \amp =t \amp t\in \R </mrow>
+          <mrow>x \amp =\frac{3}{2}-\frac{1}{4}t</mrow>
+          <mrow>y \amp = 4-\frac{3}{2}t</mrow>
+        </md>.
+        Using set notation, the set of solutions <m>S</m> is 
+        <md>
+          S=\left\{\left(\tfrac{3}{2}-\tfrac{1}{4}t, 4-\tfrac{3}{2}t, t\right)\colon t\in \R\right\}
+        </md>.
+      </p>
+    </li>
+    <li>
+      <p>
+        In this case the augmented matrix of the system row reduces as 
+        <md>
+          \begin{amatrix}[rrrr|r]
+          1\amp 1\amp 1\amp 1\amp 1\\
+          2\amp 2\amp 2\amp 2\amp 3\\
+          2\amp 2\amp -1\amp 0\amp -2\\
+          3\amp 3\amp 2\amp 0\amp 0
+          \end{amatrix}
+          \xrightarrow[]{\text{row ops}}\begin{amatrix}[rrrr|r]
+          \boxed{1}\amp 1\amp 1\amp 1\amp 1\\
+          0\amp 0\amp \boxed{1}\amp \tfrac{2}{3}\amp \tfrac{4}{3}\\
+          0\amp 0\amp 0\amp \boxed{1}\amp \tfrac{5}{7}\\
+          0\amp 0\amp 0\amp 0\amp \boxed{1}
+          \end{amatrix}
+        </md>.
+        Since the last column of the reduced matrix has a leading one, we conclude that the system is inconsistent, and hence has no solutions. Thus <m>S=\emptyset</m>. 
+      </p>
+    </li>
+    <li>
+      <p>
+        In this case the augmented matrix of the system row reduces as 
+        <md>
+          \begin{amatrix}[rrrrr|r]
+          1\amp 1\amp 1\amp 1\amp 1\amp 1\\
+          0\amp 0\amp 1\amp -1\amp 2\amp 1\\
+          1\amp 1\amp 2\amp 0\amp 3\amp 2
+          \end{amatrix}
+          \xrightarrow[]{\text{row ops}}\begin{amatrix}[rrrrr|r]
+          \boxed{1}\amp 1\amp 1\amp 1\amp 1\amp 1\\
+          0\amp 0\amp \boxed{1}\amp -1\amp 2\amp 1\\
+          0\amp 0\amp 0\amp 0\amp 0\amp 0
+          \end{amatrix}
+        </md>.
+        From the placement of the leading ones, we see that the first and third unknowns are leading, and the rest are free. Writing the leading variables in terms of the free ones, we have
+        <md>
+          <mrow>x_3 \amp =1+x_4+2x_5</mrow>
+          <mrow>x_1 \amp = 1-x_2-x_3-x_4-x_5</mrow>
+          <mrow> \amp = -x_2-2x_4+3x_5</mrow>
+        </md>.
+        The parametric equations description of the general solution is then
+        <md>
+          <mrow>x_2 \amp =s, x_4=t, x_5=u \amp s,t,u\in \R</mrow>
+          <mrow>x_3 \amp =1+t+2u</mrow>
+          <mrow>x_1 \amp =-s-2t+3u</mrow>
+        </md>.
+        Using set notation, the set of solutions <m>S</m> is
+        <md>
+          S=\left\{(-s-2t+3u, s, 1+t+2u, t, u)\colon s,t,u\in \R\right\}.
+        </md>
+      </p>
+    </li>
+  </ol>
+  </p>
+  </solution>
+  </example>
+  
+  
+  <example xml:id="vid_eg_GE1" >
+    <title>Video: solving linear systems</title>
+    
+      <figure>
+        <title>Video: solving linear systems</title>
+      <caption>Video: solving linear systems</caption>
+      <video xml:id="vid_GE_solving_1" youtube="ocmtUODkMQQ" />
+      </figure>
+
+  </example>
+  <example xml:id="vid_eg_GE2">
+    <title>Video: solving linear systems</title>
+    <figure>
+      <title>Video: solving linear systems 2</title>
+    <caption>Video: solving linear systems 2</caption>
+    <video xml:id="vid_GE_solving_2" youtube="PQ2lJWdTEAY" />
+    </figure>
+  </example>
+  <project xml:id="sage_solve_system">
+    <title>Solving linear systems</title>
+    <p>
+      Sage has a number of means of solving systems of equations, both linear and nonlinear. In the cell below we compute the set of solutions to this section's working example. Note that the three equations are entered as a list.
+    </p>
+    <sage>
+    <input>
+      l=var('x y z w u')
+      solve([-2*z+7*u == 12,2*x+4*y-10*z+6*w+12*u==28, 2*x+4*y-5*z+6*w-5*u == -1], x,y,z,w,u)
+    </input>
+    <output>
+    [[x == r3, y == -1/2*r3 - 3/2*r4 + 7/2, z == 1, w == r4, u == 2]]
+    </output>
+    </sage>
+    <p>
+      Notice that the algorithm used here does not seem to follow the method we describe: the unknowns <m>x</m> and <m>w</m> are set as free parameters <c>r1</c> and <c>r2</c>, and the rest of the unknowns are expressed in terms of these.  The <c>solve</c> routine in Sage allows for an additional option that selects a specific algorithm for solving the system. In the next cell, we specify the <c>sympy</c> algorithm and get an answer more in line with our example.
+    </p>
+    <sage>
+    <input>
+      l=var('x y z w u')
+      solve([-2*z+7*u == 12,2*x+4*y-10*z+6*w+12*u==28, 2*x+4*y-5*z+6*w-5*u == -1],
+      x,y,z,w,u, algorithm='sympy')
+    </input>
+    <output>
+    [{x: -3*w - 2*y + 7, z: 1, u: 2}]
+    </output>
+    </sage>
+    <p>
+      Now all unknowns are expressed in terms of the second and fourth unknowns <m>y</m> and <m>w</m>, which are treated as free variables, just as in our computed example.
+    </p>
+    <p>
+      Lastly, we can take a matrix approach with Sage to solve the system. Below we create the augmented matrix associated to our starting system and then reduce the system to reduced row echelon form using the <c>rref</c> method. From there it is a simple matter of assigning parameter names and using back-substitution, as described in <xref ref="proc_solveSystem"/>.
+    </p>
+    <sage>
+    <input>
+      A=Matrix([[0,0,-2,0,7],[2,4,-10,6,12],[2,4,-5,6,-5]])
+      b=vector([12,28,-1])
+      B=A.augment(b)
+      show(B)
+      show(B.rref())
+    </input>
+    <output>
+      [1 2 0 3 0 7]
+      [0 0 1 0 0 1]
+      [0 0 0 0 1 2]
+    </output>
+    </sage>
+  </project>
+  <p>In addition to providing a recipe for describing the full set of solutions to a linear system, <xref ref="proc_solveSystem"/> also tells us that qualitatively this set must take one of three forms: the set is empty (inconsistent, no solutions); there is a unique solution (consistent, no free variables); there are infinitely many solutions (consistent, free variables). We record this fact, useful in its own right, as a corollary.
+  </p>
+  <corollary xml:id="c_qualitative">
+    <title><m>0</m>, <m>1</m>, or <m>\infty</m>-many solutions</title>
+
+    <statement>
+      <p>Let <m>L</m> be a linear system of equations, let <m>L'</m> be an equivalent system in row reduced form, and let <m>U</m> be the augmented matrix associated to <m>L'</m>.</p>
+      <p>The system <m>L</m> has either no solutions, exactly one solution, or infinitely many solutions. In more detail:
+    <ul>
+      <li>
+        <p>
+          if <m>U</m> has a leading one in its last column, then <m>L</m> has no solutions.
+        </p>
+      </li>
+      <li>
+        <p>
+          if <m>U</m> does not have a leading one in its last column and <m>L'</m> has no free variables, then <m>L</m> has a unique solution;
+        </p>
+      </li>
+      <li>
+        <p>
+          if <m>U</m> does not have a leading one in its last column and <m>L'</m> has a free variable, then <m>L</m> has infinitely many solutions.
+        </p>
+      </li>
+    </ul>
+  </p>
+  </statement>
+</corollary>
+<p>
+  The decision tree in <xref ref="fig_decision_tree"/> concisely summarizes the different cases articulated in <xref ref="c_qualitative"/>.
+</p>
+<figure xml:id="fig_decision_tree">
+  <title>Decision tree for number of solutions to a system</title>
+  <caption>Decision tree for the number of solutions to a linear system with augmented matrix <m>U</m> in row echelon form. </caption>
+  <image xml:id="im_decision_tree">
+    <latex-image>
+      \begin{tikzpicture}[align=center]
+\node[shape=rectangle, rounded corners,
+    draw, align=center,
+    top color=white, bottom color=blue!20] {Leading one in the last column of $U$?}
+    	child[level distance=5em] { node {System inconsistent. \\ No solutions.} edge from parent node[left] {Yes} }
+	child[sibling distance=30em, level distance=7em] {
+	node[shape=rectangle, rounded corners, draw, align=center, top color=white, bottom color=blue!20] {Any {\em other} columns of $U$ with leading ones?}
+    	child[level distance=5 em] { node {System has $\infty$-many solutions.} edge from parent node[left,yshift=.5em] {Yes}}
+	child[sibling distance=1em,  level distance=5 em] { node {System has unique solution.} edge from parent node[right] {No}} edge from parent node[right, yshift=.5em] {No}
+    };
+      \end{tikzpicture}
+    </latex-image>
+  </image>
+</figure>
+<!-- <figure xml:id="fig_decision_tree">
+  <title>Decision tree for number of solutions to a system</title>
+  <caption>Decision tree for the number of solutions to a linear system with augmented matrix <m>U</m> in row echelon form. </caption>
+  <image xml:id="im_decision_tree" source="./images/im_decision_tree.svg"/>
+</figure> -->
+  <p>
+    Consider the special case of a homogeneous system
+    <md>
+    \homsys
+    </md>
+    Such a system is always consistent. Why? Observe that <m>(x_1,x_2,\dots,
+    x_n)=(0,0,\dots, 0)</m> is guaranteed to be a solution. Alternatively,
+    it is easy to see that row reducing the system results in an augmented matrix <m>U</m> whose last column is a zero column: a zero column certainly contains no leading ones. Thus, in the special case of a homogeneous system, <xref ref="c_qualitative"/> boils down to the following result. </p>
+    <corollary xml:id="s_solving_homogeneous">
+      <title>Solutions to homogeneous equations</title>
+      <statement>
+        <p>
+          Fix a <em>homogeneous</em> linear system in <m>n</m> variables.
+          There are two possibilities:
+          <ul>
+            <li>
+              <p>
+                if all the variables are leading variables,
+                then the system has a unique solution (i.e., <m>1</m> solution);
+              </p>
+            </li>
+            <li>
+              <p>
+                if there is a free variable, then the system has infinitely many solutions.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </corollary>
+
+  </subsection>
+  <subsection>
+<title>Vector parametrization description</title>
+<p>
+  Consider again the solution set to the linear system in <xref ref="eg_solving_system"/>, which we described using parametric equations as 
+  <md>
+    x_1=7-2s-3t, x_2=s, x_3=1, x_4=t, x_5=2, \ s,t \in\R
+  </md>, 
+  and using set building notation as 
+  <md>
+    S=\left\{(7-2s-3t, s, 1, t, 2)\colon s, t\in\R\right\}
+  </md>.
+ Using the vector space structure of <m>\R^5</m>, we can give yet another description of the general solution: 
+ <md>
+  <mrow> \boldx\amp =(7,0,1,0,2)+s(-2,1,0,0,0)+t(-3,0,0,1,0) \amp  s,t\in \R</mrow>
+ </md>.
+ We will call this the <em>vector parametrization</em> description of the solution set. This description is obtained in steps by first breaking up the expression <m>(7-2s-3t, s, 1, t, 2)</m> into a constant vector plus a vector involving the parameters <m>s</m> and <m>t</m>, and then rewriting the latter as a linear combination of two vectors with <m>s</m> and <m>t</m> as the coefficients: 
+ <md>
+  <mrow> (7-2s-3t, s, 1, t, 2) \amp = (7,0,1,0,2)+(-2s-3t,s,0,t,0) </mrow>
+  <mrow> \amp = (7,0,1,0,2)+(-2s,s,0,0,0)+(-3t,0,0,t,0)</mrow>
+  <mrow> \amp =(7,0,1,0,2)+s(-2,1,0,0,0)+t(-3,0,0,1,0)</mrow>
+ </md>.
+ The solution set of any consistent linear system can be described in this manner. In general, given a consistent system in <m>n</m> unknowns with <m>k</m> free variables, the general solution of the system is given by a vector parametrization of the form  
+ <md number="yes">
+  <mrow xml:id="eq_vector_param">(a_1,a_2,\dots, a_n)+t_1\boldv_1+t_2\boldv_2+\cdots +t_k\boldv_k \amp \amp t_i\in \R \text{ for all } 1\leq i\leq k</mrow>
+ </md>.
+ The vector parametrization <xref ref="eq_vector_param"/> leads to a useful geometric understanding of the set of solutions to a linear system. The point <m>P=(a_1,a_2,\dots, a_n)</m> can be thought of as a <em>particular solution</em> to the equation: the solution you obtain by choosing <m>t_1=t_2=\cdots =t_k=0</m> in <xref ref="eq_vector_param"/>. The general solution is then obtained by adding to the point <m>P</m> any linear combination of the vectors <m>\boldv_1,\boldv_2,\dots, \boldv_k</m>. 
+</p>
+<example>
+  <title>Vector parametrization</title>
+  <p>
+    Consider the linear equation <m>x+y+z=4</m>. The corresponding augmented matrix of this equation is
+    <md>
+      \begin{amatrix}[ccc|c]
+      1 \amp 1\amp 1\amp 4
+      \end{amatrix}
+    </md>,
+    which is already in row echelon form. Using <xref ref="proc_solveSystem"/>, we see that the general solution is 
+    <md>
+      (4-s-t,s,t)=(4,0,0)+s\underset{\boldv}{\underbrace{(-1,1,0)}}+t\underset{\boldw}{\underbrace{(-1,0,1)}}
+    </md>.
+    This vector parametrization description allows us to visualize the plane <m>\mathcal{P}</m> with equation <m>x+y+z=4</m> as the set of all points obtained by translating the point <m>P=(4,0,0)</m> by various linear combinations of <m>\boldv=(-1,1,0)</m> and <m>\boldw=(-1,0,1)</m>. In this manner, the two vectors <m>\boldv</m> and <m>\boldw</m> determine a (non-rectangular) grid on <m>\mathcal{P}</m>. 
+  </p>
+    <figure xml:id="fig_plane_vector_param">
+      <caption>Vector parametrization of plane <m>x+y+z=4</m></caption>
+      <!-- <interactive xml:id="geogebra_plane_grid" platform="geogebra" width="80%" aspect="4:3">
+        <slate surface="geogebra" material="kergy55p" aspect="4:3" marker="train-distance">
+        enableLabelDrags(false);
+        </slate>
+      </interactive> -->
+      <image xml:id="im_plane_vector_param" width="80%">
+        <shortdescription>Vector parametrization of plane</shortdescription>
+        <sageplot variant="3d" aspect="1.0">
+          (u,v,r)=var('u v r')
+          from sage.plot.plot3d.plot3d import axes
+          a=axes(4,1,color='black',ticks=[(0,1,2),(0,1,2),(0,1,2)])
+          n=[1,1,1] #normal vector
+          A=matrix([n])
+          d=vector([4]) # d in ax+by+cz=d
+          P=vector((4,0,0)) #Find a point
+          B=A.right_kernel().basis()
+          w1=vector((-1,1,0)) #Two vectors orth. to n that
+          w2=vector((-1,0,1)) #are not scalar multiples
+          r(u,v)=P+u*w1+v*w2 #The parametrization
+          S=parametric_plot3d(P+u*w1+v*w2,(u,-1,3),(v,-1,3), color='red',opacity=.1)
+          gridu=sum(line([P+r*w2-w1,P+r*w2+3*w1],color='red') for r in srange(-1,3,1))
+          gridv=sum(line([P+r*w1-w2,P+r*w1+3*w2],color='blue') for r in srange(-1,3,1))
+          t1=text3d("v",P+.75*w1+vector([0,0,.2]), fontsize=16)
+          t2=text3d("w",P+.75*w2+vector([0,0,.2]), fontsize=16)
+          t3=text3d("P",P+vector([0,0,.2]), fontsize=16)
+          t4=text3d("n",P+1.2*vector(n).normalized(), fontsize=16)
+          S+point3d(P,size=20)+a+arrow(P,P+w1, color="red", width=1)+arrow(P,P+w2, color='red', width=1)+gridu+gridv+t1+t2+t3
+        </sageplot>
+      </image>
+    </figure>
+</example>
+</subsection>
+
+
+    
+
+
+</section>
