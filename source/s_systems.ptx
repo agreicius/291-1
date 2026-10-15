@@ -427,7 +427,7 @@ A homogeneous system is thus typically written as:
     </statement>
     <proof>
       <p>
-        We prove by induction that if system <m>L'</m> is the result of applying <m>n</m> elementary operations to system <m>L</m>, <m>n\geq 0</m>, then <m>L</m> and <m>L'</m> have the same set of solutions.
+        We prove by induction that if system <m>L'</m> is the result of applying <m>r</m> elementary operations to system <m>L</m>, <m>r\geq 0</m>, then <m>L</m> and <m>L'</m> have the same set of solutions.
       </p>
       <case>
         <title> Base case: <m>n=0</m></title>
@@ -437,31 +437,99 @@ A homogeneous system is thus typically written as:
       </case>
       <case>
         <title>Induction step</title>
-        <p>Assume that applying a sequence of <m>n</m> elementary operations to a linear system preserves the set of solutions.
+        <p>Assume that applying a sequence of <m>r</m> elementary operations to a linear system preserves the set of solutions.
       </p>
       <p>
-        Suppose <m>L'</m> is the result of applying <m>n+1</m> elementary operations to the system <m>L</m>. Let <m>L''</m> be the result of applying the first <m>n</m> of these operations. By the induction hypothesis, systems <m>L</m> and <m>L''</m> have the same set of solutions.
+        Suppose <m>L'</m> is the result of applying <m>r+1</m> elementary operations to the system <m>L</m>. Let <m>L''</m> be the result of applying the first <m>r</m> of these operations. By the induction hypothesis, systems <m>L</m> and <m>L''</m> have the same set of solutions.
       </p>
       <p>
-        Since the system <m>L'</m> is obtained from <m>L''</m> by applying exactly one elementary operation, it now suffices to show that applying a single row operation does not change the set of solutions to a linear system. We now show this for each of the three types of elementary operations.
+        Since the system <m>L'</m> is obtained from <m>L''</m> by applying exactly one elementary operation, it now suffices to show that applying a single row operation does not change the set of solutions to a linear system. We now show this for each of the three types of elementary operations. To this end, let <m>L</m> be the starting linear system
+      <md>
+        \numeqsys
+      </md>,
+       let <m>L'</m> be the system obtained from <m>L</m> by applying the elementary operation in question, and let <m>e_i'</m> denote the <m>i</m>-th equation of <m>L'</m>. 
       </p>
     </case>
       <case>
         <title>Scalar multiplication</title>
         <p>
-         
-        </p>
+         Suppose <m>L'</m> is obtained from <m>L</m> by multiplying the <m>i</m>-th equation of <m>L</m> by the nonzero scalar <m>c\ne 0</m>. In this case <m>e_j=e'_j</m> for all <m>j\ne i</m>,
+                and <m>e'_i=c\cdot e_i</m> for some <m>c\ne 0</m>.
+                Since only the <m>i</m>-th equation has changed,
+                it suffices to show that <m>s=(s_1,s_2,\dots, s_n)</m> is a solution to <m>e_i</m> if and only if <m>s</m> is a solution to <m>c\cdot e_i</m>.
+                Let's prove each direction of this if and only if separately.
+              </p>
+                <p>
+                  If <m>s</m> satisfies <m>e_1</m>, then <m>a_{i,1}s_1+a_{i,2}s_2+\cdots +a_{i,n}s_n=b_i</m>. Multiplying both sides by <m>c</m> we see that
+                  <md>
+                    ca_{i,1}s_1+ca_{i,2}s_2+\cdots +ca_{i,n}s_n=cb_i,
+                  </md>
+                  and hence that <m>s</m> is also a solution of <m>c\,e_i=e_i'</m>.
+
+                </p>
+                <p>
+                  For the other direction, if <m>s</m> satisfies <m>c e_i=e_i'</m>, then
+                  <md>
+                    ca_{i,1}s_1+ca_{i,2}s_2+\cdots +ca_{i,n}s_n=cb_i.
+                  </md>
+                  Now, since <m>c\ne 0</m>, we can multiply both sides of this equation by <m>1/c</m> to see that
+                  <md>
+                    a_{i,1}s_1+a_{i,2}s_2+\cdots +a_{i,n}s_n=b_i
+                  </md>
+                  and hence that <m>s</m> is a solution to <m>e_i</m>.
+                </p>
       </case>
       <case>
         <title>Row swap</title>
         <p>
-         
+          Suppose <m>L'</m> is obtained from <m>L</m> by swapping equations <m>e_i</m> and <m>e_j</m>.  In this case the systems <m>L</m> and <m>L'</m> consist of the same equations,
+                just written in a different order.
+                Thus the <m>n</m>-tuple <m>s</m> satisfies <m>L</m> if and only if it satisfies each of the equations <m>e_i</m>,
+                if and only if it satisfies each of the equations <m>e'_i</m>,
+                since these are the same equations!
+                It follows that <m>s</m> is a solution of <m>L</m> if and only if it is a solution to <m>L'</m>.
         </p>
       </case>
       <case>
         <title>Row addition</title>
         <p>
-         
+         Suppose <m>L'</m> is the system satisfying <m>e_k'=e_k</m> for all <m>k\ne i</m>, and <m>e_i'=e_i+ce_j</m> for some scalar <m>c\in F</m> and integer <m>1\leq j\leq m</m>.  
+                Expanding <m>e_i'</m> out in terms of the coefficients of <m>L</m> yields 
+                <md>
+                  e_i': a_{i,1}x_1+a_{i,2}x_2+\cdots +a_{i,n}x_n+c(a_{j,1}x_1+a_{j,2}x_2+\cdots +a_{j,n}x_n)=b_i+c\, b_j
+                </md>.
+                If <m>s</m> satisfies <m>L</m>,
+                then it satisfies <m>e_i</m> and <m>e_j</m>,
+                in which case, evaluating the left hand side of <m>e_i'</m> at <m>s</m> 
+                <md>
+                  <mrow>a_{i,1}s_1+a_{i,2}s_2+\cdots +a_{i,n}s_n+c(a_{j,1}s_1+a_{j,2}s_2+\cdots +a_{j,n}s_n) </mrow>
+                </md>,
+                which is equal to <m>b_i+c\, b_j</m> (the right side of <m>e_i'</m>) since
+                <md>
+                  <mrow>a_{i,1}s_1+a_{i,2}s_2+\cdots +a_{i,n}s_n \amp = b_i \amp (s \text{ sol. of } e_i)</mrow>
+                  <mrow> a_{j,1}s_1+a_{j,2}s_2+\cdots +a_{j,n}s_n\amp = b_j \amp (s \text{ sol. of } e_j)</mrow>
+                </md>.
+                This shows that <m>s</m> satisfies <m>e_i'</m>, and hence is a solution to <m>L'</m>. 
+                Now suppose <m>s=(s_1,s_2,\dots,
+                s_n)</m> satisfies <m>L'</m>.
+                Since <m>s</m> satisfies <m>e_j'=e_j</m>, we have
+                <md number="yes" xml:id="solveeqn" >
+                  a_{j,1}s_1+a_{j,2}s_2+\cdots +a_{j,n}s_n =b_j
+                </md>
+                Since <m>s</m> satisfies <m>e_i'</m>, we have
+                <md>
+                  <mrow>a_{i,1}s_1+a_{i,2}s_2+\cdots +a_{i,n}s_n+c(a_{j,1}s_1+a_{j,2}s_2+\cdots +a_{j,n}s_n)</mrow>
+                  <mrow>=b_i+cb_j</mrow>
+                </md>.
+                Substituting <xref ref="solveeqn"/> into the equation above we get
+                <md>
+                  a_{i,1}s_1+a_{i,2}s_2+\cdots +a_{i,n}s_n+c\, b_j=b_i+c\, b_j
+                </md>,
+                and hence
+                <md>
+                  a_{i,1}s_1+a_{i,2}s_2+\cdots +a_{i,n}s_n=b_i
+                </md>.
+                This shows that <m>s</m> satisfies <m>e_i</m>, and thus that <m>s</m> satisfies <m>L</m>.
         </p>
       </case>
       

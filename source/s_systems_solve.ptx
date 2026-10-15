@@ -1139,7 +1139,7 @@ def row_echelon_form_steps(A):
     <title><m>0</m>, <m>1</m>, or <m>\infty</m>-many solutions</title>
 
     <statement>
-      <p>Let <m>L</m> be a linear system of equations, let <m>L'</m> be an equivalent system in row reduced form, and let <m>U</m> be the augmented matrix associated to <m>L'</m>.</p>
+      <p>Let <m>F</m> be an <em>infinite field</em> (<eg/>, <m>\Q</m>, <m>\R</m>, <m>\C</m>), and let <m>L</m> be a linear system of equations over <m>F</m>. Let <m>L'</m> be an equivalent system in row reduced form, and let <m>U</m> be the augmented matrix associated to <m>L'</m>.</p>
       <p>The system <m>L</m> has either no solutions, exactly one solution, or infinitely many solutions. In more detail:
     <ul>
       <li>
@@ -1166,7 +1166,7 @@ def row_echelon_form_steps(A):
 </p>
 <figure xml:id="fig_decision_tree">
   <title>Decision tree for number of solutions to a system</title>
-  <caption>Decision tree for the number of solutions to a linear system with augmented matrix <m>U</m> in row echelon form. </caption>
+  <caption>Decision tree for the number of solutions to a linear system over an infinite field with augmented matrix <m>U</m> in row echelon form. </caption>
   <image xml:id="im_decision_tree">
     <latex-image>
       \begin{tikzpicture}[align=center]
@@ -1200,18 +1200,17 @@ def row_echelon_form_steps(A):
       <title>Solutions to homogeneous equations</title>
       <statement>
         <p>
-          Fix a <em>homogeneous</em> linear system in <m>n</m> variables.
-          There are two possibilities:
+          Let <m>F</m> be an infinite field (<eg/>, <m>\Q</m>, <m>|R</m>, <m>\C</m>), and let <m>L</m> be a homogeneous linear system over <m>F</m>.
           <ul>
             <li>
               <p>
-                if all the variables are leading variables,
-                then the system has a unique solution (i.e., <m>1</m> solution);
+                If all the variables are leading variables,
+                then the system has a unique solution (i.e., <m>1</m> solution).
               </p>
             </li>
             <li>
               <p>
-                if there is a free variable, then the system has infinitely many solutions.
+                If there is a free variable, then the system has infinitely many solutions.
               </p>
             </li>
           </ul>
