@@ -10,5 +10,8 @@
     <xi:include href="s_span_ind.ptx" />
     <xi:include href="s_systems.ptx" />
     <xi:include href="s_systems_solve.ptx" />
+    <xi:include href="s_matrix.ptx" />
+    <xi:include href="s_matrix_algebra.ptx" />
+    
 
 </chapter>
