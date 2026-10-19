@@ -1141,10 +1141,10 @@ def row_echelon_form_steps(A):
     <statement>
       <p>Let <m>F</m> be an <em>infinite field</em> (<eg/>, <m>\Q</m>, <m>\R</m>, <m>\C</m>), and let <m>L</m> be a linear system of equations over <m>F</m>. Let <m>L'</m> be an equivalent system in row reduced form, and let <m>U</m> be the augmented matrix associated to <m>L'</m>.</p>
       <p>The system <m>L</m> has either no solutions, exactly one solution, or infinitely many solutions. In more detail:
-    <ul>
+    <ol>
       <li>
         <p>
-          if <m>U</m> has a leading one in its last column, then <m>L</m> has no solutions.
+          if <m>U</m> has a leading one in its last column, then <m>L</m> has no solutions;
         </p>
       </li>
       <li>
@@ -1157,7 +1157,7 @@ def row_echelon_form_steps(A):
           if <m>U</m> does not have a leading one in its last column and <m>L'</m> has a free variable, then <m>L</m> has infinitely many solutions.
         </p>
       </li>
-    </ul>
+    </ol>
   </p>
   </statement>
 </corollary>
@@ -1201,7 +1201,7 @@ def row_echelon_form_steps(A):
       <statement>
         <p>
           Let <m>F</m> be an infinite field (<eg/>, <m>\Q</m>, <m>|R</m>, <m>\C</m>), and let <m>L</m> be a homogeneous linear system over <m>F</m>.
-          <ul>
+          <ol>
             <li>
               <p>
                 If all the variables are leading variables,
@@ -1213,7 +1213,7 @@ def row_echelon_form_steps(A):
                 If there is a free variable, then the system has infinitely many solutions.
               </p>
             </li>
-          </ul>
+          </ol>
         </p>
       </statement>
     </corollary>

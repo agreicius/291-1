@@ -332,28 +332,43 @@
         to denote the function <m>f\colon I\rightarrow A</m> defined as <m>f(i)=a_i</m> for all <m>i\in I</m>.
     </p>
     <p>
-        Given a tuple <m>v=(a_i)_{i\in I}</m>, we call <m>a_i</m> the <term><m>i</m>-th component</term> (or <term>coordinate</term>, or <term>entry</term>, or <term>term</term>)
+        Given a tuple <m>(a_i)_{i\in I}</m>, we call <m>a_i</m> its <term><m>i</m>-th component</term> (or <term>coordinate</term>, or <term>entry</term>, or <term>term</term>).
+    </p>
+    <p>
+      If <m>I</m> is a finite set of cardinality <m>n</m>, we say that <m>(a_i)_{i\in I}</m> has <term>length</term> <m>n</m>. Otherwise, we say that <m>(a_i)_{i\in I}</m> has infinite length. 
+    </p>
+    <p>
+      In the case where <m>I=\emptyset</m>, there is exactly one tuple in <m>A^I</m> that we call the <term>empty tuple</term>, denoted <m>()</m>. Note that the the empty tuple has length zero. 
     </p>
     </statement>
     </definition>
+    
     <p>
-        having gotten the general notion of a tuple out of the way, we can now define linear independence as a property that either holds or does not hold for a given tuple of vectors <m>(v_i)_{i\in I}</m> in a vector space. 
+        Having gotten the preliminaries out of the way, we can at last define what it means for a tuple of vectors to be linearly independent. 
     </p>
     <definition xml:id="d_lin_ind">
     <title>Linear independence</title>
     <statement>
     <p>
-    Let <m>V</m> be an <m>F</m>-vector space. A tuple <m>S=(v_i)_{i\in i}</m> of vectors of <m>V</m> is <term>linearly independent</term> if there is no nontrivial linear combination of the <m>v_i</m> equal to <m>\boldzero</m>: <ie/>, if <m>\sum_{j=1}^nc_{i_j}v_{i_j}=\boldzero</m> for some set of indices <m>\{i_1,i_2,\dots, i_n\}\subset I</m> and scalars <m>c_{i_j}</m>, then <m>c_i=0</m> for all <m>i\in I</m>. Using logical shorthand: 
+    Let <m>V</m> be an <m>F</m>-vector space. A tuple <m>(v_i)_{i\in I}</m> of vectors of <m>V</m> is <term>linearly independent</term> if there is no nontrivial linear combination of the <m>v_i</m> equal to <m>\boldzero</m>. In more detail, <m>(v_i)_{i\in I}</m> is linearly independent if for any tuple <m>(c_i)_{i\in I}\in F^I</m> for which <m>c_i=0</m> for all but finitely many indices <m>i\in I</m>, if <m>\sum_{i\in I}c_iv_i=\boldzero</m>, then <m>c_i=0</m> for all <m>i\in I</m>.  Using logical shorthand: 
     <md xml:id="eq_lin_ind" number="yes">
-      \sum_{j=1}^nc_{i_j}v_{i_j}=\boldzero\implies c_{i_j}=0 \text{ for all } i_j\in \{i_1,i_2,\dots, i_n\}
+      \sum_{i\in I}c_{i}v_{i}=\boldzero\implies c_{i}=0 \text{ for all } i\in I
     </md>.
     We say <m>(v_i)_{i\in I}</m> is <term>linearly dependent</term> if it is not linearly independent: <ie/>, if there is a nontrivial linear combination <m>\sum_{j=1}^nc_{i_j}v_{i_j}=\boldzero</m>. 
     </p>
     <p>
-        Lastly, observe that in the case where <m>I=\emptyset</m>,  an empty tuple <m>S=()</m> of vectors is linearly independent as it satisfies the implication <xref ref="eq_lin_ind"/> vacuously. 
+        Lastly, observe that in the case where <m>I=\emptyset</m>,  the empty tuple <m>()</m> is linearly independent as it satisfies the implication <xref ref="eq_lin_ind"/> vacuously. 
     </p>
     </statement>
     </definition>
+    <remark>
+    <p>
+    The notation <m>\sum_{i\in I}c_iv_i</m> requires some clarification. When <m>I</m> happens to be <em>finite</em>, there is issue. But what about when <m>I</m> is infinite? In this case, we appear to be in trouble, since <m>\sum_{i\in I}c_iv_i</m> has infinitely many terms. We are saved, however, by the condition on the tuple of scalars <m>(c_i)_{i\in I}</m>: namely, that <m>c_i=0</m> for all but finitely many <m>i\in I</m>. That means that all but finitely many terms of <m>\sum_{i\in I}c_iv_i</m> are nonzero, yielding a well-defined linear combination. 
+    </p>
+    <p>
+      In any case, we will mostly be dealing with finite index sets, like <m>I=\{1,2,\dots, n\}</m>, in which case the <q>all but finitely many</q> condition is automatic. 
+    </p>
+    </remark>
     
     <!-- <algorithm xml:id="proc_linear_independence">
   <title>Linear independence of a finite set</title>
@@ -386,21 +401,21 @@
     <title>Linear independence</title>
     <statement>
     <p>
-    For each tuple <m>t=(v_i)_{i\in I}</m> of the given vector space <m>V</m>, decide whether <m>(v_i)_{i\in I}</m> is linearly independent.
+    For each tuple <m>(v_i)_{i\in I}</m> of the given vector space <m>V</m>, decide whether <m>(v_i)_{i\in I}</m> is linearly independent.
     <ol>
         <li>
             <p>
-                <m>V=F^n</m>, <m>t=(\bolde_i)_{i=1}^n</m>
+                <m>V=F^n</m>, <m>(\bolde_i)_{i=1}^n</m>
             </p>
         </li>
         <li>
             <p>
-                <m>V=\mathcal{F}(I, F)</m>, <m>t=(\chi_i)_{i\in I}</m>, where as usual, <m>\chi_i</m> is the <m>i</m>-th indicator function. 
+                <m>V=\mathcal{F}(I, F)</m>, <m>(\chi_i)_{i\in I}</m>, where as usual, <m>\chi_i</m> is the <m>i</m>-th indicator function. 
             </p>
         </li>
         <li>
             <p>
-                <m>V=\R^3</m>, <m>t=(v_1,v_2,v_3)</m>, where 
+                <m>V=\R^3</m>, <m>(v_1,v_2,v_3)</m>, where 
                 <md>
                     <mrow>v_1 \amp = (1,0,2) \amp v_2\amp =(-1,0,2) \amp v_3=(1,0,6) </mrow>
                 </md>.
@@ -415,6 +430,21 @@
     </p>
     </solution>
     </example>
+    <p>
+      It will be useful to extend out notion of spans of <em>sets</em> of vectors to spans of <em>tuples</em> of vectors. Now is as good a place as any to get that definition out of the way. 
+    </p>
+    <definition xml:id="d_span_tuple">
+    <title>Span of tuple of vectors</title>
+    <statement>
+    <p>
+    Let <m>(v_i)_{i\in I}</m> be a tuple of vectors in the <m>F</m>-vector space <m>V</m>. We define the <term>span</term> of <m>(v_i)_{i\in I}</m>, denoted <m>\Span (v_i)_{i\in I}</m>, to be the span of the set <m>\{v_i\mid i\in I}</m>:<ie/>, 
+    <md>
+      \Span(v_i)_{i\in I}=\Span \{v_i\mid i\in I}
+    </md>.
+    Note that in the case of the empty tuple, we have <m>\Span()=\Span\{\}=\boldzero</m>. 
+    </p>
+    </statement>
+    </definition>
     
     <!-- <example xml:id="ex_linear_independence">
     <title>Linear independence</title>
@@ -497,7 +527,7 @@
   <title>Span and independence</title>
   <statement>
   <p>
-  Let <m>S=(v_i)_{i\in I}</m> be a nonempty tuple of vectors of the vector space <m>V</m>. The following statements are equivalent. 
+  Let <m>(v_i)_{i\in I}</m> be a nonempty tuple of vectors of the vector space <m>V</m>. The following statements are equivalent. 
   <ol>
     <li>
         <p>
