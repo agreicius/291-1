@@ -1,0 +1,39 @@
+openDate          = 10/19/2026 at 12:00am
+dueDate           = 04/19/2027 at 10:00pm
+answerDate        = 04/19/2027 at 10:00pm
+paperHeaderFile   = Linear_algebra/header/Linear_algebra.pg
+screenHeaderFile  = Linear_algebra/header/Linear_algebra.pg
+description       = Linear algebra
+problemListV2
+problem_start
+source_file = Library/ASU-topics/set119MatrixAlgebra/p17.pg
+problem_id = 21
+problem_end
+problem_start
+source_file = Library/Dartmouth/setMTWCh1S5/problem_1.pg
+problem_id = 22
+problem_end
+problem_start
+source_file = Library/ASU-topics/set119MatrixAlgebra/p32.pg
+problem_id = 23
+problem_end
+problem_start
+source_file = Library/ASU-topics/set119MatrixAlgebra/p7.pg
+problem_id = 24
+problem_end
+problem_start
+source_file = Library/ASU-topics/set119MatrixAlgebra/p14.pg
+problem_id = 25
+problem_end
+problem_start
+source_file = Contrib/MountAllison/1-3_Matrices_and_Matrix_Operations/true_false.pg
+problem_id = 16
+problem_end
+problem_start
+source_file = Library/Utah/Business_Algebra/set10_Matrices/p17.pg
+problem_id = 17
+problem_end
+problem_start
+source_file = Library/Utah/Business_Algebra/set10_Matrices/p21.pg
+problem_id = 18
+problem_end
