@@ -426,7 +426,51 @@
     </statement>
     <solution>
     <p>
-    
+    <ol>
+      <li>
+        <p>
+          The tuple is linearly independent. We show that the only linear combination of the <m>\bolde_i</m> equal to <m>\boldzero</m> is the trivial one:
+          <md>
+            <mrow>\sum_{i=1}^nc_i\bolde_i=\boldzero \amp \implies (c_1,0,\dots,0)+(0,c_2,\dots,0)+\cdots (0,\dots, c_n)=\boldzero</mrow>
+            <mrow> \amp \implies (c_1,c_2,\dots, c_n)=(0,0,\dots, 0)</mrow>
+            <mrow>\amp \implies c_i=0 \text{ for all } i\in I \amp </mrow>
+          </md>.
+        </p>
+      </li>
+      <li>
+        <p>
+          The tuple <m>(\chi_i)_{i\in I}</m> is linearly independent. Before showing this, take a moment to orient yourself in this vector space: in particular, note that the elements of the vector space are functions, and that the zero vector is the zero function, denoted <m>0_I</m>. Note also that we make no assumptions on <m>I</m>: in particular, our proof should work whether or not <m>I</m> is infinite. 
+        </p>
+        <p>
+          Take any tuple <m>(c_i)_{i\in I}\in F^I</m> satisfying <m>c_i=0</m> for all but finitely many <m>i\in I</m>. We have 
+          <md>
+            <mrow>\sum_{i\in I}c_i\chi_i=0_I \amp \iff \sum_{i\in I}c_i\chi_i (j)=0 \text{ for all } j\in I \amp (\text{def. of func. equality}) </mrow>
+            <mrow> \amp \implies c_j\chi_j(j)=0 \text{ for all } j\in I \amp (\chi_i(j)=0 \text{ for all } i\ne j) </mrow>
+            <mrow> \amp \implies c_j=0 \text{ for all } j\in I \amp (\chi_j(j)=1 \text{ for all } j\in I) </mrow>
+          </md>.
+          We conclude that <m>(\chi_i)_{i\in I}</m> is linearly independent. 
+        </p>
+        <p>
+          Observe that the previous example is just the special case of this example where <m>I=\{1,2\dots, n\}</m>, since the tuple <m>\bolde_i</m> is really just the indicator function <m>\chi_i</m> in disguise! 
+        </p>
+      </li>
+      <li>
+        <p>
+          We observer, by inspection that 
+          <md>
+            2\boldv_1+\boldv_2=\boldv_3
+          </md>,
+          and hence that 
+          <md>
+            2\boldv_1+1\boldv_2+(-1)\boldv_3=\boldzero
+          </md>
+          is a nontrivial linear combination of the <m>v_i</m> equal to <m>\boldzero</m>. We conclude that the tuple <m>(v_1,v_2,v_3)</m> is linearly dependent.
+        </p>
+        <p>
+        You might be somewhat uncomfortable with this <q>by inspection</q> approach. Fear not! We will soon develop a procedure for solving systems of linear equations that we can then apply to answering questions like this in a systematic manner. 
+        </p>
+      </li>
+    </ol>
     </p>
     </solution>
     </example>
@@ -437,9 +481,9 @@
     <title>Span of tuple of vectors</title>
     <statement>
     <p>
-    Let <m>(v_i)_{i\in I}</m> be a tuple of vectors in the <m>F</m>-vector space <m>V</m>. We define the <term>span</term> of <m>(v_i)_{i\in I}</m>, denoted <m>\Span (v_i)_{i\in I}</m>, to be the span of the set <m>\{v_i\mid i\in I}</m>:<ie/>, 
+    Let <m>(v_i)_{i\in I}</m> be a tuple of vectors in the <m>F</m>-vector space <m>V</m>. We define the <term>span</term> of <m>(v_i)_{i\in I}</m>, denoted <m>\Span (v_i)_{i\in I}</m>, to be the span of the set <m>\{v_i\mid i\in I\}</m>:<ie/>, 
     <md>
-      \Span(v_i)_{i\in I}=\Span \{v_i\mid i\in I}
+      \Span(v_i)_{i\in I}=\Span \{v_i\mid i\in I\}
     </md>.
     Note that in the case of the empty tuple, we have <m>\Span()=\Span\{\}=\boldzero</m>. 
     </p>
