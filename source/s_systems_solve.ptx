@@ -1531,8 +1531,10 @@ determine (i) whether the tuple is linearly independent, and (ii) determine
               <mrow>
                 W=\Span (A_i)_{i=1}^4\amp =\ML_{2,2}(\R)</mrow>
             </md>.
-            In other words, <m>\{A_1,A_2,A_3,A_4\}</m> is a spanning set for <m>\ML_{2,2}(\R)</m>. 
-            Furthermore, our reasoning shows that for any matrix <m>A</m> there is a <em>unique</em> tuple <m>(c_1,c_2,c_3,c_4)</m> satisfying <m>\sum_{i=1}^4c_iA_i=A</m>. In particular, taking <m>A=\boldzero_{2\time 2}</m>, we see that there is a unique tuple <m>(c_1,c_2,c_3,c_4)</m> satisfying <m>\sum_{i=1}^4c_iA_i=\boldzero</m>. Since <m>(c_1,c_2,c_3,c_4)=(0,0,0,0)</m> is such a tuple, we conclude that <m>\sum_{i=1}^4c_iA_i=\boldzero</m> implies <m>(c_1,c_2,c_3,c_4)=(0,0,0,0)</m>, and thus <m>(A_1,A_2,A_3,A_4)</m> is linearly independent. 
+            In other words, <m>\{A_1,A_2,A_3,A_4\}</m> is a spanning set for <m>\ML_{2,2}(\R)</m>!
+          </p>
+          <p>
+            Turning to linear independence, our reasoning shows that for any matrix <m>A</m> there is a <em>unique</em> tuple <m>(c_1,c_2,c_3,c_4)</m> satisfying <m>\sum_{i=1}^4c_iA_i=A</m>. In particular, taking <m>A=\boldzero</m>, we see that there is a unique tuple <m>(c_1,c_2,c_3,c_4)</m> satisfying <m>\sum_{i=1}^4c_iA_i=\boldzero</m>. Since <m>(c_1,c_2,c_3,c_4)=(0,0,0,0)</m> is such a tuple, we conclude that <m>\sum_{i=1}^4c_iA_i=\boldzero</m> implies <m>(c_1,c_2,c_3,c_4)=(0,0,0,0)</m>, and thus <m>(A_1,A_2,A_3,A_4)</m> is linearly independent. 
           </p>
 </solution>
 <solution>
@@ -1564,7 +1566,7 @@ determine (i) whether the tuple is linearly independent, and (ii) determine
     We conclude in this case that 
     <md>
       <mrow>W=\Span (A_i)_{i=1}^4 \amp = \left\{\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}\in \ML_{2,2}(\R)\mid b=c\right\}</mrow>
-    <mrow> \amp = \left\{\begin{bmatrix}a\amp b\\ b\amp d\mid a,b,d\in \R\right\}</mrow>
+    <mrow> \amp = \left\{\begin{bmatrix}a\amp b\\ b\amp d\end{bmatrix}\mid a,b,d\in \R\right\}</mrow>
     </md>,
     the set of all symmetric <m>2\times 2</m> matrices. The special case where we consider linear combinations of the form 
     <md>
