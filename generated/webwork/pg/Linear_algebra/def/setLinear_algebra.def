@@ -1,6 +1,6 @@
-openDate          = 10/20/2026 at 12:00am
-dueDate           = 04/20/2027 at 10:00pm
-answerDate        = 04/20/2027 at 10:00pm
+openDate          = 10/19/2026 at 12:00am
+dueDate           = 04/19/2027 at 10:00pm
+answerDate        = 04/19/2027 at 10:00pm
 paperHeaderFile   = Linear_algebra/header/Linear_algebra.pg
 screenHeaderFile  = Linear_algebra/header/Linear_algebra.pg
 description       = Linear algebra
