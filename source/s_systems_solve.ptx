@@ -1295,7 +1295,87 @@ def row_echelon_form_steps(A):
     </figure>
 </example>
 </subsection>
+<subsection xml:id="ss_solve_span_ind">
+<title>Application to span and linear independence</title>
+<p>
+  As a first illustration of <xref ref="princ_GE"/>, we show how to use <xref ref="proc_solveSystem"/> to answer questions about span and linear independence. 
+</p>
+<example xml:id="eg_span_ind_computation">
+<title>Span and linear independence</title>
+<statement>
+<p>
+For each vector space <m>V</m> and tuple of vectors <m>(v_{i})_{i\in I}</m>
+determine (i) whether the tuple is linearly independent, and (ii) determine
+<m>W=\Span (v_{i})_{i\in I}</m>.
+<ol>
+    <li>
+        <p>
+            <m>V=\C^{3}</m>, <m>(\boldv_{1},\boldv_{2},\boldv_{3})</m>, where
+            <md>
+                <mrow>\boldv_{1}\amp =(1+i,1-i,-2) \amp \boldv_{2}\amp =(-2i,1,-1+2i)\amp \boldv_{3}\amp =(3,-2,-1)</mrow>
+            </md>
+        </p>
+    </li>
 
+    <li>
+        <p>
+            <m>V=\ML_{4,4}(\R)</m>, <m>(A_{1},A_{2},A_{3},A_{4})</m>, where
+            <md alignment="align">
+                <mrow>A_{1}\amp =\begin{amatrix}[rr]1\amp 1\\ 1\amp 1\end{amatrix}\amp A_{2}\amp =\begin{amatrix}[rr]1\amp -1\\ 0\amp 0\end{amatrix}</mrow>
+                <mrow>A_{3}\amp =\begin{amatrix}[rr]0\amp 0\\ 1\amp -1\end{amatrix}\amp A_{4}\amp =\begin{amatrix}[rr]1\amp 1\\ -1\amp -1\end{amatrix}</mrow>
+            </md>
+        </p>
+    </li>
+
+    <li>
+        <p>
+            <m>V=\ML_{4,4}(\R)</m>, <m>(A_{1},A_{2},A_{3},A_{4})</m>, where
+            <md>
+                <mrow>A_{1}\amp =\begin{amatrix}[rr]1\amp 1\\ 1\amp 1\end{amatrix}\amp A_{2}\amp =\begin{amatrix}[rr]1\amp -1\\ -1\amp 0\end{amatrix}</mrow>
+                <mrow>A_{3}\amp =\begin{amatrix}[rr]0\amp 0\\ 0\amp -1\end{amatrix}\amp A_{4}\amp =\begin{amatrix}[rr]1\amp 1\\ 1\amp 3\end{amatrix}</mrow>
+            </md>
+        </p>
+    </li>
+</ol>
+</p>
+
+</statement>
+<solution>
+<p>
+
+</p>
+</solution>
+</example>
+
+<algorithm xml:id="proc_linear_independence">
+  <title>Linear independence</title>
+  <statement>
+    <p>Let <m>S=(v_i)_{i\in I}</m> be a tuple of vectors of the <m>F</m>-vector space <m>V</m>. To decide whether <m>S</m> is linearly independent, proceed as follows. 
+    <ol>
+      <li>
+        <p>
+          Write out the general expression for a linear combination equal to the zero vector:
+          <md>
+         \sum_{i\in I}c_iv_i=\boldzero
+          </md>.
+        </p>
+      </li>
+      <li>
+        <p>
+          If possible, translate this vector equation into a homogeneous system of linear equations in the unknowns <m>c_i</m> using the definition of equality for your vector space.
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide, using Gaussian elimination, whether this system has any nonzero (<ie />, nontrivial) solutions. If it has no nontrivial solution, <m>S</m> is linearly independent; if it has a nontrivial solution, <m>S</m> is linearly dependent. 
+        </p>
+      </li>
+    </ol>
+  </p>
+  </statement>
+</algorithm>
+
+</subsection>
 
     
 
