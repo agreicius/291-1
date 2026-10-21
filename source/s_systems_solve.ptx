@@ -1529,8 +1529,9 @@ determine (i) whether the tuple is linearly independent, and (ii) determine
             Since there are leading ones in all four of the columns corresponding to unknowns, we see that that system is always consistent, and furthermore, that for any <m>(a,b,c,d)</m> there is a unique solution <m>(c_1,c_2,c_3,c_4)</m>. We conclude that 
             <md>
               <mrow>
-                W=\Span (A_i)_{i=1}^4\amp =\R^4</mrow>
+                W=\Span (A_i)_{i=1}^4\amp =\ML_{2,2}(\R)</mrow>
             </md>.
+            In other words, <m>\{A_1,A_2,A_3,A_4\}</m> is a spanning set for <m>\ML_{2,2}(\R)</m>. 
             Furthermore, our reasoning shows that for any matrix <m>A</m> there is a <em>unique</em> tuple <m>(c_1,c_2,c_3,c_4)</m> satisfying <m>\sum_{i=1}^4c_iA_i=A</m>. In particular, taking <m>A=\boldzero_{2\time 2}</m>, we see that there is a unique tuple <m>(c_1,c_2,c_3,c_4)</m> satisfying <m>\sum_{i=1}^4c_iA_i=\boldzero</m>. Since <m>(c_1,c_2,c_3,c_4)=(0,0,0,0)</m> is such a tuple, we conclude that <m>\sum_{i=1}^4c_iA_i=\boldzero</m> implies <m>(c_1,c_2,c_3,c_4)=(0,0,0,0)</m>, and thus <m>(A_1,A_2,A_3,A_4)</m> is linearly independent. 
           </p>
 </solution>
