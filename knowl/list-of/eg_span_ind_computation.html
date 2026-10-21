@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.33</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Span and linear independence.</span>
+</h4>
+<div class="para logical">
+<div class="para">For each vector space <span class="process-math">\(V\)</span> and tuple of vectors <span class="process-math">\((v_{i})_{i\in I}\)</span> determine (i) whether the tuple is linearly independent, and (ii) determine <span class="process-math">\(W=\Span (v_{i})_{i\in I}\text{.}\)</span>
+</div>
+<ol class="decimal" id="eg_span_ind_computation-2-1-4">
+<li>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(V=\C^{3}\text{,}\)</span> <span class="process-math">\((\boldv_{1},\boldv_{2},\boldv_{3})\text{,}\)</span> where</div>
+<div class="displaymath process-math">
+\begin{align*}
+\boldv_{1}\amp =(1+i,1-i,-2) \amp \boldv_{2}\amp =(-2i,1,-1+2i)\amp \boldv_{3}\amp =(3,-2,-1)
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-2-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#eg_span_ind_computation-2-1-4-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(V=\ML_{2,2}(\R)\text{,}\)</span> <span class="process-math">\((A_{1},A_{2},A_{3},A_{4})\text{,}\)</span> where</div>
+<div class="displaymath process-math">
+\begin{align*}
+A_{1}\amp =\begin{amatrix}[rr]1\amp 1\\ 1\amp 1\end{amatrix}\amp A_{2}\amp =\begin{amatrix}[rr]1\amp -1\\ 0\amp 0\end{amatrix}\\
+A_{3}\amp =\begin{amatrix}[rr]0\amp 0\\ 1\amp -1\end{amatrix}\amp A_{4}\amp =\begin{amatrix}[rr]1\amp 1\\ -1\amp -1\end{amatrix}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-2-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#eg_span_ind_computation-2-1-4-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li>
+<div class="para logical">
+<div class="para">
+<span class="process-math">\(V=\ML_{2,2}(\R)\text{,}\)</span> <span class="process-math">\((A_{1},A_{2},A_{3},A_{4})\text{,}\)</span> where</div>
+<div class="displaymath process-math">
+\begin{align*}
+A_{1}\amp =\begin{amatrix}[rr]1\amp 1\\ 1\amp 1\end{amatrix}\amp A_{2}\amp =\begin{amatrix}[rr]1\amp -1\\ -1\amp 0\end{amatrix}\\
+A_{3}\amp =\begin{amatrix}[rr]0\amp 0\\ 0\amp -1\end{amatrix}\amp A_{4}\amp =\begin{amatrix}[rr]1\amp 1\\ 1\amp 3\end{amatrix}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-2-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#eg_span_ind_computation-2-1-4-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical">
+<div class="para">First we decide whether <span class="process-math">\((\boldv_1,\boldv_2,\boldv_3)\)</span> is linearly independent. To this end, we ask whether there is a nonzero triple <span class="process-math">\((c_1,c_2,c_3)\in \C^3\)</span> such that <span class="process-math">\(\sum_{i=1}^3c_i\boldv_i=\boldzero\text{.}\)</span> Expanding the linear combination on the left and setting each coordinate equal to 0 yields the linear system</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{equation*}
+\begin{linsys}{3}
+(1+i)c_1\amp -\amp 2i\, c_2\amp +\amp 3c_3\amp = \amp 0\\
+(1-i)c_1\amp +\amp c_2\amp -\amp 2c_3\amp = \amp 0\\
+-2c_1\amp +\amp (-1+2i)c_2\amp -\amp c_3\amp = \amp 0
+\end{linsys}\text{.}
+\end{equation*}
+</div>
+<div class="para">We apply <a href="s_linsys_solve.html#proc_solveSystem" class="xref" data-knowl="./knowl/xref/proc_solveSystem.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.8.21: Solving linear systems">Procedure 1.8.21</a> to this system:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{align*}
+\begin{amatrix}[rrr|r]
+1+i\amp -2i\amp 3\amp 0\\
+1-i\amp 1\amp -2\amp 0\\
+-2\amp -1+2i\amp -1\amp 0
+\end{amatrix}\amp\xrightarrow{(1+i)^{-1}r_1}\\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp 0\\
+1-i\amp 1\amp -2\amp 0\\
+-2\amp -1+2i\amp -1\amp 0
+\end{amatrix} \amp\xrightarrow{r_2-(1-i)r_1} \\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp 0\\
+0\amp 3\amp -2-3i\amp 0\\
+-2\amp -1+2i\amp -1\amp 0
+\end{amatrix}
+\amp\xrightarrow{r_3+2r_1} \\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp 0\\
+0\amp 3\amp -2-3i\amp 0\\
+0\amp -3\amp 2-3i\amp 0
+\end{amatrix}\amp\xrightarrow{\frac{1}{3}r_2} \\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp 0\\
+0\amp 1\amp -\frac{1}{3}(2+3i)\amp 0\\
+0\amp -3\amp 2\amp 0
+\end{amatrix}\amp\xrightarrow{r_3+3r_2} \\
+\begin{amatrix}[rrr|r]
+\boxed{1}\amp -1-i\amp \frac{3}{2}(1-i)\amp 0\\
+0\amp \boxed{1}\amp -\frac{3}{2}\amp 0\\
+0\amp 0\amp 0\amp 0
+\end{amatrix}\amp\text{.}
+\end{align*}
+</div>
+<div class="para">We see that the system is consistent and that the unknown <span class="process-math">\(c_3\)</span> is free. It follows that there are infinitely many solutions to the system, and thus a nonzero triple <span class="process-math">\((c_1,c_2,c_3)\)</span> satisfying <span class="process-math">\(\sum_{i=1}^3c_i\boldv_i=\boldzero\text{.}\)</span> We conclude that the tuple is linearly dependent.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">To determine <span class="process-math">\(W=\Span(\boldv_i)_{i=1}^3\text{,}\)</span> we ask which triples <span class="process-math">\(\boldv=(z_1,z_2,z_3)\in \C^3\)</span> can be expressed as <span class="process-math">\(\boldv=\sum_{i=1}^3c_i\boldv_i\)</span> for some some <span class="process-math">\(c_i\in \C\text{.}\)</span> This is equivalent to asking for which triples <span class="process-math">\((z_1,z_2,z_3)\)</span> is the linear system</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{equation*}
+\begin{linsys}{3}
+(1+i)c_1\amp -\amp 2i\, c_2\amp +\amp 3c_3\amp = \amp z_1\\
+(1-i)c_1\amp +\amp c_2\amp -\amp 2c_3\amp = \amp z_2\\
+-2c_1\amp +\amp (-1+2i)c_2\amp -\amp c_3\amp = \amp z_3
+\end{linsys}
+\end{equation*}
+</div>
+<div class="para">consistent. Once again, we apply <a href="s_linsys_solve.html#proc_solveSystem" class="xref" data-knowl="./knowl/xref/proc_solveSystem.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.8.21: Solving linear systems">Procedure 1.8.21</a>. Observe how we can reuse much of the work we did above. We will take some shortcuts in our Gaussian elimination for brevity:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{align*}
+\begin{amatrix}[rrr|r]
+1+i\amp -2i\amp 3\amp z_1\\
+1-i\amp 1\amp -2\amp z_2\\
+-2\amp -1+2i\amp -1\amp z_3
+\end{amatrix}\amp\xrightarrow{(1+i)^{-1}r_1}\\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp \frac{1}{1+i}\, z_1\\
+1-i\amp 1\amp -2\amp z_2\\
+-2\amp -1+2i\amp -1\amp z_3
+\end{amatrix} \amp\xrightarrow{r_2-(1-i)r_1} \\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp \frac{1}{1+i}\, z_1\\
+0\amp 3\amp -2-3i\amp z_2-\frac{1-i}{1+i}\, z_1\\
+-2\amp -1+2i\amp -1\amp z_3
+\end{amatrix}
+\amp\xrightarrow{r_3+2r_1} \\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp \frac{1}{1+i}\, z_1 \\
+0\amp 3\amp -2-3i\amp z_2-\frac{1-i}{1+i}\, z_1\\
+0\amp -3\amp 2-3i\amp z_3+\frac{2}{1+i}\, z_1
+\end{amatrix}\amp\xrightarrow{r_3+r_2} \\
+\begin{amatrix}[rrr|r]
+1\amp -1-i\amp \frac{3}{2}(1-i)\amp \frac{1}{1+i}\, z_1\\
+0\amp 3\amp -(2+3i)\amp z_2-\frac{1-i}{1+i}\, z_1\\
+0\amp 0\amp 0\amp z_3+\frac{2}{1+i}\, z_1+\left(z_2-\frac{1-i}{1+i}\, z_1\right)
+\end{amatrix}\amp \text{.}
+\end{align*}
+</div>
+<div class="para">At this point we see that the system is consistent if and only if</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{equation*}
+0=z_3+\frac{2}{1+i}\, z_1+\left(z_2-\frac{1-i}{1+i}\, z_1\right)=z_1+z_2+z_3\text{.}
+\end{equation*}
+</div>
+<div class="para">We conclude that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{equation*}
+W=\Span (v_i)_{i=1}^3=\{(z_1,z_2,z_3)\in \C\mid z_1+z_2+z_3=0\}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.8.33.1"><a href="#eg_span_ind_computation-3" title="Copy heading and permalink for Solution 1.8.33.1" aria-label="Copy heading and permalink for Solution 1.8.33.1">🔗</a></div>
+</div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical">
+<div class="para">As the last example illustrates, when answering the two questions posed separately, we repeat a lot of the same Gaussian elimination work. Let’s change things up slightly here and consider first the span question. We ask which matrices <span class="process-math">\(A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}\)</span> can be expressed as <span class="process-math">\(A=\sum_{i=1}^4c_iA_i\)</span> for some <span class="process-math">\(c_i\in \R\text{.}\)</span> Expanding out the linear combination of the <span class="process-math">\(A_i\text{,}\)</span> this equality becomes</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{align}
+\begin{amatrix}[rr] c_1+c_2+c_4 \amp c_1-c_2+c_4 \\ c_1+c_3-c_4 \amp c_1-c_3-c_4 \end{amatrix} \amp = \begin{amatrix}[rr] a \amp b \\ c \amp d \end{amatrix} \text{.}\tag{1.8.8}
+\end{align}
+</div>
+<div class="para">Equating the entries of both matrice, we see that the span question is equivalent to asking for which <span class="process-math">\(4\)</span>-tuples <span class="process-math">\((a,b,c,d)\)</span> the linear system</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{equation*}
+\begin{linsys}{4}
+c_1+c_2+c_4\amp =\amp a\\
+c_1-c_2+c_4\amp =\amp b\\
+c_1+c_3-c_4\amp =\amp c\\
+c_1-c_3-c_4\amp =\amp d
+\end{linsys}
+\end{equation*}
+</div>
+<div class="para">is consistent. We apply <a href="s_linsys_solve.html#proc_solveSystem" class="xref" data-knowl="./knowl/xref/proc_solveSystem.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.8.21: Solving linear systems">Procedure 1.8.21</a> to this system:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{align*}
+\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+1\amp -1\amp 0\amp 1\amp b\\
+1\amp 0\amp 1\amp -1\amp c\\
+1\amp 0\amp -1\amp -1\amp d
+\end{amatrix}\amp \xrightarrow{r_2-r_1}
+\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+0\amp -2\amp 0\amp 0\amp b-a\\
+1\amp 0\amp 1\amp -1\amp c\\
+1\amp 0\amp -1\amp -1\amp d
+\end{amatrix}\\
+\amp \xrightarrow{r_3-r_1} \begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+0\amp -2\amp 0\amp 0\amp b-a\\
+0\amp -1\amp 1\amp -2\amp c-a\\
+1\amp 0\amp -1\amp -1\amp d
+\end{amatrix} \\
+\amp \xrightarrow{r_4-r_1}\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+0\amp -2\amp 0\amp 0\amp b-a\\
+0\amp -1\amp 1\amp -2\amp c-a\\
+0\amp -1\amp -1\amp -2\amp d-a
+\end{amatrix}\\
+\amp \xrightarrow{-\frac{1}{2}r_2}\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+0\amp 1\amp 0\amp 0\amp \frac{1}{2}(a-b)\\
+0\amp -1\amp 1\amp -2\amp c-a\\
+0\amp -1\amp -1\amp -2\amp d-a
+\end{amatrix} \\
+\amp \xrightarrow{r_3+r_2}\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+0\amp 1\amp 0\amp 0\amp \frac{a}{2}-\frac{b}{2}\\
+0\amp 0\amp 1\amp -2\amp -\frac{a}{2}-\frac{b}{2}+c\\
+0\amp -1\amp -1\amp -2\amp d-a
+\end{amatrix} \\
+\amp \xrightarrow{r_4+r_2}\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+0\amp 1\amp 0\amp 0\amp \frac{a}{2}-\frac{b}{2}\\
+0\amp 0\amp 1\amp -2\amp \frac{a}{2}-\frac{b}{2}+c\\
+0\amp 0\amp -1\amp -2\amp -\frac{a}{2}-\frac{b}{2}+d
+\end{amatrix}\\
+\amp \xrightarrow{r_4+r_3}
+\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+0\amp 1\amp 0\amp 0\amp \frac{a}{2}-\frac{b}{2}\\
+0\amp 0\amp 1\amp -2\amp \frac{a}{2}-\frac{b}{2}+c\\
+0\amp 0\amp 0\amp -4\amp -b+c+d
+\end{amatrix}\\
+\amp\xrightarrow{-\frac{1}{4}r_4}
+\begin{amatrix}[rrrr|r]
+\boxed{1}\amp 1\amp 0\amp 1\amp a\\
+0\amp \boxed{1}\amp 0\amp 0\amp \frac{a}{2}-\frac{b}{2}\\
+0\amp 0\amp \boxed{1}\amp -2\amp \frac{a}{2}-\frac{b}{2}+c\\
+0\amp 0\amp 0\amp \boxed{1}\amp \frac{1}{4}(b-c-d)
+\end{amatrix}  \text{.}
+\end{align*}
+</div>
+<div class="para">Since there are leading ones in all four of the columns corresponding to unknowns, we see that that system is always consistent, and furthermore, that for any <span class="process-math">\((a,b,c,d)\)</span> there is a unique solution <span class="process-math">\((c_1,c_2,c_3,c_4)\text{.}\)</span> We conclude that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html">
+\begin{align*}
+W=\Span (A_i)_{i=1}^4\amp =\R^4\text{.}
+\end{align*}
+</div>
+<div class="para">Furthermore, our reasoning shows that for any matrix <span class="process-math">\(A\)</span> there is a <em class="emphasis">unique</em> tuple <span class="process-math">\((c_1,c_2,c_3,c_4)\)</span> satisfying <span class="process-math">\(\sum_{i=1}^4c_iA_i=A\text{.}\)</span> In particular, taking <span class="process-math">\(A=\boldzero_{2\time 2}\text{,}\)</span> we see that there is a unique tuple <span class="process-math">\((c_1,c_2,c_3,c_4)\)</span> satisfying <span class="process-math">\(\sum_{i=1}^4c_iA_i=\boldzero\text{.}\)</span> Since <span class="process-math">\((c_1,c_2,c_3,c_4)=(0,0,0,0)\)</span> is such a tuple, we conclude that <span class="process-math">\(\sum_{i=1}^4c_iA_i=\boldzero\)</span> implies <span class="process-math">\((c_1,c_2,c_3,c_4)=(0,0,0,0)\text{,}\)</span> and thus <span class="process-math">\((A_1,A_2,A_3,A_4)\)</span> is linearly independent.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.8.33.2"><a href="#eg_span_ind_computation-4" title="Copy heading and permalink for Solution 1.8.33.2" aria-label="Copy heading and permalink for Solution 1.8.33.2">🔗</a></div>
+</div></details><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical">
+<div class="para">The work here is very similar to the previous part. In this case, tuples <span class="process-math">\((c_1,c_2,c_3,c_4)\)</span> satisfying</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_1A_1+c_2A_2+c_3A_3+c_4A_4=\begin{bmatrix}
+a\amp b\\ c\amp d
+\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">correspond to solutions of the linear system with augmented matrix</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{amatrix}[rrrr|r]
+1\amp 1\amp 0\amp 1\amp a\\
+1\amp -1\amp 0\amp 1\amp b\\
+1\amp -1\amp 0\amp 1\amp c\\
+1\amp 0\amp -1\amp 3\amp d
+\end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">This matrix row reduces to the matrix</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{amatrix}[rrrr|r]
+\boxed{1}\amp 1\amp 0\amp 1\amp a\\
+0\amp \boxed{1}\amp 0\amp 0\amp \frac{1}{2}(a-b)\\
+0\amp 0\amp \boxed{1}\amp -2\amp \frac{1}{2}(a+b)-d\\
+0\amp 0\amp 0\amp 0\amp c-b
+\end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">We conclude in this case that</div>
+<div class="displaymath process-math">
+\begin{align*}
+W=\Span (A_i)_{i=1}^4 \amp = \left\{\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}\in \ML_{2,2}(\R)\mid b=c\right\}\\
+\amp = \left\{\begin{bmatrix}a\amp b\\ b\amp d\mid a,b,d\in \R\right\}\text{,}
+\end{align*}
+</div>
+<div class="para">the set of all symmetric <span class="process-math">\(2\times 2\)</span> matrices. The special case where we consider linear combinations of the form</div>
+<div class="displaymath process-math">
+\begin{equation*}
+c_1A_1+c_2A_2+c_3A_3+c_4A_4=\boldzero
+\end{equation*}
+</div>
+<div class="para">corresponds to the system where we set <span class="process-math">\(a=b=c=d=0\text{.}\)</span> In this case, the system is consistent (as always, since it is homogenous), and the presence of a free variable implies that there are infinitely many tuples <span class="process-math">\((c_1,c_2,c_3,c_4)\)</span> solving the system. This in turn implies that <span class="process-math">\((A_i)_{i=1}^4\)</span> is linearly dependent, since there are then nontrivial linear combinations of the <span class="process-math">\(A_i\)</span> equal to the zero matrix.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_span_ind_computation-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.8.33.3"><a href="#eg_span_ind_computation-5" title="Copy heading and permalink for Solution 1.8.33.3" aria-label="Copy heading and permalink for Solution 1.8.33.3">🔗</a></div>
+</div></details>
+</div>
+<div class="autopermalink" data-description="Example 1.8.33: Span and linear independence"><a href="#eg_span_ind_computation" title="Copy heading and permalink for Example 1.8.33: Span and linear independence" aria-label="Copy heading and permalink for Example 1.8.33: Span and linear independence">🔗</a></div></article><span class="incontext"><a class="internal" href="s_linsys_solve.html#eg_span_ind_computation">in-context</a></span>
+</body>
+</html>
