@@ -1295,6 +1295,7 @@ def row_echelon_form_steps(A):
     </figure>
 </example>
 </subsection>
+
 <subsection xml:id="ss_solve_span_ind">
 <title>Application to span and linear independence</title>
 <p>
@@ -1376,8 +1377,4 @@ determine (i) whether the tuple is linearly independent, and (ii) determine
 </algorithm>
 
 </subsection>
-
-    
-
-
 </section>
