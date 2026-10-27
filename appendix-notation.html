@@ -524,6 +524,26 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_matrix_algebra.html#s_matrix_algebra_ex" class="internal"><span class="codenumber">1.10.5</span> <span class="title">Exercises</span></a></div></li>
 </ul>
 </li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertible_matrices.html" class="internal"><span class="codenumber">1.11</span> <span class="title">Invertible matrices</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#subsec-" class="internal"><span class="codenumber">1.11.1</span> <span class="title">Invertible matrices</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices-4" class="internal"><span class="codenumber">1.11.2</span> <span class="title">Powers of matrices, matrix polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#ss_elementary_matrix" class="internal"><span class="codenumber">1.11.3</span> <span class="title">Invertibility theorem</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#ss_systems_to_matrix_eqns" class="internal"><span class="codenumber">1.11.4</span> <span class="title">Interlude on matrix equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices_ex" class="internal"><span class="codenumber">1.11.5</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertibility_theorem.html" class="internal"><span class="codenumber">1.12</span> <span class="title">The invertibility theorem</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_th" class="internal"><span class="codenumber">1.12.1</span> <span class="title">The invertibility theorem</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_alg" class="internal"><span class="codenumber">1.12.2</span> <span class="title">Invertibility algorithms</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertible_loose_ends" class="internal"><span class="codenumber">1.12.3</span> <span class="title">Some theoretical loose ends</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertible_matrices_ww" class="internal"><span class="codenumber">1.12.4</span> <span class="title">WeBWork Exercises</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertibility_theorem.html#s_invertibility_theorem_ex" class="internal"><span class="codenumber">1.12.5</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter contains-active">
@@ -705,6 +725,37 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <td><span class="process-math">\(I\)</span></td>
 <td>inverse matrix</td>
 <td><a href="s_matrix_algebra.html#d_identity_matrix" class="xref" data-knowl="./knowl/notation/d_identity_matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.10.5: Identity matrix">Definition 1.10.5</a></td>
+</tr>
+<tr>
+<td><span class="process-math">\(A^{-1}\)</span></td>
+<td>inverse of <span class="process-math">\(A\)</span>
+</td>
+<td><a href="s_invertible_matrices.html#d_invertible_matrix" class="xref" data-knowl="./knowl/notation/d_invertible_matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.11.1: Invertible matrix">Definition 1.11.1</a></td>
+</tr>
+<tr>
+<td><span class="process-math">\(A^r\)</span></td>
+<td>matrix power</td>
+<td><a href="s_invertible_matrices.html#d_matrix_powers" class="xref" data-knowl="./knowl/notation/d_matrix_powers.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.11.10: Matrix powers">Definition 1.11.10</a></td>
+</tr>
+<tr>
+<td><span class="process-math">\(f(A)\)</span></td>
+<td>matrix polynomial</td>
+<td><a href="s_invertible_matrices.html#d_matrix_polynomials" class="xref" data-knowl="./knowl/notation/d_matrix_polynomials.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.11.11: Matrix polynomials">Definition 1.11.11</a></td>
+</tr>
+<tr>
+<td><span class="process-math">\(\underset{cr_i}{E}\)</span></td>
+<td>Scaling elementary matrix</td>
+<td><a href="s_invertible_matrices.html#d_elementary_matrix" class="xref" data-knowl="./knowl/notation/d_elementary_matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.11.16: Elementary matrices">Definition 1.11.16</a></td>
+</tr>
+<tr>
+<td><span class="process-math">\(\underset{r_i\leftrightarrow r_j}{E}\)</span></td>
+<td>Row swap elementary matrix</td>
+<td><a href="s_invertible_matrices.html#d_elementary_matrix" class="xref" data-knowl="./knowl/notation/d_elementary_matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.11.16: Elementary matrices">Definition 1.11.16</a></td>
+</tr>
+<tr>
+<td><span class="process-math">\(\underset{r_i+c\,r_j}{E}\)</span></td>
+<td>Row addition elementary matrix</td>
+<td><a href="s_invertible_matrices.html#d_elementary_matrix" class="xref" data-knowl="./knowl/notation/d_elementary_matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Definition 1.11.16: Elementary matrices">Definition 1.11.16</a></td>
 </tr>
 </table>
 <div class="autopermalink" data-description="Appendix A: Notation"><a href="#appendix-notation" title="Copy heading and permalink for Appendix A: Notation" aria-label="Copy heading and permalink for Appendix A: Notation">🔗</a></div></section></div>

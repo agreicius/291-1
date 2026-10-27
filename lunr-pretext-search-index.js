@@ -2350,6 +2350,726 @@ var ptx_lunr_docs = [
   "body": "  Consider the matrix equation .     The following chain of implications is invalid. . For each implication in the chain, explain why it is valid or invalid.      Find all satisfying .    Write and set up a system of linear equations in the unknowns .    "
 },
 {
+  "id": "s_invertible_matrices",
+  "level": "1",
+  "url": "s_invertible_matrices.html",
+  "type": "Section",
+  "number": "1.11",
+  "title": "Invertible matrices",
+  "body": " Invertible matrices   Picking up the thread of , we observe that the cancellation property enjoyed in real number algebra is a consequence of the fact that every nonzero real number has a multiplicative inverse , denoted or , that satisfies . Indeed, canceling the in the equation (assuming ) is really the act of multiplying both sides of this equation by the multiplicative inverse .  Ever on the lookout for connections between real number and matrix algebra, we ask whether there is a sensible analogue of multiplicative inverses for matrices. We have seen already that identity matrices play the role of multiplicative identities for matrices, just as the number does for real numbers. This suggests we should restrict our attention to matrices. The following definition is then the desired analogue of the multiplicative inverse of a nonzero real number.    Invertible matrices   Invertible matrix  invertible matrix  matrix inverse    inverse of    An matrix is invertible (or nonsingular ) if there is a matrix satisfying . When this is the case we call an inverse of , and we say that and are inverses of one another.  A matrix satisfying is called an inverse of , denoted .  A square matrix that is not invertible is called singular .    The phrase an inverse in is somewhat jarring. Shouldn't we speak of the inverse of a matrix? Not surprisingly, if a matrix is invertible, then it has one and only one inverse. As intuitive as this fact may seem, however, it still requires proof.   Inverses are unique   If is an invertible matrix, then its inverse is unique: that is, there is only one matrix satisfying .     Suppose matrices and both satisfy the properties of the multiplicative inverse: i.e., . Then . Thus we see that , showing that the inverse of , if it exists, is unique.   The next theorem tells us that we can multiplicatively cancel a matrix if it is invertible .   Cancellation with invertible matrices   Suppose is an invertible matrix.   Left-cancellation  Given matrices and , we have .    Right-cancellation  Given matrices and , we have .          We prove both implications of separately. The reverse implication ( ) is obvious: . For the forward implication ( ), we have .    The argument for right cancellation is exactly similar.       The next corollary shows how we can solve some matrix equations uniquely using invertible matrices.   Solving with invertible matrices   Suppose is an invertible matrix.   If and are matrices, then .    If and are matrices, then .          We have .    We have .       Without any additional theory at our disposal, to show a matrix is invertible we must exhibit an inverse. The onus is on us to find a matrix satisfying both and . (Remember: since we cannot assume , we really need to show both equations hold.)  By the same token, to show is not invertible we must show that an inverse does not exist: that is, we must prove that there is no satisfying . The next example illustrates this technique for a variety of matrices.   Invertible matrices      Identity matrices are invertible, and in fact we have , as witnessed by the fact that .    Square zero matrices are never invertible, since for any square matrix of the same dimension we have . Thus there is no matrix satisfying the inverse property with respect to .    The inverse of the matrix is . Indeed, we have , as you can easily verify.    The matrix is not invertible. Indeed, using the row method of matrix multiplication , we see that given any matrix , each row of is given by . It follows that all the rows of are identical, and hence that we cannot have , since the rows of are not identical.       As the preceding example illustrates, deciding whether a matrix is invertible is not so straightforward, especially if the matrix is large. For the case, however, we have a relatively simple test for invertibility.   Inverses of matrices   A matrix is invertible if and only if .  When this is the case, we have .     If , the proposed matrix is indeed an inverse of , as one readily verifies.  Assume . If , then is not invertible, as we saw in the example above. Thus we can assume is nonzero, in which case is also nonzero. An easy computation shows This implies is not invertible. Indeed if it were, then the inverse would exist, and we'd have , which is a contradiction. We have proved that if , then is not invertible.    Invertible matrices  Sage has a number of useful tools related to invertibility. The boolean function is_invertible() tests for invertibility, and the method inverse() computes the inverse of an invertible matrix. Below we generate a random matrix with rational coefficients, test whether it is invertible, and compute its inverse if it is invertible. The density=0.5 ensures that roughly half of the matrix entries are zero; and this in turn increases the likelihood that the matrix is singular, for reasons that will become somewhat clearer later.   Evaluate the Sage cell below multiple times.    When the matrix is invertible, verify that . If you like, use the blank Sage cell to compute and .    Try increasing the density setting in random_element() ( , density=0.75 , density=.875 ) and see if the matrix is more or less likely to be invertible.        The next theorem tells us that invertibility is preserved by matrix multiplication: that is, if and are invertible matrices, then so is .   Products of invertible matrices   Let be matrices. If and are both invertible, then so is their product . Using logical notation: . In fact when this is the case we have .     Assume and are invertible. The statement of the theorem proposes a candidate for the inverse of : namely, . We need only show that satisfies . Here goes: .    Products of invertible matrices   More generally, if are invertible matrices, then their product is invertible. Furthermore, we have in this case .     We prove by induction on the number of matrices, , that if the are invertible, then the proposed inverse formula is valid.  Base step:  For , the inverse formula reads , which is clearly true.    Induction step  For the induction step we assume that the inverse formula is valid for any collection of invertible matrices, and then show it is valid for any collection of invertible matrices. Let be invertible matrices. Define . Then .      Whenever confronted with a logical implication of the form , where and denote arbitrary propositions, you should always ask whether the implication goes the other way . In other words, does the converse implication also hold?  The answer with regard to the implication is yes, though the proof of this is more difficult then you think. (See .)  The following argument is a common invalid proof of the reverse implication:   Assume is invertible.    Then has an inverse matrix.    Then the inverse of is .    Then and exist. Hence and are invertible.   Where is the flaw in our logic here? The second statement only allows us to conclude that there is some mystery matrix satisfying . We cannot yet say that , as this formula from only applies when we already know that and are both invertible. But this is exactly what we are trying to prove! As such we are guilty here of begging the question , or petitio principii in Latin.     Powers of matrices, matrix polynomials  We end this section by exploring how the matrix inverse operation fits into our matrix algebra. First, we can now use the inverse operation to define matrix powers of the form , where is a square matrix and is an arbitrary integer.   Matrix powers  matrix powers    matrix power    Let be an matrix, and let be an integer. We define the power matrix as follows: .    Equipped with a notion of matrix powers, we can further define matrix polynomials for square matrices.   Matrix polynomials  matrix polynomials    matrix polynomial   Let be a polynomial with real coefficients. For any square matrix of size , we define the matrix as . We call the result of evaluating the polynomial at the matrix .     It is both easy and perilous to forget the identity matrix in the term appearing in . Take caution not to make this mistake; without an identity matrix of appropriate size, the expression simply does not make sense.    Matrix polynomials   Let . Evaluate at the matrices and .    We have and .     Matrix polynomials  An integer matrix power is computed in Sage as A^n .   Of course the matrix needs to be invertible for a negative of power to be computed. Sage will throw an error in this case if the matrix is singular.   Polynomial expressions can then be easily computed manually in Sage. The next cell computes and for .   We took care to heed the warning in , making sure to include for ( identity_matrix(3) ) and for ( identity_matrix(2) ). Interestingly, Sage is smart enough to figure out what we mean even if we are sloppy in this regard.     Properties of matrix powers   The following properties hold for all matrices , all scalars , and all integers for which the given expression makes sense.                        .       The proofs of the first three statements are elementary, and closely resemble proofs of similar results in real number algebra. We leave these as an (unassigned) exercise.  For the fourth statement to make sense, we must assume that is invertible. The claim here is that is invertible, and that its inverse is itself. To prove this we need only show , which follows from the definition of the inverse.  The fifth statement also tacitly assumes is invertible. To prove it, we consider the three cases , and .  If , then by definition .  If , then by definition .  Suppose . Then .     Inverse and transpose   Let be invertible. We have , in which case .    We prove both implications of the if and only if statement separately.  Suppose is invertible with inverse . To see that is invertible, with inverse as specified in , we need only show that . We verify the two equalities separately:  . In both chains of equality we make use of the obvious claim .  For the other direction, assume is invertible. Setting , we see that . By the first implication, we know that if is invertible, then so is .      Invertibility theorem  We saw in that verifying directly whether a matrix is invertible, using only , can be quite an involved task. The goal of this section is to make this less onerous by developing some equivalent methods of testing invertibility. Our work culminates in and , which draw connections between invertibility, solutions to linear systems, and row echelon forms of a square matrix. Not surprisingly, our old friend Gaussian elimination emerges as the fundamental computational tool.  We begin with a treatment of elementary matrices , which serve as the basic building blocks for invertible matrices, and provide a crucial link between row reduction and matrix multiplication.   Elementary matrices  elementary matrix  matrix elementary    Scaling elementary matrix     Row swap elementary matrix     Row addition elementary matrix    An elementary matrix is a matrix of one of the three types below.   Given and nonzero scalar , the scaling elementary matrix is the matrix whose -th entry is , whose -th entry is for all , and whose other entries are all zero.    Given distinct indices , a row swap elementary matrix is the matrix obtained from the identity matrix by swapping the -th and -th rows.    Given and any , the row addition elementary matrix is defined as . That is, is the result of taking the identity matrix and making the -th entry equal to .        Elementary matrices     Scaling elementary matrix       Row swap elementary matrix         Row addition elementary matrix         Naturally, the row method of multiplication is the key to connecting a given row operation with a particular elementary matrix. shows that once you fix the dimension, an elementary matrix is uniquely defined by the row operation it performs.   Elementary matrices and row operations   Let .   Let , and let be a nonzero scalar. The matrix is the result of multiplying the -th row of by .    Let be distinct indices. The matrix is the result of swapping the -th and -th rows of .    Let , and let . The matrix is the result of adding times the -th row of to the -th row of .       The proof is left as an exercise.    Elementary matrices provide us a way of understanding row reduction as a series of matrix multiplications (on the left). Recall that row operations on linear systems are useful in so far as they preserve the set of solutions, and that this is the result of each operation being in some sense reversible . In terms of matrix multiplication, this reversible attribute is reflected in the fact that elementary matrices are invertible .   Inverses of elementary matrices   Elementary matrices are invertible, and their inverses are elementary matrices. In fact, we have the following formulas:     Left as an exercise.     Inverses of elementary matrices   Fix . Verify that the following pairs of elementary matrices are indeed inverses of one another.                       We have and . You can verify for yourself that .    We have . You can verify for yourself that .    We have and . You can verify for yourself that .        Interlude on matrix equations  We take a moment to make the following simple, somewhat overdue observation. Namely, we can represent a system of linear equations  as a single matrix equation  , or , where , , .  Indeed if you expand out the left-hand side of into an column vector, using the definition of matrix multiplication, and then invoke the definition of matrix equality, then you obtain the linear system .  By the same token, an -tuple is a solution to the system of equations  if and only if its corresponding column vector is a solution to the matrix equation  .  We have thus recast the problem of solving linear systems to the problem of solving a certain matrix equation of the form for the unknown column vector . In particular, a homogeneous linear system can be represented as a matrix equation of the form .  Lastly, the use of Gaussian elimination to solve a linear system can now be understood in an algebraic way using matrix multiplication.  In more detail, suppose our given linear system has augmented matrix that row reduces to the row echelon matrix after performing a sequence of row operations. Denote the -th row operation , and denote by the result of applying to a matrix .  Our sequence of operations translates to the following sequence of matrix equations: .  Let correspond to the elementary matrix . Then we represent this same sequence using matrix multiplication: . This depiction of row reduction in terms of successive left-multiplication by elementary matrices will be useful to us in many ways. In particular, it follows from this discussion that two matrices and are row equivalent if and only if we have for some collection of elementary matrices .       For each matrix either provide an inverse or show the matrix is not invertible. Justify your answer.               , where .        Each below is invertible. Find by guess and check. You may want to use the row or column method of matrix multiplication to justify your answer.                       Suppose is an invertible matrix. Prove: for any nonzero  the matrix is invertible.      Assume is a square matrix with .    Prove: if has two identical columns, then is not invertible.    Prove: if has a row that is a scalar multiple of another row, then is not invertible.      Use the column and\/or row method of matrix multiplication to show directly that cannot have an inverse matrix.      Find all invertible matrices satisfying the given equation, or show there is no such . Justify your answer.     .     .                  Let . Find a formula for , where is an integer. Justify your answer using a proof by induction.      Let , the matrix consisting of all ones. Find a formula for , where is an integer. Justify your answer using a proof by induction.      Let , where is some fixed scalar. Suppose is an matrix satisfying .    Prove: if , then is invertible.    Suppose further that is not a scalar multiple of .  Prove: if , then is singular.       Expanding matrix products  Fix a positive integer . Given linear combinations of matrices , prove by induction on that . Note that each step (base and induction) of your induction on will require an argument that uses induction on ! This is sometimes called double induction . For example, in the base step you must show that for any ; this should be proved by induction on .    Polynomial expressions of commute   Let and be polynomials with real coefficients. For any square matrix , show that the matrices and commute: i.e., . You may use the result of .       Suppose is an matrix satisfying for some .  Show that is invertible, and that in fact . You may use the results of and\/or . .      "
+},
+{
+  "id": "d_invertible_matrix",
+  "level": "2",
+  "url": "s_invertible_matrices.html#d_invertible_matrix",
+  "type": "Definition",
+  "number": "1.11.1",
+  "title": "Invertible matrix.",
+  "body": " Invertible matrix  invertible matrix  matrix inverse    inverse of    An matrix is invertible (or nonsingular ) if there is a matrix satisfying . When this is the case we call an inverse of , and we say that and are inverses of one another.  A matrix satisfying is called an inverse of , denoted .  A square matrix that is not invertible is called singular .   "
+},
+{
+  "id": "th_inverse_unique",
+  "level": "2",
+  "url": "s_invertible_matrices.html#th_inverse_unique",
+  "type": "Theorem",
+  "number": "1.11.2",
+  "title": "Inverses are unique.",
+  "body": " Inverses are unique   If is an invertible matrix, then its inverse is unique: that is, there is only one matrix satisfying .   "
+},
+{
+  "id": "subsec--5",
+  "level": "2",
+  "url": "s_invertible_matrices.html#subsec--5",
+  "type": "Proof",
+  "number": "1.11.1.1",
+  "title": "",
+  "body": " Suppose matrices and both satisfy the properties of the multiplicative inverse: i.e., . Then . Thus we see that , showing that the inverse of , if it exists, is unique.  "
+},
+{
+  "id": "th_inverse_cancel",
+  "level": "2",
+  "url": "s_invertible_matrices.html#th_inverse_cancel",
+  "type": "Theorem",
+  "number": "1.11.3",
+  "title": "Cancellation with invertible matrices.",
+  "body": " Cancellation with invertible matrices   Suppose is an invertible matrix.   Left-cancellation  Given matrices and , we have .    Right-cancellation  Given matrices and , we have .          We prove both implications of separately. The reverse implication ( ) is obvious: . For the forward implication ( ), we have .    The argument for right cancellation is exactly similar.      "
+},
+{
+  "id": "cor_solving_invertible",
+  "level": "2",
+  "url": "s_invertible_matrices.html#cor_solving_invertible",
+  "type": "Corollary",
+  "number": "1.11.4",
+  "title": "Solving with invertible matrices.",
+  "body": " Solving with invertible matrices   Suppose is an invertible matrix.   If and are matrices, then .    If and are matrices, then .          We have .    We have .      "
+},
+{
+  "id": "eg_invertible_matrices",
+  "level": "2",
+  "url": "s_invertible_matrices.html#eg_invertible_matrices",
+  "type": "Example",
+  "number": "1.11.5",
+  "title": "Invertible matrices.",
+  "body": " Invertible matrices      Identity matrices are invertible, and in fact we have , as witnessed by the fact that .    Square zero matrices are never invertible, since for any square matrix of the same dimension we have . Thus there is no matrix satisfying the inverse property with respect to .    The inverse of the matrix is . Indeed, we have , as you can easily verify.    The matrix is not invertible. Indeed, using the row method of matrix multiplication , we see that given any matrix , each row of is given by . It follows that all the rows of are identical, and hence that we cannot have , since the rows of are not identical.      "
+},
+{
+  "id": "th_2by2_inverse",
+  "level": "2",
+  "url": "s_invertible_matrices.html#th_2by2_inverse",
+  "type": "Theorem",
+  "number": "1.11.6",
+  "title": "Inverses of <span class=\"process-math\">\\(2\\times 2\\)<\/span> matrices.",
+  "body": " Inverses of matrices   A matrix is invertible if and only if .  When this is the case, we have .   "
+},
+{
+  "id": "subsec--15",
+  "level": "2",
+  "url": "s_invertible_matrices.html#subsec--15",
+  "type": "Proof",
+  "number": "1.11.1.2",
+  "title": "",
+  "body": " If , the proposed matrix is indeed an inverse of , as one readily verifies.  Assume . If , then is not invertible, as we saw in the example above. Thus we can assume is nonzero, in which case is also nonzero. An easy computation shows This implies is not invertible. Indeed if it were, then the inverse would exist, and we'd have , which is a contradiction. We have proved that if , then is not invertible.  "
+},
+{
+  "id": "sage_inv_matrix",
+  "level": "2",
+  "url": "s_invertible_matrices.html#sage_inv_matrix",
+  "type": "Sage Example",
+  "number": "7",
+  "title": "Invertible matrices.",
+  "body": " Invertible matrices  Sage has a number of useful tools related to invertibility. The boolean function is_invertible() tests for invertibility, and the method inverse() computes the inverse of an invertible matrix. Below we generate a random matrix with rational coefficients, test whether it is invertible, and compute its inverse if it is invertible. The density=0.5 ensures that roughly half of the matrix entries are zero; and this in turn increases the likelihood that the matrix is singular, for reasons that will become somewhat clearer later.   Evaluate the Sage cell below multiple times.    When the matrix is invertible, verify that . If you like, use the blank Sage cell to compute and .    Try increasing the density setting in random_element() ( , density=0.75 , density=.875 ) and see if the matrix is more or less likely to be invertible.       "
+},
+{
+  "id": "th_invertible_prod",
+  "level": "2",
+  "url": "s_invertible_matrices.html#th_invertible_prod",
+  "type": "Theorem",
+  "number": "1.11.7",
+  "title": "Products of invertible matrices.",
+  "body": " Products of invertible matrices   Let be matrices. If and are both invertible, then so is their product . Using logical notation: . In fact when this is the case we have .   "
+},
+{
+  "id": "subsec--19",
+  "level": "2",
+  "url": "s_invertible_matrices.html#subsec--19",
+  "type": "Proof",
+  "number": "1.11.1.3",
+  "title": "",
+  "body": " Assume and are invertible. The statement of the theorem proposes a candidate for the inverse of : namely, . We need only show that satisfies . Here goes: .  "
+},
+{
+  "id": "c_invertible_prod",
+  "level": "2",
+  "url": "s_invertible_matrices.html#c_invertible_prod",
+  "type": "Corollary",
+  "number": "1.11.8",
+  "title": "Products of invertible matrices.",
+  "body": " Products of invertible matrices   More generally, if are invertible matrices, then their product is invertible. Furthermore, we have in this case .   "
+},
+{
+  "id": "subsec--21",
+  "level": "2",
+  "url": "s_invertible_matrices.html#subsec--21",
+  "type": "Proof",
+  "number": "1.11.1.4",
+  "title": "",
+  "body": " We prove by induction on the number of matrices, , that if the are invertible, then the proposed inverse formula is valid.  Base step:  For , the inverse formula reads , which is clearly true.    Induction step  For the induction step we assume that the inverse formula is valid for any collection of invertible matrices, and then show it is valid for any collection of invertible matrices. Let be invertible matrices. Define . Then .    "
+},
+{
+  "id": "subsec--22",
+  "level": "2",
+  "url": "s_invertible_matrices.html#subsec--22",
+  "type": "Remark",
+  "number": "1.11.9",
+  "title": "",
+  "body": " Whenever confronted with a logical implication of the form , where and denote arbitrary propositions, you should always ask whether the implication goes the other way . In other words, does the converse implication also hold?  The answer with regard to the implication is yes, though the proof of this is more difficult then you think. (See .)  The following argument is a common invalid proof of the reverse implication:   Assume is invertible.    Then has an inverse matrix.    Then the inverse of is .    Then and exist. Hence and are invertible.   Where is the flaw in our logic here? The second statement only allows us to conclude that there is some mystery matrix satisfying . We cannot yet say that , as this formula from only applies when we already know that and are both invertible. But this is exactly what we are trying to prove! As such we are guilty here of begging the question , or petitio principii in Latin.  "
+},
+{
+  "id": "d_matrix_powers",
+  "level": "2",
+  "url": "s_invertible_matrices.html#d_matrix_powers",
+  "type": "Definition",
+  "number": "1.11.10",
+  "title": "Matrix powers.",
+  "body": " Matrix powers  matrix powers    matrix power    Let be an matrix, and let be an integer. We define the power matrix as follows: .   "
+},
+{
+  "id": "d_matrix_polynomials",
+  "level": "2",
+  "url": "s_invertible_matrices.html#d_matrix_polynomials",
+  "type": "Definition",
+  "number": "1.11.11",
+  "title": "Matrix polynomials.",
+  "body": " Matrix polynomials  matrix polynomials    matrix polynomial   Let be a polynomial with real coefficients. For any square matrix of size , we define the matrix as . We call the result of evaluating the polynomial at the matrix .   "
+},
+{
+  "id": "rem_matrix_polynomials",
+  "level": "2",
+  "url": "s_invertible_matrices.html#rem_matrix_polynomials",
+  "type": "Remark",
+  "number": "1.11.12",
+  "title": "",
+  "body": " It is both easy and perilous to forget the identity matrix in the term appearing in . Take caution not to make this mistake; without an identity matrix of appropriate size, the expression simply does not make sense.  "
+},
+{
+  "id": "eg_matrix_polynomials",
+  "level": "2",
+  "url": "s_invertible_matrices.html#eg_matrix_polynomials",
+  "type": "Example",
+  "number": "1.11.13",
+  "title": "Matrix polynomials.",
+  "body": " Matrix polynomials   Let . Evaluate at the matrices and .    We have and .   "
+},
+{
+  "id": "s_invertible_matrices-4-8",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices-4-8",
+  "type": "Sage Example",
+  "number": "8",
+  "title": "Matrix polynomials.",
+  "body": " Matrix polynomials  An integer matrix power is computed in Sage as A^n .   Of course the matrix needs to be invertible for a negative of power to be computed. Sage will throw an error in this case if the matrix is singular.   Polynomial expressions can then be easily computed manually in Sage. The next cell computes and for .   We took care to heed the warning in , making sure to include for ( identity_matrix(3) ) and for ( identity_matrix(2) ). Interestingly, Sage is smart enough to figure out what we mean even if we are sloppy in this regard.   "
+},
+{
+  "id": "th_power_rules",
+  "level": "2",
+  "url": "s_invertible_matrices.html#th_power_rules",
+  "type": "Theorem",
+  "number": "1.11.14",
+  "title": "Properties of matrix powers.",
+  "body": " Properties of matrix powers   The following properties hold for all matrices , all scalars , and all integers for which the given expression makes sense.                        .       The proofs of the first three statements are elementary, and closely resemble proofs of similar results in real number algebra. We leave these as an (unassigned) exercise.  For the fourth statement to make sense, we must assume that is invertible. The claim here is that is invertible, and that its inverse is itself. To prove this we need only show , which follows from the definition of the inverse.  The fifth statement also tacitly assumes is invertible. To prove it, we consider the three cases , and .  If , then by definition .  If , then by definition .  Suppose . Then .   "
+},
+{
+  "id": "th_inverse_trans",
+  "level": "2",
+  "url": "s_invertible_matrices.html#th_inverse_trans",
+  "type": "Theorem",
+  "number": "1.11.15",
+  "title": "Inverse and transpose.",
+  "body": " Inverse and transpose   Let be invertible. We have , in which case .    We prove both implications of the if and only if statement separately.  Suppose is invertible with inverse . To see that is invertible, with inverse as specified in , we need only show that . We verify the two equalities separately:  . In both chains of equality we make use of the obvious claim .  For the other direction, assume is invertible. Setting , we see that . By the first implication, we know that if is invertible, then so is .   "
+},
+{
+  "id": "d_elementary_matrix",
+  "level": "2",
+  "url": "s_invertible_matrices.html#d_elementary_matrix",
+  "type": "Definition",
+  "number": "1.11.16",
+  "title": "Elementary matrices.",
+  "body": " Elementary matrices  elementary matrix  matrix elementary    Scaling elementary matrix     Row swap elementary matrix     Row addition elementary matrix    An elementary matrix is a matrix of one of the three types below.   Given and nonzero scalar , the scaling elementary matrix is the matrix whose -th entry is , whose -th entry is for all , and whose other entries are all zero.    Given distinct indices , a row swap elementary matrix is the matrix obtained from the identity matrix by swapping the -th and -th rows.    Given and any , the row addition elementary matrix is defined as . That is, is the result of taking the identity matrix and making the -th entry equal to .      "
+},
+{
+  "id": "fig_elem_matrices",
+  "level": "2",
+  "url": "s_invertible_matrices.html#fig_elem_matrices",
+  "type": "Figure",
+  "number": "1.11.17",
+  "title": "",
+  "body": " Elementary matrices     Scaling elementary matrix       Row swap elementary matrix         Row addition elementary matrix        "
+},
+{
+  "id": "prop_elem_matrices",
+  "level": "2",
+  "url": "s_invertible_matrices.html#prop_elem_matrices",
+  "type": "Proposition",
+  "number": "1.11.18",
+  "title": "Elementary matrices and row operations.",
+  "body": " Elementary matrices and row operations   Let .   Let , and let be a nonzero scalar. The matrix is the result of multiplying the -th row of by .    Let be distinct indices. The matrix is the result of swapping the -th and -th rows of .    Let , and let . The matrix is the result of adding times the -th row of to the -th row of .       The proof is left as an exercise.   "
+},
+{
+  "id": "th_inverse_elem",
+  "level": "2",
+  "url": "s_invertible_matrices.html#th_inverse_elem",
+  "type": "Theorem",
+  "number": "1.11.19",
+  "title": "Inverses of elementary matrices.",
+  "body": " Inverses of elementary matrices   Elementary matrices are invertible, and their inverses are elementary matrices. In fact, we have the following formulas:     Left as an exercise.   "
+},
+{
+  "id": "eg_elem_inverse",
+  "level": "2",
+  "url": "s_invertible_matrices.html#eg_elem_inverse",
+  "type": "Example",
+  "number": "1.11.20",
+  "title": "Inverses of elementary matrices.",
+  "body": " Inverses of elementary matrices   Fix . Verify that the following pairs of elementary matrices are indeed inverses of one another.                       We have and . You can verify for yourself that .    We have . You can verify for yourself that .    We have and . You can verify for yourself that .     "
+},
+{
+  "id": "s_invertible_matrices_ex-1-1",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-1",
+  "type": "Exercise",
+  "number": "1.11.5.1",
+  "title": "",
+  "body": "  For each matrix either provide an inverse or show the matrix is not invertible. Justify your answer.               , where .     "
+},
+{
+  "id": "s_invertible_matrices_ex-1-2",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-2",
+  "type": "Exercise",
+  "number": "1.11.5.2",
+  "title": "",
+  "body": "  Each below is invertible. Find by guess and check. You may want to use the row or column method of matrix multiplication to justify your answer.                    "
+},
+{
+  "id": "s_invertible_matrices_ex-1-3",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-3",
+  "type": "Exercise",
+  "number": "1.11.5.3",
+  "title": "",
+  "body": "  Suppose is an invertible matrix. Prove: for any nonzero  the matrix is invertible.   "
+},
+{
+  "id": "s_invertible_matrices_ex-1-4",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-4",
+  "type": "Exercise",
+  "number": "1.11.5.4",
+  "title": "",
+  "body": "  Assume is a square matrix with .    Prove: if has two identical columns, then is not invertible.    Prove: if has a row that is a scalar multiple of another row, then is not invertible.      Use the column and\/or row method of matrix multiplication to show directly that cannot have an inverse matrix.   "
+},
+{
+  "id": "s_invertible_matrices_ex-1-5",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-5",
+  "type": "Exercise",
+  "number": "1.11.5.5",
+  "title": "",
+  "body": "  Find all invertible matrices satisfying the given equation, or show there is no such . Justify your answer.     .     .               "
+},
+{
+  "id": "s_invertible_matrices_ex-1-6",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-6",
+  "type": "Exercise",
+  "number": "1.11.5.6",
+  "title": "",
+  "body": "  Let . Find a formula for , where is an integer. Justify your answer using a proof by induction.   "
+},
+{
+  "id": "s_invertible_matrices_ex-1-7",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-7",
+  "type": "Exercise",
+  "number": "1.11.5.7",
+  "title": "",
+  "body": "  Let , the matrix consisting of all ones. Find a formula for , where is an integer. Justify your answer using a proof by induction.   "
+},
+{
+  "id": "s_invertible_matrices_ex-1-8",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-8",
+  "type": "Exercise",
+  "number": "1.11.5.8",
+  "title": "",
+  "body": "  Let , where is some fixed scalar. Suppose is an matrix satisfying .    Prove: if , then is invertible.    Suppose further that is not a scalar multiple of .  Prove: if , then is singular.     "
+},
+{
+  "id": "ex_expand_matrix_prod",
+  "level": "2",
+  "url": "s_invertible_matrices.html#ex_expand_matrix_prod",
+  "type": "Exercise",
+  "number": "1.11.5.9",
+  "title": "Expanding matrix products.",
+  "body": " Expanding matrix products  Fix a positive integer . Given linear combinations of matrices , prove by induction on that . Note that each step (base and induction) of your induction on will require an argument that uses induction on ! This is sometimes called double induction . For example, in the base step you must show that for any ; this should be proved by induction on .  "
+},
+{
+  "id": "ex_poly_inA_commute",
+  "level": "2",
+  "url": "s_invertible_matrices.html#ex_poly_inA_commute",
+  "type": "Exercise",
+  "number": "1.11.5.10",
+  "title": "Polynomial expressions of <span class=\"process-math\">\\(A\\)<\/span> commute.",
+  "body": " Polynomial expressions of commute   Let and be polynomials with real coefficients. For any square matrix , show that the matrices and commute: i.e., . You may use the result of .    "
+},
+{
+  "id": "s_invertible_matrices_ex-1-11",
+  "level": "2",
+  "url": "s_invertible_matrices.html#s_invertible_matrices_ex-1-11",
+  "type": "Exercise",
+  "number": "1.11.5.11",
+  "title": "",
+  "body": "  Suppose is an matrix satisfying for some .  Show that is invertible, and that in fact . You may use the results of and\/or . .   "
+},
+{
+  "id": "s_invertibility_theorem",
+  "level": "1",
+  "url": "s_invertibility_theorem.html",
+  "type": "Section",
+  "number": "1.12",
+  "title": "The invertibility theorem",
+  "body": " The invertibility theorem   We are now in a position to prove our first big theorem: the invertibilty theorem. Logically speaking, the theorem states that a number of conditions are all equivalent to a matrix being invertible. The advantage of having such a diverse collection of equivalent conditions is that we are provided with a powerful tool for determining when a matrix is invertible, and for computing the inverse matrix when it is.    The invertibility theorem   Invertibility theorem   Let . The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a unique solution: namely, .     is row equivalent to , the identity matrix.     is a product of elementary matrices.       Recall that to show two statements and are equivalent, we must show two implications: , and . Instead of doing this for each possible pair of sentences above, we ease our work load by instead showing the following cycle of implications: . Since implication is transitive, starting at any point in our cycle and making our way around the chain of implications, we see that any one of the propositions implies any other proposition.    Suppose exists. Given any column vector , we have , which shows that is the unique solution to .     Clearly, if has a unique solution for any choice of , then it has a unique solution for the particular choice . Since is clearly a solution to the equation, it must be the only solution.     Row reduce to a matrix in reduced row echelon form using Gauss-Jordan elimination. (See .) Since the set of solutions to is identical to the set of solutions to (apply to their corresponding linear systems), we see that is the only solution to . now implies has a leading one in each column. Since is and in reduced row echelon form, it follows that must be the identity matrix. (Convince yourself of this.) Thus is row equivalent to , the identity matrix.     If is row equivalent to , then according to our discussion after , we have for some collection of elementary matrices . Since elementary matrices are invertible we can multiply both sides of this equation by to conclude . Since inverses of elementary matrices are elementary ( ), we conclude that is a product of elementary matrices.     If is a product of elementary matrices, then it is a product of invertible matrices. Since products of invertible matrices are invertible, we conclude that is invertible.       The invertibility theorem has an immediate application to linear systems where the number of equations is equal to the number of unknowns. In this special situation, the system is equivalent to a matrix equation of the form , where is a square matrix . According to the theorem, if we know is invertible, then the matrix equation, and hence the linear system, has a unique solution: namely, .  What if is not invertible? Then the theorem only tells us that there is some column vector , not necessarily the given , such that the equation does not have a unique solution. In other words, the theorem alone doesn't allow us to conclude whether the given has a solution, and we must resort to our usual Gaussian elimination procedure to answer this question.    The family of triangular matrices (upper, lower, and diagonal) defined below provides an easy testing ground for our new invertibility theorem.   matrices diagonal  matrices triangular  matrices upper triangular  matrices lower triangular  Diagonal and triangular matrices   Let be .   For each the entry is called the -th diagonal entry of , and subarray of consisting of is called the diagonal . An off-diagonal entry of is any entry not among the diagonal entries.    The matrix is diagonal if all off-diagonal entries are zero: , if for all with .    The matrix is upper triangular if all entries below the diagonal are zero: , if for all .    The matrix is lower triangular if all entries above the diagonal are zero: , if for all .    The matrix is triangular if is upper triangular or lower triangular.        Triangular matrices   The set of all diagonal matrices can be described as . The set of all upper triangular matrices can be described as . The set of all lower triangular matrices can be described as .     Invertibility of triangular matrices   Let be a triangular matrix. Then is invertible if and only if for all .  In other words, is invertible if and only if the diagonal entries of are all nonzero.    Left as a homework exercise.     Invertibility algorithms  The proof of the implication of can be expanded into an algorithm that (1) decides whether a given matrix is invertible, and (2) computes if is invertible.   Inverse algorithm   Let To test for invertibility of proceed as follows.   Build the augmented matrix and use Gaussian elimination to row reduce to the form , where is in row echelon form.  The matrix is invertible if and only if has leading ones.    If has leading ones, row reduce further to a matrix of the form . Then .       From the proof of we know is invertible if and only if has leading ones. The question remains as to why reducing the augmented matrix to tells us that . Let be the elementary matrices representing the row operations involved in this process. Then we have . After a little algebra, we see that . Since is the result of applying same row operations to we have , as claimed.    From the proof of we also derive an algorithm for writing an invertible matrix as a product of elementary matrices. You should think of this as a first example of the great versatility of Gaussian elimination, as conveyed by our .   Product of elementary matrices algorithm   Let To (potentially) write as a product of elementary matrices, proceed as follows.   Attempt to row reduce to the identity, keeping track of your sequence of row operations in the form of elementary matrices.    If you are able to row reduce to with a sequence of row operatons corresponding to the elementary matrices , then Since the inverse of an elementary matrix is elementary, we have written as a product of elementary matrices.       See the proof of the implication in .     Inverse algorithms  Let . Combining both algorithms we can decide whether is invertible, and if so, compute and write as a product of elementary matrices. According to , the computation shows that is invertible and . Next, representing our row operations as elementary matrices, we see that , where . We conclude that .    Inverse algorithm   Use to decide whether the matrix is invertible.    Note that since in any case we do not half to produce an actual inverse, we can dispense with the super-sized augmented matrix described in , and instead just row reduce to row echelon form. We have . Since the row echelon form of has no leading one in the third column, we conclude that is not invertible.     Video example: inverse algorithm   Video: inverse algorithm       Some theoretical loose ends  The two inveribility algorithms above are nice examples of how a theoretical result like our invertibility theorem can pay some serious computational dividends. Namely, thanks to the theory we have discovered a method of computing the inverse of a matrix that essentially boils down to row reduction.  We finish this section with a number of theoretical implications that tie up some loose ends. The results below are all consequences in some way of . The fist shows that in fact one one of the defining equalities or suffices to define the inverse of a matrix.   Left-inverse if and only if right-inverse   Let and be . Then    .     .   In plain English: a matrix is a left-inverse of if and only if it is a right-inverse of .   Left as a homework exercise.  As a further consequence of , we can at last strengthen the implication to an equivalence.   Invertibility of product equivalence   Let and be . Then is invertible if and only if and are both invertible: ,     Left as a homework exercise.   We conclude with two results related to row reduction. The first provides an equivalent formulation of row equivalence in terms of matrix arithmetic: an elaboration of our discussion in .   Row equivalence and invertible matrices   Let and be matrices. The following statements are equivalent.   The matrices and are row equivalent.    There are elementary matrices such that .    There is an invertible matrix such that .       The equivalence of (1) and (2) was shown in the course of our discussion in . The equivalence of (2) and (3) is a direct consequence of (5) of since a matrix is invertible if and only if it can be written as for some elementary matrices .    As another corollary, we enlarge our invertibility theorem by three new statements.   Invertibility theorem: first expansion   Let . The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a solution for any .    The columns of are a spanning tuple for .    The matrix equation has a unique solution: namely, .    The columns of are linearly independent.     is row equivalent to , the identity matrix.     is a product of elementary matrices.       Left as a homework exercise.    Lastly, we provide at last the proof of the third statement of promised back in . This proof is due to Thomas Yuster Thomas Yuster. The reduced row echelon form of a matrix is unique: a simple proof , Mathematics Magazine 57 (1984), no. 2, 93-94. .   Uniqueness of reduced row echelon form   Any matrix is row equivalent to a unique matrix in reduced row echelon form.    Let be an matrix. Using Gauss-Jordan elimination, we can row reduce to a matrix in reduced row echelon form. Suppose is also row equivalent to the matrix in reduced row echelon form; then and are row equivalent, since the row equivalence relation is symmetric and transitive. Thus it suffices to show that if and are row equivalent matrices in reduced row echelon form, then . We do so by induction on . The base step is trivial, since there are only two matrices in reduced row echelon form: namely and the column vector with a one in the first row and zeros elsewhere.  For the induction step we assume that any two row equivalent matrices in reduced row echelon form are equal. Let and be row equivalent matrices in reduced row echelon form, and let and denote the columns of and , respectively. By there is an invertible matrix such that . The first columns of and form matrices and , respectively, that are in reduced row echelon form, as one easily checks. Furthermore, and are row equivalent: indeed, since for all , we see that , and thus and are row equivalent. By the induction hypothesis we must have , and it remains only to show that . We treat two cases: the case where one of and has a no leading one in its last column, and the case where both matrices have a leading one in their last column.  In the first case, suppose without loss of generality that the last column of does not have a leading one. Consider the linear system with augmented matrix . Since the last column of is free, it follows from that for all there is a solution to this system of the form , where is some function of . Since and are row equivalent, so are and , and thus the two systems corresponding to these augmented matrices have the same solution sets. It follows that for all , we have . Using the column method, we conclude that for all . Since , we have for all , and thus conclude that for all . Taking , we conclude that , and hence that in this case.  Finally, we consider the case where and both have leading ones in their last columns. Since and are in reduced row echelon form, it follows that the leading one in the last column of occurs in the row of whose corresponding row in is the first zero row of . Since the same statement mutatis mutandi applies to and , and since , we see that the leading ones in the last columns of and occur in the same row. Since all other entries in that last column must be zero, we conclude that , and hence that in this case as well.      WeBWork Exercises      If and are invertible matrices, then the inverse of is .   True   False         SOLUTION: False. For example, let , and , then , which is not invertible.            Solve for the matrix if . Assume that all matrices are and invertible as needed.         SOLUTION: Note that            Are the following matrices invertible?                          For what values of will be invertible?  For all such that  and  .             SOLUTION: The matrix is invertible provided the columns of are linearly independent, which will be the case if . Thus, we require that and .            Let   Then   where  ,  ,  ,  ,   where  ,  ,  ,  ,  and   where  ,  ,  ,  .                                                                        Linear systems and matrix equations   Find a matrix and column vectors and such that the given linear system is equivalent to the matrix equation .                   Solving linear systems with matrix inverses   Find an invertible matrix and column vectors and such that the given linear system is equivalent to the matrix equation . Compute and use this to find the unique solution to the linear system. (See .)                   Inverse algorithm   Use the inverse algorithm to determine whether each matrix is invertible, and to compute its inverse if possible.  You are not required to follow Gaussian elimination to the letter, and you may perform multiple operations at the same time, as long as they are independent of one another. For example, do not do and in the same step.          We use the inverse algorithm: . We conclude that .                            ,        ,       Product of elementary matrices algorithm   Each matrix below is invertible. Use the product of elementary matrices algorithm to write as a product of elementary matrices.  Here you should perform Gaussian elimination to the letter, one row operation at a time.          Row reduce to the identity matrix:   The corresponding elementary matrices are . It follows that , and hence that .       .              .       According to Statement (2) of the invertibility theorem, a matrix is invertible if and only if for all column vectors the matrix equation has a unique solution. Show that we can add the following, weaker-looking version of (2) to our list of equivalent statements:   (2') The matrix equation has a solution for any column vector .     Try to logically weave Statement (2') into our original list of equivalent statements by (a) finding a statement from our original list that implies (2'), and (b) find a statement in our original list that is implied by (2').  You may make use of in your argument.     Properties of row equivalence   Let denote that matrix is row equivalent to . Use to show that the relation is reflexive, symmetric, and transitive.      Let be an matrix, and let be an invertible matrix.  Show that the two matrix equations have the same set of solutions. In other words show that .      Suppose and are row equivalent square matrices. Prove: is invertible if and only if is invertible.      Use the provided information to determine whether the given square matrix is invertible. Justify your answer using the inveribility theorem or one of its corollaries.    There are column vectors such that .     is invertible.     for some .    The sum of the columns of is equal to the zero column vector.      Answer true or false. If true, provide a proof; if false, exhibit an explicit counterexample.    The product of two elementary matrices is elementary.    The product of two elementary matrices is invertible.    The sum of two invertible matrices is invertible.    If is a singular matrix, then the linear system has infinitely many solutions.    If is obtained from the invertible matrix by replacing its second row with the sum of its first and second rows, then is invertible.    If is square matrix, and is a column vector such that the matrix equation has a unique solution, then is invertible.    If and are row equivalent, then the matrix equations and have the same solution set.    If or is singular, then is singular.      "
+},
+{
+  "id": "th_invertibility",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#th_invertibility",
+  "type": "Theorem",
+  "number": "1.12.1",
+  "title": "Invertibility theorem.",
+  "body": " Invertibility theorem   Let . The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a unique solution: namely, .     is row equivalent to , the identity matrix.     is a product of elementary matrices.       Recall that to show two statements and are equivalent, we must show two implications: , and . Instead of doing this for each possible pair of sentences above, we ease our work load by instead showing the following cycle of implications: . Since implication is transitive, starting at any point in our cycle and making our way around the chain of implications, we see that any one of the propositions implies any other proposition.    Suppose exists. Given any column vector , we have , which shows that is the unique solution to .     Clearly, if has a unique solution for any choice of , then it has a unique solution for the particular choice . Since is clearly a solution to the equation, it must be the only solution.     Row reduce to a matrix in reduced row echelon form using Gauss-Jordan elimination. (See .) Since the set of solutions to is identical to the set of solutions to (apply to their corresponding linear systems), we see that is the only solution to . now implies has a leading one in each column. Since is and in reduced row echelon form, it follows that must be the identity matrix. (Convince yourself of this.) Thus is row equivalent to , the identity matrix.     If is row equivalent to , then according to our discussion after , we have for some collection of elementary matrices . Since elementary matrices are invertible we can multiply both sides of this equation by to conclude . Since inverses of elementary matrices are elementary ( ), we conclude that is a product of elementary matrices.     If is a product of elementary matrices, then it is a product of invertible matrices. Since products of invertible matrices are invertible, we conclude that is invertible.    "
+},
+{
+  "id": "rm_inv_solutions",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#rm_inv_solutions",
+  "type": "Remark",
+  "number": "1.12.2",
+  "title": "",
+  "body": "  The invertibility theorem has an immediate application to linear systems where the number of equations is equal to the number of unknowns. In this special situation, the system is equivalent to a matrix equation of the form , where is a square matrix . According to the theorem, if we know is invertible, then the matrix equation, and hence the linear system, has a unique solution: namely, .  What if is not invertible? Then the theorem only tells us that there is some column vector , not necessarily the given , such that the equation does not have a unique solution. In other words, the theorem alone doesn't allow us to conclude whether the given has a solution, and we must resort to our usual Gaussian elimination procedure to answer this question.   "
+},
+{
+  "id": "d_diagonal_triangular",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#d_diagonal_triangular",
+  "type": "Definition",
+  "number": "1.12.3",
+  "title": "Diagonal and triangular matrices.",
+  "body": " matrices diagonal  matrices triangular  matrices upper triangular  matrices lower triangular  Diagonal and triangular matrices   Let be .   For each the entry is called the -th diagonal entry of , and subarray of consisting of is called the diagonal . An off-diagonal entry of is any entry not among the diagonal entries.    The matrix is diagonal if all off-diagonal entries are zero: , if for all with .    The matrix is upper triangular if all entries below the diagonal are zero: , if for all .    The matrix is lower triangular if all entries above the diagonal are zero: , if for all .    The matrix is triangular if is upper triangular or lower triangular.      "
+},
+{
+  "id": "eg_triang_matrices",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#eg_triang_matrices",
+  "type": "Example",
+  "number": "1.12.4",
+  "title": "Triangular <span class=\"process-math\">\\(3\\times 3\\)<\/span> matrices.",
+  "body": " Triangular matrices   The set of all diagonal matrices can be described as . The set of all upper triangular matrices can be described as . The set of all lower triangular matrices can be described as .   "
+},
+{
+  "id": "th_invertible_triangular",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#th_invertible_triangular",
+  "type": "Theorem",
+  "number": "1.12.5",
+  "title": "Invertibility of triangular matrices.",
+  "body": " Invertibility of triangular matrices   Let be a triangular matrix. Then is invertible if and only if for all .  In other words, is invertible if and only if the diagonal entries of are all nonzero.    Left as a homework exercise.  "
+},
+{
+  "id": "proc_inv_alg",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#proc_inv_alg",
+  "type": "Procedure",
+  "number": "1.12.6",
+  "title": "Inverse algorithm.",
+  "body": " Inverse algorithm   Let To test for invertibility of proceed as follows.   Build the augmented matrix and use Gaussian elimination to row reduce to the form , where is in row echelon form.  The matrix is invertible if and only if has leading ones.    If has leading ones, row reduce further to a matrix of the form . Then .       From the proof of we know is invertible if and only if has leading ones. The question remains as to why reducing the augmented matrix to tells us that . Let be the elementary matrices representing the row operations involved in this process. Then we have . After a little algebra, we see that . Since is the result of applying same row operations to we have , as claimed.   "
+},
+{
+  "id": "th_elem_matrices_alg",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#th_elem_matrices_alg",
+  "type": "Procedure",
+  "number": "1.12.7",
+  "title": "Product of elementary matrices algorithm.",
+  "body": " Product of elementary matrices algorithm   Let To (potentially) write as a product of elementary matrices, proceed as follows.   Attempt to row reduce to the identity, keeping track of your sequence of row operations in the form of elementary matrices.    If you are able to row reduce to with a sequence of row operatons corresponding to the elementary matrices , then Since the inverse of an elementary matrix is elementary, we have written as a product of elementary matrices.       See the proof of the implication in .   "
+},
+{
+  "id": "eg_inv_alg_example",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#eg_inv_alg_example",
+  "type": "Example",
+  "number": "1.12.8",
+  "title": "Inverse algorithms.",
+  "body": " Inverse algorithms  Let . Combining both algorithms we can decide whether is invertible, and if so, compute and write as a product of elementary matrices. According to , the computation shows that is invertible and . Next, representing our row operations as elementary matrices, we see that , where . We conclude that .  "
+},
+{
+  "id": "eg_inv_alg_singular",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#eg_inv_alg_singular",
+  "type": "Example",
+  "number": "1.12.9",
+  "title": "Inverse algorithm.",
+  "body": " Inverse algorithm   Use to decide whether the matrix is invertible.    Note that since in any case we do not half to produce an actual inverse, we can dispense with the super-sized augmented matrix described in , and instead just row reduce to row echelon form. We have . Since the row echelon form of has no leading one in the third column, we conclude that is not invertible.   "
+},
+{
+  "id": "vid_eg_inver_alg",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#vid_eg_inver_alg",
+  "type": "Example",
+  "number": "1.12.10",
+  "title": "Video example: inverse algorithm.",
+  "body": " Video example: inverse algorithm   Video: inverse algorithm    "
+},
+{
+  "id": "cor_left-right_inverse",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#cor_left-right_inverse",
+  "type": "Corollary",
+  "number": "1.12.12",
+  "title": "Left-inverse if and only if right-inverse.",
+  "body": " Left-inverse if and only if right-inverse   Let and be . Then    .     .   In plain English: a matrix is a left-inverse of if and only if it is a right-inverse of .   Left as a homework exercise. "
+},
+{
+  "id": "cor_inv_prod_eq",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#cor_inv_prod_eq",
+  "type": "Corollary",
+  "number": "1.12.13",
+  "title": "Invertibility of product equivalence.",
+  "body": " Invertibility of product equivalence   Let and be . Then is invertible if and only if and are both invertible: ,     Left as a homework exercise.  "
+},
+{
+  "id": "cor_row_equivalence_invertibility",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#cor_row_equivalence_invertibility",
+  "type": "Corollary",
+  "number": "1.12.14",
+  "title": "Row equivalence and invertible matrices.",
+  "body": " Row equivalence and invertible matrices   Let and be matrices. The following statements are equivalent.   The matrices and are row equivalent.    There are elementary matrices such that .    There is an invertible matrix such that .       The equivalence of (1) and (2) was shown in the course of our discussion in . The equivalence of (2) and (3) is a direct consequence of (5) of since a matrix is invertible if and only if it can be written as for some elementary matrices .   "
+},
+{
+  "id": "cor_invertibility_enlarged",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#cor_invertibility_enlarged",
+  "type": "Corollary",
+  "number": "1.12.15",
+  "title": "Invertibility theorem: first expansion.",
+  "body": " Invertibility theorem: first expansion   Let . The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a solution for any .    The columns of are a spanning tuple for .    The matrix equation has a unique solution: namely, .    The columns of are linearly independent.     is row equivalent to , the identity matrix.     is a product of elementary matrices.       Left as a homework exercise.   "
+},
+{
+  "id": "ss_invertible_loose_ends-11",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ss_invertible_loose_ends-11",
+  "type": "Paragraph (with a defined term)",
+  "number": "",
+  "title": "",
+  "body": "57 "
+},
+{
+  "id": "cor_RRE_uniqueness",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#cor_RRE_uniqueness",
+  "type": "Corollary",
+  "number": "1.12.16",
+  "title": "Uniqueness of reduced row echelon form.",
+  "body": " Uniqueness of reduced row echelon form   Any matrix is row equivalent to a unique matrix in reduced row echelon form.    Let be an matrix. Using Gauss-Jordan elimination, we can row reduce to a matrix in reduced row echelon form. Suppose is also row equivalent to the matrix in reduced row echelon form; then and are row equivalent, since the row equivalence relation is symmetric and transitive. Thus it suffices to show that if and are row equivalent matrices in reduced row echelon form, then . We do so by induction on . The base step is trivial, since there are only two matrices in reduced row echelon form: namely and the column vector with a one in the first row and zeros elsewhere.  For the induction step we assume that any two row equivalent matrices in reduced row echelon form are equal. Let and be row equivalent matrices in reduced row echelon form, and let and denote the columns of and , respectively. By there is an invertible matrix such that . The first columns of and form matrices and , respectively, that are in reduced row echelon form, as one easily checks. Furthermore, and are row equivalent: indeed, since for all , we see that , and thus and are row equivalent. By the induction hypothesis we must have , and it remains only to show that . We treat two cases: the case where one of and has a no leading one in its last column, and the case where both matrices have a leading one in their last column.  In the first case, suppose without loss of generality that the last column of does not have a leading one. Consider the linear system with augmented matrix . Since the last column of is free, it follows from that for all there is a solution to this system of the form , where is some function of . Since and are row equivalent, so are and , and thus the two systems corresponding to these augmented matrices have the same solution sets. It follows that for all , we have . Using the column method, we conclude that for all . Since , we have for all , and thus conclude that for all . Taking , we conclude that , and hence that in this case.  Finally, we consider the case where and both have leading ones in their last columns. Since and are in reduced row echelon form, it follows that the leading one in the last column of occurs in the row of whose corresponding row in is the first zero row of . Since the same statement mutatis mutandi applies to and , and since , we see that the leading ones in the last columns of and occur in the same row. Since all other entries in that last column must be zero, we conclude that , and hence that in this case as well.   "
+},
+{
+  "id": "ss_invertible_matrices_ww-2",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ss_invertible_matrices_ww-2",
+  "type": "WeBWorK",
+  "number": "1.12.17",
+  "title": "",
+  "body": "    If and are invertible matrices, then the inverse of is .   True   False         SOLUTION: False. For example, let , and , then , which is not invertible.       "
+},
+{
+  "id": "ss_invertible_matrices_ww-3",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ss_invertible_matrices_ww-3",
+  "type": "WeBWorK",
+  "number": "1.12.18",
+  "title": "",
+  "body": "    Solve for the matrix if . Assume that all matrices are and invertible as needed.         SOLUTION: Note that       "
+},
+{
+  "id": "ss_invertible_matrices_ww-4",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ss_invertible_matrices_ww-4",
+  "type": "WeBWorK",
+  "number": "1.12.19",
+  "title": "",
+  "body": "    Are the following matrices invertible?                     "
+},
+{
+  "id": "ss_invertible_matrices_ww-5",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ss_invertible_matrices_ww-5",
+  "type": "WeBWorK",
+  "number": "1.12.20",
+  "title": "",
+  "body": "    For what values of will be invertible?  For all such that  and  .             SOLUTION: The matrix is invertible provided the columns of are linearly independent, which will be the case if . Thus, we require that and .       "
+},
+{
+  "id": "ss_invertible_matrices_ww-6",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ss_invertible_matrices_ww-6",
+  "type": "WeBWorK",
+  "number": "1.12.21",
+  "title": "",
+  "body": "    Let   Then   where  ,  ,  ,  ,   where  ,  ,  ,  ,  and   where  ,  ,  ,  .                                                                   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-1-3",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-1-3",
+  "type": "Exercise",
+  "number": "1.12.5.1",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-1-4",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-1-4",
+  "type": "Exercise",
+  "number": "1.12.5.2",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-2-3",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-2-3",
+  "type": "Exercise",
+  "number": "1.12.5.3",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-2-4",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-2-4",
+  "type": "Exercise",
+  "number": "1.12.5.4",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-3-3",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-3-3",
+  "type": "Exercise",
+  "number": "1.12.5.5",
+  "title": "",
+  "body": "       We use the inverse algorithm: . We conclude that .   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-3-4",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-3-4",
+  "type": "Exercise",
+  "number": "1.12.5.6",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-3-5",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-3-5",
+  "type": "Exercise",
+  "number": "1.12.5.7",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-3-6",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-3-6",
+  "type": "Exercise",
+  "number": "1.12.5.8",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-3-7",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-3-7",
+  "type": "Exercise",
+  "number": "1.12.5.9",
+  "title": "",
+  "body": "   ,    "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-3-8",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-3-8",
+  "type": "Exercise",
+  "number": "1.12.5.10",
+  "title": "",
+  "body": "   ,    "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-4-3",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-4-3",
+  "type": "Exercise",
+  "number": "1.12.5.11",
+  "title": "",
+  "body": "       Row reduce to the identity matrix:   The corresponding elementary matrices are . It follows that , and hence that .   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-4-4",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-4-4",
+  "type": "Exercise",
+  "number": "1.12.5.12",
+  "title": "",
+  "body": "   .   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-4-5",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-4-5",
+  "type": "Exercise",
+  "number": "1.12.5.13",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-4-6",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-4-6",
+  "type": "Exercise",
+  "number": "1.12.5.14",
+  "title": "",
+  "body": "   .   "
+},
+{
+  "id": "ex_th_inv_exists_sol",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ex_th_inv_exists_sol",
+  "type": "Exercise",
+  "number": "1.12.5.15",
+  "title": "",
+  "body": "  According to Statement (2) of the invertibility theorem, a matrix is invertible if and only if for all column vectors the matrix equation has a unique solution. Show that we can add the following, weaker-looking version of (2) to our list of equivalent statements:   (2') The matrix equation has a solution for any column vector .     Try to logically weave Statement (2') into our original list of equivalent statements by (a) finding a statement from our original list that implies (2'), and (b) find a statement in our original list that is implied by (2').  You may make use of in your argument.   "
+},
+{
+  "id": "ex_row_equiv_props",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#ex_row_equiv_props",
+  "type": "Exercise",
+  "number": "1.12.5.16",
+  "title": "Properties of row equivalence.",
+  "body": " Properties of row equivalence   Let denote that matrix is row equivalent to . Use to show that the relation is reflexive, symmetric, and transitive.   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-7",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-7",
+  "type": "Exercise",
+  "number": "1.12.5.17",
+  "title": "",
+  "body": "  Let be an matrix, and let be an invertible matrix.  Show that the two matrix equations have the same set of solutions. In other words show that .   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-8",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-8",
+  "type": "Exercise",
+  "number": "1.12.5.18",
+  "title": "",
+  "body": "  Suppose and are row equivalent square matrices. Prove: is invertible if and only if is invertible.   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-9",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-9",
+  "type": "Exercise",
+  "number": "1.12.5.19",
+  "title": "",
+  "body": "  Use the provided information to determine whether the given square matrix is invertible. Justify your answer using the inveribility theorem or one of its corollaries.    There are column vectors such that .     is invertible.     for some .    The sum of the columns of is equal to the zero column vector.   "
+},
+{
+  "id": "s_invertibility_theorem_ex-1-10",
+  "level": "2",
+  "url": "s_invertibility_theorem.html#s_invertibility_theorem_ex-1-10",
+  "type": "Exercise",
+  "number": "1.12.5.20",
+  "title": "",
+  "body": "  Answer true or false. If true, provide a proof; if false, exhibit an explicit counterexample.    The product of two elementary matrices is elementary.    The product of two elementary matrices is invertible.    The sum of two invertible matrices is invertible.    If is a singular matrix, then the linear system has infinitely many solutions.    If is obtained from the invertible matrix by replacing its second row with the sum of its first and second rows, then is invertible.    If is square matrix, and is a column vector such that the matrix equation has a unique solution, then is invertible.    If and are row equivalent, then the matrix equations and have the same solution set.    If or is singular, then is singular.   "
+},
+{
   "id": "appendix-notation",
   "level": "1",
   "url": "appendix-notation.html",

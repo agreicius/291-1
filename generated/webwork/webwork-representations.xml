@@ -271,4 +271,211 @@ C=\left(\begin{array}{cc}
     <rendering-data sourceFilePath="Library/Utah/Business_Algebra/set10_Matrices/p21.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
     <pg source="Library/Utah/Business_Algebra/set10_Matrices/p21.pg"/>
   </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-9" ww-id="webwork-9">
+    <static seed="9" source="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.48.pg">
+      <statement><p>If <m>A</m> and <m>B</m> are invertible <m>n\times n</m> matrices,
+then the inverse of <m>A+B</m> is <m>A^{-1}+B^{-1}</m>.<ul form="popup" name="AnSwEr0001"><li>
+</li><li>
+<p>True</p>
+</li><li>
+<p>False</p>
+</li></ul></p>
+</statement>
+      <answer>
+        <p>
+          <m>\text{False}</m>
+        </p>
+      </answer>
+      <solution><p><alert>SOLUTION:</alert> 
+False. For example, let <m>A = I_n</m>, and <m>B = -I_n</m>, then <m>A+B = 0_n</m>, which is not invertible.</p>
+</solution>
+    </static>
+    <rendering-data sourceFilePath="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.48.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.48.pg"/>
+  </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-10" ww-id="webwork-10">
+    <static seed="10" source="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.54.pg">
+      <statement><p>Solve for the matrix <m>X</m> if <m>AX(D+B X)^{-1} = C</m>. Assume that all matrices are <m>n\times n</m> and invertible as needed.</p>
+<p><m>X =</m><fillin characters="10" name="AnSwEr0001"/></p>
+</statement>
+      <answer>
+        <p>
+          <m>\left(A-CB\right)^{-1}CD</m>
+        </p>
+      </answer>
+      <solution><p><alert>SOLUTION:</alert> 
+Note that
+<me>\begin{align*}
+AX(D+BX)^{-1} = C \amp \Rightarrow AX = C(D+BX) = CD + CBX \\
+\amp \Rightarrow  AX - CBX = CD\\
+\amp \Rightarrow (A-CB)X = CD \\
+\amp \Rightarrow X = (A-CB)^{-1} CD.
+\end{align*}</me></p>
+</solution>
+    </static>
+    <rendering-data sourceFilePath="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.54.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.54.pg"/>
+  </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-11" ww-id="webwork-11">
+    <static seed="11" source="Library/Rochester/setLinearAlgebra4InverseMatrix/ur_Ch2_1_4.pg">
+      <statement><p>Are the following matrices invertible?</p>
+<p><ol>
+<li>
+<p><m>\left[\begin{array}{cc}
+-3 \amp -2\cr
+-2 \amp -4
+\end{array}\right]</m></p>
+</li>
+<li>
+<p><m>\left[\begin{array}{cc}
+15 \amp -6\cr
+0 \amp 0
+\end{array}\right]</m></p>
+</li>
+<li>
+<p><m>\left[\begin{array}{cc}
+-5 \amp -6\cr
+15 \amp 18
+\end{array}\right]</m></p>
+</li>
+<li>
+<p><m>\left[\begin{array}{cc}
+3 \amp -2\cr
+-1 \amp 5
+\end{array}\right]</m></p>
+</li>
+</ol></p>
+</statement>
+    </static>
+    <rendering-data sourceFilePath="Library/Rochester/setLinearAlgebra4InverseMatrix/ur_Ch2_1_4.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/Rochester/setLinearAlgebra4InverseMatrix/ur_Ch2_1_4.pg"/>
+  </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-12" ww-id="webwork-12">
+    <static seed="12" source="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.59.pg">
+      <statement><p>For what values of <m>c</m> will
+<m>\displaystyle A = \begin{bmatrix} 1 \amp  1 \\ c \amp  c^2 \end{bmatrix}</m> be invertible?</p>
+<p>For all <m>c</m> such that <m>c\neq</m> <fillin characters="6" name="AnSwEr0001"/> and <m>c\neq</m> <fillin characters="6" name="AnSwEr0002"/>.</p>
+</statement>
+      <answer>
+        <p>
+          <m>0</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>1</m>
+        </p>
+      </answer>
+      <solution><p><alert>SOLUTION:</alert> 
+The matrix <m>\displaystyle A = \begin{bmatrix} 1 \amp  1 \\ c \amp  c^2 \end{bmatrix}</m> is invertible provided the columns of <m>A</m> are linearly independent, which will be the case if <m>c \neq c^2</m>. Thus, we require that <m>c\neq 0</m> and <m>c \neq 1</m>.</p>
+</solution>
+    </static>
+    <rendering-data sourceFilePath="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.59.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/WHFreeman/Holt_linear_algebra/Chaps_1-4/3.3.59.pg"/>
+  </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-13" ww-id="webwork-13">
+    <static seed="13" source="Library/Utah/Business_Algebra/set10_Matrices/p24.pg">
+      <statement><p>Let</p>
+<p><me>A=\left(\begin{array}{cc} 
+            5 \amp  3 \cr
+	    -3 \amp  4
+	   \end{array}\right), 
+B=\left(\begin{array}{cc} 
+            6 \amp  -6 \cr
+	    7 \amp  6 
+	   \end{array}\right).</me></p>
+<p>Then</p>
+<p><me>AB=\left(\begin{array}{cc} 
+            a_{11} \amp  a_{12} \cr
+	    a_{21} \amp  a_{22} 
+	    \end{array}\right)</me></p>
+<p>where 
+<m>a_{11}=</m> <fillin characters="3" name="AnSwEr0001"/>,
+<m>a_{12}=</m> <fillin characters="3" name="AnSwEr0002"/>,
+<m>a_{21}=</m> <fillin characters="3" name="AnSwEr0003"/>,
+<m>a_{22}=</m> <fillin characters="3" name="AnSwEr0004"/>,</p>
+<p><me>BA=\left(\begin{array}{cc} 
+            b_{11} \amp  b_{12} \cr
+	    b_{21} \amp  b_{22}  
+	   \end{array}\right)</me></p>
+<p>where 
+<m>b_{11}=</m> <fillin characters="3" name="AnSwEr0005"/>,
+<m>b_{12}=</m> <fillin characters="3" name="AnSwEr0006"/>,
+<m>b_{21}=</m> <fillin characters="3" name="AnSwEr0007"/>,
+<m>b_{22}=</m> <fillin characters="3" name="AnSwEr0008"/>,</p>
+<p>and</p>
+<p><me>A^T B^T=\left(\begin{array}{cc} 
+            c_{11} \amp  c_{12} \cr
+	    c_{21} \amp  c_{22} 
+	   \end{array}\right)</me></p>
+<p>where 
+<m>c_{11}=</m> <fillin characters="3" name="AnSwEr0009"/>,
+<m>c_{12}=</m> <fillin characters="3" name="AnSwEr0010"/>,
+<m>c_{21}=</m> <fillin characters="3" name="AnSwEr0011"/>,
+<m>c_{22}=</m> <fillin characters="3" name="AnSwEr0012"/>.</p>
+</statement>
+      <answer>
+        <p>
+          <m>51</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>-12</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>10</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>42</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>48</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>-6</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>17</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>45</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>48</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>17</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>-6</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>45</m>
+        </p>
+      </answer>
+    </static>
+    <rendering-data sourceFilePath="Library/Utah/Business_Algebra/set10_Matrices/p24.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/Utah/Business_Algebra/set10_Matrices/p24.pg"/>
+  </webwork-reps>
 </webwork-representations>
