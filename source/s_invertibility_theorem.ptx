@@ -199,7 +199,7 @@
     </p>
   </statement>
   <proof>
-    <p>
+    <!-- <p>
       In this proof we will make use of the fact that a square matrix <m>A</m> is invertible if and only if <m>A^T</m> is invertible. (<xref ref="th_inverse_trans"/>)
     </p>
     <case>
@@ -225,7 +225,8 @@
       <mrow> \amp \iff a_{ii}=0 \text{ for all } i \amp \text{(by previous case)} </mrow>
     </md>.
     </p>
-    </case>
+    </case> -->
+    Left as a homework exercise. 
   </proof>
 
 </theorem>
@@ -439,7 +440,7 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
       In plain English: a matrix <m>B</m> is a <em>left-inverse</em> of <m>A</m> if and only if it is a <em>right-inverse</em> of <m>A</m>.
     </p>
   </statement>
-  <proof>
+  <!-- <proof>
     <p>
       It is enough to prove the first implication:
       the second then follows by exchanging the roles of <m>A</m> and <m>B</m>.
@@ -463,7 +464,8 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
         <mrow>  \amp \implies AB=AA^{-1}=I_n </mrow>
       </md>.
     </p>
-  </proof>
+  </proof> -->
+  Left as a homework exercise. 
 </corollary>
 <p>
   As a further consequence of <xref ref="th_invertibility"/>, we can at last strengthen the implication
@@ -484,7 +486,7 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
       </p>
     </statement>
     <proof>
-      <case>
+      <!-- <case>
        <title>Implication: <m>A \text{ and } B \text{ invertible }\implies AB \text{ invertibe}</m></title>
        <p>
          We know from <xref ref="th_invertible_prod"/>  that if <m>A</m> and <m>B</m> are invertible, then so is <m>AB</m>.
@@ -512,8 +514,8 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
        <p>
          This completes the proof that if <m>AB</m> is invertible, then <m>A</m> and <m>B</m> are invertible.
        </p>
-      </case>
-
+      </case> -->
+      Left as a homework exercise. 
     </proof>
   </corollary>
 <p>
@@ -565,44 +567,44 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
       Let <m>A\in \ML_{n,n}(F)</m>.
       The following statements are equivalent.
       <ol>
-        <li xml:id="inv_statement_def">
+        <li>
           <p>
             <m>A</m> is invertible.
           </p>
         </li>
 
-        <li xml:id="inv_statement_unique_sol">
+        <li>
           <p>
             The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a <em>unique solution</em> for any <m>\boldb\in \R^n</m>.
           </p>
         </li>
-        <li xml:id="inv_statement_exists_sol">
+        <li>
           <p>
             The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a solution for any <m>\boldb\in \R^n</m>.
           </p>
         </li>
-    <li xml:id="inv_statement_span">
+    <li>
           <p>
             The columns of <m>A</m> are a spanning tuple for <m>F^n</m>.
           </p>
         </li>
-        <li xml:id="inv_statement_trivial_sol">
+        <li>
           <p>
             The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldzero}</md> has a unique solution: namely, <m>\boldx=\boldzero_{n\times 1}</m>.
           </p>
         </li>
-        <li xml:id="inv_statement_lin_indep">
+        <li>
           <p>
             The columns of <m>A</m> are linearly independent.
           </p>
         </li>
-        <li xml:id="inv_statement_row_equiv">
+        <li>
           <p>
             <m>A</m> is row equivalent to <m>I_n</m>,
             the <m>n\times n</m> identity matrix.
           </p>
         </li>
-        <li xml:id="inv_statement_prod_elems">
+        <li>
           <p>
             <m>A</m> is a product of elementary matrices.
           </p>
@@ -610,9 +612,14 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
       </ol>
     </p>
   </statement>
+  <proof>
+    <p>
+      Left as a homework exercise. 
+    </p>
+  </proof>
 </corollary>
 <p>
-  Lastly, we provide at last the proof of the third statement of <xref ref="th_matrixforms"/> promised back in <xref ref="s_systems_solve"/>. This proof is due to Thomas Yuster<fn>Thomas Yuster. <em>The reduced row echelon form of a matrix is unique: a simple proof</em>, Mathematics Magazine <term>57</term> (1984), no. 2, 93-94. </fn>.
+  Lastly, we provide at last the proof of the third statement of <xref ref="th_matrixforms"/> promised back in <xref ref="s_linsys_solve"/>. This proof is due to Thomas Yuster<fn>Thomas Yuster. <em>The reduced row echelon form of a matrix is unique: a simple proof</em>, Mathematics Magazine <term>57</term> (1984), no. 2, 93-94. </fn>.
 </p>
 <corollary xml:id="cor_RRE_uniqueness">
   <title>Uniqueness of reduced row echelon form</title>

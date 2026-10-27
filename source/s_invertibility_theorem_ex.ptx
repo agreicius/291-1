@@ -246,8 +246,7 @@
     <statement>
       <p>
         Let <m>A\sim B</m> denote that matrix <m>A</m> is row equivalent to <m>B</m>. Use <xref ref="cor_row_equivalence_invertibility"/>
- to show that the relation <m>A\sim B</m> is reflexive, symmetric, and transitive, as described in <xref ref="rm_row_equivalence_props"/>
-.
+ to show that the relation <m>A\sim B</m> is reflexive, symmetric, and transitive.
     </p>
   </statement>
 </exercise>
