@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_det_II" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Further properties of the determinant</title>
+<subsection xml:id="ss_det_row_ops">
+  <title>Row operations and determinant</title>
+  <p>
+  Suppose the square matrix <m>A</m> can be row reduced to <m>B</m> via  sequence of row operations. In general we do not have <m>\det A=\det B</m>, but we can compute <m>\det A</m> from <m>\det B</m> by keeping track of which operations are used.
+  </p>
+  <theorem xml:id="th_det_row_ops">
+    <title>Row operations and determinant</title>
+    <statement>
+      <p>
+      Let <m>A</m> be an <m>n\times n</m> matrix. Using the notation from <xref ref="d_elementary_matrix"/> we have:
+      <ol>
+        <li>
+          <p>
+            <m>\det(\underset{c\cdot r_i}{E}\, A)=c\det(A)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\det(\underset{r_i\leftrightarrow r_j}{E}\, A)=-\det(A)</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\det(\underset{r_i+cr_j}{E}\, A)=\det(A)</m>.
+          </p>
+        </li>
+      </ol>
+      In particular, taking <m>A=I</m>, we have
+      <md>
+        <mrow> \det\underset{c\cdot r_i}{E}\amp =c \amp \det\underset{r_i\leftrightarrow r_j}{E}\amp =-1 \amp \det \underset{r_i+cr_j}{E}\amp =1  </mrow>
+      </md>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        The first statement follows easily by computing <m>\det (\underset{cr_i}{E}\, A)</m> by expanding along the <m>i</m>-th row. The second statement is in fact a rephrasing of the second statement of <xref ref="th_det_zero_repeated_row"/>. It remains to prove the third statement.
+      </p>
+      <p>
+        Let <m>A=[a_{ij}]_{n\times n}</m>, and set <m>B=\underset{r_i+cr_j}{E}\cdot A</m>. Then <m>B</m> is identical to <m>A</m> with the exception of the <m>i</m>-th row, whose <m>k</m>-th entry is
+        <md>
+          (B)_{ik}=a_{ik}+ca_{jk}
+        </md>.
+         It follows that
+         <md>
+           <mrow>\det B \amp=\sum_{k=1}^n(-1)^{i+k}(a_{ik}+ca_{jk})M_{ik} </mrow>
+           <mrow> \amp = \sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik}+c\sum_{k=1}^n(-1)^{i+k}a_{jk}M_{ik}</mrow>
+           <mrow> \amp =\det A+\det C </mrow>
+         </md>,
+         where <m>C</m> is the matrix obtained by replacing the <m>i</m>-th row of <m>A</m> with a row identical with its <m>j</m>-th row. By <xref ref="th_det_zero_repeated_row"/> we conclude <m>\det C=0</m>, and thus
+         <md>
+           \det(\underset{r_i+cr_j}{E}\cdot A)=\det B=\det A+\det C=\det A
+         </md>,
+          as desired.
+      </p>
+    </proof>
+
+  </theorem>
+    <remark xml:id="rm_det_row_ops">
+  <p>
+    In the language of row operations, <xref ref="th_det_row_ops"/> translates as follows:
+    <ul>
+      <li>
+        <p>
+          Scaling a row of a matrix by <m>c</m> has the effect of scaling the determinant by <m>c</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Swapping two rows of a matrix changes the sign of the determinant.
+        </p>
+      </li>
+      <li>
+        <p>
+          Performing a row addition operation on a matrix has no effect on the determinant.
+        </p>
+      </li>
+    </ul>
+  </p>
+</remark>
+    <remark xml:id="rm_det_col_ops">
+      <title>Column operations and the determinant</title>
+  <p>
+  As shown in <xref ref="ex_det_col_ops"/> the determinant behaves in a similar manner with respect to <em>elementary column operations</em>: <ie />, scaling a column by a nonzero constant scales the determinant by <m>c</m>, swapping columns multiplies the determinant by <m>-1</m>, adding a multiple of one column to another leaves the determinant unchanged.
+  </p>
+</remark>
+
+<corollary xml:id="cor_det_prod_elem">
+  <title>Determinant and products of elementary matrices</title>
+  <statement>
+    <p>
+      Let <m>A</m> be an <m>n\times n</m> matrix, and suppose we have
+      <md number="yes" xml:id="eq_row_reduce_elem">
+        B=E_rE_{r-1}\cdots E_1\, A
+      </md>
+      for some collection of elementary matrices <m>E_i</m>.  Then
+      <md number="yes" xml:id="eq_det_row_reduce">
+        \det B=\det E_r\, \det E_{r-1}\cdots \det E_1\, \det A
+      </md>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      This is an easy proof by induction on the number <m>r</m> of elementary matrices involved, the base case (<m>r=1</m>) of which is covered by <xref ref="th_det_row_ops"/>.
+    </p>
+  </proof>
+</corollary>
+<p>
+  <xref ref="cor_det_prod_elem"/> has both computational and theoretical applications.
+</p>
+<p> On the computational side, it suggests an alternative method of computing <m>\det A</m>: first row reduce <m>A</m> to a simpler matrix <m>B</m>, making sure to keep track of the operations you use; set up an equation as in <xref ref="eq_row_reduce_elem"/> representing the row reduction; then solve the corresponding equation <xref ref="eq_det_row_reduce"/> for <m>\det A</m> in terms of <m>\det B</m> and the <m>\det E_i</m>.
+</p>
+<example>
+  <title>Determinant via row reduction </title>
+  <statement>
+    <p>
+      Suppose the matrix <m>A</m> can be row reduced to
+      <md> B=\begin{amatrix}[rrr]2\amp -7\amp -8\\ 0\amp -3\amp 4\\ 0\amp 0\amp 2  \end{amatrix}</md>
+      by perfomring the following sequence of row operations:
+      <ol>
+        <li>
+          <p>
+            First swap the second and third rows.
+          </p>
+        </li>
+        <li>
+          <p>
+            Then scale the first row by <m>3</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Then replace the second row with the second row plus the first row.
+          </p>
+        </li>
+      </ol>
+      Compute <m>\det A</m>.
+    </p>
+  </statement>
+  <solution>
+    <p>
+      In terms of elementary matrices we have
+      <md>
+        B=\underset{r_2+r_1}{E}\underset{3r_1}{E}\underset{r_2\leftrightarrow r_3}{E}A,
+      </md>
+      and hence
+      <md>
+        \det B=\det \underset{r_2+r_1}{E}\, \det \underset{3r_1}{E}\, \det \underset{r_2\leftrightarrow r_3}{E}\, \det A=(1)(3)(-1)\det A=(-3)\det A.
+      </md>
+      We conclude that
+      <md>
+        \det A=-\frac{1}{3}\det B=-(1/3)(-12)=4
+      </md>.
+    </p>
+  </solution>
+</example>
+
+<p>
+  On the theoretical side, <xref ref="cor_det_prod_elem"/> implies both <xref ref="th_inv_iff_det"/> and <xref ref="th_det_mult"/>.
+</p>
+<theorem xml:id="th_inv_iff_det">
+  <title>Determinant and invertibility</title>
+  <statement>
+    <p>
+    Let <m>A</m> be an <m>n\times n</m> matrix. Then <m>A</m> is invertible if and only if <m>\det A\ne 0</m>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      The implication <m>\det A\ne 0\implies A \text{ invertible}</m> was proved in <xref ref="th_adjoint"/>.
+    </p>
+    <p>
+      For the other direction, assume <m>A</m> is invertible. Then <xref ref="th_invertibility"/> implies <m>A</m> is a product of elementary matrices:
+      <md>
+        A=E_1E_2\cdots E_r
+      </md>.
+      Then <xref ref="cor_det_prod_elem"/> implies
+      <md>
+        \det A=\det E_1\, \det E_2\cdots \det E_1
+      </md>.
+      Since <m>\det E_i\ne 0</m> for all <m>i</m> (<xref ref="th_det_row_ops"/>), we conclude <m>\det A\ne 0</m>.
+    </p>
+  </proof>
+</theorem>
+<theorem xml:id="th_det_mult">
+  <title>Determinant is multiplicative</title>
+  <statement>
+    <p>
+      Let <m>A</m> and <m>B</m> be <m>n\times n</m> matrices. Then
+      <md>
+        \det AB=\det A\, \det B
+      </md>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      We consider two cases based on the invertibility of <m>A</m> and/or <m>B</m>.
+    </p>
+    <case>
+     <title><m>A</m> or <m>B</m> is not invertible</title>
+     <p>In this case <m>AB</m> is not invertible (<xref ref="cor_inv_prod_eq"/>), and hence <m>\det AB=0</m> by <xref ref="th_inv_iff_det"/>. By the same reasoning we must have <m>\det A=0</m> or <m>\det B=0</m>. It follows that
+     <md>
+       \det AB=\det A\, \det B=0
+     </md>
+     in this case.
+    </p>
+    </case>
+    <case>
+     <title><m>A</m> and <m>B</m> both invertible</title>
+    <p>
+    In this case we can write
+    <md>
+      <mrow> A \amp E_1E_2\cdots E_r \amp B\amp=E'_1E'_2\cdots E'_s </mrow>
+    </md>
+    for some elementary matrices <m>E_i</m> and <m>E'_j</m> (<xref ref="th_invertibility"/>). Then
+    <md>
+      <mrow> \det AB \amp= \det(E_1E_2\cdots E_rE'_1E'_2\cdots E'_s) </mrow>
+      <mrow> \amp= \det E_1\det E_2\cdots \det E_r\det E'_1\det E'_2\cdots \det E'_s \amp (<xref ref="cor_det_prod_elem"/>)</mrow>
+      <mrow>  \amp=\det A\, \det B \amp (<xref ref="cor_det_prod_elem"/>) </mrow>
+    </md>.
+    </p>
+    </case>
+  </proof>
+</theorem>
+<p>
+  We end this section and chapter with a slight expansion of our invertibility theorem. The equivalence of <xref ref="inv2_statement_det">statement</xref> is a direct consequence of <xref ref="th_inv_iff_det"/>. The equivalence of the equivalence of <xref ref="inv2_statement_exists_sol">statement</xref> was given earlier as an exercise. (See <xref ref="ex_th_inv_exists_sol"/>.) 
+</p>
+<theorem xml:id="th_invertibility_expanded">
+  <title>Invertibility theorem</title>
+  <statement>
+    <p>
+      Let <m>A=</m> be an <m>n\times n</m> matrix.
+      The following statements are equivalent.
+      <ol>
+        <li xml:id="inv2_statement_def">
+          <p>
+            <m>A</m> is invertible.
+          </p>
+        </li>
+
+        <li xml:id="inv2_statement_unique_sol">
+          <p>
+            The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a unique solution for any <m>\boldb\in \R^n</m>.
+          </p>
+        </li>
+        <li xml:id="inv2_statement_exists_sol">
+          <p>
+            The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a solution for any <m>\boldb\in \R^n</m>.
+          </p>
+        </li>
+        <li xml:id="inv2_statement_trivial_sol">
+          <p>
+            The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldzero}</md> has a unique solution: namely, <m>\boldx=\boldzero_{n\times 1}</m>.
+          </p>
+        </li>
+        <li xml:id="inv2_statement_row_equiv">
+          <p>
+            <m>A</m> is row equivalent to <m>I_n</m>,
+            the <m>n\times n</m> identity matrix.
+          </p>
+        </li>
+        <li xml:id="inv2_statement_prod_elems">
+          <p>
+            <m>A</m> is a product of elementary matrices.
+          </p>
+        </li>
+        <li xml:id="inv2_statement_det">
+          <p>
+            <m>\det A\ne 0</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+</theorem>
+</subsection>
+
+<subsection xml:id="ss_det_ww">
+  <title>WeBWork Exercises</title>
+
+<exercise>
+    <!-- determinant of -A -->
+    <webwork source="Library/UMN/algebraKaufmannSchwitters/ks_11_4_prob02.pg" />
+  </exercise>
+
+  <exercise>
+    <!-- determinant using elementary matrices -->
+    <webwork source="Library/NAU/setLinearAlgebra/detElementary.pg" />
+  </exercise>
+
+
+  <exercise>
+    <!-- find k for which matrix is singular -->
+    <webwork source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg" />
+  </exercise>
+
+  <exercise>
+    <!-- determinants of multiples and transposes -->
+    <webwork source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_9.pg" />
+  </exercise>
+
+</subsection>
+
+    
+
+</section>

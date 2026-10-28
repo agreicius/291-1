@@ -1,0 +1,637 @@
+<section xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="s_det">
+  <title>The determinant</title>
+    <introduction>
+    <p>
+      The <em>determinant</em> is a function <m>\det\colon \ML_{n,n}(F)\to F</m> that assigns to each matrix <m>A\in \ML_{n,n}(F)</m> a scalar <m>\det A\in F</m>. 
+      The definition given below of the determinant is far from intuitive, and we will do little to motivate it up front. Instead, we allow its various properties to speak for themselves by way of retroactive motivation. In particular, we will see that
+      <md>
+        A \text{ is invertible } \iff \det A \ne 0
+      </md>,
+      making the determinant an important tool for investigating invertibility.
+    </p>
+    </introduction>
+<subsection xml:id="ss_det">
+  <title>Definition of the determinant</title>
+    <p>
+      Our definition of the determinant is a <em>recursive</em> one;
+      given an <m>n\times n</m> matrix <m>A</m> its determinant is defined in terms of the determinant of certain <em>submatrices</em> of dimension <m>(n-1)\times (n-1)</m>. This necessitates some notation to help our discussion along.
+    </p>
+    <definition xml:id="d_minors">
+      <title>Submatrix notation</title>
+      <idx><h>submatrix</h></idx>
+      <notation>
+        <usage><m>A_{ij}</m></usage>
+        <description>submatrix of <m>A</m></description>
+      </notation>
+      <statement>
+        <p>
+          Let <m>A</m> be an <m>n\times n</m> matrix with <m>n\geq 2</m>. Given <m>1\leq i, j\leq n</m>, the <term>submatrix of <m>A</m></term> obtained by removing the <m>i</m>-th row and <m>j</m>-th column of <m>A</m> is denoted <m>A_{i, j}</m>.
+        </p>
+      </statement>
+    </definition>
+        <warning xml:id="rm_minors">
+      <p>
+        Do not conflate the submatrix notation <m>A_{i,j}</m> with matrix entry notation <m>[A]_{i,j}</m>: the former returns the submatrix of <m>A</m> obtained by deleting the <m>i</m>-th row and <m>j</m>-th column; the latter returns the <m>i,j</m>-th entry of <m>A</m>.
+      </p>
+    </warning>
+
+    <definition xml:id="d_det">
+      <title>The determinant</title>
+      <idx><h>determinant</h></idx>
+      <notation>
+        <usage><m>\det A</m></usage>
+        <description>determinant of <m>A</m></description>
+      </notation>
+      <statement>
+        <p>
+          Let <m>A=[a_{ij}]_{n\times n}\in \ML_{n,n}(F)</m>. The determinant is defined as follows:
+          <ul>
+            <li>
+              <title>Base case: <m>n=1</m></title>
+              <p> When <m>n=1</m> we have <m>A=[a_{1,1}]</m> and we define
+                <m>\det A=a_{1,1}</m>.
+              </p>
+            </li>
+            <li>
+              <title>Recursive case: <m>n\geq 2 </m></title>
+              <p> When <m>n\geq 2</m> we define
+                <md number="yes">
+                  <mrow xml:id="eq_d_det">\det A \amp = \sum_{j=1}^n(-1)^{1+j}a_{1,j}\det A_{1, j} </mrow>
+                  <mrow> \amp = a_{11}\det A_{1,1}-a_{1,2} A_{1,2}+\cdots +(-1)^{1+n}a_{1,n}\det A_{1, n}</mrow>
+                </md>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </definition>
+        <remark xml:id="rm_det_small_cases">
+      <title>Small <m>n</m> cases</title>
+      <p>
+      Let's look at determinant formulas for the <m>n=2,3</m> cases. You may remember the formula for <m>2\times 2</m> matrices from <xref ref="th_2by2_inverse"/>; we will make the connection more explicit in <xref ref="th_adjoint"/>.
+      </p>
+      <p>
+      Given <m>A=\abcdmatrix{a}{b}{c}{d}</m>, we have
+      <md>
+        <mrow> \det A\amp = (-1)^{1+1}a\det A_{1,1}+(-1)^{1+2}b\det A_{1,2}\amp \text{(recursive case)}</mrow>
+        <mrow> \amp =a\det [d]-b\det [c] \amp \text{(base case)}</mrow>
+        <mrow>  \amp =ad-bc </mrow>
+      </md>.
+      The formula for the <m>n=2</m> case is simple enough to serve as a <q>second base case</q>, allowing us to end the recursive process of computing a general <m>n\times n</m> matrix once we get to expressions involving <m>2\times 2</m> matrices.
+      </p>
+      <p>
+        Given
+        <md>
+          A=\begin{amatrix}[ccc]a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i  \end{amatrix}
+        </md>,
+        we have
+        <md>
+          <mrow>\det A \amp =a\det A_{1,1}-b\det A _{1,2}+c\det A_{1,3} \amp \text{(recursive case)}</mrow>
+          <mrow> \amp =a\det \abcdmatrix{e}{f}{h}{i}-b\det\abcdmatrix{d}{f}{g}{i}+c\det\abcdmatrix{d}{e}{g}{h}</mrow>
+          <mrow> \amp = a(ei-fh)-b(di-fg)+c(dh-eg) \amp \text{(\(n=2\) case)}</mrow>
+        </md>.
+      </p>
+    </remark>
+<p>
+  The recursive nature of the determinant definition makes induction arguments particularly useful when proving properties of the determinant, as illustrated by the next theorem.
+</p>
+<theorem xml:id="th_det_triangular">
+  <title>Determinant of triangular matrices</title>
+  <statement>
+    <p>
+    Let <m>A=[a_{ij}]_{n\times n}\in \ML_{n\times n}(F)</m> be triangular (upper, lower, or diagonal). Then
+    <md>
+      \det A=a_{1,1}a_{2,2}\cdots a_{n,n}
+    </md>.
+    In other words, the determinant of a triangular matrix is the product of its diagonal entries.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      We only give the proof for lower triangular matrices; the proof in the upper triangular case is nearly identical.
+    </p>
+    <p>
+     For any <m>n\geq 1</m> let <m>P(n)</m> denote the proposition: <q>The determinant of any <m>n\times n</m> lower triangular matrix is the product of its diagonal entries</q>. We prove by induction that <m>P(n)</m> is true for all <m>n\geq 1</m>.
+    </p>
+    <case>
+     <title>Base step: show <m>P(1)</m> is true</title>
+    <p>
+    In this case <m>A=[a_{1,1}]</m>, and <m>\det A=a_{1,1} </m> is indeed the product of the diagonal entries of <m>A</m>.
+    </p>
+    </case>
+    <case>
+     <title>Induction step: show <m>P(n)\implies P(n+1)</m> for all <m>n\geq 1</m></title>
+    <p>
+      Let <m>A=[a_{ij}]_{(n+1)\times (n+1)}</m> be a lower triangular matrix. Then <m>a_{1j}=0</m> for all <m>j\geq 2</m>, and hence the determinant of <m>A</m> is given by
+      <md>
+        \det A=a_{1,1}\det  A_{1,1}
+      </md>.
+      Claim: <m>A_{i  k}</m> is lower triangular. Indeed, first observe that we have
+      <md>( A_{11})_{ij}=a_{i+1,j+1}</md>
+      for all <m>1\leq i,j\leq n</m>; by deleting the first row and first column we effectively bump each index up by one. Since <m>A</m> is lower triangular we have  <m>a_{ij}=0</m> for all <m>1\leq i \lt; j\leq n+1</m>, and hence also
+      <md>
+        ( A_{1,1})_{i,j}=a_{i+1,j+1}=0
+      </md>
+      for all <m>1\leq i &lt; j\leq n </m>, proving the claim.
+    </p>
+    <p>
+      Lastly, assuming <m>P(n)</m> is true (the induction hypothesis) we have
+      <md>
+        <mrow> \det A \amp=a_{1,1}\det A_{1,1} </mrow>
+        <mrow> \amp =a_{1,1}(a_{2,2}a_{3,3}\cdots a_{n+1,n+1})\amp \text{(induction)} </mrow>
+        <mrow>  \amp =a_{1,1}a_{2,2}\cdots a_{n+1,n+1} </mrow>
+      </md>,
+      as desired.
+    </p>
+    </case>
+  </proof>
+
+</theorem>
+<corollary xml:id="cor_det_identity">
+  <title>Determinant of identity matrices</title>
+  <statement>
+    <p>
+    We have <m>\det I_n=1</m> for all positive integers <m>n</m>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      This follows directly from <xref ref="th_det_triangular"/> since the diagonal entries of <m>I</m> are all ones.
+    </p>
+  </proof>
+</corollary>
+
+</subsection>
+<subsection xml:id="ss_expansion_rows_columns">
+  <title>Expansion along rows and columns</title>
+<p>
+  Morally speaking, we should give some examples of higher-dimensional determinants, but we first introduce some theory that affords us more leeway in our computations.
+</p>
+
+<definition xml:id="d_minors_expansions">
+  <title>Minors and expansions along rows/columns</title>
+  <idx><h>minor of matrix</h></idx>
+  <idx><h>expansion along row/column</h></idx>
+  <notation>
+    <usage><m>M_{i,j}</m></usage>
+    <description>the <m>i,j</m>-th minor of a matrix</description>
+  </notation>
+  <statement>
+    <p>
+      Given <m>A\in \ML_{n,n}(F)</m>, for any pair <m>1\leq i,j\leq n</m> the <term><m>i,j</m>-th minor of <m>A</m></term> is defined as
+      <md>
+        M_{i,j}=\det A_{i,j}
+      </md>.
+    </p>
+    <p>
+      For any <m>1\leq i\leq n</m> the expression
+      <md>
+        \sum_{k=1}^n(-1)^{i+k}a_{i,k}M_{i,k}
+      </md>
+      is called the <term>expansion along the <m>i</m>-th row of <m>A</m></term>.
+    </p>
+    <p>
+      For any <m>1\leq j\leq n</m>, the expression
+      <md>
+        \sum_{k=1}^n(-1)^{k+j}a_{k,j}M_{k,j}
+      </md>
+      is called the <term>expansion along the <m>j</m>-th column of <m>A</m></term>.
+    </p>
+  </statement>
+</definition>
+<theorem xml:id="th_expansion_row">
+  <title>Expansion along rows</title>
+  <statement>
+    <p>
+      Let <m>A=[a_{ij}]_{n\times n}\in \ML_{n,n}(F)</m>. For any <m>1\leq i\leq n</m> we have
+      <md>
+        \det A=  \sum_{k=1}^n(-1)^{i+k}a_{i,k}M_{i,k}
+      </md>.
+      In other words, we can compute <m>\det A</m> by expanding along any row of <m>A</m>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      The proof is by induction on the size <m>n</m> of the matrix.
+    </p>
+    <case>
+     <title>Base step: <m>n=1, 2</m></title>
+    <p>
+    For <m>n=1</m> there is nothing to prove. Given
+    <md>
+      A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}
+    </md>
+    expanding along either row yields <m>ad-bc</m>, as one easily verifies.
+    </p>
+    </case>
+    <case>
+     <title>Induction step</title>
+    <p>
+    Assume the claim is true of any <m>(n-1)\times (n-1)</m> matrix.  Given <m>A=[a_{i,j}]_{n\times n}</m> we have
+    <md number="yes" xml:id="eq_det_def">
+      \det A=\sum_{j=1}^n (-1)^{1+j}a_{1, j}\det  A_{1,j}
+    </md>.
+    Expanding along the <m>i</m>-th row of <m>A</m> for any <m>2\leq i\leq n</m>, on the other hand, we get
+    <md number="yes" xml:id="eq_det_expansion">
+      \sum_{k=1}^n (-1)^{i+k}a_{i,k}\det A_{i, k}
+    </md>.
+    To show these two expressions are equal we use the induction hypothesis to compute each <m>\det  A_{1 , j}</m> by expanding along its <m>(i-1)</m>-th row:
+    <md number="yes" xml:id="eq_det_submatrix">
+      \det  A_{1,j}=\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1,j}]_{i-1, k}\det {( A_{1,j})}_{i-1,k}
+    </md>.
+    The matrix <m>(A_{1,j})_{i-1,k}</m> is the result of first deleting row 1 and column <m>j</m> from <m>A</m>, and then deleting row <m>(i-1)</m> and column <m>k</m> of the resulting matrix.  To deal with such iterated submatrices, we make some simple observations relating the rows and columns of <m>A_{1,j}</m> and <m>A_{i ,k}</m> with those of <m>A</m>.
+    <ul>
+      <li>
+        <p>
+          The <m>(i-1)</m>-th row of <m> A_{1,j}</m> corresponds to the <m>i</m>-th row of <m>A</m>, and the first row of <m>A_{i, k}</m> corresponds to the first row of <m>A</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          If <m>k&lt;  j</m>, then the <m>k</m>-th column of <m> A_{1 , j}</m> corresponds to the <m>k</m>-th column of <m>A</m>; if <m>k\geq j</m>, then the <m>k</m>-th column of <m>A_{1 , j}</m> corresponds to the <m>(k+1)</m>-th column of <m>A</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          If <m>j&lt; k</m>, then the <m>j</m>-th column of <m>A_{i,k}</m> corresponds to the <m>j</m>-th column of <m>A</m>; if <m>j\geq k</m>, then the <m>j</m>-th column of <m>A_{i,k}</m> corresponds to the <m>(j+1)</m>-th column of <m>A</m>.
+        </p>
+      </li>
+    </ul>
+    From these observations we derive the following table of formulas:
+    <md number="yes">
+      <mrow xml:id="eq_entry_formula_1">[ A_{1j}]_{(i-1)  k} \amp =\begin{cases}
+        a_{i  k} \amp \text{if } k\lt j\\
+        a_{i  (k+1)}  \amp \text{if } k\geq j
+      \end{cases} </mrow>
+      <mrow xml:id="eq_entry_formula_2">[ A_{i , k}]_{1 , j} \amp =\begin{cases}
+        a_{1 , j}  \amp \text{if } j\lt k\\
+        a_{1 ,j+1} \amp \text{if } k\leq j
+      \end{cases} </mrow>
+      <mrow xml:id="eq_iterated_submatrix">  {( A_{1,j})}_{i-1 , k}\amp=\begin{cases}
+         {( A_{i , k})}_{1 ,j-1} \amp\text{if } k\lt j \\
+         {( A_{i , k+1})}_{1 , j} \amp \text{if } k\geq j
+      \end{cases}
+      </mrow>
+    </md>.
+  We now begin to unpack <xref ref="eq_det_def"/>:
+  <md>
+    <mrow>\det A \amp= \sum_{j=1}^n (-1)^{1+j}a_{1, j}\det  A_{1j}
+    </mrow>
+    <mrow> \amp = \sum_{j=1}^n (-1)^{1+j}a_{1, j}\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1,j}]_{i-1,k}\det {( A_{1,j})}_{i-1,k} \amp <xref ref="eq_det_submatrix"/>
+    </mrow>
+    <mrow>  \amp
+    = \underset{k&lt; j \text{ terms}}{\underbrace{\sum_{j=2}^n \sum_{k=1}^{j-1}(-1)^{i+j+k}a_{1 ,j}a_{i , k}\det (A_{i , k})_{1  ,j-1}}}
+    </mrow>
+    <mrow> \amp +\underset{k\geq j \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j}^{n-1}(-1)^{i+j+k}a_{1 ,j}a_{i ,k+1}\det (A_{i , k+1})_{1 , j}}}
+        \amp <xref ref="eq_entry_formula_1" />, <xref ref="eq_iterated_submatrix"/> </mrow>
+    <mrow>  \amp = \underset{j\geq k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i , k}[A_{i,k}]_{1,j}\det (A_{i  ,k})_{1 , j}}}
+    </mrow>
+    <mrow> \amp +\underset{j\lt k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k-1}a_{i,k}[A_{i,k}]_{1 ,j}\det (A_{i,k})_{1 , j}}}
+        \amp (\text{re-labeled } j=j-1, k=k+1)</mrow>
+    <mrow>  \amp = \underset{j\geq k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i , k}[A_{i,k}]_{1j}\det (A_{i , k})_{1 , j}}}
+    </mrow>
+    <mrow> \amp +\underset{j\lt k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k+1}a_{i,k}[A_{i,k}]_{1 ,j}\det (A_{i,k})_{1 , j}}}
+        \amp ((-1)^{c+2}=(-1)^c)</mrow>
+    <mrow>  \amp =\sum_{k=1}^{n}(-1)^{i+k}a_{i,k}\sum_{j=1}^{n-1}(-1)^{j+1}[A_{i,k}]_{1,j}\det (A_{i,k})_{1j}
+    \amp (\text{re-order terms})
+    </mrow>
+    <mrow>  \amp =\sum_{k=1}^{n}(-1)^{i+k}a_{i,k}\det A_{i,k} </mrow>
+  </md>.
+  This completes the induction step, and thus the proof is finished.
+</p>
+    </case>
+  </proof>
+</theorem>
+<p>
+  Surprisingly, it turns out that we can compute the determinant of a matrix by expanding along any <em>column</em> (<xref ref="cor_expansion_columns"/>). This is a consequence of the following theorem, which is useful in its own right. The proof below is taken from Robert Beezer's <url href="http://linear.ups.edu/fcla" visual="linear.ups.edu/fcla"><em>A First Course in Linear Algebra </em></url>. (See <url href="http://linear.ups.edu/fcla/section-DM.html#theorem-DT" visual="http://linear.ups.edu/fcla/section-DM.html#theorem-DT">Theorem DT</url>.) It uses induction and a wonderful trick starting from the observation that <m>c=\frac{1}{n}\sum_{i=1}^n c</m> for any <m>c\in\R</m>.
+</p>
+<theorem xml:id="th_det_transpose">
+  <title>Determinant and transposition</title>
+  <statement>
+    <p>
+      Let <m>A</m> be an <m>n\times n</m> matrix. Then
+      <md>
+        \det A^T=\det A
+      </md>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      The proof is by induction on <m>n</m>. The base case (<m>n=1</m>) is trivial since <m>[a]^T=[a]</m> for any <m>1\times 1</m> matrix <m>[a]</m>.
+    </p>
+    <p>
+      For induction we assume that for all <m>n\geq 2</m> we have <m>\det B^T=\det B</m> for any <m>(n-1)\times (n-1)</m> matrix. Suppose <m>A</m> is an <m>n\times n</m> matrix. We have
+      <md>
+        <mrow>\det A^T \amp = \frac{1}{n}\sum_{i=1}^{n}\det A^T </mrow>
+        <mrow> \amp =\frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A^T]_{ij}\det \left((A^T)_{i,j}\right) \amp (<xref ref="th_expansion_row"/>) </mrow>
+      <mrow>  \amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{j,i}\det (A_{j,i})^T \amp ([A^T]_{i,j}=A_{ji}, (A^T)_{i,j}=(A_{j,i})^T)</mrow>
+      <mrow>  \amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{j,i}\det A_{j,i} \amp (\det (A_{j,i})^T=\det A_{j,i}, \text{ by induction})</mrow>
+      <mrow>  \amp= \frac{1}{n}\sum_{j=1}^n\sum_{i=1}^n(-1)^{i+j}[A]_{j,i}\det A_{j,i} \amp (\text{props. of addition})</mrow>
+      <mrow>  \amp =\frac{1}{n}\sum_{j=1}^n\det A \amp (<xref ref="th_expansion_row"/>)</mrow>
+      <mrow>  \amp = \det A</mrow>
+      </md>.
+      This completes the proof by induction. (Note how in the second equality in the chain above we compute <m>\det A^T</m> in the <m>i</m>-th term of <m>\sum_{i=1}^n\det A^T</m> by expanding along the <m>i</m>-th row of <m>\det A^T</m>. A similar observation applies to the penultimate equality.)
+    </p>
+  </proof>
+
+</theorem>
+<corollary xml:id="cor_expansion_columns">
+  <title>Expansion along columns</title>
+  <statement>
+    <p>
+      Let <m>A=[a_{i,j}]_{n\times n}\in \ML_{n,n}(F)</m>. For any <m>1\leq j\leq n</m> we have
+      <md>
+        \det A=  \sum_{k=1}^n(-1)^{k+j}a_{k,j}M_{k,j}
+      </md>.
+      In other words, we can compute <m>\det A</m> by expanding along any column of <m>A</m>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      For any <m>1\leq j\leq n</m>, we have
+      <md>
+        <mrow> \sum_{k=1}^n(-1)^{k+j}a_{k,j}M_{k,j}\amp =\sum_{k=1}^n(-1)^{k+j}(A^T)_{j,k}\det A_{j,k} \amp (<xref ref="d_transpose"/>)</mrow>
+        <mrow> \amp = \sum_{k=1}^n(-1)^{k+j}(A^T)_{j,k}\det (A^T)_{j,k} \amp ( (A^T)_{i,j}= A_{j,i}) </mrow>
+        <mrow>  \amp= \det A^T  \amp (<xref ref="d_det"/>)</mrow>
+        <mrow>  \amp=\det A \amp (<xref ref="th_det_transpose"/>) </mrow>
+      </md>.
+
+    </p>
+  </proof>
+</corollary>
+
+<example>
+  <statement>
+    <p>
+      Compute <m>\det A</m> for
+      <md>
+        A=\begin{bmatrix}2\amp 1\amp 0\amp 3\\ 0\amp 0\amp 0\amp 2\\ 0\amp 2\amp 0\amp 0\\ 4\amp 2\amp 1\amp 0 \end{bmatrix}
+      </md>.
+    </p>
+  </statement>
+  <solution>
+    <p>
+      First we compute <m>A</m> by expanding along the second row. The only nonzero term of this expansion is the last one, yielding
+      <md>
+        \det A=(-1)^{2+4}[A]_{24}M_{2,4}=2\det A_{2,4}
+      </md>.
+      We have
+      <md>
+         A_{2,4}=\begin{bmatrix}
+          2\amp 1\amp 0\\ 0\amp 2\amp 0\\ 4\amp 2\amp 1
+      \end{bmatrix}
+      </md>.
+      To compute its determinant we expand along its third column:
+      <md>
+        \det A_{2,4}=(-1)^{3+3}1\det \begin{bmatrix}
+            2\amp 1\\ 0\amp 2
+      \end{bmatrix}=4.
+      </md>
+      We conclude that
+      <md>
+        \det A=2\det A_{2,4}=2(4)=8
+      </md>.
+    </p>
+  </solution>
+</example>
+    <remark xml:id="rm_sign_matrix">
+  <title>Matrix of signs</title>
+  <p>
+  When expanding along a row or column, it is easy to get tripped up by the sign <m>(-1)^{i+j}</m> in front of the <m>ij</m>-th coefficient. A <q>matrix of signs</q> is a sort of mnemonic device to help you in this regard. It is easily generated by observing that the sign in front of the <m>(1,1)</m>-th entry is always a <m>+</m> (since <m>1=(-1)^{1+1}</m>), and that any horizontal or vertical step within the matrix is accompanied by a change of sign. As an example, for <m>n=4</m> we have the following matrix of signs:
+  <md>
+    \begin{bmatrix}
+      +\amp -\amp +\amp -\\
+      -\amp +\amp -\amp +\\
+      +\amp -\amp +\amp -\\
+      -\amp +\amp -\amp +
+    \end{bmatrix}
+  </md>.
+  </p>
+</remark>
+<paragraphs xml:id="ss_vid_eg_det">
+  <title>Video example: determinant</title>
+  <figure xml:id="fig_vid_det">
+  <caption>Video: determinant</caption>
+  <video xml:id="vid_det" youtube="OoNYGwJS-M4" />
+  </figure>
+</paragraphs>
+<p>
+  The freedom to compute the determinant by expanding along any row or column gives rise to the following intuitive property.
+</p>
+<theorem xml:id="th_det_zero_repeated_row">
+  <title>Zero rows/columns, swapping rows/columns, identical rows/columns</title>
+  <statement>
+    <p>
+      Let <m>A\in \ML_{n,n}(F)</m>.
+      <ol>
+        <li>
+          <p>
+            If <m>A</m> has a zero row or zero column, then <m>\det A=0</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Assume <m>n\geq 2</m>. Let <m>A'</m> be the matrix obtained by swapping two rows (or two columns) of <m>A</m>. Then
+            <md>\det A'=-\det A</md>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Assume <m>n\geq 2</m>. If <m>A</m> has two identical rows or two identical columns, then <m>\det A=0</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+  </statement>
+  <proof>
+    <p>
+      The first statement is obvious since according to <xref ref="th_expansion_row"/> and <xref ref="cor_expansion_columns"/> we may compute the determinant by expanding along the zero row or zero column in question.
+    </p>
+    <p>
+      The third statement follows from the second. Indeed, if <m>A</m> has two identical rows or columns, then the matrix <m>A'</m> obtained from <m>A</m> by swapping the rows (or columns) in question is <m>A</m> itself. Thus <m>\det A=-\det A</m> by the second statement, and we conclude that <m>\det A=0</m>.
+    </p>
+    <p>
+      It remains only to show the second statement. We prove only the statement regarding swapping rows; the corresponding statement about columns follows from <xref ref="th_det_transpose"/>. The proof is by induction.
+    </p>
+    <case>
+     <title>Base step: <m>n=2</m></title>
+     <p>
+       Let <m>A=\begin{bmatrix}a\amp b\\c\amp d \end{bmatrix}</m>.
+       Then <m>A'=\abcdmatrix{c}{d}A{b}</m>, and
+       <m>\det(A')=cb-ad=-(ad-bc)=-\det A</m>.
+     </p>
+    </case>
+    <case>
+     <title>Induction step</title>
+     <p>
+       We assume by induction that the result holds for any <m>n\times n</m> matrices, <m>n\geq 2</m>, and show the same is true for any <m>(n+1)\times (n+1)</m> matrix.
+     </p>
+    <p>
+      Let <m>A</m> be an <m>(n+1)\times (n+1)</m> matrix, and suppose <m>A'</m>  is the result of swapping the <m>i</m>-th and <m>k</m>-th rows of <m>A</m>.
+      We compute the determinants of <m>A</m> and <m>A'</m> by expanding along the <m>\ell</m>-th row, where <m>\ell\ne i</m> and <m>\ell\ne k</m>. This is possible since <m>(n+1)\geq 3</m>.
+    </p>
+    <p>
+      Moving along the <m>\ell</m>-th row, notice that each submatrix <m> {A'}_{\ell j}</m> is the result of swapping the two rows of <m> A_{\ell j}</m> that originally corresponded to the <m>i</m>-th and <m>k</m>-th rows of <m>A</m>. Since these submatrices are of dimension <m>n\times n</m>, we have <m>\det  {A'}_{\ell j}=-\det  A_{\ell j}</m> by induction. Lastly, since the <m>\ell</m>-th rows of <m>A</m> and <m>A'</m> are the same we have
+      <md>
+        <mrow>\det A \amp=\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}\det  A_{\ell, j} </mrow>
+        <mrow> \amp = \sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}(-\det  {A'}_{\ell, j})</mrow>
+        <mrow>  \amp =-\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}\det  {A'}_{\ell, j} </mrow>
+        <mrow>  \amp=-\det A' </mrow>
+      </md>.
+    </p>
+  </case>
+  </proof>
+</theorem>
+<p>
+As a further consequence of <xref ref="th_expansion_row"/> and <xref ref="cor_expansion_columns"/>, we can derive the <em>adjoint matrix formula</em>.
+</p>
+<definition xml:id="d_adjoint">
+  <title>Adjoint matrix</title>
+  <idx><h>adjoint matrix</h></idx>
+  <notation>
+    <usage><m>\adj A</m></usage>
+    <description>adjoint of a square matrix</description>
+  </notation>
+  <statement>
+    <p>
+    Let <m>A\in \ML_{n,n}(F)</m>. The <term>adjoint matrix</term> of <m>A</m>, denoted <m>\adj A</m>, is the <m>n\times n</m> matrix whose <m>i,j</m>-th entry is defined as follows:
+    
+    <md>
+      [\adj A]_{i,j}=(-1)^{i+j}M_{j,i}
+    </md>.
+    </p>
+  </statement>
+</definition>
+    <remark xml:id="rm_adjoint">
+  <p>
+    Be careful of the order reversal in this definition. The <m>i,j</m>-th entry of <m>\adj A</m> is equal to plus or minus the <m>j,i</m>-th minor of <m>A</m>. Let's see this in action for some small matrices.
+  </p>
+  <p>
+    For <md>A=\abcdmatrix{a}{b}{c}{d}</md> we have
+    <md>
+      \adj A=\begin{amatrix}[rr] M_{11}\amp -M_{21}\\ -M_{12}\amp M_{22}\end{amatrix}=
+      \begin{amatrix}[rr]d\amp -b\\ -c\amp a  \end{amatrix}
+    </md>.
+  </p>
+  <p>
+    For
+    <md>
+      A=\begin{bmatrix}
+        a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i
+    \end{bmatrix}
+    </md>
+    we have
+    <md>
+      \adj A=\begin{amatrix}[rrr]
+        M_{1,1}\amp -M_{2,1}\amp M_{3,1}\\
+        -M_{1,2}\amp M_{2,2}\amp -M_{3,2}\\
+        M_{1,3}\amp -M_{2,3}\amp M_{3,3}
+    \end{amatrix}
+    =\begin{amatrix}[rrr]
+      (ei-fh)\amp -(bi-ch)\amp (bf-ce)\\
+      -(di-fg)\amp (ai-cg)\amp -(af-cd)\\
+      (dh-eg)\amp -(ah-bg)\amp (ae-bd)
+  \end{amatrix}
+    </md>.
+  </p>
+</remark>
+<theorem xml:id="th_adjoint">
+  <title>Adjoint matrix formula</title>
+  <statement>
+    <p>
+      Given <m>A\in \ML_{n,n}(F)</m>, we have
+    <md number="yes" xml:id="eq_adj_form">
+      A\,(\adj A)=(\adj A)\, A=(\det A)I
+    </md>.
+      As a consequence <m>A</m> is invertible if and only if <m>\det A\ne 0</m>, and in this case we have 
+      <md number="yes" xml:id="eq_adj_inv_form">
+        A^{-1}=\frac{1}{\det A}\, \adj A
+      </md>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      First observe that the second statement regarding invertibility follows directly from <xref ref="eq_adj_form"/>, since in this case setting <m>B=\frac{1}{\det A}\, \adj A</m> we have
+      <md>
+        AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I
+      </md>.
+    </p>
+    <p>
+      Thus it suffices to prove <xref ref="eq_adj_form"/>. To do so, we must show that
+      <md>
+      [A\, \adj A]_{i,j}=[\adj A\, A]_{i,j}=
+        \begin{cases} \det A\amp \text{if } i=j\\
+                  0 \amp \text{if } i\ne j
+          \end{cases}
+      </md>.
+    </p>
+      <case>
+       <title>Case: <m>i=j</m></title>
+      <p>
+      In this case we have
+      <md>
+        <mrow> [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{ki}  </mrow>
+        <mrow> \amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (<xref ref="d_adjoint"/> )</mrow>
+        <mrow>  \amp =\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik} </mrow>
+        <mrow>  \amp =\det A </mrow>
+        </md>.
+      A similar argument shows that <m>(\adj A\, A)_{ii}=\det A</m>, though in this case we use expansion along a column.
+      </p>
+      </case>
+      <case>
+       <title>Case: <m>i\ne j</m></title>
+      <p>
+      When <m>i\ne j</m> we have <md>
+        <mrow> [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{k,j}  </mrow>
+        <mrow> \amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{j,k}) \amp (<xref ref="d_adjoint"/> )</mrow>
+        <mrow>  \amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{j,k} </mrow>
+        <mrow>  \amp =\det C </mrow>
+        </md>,
+        where <m>C</m> is the matrix obtained by replacing the <m>j</m>-th row of <m>A</m> with a copy of its <m>i</m>-th row. Since <m>C</m> has two identical rows <xref ref="th_det_zero_repeated_row"/> implies
+        <md>
+          [A\, \adj A]_{i,j}=\det C=0
+        </md>,
+        as desired. Once again, a similar argument using expansion along a column shows that <m>[\adj A\, A]_{ij}=0</m>.
+      </p>
+      </case>
+
+  </proof>
+
+</theorem>
+<example>
+  <statement>
+    <p>
+      Use the adjoint matrix formula to compute <m>A^{-1}</m>, where
+      <md>
+        A=\begin{amatrix}[rrr]1\amp 2\amp 1 \\ -1\amp 1\amp -1\\ 0\amp 2\amp 2  \end{amatrix}
+      </md>.
+    </p>
+  </statement>
+  <solution>
+    <p>
+      First compute <m>\det A=</m> by expanding along the third row:
+      <md>
+        \det A=-2(-1+1)+2(2+1)=6
+      </md>.
+      Next, compute
+      <md>
+        \adj A=\begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}
+      </md>.
+      Then we have
+      <md>
+        A^{-1}=\frac{1}{6}\,\adj A=\frac{1}{6}\, \begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}
+      </md>.
+    </p>
+  </solution>
+</example>
+    <remark xml:id="rm_adjoint_form">
+  <p>
+    Before you get too excited about the adjoint matrix formula, you should know that as <m>n</m> grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous <m>3\times 3</m> example. In general, the Gauss-Jordan inverse algorithm is the way to go.
+  </p>
+</remark>
+
+</subsection>
+
+<!-- <xi:include href="./s_det_ex.ptx"/> -->
+</section>
