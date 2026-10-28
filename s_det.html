@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The determinant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<link href="_static/pretext/css/theme.css" rel="stylesheet" type="text/css">
+<link href="_static/pretext/css/ol-markers.css" rel="stylesheet" type="text/css">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math",
+    "renderActions": {
+      "findScript": [
+        10,
+        function (doc) {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                var display = !!node.type.match(/; *mode=display/);
+                var math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                var text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = {node: text, delim: '', n: 0};
+                math.end = {node: text, delim: '', n: 0};
+                doc.math.push(math);
+            });
+        },
+        ""
+      ]
+    }
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "_static/pretext/js"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Linear algebra">
+<meta property="book:author" content="Aaron Greicius">
+<script src="_static/pretext/js/jquery.min.js"></script><script src="_static/pretext/js/pretext.js"></script><script src="_static/pretext/js/pretext_add_on.js?x=1"></script><!--** eBookCongig is necessary to configure interactive       **-->
+<!--** Runestone components to run locally in reader's browser **-->
+<!--** No external communication:                              **-->
+<!--**     log level is 0, Runestone Services are disabled     **-->
+<script type="text/javascript">
+eBookConfig = {};
+eBookConfig.useRunestoneServices = false;
+eBookConfig.host = 'http://127.0.0.1:8000';
+eBookConfig.course = 'PTX_Course_Title_Here';
+eBookConfig.basecourse = 'PTX_Base_Course';
+eBookConfig.isLoggedIn = false;
+eBookConfig.email = '';
+eBookConfig.isInstructor = false;
+eBookConfig.logLevel = 0;
+eBookConfig.username = '';
+eBookConfig.readings = null;
+eBookConfig.activities = null;
+eBookConfig.downloadsEnabled = false;
+eBookConfig.allow_pairs = false;
+eBookConfig.enableScratchAC = true;
+eBookConfig.acDefaultLanguage = 'python';
+eBookConfig.build_info = "";
+eBookConfig.python3 = null;
+eBookConfig.runestone_version = '8.3.6';
+eBookConfig.jobehost = '';
+eBookConfig.proxyuri_runs = '';
+eBookConfig.proxyuri_files = '';
+eBookConfig.enable_chatcodes =  false;
+</script>
+<!--*** Runestone Services ***-->
+<script src="_static/prefix-runtime.4beca1fdeed766a2.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.ebd33f6a21eed414.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
+<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.9963089870a016c8.css">
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/pretext-webwork/2.20/pretext-webwork.js"></script><script src="https://webwork-ptx.aimath.org/webwork2_files/node_modules/iframe-resizer/js/iframeResizer.min.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script>
+</head>
+<body id="NUlinearalgfirstcourse" class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" target="_blank" href=""><img src="external/images/im_holycomm.svg" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="my-great-book.html"><span class="title">Linear algebra</span> <span class="subtitle">A Kursobjekt for Math 291-1</span></a></h1>
+<p class="byline">Aaron Greicius</p>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><div class="ptx-navbar-contents">
+<button class="toc-toggle button" title="Contents"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5d2;</span><span class="name">Contents</span></button><div class="searchbox">
+<div class="searchwidget"><button id="searchbutton" class="searchbutton button" type="button" title="Search book"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe8b6;</span><span class="name">Search Book</span></button></div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<div class="search-results-controls">
+<input aria-label="Search term" id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search term"><button title="Close search" id="closesearchresults" class="closesearchresults"><span class="material-symbols-outlined">close</span></button>
+</div>
+<h2 class="search-results-heading">Search Results: </h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div>
+<span class="nav-other-controls"><button id="calculator-toggle" class="calculator-toggle button" title="Show calculator" aria-expanded="false" aria-controls="calculator-container"><span class="icon material-symbols-outlined" aria-hidden="true">&#xea5f;</span><span class="name">Calc</span></button><div id="calculator-container" class="calculator-container" style="display: none; z-index:100;"><div id="geogebra-calculator"></div></div>
+<script>
+var ggbApp = new GGBApplet({"appName": "classic",
+    "width": 330,
+    "height": 600,
+    "showToolBar": true,
+    "showAlgebraInput": true,
+    "perspective": "G/A",
+    "algebraInputPosition": "bottom",
+    "scaleContainerClass": "calculator-container",
+    "allowUpscale": true,
+    "autoHeight": true,
+    "disableAutoScale": false},
+true);
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_invertibility_theorem.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\T}{{\mathbb T}}
+\newcommand{\F}{{\mathbb F}}
+\newcommand{\HH}{{\mathbb H}}
+\newcommand{\compose}{\circ}
+\newcommand{\bolda}{{\mathbf a}}
+\newcommand{\boldb}{{\mathbf b}}
+\newcommand{\boldc}{{\mathbf c}}
+\newcommand{\boldd}{{\mathbf d}}
+\newcommand{\bolde}{{\mathbf e}}
+\newcommand{\boldi}{{\mathbf i}}
+\newcommand{\boldj}{{\mathbf j}}
+\newcommand{\boldk}{{\mathbf k}}
+\newcommand{\boldn}{{\mathbf n}}
+\newcommand{\boldp}{{\mathbf p}}
+\newcommand{\boldq}{{\mathbf q}}
+\newcommand{\boldr}{{\mathbf r}}
+\newcommand{\bolds}{{\mathbf s}}
+\newcommand{\boldt}{{\mathbf t}}
+\newcommand{\boldu}{{\mathbf u}}
+\newcommand{\boldv}{{\mathbf v}}
+\newcommand{\boldw}{{\mathbf w}}
+\newcommand{\boldx}{{\mathbf x}}
+\newcommand{\boldy}{{\mathbf y}}
+\newcommand{\boldz}{{\mathbf z}}
+\newcommand{\boldzero}{{\mathbf 0}}
+\newcommand{\boldmod}{\boldsymbol{ \bmod }}
+\newcommand{\boldT}{{\mathbf T}}
+\newcommand{\boldN}{{\mathbf N}}
+\newcommand{\boldB}{{\mathbf B}}
+\newcommand{\boldF}{{\mathbf F}}
+\newcommand{\boldS}{{\mathbf S}}
+\newcommand{\boldG}{{\mathbf G}}
+\newcommand{\boldK}{{\mathbf K}}
+\newcommand{\boldL}{{\mathbf L}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\NS}{null}
+\DeclareMathOperator{\RS}{row}
+\DeclareMathOperator{\CS}{col}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\mdeg}{mdeg}
+\DeclareMathOperator{\Lt}{Lt}
+\DeclareMathOperator{\Lc}{Lc}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\diver}{div}
+\DeclareMathOperator{\flux}{flux}
+\def\Gal{\operatorname{Gal}}
+\def\ord{\operatorname{ord}}
+\def\ML{\operatorname{M}}
+\def\GL{\operatorname{GL}}
+\def\PGL{\operatorname{PGL}}
+\def\SL{\operatorname{SL}}
+\def\PSL{\operatorname{PSL}}
+\def\GSp{\operatorname{GSp}}
+\def\PGSp{\operatorname{PGSp}}
+\def\Sp{\operatorname{Sp}}
+\def\PSp{\operatorname{PSp}}
+\def\Aut{\operatorname{Aut}}
+\def\Inn{\operatorname{Inn}}
+\def\Hom{\operatorname{Hom}}
+\def\End{\operatorname{End}}
+\def\ch{\operatorname{char}}
+\def\Zp{\Z/p\Z}
+\def\Zm{\Z/m\Z}
+\def\Zn{\Z/n\Z}
+\def\Fp{\F_p}
+\newcommand{\surjects}{\twoheadrightarrow}
+\newcommand{\injects}{\hookrightarrow}
+\newcommand{\bijects}{\leftrightarrow}
+\newcommand{\isomto}{\overset{\sim}{\rightarrow}}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil#1\right\rceil}
+\newcommand{\mclass}[2][m]{[#2]_{#1}}
+\newcommand{\val}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\abs}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\valuation}[2][]{\left\lvert #2\right\rvert_{#1}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\anpoly}{a_nx^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\anmonic}{x^n+a_{n-1}x^{n-1}\cdots +a_1x+a_0}
+\newcommand{\bmpoly}{b_mx^m+b_{m-1}x^{m-1}\cdots +b_1x+b_0}
+\newcommand{\bnpoly}{b_nx^n+b_{n-1}x^{n-1}\cdots +b_1x+b_0}
+\newcommand{\pder}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\normalin}{\trianglelefteq}
+\newcommand{\angvec}[1]{\langle #1\rangle}
+\newcommand{\varpoly}[2]{#1_{#2}x^{#2}+#1_{#2-1}x^{#2-1}\cdots +#1_1x+#1_0}
+\newcommand{\varpower}[1][a]{#1_0+#1_1x+#1_1x^2+\cdots}
+\newcommand{\limasto}[2][x]{\lim_{#1\rightarrow #2}}
+\def\ntoinfty{\lim_{n\rightarrow\infty}}
+\def\xtoinfty{\lim_{x\rightarrow\infty}}
+\def\ii{\item}
+\def\bb{\begin{enumerate}}
+\def\ee{\end{enumerate}}
+\def\ds{\displaystyle}
+\def\p{\partial}
+\newcommand{\abcdmatrix}[4]{\begin{bmatrix}#1\amp #2\\ #3\amp #4 \end{bmatrix}
+}
+\newenvironment{amatrix}[1][ccc|c]{\left[\begin{array}{#1}}{\end{array}\right]}
+\newenvironment{linsys}[2][m]{
+\begin{array}[#1]{*{#2}{rc}c}
+}{
+\end{array}}
+\newcommand{\eqsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+a_{m,1}x_{1}\amp +\amp a_{m,2}x_{2}\amp +\,\cdots\,+\amp a_{m,n}x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\numeqsys}{\begin{array}{rrcrcrcr}
+e_1:\amp  a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp b_1\\
+e_2: \amp a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp b_2\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp  \\
+e_m: \amp a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp b_m
+\end{array}
+}
+\newcommand{\homsys}{\begin{array}{rcrcrcr}
+a_{1,1}\,x_{1}\amp +\amp a_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  a_{1,n}\,x_{n}\amp =\amp 0\\
+a_{2,1}\,x_{1}\amp +\amp a_{2,2}\,x_{2}\amp +\,\cdots\,+\amp a_{2,n}\,x_{n}\amp =\amp 0\\
+\amp \vdots\amp   \amp \vdots \amp  \amp \vdots \amp \\
+a_{m,1}\,x_{1}\amp +\amp a_{m,2}\,x_{2}\amp +\,\cdots\,+\amp a_{m,n}\,x_{n}\amp =\amp 0
+\end{array}
+}
+\newcommand{\vareqsys}[4]{
+\begin{array}{ccccccc}
+#3_{1,1}\,x_{1}\amp +\amp #3_{1,2}\,x_{2}\amp +\,\cdots\,+\amp  #3_{1,#2}\,x_{#2}\amp =\amp #4_1\\
+#3_{2,1}\,x_{1}\amp +\amp #3_{2,2}\,x_{2}\amp +\,\cdots\,+\amp #3_{2,#2}\,x_{#2}\amp =\amp #4_2\\
+\vdots \amp \amp \vdots \amp  \amp \vdots \ amp =\amp  \\
+#3_{#1, 1}\,x_{1}\amp +\amp #3_{#1, 2}\,x_{2}\amp +\,\cdots\,+\amp #3_{#1, #2}\,x_{#2}\amp =\amp #4_{#1}
+\end{array}
+}
+\newcommand{\genmatrix}[1][a]{
+\begin{bmatrix}
+#1_{1,1} \amp  #1_{1,2} \amp  \cdots \amp  #1_{1,n} \\
+#1_{2,1} \amp  #1_{2,2} \amp  \cdots \amp  #1_{2,n} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#1_{m,1} \amp  #1_{m,2} \amp  \cdots \amp  #1_{m,n}
+\end{bmatrix}
+}
+\newcommand{\varmatrix}[3]{
+\begin{bmatrix}
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}
+\end{bmatrix}
+}
+\newcommand{\augmatrix}{
+\begin{amatrix}[cccc|c]
+a_{1,1} \amp  a_{1,2} \amp  \cdots \amp  a_{1,n} \amp b_{1}\\
+a_{2,1} \amp  a_{2,2} \amp  \cdots \amp  a_{2,n} \amp b_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
+\end{amatrix}
+}
+\newcommand{\varaugmatrix}[4]{
+\begin{amatrix}[cccc|c]
+#3_{1,1} \amp  #3_{1,2} \amp  \cdots \amp  #3_{1,#2} \amp #4_{1}\\
+#3_{2,1} \amp  #3_{2,2} \amp  \cdots \amp  #3_{2,#2} \amp #4_{2}\\
+\vdots  \amp  \vdots  \amp  \ddots \amp  \vdots  \amp \vdots\\
+#3_{#1,1} \amp  #3_{#1,2} \amp  \cdots \amp  #3_{#1,#2}\amp #4_{#1}
+\end{amatrix}
+}
+\newcommand{\spaceforemptycolumn}{\makebox[\wd\boxofmathplus]{\ }}
+
+\newcommand{\generalmatrix}[3]{
+\left(
+\begin{array}{cccc}
+#1_{1,1}  \amp #1_{1,2}  \amp \ldots  \amp #1_{1,#2}  \\
+#1_{2,1}  \amp #1_{2,2}  \amp \ldots  \amp #1_{2,#2}  \\
+\amp \vdots                         \\
+#1_{#3,1} \amp #1_{#3,2} \amp \ldots  \amp #1_{#3,#2}
+\end{array}
+\right)  }
+\newcommand{\colvec}[2][c]{\begin{amatrix}[#1] #2 \end{amatrix}}
+\newcommand{\rowvec}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\DeclareMathOperator{\size}{size}
+\DeclareMathOperator{\adjoint}{adj}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\restrictionmap}[2]{{#1}\mathpunct\upharpoonright\hbox{}_{#2}}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\proj}[2]{\mbox{proj}_{#2}({#1}) }
+\renewcommand{\Re}{\operatorname{Re}}
+ \renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2 focused" data-preexpanded-levels="0" data-max-levels="2"><ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-frontmatter"><div class="toc-title-box"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div></li>
+<li class="toc-item toc-chapter">
+<div class="toc-title-box"><a href="c_foundations.html" class="internal"><span class="codenumber">0</span> <span class="title">Foundations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_sets_tuples.html" class="internal"><span class="codenumber">0.1</span> <span class="title">Sets and tuples</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#s_sets" class="internal"><span class="codenumber">0.1.1</span> <span class="title">Sets</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_sets_tuples.html#ss_tuples" class="internal"><span class="codenumber">0.1.2</span> <span class="title">Tuples</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_functions.html" class="internal"><span class="codenumber">0.2</span> <span class="title">Functions</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_functions_definitions" class="internal"><span class="codenumber">0.2.1</span> <span class="title">Definition and notation</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_functions.html#ss_function_image_properties" class="internal"><span class="codenumber">0.2.2</span> <span class="title">Function image, injections, surjections, bijections</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_logic.html" class="internal"><span class="codenumber">0.3</span> <span class="title">Logic</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_propositional_calculus" class="internal"><span class="codenumber">0.3.1</span> <span class="title">Propositional logic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_logic.html#ss_predicate_logic" class="internal"><span class="codenumber">0.3.2</span> <span class="title">Predicate logic</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_proof_technique.html" class="internal"><span class="codenumber">0.4</span> <span class="title">Proof techniques</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_logical_structure" class="internal"><span class="codenumber">0.4.1</span> <span class="title">Logical structure</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_implication" class="internal"><span class="title">Implication</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_disjunction" class="internal"><span class="title">Disjunction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_equivalence" class="internal"><span class="title">Equivalence</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_logical_chains" class="internal"><span class="title">Chains of implications/equivalences</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_proof_by_contradiction" class="internal"><span class="title">Proof by contradiction</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_Equalities" class="internal"><span class="codenumber">0.4.2</span> <span class="title">Equalities</span></a></div>
+<ul class="structural toc-item-list"><li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_chain_equalities" class="internal"><span class="title">Chain of equalities</span></a></div></li></ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_set_properties" class="internal"><span class="codenumber">0.4.3</span> <span class="title">Basic set properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_inclusion" class="internal"><span class="title">Set inclusion</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_set_equality" class="internal"><span class="title">Set equality</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_function_properties" class="internal"><span class="codenumber">0.4.4</span> <span class="title">Basic function properties</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_function_equality" class="internal"><span class="title">Function equality</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_injective_surjective_bijective" class="internal"><span class="title">Injective, surjective, bijective</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-subsection">
+<div class="toc-title-box"><a href="s_proof_technique.html#ss_mathematical_induction" class="internal"><span class="codenumber">0.4.5</span> <span class="title">Mathematical induction</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_weak_induction" class="internal"><span class="title">Proof by induction</span></a></div></li>
+<li class="toc-item toc-subsubsection"><div class="toc-title-box"><a href="s_proof_technique.html#sss_strong_induction" class="internal"><span class="title">Proof by strong induction</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-chapter contains-active">
+<div class="toc-title-box"><a href="c_291-1.html" class="internal"><span class="codenumber">1</span> <span class="title">Math 291-1</span></a></div>
+<ul class="structural toc-item-list contains-active">
+<li class="toc-item toc-section"><div class="toc-title-box"><a href="s_natural_numbers.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Natural numbers: Peano axioms</span></a></div></li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_reals_integers_rationals.html" class="internal"><span class="codenumber">1.2</span> <span class="title">Reals, rationals, fields</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_reals" class="internal"><span class="codenumber">1.2.1</span> <span class="title">Real numbers</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_reals_integers_rationals.html#ss_fields" class="internal"><span class="codenumber">1.2.2</span> <span class="title">Fields</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_complex.html" class="internal"><span class="codenumber">1.3</span> <span class="title">Complex numbers</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_complex_def" class="internal"><span class="codenumber">1.3.1</span> <span class="title">Complex arithmetic</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_modulus_conjugation" class="internal"><span class="codenumber">1.3.2</span> <span class="title">Further complex operations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_complex.html#ss_geometry_complex" class="internal"><span class="codenumber">1.3.3</span> <span class="title">Geometry of <span class="process-math">\(\C\)</span> and polar form</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_vector_space.html" class="internal"><span class="codenumber">1.4</span> <span class="title">Vector spaces</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_vector_space.html#ss_vector_space" class="internal"><span class="codenumber">1.4.1</span> <span class="title">Definition and first examples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_vector_space.html#ss_vector_space_props" class="internal"><span class="codenumber">1.4.2</span> <span class="title">Vector space properties</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_ntuples.html" class="internal"><span class="codenumber">1.5</span> <span class="title">Vector space of <span class="process-math">\(n\)</span>-tuples</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_ntuples.html#ss_ntuples" class="internal"><span class="codenumber">1.5.1</span> <span class="title"><span class="process-math">\(n\)</span>-tuples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_ntuples.html#ss_Rn_visual" class="internal"><span class="codenumber">1.5.2</span> <span class="title">Visualizing <span class="process-math">\(\R^n\)</span></span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_span_ind.html" class="internal"><span class="codenumber">1.6</span> <span class="title">Span and linear independence</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_span_ind.html#ss_span" class="internal"><span class="codenumber">1.6.1</span> <span class="title">Span</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_span_ind.html#ss_lin_ind" class="internal"><span class="codenumber">1.6.2</span> <span class="title">Linear independence</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_systems.html" class="internal"><span class="codenumber">1.7</span> <span class="title">Systems of linear equations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_linear_equations" class="internal"><span class="codenumber">1.7.1</span> <span class="title">Systems of linear equations</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_systems.html#ss_row_equivalence" class="internal"><span class="codenumber">1.7.2</span> <span class="title">Row operations</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_linsys_solve.html" class="internal"><span class="codenumber">1.8</span> <span class="title">Solving linear systems</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_linsys_solve.html#ss_ge_row_echelon" class="internal"><span class="codenumber">1.8.1</span> <span class="title">Row echelon matrices</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_linsys_solve.html#ss_gaussian_elimination" class="internal"><span class="codenumber">1.8.2</span> <span class="title">Gaussian elimination</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_linsys_solve.html#s_linsys_solve-5" class="internal"><span class="codenumber">1.8.3</span> <span class="title">Model example</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_linsys_solve.html#ss_workingExample" class="internal"><span class="codenumber">1.8.4</span> <span class="title">Model example continued</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_linsys_solve.html#ss_solveSystem" class="internal"><span class="codenumber">1.8.5</span> <span class="title">General method for solving linear systems</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_linsys_solve.html#s_linsys_solve-8" class="internal"><span class="codenumber">1.8.6</span> <span class="title">Vector parametrization description</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_linsys_solve.html#ss_solve_span_ind" class="internal"><span class="codenumber">1.8.7</span> <span class="title">Application to span and linear independence</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_matrix.html" class="internal"><span class="codenumber">1.9</span> <span class="title">Matrix arithmetic</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_attributes" class="internal"><span class="codenumber">1.9.1</span> <span class="title">The basics</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_mult" class="internal"><span class="codenumber">1.9.2</span> <span class="title">Matrix multiplication</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_column_row_method" class="internal"><span class="codenumber">1.9.3</span> <span class="title">Alternative methods of multiplication</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#s_matrix-6" class="internal"><span class="codenumber">1.9.4</span> <span class="title">Transpose of a matrix</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix.html#ss_matrix_ww" class="internal"><span class="codenumber">1.9.5</span> <span class="title">WeBWork Exercises</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_matrix.html#s_matrix_ex" class="internal"><span class="codenumber">1.9.6</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_matrix_algebra.html" class="internal"><span class="codenumber">1.10</span> <span class="title">Matrix algebra</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix_algebra.html#ss_matrix_mult_props" class="internal"><span class="codenumber">1.10.1</span> <span class="title">Matrix multiplication properties</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix_algebra.html#ss_cancellation" class="internal"><span class="codenumber">1.10.2</span> <span class="title">Cancellation laws fulfilled and violated</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix_algebra.html#ss_transpose_props" class="internal"><span class="codenumber">1.10.3</span> <span class="title">Transpostition properties</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_matrix_algebra.html#ss_matrix_algebra_ww" class="internal"><span class="codenumber">1.10.4</span> <span class="title">WeBWork Exercises</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_matrix_algebra.html#s_matrix_algebra_ex" class="internal"><span class="codenumber">1.10.5</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertible_matrices.html" class="internal"><span class="codenumber">1.11</span> <span class="title">Invertible matrices</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#subsec-" class="internal"><span class="codenumber">1.11.1</span> <span class="title">Invertible matrices</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices-4" class="internal"><span class="codenumber">1.11.2</span> <span class="title">Powers of matrices, matrix polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#ss_elementary_matrix" class="internal"><span class="codenumber">1.11.3</span> <span class="title">Invertibility theorem</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertible_matrices.html#ss_systems_to_matrix_eqns" class="internal"><span class="codenumber">1.11.4</span> <span class="title">Interlude on matrix equations</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertible_matrices.html#s_invertible_matrices_ex" class="internal"><span class="codenumber">1.11.5</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_invertibility_theorem.html" class="internal"><span class="codenumber">1.12</span> <span class="title">The invertibility theorem</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_th" class="internal"><span class="codenumber">1.12.1</span> <span class="title">The invertibility theorem</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertibility_alg" class="internal"><span class="codenumber">1.12.2</span> <span class="title">Invertibility algorithms</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertible_loose_ends" class="internal"><span class="codenumber">1.12.3</span> <span class="title">Some theoretical loose ends</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_invertibility_theorem.html#ss_invertible_matrices_ww" class="internal"><span class="codenumber">1.12.4</span> <span class="title">WeBWork Exercises</span></a></div></li>
+<li class="toc-item toc-exercises"><div class="toc-title-box"><a href="s_invertibility_theorem.html#s_invertibility_theorem_ex" class="internal"><span class="codenumber">1.12.5</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section contains-active">
+<div class="toc-title-box"><a href="s_det.html" class="internal"><span class="codenumber">1.13</span> <span class="title">The determinant</span></a></div>
+<ul class="structural toc-item-list active">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_det" class="internal"><span class="codenumber">1.13.1</span> <span class="title">Definition of the determinant</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_det.html#ss_expansion_rows_columns" class="internal"><span class="codenumber">1.13.2</span> <span class="title">Expansion along rows and columns</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-item toc-backmatter">
+<div class="toc-title-box"><a href="my-great-book-6.html" class="internal"><span class="title">Backmatter</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-notation.html" class="internal"><span class="codenumber">A</span> <span class="title">Notation</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-exercises.html" class="internal"><span class="codenumber">B</span> <span class="title">Exercises</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-defs.html" class="internal"><span class="codenumber">C</span> <span class="title">Definitions</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-thms.html" class="internal"><span class="codenumber">D</span> <span class="title">Theory and procedures</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-egs.html" class="internal"><span class="codenumber">E</span> <span class="title">Examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-sage.html" class="internal"><span class="codenumber">F</span> <span class="title">Sage examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-figures.html" class="internal"><span class="codenumber">G</span> <span class="title">Figures and video examples</span></a></div></li>
+<li class="toc-item toc-appendix"><div class="toc-title-box"><a href="appendix-matnras.html" class="internal"><span class="codenumber">H</span> <span class="title">Mantras and fiats</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="s_det"><h2 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The determinant</span>
+</h2>
+<section class="introduction" id="s_det-2"><div class="para logical" id="s_det-2-1">
+<div class="para">The <em class="emphasis">determinant</em> is a function <span class="process-math">\(\det\colon \ML_{n,n}(F)\to F\)</span> that assigns to each matrix <span class="process-math">\(A\in \ML_{n,n}(F)\)</span> a scalar <span class="process-math">\(\det A\in F\text{.}\)</span> The definition given below of the determinant is far from intuitive, and we will do little to motivate it up front. Instead, we allow its various properties to speak for themselves by way of retroactive motivation. In particular, we will see that</div>
+<div class="displaymath process-math" id="s_det-2-1-5">
+\begin{equation*}
+A \text{ is invertible } \iff \det A \ne 0\text{,}
+\end{equation*}
+</div>
+<div class="para">making the determinant an important tool for investigating invertibility.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#s_det-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div></section><section class="subsection" id="ss_det"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Definition of the determinant</span>
+</h3>
+<div class="para" id="ss_det-2">Our definition of the determinant is a <em class="emphasis">recursive</em> one; given an <span class="process-math">\(n\times n\)</span> matrix <span class="process-math">\(A\)</span> its determinant is defined in terms of the determinant of certain <em class="emphasis">submatrices</em> of dimension <span class="process-math">\((n-1)\times (n-1)\text{.}\)</span> This necessitates some notation to help our discussion along.<div class="autopermalink" data-description="Paragraph"><a href="#ss_det-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_minors"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Submatrix notation.</span>
+</h4>
+<div class="para" id="d_minors-4-1">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(n\times n\)</span> matrix with <span class="process-math">\(n\geq 2\text{.}\)</span> Given <span class="process-math">\(1\leq i, j\leq n\text{,}\)</span> the <dfn class="terminology">submatrix of <span class="process-math">\(A\)</span></dfn> obtained by removing the <span class="process-math">\(i\)</span>-th row and <span class="process-math">\(j\)</span>-th column of <span class="process-math">\(A\)</span> is denoted <span class="process-math">\(A_{i, j}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_minors-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.13.1: Submatrix notation"><a href="#d_minors" title="Copy heading and permalink for Definition 1.13.1: Submatrix notation" aria-label="Copy heading and permalink for Definition 1.13.1: Submatrix notation">🔗</a></div></article><article class="warning remark-like" id="rm_minors"><h4 class="heading">
+<span class="type">Warning</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para" id="rm_minors-1">Do not conflate the submatrix notation <span class="process-math">\(A_{i,j}\)</span> with matrix entry notation <span class="process-math">\([A]_{i,j}\text{:}\)</span> the former returns the submatrix of <span class="process-math">\(A\)</span> obtained by deleting the <span class="process-math">\(i\)</span>-th row and <span class="process-math">\(j\)</span>-th column; the latter returns the <span class="process-math">\(i,j\)</span>-th entry of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#rm_minors-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Warning 1.13.2"><a href="#rm_minors" title="Copy heading and permalink for Warning 1.13.2" aria-label="Copy heading and permalink for Warning 1.13.2">🔗</a></div></article><article class="definition definition-like" id="d_det"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The determinant.</span>
+</h4>
+<div class="para logical" id="d_det-4-1">
+<div class="para">Let <span class="process-math">\(A=[a_{ij}]_{n\times n}\in \ML_{n,n}(F)\text{.}\)</span> The determinant is defined as follows:</div>
+<ul class="disc" id="d_det-4-1-2">
+<li id="d_det-4-1-2-1">
+<span class="heading li--heading"><span class="title li--heading-title">Base case: <span class="process-math">\(n=1\)</span>.</span></span><div class="para" id="d_det-4-1-2-1-2">When <span class="process-math">\(n=1\)</span> we have <span class="process-math">\(A=[a_{1,1}]\)</span> and we define <span class="process-math">\(\det A=a_{1,1}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_det-4-1-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Base case: n=1"><a href="#d_det-4-1-2-1" title="Copy heading and permalink for Item: Base case: n=1" aria-label="Copy heading and permalink for Item: Base case: n=1">🔗</a></div>
+</li>
+<li id="d_det-4-1-2-2">
+<span class="heading li--heading"><span class="title li--heading-title">Recursive case: <span class="process-math">\(n\geq 2 \)</span>.</span></span><div class="para logical" id="d_det-4-1-2-2-2">
+<div class="para">When <span class="process-math">\(n\geq 2\)</span> we define</div>
+<div class="displaymath process-math" id="d_det-4-1-2-2-2-2">
+\begin{align}
+\det A \amp = \sum_{j=1}^n(-1)^{1+j}a_{1,j}\det A_{1, j} \tag{1.13.1}\\
+\amp = a_{11}\det A_{1,1}-a_{1,2} A_{1,2}+\cdots +(-1)^{1+n}a_{1,n}\det A_{1, n}\text{.}\tag{1.13.2}
+\end{align}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_det-4-1-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Recursive case: n\geq 2 "><a href="#d_det-4-1-2-2" title="Copy heading and permalink for Item: Recursive case: n\geq 2 " aria-label="Copy heading and permalink for Item: Recursive case: n\geq 2 ">🔗</a></div>
+</li>
+</ul>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_det-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.13.3: The determinant"><a href="#d_det" title="Copy heading and permalink for Definition 1.13.3: The determinant" aria-label="Copy heading and permalink for Definition 1.13.3: The determinant">🔗</a></div></article><article class="remark remark-like" id="rm_det_small_cases"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Small <span class="process-math">\(n\)</span> cases.</span>
+</h4>
+<div class="para" id="rm_det_small_cases-2">Let’s look at determinant formulas for the <span class="process-math">\(n=2,3\)</span> cases. You may remember the formula for <span class="process-math">\(2\times 2\)</span> matrices from <a href="s_invertible_matrices.html#th_2by2_inverse" class="xref" data-knowl="./knowl/xref/th_2by2_inverse.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.11.6: Inverses of 2\times 2 matrices">Theorem 1.11.6</a>; we will make the connection more explicit in <a href="s_det.html#th_adjoint" class="xref" data-knowl="./knowl/xref/th_adjoint.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.13.17: Adjoint matrix formula">Theorem 1.13.17</a>.<div class="autopermalink" data-description="Paragraph"><a href="#rm_det_small_cases-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="rm_det_small_cases-3">
+<div class="para">Given <span class="process-math">\(A=\abcdmatrix{a}{b}{c}{d}\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="rm_det_small_cases-3-2">
+\begin{align*}
+\det A\amp = (-1)^{1+1}a\det A_{1,1}+(-1)^{1+2}b\det A_{1,2}\amp \text{(recursive case)}\\
+\amp =a\det [d]-b\det [c] \amp \text{(base case)}\\
+\amp =ad-bc \text{.}
+\end{align*}
+</div>
+<div class="para">The formula for the <span class="process-math">\(n=2\)</span> case is simple enough to serve as a “second base case”, allowing us to end the recursive process of computing a general <span class="process-math">\(n\times n\)</span> matrix once we get to expressions involving <span class="process-math">\(2\times 2\)</span> matrices.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#rm_det_small_cases-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="rm_det_small_cases-4">
+<div class="para">Given</div>
+<div class="displaymath process-math" id="rm_det_small_cases-4-1">
+\begin{equation*}
+A=\begin{amatrix}[ccc]a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i  \end{amatrix}\text{,}
+\end{equation*}
+</div>
+<div class="para">we have</div>
+<div class="displaymath process-math" id="rm_det_small_cases-4-2">
+\begin{align*}
+\det A \amp =a\det A_{1,1}-b\det A _{1,2}+c\det A_{1,3} \amp \text{(recursive case)}\\
+\amp =a\det \abcdmatrix{e}{f}{h}{i}-b\det\abcdmatrix{d}{f}{g}{i}+c\det\abcdmatrix{d}{e}{g}{h}\\
+\amp = a(ei-fh)-b(di-fg)+c(dh-eg) \amp \text{(\(n=2\) case)}\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#rm_det_small_cases-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.13.4: Small n cases"><a href="#rm_det_small_cases" title="Copy heading and permalink for Remark 1.13.4: Small n cases" aria-label="Copy heading and permalink for Remark 1.13.4: Small n cases">🔗</a></div></article><div class="para" id="ss_det-7">The recursive nature of the determinant definition makes induction arguments particularly useful when proving properties of the determinant, as illustrated by the next theorem.<div class="autopermalink" data-description="Paragraph"><a href="#ss_det-7" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="th_det_triangular"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Determinant of triangular matrices.</span>
+</h4>
+<div class="para logical" id="th_det_triangular-2-1">
+<div class="para">Let <span class="process-math">\(A=[a_{ij}]_{n\times n}\in \ML_{n\times n}(F)\)</span> be triangular (upper, lower, or diagonal). Then</div>
+<div class="displaymath process-math" id="th_det_triangular-2-1-2">
+\begin{equation*}
+\det A=a_{1,1}a_{2,2}\cdots a_{n,n}\text{.}
+\end{equation*}
+</div>
+<div class="para">In other words, the determinant of a triangular matrix is the product of its diagonal entries.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_triangular-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.13.5: Determinant of triangular matrices"><a href="#th_det_triangular" title="Copy heading and permalink for Theorem 1.13.5: Determinant of triangular matrices" aria-label="Copy heading and permalink for Theorem 1.13.5: Determinant of triangular matrices">🔗</a></div></article><details id="th_det_triangular-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_triangular-3-1">We only give the proof for lower triangular matrices; the proof in the upper triangular case is nearly identical.<div class="autopermalink" data-description="Paragraph"><a href="#th_det_triangular-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="th_det_triangular-3-2">For any <span class="process-math">\(n\geq 1\)</span> let <span class="process-math">\(P(n)\)</span> denote the proposition: “The determinant of any <span class="process-math">\(n\times n\)</span> lower triangular matrix is the product of its diagonal entries”. We prove by induction that <span class="process-math">\(P(n)\)</span> is true for all <span class="process-math">\(n\geq 1\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_triangular-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="case" id="th_det_triangular-3-3"><h5 class="heading">Base step: show <span class="process-math">\(P(1)\)</span> is true.</h5>
+<div class="para" id="th_det_triangular-3-3-2">In this case <span class="process-math">\(A=[a_{1,1}]\text{,}\)</span> and <span class="process-math">\(\det A=a_{1,1} \)</span> is indeed the product of the diagonal entries of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_triangular-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Base step: show P(1) is true"><a href="#th_det_triangular-3-3" title="Copy heading and permalink for Case: Base step: show P(1) is true" aria-label="Copy heading and permalink for Case: Base step: show P(1) is true">🔗</a></div></article><article class="case" id="th_det_triangular-3-4"><h5 class="heading">Induction step: show <span class="process-math">\(P(n)\implies P(n+1)\)</span> for all <span class="process-math">\(n\geq 1\)</span>.</h5>
+<div class="para logical" id="th_det_triangular-3-4-2">
+<div class="para">Let <span class="process-math">\(A=[a_{ij}]_{(n+1)\times (n+1)}\)</span> be a lower triangular matrix. Then <span class="process-math">\(a_{1j}=0\)</span> for all <span class="process-math">\(j\geq 2\text{,}\)</span> and hence the determinant of <span class="process-math">\(A\)</span> is given by</div>
+<div class="displaymath process-math" id="th_det_triangular-3-4-2-5">
+\begin{equation*}
+\det A=a_{1,1}\det  A_{1,1}\text{.}
+\end{equation*}
+</div>
+<div class="para">Claim: <span class="process-math">\(A_{i  k}\)</span> is lower triangular. Indeed, first observe that we have</div>
+<div class="displaymath process-math" id="th_det_triangular-3-4-2-7">
+\begin{equation*}
+( A_{11})_{ij}=a_{i+1,j+1}
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(1\leq i,j\leq n\text{;}\)</span> by deleting the first row and first column we effectively bump each index up by one. Since <span class="process-math">\(A\)</span> is lower triangular we have  <span class="process-math">\(a_{ij}=0\)</span> for all <span class="process-math">\(1\leq i \lt; j\leq n+1\text{,}\)</span> and hence also</div>
+<div class="displaymath process-math" id="th_det_triangular-3-4-2-12">
+\begin{equation*}
+( A_{1,1})_{i,j}=a_{i+1,j+1}=0
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(1\leq i &lt; j\leq n \text{,}\)</span> proving the claim.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_triangular-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="th_det_triangular-3-4-3">
+<div class="para">Lastly, assuming <span class="process-math">\(P(n)\)</span> is true (the induction hypothesis) we have</div>
+<div class="displaymath process-math" id="th_det_triangular-3-4-3-2">
+\begin{align*}
+\det A \amp=a_{1,1}\det A_{1,1} \\
+\amp =a_{1,1}(a_{2,2}a_{3,3}\cdots a_{n+1,n+1})\amp \text{(induction)} \\
+\amp =a_{1,1}a_{2,2}\cdots a_{n+1,n+1} \text{,}
+\end{align*}
+</div>
+<div class="para">as desired.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_triangular-3-4-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Induction step: show P(n)\implies P(n+1) for all n\geq 1"><a href="#th_det_triangular-3-4" title="Copy heading and permalink for Case: Induction step: show P(n)\implies P(n+1) for all n\geq 1" aria-label="Copy heading and permalink for Case: Induction step: show P(n)\implies P(n+1) for all n\geq 1">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.13.5.1"><a href="#th_det_triangular-3" title="Copy heading and permalink for Proof 1.13.5.1" aria-label="Copy heading and permalink for Proof 1.13.5.1">🔗</a></div></article></details><article class="corollary theorem-like" id="cor_det_identity"><h4 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Determinant of identity matrices.</span>
+</h4>
+<div class="para" id="cor_det_identity-2-1">We have <span class="process-math">\(\det I_n=1\)</span> for all positive integers <span class="process-math">\(n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#cor_det_identity-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Corollary 1.13.6: Determinant of identity matrices"><a href="#cor_det_identity" title="Copy heading and permalink for Corollary 1.13.6: Determinant of identity matrices" aria-label="Copy heading and permalink for Corollary 1.13.6: Determinant of identity matrices">🔗</a></div></article><details id="cor_det_identity-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="cor_det_identity-3-1">This follows directly from <a href="s_det.html#th_det_triangular" class="xref" data-knowl="./knowl/xref/th_det_triangular.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.13.5: Determinant of triangular matrices">Theorem 1.13.5</a> since the diagonal entries of <span class="process-math">\(I\)</span> are all ones.<div class="autopermalink" data-description="Paragraph"><a href="#cor_det_identity-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.13.6.1"><a href="#cor_det_identity-3" title="Copy heading and permalink for Proof 1.13.6.1" aria-label="Copy heading and permalink for Proof 1.13.6.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.13.1: Definition of the determinant"><a href="#ss_det" title="Copy heading and permalink for Subsection 1.13.1: Definition of the determinant" aria-label="Copy heading and permalink for Subsection 1.13.1: Definition of the determinant">🔗</a></div></section><section class="subsection" id="ss_expansion_rows_columns"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Expansion along rows and columns</span>
+</h3>
+<div class="para" id="ss_expansion_rows_columns-2">Morally speaking, we should give some examples of higher-dimensional determinants, but we first introduce some theory that affords us more leeway in our computations.<div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_minors_expansions"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Minors and expansions along rows/columns.</span>
+</h4>
+<div class="para logical" id="d_minors_expansions-5-1">
+<div class="para">Given <span class="process-math">\(A\in \ML_{n,n}(F)\text{,}\)</span> for any pair <span class="process-math">\(1\leq i,j\leq n\)</span> the <dfn class="terminology"><span class="process-math">\(i,j\)</span>-th minor of <span class="process-math">\(A\)</span></dfn> is defined as</div>
+<div class="displaymath process-math" id="d_minors_expansions-5-1-4">
+\begin{equation*}
+M_{i,j}=\det A_{i,j}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_minors_expansions-5-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="d_minors_expansions-5-2">
+<div class="para">For any <span class="process-math">\(1\leq i\leq n\)</span> the expression</div>
+<div class="displaymath process-math" id="d_minors_expansions-5-2-2">
+\begin{equation*}
+\sum_{k=1}^n(-1)^{i+k}a_{i,k}M_{i,k}
+\end{equation*}
+</div>
+<div class="para">is called the <dfn class="terminology">expansion along the <span class="process-math">\(i\)</span>-th row of <span class="process-math">\(A\)</span></dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_minors_expansions-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="d_minors_expansions-5-3">
+<div class="para">For any <span class="process-math">\(1\leq j\leq n\text{,}\)</span> the expression</div>
+<div class="displaymath process-math" id="d_minors_expansions-5-3-2">
+\begin{equation*}
+\sum_{k=1}^n(-1)^{k+j}a_{k,j}M_{k,j}
+\end{equation*}
+</div>
+<div class="para">is called the <dfn class="terminology">expansion along the <span class="process-math">\(j\)</span>-th column of <span class="process-math">\(A\)</span></dfn>.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_minors_expansions-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.13.7: Minors and expansions along rows/columns"><a href="#d_minors_expansions" title="Copy heading and permalink for Definition 1.13.7: Minors and expansions along rows/columns" aria-label="Copy heading and permalink for Definition 1.13.7: Minors and expansions along rows/columns">🔗</a></div></article><article class="theorem theorem-like" id="th_expansion_row"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Expansion along rows.</span>
+</h4>
+<div class="para logical" id="th_expansion_row-2-1">
+<div class="para">Let <span class="process-math">\(A=[a_{ij}]_{n\times n}\in \ML_{n,n}(F)\text{.}\)</span> For any <span class="process-math">\(1\leq i\leq n\)</span> we have</div>
+<div class="displaymath process-math" id="th_expansion_row-2-1-3">
+\begin{equation*}
+\det A=  \sum_{k=1}^n(-1)^{i+k}a_{i,k}M_{i,k}\text{.}
+\end{equation*}
+</div>
+<div class="para">In other words, we can compute <span class="process-math">\(\det A\)</span> by expanding along any row of <span class="process-math">\(A\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_expansion_row-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.13.8: Expansion along rows"><a href="#th_expansion_row" title="Copy heading and permalink for Theorem 1.13.8: Expansion along rows" aria-label="Copy heading and permalink for Theorem 1.13.8: Expansion along rows">🔗</a></div></article><details id="th_expansion_row-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_expansion_row-3-1">The proof is by induction on the size <span class="process-math">\(n\)</span> of the matrix.<div class="autopermalink" data-description="Paragraph"><a href="#th_expansion_row-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="case" id="th_expansion_row-3-2"><h5 class="heading">Base step: <span class="process-math">\(n=1, 2\)</span>.</h5>
+<div class="para logical" id="th_expansion_row-3-2-2">
+<div class="para">For <span class="process-math">\(n=1\)</span> there is nothing to prove. Given</div>
+<div class="displaymath process-math" id="th_expansion_row-3-2-2-2">
+\begin{equation*}
+A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">expanding along either row yields <span class="process-math">\(ad-bc\text{,}\)</span> as one easily verifies.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_expansion_row-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Base step: n=1, 2"><a href="#th_expansion_row-3-2" title="Copy heading and permalink for Case: Base step: n=1, 2" aria-label="Copy heading and permalink for Case: Base step: n=1, 2">🔗</a></div></article><article class="case" id="th_expansion_row-3-3"><h5 class="heading">Induction step.</h5>
+<div class="para logical" id="th_expansion_row-3-3-2">
+<div class="para">Assume the claim is true of any <span class="process-math">\((n-1)\times (n-1)\)</span> matrix.  Given <span class="process-math">\(A=[a_{i,j}]_{n\times n}\)</span> we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="eq_det_def">
+\begin{equation}
+\det A=\sum_{j=1}^n (-1)^{1+j}a_{1, j}\det  A_{1,j}\text{.}\tag{1.13.3}
+\end{equation}
+</div>
+<div class="para">Expanding along the <span class="process-math">\(i\)</span>-th row of <span class="process-math">\(A\)</span> for any <span class="process-math">\(2\leq i\leq n\text{,}\)</span> on the other hand, we get</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="eq_det_expansion">
+\begin{equation}
+\sum_{k=1}^n (-1)^{i+k}a_{i,k}\det A_{i, k}\text{.}\tag{1.13.4}
+\end{equation}
+</div>
+<div class="para">To show these two expressions are equal we use the induction hypothesis to compute each <span class="process-math">\(\det  A_{1 , j}\)</span> by expanding along its <span class="process-math">\((i-1)\)</span>-th row:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="eq_det_submatrix">
+\begin{equation}
+\det  A_{1,j}=\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1,j}]_{i-1, k}\det {( A_{1,j})}_{i-1,k}\text{.}\tag{1.13.5}
+\end{equation}
+</div>
+<div class="para">The matrix <span class="process-math">\((A_{1,j})_{i-1,k}\)</span> is the result of first deleting row 1 and column <span class="process-math">\(j\)</span> from <span class="process-math">\(A\text{,}\)</span> and then deleting row <span class="process-math">\((i-1)\)</span> and column <span class="process-math">\(k\)</span> of the resulting matrix.  To deal with such iterated submatrices, we make some simple observations relating the rows and columns of <span class="process-math">\(A_{1,j}\)</span> and <span class="process-math">\(A_{i ,k}\)</span> with those of <span class="process-math">\(A\text{.}\)</span>
+</div>
+<ul class="disc" id="th_expansion_row-3-3-2-19">
+<li id="th_expansion_row-3-3-2-19-1">
+<div class="para" id="th_expansion_row-3-3-2-19-1-1">The <span class="process-math">\((i-1)\)</span>-th row of <span class="process-math">\(A_{1,j}\)</span> corresponds to the <span class="process-math">\(i\)</span>-th row of <span class="process-math">\(A\text{,}\)</span> and the first row of <span class="process-math">\(A_{i, k}\)</span> corresponds to the first row of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_expansion_row-3-3-2-19-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#th_expansion_row-3-3-2-19-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="th_expansion_row-3-3-2-19-2">
+<div class="para" id="th_expansion_row-3-3-2-19-2-1">If <span class="process-math">\(k&lt;  j\text{,}\)</span> then the <span class="process-math">\(k\)</span>-th column of <span class="process-math">\(A_{1 , j}\)</span> corresponds to the <span class="process-math">\(k\)</span>-th column of <span class="process-math">\(A\text{;}\)</span> if <span class="process-math">\(k\geq j\text{,}\)</span> then the <span class="process-math">\(k\)</span>-th column of <span class="process-math">\(A_{1 , j}\)</span> corresponds to the <span class="process-math">\((k+1)\)</span>-th column of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_expansion_row-3-3-2-19-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#th_expansion_row-3-3-2-19-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+<li id="th_expansion_row-3-3-2-19-3">
+<div class="para" id="th_expansion_row-3-3-2-19-3-1">If <span class="process-math">\(j&lt; k\text{,}\)</span> then the <span class="process-math">\(j\)</span>-th column of <span class="process-math">\(A_{i,k}\)</span> corresponds to the <span class="process-math">\(j\)</span>-th column of <span class="process-math">\(A\text{;}\)</span> if <span class="process-math">\(j\geq k\text{,}\)</span> then the <span class="process-math">\(j\)</span>-th column of <span class="process-math">\(A_{i,k}\)</span> corresponds to the <span class="process-math">\((j+1)\)</span>-th column of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_expansion_row-3-3-2-19-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item"><a href="#th_expansion_row-3-3-2-19-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+</li>
+</ul>
+<div class="para">From these observations we derive the following table of formulas:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="th_expansion_row-3-3-2-20">
+\begin{align}
+[ A_{1j}]_{(i-1)  k} \amp =\begin{cases}
+a_{i  k} \amp \text{if } k\lt j\\
+a_{i  (k+1)}  \amp \text{if } k\geq j
+\end{cases} \tag{1.13.6}\\
+[ A_{i , k}]_{1 , j} \amp =\begin{cases}
+a_{1 , j}  \amp \text{if } j\lt k\\
+a_{1 ,j+1} \amp \text{if } k\leq j
+\end{cases} \tag{1.13.7}\\
+{( A_{1,j})}_{i-1 , k}\amp=\begin{cases}
+{( A_{i , k})}_{1 ,j-1} \amp\text{if } k\lt j \\
+{( A_{i , k+1})}_{1 , j} \amp \text{if } k\geq j
+\text{.}\end{cases}\tag{1.13.8}
+\end{align}
+</div>
+<div class="para">We now begin to unpack <a href="s_det.html#eq_det_def" class="xref" data-knowl="./knowl/xref/eq_det_def.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.13.3">(1.13.3)</a>:</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_det_def.html ./knowl/xref/eq_det_submatrix.html ./knowl/xref/eq_entry_formula_1.html ./knowl/xref/eq_iterated_submatrix.html" id="th_expansion_row-3-3-2-22">
+\begin{align*}
+\det A \amp= \sum_{j=1}^n (-1)^{1+j}a_{1, j}\det  A_{1j}\\
+\amp = \sum_{j=1}^n (-1)^{1+j}a_{1, j}\sum_{k=1}^{n-1}(-1)^{i-1+k}[ A_{1,j}]_{i-1,k}\det {( A_{1,j})}_{i-1,k} \amp \knowl{./knowl/xref/eq_det_submatrix.html}{\text{(1.13.5)}}\\
+\amp
+= \underset{k&lt; j \text{ terms}}{\underbrace{\sum_{j=2}^n \sum_{k=1}^{j-1}(-1)^{i+j+k}a_{1 ,j}a_{i , k}\det (A_{i , k})_{1  ,j-1}}}\\
+\amp +\underset{k\geq j \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j}^{n-1}(-1)^{i+j+k}a_{1 ,j}a_{i ,k+1}\det (A_{i , k+1})_{1 , j}}}
+\amp \knowl{./knowl/xref/eq_entry_formula_1.html}{\text{(1.13.6)}}, \knowl{./knowl/xref/eq_iterated_submatrix.html}{\text{(1.13.8)}} \\
+\amp = \underset{j\geq k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i , k}[A_{i,k}]_{1,j}\det (A_{i  ,k})_{1 , j}}}\\
+\amp +\underset{j\lt k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k-1}a_{i,k}[A_{i,k}]_{1 ,j}\det (A_{i,k})_{1 , j}}}
+\amp (\text{re-labeled } j=j-1, k=k+1)\\
+\amp = \underset{j\geq k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=1}^{j}(-1)^{i+j+k+1}a_{i , k}[A_{i,k}]_{1j}\det (A_{i , k})_{1 , j}}}\\
+\amp +\underset{j\lt k \text{ terms}}{\underbrace{\sum_{j=1}^{n-1} \sum_{k=j+1}^{n}(-1)^{i+j+k+1}a_{i,k}[A_{i,k}]_{1 ,j}\det (A_{i,k})_{1 , j}}}
+\amp ((-1)^{c+2}=(-1)^c)\\
+\amp =\sum_{k=1}^{n}(-1)^{i+k}a_{i,k}\sum_{j=1}^{n-1}(-1)^{j+1}[A_{i,k}]_{1,j}\det (A_{i,k})_{1j}
+\amp (\text{re-order terms})\\
+\amp =\sum_{k=1}^{n}(-1)^{i+k}a_{i,k}\det A_{i,k} \text{.}
+\end{align*}
+</div>
+<div class="para">This completes the induction step, and thus the proof is finished.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_expansion_row-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Induction step"><a href="#th_expansion_row-3-3" title="Copy heading and permalink for Case: Induction step" aria-label="Copy heading and permalink for Case: Induction step">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.13.8.1"><a href="#th_expansion_row-3" title="Copy heading and permalink for Proof 1.13.8.1" aria-label="Copy heading and permalink for Proof 1.13.8.1">🔗</a></div></article></details><div class="para" id="ss_expansion_rows_columns-5">Surprisingly, it turns out that we can compute the determinant of a matrix by expanding along any <em class="emphasis">column</em> (<a href="s_det.html#cor_expansion_columns" class="xref" data-knowl="./knowl/xref/cor_expansion_columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.13.10: Expansion along columns">Corollary 1.13.10</a>). This is a consequence of the following theorem, which is useful in its own right. The proof below is taken from Robert Beezer’s <a class="external" href="http://linear.ups.edu/fcla" target="_blank"><em class="emphasis">A First Course in Linear Algebra</em></a>. (See <a class="external" href="http://linear.ups.edu/fcla/section-DM.html#theorem-DT" target="_blank">Theorem DT</a>.) It uses induction and a wonderful trick starting from the observation that <span class="process-math">\(c=\frac{1}{n}\sum_{i=1}^n c\)</span> for any <span class="process-math">\(c\in\R\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="th_det_transpose"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Determinant and transposition.</span>
+</h4>
+<div class="para logical" id="th_det_transpose-2-1">
+<div class="para">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(n\times n\)</span> matrix. Then</div>
+<div class="displaymath process-math" id="th_det_transpose-2-1-3">
+\begin{equation*}
+\det A^T=\det A\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_transpose-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.13.9: Determinant and transposition"><a href="#th_det_transpose" title="Copy heading and permalink for Theorem 1.13.9: Determinant and transposition" aria-label="Copy heading and permalink for Theorem 1.13.9: Determinant and transposition">🔗</a></div></article><details id="th_det_transpose-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_transpose-3-1">The proof is by induction on <span class="process-math">\(n\text{.}\)</span> The base case (<span class="process-math">\(n=1\)</span>) is trivial since <span class="process-math">\([a]^T=[a]\)</span> for any <span class="process-math">\(1\times 1\)</span> matrix <span class="process-math">\([a]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_transpose-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="th_det_transpose-3-2">
+<div class="para">For induction we assume that for all <span class="process-math">\(n\geq 2\)</span> we have <span class="process-math">\(\det B^T=\det B\)</span> for any <span class="process-math">\((n-1)\times (n-1)\)</span> matrix. Suppose <span class="process-math">\(A\)</span> is an <span class="process-math">\(n\times n\)</span> matrix. We have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_expansion_row.html ./knowl/xref/th_expansion_row.html" id="th_det_transpose-3-2-6">
+\begin{align*}
+\det A^T \amp = \frac{1}{n}\sum_{i=1}^{n}\det A^T \\
+\amp =\frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A^T]_{ij}\det \left((A^T)_{i,j}\right) \amp (\knowl{./knowl/xref/th_expansion_row.html}{\text{Theorem 1.13.8}}) \\
+\amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{j,i}\det (A_{j,i})^T \amp ([A^T]_{i,j}=A_{ji}, (A^T)_{i,j}=(A_{j,i})^T)\\
+\amp = \frac{1}{n}\sum_{i=1}^n\sum_{j=1}^n(-1)^{i+j}[A]_{j,i}\det A_{j,i} \amp (\det (A_{j,i})^T=\det A_{j,i}, \text{ by induction})\\
+\amp= \frac{1}{n}\sum_{j=1}^n\sum_{i=1}^n(-1)^{i+j}[A]_{j,i}\det A_{j,i} \amp (\text{props. of addition})\\
+\amp =\frac{1}{n}\sum_{j=1}^n\det A \amp (\knowl{./knowl/xref/th_expansion_row.html}{\text{Theorem 1.13.8}})\\
+\amp = \det A\text{.}
+\end{align*}
+</div>
+<div class="para">This completes the proof by induction. (Note how in the second equality in the chain above we compute <span class="process-math">\(\det A^T\)</span> in the <span class="process-math">\(i\)</span>-th term of <span class="process-math">\(\sum_{i=1}^n\det A^T\)</span> by expanding along the <span class="process-math">\(i\)</span>-th row of <span class="process-math">\(\det A^T\text{.}\)</span> A similar observation applies to the penultimate equality.)</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_transpose-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.13.9.1"><a href="#th_det_transpose-3" title="Copy heading and permalink for Proof 1.13.9.1" aria-label="Copy heading and permalink for Proof 1.13.9.1">🔗</a></div></article></details><article class="corollary theorem-like" id="cor_expansion_columns"><h4 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Expansion along columns.</span>
+</h4>
+<div class="para logical" id="cor_expansion_columns-2-1">
+<div class="para">Let <span class="process-math">\(A=[a_{i,j}]_{n\times n}\in \ML_{n,n}(F)\text{.}\)</span> For any <span class="process-math">\(1\leq j\leq n\)</span> we have</div>
+<div class="displaymath process-math" id="cor_expansion_columns-2-1-3">
+\begin{equation*}
+\det A=  \sum_{k=1}^n(-1)^{k+j}a_{k,j}M_{k,j}\text{.}
+\end{equation*}
+</div>
+<div class="para">In other words, we can compute <span class="process-math">\(\det A\)</span> by expanding along any column of <span class="process-math">\(A\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#cor_expansion_columns-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Corollary 1.13.10: Expansion along columns"><a href="#cor_expansion_columns" title="Copy heading and permalink for Corollary 1.13.10: Expansion along columns" aria-label="Copy heading and permalink for Corollary 1.13.10: Expansion along columns">🔗</a></div></article><details id="cor_expansion_columns-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="cor_expansion_columns-3-1">
+<div class="para">For any <span class="process-math">\(1\leq j\leq n\text{,}\)</span> we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_transpose.html ./knowl/xref/d_det.html ./knowl/xref/th_det_transpose.html" id="cor_expansion_columns-3-1-2">
+\begin{align*}
+\sum_{k=1}^n(-1)^{k+j}a_{k,j}M_{k,j}\amp =\sum_{k=1}^n(-1)^{k+j}(A^T)_{j,k}\det A_{j,k} \amp (\knowl{./knowl/xref/d_transpose.html}{\text{Definition 1.9.18}})\\
+\amp = \sum_{k=1}^n(-1)^{k+j}(A^T)_{j,k}\det (A^T)_{j,k} \amp ( (A^T)_{i,j}= A_{j,i}) \\
+\amp= \det A^T  \amp (\knowl{./knowl/xref/d_det.html}{\text{Definition 1.13.3}})\\
+\amp=\det A \amp (\knowl{./knowl/xref/th_det_transpose.html}{\text{Theorem 1.13.9}}) \text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#cor_expansion_columns-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.13.10.1"><a href="#cor_expansion_columns-3" title="Copy heading and permalink for Proof 1.13.10.1" aria-label="Copy heading and permalink for Proof 1.13.10.1">🔗</a></div></article></details><article class="example example-like" id="ss_expansion_rows_columns-8"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="ss_expansion_rows_columns-8-1-1">
+<div class="para">Compute <span class="process-math">\(\det A\)</span> for</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-8-1-1-2">
+\begin{equation*}
+A=\begin{bmatrix}2\amp 1\amp 0\amp 3\\ 0\amp 0\amp 0\amp 2\\ 0\amp 2\amp 0\amp 0\\ 4\amp 2\amp 1\amp 0 \end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-8-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="ss_expansion_rows_columns-8-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ss_expansion_rows_columns-8-2-1">
+<div class="para">First we compute <span class="process-math">\(A\)</span> by expanding along the second row. The only nonzero term of this expansion is the last one, yielding</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-8-2-1-2">
+\begin{equation*}
+\det A=(-1)^{2+4}[A]_{24}M_{2,4}=2\det A_{2,4}\text{.}
+\end{equation*}
+</div>
+<div class="para">We have</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-8-2-1-3">
+\begin{equation*}
+A_{2,4}=\begin{bmatrix}
+2\amp 1\amp 0\\ 0\amp 2\amp 0\\ 4\amp 2\amp 1
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">To compute its determinant we expand along its third column:</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-8-2-1-4">
+\begin{equation*}
+\det A_{2,4}=(-1)^{3+3}1\det \begin{bmatrix}
+2\amp 1\\ 0\amp 2
+\end{bmatrix}=4.
+\end{equation*}
+</div>
+<div class="para">We conclude that</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-8-2-1-5">
+\begin{equation*}
+\det A=2\det A_{2,4}=2(4)=8\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-8-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.13.11.1"><a href="#ss_expansion_rows_columns-8-2" title="Copy heading and permalink for Solution 1.13.11.1" aria-label="Copy heading and permalink for Solution 1.13.11.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.13.11"><a href="#ss_expansion_rows_columns-8" title="Copy heading and permalink for Example 1.13.11" aria-label="Copy heading and permalink for Example 1.13.11">🔗</a></div></article><article class="remark remark-like" id="rm_sign_matrix"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Matrix of signs.</span>
+</h4>
+<div class="para logical" id="rm_sign_matrix-2">
+<div class="para">When expanding along a row or column, it is easy to get tripped up by the sign <span class="process-math">\((-1)^{i+j}\)</span> in front of the <span class="process-math">\(ij\)</span>-th coefficient. A “matrix of signs” is a sort of mnemonic device to help you in this regard. It is easily generated by observing that the sign in front of the <span class="process-math">\((1,1)\)</span>-th entry is always a <span class="process-math">\(+\)</span> (since <span class="process-math">\(1=(-1)^{1+1}\)</span>), and that any horizontal or vertical step within the matrix is accompanied by a change of sign. As an example, for <span class="process-math">\(n=4\)</span> we have the following matrix of signs:</div>
+<div class="displaymath process-math" id="rm_sign_matrix-2-8">
+\begin{equation*}
+\begin{bmatrix}
++\amp -\amp +\amp -\\
+-\amp +\amp -\amp +\\
++\amp -\amp +\amp -\\
+-\amp +\amp -\amp +
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#rm_sign_matrix-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.13.12: Matrix of signs"><a href="#rm_sign_matrix" title="Copy heading and permalink for Remark 1.13.12: Matrix of signs" aria-label="Copy heading and permalink for Remark 1.13.12: Matrix of signs">🔗</a></div></article><section class="paragraphs" id="ss_vid_eg_det"><h4 class="heading"><span class="title">Video example: determinant.</span></h4>
+<figure class="figure figure-like" id="fig_vid_det"><div class="video-box" style="width: 100%;padding-top: 56.25%; margin-left: 0%; margin-right: 0%;"><iframe class="video" allowfullscreen="" src="https://www.youtube-nocookie.com/embed/OoNYGwJS-M4?&amp;modestbranding=1&amp;rel=0" id="vid_det"></iframe></div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.13<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Video: determinant<div class="autopermalink" data-description="Figure 1.13.13"><a href="#fig_vid_det" title="Copy heading and permalink for Figure 1.13.13" aria-label="Copy heading and permalink for Figure 1.13.13">🔗</a></div></figcaption></figure><div class="autopermalink" data-description="Paragraphs: Video example: determinant"><a href="#ss_vid_eg_det" title="Copy heading and permalink for Paragraphs: Video example: determinant" aria-label="Copy heading and permalink for Paragraphs: Video example: determinant">🔗</a></div></section><div class="para" id="ss_expansion_rows_columns-11">The freedom to compute the determinant by expanding along any row or column gives rise to the following intuitive property.<div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="theorem theorem-like" id="th_det_zero_repeated_row"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Zero rows/columns, swapping rows/columns, identical rows/columns.</span>
+</h4>
+<div class="para logical" id="th_det_zero_repeated_row-2-1">
+<div class="para">Let <span class="process-math">\(A\in \ML_{n,n}(F)\text{.}\)</span>
+</div>
+<ol class="decimal" id="th_det_zero_repeated_row-2-1-2">
+<li id="th_det_zero_repeated_row-2-1-2-1">
+<div class="para" id="th_det_zero_repeated_row-2-1-2-1-1">If <span class="process-math">\(A\)</span> has a zero row or zero column, then <span class="process-math">\(\det A=0\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-2-1-2-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#th_det_zero_repeated_row-2-1-2-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="th_det_zero_repeated_row-2-1-2-2">
+<div class="para logical" id="th_det_zero_repeated_row-2-1-2-2-1">
+<div class="para">Assume <span class="process-math">\(n\geq 2\text{.}\)</span> Let <span class="process-math">\(A'\)</span> be the matrix obtained by swapping two rows (or two columns) of <span class="process-math">\(A\text{.}\)</span> Then</div>
+<div class="displaymath process-math" id="th_det_zero_repeated_row-2-1-2-2-1-4">
+\begin{equation*}
+\det A'=-\det A\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-2-1-2-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#th_det_zero_repeated_row-2-1-2-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="th_det_zero_repeated_row-2-1-2-3">
+<div class="para" id="th_det_zero_repeated_row-2-1-2-3-1">Assume <span class="process-math">\(n\geq 2\text{.}\)</span> If <span class="process-math">\(A\)</span> has two identical rows or two identical columns, then <span class="process-math">\(\det A=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-2-1-2-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#th_det_zero_repeated_row-2-1-2-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.13.14: Zero rows/columns, swapping rows/columns, identical rows/columns"><a href="#th_det_zero_repeated_row" title="Copy heading and permalink for Theorem 1.13.14: Zero rows/columns, swapping rows/columns, identical rows/columns" aria-label="Copy heading and permalink for Theorem 1.13.14: Zero rows/columns, swapping rows/columns, identical rows/columns">🔗</a></div></article><details id="th_det_zero_repeated_row-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_det_zero_repeated_row-3-1">The first statement is obvious since according to <a href="s_det.html#th_expansion_row" class="xref" data-knowl="./knowl/xref/th_expansion_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.13.8: Expansion along rows">Theorem 1.13.8</a> and <a href="s_det.html#cor_expansion_columns" class="xref" data-knowl="./knowl/xref/cor_expansion_columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.13.10: Expansion along columns">Corollary 1.13.10</a> we may compute the determinant by expanding along the zero row or zero column in question.<div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="th_det_zero_repeated_row-3-2">The third statement follows from the second. Indeed, if <span class="process-math">\(A\)</span> has two identical rows or columns, then the matrix <span class="process-math">\(A'\)</span> obtained from <span class="process-math">\(A\)</span> by swapping the rows (or columns) in question is <span class="process-math">\(A\)</span> itself. Thus <span class="process-math">\(\det A=-\det A\)</span> by the second statement, and we conclude that <span class="process-math">\(\det A=0\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="th_det_zero_repeated_row-3-3">It remains only to show the second statement. We prove only the statement regarding swapping rows; the corresponding statement about columns follows from <a href="s_det.html#th_det_transpose" class="xref" data-knowl="./knowl/xref/th_det_transpose.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.13.9: Determinant and transposition">Theorem 1.13.9</a>. The proof is by induction.<div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="case" id="th_det_zero_repeated_row-3-4"><h5 class="heading">Base step: <span class="process-math">\(n=2\)</span>.</h5>
+<div class="para" id="th_det_zero_repeated_row-3-4-2">Let <span class="process-math">\(A=\begin{bmatrix}a\amp b\\c\amp d \end{bmatrix}\text{.}\)</span> Then <span class="process-math">\(A'=\abcdmatrix{c}{d}A{b}\text{,}\)</span> and <span class="process-math">\(\det(A')=cb-ad=-(ad-bc)=-\det A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Base step: n=2"><a href="#th_det_zero_repeated_row-3-4" title="Copy heading and permalink for Case: Base step: n=2" aria-label="Copy heading and permalink for Case: Base step: n=2">🔗</a></div></article><article class="case" id="th_det_zero_repeated_row-3-5"><h5 class="heading">Induction step.</h5>
+<div class="para" id="th_det_zero_repeated_row-3-5-2">We assume by induction that the result holds for any <span class="process-math">\(n\times n\)</span> matrices, <span class="process-math">\(n\geq 2\text{,}\)</span> and show the same is true for any <span class="process-math">\((n+1)\times (n+1)\)</span> matrix.<div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-3-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="th_det_zero_repeated_row-3-5-3">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\((n+1)\times (n+1)\)</span> matrix, and suppose <span class="process-math">\(A'\)</span>  is the result of swapping the <span class="process-math">\(i\)</span>-th and <span class="process-math">\(k\)</span>-th rows of <span class="process-math">\(A\text{.}\)</span> We compute the determinants of <span class="process-math">\(A\)</span> and <span class="process-math">\(A'\)</span> by expanding along the <span class="process-math">\(\ell\)</span>-th row, where <span class="process-math">\(\ell\ne i\)</span> and <span class="process-math">\(\ell\ne k\text{.}\)</span> This is possible since <span class="process-math">\((n+1)\geq 3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-3-5-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="th_det_zero_repeated_row-3-5-4">
+<div class="para">Moving along the <span class="process-math">\(\ell\)</span>-th row, notice that each submatrix <span class="process-math">\({A'}_{\ell j}\)</span> is the result of swapping the two rows of <span class="process-math">\(A_{\ell j}\)</span> that originally corresponded to the <span class="process-math">\(i\)</span>-th and <span class="process-math">\(k\)</span>-th rows of <span class="process-math">\(A\text{.}\)</span> Since these submatrices are of dimension <span class="process-math">\(n\times n\text{,}\)</span> we have <span class="process-math">\(\det  {A'}_{\ell j}=-\det  A_{\ell j}\)</span> by induction. Lastly, since the <span class="process-math">\(\ell\)</span>-th rows of <span class="process-math">\(A\)</span> and <span class="process-math">\(A'\)</span> are the same we have</div>
+<div class="displaymath process-math" id="th_det_zero_repeated_row-3-5-4-12">
+\begin{align*}
+\det A \amp=\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}\det  A_{\ell, j} \\
+\amp = \sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}(-\det  {A'}_{\ell, j})\\
+\amp =-\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}\det  {A'}_{\ell, j} \\
+\amp=-\det A' \text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_det_zero_repeated_row-3-5-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Induction step"><a href="#th_det_zero_repeated_row-3-5" title="Copy heading and permalink for Case: Induction step" aria-label="Copy heading and permalink for Case: Induction step">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.13.14.1"><a href="#th_det_zero_repeated_row-3" title="Copy heading and permalink for Proof 1.13.14.1" aria-label="Copy heading and permalink for Proof 1.13.14.1">🔗</a></div></article></details><div class="para" id="ss_expansion_rows_columns-13">As a further consequence of <a href="s_det.html#th_expansion_row" class="xref" data-knowl="./knowl/xref/th_expansion_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.13.8: Expansion along rows">Theorem 1.13.8</a> and <a href="s_det.html#cor_expansion_columns" class="xref" data-knowl="./knowl/xref/cor_expansion_columns.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.13.10: Expansion along columns">Corollary 1.13.10</a>, we can derive the <em class="emphasis">adjoint matrix formula</em>.<div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-13" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_adjoint"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Adjoint matrix.</span>
+</h4>
+<div class="para logical" id="d_adjoint-4-1">
+<div class="para">Let <span class="process-math">\(A\in \ML_{n,n}(F)\text{.}\)</span> The <dfn class="terminology">adjoint matrix</dfn> of <span class="process-math">\(A\text{,}\)</span> denoted <span class="process-math">\(\adj A\text{,}\)</span> is the <span class="process-math">\(n\times n\)</span> matrix whose <span class="process-math">\(i,j\)</span>-th entry is defined as follows:</div>
+<div class="displaymath process-math" id="d_adjoint-4-1-7">
+\begin{equation*}
+[\adj A]_{i,j}=(-1)^{i+j}M_{j,i}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_adjoint-4-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.13.15: Adjoint matrix"><a href="#d_adjoint" title="Copy heading and permalink for Definition 1.13.15: Adjoint matrix" aria-label="Copy heading and permalink for Definition 1.13.15: Adjoint matrix">🔗</a></div></article><article class="remark remark-like" id="rm_adjoint"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para" id="rm_adjoint-1">Be careful of the order reversal in this definition. The <span class="process-math">\(i,j\)</span>-th entry of <span class="process-math">\(\adj A\)</span> is equal to plus or minus the <span class="process-math">\(j,i\)</span>-th minor of <span class="process-math">\(A\text{.}\)</span> Let’s see this in action for some small matrices.<div class="autopermalink" data-description="Paragraph"><a href="#rm_adjoint-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="rm_adjoint-2">
+<div class="para">For</div>
+<div class="displaymath process-math" id="rm_adjoint-2-1">
+\begin{equation*}
+A=\abcdmatrix{a}{b}{c}{d}
+\end{equation*}
+</div>
+<div class="para">we have</div>
+<div class="displaymath process-math" id="rm_adjoint-2-2">
+\begin{equation*}
+\adj A=\begin{amatrix}[rr] M_{11}\amp -M_{21}\\ -M_{12}\amp M_{22}\end{amatrix}=
+\begin{amatrix}[rr]d\amp -b\\ -c\amp a  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#rm_adjoint-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="rm_adjoint-3">
+<div class="para">For</div>
+<div class="displaymath process-math" id="rm_adjoint-3-1">
+\begin{equation*}
+A=\begin{bmatrix}
+a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i
+\end{bmatrix}
+\end{equation*}
+</div>
+<div class="para">we have</div>
+<div class="displaymath process-math" id="rm_adjoint-3-2">
+\begin{equation*}
+\adj A=\begin{amatrix}[rrr]
+M_{1,1}\amp -M_{2,1}\amp M_{3,1}\\
+-M_{1,2}\amp M_{2,2}\amp -M_{3,2}\\
+M_{1,3}\amp -M_{2,3}\amp M_{3,3}
+\end{amatrix}
+=\begin{amatrix}[rrr]
+(ei-fh)\amp -(bi-ch)\amp (bf-ce)\\
+-(di-fg)\amp (ai-cg)\amp -(af-cd)\\
+(dh-eg)\amp -(ah-bg)\amp (ae-bd)
+\end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#rm_adjoint-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.13.16"><a href="#rm_adjoint" title="Copy heading and permalink for Remark 1.13.16" aria-label="Copy heading and permalink for Remark 1.13.16">🔗</a></div></article><article class="theorem theorem-like" id="th_adjoint"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Adjoint matrix formula.</span>
+</h4>
+<div class="para logical" id="th_adjoint-2-1">
+<div class="para">Given <span class="process-math">\(A\in \ML_{n,n}(F)\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="eq_adj_form">
+\begin{equation}
+A\,(\adj A)=(\adj A)\, A=(\det A)I\text{.}\tag{1.13.9}
+\end{equation}
+</div>
+<div class="para">As a consequence <span class="process-math">\(A\)</span> is invertible if and only if <span class="process-math">\(\det A\ne 0\text{,}\)</span> and in this case we have</div>
+<div class="displaymath process-math" id="eq_adj_inv_form">
+\begin{equation}
+A^{-1}=\frac{1}{\det A}\, \adj A\text{.}\tag{1.13.10}
+\end{equation}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_adjoint-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.13.17: Adjoint matrix formula"><a href="#th_adjoint" title="Copy heading and permalink for Theorem 1.13.17: Adjoint matrix formula" aria-label="Copy heading and permalink for Theorem 1.13.17: Adjoint matrix formula">🔗</a></div></article><details id="th_adjoint-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="th_adjoint-3-1">
+<div class="para">First observe that the second statement regarding invertibility follows directly from <a href="s_det.html#eq_adj_form" class="xref" data-knowl="./knowl/xref/eq_adj_form.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.13.9">(1.13.9)</a>, since in this case setting <span class="process-math">\(B=\frac{1}{\det A}\, \adj A\)</span> we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_adj_form.html" id="th_adjoint-3-1-3">
+\begin{equation*}
+AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_adjoint-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical" id="th_adjoint-3-2">
+<div class="para">Thus it suffices to prove <a href="s_det.html#eq_adj_form" class="xref" data-knowl="./knowl/xref/eq_adj_form.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.13.9">(1.13.9)</a>. To do so, we must show that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_adj_form.html" id="th_adjoint-3-2-2">
+\begin{equation*}
+[A\, \adj A]_{i,j}=[\adj A\, A]_{i,j}=
+\begin{cases} \det A\amp \text{if } i=j\\
+0 \amp \text{if } i\ne j
+\text{.}\end{cases}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_adjoint-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="case" id="th_adjoint-3-3"><h5 class="heading">Case: <span class="process-math">\(i=j\)</span>.</h5>
+<div class="para logical" id="th_adjoint-3-3-2">
+<div class="para">In this case we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html" id="th_adjoint-3-3-2-1">
+\begin{align*}
+[A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{ki}  \\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 1.13.15}} )\\
+\amp =\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik} \\
+\amp =\det A \text{.}
+\end{align*}
+</div>
+<div class="para">A similar argument shows that <span class="process-math">\((\adj A\, A)_{ii}=\det A\text{,}\)</span> though in this case we use expansion along a column.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_adjoint-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Case: i=j"><a href="#th_adjoint-3-3" title="Copy heading and permalink for Case: Case: i=j" aria-label="Copy heading and permalink for Case: Case: i=j">🔗</a></div></article><article class="case" id="th_adjoint-3-4"><h5 class="heading">Case: <span class="process-math">\(i\ne j\)</span>.</h5>
+<div class="para logical" id="th_adjoint-3-4-2">
+<div class="para">When <span class="process-math">\(i\ne j\)</span> we have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ./knowl/xref/th_det_zero_repeated_row.html" id="th_adjoint-3-4-2-2">
+\begin{align*}
+[A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{k,j}  \\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{j,k}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 1.13.15}} )\\
+\amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{j,k} \\
+\amp =\det C \text{,}
+\end{align*}
+</div>
+<div class="para">where <span class="process-math">\(C\)</span> is the matrix obtained by replacing the <span class="process-math">\(j\)</span>-th row of <span class="process-math">\(A\)</span> with a copy of its <span class="process-math">\(i\)</span>-th row. Since <span class="process-math">\(C\)</span> has two identical rows <a href="s_det.html#th_det_zero_repeated_row" class="xref" data-knowl="./knowl/xref/th_det_zero_repeated_row.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.13.14: Zero rows/columns, swapping rows/columns, identical rows/columns">Theorem 1.13.14</a> implies</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ./knowl/xref/th_det_zero_repeated_row.html" id="th_adjoint-3-4-2-9">
+\begin{equation*}
+[A\, \adj A]_{i,j}=\det C=0\text{,}
+\end{equation*}
+</div>
+<div class="para">as desired. Once again, a similar argument using expansion along a column shows that <span class="process-math">\([\adj A\, A]_{ij}=0\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_adjoint-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Case: Case: i\ne j"><a href="#th_adjoint-3-4" title="Copy heading and permalink for Case: Case: i\ne j" aria-label="Copy heading and permalink for Case: Case: i\ne j">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.13.17.1"><a href="#th_adjoint-3" title="Copy heading and permalink for Proof 1.13.17.1" aria-label="Copy heading and permalink for Proof 1.13.17.1">🔗</a></div></article></details><article class="example example-like" id="ss_expansion_rows_columns-17"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="ss_expansion_rows_columns-17-1-1">
+<div class="para">Use the adjoint matrix formula to compute <span class="process-math">\(A^{-1}\text{,}\)</span> where</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-17-1-1-2">
+\begin{equation*}
+A=\begin{amatrix}[rrr]1\amp 2\amp 1 \\ -1\amp 1\amp -1\\ 0\amp 2\amp 2  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-17-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details id="ss_expansion_rows_columns-17-2" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical" id="ss_expansion_rows_columns-17-2-1">
+<div class="para">First compute <span class="process-math">\(\det A=\)</span> by expanding along the third row:</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-17-2-1-2">
+\begin{equation*}
+\det A=-2(-1+1)+2(2+1)=6\text{.}
+\end{equation*}
+</div>
+<div class="para">Next, compute</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-17-2-1-3">
+\begin{equation*}
+\adj A=\begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">Then we have</div>
+<div class="displaymath process-math" id="ss_expansion_rows_columns-17-2-1-4">
+\begin{equation*}
+A^{-1}=\frac{1}{6}\,\adj A=\frac{1}{6}\, \begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_expansion_rows_columns-17-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.13.18.1"><a href="#ss_expansion_rows_columns-17-2" title="Copy heading and permalink for Solution 1.13.18.1" aria-label="Copy heading and permalink for Solution 1.13.18.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.13.18"><a href="#ss_expansion_rows_columns-17" title="Copy heading and permalink for Example 1.13.18" aria-label="Copy heading and permalink for Example 1.13.18">🔗</a></div></article><article class="remark remark-like" id="rm_adjoint_form"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.13.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para" id="rm_adjoint_form-1">Before you get too excited about the adjoint matrix formula, you should know that as <span class="process-math">\(n\)</span> grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous <span class="process-math">\(3\times 3\)</span> example. In general, the Gauss-Jordan inverse algorithm is the way to go.<div class="autopermalink" data-description="Paragraph"><a href="#rm_adjoint_form-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.13.19"><a href="#rm_adjoint_form" title="Copy heading and permalink for Remark 1.13.19" aria-label="Copy heading and permalink for Remark 1.13.19">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.13.2: Expansion along rows and columns"><a href="#ss_expansion_rows_columns" title="Copy heading and permalink for Subsection 1.13.2: Expansion along rows and columns" aria-label="Copy heading and permalink for Subsection 1.13.2: Expansion along rows and columns">🔗</a></div></section><div class="autopermalink" data-description="Section 1.13: The determinant"><a href="#s_det" title="Copy heading and permalink for Section 1.13: The determinant" aria-label="Copy heading and permalink for Section 1.13: The determinant">🔗</a></div></section></div>
+<div id="ptx-content-footer" class="ptx-content-footer">
+<a class="previous-button button" href="s_invertibility_theorem.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="338 3000 8772 6866" role="img"><title>PreTeXt logo</title><g style="stroke-width:.025in; stroke:currentColor; fill:none"><polyline points="472,3590 472,9732 " style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png" alt="Runstone Academy logo"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png" alt="MathJax logo"></a>
+</div>
+</body>
+</html>

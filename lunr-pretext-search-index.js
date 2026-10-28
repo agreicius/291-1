@@ -3070,6 +3070,186 @@ var ptx_lunr_docs = [
   "body": "  Answer true or false. If true, provide a proof; if false, exhibit an explicit counterexample.    The product of two elementary matrices is elementary.    The product of two elementary matrices is invertible.    The sum of two invertible matrices is invertible.    If is a singular matrix, then the linear system has infinitely many solutions.    If is obtained from the invertible matrix by replacing its second row with the sum of its first and second rows, then is invertible.    If is square matrix, and is a column vector such that the matrix equation has a unique solution, then is invertible.    If and are row equivalent, then the matrix equations and have the same solution set.    If or is singular, then is singular.   "
 },
 {
+  "id": "s_det",
+  "level": "1",
+  "url": "s_det.html",
+  "type": "Section",
+  "number": "1.13",
+  "title": "The determinant",
+  "body": " The determinant   The determinant is a function that assigns to each matrix a scalar . The definition given below of the determinant is far from intuitive, and we will do little to motivate it up front. Instead, we allow its various properties to speak for themselves by way of retroactive motivation. In particular, we will see that , making the determinant an important tool for investigating invertibility.    Definition of the determinant  Our definition of the determinant is a recursive one; given an matrix its determinant is defined in terms of the determinant of certain submatrices of dimension . This necessitates some notation to help our discussion along.   Submatrix notation  submatrix    submatrix of    Let be an matrix with . Given , the submatrix of obtained by removing the -th row and -th column of is denoted .     Do not conflate the submatrix notation with matrix entry notation : the former returns the submatrix of obtained by deleting the -th row and -th column; the latter returns the -th entry of .    The determinant  determinant    determinant of    Let . The determinant is defined as follows:   Base case:  When we have and we define .    Recursive case:  When we define .        Small cases  Let's look at determinant formulas for the cases. You may remember the formula for matrices from ; we will make the connection more explicit in .  Given , we have . The formula for the case is simple enough to serve as a second base case , allowing us to end the recursive process of computing a general matrix once we get to expressions involving matrices.  Given , we have .   The recursive nature of the determinant definition makes induction arguments particularly useful when proving properties of the determinant, as illustrated by the next theorem.   Determinant of triangular matrices   Let be triangular (upper, lower, or diagonal). Then . In other words, the determinant of a triangular matrix is the product of its diagonal entries.    We only give the proof for lower triangular matrices; the proof in the upper triangular case is nearly identical.  For any let denote the proposition: The determinant of any lower triangular matrix is the product of its diagonal entries . We prove by induction that is true for all .   Base step: show is true  In this case , and is indeed the product of the diagonal entries of .    Induction step: show for all  Let be a lower triangular matrix. Then for all , and hence the determinant of is given by . Claim: is lower triangular. Indeed, first observe that we have for all ; by deleting the first row and first column we effectively bump each index up by one. Since is lower triangular we have for all , and hence also for all , proving the claim.  Lastly, assuming is true (the induction hypothesis) we have , as desired.      Determinant of identity matrices   We have for all positive integers .    This follows directly from since the diagonal entries of are all ones.      Expansion along rows and columns  Morally speaking, we should give some examples of higher-dimensional determinants, but we first introduce some theory that affords us more leeway in our computations.   Minors and expansions along rows\/columns  minor of matrix  expansion along row\/column    the -th minor of a matrix    Given , for any pair the -th minor of is defined as .  For any the expression is called the expansion along the -th row of .  For any , the expression is called the expansion along the -th column of .     Expansion along rows   Let . For any we have . In other words, we can compute by expanding along any row of .    The proof is by induction on the size of the matrix.   Base step:  For there is nothing to prove. Given expanding along either row yields , as one easily verifies.    Induction step  Assume the claim is true of any matrix. Given we have . Expanding along the -th row of for any , on the other hand, we get . To show these two expressions are equal we use the induction hypothesis to compute each by expanding along its -th row: . The matrix is the result of first deleting row 1 and column from , and then deleting row and column of the resulting matrix. To deal with such iterated submatrices, we make some simple observations relating the rows and columns of and with those of .   The -th row of corresponds to the -th row of , and the first row of corresponds to the first row of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .   From these observations we derive the following table of formulas: . We now begin to unpack : . This completes the induction step, and thus the proof is finished.     Surprisingly, it turns out that we can compute the determinant of a matrix by expanding along any column ( ). This is a consequence of the following theorem, which is useful in its own right. The proof below is taken from Robert Beezer's A First Course in Linear Algebra . (See Theorem DT .) It uses induction and a wonderful trick starting from the observation that for any .   Determinant and transposition   Let be an matrix. Then .    The proof is by induction on . The base case ( ) is trivial since for any matrix .  For induction we assume that for all we have for any matrix. Suppose is an matrix. We have . This completes the proof by induction. (Note how in the second equality in the chain above we compute in the -th term of by expanding along the -th row of . A similar observation applies to the penultimate equality.)     Expansion along columns   Let . For any we have . In other words, we can compute by expanding along any column of .    For any , we have .      Compute for .    First we compute by expanding along the second row. The only nonzero term of this expansion is the last one, yielding . We have . To compute its determinant we expand along its third column: We conclude that .     Matrix of signs  When expanding along a row or column, it is easy to get tripped up by the sign in front of the -th coefficient. A matrix of signs is a sort of mnemonic device to help you in this regard. It is easily generated by observing that the sign in front of the -th entry is always a (since ), and that any horizontal or vertical step within the matrix is accompanied by a change of sign. As an example, for we have the following matrix of signs: .    Video example: determinant   Video: determinant     The freedom to compute the determinant by expanding along any row or column gives rise to the following intuitive property.   Zero rows\/columns, swapping rows\/columns, identical rows\/columns   Let .   If has a zero row or zero column, then     Assume . Let be the matrix obtained by swapping two rows (or two columns) of . Then .    Assume . If has two identical rows or two identical columns, then .       The first statement is obvious since according to and we may compute the determinant by expanding along the zero row or zero column in question.  The third statement follows from the second. Indeed, if has two identical rows or columns, then the matrix obtained from by swapping the rows (or columns) in question is itself. Thus by the second statement, and we conclude that .  It remains only to show the second statement. We prove only the statement regarding swapping rows; the corresponding statement about columns follows from . The proof is by induction.   Base step:  Let . Then , and .    Induction step  We assume by induction that the result holds for any matrices, , and show the same is true for any matrix.  Let be an matrix, and suppose is the result of swapping the -th and -th rows of . We compute the determinants of and by expanding along the -th row, where and . This is possible since .  Moving along the -th row, notice that each submatrix is the result of swapping the two rows of that originally corresponded to the -th and -th rows of . Since these submatrices are of dimension , we have by induction. Lastly, since the -th rows of and are the same we have .     As a further consequence of and , we can derive the adjoint matrix formula .   Adjoint matrix  adjoint matrix    adjoint of a square matrix    Let . The adjoint matrix of , denoted , is the matrix whose -th entry is defined as follows: .     Be careful of the order reversal in this definition. The -th entry of is equal to plus or minus the -th minor of . Let's see this in action for some small matrices.  For we have .  For we have .    Adjoint matrix formula   Given , we have . As a consequence is invertible if and only if , and in this case we have .    First observe that the second statement regarding invertibility follows directly from , since in this case setting we have .  Thus it suffices to prove . To do so, we must show that .   Case:  In this case we have . A similar argument shows that , though in this case we use expansion along a column.    Case:  When we have , where is the matrix obtained by replacing the -th row of with a copy of its -th row. Since has two identical rows implies , as desired. Once again, a similar argument using expansion along a column shows that .       Use the adjoint matrix formula to compute , where .    First compute by expanding along the third row: . Next, compute . Then we have .     Before you get too excited about the adjoint matrix formula, you should know that as grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous example. In general, the Gauss-Jordan inverse algorithm is the way to go.     "
+},
+{
+  "id": "d_minors",
+  "level": "2",
+  "url": "s_det.html#d_minors",
+  "type": "Definition",
+  "number": "1.13.1",
+  "title": "Submatrix notation.",
+  "body": " Submatrix notation  submatrix    submatrix of    Let be an matrix with . Given , the submatrix of obtained by removing the -th row and -th column of is denoted .   "
+},
+{
+  "id": "rm_minors",
+  "level": "2",
+  "url": "s_det.html#rm_minors",
+  "type": "Warning",
+  "number": "1.13.2",
+  "title": "",
+  "body": " Do not conflate the submatrix notation with matrix entry notation : the former returns the submatrix of obtained by deleting the -th row and -th column; the latter returns the -th entry of .  "
+},
+{
+  "id": "d_det",
+  "level": "2",
+  "url": "s_det.html#d_det",
+  "type": "Definition",
+  "number": "1.13.3",
+  "title": "The determinant.",
+  "body": " The determinant  determinant    determinant of    Let . The determinant is defined as follows:   Base case:  When we have and we define .    Recursive case:  When we define .      "
+},
+{
+  "id": "rm_det_small_cases",
+  "level": "2",
+  "url": "s_det.html#rm_det_small_cases",
+  "type": "Remark",
+  "number": "1.13.4",
+  "title": "Small <span class=\"process-math\">\\(n\\)<\/span> cases.",
+  "body": " Small cases  Let's look at determinant formulas for the cases. You may remember the formula for matrices from ; we will make the connection more explicit in .  Given , we have . The formula for the case is simple enough to serve as a second base case , allowing us to end the recursive process of computing a general matrix once we get to expressions involving matrices.  Given , we have .  "
+},
+{
+  "id": "th_det_triangular",
+  "level": "2",
+  "url": "s_det.html#th_det_triangular",
+  "type": "Theorem",
+  "number": "1.13.5",
+  "title": "Determinant of triangular matrices.",
+  "body": " Determinant of triangular matrices   Let be triangular (upper, lower, or diagonal). Then . In other words, the determinant of a triangular matrix is the product of its diagonal entries.    We only give the proof for lower triangular matrices; the proof in the upper triangular case is nearly identical.  For any let denote the proposition: The determinant of any lower triangular matrix is the product of its diagonal entries . We prove by induction that is true for all .   Base step: show is true  In this case , and is indeed the product of the diagonal entries of .    Induction step: show for all  Let be a lower triangular matrix. Then for all , and hence the determinant of is given by . Claim: is lower triangular. Indeed, first observe that we have for all ; by deleting the first row and first column we effectively bump each index up by one. Since is lower triangular we have for all , and hence also for all , proving the claim.  Lastly, assuming is true (the induction hypothesis) we have , as desired.    "
+},
+{
+  "id": "cor_det_identity",
+  "level": "2",
+  "url": "s_det.html#cor_det_identity",
+  "type": "Corollary",
+  "number": "1.13.6",
+  "title": "Determinant of identity matrices.",
+  "body": " Determinant of identity matrices   We have for all positive integers .    This follows directly from since the diagonal entries of are all ones.   "
+},
+{
+  "id": "d_minors_expansions",
+  "level": "2",
+  "url": "s_det.html#d_minors_expansions",
+  "type": "Definition",
+  "number": "1.13.7",
+  "title": "Minors and expansions along rows\/columns.",
+  "body": " Minors and expansions along rows\/columns  minor of matrix  expansion along row\/column    the -th minor of a matrix    Given , for any pair the -th minor of is defined as .  For any the expression is called the expansion along the -th row of .  For any , the expression is called the expansion along the -th column of .   "
+},
+{
+  "id": "th_expansion_row",
+  "level": "2",
+  "url": "s_det.html#th_expansion_row",
+  "type": "Theorem",
+  "number": "1.13.8",
+  "title": "Expansion along rows.",
+  "body": " Expansion along rows   Let . For any we have . In other words, we can compute by expanding along any row of .    The proof is by induction on the size of the matrix.   Base step:  For there is nothing to prove. Given expanding along either row yields , as one easily verifies.    Induction step  Assume the claim is true of any matrix. Given we have . Expanding along the -th row of for any , on the other hand, we get . To show these two expressions are equal we use the induction hypothesis to compute each by expanding along its -th row: . The matrix is the result of first deleting row 1 and column from , and then deleting row and column of the resulting matrix. To deal with such iterated submatrices, we make some simple observations relating the rows and columns of and with those of .   The -th row of corresponds to the -th row of , and the first row of corresponds to the first row of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .   From these observations we derive the following table of formulas: . We now begin to unpack : . This completes the induction step, and thus the proof is finished.    "
+},
+{
+  "id": "th_det_transpose",
+  "level": "2",
+  "url": "s_det.html#th_det_transpose",
+  "type": "Theorem",
+  "number": "1.13.9",
+  "title": "Determinant and transposition.",
+  "body": " Determinant and transposition   Let be an matrix. Then .    The proof is by induction on . The base case ( ) is trivial since for any matrix .  For induction we assume that for all we have for any matrix. Suppose is an matrix. We have . This completes the proof by induction. (Note how in the second equality in the chain above we compute in the -th term of by expanding along the -th row of . A similar observation applies to the penultimate equality.)   "
+},
+{
+  "id": "cor_expansion_columns",
+  "level": "2",
+  "url": "s_det.html#cor_expansion_columns",
+  "type": "Corollary",
+  "number": "1.13.10",
+  "title": "Expansion along columns.",
+  "body": " Expansion along columns   Let . For any we have . In other words, we can compute by expanding along any column of .    For any , we have .   "
+},
+{
+  "id": "ss_expansion_rows_columns-8",
+  "level": "2",
+  "url": "s_det.html#ss_expansion_rows_columns-8",
+  "type": "Example",
+  "number": "1.13.11",
+  "title": "",
+  "body": "  Compute for .    First we compute by expanding along the second row. The only nonzero term of this expansion is the last one, yielding . We have . To compute its determinant we expand along its third column: We conclude that .   "
+},
+{
+  "id": "rm_sign_matrix",
+  "level": "2",
+  "url": "s_det.html#rm_sign_matrix",
+  "type": "Remark",
+  "number": "1.13.12",
+  "title": "Matrix of signs.",
+  "body": " Matrix of signs  When expanding along a row or column, it is easy to get tripped up by the sign in front of the -th coefficient. A matrix of signs is a sort of mnemonic device to help you in this regard. It is easily generated by observing that the sign in front of the -th entry is always a (since ), and that any horizontal or vertical step within the matrix is accompanied by a change of sign. As an example, for we have the following matrix of signs: .  "
+},
+{
+  "id": "fig_vid_det",
+  "level": "2",
+  "url": "s_det.html#fig_vid_det",
+  "type": "Figure",
+  "number": "1.13.13",
+  "title": "",
+  "body": " Video: determinant   "
+},
+{
+  "id": "th_det_zero_repeated_row",
+  "level": "2",
+  "url": "s_det.html#th_det_zero_repeated_row",
+  "type": "Theorem",
+  "number": "1.13.14",
+  "title": "Zero rows\/columns, swapping rows\/columns, identical rows\/columns.",
+  "body": " Zero rows\/columns, swapping rows\/columns, identical rows\/columns   Let .   If has a zero row or zero column, then     Assume . Let be the matrix obtained by swapping two rows (or two columns) of . Then .    Assume . If has two identical rows or two identical columns, then .       The first statement is obvious since according to and we may compute the determinant by expanding along the zero row or zero column in question.  The third statement follows from the second. Indeed, if has two identical rows or columns, then the matrix obtained from by swapping the rows (or columns) in question is itself. Thus by the second statement, and we conclude that .  It remains only to show the second statement. We prove only the statement regarding swapping rows; the corresponding statement about columns follows from . The proof is by induction.   Base step:  Let . Then , and .    Induction step  We assume by induction that the result holds for any matrices, , and show the same is true for any matrix.  Let be an matrix, and suppose is the result of swapping the -th and -th rows of . We compute the determinants of and by expanding along the -th row, where and . This is possible since .  Moving along the -th row, notice that each submatrix is the result of swapping the two rows of that originally corresponded to the -th and -th rows of . Since these submatrices are of dimension , we have by induction. Lastly, since the -th rows of and are the same we have .    "
+},
+{
+  "id": "d_adjoint",
+  "level": "2",
+  "url": "s_det.html#d_adjoint",
+  "type": "Definition",
+  "number": "1.13.15",
+  "title": "Adjoint matrix.",
+  "body": " Adjoint matrix  adjoint matrix    adjoint of a square matrix    Let . The adjoint matrix of , denoted , is the matrix whose -th entry is defined as follows: .   "
+},
+{
+  "id": "rm_adjoint",
+  "level": "2",
+  "url": "s_det.html#rm_adjoint",
+  "type": "Remark",
+  "number": "1.13.16",
+  "title": "",
+  "body": " Be careful of the order reversal in this definition. The -th entry of is equal to plus or minus the -th minor of . Let's see this in action for some small matrices.  For we have .  For we have .  "
+},
+{
+  "id": "th_adjoint",
+  "level": "2",
+  "url": "s_det.html#th_adjoint",
+  "type": "Theorem",
+  "number": "1.13.17",
+  "title": "Adjoint matrix formula.",
+  "body": " Adjoint matrix formula   Given , we have . As a consequence is invertible if and only if , and in this case we have .    First observe that the second statement regarding invertibility follows directly from , since in this case setting we have .  Thus it suffices to prove . To do so, we must show that .   Case:  In this case we have . A similar argument shows that , though in this case we use expansion along a column.    Case:  When we have , where is the matrix obtained by replacing the -th row of with a copy of its -th row. Since has two identical rows implies , as desired. Once again, a similar argument using expansion along a column shows that .    "
+},
+{
+  "id": "ss_expansion_rows_columns-17",
+  "level": "2",
+  "url": "s_det.html#ss_expansion_rows_columns-17",
+  "type": "Example",
+  "number": "1.13.18",
+  "title": "",
+  "body": "  Use the adjoint matrix formula to compute , where .    First compute by expanding along the third row: . Next, compute . Then we have .   "
+},
+{
+  "id": "rm_adjoint_form",
+  "level": "2",
+  "url": "s_det.html#rm_adjoint_form",
+  "type": "Remark",
+  "number": "1.13.19",
+  "title": "",
+  "body": " Before you get too excited about the adjoint matrix formula, you should know that as grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous example. In general, the Gauss-Jordan inverse algorithm is the way to go.  "
+},
+{
   "id": "appendix-notation",
   "level": "1",
   "url": "appendix-notation.html",
