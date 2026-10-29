@@ -558,7 +558,8 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
    </p> 
   </proof>
 </corollary>
-<p>As another corollary, we enlarge our invertibility theorem by three new statements. 
+<p>
+  As another corollary, we enlarge our invertibility theorem by three new statements. 
 </p>
 <corollary xml:id="cor_invertibility_enlarged">
   <title>Invertibility theorem: first expansion</title>
