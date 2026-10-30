@@ -15,6 +15,7 @@
     <xi:include href="s_invertible_matrices.ptx" />
     <xi:include href="s_invertibility_theorem.ptx" />
     <xi:include href="s_det.ptx" />
+    <xi:include href="s_det_II.ptx" />
 
 
 </chapter>

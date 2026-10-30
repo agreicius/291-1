@@ -2,62 +2,176 @@
 
 <section xml:id="s_det_II" xmlns:xi="http://www.w3.org/2001/XInclude">
     <title>Further properties of the determinant</title>
-<subsection xml:id="ss_det_row_ops">
-  <title>Row operations and determinant</title>
-  <p>
-  Suppose the square matrix <m>A</m> can be row reduced to <m>B</m> via  sequence of row operations. In general we do not have <m>\det A=\det B</m>, but we can compute <m>\det A</m> from <m>\det B</m> by keeping track of which operations are used.
-  </p>
+<subsection xml:id="ss_det_multilinear_alt">
+<title>Determinant is alternating and multilinear</title>
+<p>
+  For the next theorem, it is convenient to think of the determinant a function of the <m>n</m> rows <m>\boldr_1,\boldr_2,\dots, \boldr_n</m> of an <m>n\times n</m> matrix <m>A</m>. That is, instead of thinking of <m>\det</m> as a function <m>\det\colon \ML_{n,n}(F)\rightarrow F</m>, setting <m>V=F^n</m>, we will think of it as a function 
+  <md>
+    <mrow>\det\colon V^n \amp \rightarrow F </mrow>
+    <mrow>(\boldr_1,\boldr_2,\dots, \boldr_n) \amp \mapsto \det(\boldr_1,\boldr_2,\dots, \boldr_n)</mrow>
+  </md>.
+  To facilitate arguments in this vein, we will adopt temporarily that convention of writing a matrix <m>A</m> whose <m>i</m>-th row is <m>\boldr_i</m> as 
+  <md>
+    A=(\boldr_1,\boldr_2,\dots, \boldr_n)
+  </md>.
+  Yes, we are taking some notational liberties here, but we will drop this convention after this section is complete!
+</p>
+<theorem xml:id="th_det_multilinear">
+  <title>Determinant: alternating,skew-symmetric, multilinear</title>
+  <statement>
+    <p>
+      Let <m>F</m> be a field, let <m>n</m> be a positive integer, and let <m>V=F^n</m>. We consider <m>\det</m> as a function on <m>V^n</m> by defining <m>\det(\boldr_1,\boldr_2,\dots, \boldr_n)</m> as <m>\det A</m>, where <m>A=(\boldr_1,\boldr_2,\dots, \boldr_n)</m>. 
+      <ol>
+        <li>
+          <title>Alternating property</title>
+          <p>
+            If <m>(\boldr_1,\boldr_2,\dots, \boldr_n)\in V</m> satisfies <m>\boldr_i=\boldr_j</m> for some indices <m>i\ne j</m>, then <m>\det(\boldr_1,\dots, \boldr_n)=0</m>. 
+            In terms of matrices, if a matrix <m>A</m> has two identical rows, then <m>\det A=0</m>. 
+          </p>
+        </li>
+        
+        <li>
+          <title>Multilinear property</title>
+          <p>
+            Given any <m>(r_i)_{i=1}^n\in V^n</m>, and index <m>1\leq k\leq n</m>, and any vector <m>\bolds_i\in F^n</m>, and scalar <m>c\in F</m>, we have 
+          <md number="yes" >
+              <mrow xml:id="eq_det_additive">\det(\boldr_1,\dots, \boldr_i+\bolds_i,\dots, \boldr_n)\amp =\det(\boldr_1,\dots, \boldr_i,\dots, \boldr_n)+\det(\boldr_1,\dots, \bolds_i,\dots, \boldr_n)</mrow>
+              <mrow xml:id="eq_det_scalar">\det(\boldr_1,\dots, c\boldr_i,\dots, \boldr_n)\amp =c\det(\boldr_1,\dots, \boldr_i,\dots, \boldr_n)</mrow>
+            </md>.
+          </p>
+        </li>
+        <li>
+          <title>Skew-symmetric</title>
+          <p>
+            Suppose <m>1\leq i&lt; j\leq n</m>. We have 
+            <md number="yes" xml:id="eq_det_skew_symmetric">
+              \det(\boldr_1,\dots, \boldr_j,\dots, \boldr_i,\dots, \boldr_n)=-\det(\boldr_1,\dots, \boldr_i,\dots, \boldr_j,\dots,\boldr_n)
+            </md>.
+            In terms of matrices, if <m>B</m> is the result of swapping two rows of a matrix <m>A</m>, then <m>\det B=-\det A</m>. 
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+  <proof>
+    <p>
+      <ol>
+        <li>
+          <p>
+     The alternating property is true vacuously for <m>n=1</m>, and can be easily verified for <m>n=2</m> via a direct computation. An induction argument then easily proves the result for all <m>n\geq 2</m> by expanding along a row of the matrix <m>A</m> that is not equal to <m>\boldr_i</m> or <m>\boldr_j</m>. We leave this to the reader.  
+    </p>
+  </li>
+
+    <li>
+      <p>
+      We can prove the multilinear properties of (2) directly by expanding along the <m>k</m>-th row of the corresponding matrix. In more detail, let <m>A=(\boldr_1,\boldr_2,\dots, \boldr_n)</m>, where <m>\boldr_i=(r_{i,1},\dots, r_{i,n})</m> for all <m>i</m>,  and let <m>B=(\boldr_1,\dots, \bolds_i, \dots, \boldr_n)</m>, where <m>\bolds_i=(s_{k,1},s_{k,2},\dots, s_{k,n})</m>. Letting <m>C=(\boldr_1,\dots, \boldr_i+\bolds_i,\dots, \boldr_n)</m>,  we have 
+      <md>
+        <mrow>\det(\boldr_1,\dots, \boldr_i+\bolds_i,\dots, \boldr_n) =\det C=</mrow>
+        <mrow> \sum_{j=1}^n (-1)^{k+j}(r_{i,j}+s_{i,j})\det C_{i,j}=</mrow>
+        <mrow> \sum_{j=1}^n (-1)^{k+j}r_{i,j}\det C_{i,j}+\sum_{j=1}^n (-1)^{k+j}s_{i,j}\det C_{i,j}=</mrow>
+        <mrow> \sum_{j=1}^n (-1)^{k+j}r_{i,j}\det A_{i,j}+ \sum_{j=1}^n(-1)^{k+j}s_{i,j}\det B_{i,j}=</mrow>
+        <mrow> \det A+\det B=</mrow>
+        <mrow> \det(\boldr_1,\dots,\boldr_i,\dots, \boldr_n)+\det(\boldr_1,\dots, \bolds_i,\dots, \boldr_n) </mrow>
+      </md>,
+      where we have used the fact that <m>C_{i,j}=A_{i,j}=B_{i,j}</m> as these three matrices are identical except for their <m>k</m>-th rows. 
+    </p>
+    <p>
+      Similarly, we have 
+      <md>
+        <mrow>\det (\boldr_1,\dots, c\boldr_i,\dots, \boldr_n) \amp = \sum_{j=1}^n(-1)^{k+j}cr_{i,j}\det A_{i,j}</mrow>
+        <mrow> \amp = c\sum_{j=1}^n(-1)^{k+j}r_{i,j}\det A_{i,j} </mrow>
+        <mrow> \amp = c\det(\boldr_1,\boldr_2,\dots, \boldr_n) </mrow>
+      </md>.
+    </p>
+  </li>
+  <li>
+    <p>
+      The skew-symmetric property now follows from the alternating and multilinear properties. Given <m>1\leq i&lt; j\leq n</m>, we have 
+      <md>
+        <mrow>0 =\det(\boldr_1,\dots, \underset{i-\text{th entry}}{\boldr_i+\boldr_j},\dots, \underset{j-\text{th entry}}{\boldr_i+\boldr_j},\dots, \boldr_n) </mrow>
+      </md>,
+      by the alternating property. Expanding out the right side of the equation above using the multilinear property in succession yields
+      <md>
+        <mrow>\det(\boldr_1,\dots,\boldr_i,\dots, \boldr_i,\dots,\boldr_n)+\det(\boldr_1,\dots, \boldr_i,\dots, \boldr_j,\dots, \boldr_n)
+           </mrow>
+          <mrow>+\det(\boldr_1,\dots,\boldr_j,\dots, \boldr_j,\dots,\boldr_n)
+            +\det(\boldr_1,\dots, \boldr_j,\dots, \boldr_i,\dots, \boldr_n) </mrow>
+        <mrow>=\det(\boldr_1,\dots, \boldr_i,\dots, \boldr_j,\dots, \boldr_n)+\det(\boldr_1,\dots, \boldr_j,\dots, \boldr_i,\dots, \boldr_n)</mrow>
+      </md>,
+      since 
+      <md>
+        \det(\boldr_1,\dots, \boldr_i,\dots,\boldr_i,\dots, \boldr_n)=\det(\boldr_1,\dots, \boldr_j,\dots, \boldr_j,\dots, \boldr_n)=0
+      </md>
+      by the alternating property again. 
+      In all, we have 
+      <md>
+        0=\det(\boldr_1,\dots, \boldr_i,\dots, \boldr_j,\dots, \boldr_n)+\det(\boldr_1,\dots, \boldr_j,\dots, \boldr_i,\dots, \boldr_n)
+      </md>,
+      or equivalently, 
+      <md>
+        \det(\boldr_1,\dots, \boldr_j,\dots, \boldr_i,\dots, \boldr_n)=-\det(\boldr_1,\dots, \boldr_i,\dots, \boldr_j,\dots, \boldr_n)
+      </md>.
+    </p>
+  </li>
+</ol>
+</p>
+  </proof>
+</theorem>
+<p>
+ The two properties <xref first="eq_det_additive" last="eq_det_scalar"/> taken together are summarized by saying the determinant is <em>linear</em> in each row, and hence <em>multilinear</em> overall. Note that by using the two properties in succession, we have
+<md number="yes" xml:id="eq_det_multilinear">
+  \det(\boldr_1,\dots, c\boldr_i+d\bolds_i,\dots, \boldr_n)=c\det(\boldr_1,\dots,\boldr_i,\dots \boldr_n)+d\det(\boldr_1,\dots, \bolds_i,\dots, \boldr_n)
+ </md>
+ for all <m>c,d\in F</m>. But what do these properties mean about the determinant of matrices? 
+ Property <xref ref="eq_det_scalar"/> is easy enough to express in terms of matrices: if you scale a single row of a matrix <m>A</m> by <m>c</m>, then the value of the determinant is scaled by <m>c</m>. Property <xref ref="eq_det_additive"/>, on the other hand, is a little more convoluted. Its treatment in the proof of <xref ref="th_det_multilinear"/> probably is the best articulation of this: if 
+ <md>
+  <mrow>A\amp =(\boldr_1,\dots,\boldr_i,\dots \boldr_n)</mrow>
+  <mrow>B\amp =(\boldr_1,\dots, \bolds_i,\dots, \boldr_n)</mrow>
+  <mrow>C\amp =(\boldr_1,\dots, \boldr_i+\bolds_i,\dots, \boldr_n)</mrow>
+ </md>, then 
+ <md>
+  \det C=\det A+\det B
+ </md>.
+ That ends up being a very powerful property of the determinant. In particular, when we pick <m>\bolds_i</m> to be <m>c\boldr_j</m>, for some other index <m>i</m>, we conclude that 
+ <md>
+  <mrow>\det(\boldr_1,\dots, \boldr_i+c\boldr_j) \amp = \det(\boldr_1,\dots,\boldr_i, \boldr_n)+c\det(\boldr_1,\dots, \boldr_j,\dots, \boldr_n) </mrow>
+  <mrow> \amp=\det(\boldr_1,\dots, \boldr_n)+0 </mrow>
+  <mrow> \amp =\det(\boldr_1,\dots, \boldr_n)</mrow>
+ </md>,
+ where the second to last equality follows from the fact that the matrix obtained by replacing the <m>i</m>-th row with the <m>j</m>-th row has two identical rows, and hence determinant equal to zero. We have just shown that the row addition operation leaves the determinant of a matrix unchanged! Add to this the skew-symmetric property of the determinant, and our comment above about scaling single rows, and we have the following complete description of the effect of row operations on the determinant. For simplicity, we express the result in terms of elementary matrices multiplied on the left: recall that this is the same thing as applying an elementary row operation. 
+</p>
   <theorem xml:id="th_det_row_ops">
     <title>Row operations and determinant</title>
     <statement>
       <p>
-      Let <m>A</m> be an <m>n\times n</m> matrix. Using the notation from <xref ref="d_elementary_matrix"/> we have:
+      Let <m>A\in \ML_{n,n}(F)</m>. 
       <ol>
         <li>
-          <p>
-            <m>\det(\underset{c\cdot r_i}{E}\, A)=c\det(A)</m>
+          <p>For all <m>1\leq i\leq n</m> and <m>c\in F</m>, we have  
+            <md>\det(\underset{c\cdot r_i}{E}\, A)=c\det(A)</md>.
+          </p>
+        </li>
+        <li>
+          <p> For all <m>1\leq i&lt; j\leq n</m>, we have
+            <md>\det(\underset{r_i\leftrightarrow r_j}{E}\, A)=-\det(A)</md>
           </p>
         </li>
         <li>
           <p>
-            <m>\det(\underset{r_i\leftrightarrow r_j}{E}\, A)=-\det(A)</m>
-          </p>
-        </li>
-        <li>
-          <p>
-            <m>\det(\underset{r_i+cr_j}{E}\, A)=\det(A)</m>.
+            For all <m>1\leq i,j\leq n</m> and <m>c\in F</m>, we have
+            <md>\det(\underset{r_i+cr_j}{E}\, A)=\det(A)</md>.
           </p>
         </li>
       </ol>
-      In particular, taking <m>A=I</m>, we have
-      <md>
-        <mrow> \det\underset{c\cdot r_i}{E}\amp =c \amp \det\underset{r_i\leftrightarrow r_j}{E}\amp =-1 \amp \det \underset{r_i+cr_j}{E}\amp =1  </mrow>
+      In particular, taking <m>A=I</m> above, we derive the following determinant formulas for elementary matrices: 
+      <md number="yes">
+        <mrow>\det \underset{c\, r_i}{E} \amp =c
+         \amp  \det\underset{r_i\leftrightarrow r_j}{E}\amp=-1 
+          \amp \det\underset{r_i+cr_j}{E}\amp=1
+        </mrow>
       </md>.
       </p>
     </statement>
-    <proof>
-      <p>
-        The first statement follows easily by computing <m>\det (\underset{cr_i}{E}\, A)</m> by expanding along the <m>i</m>-th row. The second statement is in fact a rephrasing of the second statement of <xref ref="th_det_zero_repeated_row"/>. It remains to prove the third statement.
-      </p>
-      <p>
-        Let <m>A=[a_{ij}]_{n\times n}</m>, and set <m>B=\underset{r_i+cr_j}{E}\cdot A</m>. Then <m>B</m> is identical to <m>A</m> with the exception of the <m>i</m>-th row, whose <m>k</m>-th entry is
-        <md>
-          (B)_{ik}=a_{ik}+ca_{jk}
-        </md>.
-         It follows that
-         <md>
-           <mrow>\det B \amp=\sum_{k=1}^n(-1)^{i+k}(a_{ik}+ca_{jk})M_{ik} </mrow>
-           <mrow> \amp = \sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik}+c\sum_{k=1}^n(-1)^{i+k}a_{jk}M_{ik}</mrow>
-           <mrow> \amp =\det A+\det C </mrow>
-         </md>,
-         where <m>C</m> is the matrix obtained by replacing the <m>i</m>-th row of <m>A</m> with a row identical with its <m>j</m>-th row. By <xref ref="th_det_zero_repeated_row"/> we conclude <m>\det C=0</m>, and thus
-         <md>
-           \det(\underset{r_i+cr_j}{E}\cdot A)=\det B=\det A+\det C=\det A
-         </md>,
-          as desired.
-      </p>
-    </proof>
-
   </theorem>
     <remark xml:id="rm_det_row_ops">
   <p>
@@ -81,12 +195,12 @@
     </ul>
   </p>
 </remark>
-    <remark xml:id="rm_det_col_ops">
+    <!-- <remark xml:id="rm_det_col_ops">
       <title>Column operations and the determinant</title>
   <p>
   As shown in <xref ref="ex_det_col_ops"/> the determinant behaves in a similar manner with respect to <em>elementary column operations</em>: <ie />, scaling a column by a nonzero constant scales the determinant by <m>c</m>, swapping columns multiplies the determinant by <m>-1</m>, adding a multiple of one column to another leaves the determinant unchanged.
   </p>
-</remark>
+</remark> -->
 
 <corollary xml:id="cor_det_prod_elem">
   <title>Determinant and products of elementary matrices</title>
@@ -277,7 +391,153 @@
   </statement>
 </theorem>
 </subsection>
+<subsection xml:id="ss_adjoint_matrix">
+<title>Adjoint matrix</title>
+<definition xml:id="d_adjoint">
+  <title>Adjoint matrix</title>
+  <idx><h>adjoint matrix</h></idx>
+  <notation>
+    <usage><m>\adj A</m></usage>
+    <description>adjoint of a square matrix</description>
+  </notation>
+  <statement>
+    <p>
+    Let <m>A\in \ML_{n,n}(F)</m>. The <term>adjoint matrix</term> of <m>A</m>, denoted <m>\adj A</m>, is the <m>n\times n</m> matrix whose <m>i,j</m>-th entry is defined as follows:
+    
+    <md>
+      [\adj A]_{i,j}=(-1)^{i+j}M_{j,i}
+    </md>.
+    </p>
+  </statement>
+</definition>
+    <remark xml:id="rm_adjoint">
+  <p>
+    Be careful of the order reversal in this definition. The <m>i,j</m>-th entry of <m>\adj A</m> is equal to plus or minus the <m>j,i</m>-th minor of <m>A</m>. Let's see this in action for some small matrices.
+  </p>
+  <p>
+    For <md>A=\abcdmatrix{a}{b}{c}{d}</md> we have
+    <md>
+      \adj A=\begin{amatrix}[rr] M_{11}\amp -M_{21}\\ -M_{12}\amp M_{22}\end{amatrix}=
+      \begin{amatrix}[rr]d\amp -b\\ -c\amp a  \end{amatrix}
+    </md>.
+  </p>
+  <p>
+    For
+    <md>
+      A=\begin{bmatrix}
+        a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i
+    \end{bmatrix}
+    </md>
+    we have
+    <md>
+      \adj A=\begin{amatrix}[rrr]
+        M_{1,1}\amp -M_{2,1}\amp M_{3,1}\\
+        -M_{1,2}\amp M_{2,2}\amp -M_{3,2}\\
+        M_{1,3}\amp -M_{2,3}\amp M_{3,3}
+    \end{amatrix}
+    =\begin{amatrix}[rrr]
+      (ei-fh)\amp -(bi-ch)\amp (bf-ce)\\
+      -(di-fg)\amp (ai-cg)\amp -(af-cd)\\
+      (dh-eg)\amp -(ah-bg)\amp (ae-bd)
+  \end{amatrix}
+    </md>.
+  </p>
+</remark>
+<theorem xml:id="th_adjoint">
+  <title>Adjoint matrix formula</title>
+  <statement>
+    <p>
+      Given <m>A\in \ML_{n,n}(F)</m>, we have
+    <md number="yes" xml:id="eq_adj_form">
+      A\,(\adj A)=(\adj A)\, A=(\det A)I
+    </md>.
+      As a consequence <m>A</m> is invertible if and only if <m>\det A\ne 0</m>, and in this case we have 
+      <md number="yes" xml:id="eq_adj_inv_form">
+        A^{-1}=\frac{1}{\det A}\, \adj A
+      </md>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      First observe that the second statement regarding invertibility follows directly from <xref ref="eq_adj_form"/>, since in this case setting <m>B=\frac{1}{\det A}\, \adj A</m> we have
+      <md>
+        AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I
+      </md>.
+    </p>
+    <p>
+      Thus it suffices to prove <xref ref="eq_adj_form"/>. To do so, we must show that
+      <md>
+      [A\, \adj A]_{i,j}=[\adj A\, A]_{i,j}=
+        \begin{cases} \det A\amp \text{if } i=j\\
+                  0 \amp \text{if } i\ne j
+          \end{cases}
+      </md>.
+    </p>
+      <case>
+       <title>Case: <m>i=j</m></title>
+      <p>
+      In this case we have
+      <md>
+        <mrow> [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{ki}  </mrow>
+        <mrow> \amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (<xref ref="d_adjoint"/> )</mrow>
+        <mrow>  \amp =\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik} </mrow>
+        <mrow>  \amp =\det A </mrow>
+        </md>.
+      A similar argument shows that <m>(\adj A\, A)_{ii}=\det A</m>, though in this case we use expansion along a column.
+      </p>
+      </case>
+      <case>
+       <title>Case: <m>i\ne j</m></title>
+      <p>
+      When <m>i\ne j</m> we have <md>
+        <mrow> [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{i,j}  </mrow>
+        <mrow> \amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{j,k}) \amp (<xref ref="d_adjoint"/> )</mrow>
+        <mrow>  \amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{j,k} </mrow>
+        <mrow>  \amp =\det C </mrow>
+        </md>,
+        where <m>C</m> is the matrix obtained by replacing the <m>j</m>-th row of <m>A</m> with a copy of its <m>i</m>-th row. Since <m>C</m> has two identical rows <xref ref="th_det_zero_repeated_row"/> implies
+        <md>
+          [A\, \adj A]_{i,j}=\det C=0
+        </md>,
+        as desired. Once again, a similar argument using expansion along a column shows that <m>[\adj A\, A]_{ij}=0</m>.
+      </p>
+      </case>
 
+  </proof>
+
+</theorem>
+<example>
+  <statement>
+    <p>
+      Use the adjoint matrix formula to compute <m>A^{-1}</m>, where
+      <md>
+        A=\begin{amatrix}[rrr]1\amp 2\amp 1 \\ -1\amp 1\amp -1\\ 0\amp 2\amp 2  \end{amatrix}
+      </md>.
+    </p>
+  </statement>
+  <solution>
+    <p>
+      First compute <m>\det A=</m> by expanding along the third row:
+      <md>
+        \det A=-2(-1+1)+2(2+1)=6
+      </md>.
+      Next, compute
+      <md>
+        \adj A=\begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}
+      </md>.
+      Then we have
+      <md>
+        A^{-1}=\frac{1}{6}\,\adj A=\frac{1}{6}\, \begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}
+      </md>.
+    </p>
+  </solution>
+</example>
+    <remark xml:id="rm_adjoint_form">
+  <p>
+    Before you get too excited about the adjoint matrix formula, you should know that as <m>n</m> grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous <m>3\times 3</m> example. In general, the Gauss-Jordan inverse algorithm is the way to go.
+  </p>
+</remark>
+</subsection>
 <subsection xml:id="ss_det_ww">
   <title>WeBWork Exercises</title>
 

@@ -303,7 +303,11 @@
   </proof>
 </theorem>
 <p>
-  Surprisingly, it turns out that we can compute the determinant of a matrix by expanding along any <em>column</em> (<xref ref="cor_expansion_columns"/>). This is a consequence of the following theorem, which is useful in its own right. The proof below is taken from Robert Beezer's <url href="http://linear.ups.edu/fcla" visual="linear.ups.edu/fcla"><em>A First Course in Linear Algebra </em></url>. (See <url href="http://linear.ups.edu/fcla/section-DM.html#theorem-DT" visual="http://linear.ups.edu/fcla/section-DM.html#theorem-DT">Theorem DT</url>.) It uses induction and a wonderful trick starting from the observation that <m>c=\frac{1}{n}\sum_{i=1}^n c</m> for any <m>c\in\R</m>.
+  Surprisingly, it turns out that we can compute the determinant of a matrix by expanding along any <em>column</em> (<xref ref="cor_expansion_columns"/>). This is a consequence of the following theorem, which is useful in its own right. The proof below, taken from Robert Beezer's <url href="http://linear.ups.edu/fcla" visual="linear.ups.edu/fcla"><em>A First Course in Linear Algebra </em></url> (see <url href="http://linear.ups.edu/fcla/section-DM.html#theorem-DT" visual="http://linear.ups.edu/fcla/section-DM.html#theorem-DT">Theorem DT</url>), uses a wonderful trick starting from the observation that <m>c=\frac{1}{n}\sum_{i=1}^n c</m> for any <m>c\in\R</m>. However, it is only valid for fields <m>F</m> in which the element 
+  <md>
+    n=\underset{n \text{ times}}{\underbrace{1+1+\cdots +1}}
+  </md>
+  is not equal to zero. For example, it is not valid for the field <m>F=\F_2</m> in the case <m>n=2</m>. We include it nonetheless for its elegance, but assure the reader that we will be able to give a general proof of the result after introducing some more theory. 
 </p>
 <theorem xml:id="th_det_transpose">
   <title>Determinant and transposition</title>
@@ -317,7 +321,9 @@
   </statement>
   <proof>
     <p>
-      The proof is by induction on <m>n</m>. The base case (<m>n=1</m>) is trivial since <m>[a]^T=[a]</m> for any <m>1\times 1</m> matrix <m>[a]</m>.
+      As noted above, this proof is only valid if <m>n\ne 0</m> in the field <m>F</m>. In particular, it is valid for <m>F\in \{\Q,\R,\C\}</m> and any <m>n</m>. 
+    </p>
+    <p> The proof is by induction on <m>n</m>. The base case (<m>n=1</m>) is trivial since <m>[a]^T=[a]</m> for any <m>1\times 1</m> matrix <m>[a]</m>.
     </p>
     <p>
       For induction we assume that for all <m>n\geq 2</m> we have <m>\det B^T=\det B</m> for any <m>(n-1)\times (n-1)</m> matrix. Suppose <m>A</m> is an <m>n\times n</m> matrix. We have
@@ -418,218 +424,7 @@
 <p>
   The freedom to compute the determinant by expanding along any row or column gives rise to the following intuitive property.
 </p>
-<theorem xml:id="th_det_zero_repeated_row">
-  <title>Zero rows/columns, swapping rows/columns, identical rows/columns</title>
-  <statement>
-    <p>
-      Let <m>A\in \ML_{n,n}(F)</m>.
-      <ol>
-        <li>
-          <p>
-            If <m>A</m> has a zero row or zero column, then <m>\det A=0</m>
-          </p>
-        </li>
-        <li>
-          <p>
-            Assume <m>n\geq 2</m>. Let <m>A'</m> be the matrix obtained by swapping two rows (or two columns) of <m>A</m>. Then
-            <md>\det A'=-\det A</md>.
-          </p>
-        </li>
-        <li>
-          <p>
-            Assume <m>n\geq 2</m>. If <m>A</m> has two identical rows or two identical columns, then <m>\det A=0</m>.
-          </p>
-        </li>
-      </ol>
-    </p>
 
-  </statement>
-  <proof>
-    <p>
-      The first statement is obvious since according to <xref ref="th_expansion_row"/> and <xref ref="cor_expansion_columns"/> we may compute the determinant by expanding along the zero row or zero column in question.
-    </p>
-    <p>
-      The third statement follows from the second. Indeed, if <m>A</m> has two identical rows or columns, then the matrix <m>A'</m> obtained from <m>A</m> by swapping the rows (or columns) in question is <m>A</m> itself. Thus <m>\det A=-\det A</m> by the second statement, and we conclude that <m>\det A=0</m>.
-    </p>
-    <p>
-      It remains only to show the second statement. We prove only the statement regarding swapping rows; the corresponding statement about columns follows from <xref ref="th_det_transpose"/>. The proof is by induction.
-    </p>
-    <case>
-     <title>Base step: <m>n=2</m></title>
-     <p>
-       Let <m>A=\begin{bmatrix}a\amp b\\c\amp d \end{bmatrix}</m>.
-       Then <m>A'=\abcdmatrix{c}{d}A{b}</m>, and
-       <m>\det(A')=cb-ad=-(ad-bc)=-\det A</m>.
-     </p>
-    </case>
-    <case>
-     <title>Induction step</title>
-     <p>
-       We assume by induction that the result holds for any <m>n\times n</m> matrices, <m>n\geq 2</m>, and show the same is true for any <m>(n+1)\times (n+1)</m> matrix.
-     </p>
-    <p>
-      Let <m>A</m> be an <m>(n+1)\times (n+1)</m> matrix, and suppose <m>A'</m>  is the result of swapping the <m>i</m>-th and <m>k</m>-th rows of <m>A</m>.
-      We compute the determinants of <m>A</m> and <m>A'</m> by expanding along the <m>\ell</m>-th row, where <m>\ell\ne i</m> and <m>\ell\ne k</m>. This is possible since <m>(n+1)\geq 3</m>.
-    </p>
-    <p>
-      Moving along the <m>\ell</m>-th row, notice that each submatrix <m> {A'}_{\ell j}</m> is the result of swapping the two rows of <m> A_{\ell j}</m> that originally corresponded to the <m>i</m>-th and <m>k</m>-th rows of <m>A</m>. Since these submatrices are of dimension <m>n\times n</m>, we have <m>\det  {A'}_{\ell j}=-\det  A_{\ell j}</m> by induction. Lastly, since the <m>\ell</m>-th rows of <m>A</m> and <m>A'</m> are the same we have
-      <md>
-        <mrow>\det A \amp=\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}\det  A_{\ell, j} </mrow>
-        <mrow> \amp = \sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}(-\det  {A'}_{\ell, j})</mrow>
-        <mrow>  \amp =-\sum_{j=1}^{n+1}(-1)^{\ell+j}a_{\ell, j}\det  {A'}_{\ell, j} </mrow>
-        <mrow>  \amp=-\det A' </mrow>
-      </md>.
-    </p>
-  </case>
-  </proof>
-</theorem>
-<p>
-As a further consequence of <xref ref="th_expansion_row"/> and <xref ref="cor_expansion_columns"/>, we can derive the <em>adjoint matrix formula</em>.
-</p>
-<definition xml:id="d_adjoint">
-  <title>Adjoint matrix</title>
-  <idx><h>adjoint matrix</h></idx>
-  <notation>
-    <usage><m>\adj A</m></usage>
-    <description>adjoint of a square matrix</description>
-  </notation>
-  <statement>
-    <p>
-    Let <m>A\in \ML_{n,n}(F)</m>. The <term>adjoint matrix</term> of <m>A</m>, denoted <m>\adj A</m>, is the <m>n\times n</m> matrix whose <m>i,j</m>-th entry is defined as follows:
-    
-    <md>
-      [\adj A]_{i,j}=(-1)^{i+j}M_{j,i}
-    </md>.
-    </p>
-  </statement>
-</definition>
-    <remark xml:id="rm_adjoint">
-  <p>
-    Be careful of the order reversal in this definition. The <m>i,j</m>-th entry of <m>\adj A</m> is equal to plus or minus the <m>j,i</m>-th minor of <m>A</m>. Let's see this in action for some small matrices.
-  </p>
-  <p>
-    For <md>A=\abcdmatrix{a}{b}{c}{d}</md> we have
-    <md>
-      \adj A=\begin{amatrix}[rr] M_{11}\amp -M_{21}\\ -M_{12}\amp M_{22}\end{amatrix}=
-      \begin{amatrix}[rr]d\amp -b\\ -c\amp a  \end{amatrix}
-    </md>.
-  </p>
-  <p>
-    For
-    <md>
-      A=\begin{bmatrix}
-        a\amp b\amp c\\ d\amp e\amp f\\ g\amp h\amp i
-    \end{bmatrix}
-    </md>
-    we have
-    <md>
-      \adj A=\begin{amatrix}[rrr]
-        M_{1,1}\amp -M_{2,1}\amp M_{3,1}\\
-        -M_{1,2}\amp M_{2,2}\amp -M_{3,2}\\
-        M_{1,3}\amp -M_{2,3}\amp M_{3,3}
-    \end{amatrix}
-    =\begin{amatrix}[rrr]
-      (ei-fh)\amp -(bi-ch)\amp (bf-ce)\\
-      -(di-fg)\amp (ai-cg)\amp -(af-cd)\\
-      (dh-eg)\amp -(ah-bg)\amp (ae-bd)
-  \end{amatrix}
-    </md>.
-  </p>
-</remark>
-<theorem xml:id="th_adjoint">
-  <title>Adjoint matrix formula</title>
-  <statement>
-    <p>
-      Given <m>A\in \ML_{n,n}(F)</m>, we have
-    <md number="yes" xml:id="eq_adj_form">
-      A\,(\adj A)=(\adj A)\, A=(\det A)I
-    </md>.
-      As a consequence <m>A</m> is invertible if and only if <m>\det A\ne 0</m>, and in this case we have 
-      <md number="yes" xml:id="eq_adj_inv_form">
-        A^{-1}=\frac{1}{\det A}\, \adj A
-      </md>.
-    </p>
-  </statement>
-  <proof>
-    <p>
-      First observe that the second statement regarding invertibility follows directly from <xref ref="eq_adj_form"/>, since in this case setting <m>B=\frac{1}{\det A}\, \adj A</m> we have
-      <md>
-        AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I
-      </md>.
-    </p>
-    <p>
-      Thus it suffices to prove <xref ref="eq_adj_form"/>. To do so, we must show that
-      <md>
-      [A\, \adj A]_{i,j}=[\adj A\, A]_{i,j}=
-        \begin{cases} \det A\amp \text{if } i=j\\
-                  0 \amp \text{if } i\ne j
-          \end{cases}
-      </md>.
-    </p>
-      <case>
-       <title>Case: <m>i=j</m></title>
-      <p>
-      In this case we have
-      <md>
-        <mrow> [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{ki}  </mrow>
-        <mrow> \amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (<xref ref="d_adjoint"/> )</mrow>
-        <mrow>  \amp =\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik} </mrow>
-        <mrow>  \amp =\det A </mrow>
-        </md>.
-      A similar argument shows that <m>(\adj A\, A)_{ii}=\det A</m>, though in this case we use expansion along a column.
-      </p>
-      </case>
-      <case>
-       <title>Case: <m>i\ne j</m></title>
-      <p>
-      When <m>i\ne j</m> we have <md>
-        <mrow> [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{k,j}  </mrow>
-        <mrow> \amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{j,k}) \amp (<xref ref="d_adjoint"/> )</mrow>
-        <mrow>  \amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{j,k} </mrow>
-        <mrow>  \amp =\det C </mrow>
-        </md>,
-        where <m>C</m> is the matrix obtained by replacing the <m>j</m>-th row of <m>A</m> with a copy of its <m>i</m>-th row. Since <m>C</m> has two identical rows <xref ref="th_det_zero_repeated_row"/> implies
-        <md>
-          [A\, \adj A]_{i,j}=\det C=0
-        </md>,
-        as desired. Once again, a similar argument using expansion along a column shows that <m>[\adj A\, A]_{ij}=0</m>.
-      </p>
-      </case>
-
-  </proof>
-
-</theorem>
-<example>
-  <statement>
-    <p>
-      Use the adjoint matrix formula to compute <m>A^{-1}</m>, where
-      <md>
-        A=\begin{amatrix}[rrr]1\amp 2\amp 1 \\ -1\amp 1\amp -1\\ 0\amp 2\amp 2  \end{amatrix}
-      </md>.
-    </p>
-  </statement>
-  <solution>
-    <p>
-      First compute <m>\det A=</m> by expanding along the third row:
-      <md>
-        \det A=-2(-1+1)+2(2+1)=6
-      </md>.
-      Next, compute
-      <md>
-        \adj A=\begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}
-      </md>.
-      Then we have
-      <md>
-        A^{-1}=\frac{1}{6}\,\adj A=\frac{1}{6}\, \begin{amatrix}[rrr] 4\amp -2 \amp -3\\ 2\amp 2\amp 0\\ -2\amp -2\amp 3  \end{amatrix}
-      </md>.
-    </p>
-  </solution>
-</example>
-    <remark xml:id="rm_adjoint_form">
-  <p>
-    Before you get too excited about the adjoint matrix formula, you should know that as <m>n</m> grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous <m>3\times 3</m> example. In general, the Gauss-Jordan inverse algorithm is the way to go.
-  </p>
-</remark>
 
 </subsection>
 
