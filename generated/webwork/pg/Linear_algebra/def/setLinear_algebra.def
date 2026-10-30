@@ -1,6 +1,6 @@
-openDate          = 10/28/2026 at 12:00am
-dueDate           = 04/28/2027 at 10:00pm
-answerDate        = 04/28/2027 at 10:00pm
+openDate          = 10/29/2026 at 12:00am
+dueDate           = 04/29/2027 at 10:00pm
+answerDate        = 04/29/2027 at 10:00pm
 paperHeaderFile   = Linear_algebra/header/Linear_algebra.pg
 screenHeaderFile  = Linear_algebra/header/Linear_algebra.pg
 description       = Linear algebra
@@ -56,4 +56,20 @@ problem_end
 problem_start
 source_file = Library/Utah/Business_Algebra/set10_Matrices/p24.pg
 problem_id = 21
+problem_end
+problem_start
+source_file = Library/UMN/algebraKaufmannSchwitters/ks_11_4_prob02.pg
+problem_id = 15
+problem_end
+problem_start
+source_file = Library/NAU/setLinearAlgebra/detElementary.pg
+problem_id = 16
+problem_end
+problem_start
+source_file = Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg
+problem_id = 17
+problem_end
+problem_start
+source_file = Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_9.pg
+problem_id = 18
 problem_end

@@ -478,4 +478,123 @@ B=\left(\begin{array}{cc}
     <rendering-data sourceFilePath="Library/Utah/Business_Algebra/set10_Matrices/p24.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
     <pg source="Library/Utah/Business_Algebra/set10_Matrices/p24.pg"/>
   </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-14" ww-id="webwork-14">
+    <static seed="14" source="Library/UMN/algebraKaufmannSchwitters/ks_11_4_prob02.pg">
+      <statement><p>Use the appropriate property of determinants to find <m>a.</m>  <em> Do not </em> evaluate the determinants. 
+<me>\begin{vmatrix}
+-2 \amp  23 \amp  7 \\ 
+-43 \amp  -31 \amp  -17 \\ 
+-1 \amp  -2 \amp  6 \\
+\end{vmatrix}
+=
+a \cdot
+\begin{vmatrix}
+2 \amp  -23 \amp  -7 \\ 
+43 \amp  31 \amp  17 \\ 
+1 \amp  2 \amp  -6\\
+\end{vmatrix}</me>
+Answer: <m>a =</m> <fillin characters="20" name="AnSwEr0001"/></p>
+</statement>
+      <answer>
+        <p>
+          <m>-1</m>
+        </p>
+      </answer>
+    </static>
+    <rendering-data sourceFilePath="Library/UMN/algebraKaufmannSchwitters/ks_11_4_prob02.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/UMN/algebraKaufmannSchwitters/ks_11_4_prob02.pg"/>
+  </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-15" ww-id="webwork-15">
+    <static seed="15" source="Library/NAU/setLinearAlgebra/detElementary.pg">
+      <statement><p>Consider the following Gauss elimination:</p>
+<p><me>A \to \underbrace{\left[\begin{array}{ccc}
+1 \amp 0 \amp 8\cr
+0 \amp 1 \amp 0\cr
+0 \amp 0 \amp 1
+\end{array}\right]}_{E_1} A \to \underbrace{\left[\begin{array}{ccc}
+0 \amp 0 \amp 1\cr
+0 \amp 1 \amp 0\cr
+1 \amp 0 \amp 0
+\end{array}\right]}_{E_2} E_1 A \to \underbrace{\left[\begin{array}{ccc}
+1 \amp 0 \amp 0\cr
+0 \amp 1 \amp 0\cr
+0 \amp 0 \amp -9
+\end{array}\right]}_{E_3} E_2E_1 A \to \underbrace{\left[\begin{array}{ccc}
+1 \amp 0 \amp 0\cr
+0 \amp 3 \amp 0\cr
+0 \amp 0 \amp 1
+\end{array}\right]}_{E_4} E_3E_2E_1 A=\left[\begin{array}{ccc}
+-1 \amp 9 \amp -8\cr
+0 \amp 8 \amp 2\cr
+0 \amp 0 \amp 6
+\end{array}\right]</me></p>
+<p>What is the determinant of <m>A</m>?</p>
+<p><m>\det(A) =</m> <fillin characters="10" name="AnSwEr0001"/></p>
+</statement>
+      <answer>
+        <p>
+          <m>-1.77778</m>
+        </p>
+      </answer>
+    </static>
+    <rendering-data sourceFilePath="Library/NAU/setLinearAlgebra/detElementary.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/NAU/setLinearAlgebra/detElementary.pg"/>
+  </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-16" ww-id="webwork-16">
+    <static seed="16" source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg">
+      <statement><p>Find <m>k</m> such that the following matrix <m>M</m> is singular.
+<me>M = \left[\begin{array}{ccc}
+2 \amp 1 \amp -1\cr
+4 \amp 4 \amp 1\cr
+5+k \amp 10 \amp 0\cr
+\end{array}\right]</me></p>
+<p><m>k=</m> <fillin characters="10" name="AnSwEr0001"/></p>
+</statement>
+      <answer>
+        <p>
+          <m>7</m>
+        </p>
+      </answer>
+    </static>
+    <rendering-data sourceFilePath="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg"/>
+  </webwork-reps>
+  <webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-webwork-17" ww-id="webwork-17">
+    <static seed="17" source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_9.pg">
+      <statement><p>If <m>A</m> and <m>B</m> are <m>4 \times 4</m> matrices, <m>\det (A)=-3</m>, <m>\det (B)=5</m>, then</p>
+<p><m>\det  (AB) =</m> <fillin characters="10" name="AnSwEr0001"/>,</p>
+<p><m>\det  (2 A) =</m> <fillin characters="10" name="AnSwEr0002"/>,</p>
+<p><m>\det  (A^{T}) =</m> <fillin characters="10" name="AnSwEr0003"/>,</p>
+<p><m>\det  (B^{-1}) =</m> <fillin characters="10" name="AnSwEr0004"/>,</p>
+<p><m>\det  (B^3) =</m> <fillin characters="10" name="AnSwEr0005"/>.</p>
+</statement>
+      <answer>
+        <p>
+          <m>-15</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>-48</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>-3</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>0.2</m>
+        </p>
+      </answer>
+      <answer>
+        <p>
+          <m>125</m>
+        </p>
+      </answer>
+    </static>
+    <rendering-data sourceFilePath="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_9.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+    <pg source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_9.pg"/>
+  </webwork-reps>
 </webwork-representations>
