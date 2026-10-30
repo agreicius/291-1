@@ -421,12 +421,9 @@
   <video xml:id="vid_det" youtube="OoNYGwJS-M4" />
   </figure>
 </paragraphs>
-<p>
-  The freedom to compute the determinant by expanding along any row or column gives rise to the following intuitive property.
-</p>
 
 
 </subsection>
 
-<!-- <xi:include href="./s_det_ex.ptx"/> -->
+
 </section>

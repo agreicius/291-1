@@ -206,7 +206,7 @@
   <title>Determinant and products of elementary matrices</title>
   <statement>
     <p>
-      Let <m>A</m> be an <m>n\times n</m> matrix, and suppose we have
+      Let <m>A\in \ML_{n,n}(F)</m>, and suppose we have
       <md number="yes" xml:id="eq_row_reduce_elem">
         B=E_rE_{r-1}\cdots E_1\, A
       </md>
@@ -218,7 +218,12 @@
   </statement>
   <proof>
     <p>
-      This is an easy proof by induction on the number <m>r</m> of elementary matrices involved, the base case (<m>r=1</m>) of which is covered by <xref ref="th_det_row_ops"/>.
+      This is an easy proof by induction on the number <m>r</m> of elementary matrices involved. The base case is actually covered by <xref ref="th_det_row_ops"/> (the properties (1)-(3) and the determinant formulas), since we have 
+      <md>
+        <mrow>\det \underset{c\, r_i}{E}A \amp =c\det A=\det \underset{c\, r_i}{E}\det A </mrow>
+        <mrow>\det \underset{r_i\leftrightarrow r_j}{E}A \amp =-1\det A=\det \underset{r_i\leftrightarrow r_j}{E}\det A </mrow>
+        <mrow>\det \underset{r_i+cr_j}{E}A \amp =\det A=\det \underset{r_i+cr_j}{E}\det A </mrow>
+      </md>.
     </p>
   </proof>
 </corollary>
@@ -279,75 +284,48 @@
   <title>Determinant and invertibility</title>
   <statement>
     <p>
-    Let <m>A</m> be an <m>n\times n</m> matrix. Then <m>A</m> is invertible if and only if <m>\det A\ne 0</m>.
+    Let <m>A\in \ML_{n,n}(F)</m>. The following conditions are equivalent. 
+    <ol>
+        <li>
+            <p>
+                <m>A</m> is invertible.
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>\det A\ne 0</m>.
+            </p>
+        </li>
+    </ol>
     </p>
   </statement>
   <proof>
     <p>
-      The implication <m>\det A\ne 0\implies A \text{ invertible}</m> was proved in <xref ref="th_adjoint"/>.
-    </p>
-    <p>
-      For the other direction, assume <m>A</m> is invertible. Then <xref ref="th_invertibility"/> implies <m>A</m> is a product of elementary matrices:
-      <md>
-        A=E_1E_2\cdots E_r
-      </md>.
-      Then <xref ref="cor_det_prod_elem"/> implies
-      <md>
-        \det A=\det E_1\, \det E_2\cdots \det E_1
-      </md>.
-      Since <m>\det E_i\ne 0</m> for all <m>i</m> (<xref ref="th_det_row_ops"/>), we conclude <m>\det A\ne 0</m>.
-    </p>
-  </proof>
-</theorem>
-<theorem xml:id="th_det_mult">
-  <title>Determinant is multiplicative</title>
-  <statement>
-    <p>
-      Let <m>A</m> and <m>B</m> be <m>n\times n</m> matrices. Then
-      <md>
-        \det AB=\det A\, \det B
-      </md>.
-    </p>
-  </statement>
-  <proof>
-    <p>
-      We consider two cases based on the invertibility of <m>A</m> and/or <m>B</m>.
-    </p>
-    <case>
-     <title><m>A</m> or <m>B</m> is not invertible</title>
-     <p>In this case <m>AB</m> is not invertible (<xref ref="cor_inv_prod_eq"/>), and hence <m>\det AB=0</m> by <xref ref="th_inv_iff_det"/>. By the same reasoning we must have <m>\det A=0</m> or <m>\det B=0</m>. It follows that
+     Given <m>A\in \ML_{n,n}(F)</m> we can row reduce <m>A</m> to a matrix <m>U</m> in reduced row echelon form. Equivalently, we have 
      <md>
-       \det AB=\det A\, \det B=0
+        E_rE_{r-1}\cdots E_1A=U
      </md>
-     in this case.
+     for some elementary matrices <m>E_i</m>. By <xref ref="cor_det_prod_elem"/>, we have
+     <md>
+        <mrow>\right(\prod_{i=1}^r\det E_i\left)\det A \amp =\det U </mrow>
+     </md>.
+     Since <m>\det E_i\ne 0</m> for all <m>1\leq i\leq r</m>, it follows that <m>\det A\ne 0</m> if and only if <m>\det U\ne 0</m>. Since <m>U</m> is in reduced row echelon form, it upper triangular, and hence <m>\det U\ne 0</m> if and only if <m>U</m> has a leading one in each column, if and only if <m>U=I_n</m>. Taken all together, we see that 
+     <md>
+        <mrow>A \text{ invertible} \amp \iff U=I_n</mrow>
+        <mrow> \amp \iff \det U\ne 0</mrow>
+        <mrow> \amp \iff \det A\ne 0</mrow>
+     </md>.
     </p>
-    </case>
-    <case>
-     <title><m>A</m> and <m>B</m> both invertible</title>
-    <p>
-    In this case we can write
-    <md>
-      <mrow> A \amp E_1E_2\cdots E_r \amp B\amp=E'_1E'_2\cdots E'_s </mrow>
-    </md>
-    for some elementary matrices <m>E_i</m> and <m>E'_j</m> (<xref ref="th_invertibility"/>). Then
-    <md>
-      <mrow> \det AB \amp= \det(E_1E_2\cdots E_rE'_1E'_2\cdots E'_s) </mrow>
-      <mrow> \amp= \det E_1\det E_2\cdots \det E_r\det E'_1\det E'_2\cdots \det E'_s \amp (<xref ref="cor_det_prod_elem"/>)</mrow>
-      <mrow>  \amp=\det A\, \det B \amp (<xref ref="cor_det_prod_elem"/>) </mrow>
-    </md>.
-    </p>
-    </case>
   </proof>
 </theorem>
 <p>
-  We end this section and chapter with a slight expansion of our invertibility theorem. The equivalence of <xref ref="inv2_statement_det">statement</xref> is a direct consequence of <xref ref="th_inv_iff_det"/>. The equivalence of the equivalence of <xref ref="inv2_statement_exists_sol">statement</xref> was given earlier as an exercise. (See <xref ref="ex_th_inv_exists_sol"/>.) 
+  Before moving on, let's add our new invertibility condition to our ever-growing invertibility theorem. The equivalence of <xref ref="inv2_statement_det">statement</xref> is a direct consequence of <xref ref="th_inv_iff_det"/>. The equivalence of <xref ref="inv2_statement_exists_sol">statement</xref> to invertibility was given earlier as an exercise.
 </p>
 <theorem xml:id="th_invertibility_expanded">
   <title>Invertibility theorem</title>
   <statement>
     <p>
-      Let <m>A=</m> be an <m>n\times n</m> matrix.
-      The following statements are equivalent.
+      Let <m>A\in\ML_{n,n}(F)</m>. The following statements are equivalent.
       <ol>
         <li xml:id="inv2_statement_def">
           <p>
@@ -390,6 +368,149 @@
     </p>
   </statement>
 </theorem>
+<p>
+    Next we come to an equally important property of the determinant: the <em>multiplicative property</em>. 
+</p>
+<theorem xml:id="th_det_mult">
+  <title>Determinant is multiplicative</title>
+  <statement>
+    <p>
+      Given matrices <m>A,B\in \ML_{n,n}(F)</m>, we have 
+      <md>
+        \det AB=\det A\, \det B
+      </md>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      We consider two cases based on the invertibility of <m>A</m> and/or <m>B</m>.
+    </p>
+    <case>
+     <title><m>A</m> or <m>B</m> is not invertible</title>
+     <p>In this case <m>AB</m> is not invertible (<xref ref="cor_inv_prod_eq"/>), and hence <m>\det AB=0</m> by <xref ref="th_inv_iff_det"/>. By the same reasoning we must have <m>\det A=0</m> or <m>\det B=0</m>. It follows that
+     <md>
+       \det AB=\det A\, \det B=0
+     </md>
+     in this case.
+    </p>
+    </case>
+    <case>
+     <title><m>A</m> and <m>B</m> both invertible</title>
+    <p>
+    In this case we can write
+    <md>
+      <mrow> A \amp E_1E_2\cdots E_r \amp B\amp=E'_1E'_2\cdots E'_s </mrow>
+    </md>
+    for some elementary matrices <m>E_i</m> and <m>E'_j</m> (<xref ref="th_invertibility"/>). Then
+    <md>
+      <mrow> \det AB \amp= \det(E_1E_2\cdots E_rE'_1E'_2\cdots E'_s) </mrow>
+      <mrow> \amp= \det E_1\det E_2\cdots \det E_r\det E'_1\det E'_2\cdots \det E'_s \amp (<xref ref="cor_det_prod_elem"/>)</mrow>
+      <mrow>  \amp=\det A\, \det B \amp (<xref ref="cor_det_prod_elem"/>) </mrow>
+    </md>.
+    </p>
+    </case>
+  </proof>
+</theorem>
+<p>
+    Now that we know <m>\det</m> is a multiplicative map, we can easily derive a result describing how the determinant behaves with respect to <em>column operations</em>. Using the column method of multiplication, we see that an elementary matrix <m>E</m>, when multiplying a matrix <m>A</m> on the right, performs the corresponding column operation on <m>A</m>. In more detail: 
+    <ul>
+        <li>
+            <p>
+                <m>A\underset{c\, r_i}{E}</m> is the result of scaling the <m>i</m>-th column of <m>A</m> by <m>c</m>; 
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>A\underset{r_i\leftrightarrow r_j}{E}</m> is the result of swapping the <m>i</m>-th and <m>j</m>-th columns of <m>A</m>; 
+            </p>
+        </li>
+        <li>
+            <p>
+                <m>A\underset{r_i+cr_j}{E}</m> is the result of replacing the <m>i</m>-th column of <m>A</m> with the <m>i</m>-th column plus <m>c</m> times the <m>j</m>-th column of <m>A</m>.
+            </p>
+        </li>
+    </ul> 
+    In other words, scaling a column of <m>A</m> by <m>c</m> scales the determinant by <m>c</m>, swapping two columns changes the sign of the determinant, and adding a multiple of one column to another leaves the determinant unchanged.
+</p>
+<corollary xml:id="cor_det_column_ops">
+    <title>Determinant and column operations</title>
+    <statement>
+        <p>
+      Let <m>A\in \ML_{n,n}(F)</m>. 
+      <ol>
+        <li>
+          <p>For all <m>1\leq i\leq n</m> and <m>c\in F</m>, we have  
+            <md>\det(A\, \underset{c\cdot r_i}{E})=c\det(A)</md>.
+          </p>
+        </li>
+        <li>
+          <p> For all <m>1\leq i&lt; j\leq n</m>, we have
+            <md>\det(A\, \underset{r_i\leftrightarrow r_j}{E})=-\det(A)</md>
+          </p>
+        </li>
+        <li>
+          <p>
+            For all <m>1\leq i,j\leq n</m> and <m>c\in F</m>, we have
+            <md>\det(A\, \underset{r_i+cr_j}{E})=\det(A)</md>.
+          </p>
+        </li>
+      </ol>
+        </p>
+    </statement>
+</corollary>
+<p>
+    We will add one more theoretical result to this section that already bristles with theory! Let <m>V=\F^n</m>. It turns out that not only is <m>\det</m> an alternating multilinear map on <m>V^n</m>, it is (almost) the <em>only</em> such map! Let's make this more precise. 
+</p>
+<theorem xml:id="th_det_unique">
+<title>Determinant: unique characterization</title>
+<statement>
+<p>
+Let <m>V=F^n</m> where <m>n</m> is a positive integer, and treat <m>\det</m> as a map on <m>V^n</m>.
+<ol>
+    <li>
+        <p>
+            <m>\det</m> is the unique alternating multilinear map on <m>V^n</m> that further satisfies
+            <md>
+                \det(\bolde_1,\bolde_2,\dots, \bolde_n)=\det I_n=1
+            </md>.
+        </p>
+    </li>
+    <li>
+        <p>
+            If <m>f\colon V^n\rightarrow F</m> is an alternating multilinear map, then <m>f=c\det</m>, where 
+            <md>
+                f(\bolde_1,\bolde_2,\dots, \bolde_n)=f(I_n)=c
+            </md>. 
+        </p>
+    </li>
+</ol>
+</p>
+</statement>
+<proof>
+<p>
+    Left as a homework exercise. 
+</p>
+</proof>
+</theorem>
+<p>
+    As evidence of how such a characterization can be useful, we can now give a proof that <m>\det A^T=\det A</m> that works for any field <m>F</m>. 
+</p>
+<corollary xml:id="cor_det_transpose">
+    <statement>
+        <p>
+            For all <m>A\in \ML_{n,n}(F)</m>, we have 
+            <md>
+                \det A^T=\det A
+            </md>.
+        </p>
+    </statement>
+    <proof>
+        <p>
+            Left as homework exercise. 
+        </p>
+    </proof>
+</corollary>
+
 </subsection>
 <subsection xml:id="ss_adjoint_matrix">
 <title>Adjoint matrix</title>
@@ -402,10 +523,9 @@
   </notation>
   <statement>
     <p>
-    Let <m>A\in \ML_{n,n}(F)</m>. The <term>adjoint matrix</term> of <m>A</m>, denoted <m>\adj A</m>, is the <m>n\times n</m> matrix whose <m>i,j</m>-th entry is defined as follows:
-    
+Let <m>A\in \ML_{n,n}(F)</m>, and let <m>I=\{1,2\dots, n\}\times \{1,2,\dots, n\}</m>. The <term>adjoint matrix</term> of <m>A</m>, denoted <m>\adj A</m>, is the <m>n\times n</m> matrix defined as
     <md>
-      [\adj A]_{i,j}=(-1)^{i+j}M_{j,i}
+     \adj A=[(-1)^{i+j}M_{j,i}]_{(i,j)\in I}=\left( [(-1)^{i+j}M_{i,j}]_{(i,j)\in I}\right)^T
     </md>.
     </p>
   </statement>
@@ -495,7 +615,7 @@
         <mrow>  \amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{j,k} </mrow>
         <mrow>  \amp =\det C </mrow>
         </md>,
-        where <m>C</m> is the matrix obtained by replacing the <m>j</m>-th row of <m>A</m> with a copy of its <m>i</m>-th row. Since <m>C</m> has two identical rows <xref ref="th_det_zero_repeated_row"/> implies
+        where <m>C</m> is the matrix obtained by replacing the <m>j</m>-th row of <m>A</m> with a copy of its <m>i</m>-th row. Since <m>C</m> has two identical rows the alternating property of <m>\det</m> implies
         <md>
           [A\, \adj A]_{i,j}=\det C=0
         </md>,
@@ -564,6 +684,6 @@
 
 </subsection>
 
-    
+<xi:include href="./s_det_ex.ptx"/>    
 
 </section>
