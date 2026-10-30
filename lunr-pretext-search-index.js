@@ -3076,7 +3076,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.13",
   "title": "The determinant",
-  "body": " The determinant   The determinant is a function that assigns to each matrix a scalar . The definition given below of the determinant is far from intuitive, and we will do little to motivate it up front. Instead, we allow its various properties to speak for themselves by way of retroactive motivation. In particular, we will see that , making the determinant an important tool for investigating invertibility.    Definition of the determinant  Our definition of the determinant is a recursive one; given an matrix its determinant is defined in terms of the determinant of certain submatrices of dimension . This necessitates some notation to help our discussion along.   Submatrix notation  submatrix    submatrix of    Let be an matrix with . Given , the submatrix of obtained by removing the -th row and -th column of is denoted .     Do not conflate the submatrix notation with matrix entry notation : the former returns the submatrix of obtained by deleting the -th row and -th column; the latter returns the -th entry of .    The determinant  determinant    determinant of    Let . The determinant is defined as follows:   Base case:  When we have and we define .    Recursive case:  When we define .        Small cases  Let's look at determinant formulas for the cases. You may remember the formula for matrices from ; we will make the connection more explicit in .  Given , we have . The formula for the case is simple enough to serve as a second base case , allowing us to end the recursive process of computing a general matrix once we get to expressions involving matrices.  Given , we have .   The recursive nature of the determinant definition makes induction arguments particularly useful when proving properties of the determinant, as illustrated by the next theorem.   Determinant of triangular matrices   Let be triangular (upper, lower, or diagonal). Then . In other words, the determinant of a triangular matrix is the product of its diagonal entries.    We only give the proof for lower triangular matrices; the proof in the upper triangular case is nearly identical.  For any let denote the proposition: The determinant of any lower triangular matrix is the product of its diagonal entries . We prove by induction that is true for all .   Base step: show is true  In this case , and is indeed the product of the diagonal entries of .    Induction step: show for all  Let be a lower triangular matrix. Then for all , and hence the determinant of is given by . Claim: is lower triangular. Indeed, first observe that we have for all ; by deleting the first row and first column we effectively bump each index up by one. Since is lower triangular we have for all , and hence also for all , proving the claim.  Lastly, assuming is true (the induction hypothesis) we have , as desired.      Determinant of identity matrices   We have for all positive integers .    This follows directly from since the diagonal entries of are all ones.      Expansion along rows and columns  Morally speaking, we should give some examples of higher-dimensional determinants, but we first introduce some theory that affords us more leeway in our computations.   Minors and expansions along rows\/columns  minor of matrix  expansion along row\/column    the -th minor of a matrix    Given , for any pair the -th minor of is defined as .  For any the expression is called the expansion along the -th row of .  For any , the expression is called the expansion along the -th column of .     Expansion along rows   Let . For any we have . In other words, we can compute by expanding along any row of .    The proof is by induction on the size of the matrix.   Base step:  For there is nothing to prove. Given expanding along either row yields , as one easily verifies.    Induction step  Assume the claim is true of any matrix. Given we have . Expanding along the -th row of for any , on the other hand, we get . To show these two expressions are equal we use the induction hypothesis to compute each by expanding along its -th row: . The matrix is the result of first deleting row 1 and column from , and then deleting row and column of the resulting matrix. To deal with such iterated submatrices, we make some simple observations relating the rows and columns of and with those of .   The -th row of corresponds to the -th row of , and the first row of corresponds to the first row of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .   From these observations we derive the following table of formulas: . We now begin to unpack : . This completes the induction step, and thus the proof is finished.     Surprisingly, it turns out that we can compute the determinant of a matrix by expanding along any column ( ). This is a consequence of the following theorem, which is useful in its own right. The proof below, taken from Robert Beezer's A First Course in Linear Algebra (see Theorem DT ), uses a wonderful trick starting from the observation that for any . However, it is only valid for fields in which the element is not equal to zero. For example, it is not valid for the field in the case . We include it nonetheless for its elegance, but assure the reader that we will be able to give a general proof of the result after introducing some more theory.   Determinant and transposition   Let be an matrix. Then .    As noted above, this proof is only valid if in the field . In particular, it is valid for and any .  The proof is by induction on . The base case ( ) is trivial since for any matrix .  For induction we assume that for all we have for any matrix. Suppose is an matrix. We have . This completes the proof by induction. (Note how in the second equality in the chain above we compute in the -th term of by expanding along the -th row of . A similar observation applies to the penultimate equality.)     Expansion along columns   Let . For any we have . In other words, we can compute by expanding along any column of .    For any , we have .      Compute for .    First we compute by expanding along the second row. The only nonzero term of this expansion is the last one, yielding . We have . To compute its determinant we expand along its third column: We conclude that .     Matrix of signs  When expanding along a row or column, it is easy to get tripped up by the sign in front of the -th coefficient. A matrix of signs is a sort of mnemonic device to help you in this regard. It is easily generated by observing that the sign in front of the -th entry is always a (since ), and that any horizontal or vertical step within the matrix is accompanied by a change of sign. As an example, for we have the following matrix of signs: .    Video example: determinant   Video: determinant     The freedom to compute the determinant by expanding along any row or column gives rise to the following intuitive property.    "
+  "body": " The determinant   The determinant is a function that assigns to each matrix a scalar . The definition given below of the determinant is far from intuitive, and we will do little to motivate it up front. Instead, we allow its various properties to speak for themselves by way of retroactive motivation. In particular, we will see that , making the determinant an important tool for investigating invertibility.    Definition of the determinant  Our definition of the determinant is a recursive one; given an matrix its determinant is defined in terms of the determinant of certain submatrices of dimension . This necessitates some notation to help our discussion along.   Submatrix notation  submatrix    submatrix of    Let be an matrix with . Given , the submatrix of obtained by removing the -th row and -th column of is denoted .     Do not conflate the submatrix notation with matrix entry notation : the former returns the submatrix of obtained by deleting the -th row and -th column; the latter returns the -th entry of .    The determinant  determinant    determinant of    Let . The determinant is defined as follows:   Base case:  When we have and we define .    Recursive case:  When we define .        Small cases  Let's look at determinant formulas for the cases. You may remember the formula for matrices from ; we will make the connection more explicit in .  Given , we have . The formula for the case is simple enough to serve as a second base case , allowing us to end the recursive process of computing a general matrix once we get to expressions involving matrices.  Given , we have .   The recursive nature of the determinant definition makes induction arguments particularly useful when proving properties of the determinant, as illustrated by the next theorem.   Determinant of triangular matrices   Let be triangular (upper, lower, or diagonal). Then . In other words, the determinant of a triangular matrix is the product of its diagonal entries.    We only give the proof for lower triangular matrices; the proof in the upper triangular case is nearly identical.  For any let denote the proposition: The determinant of any lower triangular matrix is the product of its diagonal entries . We prove by induction that is true for all .   Base step: show is true  In this case , and is indeed the product of the diagonal entries of .    Induction step: show for all  Let be a lower triangular matrix. Then for all , and hence the determinant of is given by . Claim: is lower triangular. Indeed, first observe that we have for all ; by deleting the first row and first column we effectively bump each index up by one. Since is lower triangular we have for all , and hence also for all , proving the claim.  Lastly, assuming is true (the induction hypothesis) we have , as desired.      Determinant of identity matrices   We have for all positive integers .    This follows directly from since the diagonal entries of are all ones.      Expansion along rows and columns  Morally speaking, we should give some examples of higher-dimensional determinants, but we first introduce some theory that affords us more leeway in our computations.   Minors and expansions along rows\/columns  minor of matrix  expansion along row\/column    the -th minor of a matrix    Given , for any pair the -th minor of is defined as .  For any the expression is called the expansion along the -th row of .  For any , the expression is called the expansion along the -th column of .     Expansion along rows   Let . For any we have . In other words, we can compute by expanding along any row of .    The proof is by induction on the size of the matrix.   Base step:  For there is nothing to prove. Given expanding along either row yields , as one easily verifies.    Induction step  Assume the claim is true of any matrix. Given we have . Expanding along the -th row of for any , on the other hand, we get . To show these two expressions are equal we use the induction hypothesis to compute each by expanding along its -th row: . The matrix is the result of first deleting row 1 and column from , and then deleting row and column of the resulting matrix. To deal with such iterated submatrices, we make some simple observations relating the rows and columns of and with those of .   The -th row of corresponds to the -th row of , and the first row of corresponds to the first row of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .    If , then the -th column of corresponds to the -th column of ; if , then the -th column of corresponds to the -th column of .   From these observations we derive the following table of formulas: . We now begin to unpack : . This completes the induction step, and thus the proof is finished.     Surprisingly, it turns out that we can compute the determinant of a matrix by expanding along any column ( ). This is a consequence of the following theorem, which is useful in its own right. The proof below, taken from Robert Beezer's A First Course in Linear Algebra (see Theorem DT ), uses a wonderful trick starting from the observation that for any . However, it is only valid for fields in which the element is not equal to zero. For example, it is not valid for the field in the case . We include it nonetheless for its elegance, but assure the reader that we will be able to give a general proof of the result after introducing some more theory.   Determinant and transposition   Let be an matrix. Then .    As noted above, this proof is only valid if in the field . In particular, it is valid for and any .  The proof is by induction on . The base case ( ) is trivial since for any matrix .  For induction we assume that for all we have for any matrix. Suppose is an matrix. We have . This completes the proof by induction. (Note how in the second equality in the chain above we compute in the -th term of by expanding along the -th row of . A similar observation applies to the penultimate equality.)     Expansion along columns   Let . For any we have . In other words, we can compute by expanding along any column of .    For any , we have .      Compute for .    First we compute by expanding along the second row. The only nonzero term of this expansion is the last one, yielding . We have . To compute its determinant we expand along its third column: We conclude that .     Matrix of signs  When expanding along a row or column, it is easy to get tripped up by the sign in front of the -th coefficient. A matrix of signs is a sort of mnemonic device to help you in this regard. It is easily generated by observing that the sign in front of the -th entry is always a (since ), and that any horizontal or vertical step within the matrix is accompanied by a change of sign. As an example, for we have the following matrix of signs: .    Video example: determinant   Video: determinant      "
 },
 {
   "id": "d_minors",
@@ -3202,7 +3202,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.14",
   "title": "Further properties of the determinant",
-  "body": " Further properties of the determinant   Determinant is alternating and multilinear  For the next theorem, it is convenient to think of the determinant a function of the rows of an matrix . That is, instead of thinking of as a function , setting , we will think of it as a function . To facilitate arguments in this vein, we will adopt temporarily that convention of writing a matrix whose -th row is as . Yes, we are taking some notational liberties here, but we will drop this convention after this section is complete!   Determinant: alternating,skew-symmetric, multilinear   Let be a field, let be a positive integer, and let . We consider as a function on by defining as , where .   Alternating property  If satisfies for some indices , then . In terms of matrices, if a matrix has two identical rows, then .    Multilinear property  Given any , and index , and any vector , and scalar , we have .    Skew-symmetric  Suppose . We have . In terms of matrices, if is the result of swapping two rows of a matrix , then .          The alternating property is true vacuously for , and can be easily verified for via a direct computation. An induction argument then easily proves the result for all by expanding along a row of the matrix that is not equal to or . We leave this to the reader.    We can prove the multilinear properties of (2) directly by expanding along the -th row of the corresponding matrix. In more detail, let , where for all , and let , where . Letting , we have , where we have used the fact that as these three matrices are identical except for their -th rows.  Similarly, we have .    The skew-symmetric property now follows from the alternating and multilinear properties. Given , we have , by the alternating property. Expanding out the right side of the equation above using the multilinear property in succession yields , since by the alternating property again. In all, we have , or equivalently, .       The two properties taken together are summarized by saying the determinant is linear in each row, and hence multilinear overall. Note that by using the two properties in succession, we have for all . But what do these properties mean about the determinant of matrices? Property is easy enough to express in terms of matrices: if you scale a single row of a matrix by , then the value of the determinant is scaled by . Property , on the other hand, is a little more convoluted. Its treatment in the proof of probably is the best articulation of this: if , then . That ends up being a very powerful property of the determinant. In particular, when we pick to be , for some other index , we conclude that , where the second to last equality follows from the fact that the matrix obtained by replacing the -th row with the -th row has two identical rows, and hence determinant equal to zero. We have just shown that the row addition operation leaves the determinant of a matrix unchanged! Add to this the skew-symmetric property of the determinant, and our comment above about scaling single rows, and we have the following complete description of the effect of row operations on the determinant. For simplicity, we express the result in terms of elementary matrices multiplied on the left: recall that this is the same thing as applying an elementary row operation.   Row operations and determinant   Let .   For all and , we have .    For all , we have     For all and , we have .   In particular, taking above, we derive the following determinant formulas for elementary matrices: .     In the language of row operations, translates as follows:   Scaling a row of a matrix by has the effect of scaling the determinant by .    Swapping two rows of a matrix changes the sign of the determinant.    Performing a row addition operation on a matrix has no effect on the determinant.        Determinant and products of elementary matrices   Let be an matrix, and suppose we have for some collection of elementary matrices . Then .    This is an easy proof by induction on the number of elementary matrices involved, the base case ( ) of which is covered by .     has both computational and theoretical applications.  On the computational side, it suggests an alternative method of computing : first row reduce to a simpler matrix , making sure to keep track of the operations you use; set up an equation as in representing the row reduction; then solve the corresponding equation for in terms of and the .   Determinant via row reduction   Suppose the matrix can be row reduced to by perfomring the following sequence of row operations:   First swap the second and third rows.    Then scale the first row by     Then replace the second row with the second row plus the first row.   Compute .    In terms of elementary matrices we have and hence We conclude that .    On the theoretical side, implies both and .   Determinant and invertibility   Let be an matrix. Then is invertible if and only if .    The implication was proved in .  For the other direction, assume is invertible. Then implies is a product of elementary matrices: . Then implies . Since for all ( ), we conclude .     Determinant is multiplicative   Let and be matrices. Then .    We consider two cases based on the invertibility of and\/or .   or is not invertible  In this case is not invertible ( ), and hence by . By the same reasoning we must have or . It follows that in this case.    and both invertible  In this case we can write for some elementary matrices and ( ). Then .     We end this section and chapter with a slight expansion of our invertibility theorem. The equivalence of statement is a direct consequence of . The equivalence of the equivalence of statement was given earlier as an exercise. (See .)   Invertibility theorem   Let be an matrix. The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a solution for any .    The matrix equation has a unique solution: namely, .     is row equivalent to , the identity matrix.     is a product of elementary matrices.     .         Adjoint matrix   Adjoint matrix  adjoint matrix    adjoint of a square matrix    Let . The adjoint matrix of , denoted , is the matrix whose -th entry is defined as follows: .     Be careful of the order reversal in this definition. The -th entry of is equal to plus or minus the -th minor of . Let's see this in action for some small matrices.  For we have .  For we have .    Adjoint matrix formula   Given , we have . As a consequence is invertible if and only if , and in this case we have .    First observe that the second statement regarding invertibility follows directly from , since in this case setting we have .  Thus it suffices to prove . To do so, we must show that .   Case:  In this case we have . A similar argument shows that , though in this case we use expansion along a column.    Case:  When we have , where is the matrix obtained by replacing the -th row of with a copy of its -th row. Since has two identical rows implies , as desired. Once again, a similar argument using expansion along a column shows that .       Use the adjoint matrix formula to compute , where .    First compute by expanding along the third row: . Next, compute . Then we have .     Before you get too excited about the adjoint matrix formula, you should know that as grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous example. In general, the Gauss-Jordan inverse algorithm is the way to go.     WeBWork Exercises      Use the appropriate property of determinants to find  Do not evaluate the determinants. Answer:                  Consider the following Gauss elimination:   What is the determinant of ?                   Find such that the following matrix is singular.                   If and are matrices, , , then   ,   ,   ,   ,   .                                  "
+  "body": " Further properties of the determinant   Determinant is alternating and multilinear  For the next theorem, it is convenient to think of the determinant a function of the rows of an matrix . That is, instead of thinking of as a function , setting , we will think of it as a function . To facilitate arguments in this vein, we will adopt temporarily that convention of writing a matrix whose -th row is as . Yes, we are taking some notational liberties here, but we will drop this convention after this section is complete!   Determinant: alternating,skew-symmetric, multilinear   Let be a field, let be a positive integer, and let . We consider as a function on by defining as , where .   Alternating property  If satisfies for some indices , then . In terms of matrices, if a matrix has two identical rows, then .    Multilinear property  Given any , and index , and any vector , and scalar , we have .    Skew-symmetric  Suppose . We have . In terms of matrices, if is the result of swapping two rows of a matrix , then .          The alternating property is true vacuously for , and can be easily verified for via a direct computation. An induction argument then easily proves the result for all by expanding along a row of the matrix that is not equal to or . We leave this to the reader.    We can prove the multilinear properties of (2) directly by expanding along the -th row of the corresponding matrix. In more detail, let , where for all , and let , where . Letting , we have , where we have used the fact that as these three matrices are identical except for their -th rows.  Similarly, we have .    The skew-symmetric property now follows from the alternating and multilinear properties. Given , we have , by the alternating property. Expanding out the right side of the equation above using the multilinear property in succession yields , since by the alternating property again. In all, we have , or equivalently, .       The two properties taken together are summarized by saying the determinant is linear in each row, and hence multilinear overall. Note that by using the two properties in succession, we have for all . But what do these properties mean about the determinant of matrices? Property is easy enough to express in terms of matrices: if you scale a single row of a matrix by , then the value of the determinant is scaled by . Property , on the other hand, is a little more convoluted. Its treatment in the proof of probably is the best articulation of this: if , then . That ends up being a very powerful property of the determinant. In particular, when we pick to be , for some other index , we conclude that , where the second to last equality follows from the fact that the matrix obtained by replacing the -th row with the -th row has two identical rows, and hence determinant equal to zero. We have just shown that the row addition operation leaves the determinant of a matrix unchanged! Add to this the skew-symmetric property of the determinant, and our comment above about scaling single rows, and we have the following complete description of the effect of row operations on the determinant. For simplicity, we express the result in terms of elementary matrices multiplied on the left: recall that this is the same thing as applying an elementary row operation.   Row operations and determinant   Let .   For all and , we have .    For all , we have     For all and , we have .   In particular, taking above, we derive the following determinant formulas for elementary matrices: .     In the language of row operations, translates as follows:   Scaling a row of a matrix by has the effect of scaling the determinant by .    Swapping two rows of a matrix changes the sign of the determinant.    Performing a row addition operation on a matrix has no effect on the determinant.        Determinant and products of elementary matrices   Let , and suppose we have for some collection of elementary matrices . Then .    This is an easy proof by induction on the number of elementary matrices involved. The base case is actually covered by (the properties (1)-(3) and the determinant formulas), since we have .     has both computational and theoretical applications.  On the computational side, it suggests an alternative method of computing : first row reduce to a simpler matrix , making sure to keep track of the operations you use; set up an equation as in representing the row reduction; then solve the corresponding equation for in terms of and the .   Determinant via row reduction   Suppose the matrix can be row reduced to by perfomring the following sequence of row operations:   First swap the second and third rows.    Then scale the first row by     Then replace the second row with the second row plus the first row.   Compute .    In terms of elementary matrices we have and hence We conclude that .    On the theoretical side, implies both and .   Determinant and invertibility   Let . The following conditions are equivalent.    is invertible.     .       Given we can row reduce to a matrix in reduced row echelon form. Equivalently, we have for some elementary matrices . By , we have . Since for all , it follows that if and only if . Since is in reduced row echelon form, it upper triangular, and hence if and only if has a leading one in each column, if and only if . Taken all together, we see that .    Before moving on, let's add our new invertibility condition to our ever-growing invertibility theorem. The equivalence of statement is a direct consequence of . The equivalence of statement to invertibility was given earlier as an exercise.   Invertibility theorem   Let . The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a solution for any .    The matrix equation has a unique solution: namely, .     is row equivalent to , the identity matrix.     is a product of elementary matrices.     .       Next we come to an equally important property of the determinant: the multiplicative property .   Determinant is multiplicative   Given matrices , we have .    We consider two cases based on the invertibility of and\/or .   or is not invertible  In this case is not invertible ( ), and hence by . By the same reasoning we must have or . It follows that in this case.    and both invertible  In this case we can write for some elementary matrices and ( ). Then .     Now that we know is a multiplicative map, we can easily derive a result describing how the determinant behaves with respect to column operations . Using the column method of multiplication, we see that an elementary matrix , when multiplying a matrix on the right, performs the corresponding column operation on . In more detail:    is the result of scaling the -th column of by ;     is the result of swapping the -th and -th columns of ;     is the result of replacing the -th column of with the -th column plus times the -th column of .   In other words, scaling a column of by scales the determinant by , swapping two columns changes the sign of the determinant, and adding a multiple of one column to another leaves the determinant unchanged.   Determinant and column operations   Let .   For all and , we have .    For all , we have     For all and , we have .       We will add one more theoretical result to this section that already bristles with theory! Let . It turns out that not only is an alternating multilinear map on , it is (almost) the only such map! Let's make this more precise.   Determinant: unique characterization   Let where is a positive integer, and treat as a map on .    is the unique alternating multilinear map on that further satisfies .    If is an alternating multilinear map, then , where .       Left as a homework exercise.    As evidence of how such a characterization can be useful, we can now give a proof that that works for any field .    For all , we have .    Left as homework exercise.      Adjoint matrix   Adjoint matrix  adjoint matrix    adjoint of a square matrix    Let , and let . The adjoint matrix of , denoted , is the matrix defined as .     Be careful of the order reversal in this definition. The -th entry of is equal to plus or minus the -th minor of . Let's see this in action for some small matrices.  For we have .  For we have .    Adjoint matrix formula   Given , we have . As a consequence is invertible if and only if , and in this case we have .    First observe that the second statement regarding invertibility follows directly from , since in this case setting we have .  Thus it suffices to prove . To do so, we must show that .   Case:  In this case we have . A similar argument shows that , though in this case we use expansion along a column.    Case:  When we have , where is the matrix obtained by replacing the -th row of with a copy of its -th row. Since has two identical rows the alternating property of implies , as desired. Once again, a similar argument using expansion along a column shows that .       Use the adjoint matrix formula to compute , where .    First compute by expanding along the third row: . Next, compute . Then we have .     Before you get too excited about the adjoint matrix formula, you should know that as grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous example. In general, the Gauss-Jordan inverse algorithm is the way to go.     WeBWork Exercises      Use the appropriate property of determinants to find  Do not evaluate the determinants. Answer:                  Consider the following Gauss elimination:   What is the determinant of ?                   Find such that the following matrix is singular.                   If and are matrices, , , then   ,   ,   ,   ,   .                                     Let    Compute by expanding along the second row.    Compute by expanding along the third column.        Row\/column expansion   Compute the determinant of the given matrix. Indicate which row or column you expand along.                          Determinant and invertibility   For each matrix, find all values of (if any) making the matrix invertible. Use the determinant.                                 Adjoint matrix formula  Use the adjoint matrix formula to compute the inverse of each matrix.                   Let . Show without computing the determinant directly. In other words, use a row reduction technique or .      Let be an matrix, and let be a scalar. State and prove a formula relating with .        Assume is a matrix satisfying . Compute the determinant of the given matrix.                            Let and be matrices, and suppose is invertible. Prove the following:     .     .         Assume the square matrix satisfies . Show that .      Prove that a square matrix is invertible if and only if is invertible.     Adjoint matrix   The following exercises explore the relationship between a square matrix and its adjoint .     Give an explicit example of a square matrix satisfying and .  In other words, show that it is possible for a nonzero matrix to have a zero adjoint matrix.      Let be an matrix. Prove: .      Prove: is invertible if and only if is invertible.      Assume is invertible. Prove: .       "
 },
 {
   "id": "th_det_multilinear",
@@ -3238,7 +3238,7 @@ var ptx_lunr_docs = [
   "type": "Corollary",
   "number": "1.14.4",
   "title": "Determinant and products of elementary matrices.",
-  "body": " Determinant and products of elementary matrices   Let be an matrix, and suppose we have for some collection of elementary matrices . Then .    This is an easy proof by induction on the number of elementary matrices involved, the base case ( ) of which is covered by .   "
+  "body": " Determinant and products of elementary matrices   Let , and suppose we have for some collection of elementary matrices . Then .    This is an easy proof by induction on the number of elementary matrices involved. The base case is actually covered by (the properties (1)-(3) and the determinant formulas), since we have .   "
 },
 {
   "id": "ss_det_multilinear_alt-10",
@@ -3256,41 +3256,68 @@ var ptx_lunr_docs = [
   "type": "Theorem",
   "number": "1.14.6",
   "title": "Determinant and invertibility.",
-  "body": " Determinant and invertibility   Let be an matrix. Then is invertible if and only if .    The implication was proved in .  For the other direction, assume is invertible. Then implies is a product of elementary matrices: . Then implies . Since for all ( ), we conclude .   "
-},
-{
-  "id": "th_det_mult",
-  "level": "2",
-  "url": "s_det_II.html#th_det_mult",
-  "type": "Theorem",
-  "number": "1.14.7",
-  "title": "Determinant is multiplicative.",
-  "body": " Determinant is multiplicative   Let and be matrices. Then .    We consider two cases based on the invertibility of and\/or .   or is not invertible  In this case is not invertible ( ), and hence by . By the same reasoning we must have or . It follows that in this case.    and both invertible  In this case we can write for some elementary matrices and ( ). Then .    "
+  "body": " Determinant and invertibility   Let . The following conditions are equivalent.    is invertible.     .       Given we can row reduce to a matrix in reduced row echelon form. Equivalently, we have for some elementary matrices . By , we have . Since for all , it follows that if and only if . Since is in reduced row echelon form, it upper triangular, and hence if and only if has a leading one in each column, if and only if . Taken all together, we see that .   "
 },
 {
   "id": "th_invertibility_expanded",
   "level": "2",
   "url": "s_det_II.html#th_invertibility_expanded",
   "type": "Theorem",
-  "number": "1.14.8",
+  "number": "1.14.7",
   "title": "Invertibility theorem.",
-  "body": " Invertibility theorem   Let be an matrix. The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a solution for any .    The matrix equation has a unique solution: namely, .     is row equivalent to , the identity matrix.     is a product of elementary matrices.     .      "
+  "body": " Invertibility theorem   Let . The following statements are equivalent.    is invertible.    The matrix equation has a unique solution for any .    The matrix equation has a solution for any .    The matrix equation has a unique solution: namely, .     is row equivalent to , the identity matrix.     is a product of elementary matrices.     .      "
+},
+{
+  "id": "th_det_mult",
+  "level": "2",
+  "url": "s_det_II.html#th_det_mult",
+  "type": "Theorem",
+  "number": "1.14.8",
+  "title": "Determinant is multiplicative.",
+  "body": " Determinant is multiplicative   Given matrices , we have .    We consider two cases based on the invertibility of and\/or .   or is not invertible  In this case is not invertible ( ), and hence by . By the same reasoning we must have or . It follows that in this case.    and both invertible  In this case we can write for some elementary matrices and ( ). Then .    "
+},
+{
+  "id": "cor_det_column_ops",
+  "level": "2",
+  "url": "s_det_II.html#cor_det_column_ops",
+  "type": "Corollary",
+  "number": "1.14.9",
+  "title": "Determinant and column operations.",
+  "body": " Determinant and column operations   Let .   For all and , we have .    For all , we have     For all and , we have .      "
+},
+{
+  "id": "th_det_unique",
+  "level": "2",
+  "url": "s_det_II.html#th_det_unique",
+  "type": "Theorem",
+  "number": "1.14.10",
+  "title": "Determinant: unique characterization.",
+  "body": " Determinant: unique characterization   Let where is a positive integer, and treat as a map on .    is the unique alternating multilinear map on that further satisfies .    If is an alternating multilinear map, then , where .       Left as a homework exercise.   "
+},
+{
+  "id": "cor_det_transpose",
+  "level": "2",
+  "url": "s_det_II.html#cor_det_transpose",
+  "type": "Corollary",
+  "number": "1.14.11",
+  "title": "",
+  "body": "  For all , we have .    Left as homework exercise.   "
 },
 {
   "id": "d_adjoint",
   "level": "2",
   "url": "s_det_II.html#d_adjoint",
   "type": "Definition",
-  "number": "1.14.9",
+  "number": "1.14.12",
   "title": "Adjoint matrix.",
-  "body": " Adjoint matrix  adjoint matrix    adjoint of a square matrix    Let . The adjoint matrix of , denoted , is the matrix whose -th entry is defined as follows: .   "
+  "body": " Adjoint matrix  adjoint matrix    adjoint of a square matrix    Let , and let . The adjoint matrix of , denoted , is the matrix defined as .   "
 },
 {
   "id": "rm_adjoint",
   "level": "2",
   "url": "s_det_II.html#rm_adjoint",
   "type": "Remark",
-  "number": "1.14.10",
+  "number": "1.14.13",
   "title": "",
   "body": " Be careful of the order reversal in this definition. The -th entry of is equal to plus or minus the -th minor of . Let's see this in action for some small matrices.  For we have .  For we have .  "
 },
@@ -3299,16 +3326,16 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det_II.html#th_adjoint",
   "type": "Theorem",
-  "number": "1.14.11",
+  "number": "1.14.14",
   "title": "Adjoint matrix formula.",
-  "body": " Adjoint matrix formula   Given , we have . As a consequence is invertible if and only if , and in this case we have .    First observe that the second statement regarding invertibility follows directly from , since in this case setting we have .  Thus it suffices to prove . To do so, we must show that .   Case:  In this case we have . A similar argument shows that , though in this case we use expansion along a column.    Case:  When we have , where is the matrix obtained by replacing the -th row of with a copy of its -th row. Since has two identical rows implies , as desired. Once again, a similar argument using expansion along a column shows that .    "
+  "body": " Adjoint matrix formula   Given , we have . As a consequence is invertible if and only if , and in this case we have .    First observe that the second statement regarding invertibility follows directly from , since in this case setting we have .  Thus it suffices to prove . To do so, we must show that .   Case:  In this case we have . A similar argument shows that , though in this case we use expansion along a column.    Case:  When we have , where is the matrix obtained by replacing the -th row of with a copy of its -th row. Since has two identical rows the alternating property of implies , as desired. Once again, a similar argument using expansion along a column shows that .    "
 },
 {
   "id": "ss_adjoint_matrix-5",
   "level": "2",
   "url": "s_det_II.html#ss_adjoint_matrix-5",
   "type": "Example",
-  "number": "1.14.12",
+  "number": "1.14.15",
   "title": "",
   "body": "  Use the adjoint matrix formula to compute , where .    First compute by expanding along the third row: . Next, compute . Then we have .   "
 },
@@ -3317,7 +3344,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det_II.html#rm_adjoint_form",
   "type": "Remark",
-  "number": "1.14.13",
+  "number": "1.14.16",
   "title": "",
   "body": " Before you get too excited about the adjoint matrix formula, you should know that as grows, this procedure becomes much more costly in terms of number of arithmetic operations involved than our inverse algorithm based on Gauss-Jordan elimination. You get a sense of this already from the previous example. In general, the Gauss-Jordan inverse algorithm is the way to go.  "
 },
@@ -3326,7 +3353,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det_II.html#ss_det_ww-2",
   "type": "WeBWorK",
-  "number": "1.14.14",
+  "number": "1.14.17",
   "title": "",
   "body": "    Use the appropriate property of determinants to find  Do not evaluate the determinants. Answer:             "
 },
@@ -3335,7 +3362,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det_II.html#ss_det_ww-3",
   "type": "WeBWorK",
-  "number": "1.14.15",
+  "number": "1.14.18",
   "title": "",
   "body": "    Consider the following Gauss elimination:   What is the determinant of ?              "
 },
@@ -3344,7 +3371,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det_II.html#ss_det_ww-4",
   "type": "WeBWorK",
-  "number": "1.14.16",
+  "number": "1.14.19",
   "title": "",
   "body": "    Find such that the following matrix is singular.              "
 },
@@ -3353,9 +3380,189 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_det_II.html#ss_det_ww-5",
   "type": "WeBWorK",
-  "number": "1.14.17",
+  "number": "1.14.20",
   "title": "",
   "body": "    If and are matrices, , , then   ,   ,   ,   ,   .                                "
+},
+{
+  "id": "s_det_ex-1",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-1",
+  "type": "Exercise",
+  "number": "1.14.4.1",
+  "title": "",
+  "body": "  Let    Compute by expanding along the second row.    Compute by expanding along the third column.      "
+},
+{
+  "id": "s_det_ex-2-3",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-2-3",
+  "type": "Exercise",
+  "number": "1.14.4.2",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-2-4",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-2-4",
+  "type": "Exercise",
+  "number": "1.14.4.3",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-2-5",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-2-5",
+  "type": "Exercise",
+  "number": "1.14.4.4",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-3-3",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-3-3",
+  "type": "Exercise",
+  "number": "1.14.4.5",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-3-4",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-3-4",
+  "type": "Exercise",
+  "number": "1.14.4.6",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-3-5",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-3-5",
+  "type": "Exercise",
+  "number": "1.14.4.7",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-3-6",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-3-6",
+  "type": "Exercise",
+  "number": "1.14.4.8",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-4-3",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-4-3",
+  "type": "Exercise",
+  "number": "1.14.4.9",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-4-4",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-4-4",
+  "type": "Exercise",
+  "number": "1.14.4.10",
+  "title": "",
+  "body": "      "
+},
+{
+  "id": "s_det_ex-5",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-5",
+  "type": "Exercise",
+  "number": "1.14.4.11",
+  "title": "",
+  "body": "  Let . Show without computing the determinant directly. In other words, use a row reduction technique or .   "
+},
+{
+  "id": "s_det_ex-6",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-6",
+  "type": "Exercise",
+  "number": "1.14.4.12",
+  "title": "",
+  "body": "  Let be an matrix, and let be a scalar. State and prove a formula relating with .     "
+},
+{
+  "id": "s_det_ex-7",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-7",
+  "type": "Exercise",
+  "number": "1.14.4.13",
+  "title": "",
+  "body": "  Assume is a matrix satisfying . Compute the determinant of the given matrix.                         "
+},
+{
+  "id": "s_det_ex-8",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-8",
+  "type": "Exercise",
+  "number": "1.14.4.14",
+  "title": "",
+  "body": "  Let and be matrices, and suppose is invertible. Prove the following:     .     .      "
+},
+{
+  "id": "s_det_ex-9",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-9",
+  "type": "Exercise",
+  "number": "1.14.4.15",
+  "title": "",
+  "body": "  Assume the square matrix satisfies . Show that .   "
+},
+{
+  "id": "s_det_ex-10",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-10",
+  "type": "Exercise",
+  "number": "1.14.4.16",
+  "title": "",
+  "body": "  Prove that a square matrix is invertible if and only if is invertible.   "
+},
+{
+  "id": "s_det_ex-11-3",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-11-3",
+  "type": "Exercise",
+  "number": "1.14.4.17",
+  "title": "",
+  "body": "  Give an explicit example of a square matrix satisfying and .  In other words, show that it is possible for a nonzero matrix to have a zero adjoint matrix.   "
+},
+{
+  "id": "s_det_ex-11-4",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-11-4",
+  "type": "Exercise",
+  "number": "1.14.4.18",
+  "title": "",
+  "body": "  Let be an matrix. Prove: .   "
+},
+{
+  "id": "s_det_ex-11-5",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-11-5",
+  "type": "Exercise",
+  "number": "1.14.4.19",
+  "title": "",
+  "body": "  Prove: is invertible if and only if is invertible.   "
+},
+{
+  "id": "s_det_ex-11-6",
+  "level": "2",
+  "url": "s_det_II.html#s_det_ex-11-6",
+  "type": "Exercise",
+  "number": "1.14.4.20",
+  "title": "",
+  "body": "  Assume is invertible. Prove: .   "
 },
 {
   "id": "appendix-notation",

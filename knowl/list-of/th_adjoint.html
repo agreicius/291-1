@@ -19,7 +19,7 @@
 </head>
 <body class="ignore-math">
 <article class="theorem theorem-like"><h4 class="heading">
-<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.14.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Adjoint matrix formula.</span>
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.14.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Adjoint matrix formula.</span>
 </h4>
 <div class="para logical">
 <div class="para">Given <span class="process-math">\(A\in \ML_{n,n}(F)\text{,}\)</span> we have</div>
@@ -36,7 +36,7 @@ A^{-1}=\frac{1}{\det A}\, \adj A\text{.}\tag{1.14.9}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_adjoint-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 1.14.11: Adjoint matrix formula"><a href="#th_adjoint" title="Copy heading and permalink for Theorem 1.14.11: Adjoint matrix formula" aria-label="Copy heading and permalink for Theorem 1.14.11: Adjoint matrix formula">🔗</a></div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<div class="autopermalink" data-description="Theorem 1.14.14: Adjoint matrix formula"><a href="#th_adjoint" title="Copy heading and permalink for Theorem 1.14.14: Adjoint matrix formula" aria-label="Copy heading and permalink for Theorem 1.14.14: Adjoint matrix formula">🔗</a></div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical">
 <div class="para">First observe that the second statement regarding invertibility follows directly from <a href="s_det_II.html#eq_adj_form" class="xref" data-knowl="./knowl/xref/eq_adj_form.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.14.8">(1.14.8)</a>, since in this case setting <span class="process-math">\(B=\frac{1}{\det A}\, \adj A\)</span> we have</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_adj_form.html">
 \begin{equation*}
@@ -63,7 +63,7 @@ AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I\text{.}
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html">
 \begin{align*}
 [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{ki}  \\
-\amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 1.14.9}} )\\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{i+k}M_{ik}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 1.14.12}} )\\
 \amp =\sum_{k=1}^n(-1)^{i+k}a_{ik}M_{ik} \\
 \amp =\det A \text{.}
 \end{align*}
@@ -74,16 +74,16 @@ AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I\text{.}
 <div class="autopermalink" data-description="Case: Case: i=j"><a href="#th_adjoint-3-3" title="Copy heading and permalink for Case: Case: i=j" aria-label="Copy heading and permalink for Case: Case: i=j">🔗</a></div></article><article class="case"><h5 class="heading">Case: <span class="process-math">\(i\ne j\)</span>.</h5>
 <div class="para logical">
 <div class="para">When <span class="process-math">\(i\ne j\)</span> we have</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html">
 \begin{align*}
 [A\, \adj A]_{i,j} \amp =\sum_{k=1}^na_{ik}[\adj A]_{i,j}  \\
-\amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{j,k}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 1.14.9}} )\\
+\amp =\sum_{k=1}^n a_{ik}((-1)^{k+j}M_{j,k}) \amp (\knowl{./knowl/xref/d_adjoint.html}{\text{Definition 1.14.12}} )\\
 \amp =\sum_{k=1}^n(-1)^{k+j}a_{ik}M_{j,k} \\
 \amp =\det C \text{,}
 \end{align*}
 </div>
-<div class="para">where <span class="process-math">\(C\)</span> is the matrix obtained by replacing the <span class="process-math">\(j\)</span>-th row of <span class="process-math">\(A\)</span> with a copy of its <span class="process-math">\(i\)</span>-th row. Since <span class="process-math">\(C\)</span> has two identical rows <code class="code-inline tex2jax_ignore">[cross-reference to target(s) "th_det_zero_repeated_row" missing or not unique]</code> implies</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html ">
+<div class="para">where <span class="process-math">\(C\)</span> is the matrix obtained by replacing the <span class="process-math">\(j\)</span>-th row of <span class="process-math">\(A\)</span> with a copy of its <span class="process-math">\(i\)</span>-th row. Since <span class="process-math">\(C\)</span> has two identical rows the alternating property of <span class="process-math">\(\det\)</span> implies</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/d_adjoint.html">
 \begin{equation*}
 [A\, \adj A]_{i,j}=\det C=0\text{,}
 \end{equation*}
@@ -92,6 +92,6 @@ AB=BA=\frac{1}{\det A}(A\adj A)=\frac{1}{\det A}((\det A)\, I)=I\text{.}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_adjoint-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Case: Case: i\ne j"><a href="#th_adjoint-3-4" title="Copy heading and permalink for Case: Case: i\ne j" aria-label="Copy heading and permalink for Case: Case: i\ne j">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.14.11.1"><a href="#th_adjoint-3" title="Copy heading and permalink for Proof 1.14.11.1" aria-label="Copy heading and permalink for Proof 1.14.11.1">🔗</a></div></article></details><span class="incontext"><a class="internal" href="s_det_II.html#th_adjoint">in-context</a></span>
+<div class="autopermalink" data-description="Case: Case: i\ne j"><a href="#th_adjoint-3-4" title="Copy heading and permalink for Case: Case: i\ne j" aria-label="Copy heading and permalink for Case: Case: i\ne j">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.14.14.1"><a href="#th_adjoint-3" title="Copy heading and permalink for Proof 1.14.14.1" aria-label="Copy heading and permalink for Proof 1.14.14.1">🔗</a></div></article></details><span class="incontext"><a class="internal" href="s_det_II.html#th_adjoint">in-context</a></span>
 </body>
 </html>
