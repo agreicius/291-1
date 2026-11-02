@@ -1076,7 +1076,7 @@ Geometrically this is the line in <m>\R^3</m> passing through <m>(0,0,0)</m> wit
 </example>
 
 <p>
-  Using <xref ref="th_fundspaces_rowreduce"/>, to find bases of the fundamental spaces of a matrix, we can first row reduce to a matrix <m>U</m> in row echelon form. Some work still needs to be done, however, in determining bases for the fundamental spaces of matrices in row echelon form. We state our results in the form of a procedure, and provide a proof of its validity.
+  Using <xref ref="th_fundspaces_rowreduce"/>, to find bases of the fundamental spaces of a matrix, we can first row reduce to a matrix <m>U</m> in row echelon form. The question remains, how best to describe these spaces for <m>U</m> in an efficient manner. We will have a better answer for that once we have introduced the notions of <em>bases</em> and <em>dimension</em>. 
 </p>
 
  <!-- <p>
