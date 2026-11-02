@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_subspaces_II" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Subspaces: further examples</title>
+<subsection xml:id="ss_subspace_matrices">
+  <title>Important subspaces of <m>\ML_{n,n}(F)</m></title>
+  <p>
+    In <xref ref="s_invertibility_theorem" text="title"/> we met three families of square matrices: namely, the diagonal, upper triangular, and lower triangular matrices. (See <xref ref="d_diagonal_triangular"/>). We now introduce three more naturally occurring families. Before doing so, we give an official definition of the trace function. 
+  </p>
+  <definition xml:id="d_trace">
+  <title>Trace of a matrix</title>
+    <idx><h>trace of a matrix</h></idx>
+    <notation>
+      <usage><m>\tr A</m></usage>
+      <description>the trace of <m>A</m></description>
+    </notation>
+    
+    <statement>
+      <p>
+        Let <m>A\in \ML_{n,n}(F)</m>. The <term>trace</term> of <m>A</m>, denoted <m>\tr A</m> is defined as the sum of the diagonal entries of <m>A</m>: <ie />,
+        <md>
+          \tr A=\sum_{i=1}^n [A]_{i,i}
+        </md>.
+      </p>
+    </statement>
+  </definition>
+  <definition xml:id="d_tracezero_symmetric_skewsymmetric">
+  <title>Trace-zero, symmetric, and skew-symmetric</title>
+    <idx><h>trace-zero matrix</h></idx>
+    <idx><h>symmetric matrix</h></idx>
+    <idx><h>skew-symmetric matrix</h></idx>
+    <statement>
+      <p>
+        Fix an integer <m>n\geq 1</m>.
+      
+      <ol>
+        <li>
+          <p>
+            A matrix <m>A\in \ML_{n,n}(F)</m> is said to be a <term>trace-zero</term> matrix if <m>\tr A=0</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            A matrix <m>A\in \ML_{n,n}(F)</m> is <term>symmetric</term> if <m>A^T=A</m>: equivalently, if <m>[A]_{ij}=[A]_{ji}</m> for all <m>1\leq i,j\leq n</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            A matrix <m>A\in \ML_{n,n}(F)</m> is <term>skew-symmetric</term> if <m>A^T=-A</m>: equivalently, if <m>[A]_{ij}=-[A]_{ji}</m> for all <m>1\leq i,j\leq n</m>.
+          </p>
+        </li>
+      </ol>
+      </p>
+    </statement>
+  </definition>
+  <example>
+    <title>Trace-zero symmetric, and skew-symmetric <m>2\times 2</m> matrices</title>
+    <statement>
+      <p>
+        The set <m>W_1</m> of all trace-zero <m>2\times 2</m> matrices can be described as
+        <md>
+          W_1=\left\{ \begin{amatrix}[rr]a\amp b\\ c\amp -a  \end{amatrix}\colon a,b,c\in F\right\}
+        </md>.
+        The set <m>W_2</m> of all symmetric <m>2\times 2</m> matrices can be described as
+        <md>
+          W_2=\left\{ \begin{amatrix}[rr]a\amp b\\ b\amp c  \end{amatrix}\colon a,b,c\in F\right\}
+        </md>.
+        The set <m>W_3</m> of all skew-symmetric <m>2\times 2</m> matrices can be described as
+        <md>
+          W_3=\left\{ \begin{amatrix}[rr]0\amp a\\ -a\amp 0  \end{amatrix}\colon a,b\in F\right\}
+        </md>.
+      </p>
+    </statement>
+  </example>
+      <remark xml:id="rm_skew-symmetric">
+    <p>
+      Assume <m>A</m> is a skew-symmetric <m>n\times n</m> matrix. By definition, for all <m>1\leq i\leq n</m> we must have <m>[A]_{ii}=-[A]_{ii}</m>. It follows that <m>[A]_{ii}=0</m> for all <m>1\leq i\leq n</m>. Thus the diagonal entries of a skew-symmetric matrix are always equal to 0.
+    </p>
+  </remark>
+  <p>
+    It will come as no surprise that all of the afore mentioned matrix families are in fact subspaces of <m>M_{nn}</m>.
+  </p>
+  <theorem xml:id="th_matrix_subspaces">
+    <title>Matrix subspaces</title>
+    
+    
+    <statement>
+      <p>
+      Fix an integer <m>n\geq 1</m>.  Each of the following subsets of <m>M_{nn}</m> is a subspace.
+  
+      <ol>
+        <li>
+          <title>Diagonal matrices</title>
+          <p>
+            <m>W=\{A\in M_{nn}\colon A\text{ is diagonal}\}</m>
+          </p>
+        </li>
+        <li>
+          <title>Upper triangular matrices</title>
+          <p>
+            <m>W=\{A\in M_{nn}\colon A\text{ is upper triangular}\}</m>
+          </p>
+        </li>
+        <li>
+          <title>Lower triangular matrices</title>
+          <p>
+            <m>W=\{A\in M_{nn}\colon A\text{ is lower triangular}\}</m>
+          </p>
+        </li>
+        <li>
+          <title>Trace-zero matrix</title>
+          <p>
+            <m>W=\{A\in M_{nn}\colon \tr A=\boldzero \}</m>
+          </p>
+        </li>
+        <li>
+          <title>Symmetric matrices</title>
+          <p>
+            <m>W=\{A\in M_{nn}\colon A^T=A \}</m>
+          </p>
+        </li>
+        <li>
+          <title>Skew-symmetric matrices</title>
+          <p>
+            <m>W=\{A\in M_{nn}\colon A^T=-A \}</m>
+          </p>
+        </li>
+      </ol>
+      </p>
+    </statement>
+    <proof>
+      <p>
+        See <xref ref="ex_matrix_subspaces"/>
+      </p>
+    </proof>
+
+  </theorem>
+</subsection>
+<subsection xml:id="ss_function_spaces">
+<title>Important function subspaces</title>
+<definition xml:id="d_polynomials">
+<title>Polynomials</title>
+<statement>
+<p>
+Assume <m>F\in \{\R,\C\}</m>, and let <m>I</m> be an infinite subset of <m>F</m>. A <term>polynomial function on <m>I</m></term> is a function <m>f\colon I\rightarrow F</m> that can be written in the form 
+<md number="yes"  xml:id="eq_poly">
+  f(x)=a_nx^n+a_{n-1}x+\cdots +a_1x+a_0
+</md>,
+for some nonnegative integer <m>n</m> and scalars <m>a_k\in F</m>. Given <m>f</m> as in <xref ref="eq_poly"/>, <m>a_k</m> is called the <m>k</m>-th <term>coefficient</term> of <m>f</m>; furthermore, if <m>a_n\ne 0</m>, we call <m>a_nx^n</m> the <term>leading term</term> of <m>f</m>, and we  if <m>a_n\ne 0</m>, and we define the <term>degree</term> of <m>f</m>, denoted <m>\deg f</m> to be <m>n</m>.
+</p>
+<p>
+  Given a nonnegative integer <m>n</m>, we define <m>P_n(I)</m> to be the set of all polynomial functions on <m>I</m> of degree at most <m>n</m>: <ie/>, 
+  <md>
+    P_n(I)=\{f\in F^I\colon f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0 \text{ for some } a_i\in F\}
+  </md>.
+  Lastly we define <m>P(I)</m> to be the set of all polynomial functions on <m>I</m>. Since any polynomial on <m>I</m> is of the form <m>f(x)=\anpoly</m> for some <m>n\in \Z_{\geq 0}</m>,  we have 
+  <md>
+    P(I)=\bigcup_{n=0}^\infty P_n(I)
+  </md>.
+</p>
+</statement>
+</definition>
+<theorem xml:id="th_polynomial_space">
+<title>Polynomial spaces</title>
+<statement>
+<p>
+Let <m>F\in \{\R, \C\}</m>, and let <m>I</m> be an infinite subset of <m>F</m>.
+<ol>
+  <li>
+    <p>
+      <m>P(I)</m> is a subspace of <m>F^I</m>. 
+    </p>
+  </li>
+   <li>
+     <p>
+     <m>P_n(I)</m> is a subspace of <m>F^I</m> for all <m>n\in \Z_{\geq 0}</m>. 
+    </p>
+  </li>
+</ol>
+</p>
+</statement>
+<proof>
+<p>
+  We prove that <m>P_n(I)</m> is a subspace, using the 2-step technique. The proof for <m>P(I)</m> is similar. 
+  <ol marker="(i)">
+    <li>
+      <p>
+        Recall that the zero vector of <m>F^I</m> is the the zero function <m>O_I\colon I\rightarrow F</m>, defined as <m>0_I(x)=0</m> for all <m>x\in I</m>. Writing 
+        <md>
+          0_I(x)=0x^n+0x^{n-1}+\cdots +0x+0
+        </md>,
+        we see that <m>\boldzero=0_I\in P_n(I)</m>. (More generally, any constant function <m>f(x)=c</m> is an element of <m>P_n(I)</m> for all <m>n\geq 0</m>.)
+      </p>
+    </li>
+    <li>
+      <p>
+        Assume <m>f,g\in P_n(I)</m>. By definition this means that there are constants <m>a_i, b_i\in F</m>, <m>1\leq i\leq n</m>, such that 
+        <md>
+          <mrow>f(x) \amp = \anpoly</mrow>
+          <mrow>g(x) \amp = b_nx^n+b_{n-1}x^{n-1}+\cdots+b_1x+b_0</mrow>
+        </md>
+        for all <m>x\in I</m>. It follows that 
+        <md>
+          <mrow>(cf+dg)(x) \amp = (a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\cdots+(a_1+b_1)x+(a_0+b_0) </mrow>
+        </md>
+        for all <m>x\in I</m>, showing that <m>cf+dg\in P_n(I)</m>, as desired. 
+      </p>
+    </li>
+  </ol>
+</p>
+</proof>
+</theorem>
+<p>
+  Although not necessary for the proof of <xref ref="th_polynomial_space"/>, the result below will be useful to us for future discussions. In short, it says that the coefficients of a polynomial uniquely determine it (as long as the domain <m>I</m> is infinite). 
+</p>
+<theorem xml:id="th_poly_equality">
+<title>Polynomial equality</title>
+<statement>
+<p>
+Let <m>F\in \{\R, \C\}</m> and let <m>I</m> be an infinite subset of <m>F</m>.
+<ol>
+  <li>
+    <p>
+      Given <m>f(x)=\anpoly\in P_n(I)</m>, we have 
+      <md>
+        f=\boldzero\iff a_k=0 \text{ for all } 1\leq k\leq n
+      </md>.
+    </p>
+  </li>
+  <li>
+    <p>
+      Given <m>f(x)=\anpoly\in P_n(I)</m> and <m>g(x)=\bmpoly\in P_m(I)</m> with <m>a_n\ne 0</m> and <m>b_m\ne 0</m>, we have 
+      <md>
+        f=g \iff n=m \text{ and } a_k=b_k \text{ for all } 1\leq k\leq n
+      </md>.
+    </p>
+  </li>
+</ol>
+</p>
+</statement>
+<proof>
+<p>
+  This is a standard result about polynomials, and is a consequence of the fact that a polynomial of degree <m>n</m> has at most <m>n</m> distinct roots. We do not provide a proof here. 
+</p>
+</proof>
+</theorem>
+<definition xml:id="d_function_subspaces">
+<title>Function subspaces over <m>\R</m></title>
+<statement>
+<p>
+Let <m>I</m> be an interval of <m>\R</m> that contains at least two elements. 
+<ol>
+  <li>
+    <p>
+      We denote by <m>C(I)</m> the set of all continuous functions on <m>I</m>: i.e.,
+    <md>
+      C(I)=\{f\in \R^I\colon f \text{ is continuous on }I\}
+    </md>.
+    </p>
+  </li>
+
+  <li>
+    <p>
+      Fix <m>n\geq 1</m>.
+      A function <m>f\colon I\rightarrow \R</m> is <m>C^{n}</m> on <m>I</m> if <m>f</m> is <m>n</m>-times differentiable on <m>I</m> and its <m>n</m>-th derivative <m>f^{(n)}(x)</m> is continuous.
+      The set of all <m>C^{n}</m> functions on <m>I</m> is denoted <m>C^{n}(I)</m>.
+    </p>
+  </li>
+
+  <li>
+    <p>
+      A function <m>f\colon I\rightarrow \R</m> is <m>C^{\infty}</m> on I if <m>f</m> is infinitely differentiable on <m>I</m>.
+      The set of all <m>C^{\infty}</m> functions on <m>I</m> is denoted <m>C^{\infty}(I)</m>.
+    </p>
+  </li>
+</ol>
+</p>
+</statement>
+</definition>
+<theorem xml:id="th_function_spaces">
+  <title>Function subspaces.</title>
+  <statement>
+    <p>
+      Let <m>I\subseteq \R</m> be a an interval containing at least two elements. 
+      The sets <m>C(I)</m>, <m>C^{n}(I)</m>, <m>C^{\infty}(I)</m>, <m>P(I)</m>, <m>P_{n}(I)</m> are all subspaces of <m>\R^I</m>, and we have the following chain of subspaces:
+    <md>
+      P_{n}(I)\subseteq P(I)\subseteq C^{\infty}(I)\subseteq C^{n}(I)\subseteq C(I)\subseteq \R^{I}
+    </md>.
+    </p>
+  </statement>
+</theorem>
+<proof>
+  <p>
+  This is an instance of <q>proof by calculus</q>. That each of these sets is closed under addition and scalar multiplication follows from elementary results in single-variable calculus: <eg/>, that sums and scalar multiples of continuous functions are continuous, that sums and scalar multiples of differentiable functions are differentiable, <etc/>.     
+  </p>
+</proof>
+</subsection>
+
+    
+
+</section>

@@ -576,12 +576,12 @@ The two inveribility algorithms above are nice examples of how a <em>theoretical
 
         <li>
           <p>
-            The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a <em>unique solution</em> for any <m>\boldb\in \R^n</m>.
+            The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a <em>unique solution</em> for any <m>\boldb\in F^n</m>.
           </p>
         </li>
         <li>
           <p>
-            The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a solution for any <m>\boldb\in \R^n</m>.
+            The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a solution for any <m>\boldb\in F^n</m>.
           </p>
         </li>
     <li>

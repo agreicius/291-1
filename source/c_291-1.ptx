@@ -16,6 +16,7 @@
     <xi:include href="s_invertibility_theorem.ptx" />
     <xi:include href="s_det.ptx" />
     <xi:include href="s_det_II.ptx" />
+    <xi:include href="s_subspace.ptx" />
 
 
 </chapter>
