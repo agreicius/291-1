@@ -343,9 +343,19 @@
             The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldb}</md> has a solution for any <m>\boldb\in \R^n</m>.
           </p>
         </li>
+        <li>
+          <p>
+            The columns of <m>A</m> form a spanning tuple of <m>F^n</m>
+          </p>
+        </li>
         <li xml:id="inv2_statement_trivial_sol">
           <p>
             The matrix equation <md>A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldzero}</md> has a unique solution: namely, <m>\boldx=\boldzero_{n\times 1}</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            The columns of <m>A</m> are linearly independent.
           </p>
         </li>
         <li xml:id="inv2_statement_row_equiv">
