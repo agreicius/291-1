@@ -136,22 +136,16 @@
 
   </theorem>
 </subsection>
+
 <subsection xml:id="ss_function_spaces">
 <title>Important function subspaces</title>
 <definition xml:id="d_polynomials">
-<title>Polynomials</title>
+<title>Polynomial functions</title>
 <statement>
 <p>
-Assume <m>F\in \{\R,\C\}</m>, and let <m>I</m> be an infinite subset of <m>F</m>. A <term>polynomial function on <m>I</m></term> is a function <m>f\colon I\rightarrow F</m> that can be written in the form 
-<md number="yes"  xml:id="eq_poly">
-  f(x)=a_nx^n+a_{n-1}x+\cdots +a_1x+a_0
-</md>,
-for some nonnegative integer <m>n</m> and scalars <m>a_k\in F</m>. Given <m>f</m> as in <xref ref="eq_poly"/>, <m>a_k</m> is called the <m>k</m>-th <term>coefficient</term> of <m>f</m>; furthermore, if <m>a_n\ne 0</m>, we call <m>a_nx^n</m> the <term>leading term</term> of <m>f</m>, and we  if <m>a_n\ne 0</m>, and we define the <term>degree</term> of <m>f</m>, denoted <m>\deg f</m> to be <m>n</m>.
-</p>
-<p>
-  Given a nonnegative integer <m>n</m>, we define <m>P_n(I)</m> to be the set of all polynomial functions on <m>I</m> of degree at most <m>n</m>: <ie/>, 
+  Let <m>F</m> be a field, and let <m>I</m> be a nonempty subset of <m>F</m>. Given a nonnegative integer <m>n</m>, we define <m>P_n(I)</m> to be the set of all polynomial functions on <m>I</m> of degree at most <m>n</m>: <ie/>, 
   <md>
-    P_n(I)=\{f\in F^I\colon f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0 \text{ for some } a_i\in F\}
+    P_n(I)=\{f\in \mathcal{F}(I,F)\mid f(x)=g(x) \text{ for all } x\in I \text{ for some } g\in F[x] \text{ with } \deg g\leq n\}
   </md>.
   Lastly we define <m>P(I)</m> to be the set of all polynomial functions on <m>I</m>. Since any polynomial on <m>I</m> is of the form <m>f(x)=\anpoly</m> for some <m>n\in \Z_{\geq 0}</m>,  we have 
   <md>
@@ -164,16 +158,16 @@ for some nonnegative integer <m>n</m> and scalars <m>a_k\in F</m>. Given <m>f</m
 <title>Polynomial spaces</title>
 <statement>
 <p>
-Let <m>F\in \{\R, \C\}</m>, and let <m>I</m> be an infinite subset of <m>F</m>.
+Let <m>I</m> be a nonempty subset of the field <m>F</m>. 
 <ol>
   <li>
     <p>
-      <m>P(I)</m> is a subspace of <m>F^I</m>. 
+      <m>P(I)</m> is a subspace of <m>\mathcal{F}(I,F)</m>. 
     </p>
   </li>
    <li>
      <p>
-     <m>P_n(I)</m> is a subspace of <m>F^I</m> for all <m>n\in \Z_{\geq 0}</m>. 
+     <m>P_n(I)</m> is a subspace of <m>\mathcal{F}(I,F)</m> for all <m>n\in \N</m>. 
     </p>
   </li>
 </ol>
@@ -185,7 +179,7 @@ Let <m>F\in \{\R, \C\}</m>, and let <m>I</m> be an infinite subset of <m>F</m>.
   <ol marker="(i)">
     <li>
       <p>
-        Recall that the zero vector of <m>F^I</m> is the the zero function <m>O_I\colon I\rightarrow F</m>, defined as <m>0_I(x)=0</m> for all <m>x\in I</m>. Writing 
+        Recall that the zero vector of <m>\mathcal{F}(I,F)</m> is the the zero function <m>O_I\colon I\rightarrow F</m>, defined as <m>0_I(x)=0</m> for all <m>x\in I</m>. Writing 
         <md>
           0_I(x)=0x^n+0x^{n-1}+\cdots +0x+0
         </md>,
@@ -213,7 +207,7 @@ Let <m>F\in \{\R, \C\}</m>, and let <m>I</m> be an infinite subset of <m>F</m>.
 <p>
   Although not necessary for the proof of <xref ref="th_polynomial_space"/>, the result below will be useful to us for future discussions. In short, it says that the coefficients of a polynomial uniquely determine it (as long as the domain <m>I</m> is infinite). 
 </p>
-<theorem xml:id="th_poly_equality">
+<!-- <theorem xml:id="th_poly_equality">
 <title>Polynomial equality</title>
 <statement>
 <p>
@@ -243,7 +237,7 @@ Let <m>F\in \{\R, \C\}</m> and let <m>I</m> be an infinite subset of <m>F</m>.
   This is a standard result about polynomials, and is a consequence of the fact that a polynomial of degree <m>n</m> has at most <m>n</m> distinct roots. We do not provide a proof here. 
 </p>
 </proof>
-</theorem>
+</theorem> -->
 <definition xml:id="d_function_subspaces">
 <title>Function subspaces over <m>\R</m></title>
 <statement>
@@ -282,9 +276,9 @@ Let <m>I</m> be an interval of <m>\R</m> that contains at least two elements.
   <statement>
     <p>
       Let <m>I\subseteq \R</m> be a an interval containing at least two elements. 
-      The sets <m>C(I)</m>, <m>C^{n}(I)</m>, <m>C^{\infty}(I)</m>, <m>P(I)</m>, <m>P_{n}(I)</m> are all subspaces of <m>\R^I</m>, and we have the following chain of subspaces:
+      The sets <m>C(I)</m>, <m>C^{n}(I)</m>, <m>C^{\infty}(I)</m>, <m>P(I)</m>, <m>P_{n}(I)</m> are all subspaces of <m>\mathcal{F}(I,\R)</m>, and we have the following chain of subspaces:
     <md>
-      P_{n}(I)\subseteq P(I)\subseteq C^{\infty}(I)\subseteq C^{n}(I)\subseteq C(I)\subseteq \R^{I}
+      P_{n}(I)\subseteq P(I)\subseteq C^{\infty}(I)\subseteq C^{n}(I)\subseteq C(I)\subseteq \mathcal{F}(I,\R)
     </md>.
     </p>
   </statement>

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_fund_space" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Fundamental spaces</title>
+
+    <p>
+      In addition to the null space, there are a number of other subspaces of that we naturally associate to a matrix <m>A\in \ML_{m,n}(F)</m>, and which make use of the span oepration: namely, the the <em>row space</em> and <em>column space</em> of the matrix. Taken together, these three subspaces associated to <m>A</m> are called its <em>fundamental spaces</em>.
+    </p>
+    <definition xml:id="d_fundamental_space">
+      <title>Fundamental spaces</title>
+      <idx><h>fundamental space</h><h>of a matrix</h></idx>
+      <idx><h>null space</h><h>of a matrix</h></idx>
+      <idx><h>row space</h><h>of a matrix</h></idx>
+      <idx><h>column space</h><h>of a matrix</h></idx>
+      <notation>
+        <usage><m>\NS A</m></usage>
+        <description>the null space of matrix <m>A</m></description>
+      </notation>
+      <notation>
+        <usage><m>\RS A</m></usage>
+        <description>the row space of a matrix <m>A</m></description>
+      </notation>
+      <notation>
+        <usage><m>\CS A</m></usage>
+        <description>the column space of a matrix <m>A</m></description>
+      </notation>
+      
+      <statement>
+        <p>
+          Let <m>A\in \ML_{m,n}(F)</m>, let <m>\boldr_1,\dots, \boldr_m\in F^n
+          </m> be the <m>m</m> rows of <m>A</m>, and let <m>\boldc_1,\dots \boldc_n\in F^m</m> be its <m>n</m> columns. The following subspaces are called the <term>fundamental subspaces of <m>A</m></term>.
+        
+        <ul>
+          <li>
+            <title>Null space</title>
+            <p>
+              The <term>null space of <m>A</m></term>, denoted <m>\NS A</m> is defined as
+              <md>
+              \NS A =\{\boldx\in F^n\colon A\boldx=\boldzero\}\subseteq F^n.
+              </md>.
+            </p>
+          </li>
+          <li>
+            <title>Row space</title>
+            <p>
+              The <term>row space of <m>A</m></term>, denoted <m>\RS A</m>, is defined as
+              <md>
+              \RS A=\Span \{\boldr_1, \boldr_2, \dots, \boldr_m\}\subseteq F^n
+              </md>.
+            </p>
+          </li>
+          <li>
+            <title>Column space</title>
+            <p>
+              The <term>column space of <m>A</m></term>, denoted <m>\CS A</m>, is defined as
+              <md>
+              \CS A=\Span \{\boldc_1, \boldc_2, \dots, \boldc_n\}\subseteq F^m
+              </md>.
+            </p>
+          </li>
+          
+        </ul>
+        </p>
+      </statement>
+    </definition>
+    <remark>
+      <title>Fundamental spaces</title>
+      <p>
+        Note that the fundamental spaces of a matrix <m>A\in \ML_{m,n}(F)</m> are indeed subspaces. This is a simple consequences of theorems <xref ref="th_subspace_matrix_solutions" text="global"/> and <xref ref="prop_span_subspace" text="global"/>, which tell us that null spaces of matrices and spans of vectors are subspaces. 
+      </p>
+      <p> 
+        A good practice when dealing with fundamental spaces of a matrix, is to first sort out the ambient space where each of these subspaces lives: if <m>A\in \ML_{m,n}(F)</m>, then both <m>\NS A</m> and <m>\RS A</m> are subspaces of <m>F^n</m>, and <m>\CS A</m> is a subspace of <m>F^m</m>. 
+      </p>
+    </remark>
+  
+    <example xml:id="eg_fund_spaces_elem">
+      <title>Fundamental spaces: elementary example</title>
+      <statement>
+        <p>
+          Provide bases and compute the dimension of the three fundamental spaces of 
+          <md>A=\begin{amatrix}[rrr]
+          1 \amp 2\amp 3 \\
+          1 \amp 2\amp 3 
+          \end{amatrix}
+          </md>.  
+        </p>
+      </statement>
+        <solution>
+          <p>
+        By definition, we have 
+        <md>
+          <mrow>\NS A=\{\boldx\in \R^3\colon A\boldx=\boldzero\}\amp \subseteq \R^3 \amp </mrow>
+          <mrow>\RS A=\Span\{(1,2,3),(1,2,3)\} \amp\subseteq \R^3 </mrow>
+          <mrow>\CS A=\Span\{(1,1),(2,2),(3,3)\}\amp \subseteq \R^2 </mrow>
+        </md>.
+        We see easily by inspection that 
+        <md>
+          \RS A=\Span\{(1,2,3),(1,2,3)\}=\Span\{(1,2,3)\}
+        </md>,
+        a line in <m>\R^3</m> passing through the origin, 
+        and 
+        <md>
+          \CS A=\Span\{(1,1),(2,2),(3,3)\}=\Span\{(1,1)\}
+        </md>,
+        a line in <m>\R^2</m> passing through the origin. Since the sets <m>B_1=\{(1,2,3)\}</m> and <m>B_2=\{(1,1)\}</m> are each linearly independent, they are clearly bases for their spans <m>\RS A </m> and <m>\CS A</m>, respectively. It follows that <m>\dim \RS A=\dim \CS A=1</m>. 
+      </p>
+      <p>
+        Next, by definition <m>\NS A</m> is the set of vectors  <m>\boldx=(x_1,x_2,x_3)\in \R^3</m> satisfying 
+        <md>
+          A\boldx=\begin{bmatrix}
+          x_1+2x_2+3x_3\\
+          x_1+2x_2+3x_3
+          \end{bmatrix}
+          =\begin{bmatrix}
+          0 \\
+          0
+          \end{bmatrix}
+        </md>,
+        or equivalently, the solutions to the linear equation
+        <m>
+          x_1+2x_2+3x_3=0
+        </m>,
+        a plane in <m>\R^3</m> passing through the origin. 
+        Using <xref ref="proc_solveSystem"/> we derive the parametric description 
+        <md>
+          <mrow> \NS A\amp=\{(-(2s+3t),s,t)\colon s,t\in \R\}</mrow>
+          <mrow> \amp =\{s(-2,1,0),+t(-3,0,1)\colon s,t\in \R\} </mrow>
+        </md>,
+        from which we see that 
+        <md>
+          \NS A=\Span\{(-2,1,0),(-3,0,1)\}
+        </md>.
+        Since <m>B_3=\{(-2,1,0),(-3,0,1)\}</m> is linearly independent and spans <m>\NS A</m>, it is a basis for <m>\NS A</m>. We conclude <m>\dim \NS A=2</m>. 
+        </p>
+        </solution>
+    </example>
+    <p>
+      The various fundamental spaces computed in <xref ref="eg_fund_spaces_elem"/> are represented in <xref ref="fig_fund_spaces_elem"/>. Note that separate graphs are presented for <m>\NS A</m> and <m>\RS A</m>, which live in <m>\R^3</m>, and <m>\CS A</m>, which lives in <m>\R^2</m>. 
+    </p>
+    <figure xml:id="fig_fund_spaces_elem">
+      <caption>Fundamental spaces of <m>A=\begin{bmatrix}1\amp 2\amp 3\\ 1\amp 2\amp 3\end{bmatrix}</m></caption>
+      <sidebyside widths="50% 50%">
+        <figure xml:id="fig_fund_spaces_nullrow">
+          <caption><m>\NS A, \RS A\subseteq \R^3</m></caption>
+            
+            <interactive xml:id="geogebra_null_row" platform="geogebra" width="100%" aspect="4:3">
+              <slate surface="geogebra" material="jrcmzgwd" aspect="4:3" material-width="800">
+              <!-- enableLabelDrags(false); -->
+              <!-- setCoordSystem(-10, 10, -10, 10,-3,5,false); -->
+              </slate>
+            </interactive>
+        </figure>
+        <figure xml:id="fig_fund_spaces_col">
+          <caption><m>\CS A\subseteq \R^2</m></caption>
+          
+          <interactive xml:id="geogebra_col" platform="geogebra" width="100%" aspect="4:3">
+            <slate surface="geogebra" material="davmcjvd" aspect="4:3">
+              setAxisSteps(1, 1, 1, 1);
+              setCoordSystem(-2, 2, -2, 2);
+              <!-- enableShiftDragZoom(false); -->
+              </slate>
+           </interactive>
+        </figure>
+      </sidebyside>
+    </figure>
+    <p>
+      The null space of a matrix <m>A</m> has an obvious connection with systems of linear equations, it being the set of solutions to the homogeneous linear system represented by <m>A\boldx=\boldzero</m>. The next theorem provides an interpretation of the column space of <m>A</m> in terms of linear systems.   
+    </p>
+    <theorem xml:id="th_col_space">
+      <title>Column space and linear systems</title>
+      <statement>
+        <p>
+          Let <m>A</m> be an <m>m\times n</m> matrix, and let <m>\boldb\in \R^m</m>. The following statements are equivalent. 
+          <ol>
+            <li>
+              <p>
+                <m>\boldb\in \CS A</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                There exists <m>\boldx\in \R^n</m> such that <m>\boldb=A\boldx</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The linear system <m>A\boldx=\boldb</m> is consistent. 
+              </p>
+            </li>
+          </ol>
+          As a consequence, we have xre
+          <mdn>
+            <mrow xml:id="eq_col_im">\CS A \amp =\{\boldb\in \R^m \colon \boldb=A\boldx \text{ for some } \boldx\in \R^n\}</mrow>
+            <mrow xml:id="eq_col_consistent"> \amp = \{\boldb\in \R^m\colon \text{ the linear system } A\boldx=\boldb \text{ is consistent}\}</mrow>
+          </mdn>.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Statements (2) and (3) are equivalent by virtue of the definition of a consistent system. Statements (1) and (2) are equivalent thanks to the column method of matrix multiplication. Indeed, letting <m>\bolda_1, \bolda_2,\dots, \bolda_n\in \R^m</m> be the columns of <m>A</m>, so that 
+          <md>
+            A=\begin{bmatrix}
+            \vert \amp \vert \amp \amp \vert \\
+            \bolda_1\amp \bolda_2\amp \cdots \amp \bolda_n\\
+            \vert \amp \vert \amp \amp \vert
+            \end{bmatrix}
+          </md>,
+          we have 
+          <md>
+            <mrow>\boldb\in \CS A \amp \iff \boldb=c_1\bolda_1+c_2\bolda_2+\cdots +c_n\bolda_n \text{ for some } c_i\in \R \amp (\text{def.})</mrow>
+            <mrow> \amp \iff \boldb=A\boldx, \text{ where } \boldx=(c_1,c_2,\dots, c_n)\in \R^n \amp <xref ref="th_column_method" text="global"/></mrow>
+          </md>.
+          The set equalities <xref first="eq_col_im" last="eq_col_consistent"/> follow immediately from the equivalence of statements (1)-(3). 
+        </p>
+      </proof>
+    </theorem>
+    <remark>
+      <title>What about the row space?</title>
+      <p>
+        You might be wondering why we give the row space of a matrix such short shrift here. As it turns out, the null space and column space of a matrix will be of the most importance to us algorithmically, with row space playing more of a supporting role of convenience. That said, as we will be able to show once we know more about inner products, the row space of a matrix <m>A</m> also has a connection with linear systems associated to <m>A</m>: namely, it is the <em>orthogonal complement</em> of the null space of <m>A</m>.   
+      </p>
+    </remark>
+    <p>
+      For more matrices more complicated than the one in <xref ref="eg_fund_spaces_elem"/>, the key to computing the various fundamental spaces lies with Gaussian elimination. Our first theorem lays out how exactly this procedure affects the fundamental spaces of a matrix. 
+    </p>
+    <p>
+      The next theorem indicates how row reduction affects fundamental spaces.
+    </p>
+    <theorem xml:id="th_fundspaces_rowreduce">
+      <title>Fundamental spaces and row operations</title>
+      <statement>
+        <p>
+          Let <m>A\in \ML_{m,n}(F)</m>, and suppose <m>A</m> is row equivalent to <m>B</m>.
+          <ol>
+            <li>
+              <p>
+                <m>\NS A=\NS B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\RS A=\RS B</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                In general <m>\CS A </m> is not equal to <m>\CS B</m>. However, letting <m>\bolda_i, \boldb_i\in F^m</m> be the columns of <m>A</m> and <m>B</m>, respectively, the columns <m>\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_r}</m> form span <m>\CS A</m> if and only if the columns <m>\boldb_{i_1}, \boldb_{i_2},\dots, \boldb_{i_r}</m> span <m>\CS B</m>.
+              </p>
+            </li>
+          </ol>
+          </p>
+      </statement>
+      <proof>
+        <!-- <p>
+          Assume that <m>A</m> is row equivalent to <m>B</m>. Using <xref ref="cor_row_equivalence_invertibility"/>, we see that this means there is an invertible matrix <m>Q</m> such that <m>B=QA</m>, and hence also <m>A=Q^{-1}B</m>. We will make use of this matrix <m>Q</m> below.
+          <ol>
+            <li>
+          <p>
+            The fact that <m>\NS A=\NS B</m> is a consequence of <xref ref="s_systems_th_rowops"/>, since if <m>A</m> is row equivalent to <m>B</m>, then so are the linear systems with augmented matrices <m>[A\vert\boldzero]</m> and <m>[B\vert\boldzero]</m>. 
+          </p>
+        </li>
+        <li>
+          <p>
+            First we show that <m>\RS B\subseteq \RS A</m>. Since <m>\RS B</m> is defined as the span of the rows of <m>B</m>, by <xref ref="prop_span_subspace"/> it is enough to show that each row of <m>B</m> is an element of <m>\RS A</m>.  For all <m>1\leq i\leq m</m>, let <m>\bolda_i, \boldb_i, \boldq_i</m> denote the <m>i</m>th rows of <m>A</m>, <m>B</m>, and <m>Q</m>, respectively, treated as row vectors.   Applying <xref ref="th_row_method"/> to the matrix product <m>B=QA</m>, we have <m>\underset{1\times n}{\boldb_i}=\underset{1\times n}{\boldq_i} A</m> for all <m>1\leq i\leq m</m>. Furthermore, using <xref ref="th_row_method"/> again, the row vector <m>\underset{1\times n}{\boldb_i}=\underset{1\times n}{\boldq_i} A</m> is itself a linear combination of the rows <m>\bolda_i</m>of <m>A</m>. By definition of row space, this means <m>\boldb_i\in \RS A</m> for all <m>1\leq i\leq m</m>, and hence <m>\boldr_i\in\RS A</m>, as desired.
+          </p>
+          <p>
+            It remains to show that <m>\RS A\subseteq \RS B</m>. But this follows using the same argument as above, using the fact that <m>A=Q^{-1}B</m>: <ie/>, by swapping the roles of <m>A</m> and <m>B</m>, and replacing <m>Q</m> with <m>Q^{-1}</m>. 
+          </p>
+        </li>
+        <li>
+          <p>
+            We now let <m>\bolda_j, \boldb_j</m> be the columns of <m>A</m> and <m>B</m>, respectively, where <m>1\leq j\leq n</m>. Since <m>\CS A=\Span\{\bolda_1,\bolda_2,\dots, \bolda_n\}</m>, by <xref ref="th_basis_contract_expand"/> there is a subset of columns that forms a basis of <m>\CS A</m>. Let <m>S=\{\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_r}\}</m> be any such a basis, so that <m>\dim \CS A=r</m>. We claim that the corresponding set of columns of <m>S'=\{\boldb_{i_1},\boldb_{i_2},\dots, \boldb_{i_r}\}</m> is a basis of <m>\CS B</m>, in which case <m>\dim \CS B=\dim \CS A=r</m>. To do so, we will use <xref ref="th_basis_equivalence"/>: in more detail, we will show that given any <m>\boldw\in \CS B</m>, we can write
+            <md>
+              \boldw=c_{i_1}\boldb_{i_1}+c_{i_2}\boldb_{i_2}+\cdots +c_{i_r}\boldb_{i_r}
+            </md>,
+            in a unique way. Indeed, we have 
+            <md>
+              <mrow>\boldw\in \CS B \amp \iff \boldw\in \CS QA \amp (B=QA)</mrow>
+              <mrow> \amp \iff \boldw=QA\boldx \text{ for some } \boldx\in \R^n</mrow>
+              <mrow> \amp \iff Q^{-1}\boldw=A\boldx \text{ for some } \boldx\in \R^n</mrow>
+              <mrow> \amp \iff Q^{-1}\boldw\in \CS A</mrow>
+              <mrow> \amp \iff Q^{-1}\boldw=c_{i_1}\bolda_{i_1}+\cdots +c_{i_r}\bolda_{i_r}</mrow>
+            </md>
+            for a unique <m>r</m>-tuple <m>(c_{i_1}, c_{i_2},\dots, c_{i_r})</m>. Here we have used the fact that the subset <m>\{\bolda_{i_1},\bolda_{i_2},\dots, \bolda_{i_r}\}</m> is a basis of <m>\CS A</m>. But this means 
+            <md>
+              <mrow>\boldw \amp =Q(c_{i_1}\bolda_{i_1}+\cdots +c_{i_r}\bolda_{i_r})</mrow>
+              <mrow> \amp = c_{i_1}Q\bolda_{i_1}+\cdots +c_{i_r}Q\bolda_{i_r}</mrow>
+              <mrow> \amp =c_{i_1}\boldb_{i_1}+\cdots +c_{i_r}\boldb_{i_r}</mrow>
+            </md>, 
+            since <m>\boldb_{i}=Q\bolda_i</m> for all <m>1\leq i\leq n</m> by <xref ref="th_column_method"/>. Furthermore, the coefficients in the linear combination
+            <md>
+              \boldw=c_{i_1}\boldb_{i_1}+\cdots +c_{i_r}\boldb_{i_r}
+            </md>
+            are unique, since our work above shows that 
+            <md>
+              \boldw=c_{i_1}\boldb_{i_1}+\cdots +c_{i_r}\boldb_{i_r} \iff Q^{-1}\boldw=c_{i_1}\bolda_{i_1}+\cdots +c_{i_r}\bolda_{i_r}
+            </md>.
+          </p>
+        </li>
+       </ol>
+    </p> -->
+  <p>
+    Left as a homework exercise. 
+  </p>
+    </proof>
+    </theorem>
+    <remark>
+      <title>Column space and row reduction</title>
+      <p>
+        Suppose the matrices <m>A</m> and <m>B</m> are row equivalent. As indicated in <xref ref="th_fundspaces_rowreduce"/> we typically have <m>\CS A\ne \CS B</m>. It is useful to have simple examples of this phenomenon at the ready. <xref ref="eg_colspace_change"/> provides one such example. 
+      </p>
+    </remark>
+    
+<example xml:id="eg_colspace_change">
+  <title>Column space and row reduction</title>
+  <p>
+    The matrix 
+    <md>
+      <mrow>A \amp = \begin{bmatrix}1\amp 1\\ 1\amp 1 \end{bmatrix}</mrow>
+    </md>
+    row reduces to the matrix 
+    <md>
+      <mrow>U \amp = \begin{bmatrix}1\amp 1\\ 0 \amp 0\end{bmatrix}</mrow>
+    </md>
+    in row echelon form. By inspection we see that 
+    <md>
+      <mrow>\CS A \amp =\Span\{(1,1)\}=\{(t,t)\colon t\in \R\}</mrow>
+      <mrow>\CS U \amp =\Span\{(1,0)\}=\{(t,0)\colon t\in \R\}</mrow>
+    </md>.
+    It is clear algebraically from the two set descriptions that <m>\CS A\ne \CS U</m>. Geometrically, the two spaces are two distinct lines in <m>\R^2</m> passing through the origin: <m>\CS A</m> is the line defined by the equation <m>y=x</m> and <m>\CS U</m> is the <m>x</m>-axis. 
+  </p>
+  <p>
+    By contrast consider the matrix 
+    <md>
+      A=\begin{bmatrix}1\amp 1\\ 0\amp 1 \end{bmatrix}
+    </md>,
+    which is row equivalent to 
+    <md>
+      U=\begin{bmatrix}
+      1\amp 0 \\
+      0\amp 1
+      \end{bmatrix}      
+    </md>.
+    In this case we have 
+    <md>
+      <mrow>\CS A \amp =\Span\{(1,0),(1,1)\}=\R^2</mrow>
+      <mrow>\CS U \amp =\Span\{(1,0),(0,1)\}=\R^2</mrow>
+    </md>,
+    and thus <m>\CS A=\CS U</m>.
+  </p>
+</example>
+
+<p>
+  Using <xref ref="th_fundspaces_rowreduce"/>, to find bases of the fundamental spaces of a matrix, we can first row reduce to a matrix <m>U</m> in row echelon form. The question remains, how best to describe these spaces for <m>U</m> in an efficient manner. We will have a better answer for that once we have introduced the notions of <em>bases</em> and <em>dimension</em>. 
+</p>
+
+ <!-- <p>
+  The example above identifies some nice geometric subspaces of <m>\R^2</m> and <m>\R^3</m>. The question naturally arises: can we describe <em>all</em> subspaces of <m>\R^2</m> and <m>\R^3</m> geometrically? The answer is yes, and will be easy to show once we have some dimension theory at our disposal. See <xref ref="eg_subspaces_R3"/>. 
+ </p>  -->
+
+</section>
