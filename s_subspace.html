@@ -176,7 +176,7 @@ var ggbApp = new GGBApplet({"appName": "classic",
     "autoHeight": true,
     "disableAutoScale": false},
 true);
-</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_det_II.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_det_II.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="s_subspaces_II.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\Z}{{\mathbb Z}}
 \newcommand{\N}{{\mathbb N}}
 \newcommand{\Q}{{\mathbb Q}}
@@ -576,7 +576,15 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <div class="toc-title-box"><a href="s_subspace.html" class="internal"><span class="codenumber">1.15</span> <span class="title">Subspaces</span></a></div>
 <ul class="structural toc-item-list active">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspace.html#ss_subspace_def" class="internal"><span class="codenumber">1.15.1</span> <span class="title">Definition and examples</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspace.html#ss_subspaces_tuples" class="internal"><span class="codenumber">1.15.2</span> <span class="title">Subspaces of <span class="process-math">\(F^n\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspace.html#ss_subspaces_tuples" class="internal"><span class="codenumber">1.15.2</span> <span class="title">Null space of a matrix</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_subspaces_II.html" class="internal"><span class="codenumber">1.16</span> <span class="title">Subspaces: further examples</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_subspace_matrices" class="internal"><span class="codenumber">1.16.1</span> <span class="title">Important subspaces of <span class="process-math">\(\ML_{n,n}(F)\)</span></span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_formal_polys_powerseries" class="internal"><span class="codenumber">1.16.2</span> <span class="title">Power series and formal polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_function_spaces" class="internal"><span class="codenumber">1.16.3</span> <span class="title">Important function subspaces</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -962,7 +970,7 @@ c\boldv+d\boldw=cc_1\boldv_1+cc_2\boldv_2+\cdots +cc_r\boldv_r+dc_{r+1}\boldv_{r
 <div class="para" id="prop_span_subspace-3-3-2">Let <span class="process-math">\(W\subseteq V\)</span> be a subspace that contains all elements of <span class="process-math">\(S\text{.}\)</span> Since <span class="process-math">\(W\)</span> is closed under arbitrary linear combinations, it must contain any linear combination of elements of <span class="process-math">\(S\text{,}\)</span> and thus <span class="process-math">\(\Span S\subseteq W\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_span_subspace-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Case: Statement (2)"><a href="#prop_span_subspace-3-3" title="Copy heading and permalink for Case: Statement (2)" aria-label="Copy heading and permalink for Case: Statement (2)">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.15.9.1"><a href="#prop_span_subspace-3" title="Copy heading and permalink for Proof 1.15.9.1" aria-label="Copy heading and permalink for Proof 1.15.9.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.15.1: Definition and examples"><a href="#ss_subspace_def" title="Copy heading and permalink for Subsection 1.15.1: Definition and examples" aria-label="Copy heading and permalink for Subsection 1.15.1: Definition and examples">🔗</a></div></section><section class="subsection" id="ss_subspaces_tuples"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subspaces of <span class="process-math">\(F^n\)</span></span>
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Null space of a matrix</span>
 </h3>
 <div class="para logical" id="ss_subspaces_tuples-2">
 <div class="para">
@@ -1042,8 +1050,13 @@ A(c_1\boldx_1+c_2\boldx_2)  \amp= c_1A\boldx_1+c_2A\boldx_2 \amp (\knowl{./knowl
 <div class="para" id="rm_subspace_alt-2">
 <a href="s_subspace.html#th_subspace_matrix_solutions" class="xref" data-knowl="./knowl/xref/th_subspace_matrix_solutions.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.11: Null spaces of matrices">Theorem 1.15.11</a> provides an alternative way of showing that a subset <span class="process-math">\(W\subseteq \R^n\text{:}\)</span> namely, find an <span class="process-math">\(m\times n\)</span> matrix <span class="process-math">\(A\)</span> for which we have <span class="process-math">\(W=\{\boldx\in \R^n\colon A\boldx=\boldzero\}\text{.}\)</span> This is often much faster than using the two-step technique.<div class="autopermalink" data-description="Paragraph"><a href="#rm_subspace_alt-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Remark 1.15.12: Alternative subspace method"><a href="#rm_subspace_alt" title="Copy heading and permalink for Remark 1.15.12: Alternative subspace method" aria-label="Copy heading and permalink for Remark 1.15.12: Alternative subspace method">🔗</a></div></article><article class="example example-like" id="eg_subspace_alt"><h4 class="heading">
-<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subspace as null space.</span>
+<div class="autopermalink" data-description="Remark 1.15.12: Alternative subspace method"><a href="#rm_subspace_alt" title="Copy heading and permalink for Remark 1.15.12: Alternative subspace method" aria-label="Copy heading and permalink for Remark 1.15.12: Alternative subspace method">🔗</a></div></article><article class="remark remark-like" id="ss_subspaces_tuples-6"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subspaces of <span class="process-math">\(F^n\)</span> and null spaces.</span>
+</h4>
+<div class="para" id="ss_subspaces_tuples-6-2">Now that we know that null spaces of matrices are subspaces of <span class="process-math">\(F^n\text{,}\)</span> the question natrually arises: can every subspace of <span class="process-math">\(F^n\)</span> the null space of some matrix? That is, given a subspace <span class="process-math">\(W\subseteq F^n\text{,}\)</span> can we find an <span class="process-math">\(m\times n\)</span> matrix <span class="process-math">\(A\)</span> (for some <span class="process-math">\(m\)</span>) such that <span class="process-math">\(W=\NS A\text{?}\)</span> The answer is yes, but we will postpone providing a proof until we have some furthe theory at your disposal.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-6-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.15.13: Subspaces of F^n and null spaces"><a href="#ss_subspaces_tuples-6" title="Copy heading and permalink for Remark 1.15.13: Subspaces of F^n and null spaces" aria-label="Copy heading and permalink for Remark 1.15.13: Subspaces of F^n and null spaces">🔗</a></div></article><article class="example example-like" id="eg_subspace_alt"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subspace as null space.</span>
 </h4>
 <div class="para logical" id="eg_subspace_alt-2-1">
 <div class="para">Define the subset <span class="process-math">\(W\)</span> of <span class="process-math">\(\R^3\)</span> as</div>
@@ -1111,25 +1124,25 @@ W=\{(-t,-2t,t)\colon t\in \R\}\text{.}
 </ol>
 <div class="autopermalink" data-description="Paragraph"><a href="#eg_subspace_alt-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Solution 1.15.13.1"><a href="#eg_subspace_alt-3" title="Copy heading and permalink for Solution 1.15.13.1" aria-label="Copy heading and permalink for Solution 1.15.13.1">🔗</a></div>
+<div class="autopermalink" data-description="Solution 1.15.14.1"><a href="#eg_subspace_alt-3" title="Copy heading and permalink for Solution 1.15.14.1" aria-label="Copy heading and permalink for Solution 1.15.14.1">🔗</a></div>
 </div></details></div>
-<div class="autopermalink" data-description="Example 1.15.13: Subspace as null space"><a href="#eg_subspace_alt" title="Copy heading and permalink for Example 1.15.13: Subspace as null space" aria-label="Copy heading and permalink for Example 1.15.13: Subspace as null space">🔗</a></div></article><article class="warning remark-like" id="ss_subspaces_tuples-7"><h4 class="heading">
-<span class="type">Warning</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subspace as null space.</span>
+<div class="autopermalink" data-description="Example 1.15.14: Subspace as null space"><a href="#eg_subspace_alt" title="Copy heading and permalink for Example 1.15.14: Subspace as null space" aria-label="Copy heading and permalink for Example 1.15.14: Subspace as null space">🔗</a></div></article><article class="warning remark-like" id="ss_subspaces_tuples-8"><h4 class="heading">
+<span class="type">Warning</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Subspace as null space.</span>
 </h4>
-<div class="para" id="ss_subspaces_tuples-7-2">As convenient as the method described in <a href="s_subspace.html#rm_subspace_alt" class="xref" data-knowl="./knowl/xref/rm_subspace_alt.html" data-reveal-label="Reveal" data-close-label="Close" title="Remark 1.15.12: Alternative subspace method">Remark 1.15.12</a> and illustrated in <a href="s_subspace.html#eg_subspace_alt" class="xref" data-knowl="./knowl/xref/eg_subspace_alt.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.15.13: Subspace as null space">Example 1.15.13</a> may be, bear in mind that it cannot always be used. Indeed, by definition the null space of an <span class="process-math">\(m\times n\)</span> matrix is a subset of <span class="process-math">\(F^n\text{.}\)</span> Thus this method can only be employed when the ambient vector space is <span class="process-math">\(F^n\text{.}\)</span> Don’t forget that there are other vector spaces besides <span class="process-math">\(F^n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-7-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="ss_subspaces_tuples-8-2">As convenient as the method described in <a href="s_subspace.html#rm_subspace_alt" class="xref" data-knowl="./knowl/xref/rm_subspace_alt.html" data-reveal-label="Reveal" data-close-label="Close" title="Remark 1.15.12: Alternative subspace method">Remark 1.15.12</a> and illustrated in <a href="s_subspace.html#eg_subspace_alt" class="xref" data-knowl="./knowl/xref/eg_subspace_alt.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.15.14: Subspace as null space">Example 1.15.14</a> may be, bear in mind that it cannot always be used for all vector spaces. Indeed, by definition the null space of an <span class="process-math">\(m\times n\)</span> matrix is a subset of <span class="process-math">\(F^n\text{.}\)</span> Thus this method can only be employed when the ambient vector space is <span class="process-math">\(F^n\text{.}\)</span> Don’t forget that there are other vector spaces besides <span class="process-math">\(F^n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-8-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Warning 1.15.14: Subspace as null space"><a href="#ss_subspaces_tuples-7" title="Copy heading and permalink for Warning 1.15.14: Subspace as null space" aria-label="Copy heading and permalink for Warning 1.15.14: Subspace as null space">🔗</a></div></article><div class="para logical" id="ss_subspaces_tuples-8">
+<div class="autopermalink" data-description="Warning 1.15.15: Subspace as null space"><a href="#ss_subspaces_tuples-8" title="Copy heading and permalink for Warning 1.15.15: Subspace as null space" aria-label="Copy heading and permalink for Warning 1.15.15: Subspace as null space">🔗</a></div></article><div class="para logical" id="ss_subspaces_tuples-9">
 <div class="para">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(m\times n\)</span> matrix. If <span class="process-math">\(\boldb\in F^m\)</span> is <em class="emphasis">nonzero</em>, then the set of solutions <span class="process-math">\(S\)</span> to <span class="process-math">\(A\boldx=\boldb\)</span> is <em class="emphasis">not</em> a subspace of <span class="process-math">\(F^n\text{,}\)</span> and for a very simple reason: since</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_nullspace_linsys.html" id="ss_subspaces_tuples-8-9">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_nullspace_linsys.html" id="ss_subspaces_tuples-9-9">
 \begin{equation*}
 A\underset{n\times 1}{\boldzero}=\underset{m\times 1}{\boldzero}\ne \boldb\text{,}
 \end{equation*}
 </div>
-<div class="para">we see that <span class="process-math">\(\underset{n\times 1}{\boldzero}\notin S\text{,}\)</span> and thus <span class="process-math">\(S\)</span> is not a subspace. Thus, thinking in terms of linear systems, we see that while the set of solutions to a <em class="emphasis">homogenous</em> linear system constitutes a subspace, the set of solutions to a <em class="emphasis">nonhomogeneous</em> system does not. On the other hand, as articulated by <a href="s_subspace.html#th_nullspace_linsys" class="xref" data-knowl="./knowl/xref/th_nullspace_linsys.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.15: Null space and linear systems">Theorem 1.15.15</a>, the set of solutions to a nonhomogeneous linear system can be thought of as a <em class="emphasis">translate</em> of a vector space.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-8" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">we see that <span class="process-math">\(\underset{n\times 1}{\boldzero}\notin S\text{,}\)</span> and thus <span class="process-math">\(S\)</span> is not a subspace. Thus, thinking in terms of linear systems, we see that while the set of solutions to a <em class="emphasis">homogenous</em> linear system constitutes a subspace, the set of solutions to a <em class="emphasis">nonhomogeneous</em> system does not. On the other hand, as articulated by <a href="s_subspace.html#th_nullspace_linsys" class="xref" data-knowl="./knowl/xref/th_nullspace_linsys.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.16: Null space and linear systems">Theorem 1.15.16</a>, the set of solutions to a nonhomogeneous linear system can be thought of as a <em class="emphasis">translate</em> of a vector space.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="theorem theorem-like" id="th_nullspace_linsys"><h4 class="heading">
-<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Null space and linear systems.</span>
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Null space and linear systems.</span>
 </h4>
 <div class="para logical" id="th_nullspace_linsys-2-1">
 <div class="para">Let <span class="process-math">\(A\in \ML_{m,n}(F)\)</span> and <span class="process-math">\(\boldb\in F^m\text{,}\)</span> and let <span class="process-math">\(S\)</span> be the set of all solutions to the linear system</div>
@@ -1172,7 +1185,7 @@ A\boldx=\boldzero\text{.}\tag{1.15.3}
 </ol>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_nullspace_linsys-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 1.15.15: Null space and linear systems"><a href="#th_nullspace_linsys" title="Copy heading and permalink for Theorem 1.15.15: Null space and linear systems" aria-label="Copy heading and permalink for Theorem 1.15.15: Null space and linear systems">🔗</a></div></article><details id="th_nullspace_linsys-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="th_nullspace_linsys-3-1">
+<div class="autopermalink" data-description="Theorem 1.15.16: Null space and linear systems"><a href="#th_nullspace_linsys" title="Copy heading and permalink for Theorem 1.15.16: Null space and linear systems" aria-label="Copy heading and permalink for Theorem 1.15.16: Null space and linear systems">🔗</a></div></article><details id="th_nullspace_linsys-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="th_nullspace_linsys-3-1">
 <ol class="decimal" id="th_nullspace_linsys-3-1-1">
 <li id="th_nullspace_linsys-3-1-1-1">
 <div class="para" id="th_nullspace_linsys-3-1-1-1-1">If <span class="process-math">\(\boldb=\boldzero\text{,}\)</span> then <span class="process-math">\(S=\NS A\text{,}\)</span> and this is a subspace by <a href="s_subspace.html#th_subspace_matrix_solutions" class="xref" data-knowl="./knowl/xref/th_subspace_matrix_solutions.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.11: Null spaces of matrices">Theorem 1.15.11</a>. If <span class="process-math">\(\boldb\ne \boldzero\text{,}\)</span> then <span class="process-math">\(\boldzero\notin S\text{,}\)</span> and hence <span class="process-math">\(S\)</span> is not a subspace.<div class="autopermalink" data-description="Paragraph"><a href="#th_nullspace_linsys-3-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -1225,8 +1238,8 @@ A(\boldx_p-\boldv) \amp = A\boldx_p-A\boldv\\
 </ol>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_nullspace_linsys-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.15.15.1"><a href="#th_nullspace_linsys-3" title="Copy heading and permalink for Proof 1.15.15.1" aria-label="Copy heading and permalink for Proof 1.15.15.1">🔗</a></div></article></details><article class="corollary theorem-like" id="cor_matrix_equations"><h4 class="heading">
-<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Null space and linear systems.</span>
+<div class="autopermalink" data-description="Proof 1.15.16.1"><a href="#th_nullspace_linsys-3" title="Copy heading and permalink for Proof 1.15.16.1" aria-label="Copy heading and permalink for Proof 1.15.16.1">🔗</a></div></article></details><article class="corollary theorem-like" id="cor_matrix_equations"><h4 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Null space and linear systems.</span>
 </h4>
 <div class="para logical" id="cor_matrix_equations-2-1">
 <div class="para">Let <span class="process-math">\(A\in \ML_{m,n}(F)\)</span> and <span class="process-math">\(\boldb\in F^m\text{,}\)</span> and suppose the linear system <span class="process-math">\(A\boldx=\boldb\)</span> is consistent.</div>
@@ -1244,10 +1257,10 @@ A(\boldx_p-\boldv) \amp = A\boldx_p-A\boldv\\
 </ol>
 <div class="autopermalink" data-description="Paragraph"><a href="#cor_matrix_equations-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Corollary 1.15.16: Null space and linear systems"><a href="#cor_matrix_equations" title="Copy heading and permalink for Corollary 1.15.16: Null space and linear systems" aria-label="Copy heading and permalink for Corollary 1.15.16: Null space and linear systems">🔗</a></div></article><details id="sage_solve_matrix_eqn" class="project project-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
+<div class="autopermalink" data-description="Corollary 1.15.17: Null space and linear systems"><a href="#cor_matrix_equations" title="Copy heading and permalink for Corollary 1.15.17: Null space and linear systems" aria-label="Copy heading and permalink for Corollary 1.15.17: Null space and linear systems">🔗</a></div></article><details id="sage_solve_matrix_eqn" class="project project-like born-hidden-knowl"><summary class="knowl__link"><h4 class="heading">
 <span class="type">Sage Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Solving matrix equations.</span>
 </h4></summary><article class="project project-like knowl__content"><div class="para logical" id="sage_solve_matrix_eqn-2">
-<div class="para">Let’s use Sage and  <a href="s_subspace.html#cor_matrix_equations" class="xref" data-knowl="./knowl/xref/cor_matrix_equations.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.15.16: Null space and linear systems">Corollary 1.15.16</a> to find the set of solutions <span class="process-math">\(S\subseteq \R^5\)</span> to the matrix equation</div>
+<div class="para">Let’s use Sage and  <a href="s_subspace.html#cor_matrix_equations" class="xref" data-knowl="./knowl/xref/cor_matrix_equations.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.15.17: Null space and linear systems">Corollary 1.15.17</a> to find the set of solutions <span class="process-math">\(S\subseteq \R^5\)</span> to the matrix equation</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/cor_matrix_equations.html ./knowl/xref/sage_solve_system.html ./knowl/xref/eq_sage_matrix_eqn.html" id="eq_sage_matrix_eqn">
 \begin{equation}
 \begin{amatrix}[rrrrr]
@@ -1301,7 +1314,7 @@ show(x) # A solution
 show(A*x) # Check that A*x=(12,28,-1)
 </script></div>
 <div class="autopermalink" data-description="Sage Example 9: Solving matrix equations"><a href="#sage_solve_matrix_eqn" title="Copy heading and permalink for Sage Example 9: Solving matrix equations" aria-label="Copy heading and permalink for Sage Example 9: Solving matrix equations">🔗</a></div></article></details><article class="definition definition-like" id="d_hyperplane"><h4 class="heading">
-<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Hyperplane.</span>
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Hyperplane.</span>
 </h4>
 <div class="para logical" id="d_hyperplane-2-1">
 <div class="para">A linear equation</div>
@@ -1332,8 +1345,8 @@ S=\{(s_1,s_2,\dots, s_n)\in F^n\colon a_1s_1+\cdots+a_ns_n=b \}
 </ul>
 <div class="autopermalink" data-description="Paragraph"><a href="#d_hyperplane-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.15.17: Hyperplane"><a href="#d_hyperplane" title="Copy heading and permalink for Definition 1.15.17: Hyperplane" aria-label="Copy heading and permalink for Definition 1.15.17: Hyperplane">🔗</a></div></article><article class="remark remark-like" id="rm_hyperplanes"><h4 class="heading">
-<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Hyperplanes and subspaces.</span>
+<div class="autopermalink" data-description="Definition 1.15.18: Hyperplane"><a href="#d_hyperplane" title="Copy heading and permalink for Definition 1.15.18: Hyperplane" aria-label="Copy heading and permalink for Definition 1.15.18: Hyperplane">🔗</a></div></article><article class="remark remark-like" id="rm_hyperplanes"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Hyperplanes and subspaces.</span>
 </h4>
 <div class="para logical" id="rm_hyperplanes-2">
 <div class="para">Let <span class="process-math">\(H\subseteq F^n\)</span> be the hyperplane with defining equation</div>
@@ -1342,7 +1355,7 @@ S=\{(s_1,s_2,\dots, s_n)\in F^n\colon a_1s_1+\cdots+a_ns_n=b \}
 a_1x_1+a_2x_2+\cdots +a_nx_n=b\text{.}\tag{1.15.6}
 \end{equation}
 </div>
-<div class="para">In terms of <a href="s_subspace.html#th_nullspace_linsys" class="xref" data-knowl="./knowl/xref/th_nullspace_linsys.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.15: Null space and linear systems">Theorem 1.15.15</a>, <span class="process-math">\(H\)</span> is just the set of solutions to the matrix equation <span class="process-math">\(A\boldx=\boldb\text{,}\)</span> where</div>
+<div class="para">In terms of <a href="s_subspace.html#th_nullspace_linsys" class="xref" data-knowl="./knowl/xref/th_nullspace_linsys.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.16: Null space and linear systems">Theorem 1.15.16</a>, <span class="process-math">\(H\)</span> is just the set of solutions to the matrix equation <span class="process-math">\(A\boldx=\boldb\text{,}\)</span> where</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_nullspace_linsys.html ./knowl/xref/th_nullspace_linsys.html ./knowl/xref/eq_rm_hyperplane.html" id="rm_hyperplanes-2-6">
 \begin{align*}
 A \amp =\begin{bmatrix}
@@ -1353,7 +1366,7 @@ b
 \end{bmatrix} \text{.}
 \end{align*}
 </div>
-<div class="para">It follows from <a href="s_subspace.html#th_nullspace_linsys" class="xref" data-knowl="./knowl/xref/th_nullspace_linsys.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.15: Null space and linear systems">Theorem 1.15.15</a> that <span class="process-math">\(H\)</span> is a subspace if and only if <span class="process-math">\(b=0\text{:}\)</span> i.e., if and only if <span class="process-math">\(H\)</span> passes through the origin. Furthermore, if <span class="process-math">\(b\ne 0\text{,}\)</span> we have</div>
+<div class="para">It follows from <a href="s_subspace.html#th_nullspace_linsys" class="xref" data-knowl="./knowl/xref/th_nullspace_linsys.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.16: Null space and linear systems">Theorem 1.15.16</a> that <span class="process-math">\(H\)</span> is a subspace if and only if <span class="process-math">\(b=0\text{:}\)</span> i.e., if and only if <span class="process-math">\(H\)</span> passes through the origin. Furthermore, if <span class="process-math">\(b\ne 0\text{,}\)</span> we have</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_nullspace_linsys.html ./knowl/xref/th_nullspace_linsys.html ./knowl/xref/eq_rm_hyperplane.html" id="rm_hyperplanes-2-13">
 \begin{equation*}
 H=\boldx_p+H_0\text{,}
@@ -1368,299 +1381,9 @@ a_1x_1+a_2x_2+\cdots +a_nx_n=0\text{.}\tag{1.15.7}
 <div class="para">In other words, although it is not true in general that every hyperplane <span class="process-math">\(H\subseteq F^n\)</span> is a subspace (since it may not pass through the origin), it is true that <span class="process-math">\(H=\boldx_p+H_0\)</span> is a <em class="emphasis">translate</em> of a hyperplane <span class="process-math">\(H_0\)</span> that is a subspace (since <span class="process-math">\(H_0\)</span> passes through the origin).</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#rm_hyperplanes-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Remark 1.15.18: Hyperplanes and subspaces"><a href="#rm_hyperplanes" title="Copy heading and permalink for Remark 1.15.18: Hyperplanes and subspaces" aria-label="Copy heading and permalink for Remark 1.15.18: Hyperplanes and subspaces">🔗</a></div></article><div class="para" id="ss_subspaces_tuples-14">In addition to the null space, there are a number of other subspaces of that we naturally associate to a matrix <span class="process-math">\(A\in \ML_{m,n}(F)\text{,}\)</span> and which make use of the span oepration: namely, the the <em class="emphasis">row space</em> and <em class="emphasis">column space</em> of the matrix. Taken together, these three subspaces associated to <span class="process-math">\(A\)</span> are called its <em class="emphasis">fundamental spaces</em>.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-14" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<article class="definition definition-like" id="d_fundamental_space"><h4 class="heading">
-<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Fundamental spaces.</span>
-</h4>
-<div class="para logical" id="d_fundamental_space-9-1">
-<div class="para">Let <span class="process-math">\(A\in \ML_{m,n}(F)\text{,}\)</span> let <span class="process-math">\(\boldr_1,\dots, \boldr_m\in F^n\)</span> be the <span class="process-math">\(m\)</span> rows of <span class="process-math">\(A\text{,}\)</span> and let <span class="process-math">\(\boldc_1,\dots \boldc_n\in F^m\)</span> be its <span class="process-math">\(n\)</span> columns. The following subspaces are called the <dfn class="terminology">fundamental subspaces of <span class="process-math">\(A\)</span></dfn>.</div>
-<ul class="disc" id="d_fundamental_space-9-1-8">
-<li id="d_fundamental_space-9-1-8-1">
-<span class="heading li--heading"><span class="title li--heading-title">Null space.</span></span><div class="para logical" id="d_fundamental_space-9-1-8-1-2">
-<div class="para">The <dfn class="terminology">null space of <span class="process-math">\(A\)</span></dfn>, denoted <span class="process-math">\(\NS A\)</span> is defined as</div>
-<div class="displaymath process-math" id="d_fundamental_space-9-1-8-1-2-3">
-\begin{equation*}
-\NS A =\{\boldx\in F^n\colon A\boldx=\boldzero\}\subseteq F^n.\text{.}
-\end{equation*}
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#d_fundamental_space-9-1-8-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item: Null space"><a href="#d_fundamental_space-9-1-8-1" title="Copy heading and permalink for Item: Null space" aria-label="Copy heading and permalink for Item: Null space">🔗</a></div>
-</li>
-<li id="d_fundamental_space-9-1-8-2">
-<span class="heading li--heading"><span class="title li--heading-title">Row space.</span></span><div class="para logical" id="d_fundamental_space-9-1-8-2-2">
-<div class="para">The <dfn class="terminology">row space of <span class="process-math">\(A\)</span></dfn>, denoted <span class="process-math">\(\RS A\text{,}\)</span> is defined as</div>
-<div class="displaymath process-math" id="d_fundamental_space-9-1-8-2-2-3">
-\begin{equation*}
-\RS A=\Span \{\boldr_1, \boldr_2, \dots, \boldr_m\}\subseteq F^n\text{.}
-\end{equation*}
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#d_fundamental_space-9-1-8-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item: Row space"><a href="#d_fundamental_space-9-1-8-2" title="Copy heading and permalink for Item: Row space" aria-label="Copy heading and permalink for Item: Row space">🔗</a></div>
-</li>
-<li id="d_fundamental_space-9-1-8-3">
-<span class="heading li--heading"><span class="title li--heading-title">Column space.</span></span><div class="para logical" id="d_fundamental_space-9-1-8-3-2">
-<div class="para">The <dfn class="terminology">column space of <span class="process-math">\(A\)</span></dfn>, denoted <span class="process-math">\(\CS A\text{,}\)</span> is defined as</div>
-<div class="displaymath process-math" id="d_fundamental_space-9-1-8-3-2-3">
-\begin{equation*}
-\CS A=\Span \{\boldc_1, \boldc_2, \dots, \boldc_n\}\subseteq F^m\text{.}
-\end{equation*}
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#d_fundamental_space-9-1-8-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item: Column space"><a href="#d_fundamental_space-9-1-8-3" title="Copy heading and permalink for Item: Column space" aria-label="Copy heading and permalink for Item: Column space">🔗</a></div>
-</li>
-</ul>
-<div class="autopermalink" data-description="Paragraph"><a href="#d_fundamental_space-9-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Definition 1.15.19: Fundamental spaces"><a href="#d_fundamental_space" title="Copy heading and permalink for Definition 1.15.19: Fundamental spaces" aria-label="Copy heading and permalink for Definition 1.15.19: Fundamental spaces">🔗</a></div></article><article class="remark remark-like" id="ss_subspaces_tuples-16"><h4 class="heading">
-<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.20</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Fundamental spaces.</span>
-</h4>
-<div class="para" id="ss_subspaces_tuples-16-2">Note that the fundamental spaces of a matrix <span class="process-math">\(A\in \ML_{m,n}(F)\)</span> are indeed subspaces. This is a simple consequences of theorems <a href="s_subspace.html#th_subspace_matrix_solutions" class="xref" data-knowl="./knowl/xref/th_subspace_matrix_solutions.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.11: Null spaces of matrices">1.15.11</a> and <a href="s_subspace.html#prop_span_subspace" class="xref" data-knowl="./knowl/xref/prop_span_subspace.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.9: Spans are subspaces">1.15.9</a>, which tell us that null spaces of matrices and spans of vectors are subspaces.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-16-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="para" id="ss_subspaces_tuples-16-3">A good practice when dealing with fundamental spaces of a matrix, is to first sort out the ambient space where each of these subspaces lives: if <span class="process-math">\(A\in \ML_{m,n}(F)\text{,}\)</span> then both <span class="process-math">\(\NS A\)</span> and <span class="process-math">\(\RS A\)</span> are subspaces of <span class="process-math">\(F^n\text{,}\)</span> and <span class="process-math">\(\CS A\)</span> is a subspace of <span class="process-math">\(F^m\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-16-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Remark 1.15.20: Fundamental spaces"><a href="#ss_subspaces_tuples-16" title="Copy heading and permalink for Remark 1.15.20: Fundamental spaces" aria-label="Copy heading and permalink for Remark 1.15.20: Fundamental spaces">🔗</a></div></article><article class="example example-like" id="eg_fund_spaces_elem"><h4 class="heading">
-<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.21</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Fundamental spaces: elementary example.</span>
-</h4>
-<div class="para logical" id="eg_fund_spaces_elem-2-1">
-<div class="para">Provide bases and compute the dimension of the three fundamental spaces of</div>
-<div class="displaymath process-math" id="eg_fund_spaces_elem-2-1-1">
-\begin{equation*}
-A=\begin{amatrix}[rrr]
-1 \amp 2\amp 3 \\
-1 \amp 2\amp 3 
-\end{amatrix}\text{.}
-\end{equation*}
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces_elem-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="solutions"><details id="eg_fund_spaces_elem-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
-<div class="para logical" id="eg_fund_spaces_elem-3-1">
-<div class="para">By definition, we have</div>
-<div class="displaymath process-math" id="eg_fund_spaces_elem-3-1-1">
-\begin{align*}
-\NS A=\{\boldx\in \R^3\colon A\boldx=\boldzero\}\amp \subseteq \R^3 \amp \\
-\RS A=\Span\{(1,2,3),(1,2,3)\} \amp\subseteq \R^3 \\
-\CS A=\Span\{(1,1),(2,2),(3,3)\}\amp \subseteq \R^2 \text{.}
-\end{align*}
-</div>
-<div class="para">We see easily by inspection that</div>
-<div class="displaymath process-math" id="eg_fund_spaces_elem-3-1-2">
-\begin{equation*}
-\RS A=\Span\{(1,2,3),(1,2,3)\}=\Span\{(1,2,3)\}\text{,}
-\end{equation*}
-</div>
-<div class="para">a line in <span class="process-math">\(\R^3\)</span> passing through the origin, and</div>
-<div class="displaymath process-math" id="eg_fund_spaces_elem-3-1-4">
-\begin{equation*}
-\CS A=\Span\{(1,1),(2,2),(3,3)\}=\Span\{(1,1)\}\text{,}
-\end{equation*}
-</div>
-<div class="para">a line in <span class="process-math">\(\R^2\)</span> passing through the origin. Since the sets <span class="process-math">\(B_1=\{(1,2,3)\}\)</span> and <span class="process-math">\(B_2=\{(1,1)\}\)</span> are each linearly independent, they are clearly bases for their spans <span class="process-math">\(\RS A \)</span> and <span class="process-math">\(\CS A\text{,}\)</span> respectively. It follows that <span class="process-math">\(\dim \RS A=\dim \CS A=1\text{.}\)</span>
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces_elem-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="para logical" id="eg_fund_spaces_elem-3-2">
-<div class="para">Next, by definition <span class="process-math">\(\NS A\)</span> is the set of vectors  <span class="process-math">\(\boldx=(x_1,x_2,x_3)\in \R^3\)</span> satisfying</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html" id="eg_fund_spaces_elem-3-2-3">
-\begin{equation*}
-A\boldx=\begin{bmatrix}
-x_1+2x_2+3x_3\\
-x_1+2x_2+3x_3
-\end{bmatrix}
-=\begin{bmatrix}
-0 \\
-0
-\end{bmatrix}\text{,}
-\end{equation*}
-</div>
-<div class="para">or equivalently, the solutions to the linear equation <span class="process-math">\(x_1+2x_2+3x_3=0
-\text{,}\)</span> a plane in <span class="process-math">\(\R^3\)</span> passing through the origin. Using <a href="s_linsys_solve.html#proc_solveSystem" class="xref" data-knowl="./knowl/xref/proc_solveSystem.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.8.21: Solving linear systems">Procedure 1.8.21</a> we derive the parametric description</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html" id="eg_fund_spaces_elem-3-2-7">
-\begin{align*}
-\NS A\amp=\{(-(2s+3t),s,t)\colon s,t\in \R\}\\
-\amp =\{s(-2,1,0),+t(-3,0,1)\colon s,t\in \R\} \text{,}
-\end{align*}
-</div>
-<div class="para">from which we see that</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html" id="eg_fund_spaces_elem-3-2-8">
-\begin{equation*}
-\NS A=\Span\{(-2,1,0),(-3,0,1)\}\text{.}
-\end{equation*}
-</div>
-<div class="para">Since <span class="process-math">\(B_3=\{(-2,1,0),(-3,0,1)\}\)</span> is linearly independent and spans <span class="process-math">\(\NS A\text{,}\)</span> it is a basis for <span class="process-math">\(\NS A\text{.}\)</span> We conclude <span class="process-math">\(\dim \NS A=2\text{.}\)</span>
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces_elem-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Solution 1.15.21.1"><a href="#eg_fund_spaces_elem-3" title="Copy heading and permalink for Solution 1.15.21.1" aria-label="Copy heading and permalink for Solution 1.15.21.1">🔗</a></div>
-</div></details></div>
-<div class="autopermalink" data-description="Example 1.15.21: Fundamental spaces: elementary example"><a href="#eg_fund_spaces_elem" title="Copy heading and permalink for Example 1.15.21: Fundamental spaces: elementary example" aria-label="Copy heading and permalink for Example 1.15.21: Fundamental spaces: elementary example">🔗</a></div></article><div class="para" id="ss_subspaces_tuples-18">The various fundamental spaces computed in <a href="s_subspace.html#eg_fund_spaces_elem" class="xref" data-knowl="./knowl/xref/eg_fund_spaces_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.15.21: Fundamental spaces: elementary example">Example 1.15.21</a> are represented in <a href="s_subspace.html#fig_fund_spaces_elem" class="xref" data-knowl="./knowl/xref/fig_fund_spaces_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Figure 1.15.22">Figure 1.15.22</a>. Note that separate graphs are presented for <span class="process-math">\(\NS A\)</span> and <span class="process-math">\(\RS A\text{,}\)</span> which live in <span class="process-math">\(\R^3\text{,}\)</span> and <span class="process-math">\(\CS A\text{,}\)</span> which lives in <span class="process-math">\(\R^2\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-18" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<figure class="figure figure-like" id="fig_fund_spaces_elem"><div class="sidebyside"><div class="sbsrow" style="margin-left:0%;margin-right:0%;grid-template-columns:50% 50%;column-gap:0%;">
-<div class="sbspanel sbspanel--top top" style=""><figure class="figure figure-like" id="fig_fund_spaces_nullrow"><div class="interactive-iframe-container"><iframe id="geogebra_null_row" style="width:300px; height:225px; display: block; " src="geogebra_null_row-if.html"></iframe></div>
-<figcaption><span class="codenumber">(a)</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="process-math">\(\NS A, \RS A\subseteq \R^3\)</span><div class="autopermalink" data-description="Figure 1.15.22.(a)"><a href="#fig_fund_spaces_nullrow" title="Copy heading and permalink for Figure 1.15.22.(a)" aria-label="Copy heading and permalink for Figure 1.15.22.(a)">🔗</a></div></figcaption></figure></div>
-<div class="sbspanel sbspanel--top top" style=""><figure class="figure figure-like" id="fig_fund_spaces_col"><div class="interactive-iframe-container"><iframe id="geogebra_col" style="width:300px; height:225px; display: block; " src="geogebra_col-if.html"></iframe></div>
-<figcaption><span class="codenumber">(b)</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="process-math">\(\CS A\subseteq \R^2\)</span><div class="autopermalink" data-description="Figure 1.15.22.(b)"><a href="#fig_fund_spaces_col" title="Copy heading and permalink for Figure 1.15.22.(b)" aria-label="Copy heading and permalink for Figure 1.15.22.(b)">🔗</a></div></figcaption></figure></div>
-</div></div>
-<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.22<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Fundamental spaces of <span class="process-math">\(A=\begin{bmatrix}1\amp 2\amp 3\\ 1\amp 2\amp 3\end{bmatrix}\)</span><div class="autopermalink" data-description="Figure 1.15.22"><a href="#fig_fund_spaces_elem" title="Copy heading and permalink for Figure 1.15.22" aria-label="Copy heading and permalink for Figure 1.15.22">🔗</a></div></figcaption></figure><div class="para" id="ss_subspaces_tuples-20">The null space of a matrix <span class="process-math">\(A\)</span> has an obvious connection with systems of linear equations, it being the set of solutions to the homogeneous linear system represented by <span class="process-math">\(A\boldx=\boldzero\text{.}\)</span> The next theorem provides an interpretation of the column space of <span class="process-math">\(A\)</span> in terms of linear systems.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-20" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<article class="theorem theorem-like" id="th_col_space"><h4 class="heading">
-<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.23</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Column space and linear systems.</span>
-</h4>
-<div class="para logical" id="th_col_space-2-1">
-<div class="para">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(m\times n\)</span> matrix, and let <span class="process-math">\(\boldb\in \R^m\text{.}\)</span> The following statements are equivalent.</div>
-<ol class="decimal" id="th_col_space-2-1-4">
-<li id="th_col_space-2-1-4-1">
-<div class="para" id="th_col_space-2-1-4-1-1">
-<span class="process-math">\(\boldb\in \CS A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item 1"><a href="#th_col_space-2-1-4-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
-</li>
-<li id="th_col_space-2-1-4-2">
-<div class="para" id="th_col_space-2-1-4-2-1">There exists <span class="process-math">\(\boldx\in \R^n\)</span> such that <span class="process-math">\(\boldb=A\boldx\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item 2"><a href="#th_col_space-2-1-4-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
-</li>
-<li id="th_col_space-2-1-4-3">
-<div class="para" id="th_col_space-2-1-4-3-1">The linear system <span class="process-math">\(A\boldx=\boldb\)</span> is consistent.<div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item 3"><a href="#th_col_space-2-1-4-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
-</li>
-</ol>
-<div class="para">As a consequence, we have xre</div>
-<div class="displaymath process-math" id="th_col_space-2-1-5">
-\begin{align}
-\CS A \amp =\{\boldb\in \R^m \colon \boldb=A\boldx \text{ for some } \boldx\in \R^n\}\tag{1.15.8}\\
-\amp = \{\boldb\in \R^m\colon \text{ the linear system } A\boldx=\boldb \text{ is consistent}\}\text{.}\tag{1.15.9}
-\end{align}
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Theorem 1.15.23: Column space and linear systems"><a href="#th_col_space" title="Copy heading and permalink for Theorem 1.15.23: Column space and linear systems" aria-label="Copy heading and permalink for Theorem 1.15.23: Column space and linear systems">🔗</a></div></article><details id="th_col_space-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="th_col_space-3-1">
-<div class="para">Statements (2) and (3) are equivalent by virtue of the definition of a consistent system. Statements (1) and (2) are equivalent thanks to the column method of matrix multiplication. Indeed, letting <span class="process-math">\(\bolda_1, \bolda_2,\dots, \bolda_n\in \R^m\)</span> be the columns of <span class="process-math">\(A\text{,}\)</span> so that</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_column_method.html " id="th_col_space-3-1-3">
-\begin{equation*}
-A=\begin{bmatrix}
-\vert \amp \vert \amp \amp \vert \\
-\bolda_1\amp \bolda_2\amp \cdots \amp \bolda_n\\
-\vert \amp \vert \amp \amp \vert
-\end{bmatrix}\text{,}
-\end{equation*}
-</div>
-<div class="para">we have</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_column_method.html " id="th_col_space-3-1-4">
-\begin{align*}
-\boldb\in \CS A \amp \iff \boldb=c_1\bolda_1+c_2\bolda_2+\cdots +c_n\bolda_n \text{ for some } c_i\in \R \amp (\text{def.})\\
-\amp \iff \boldb=A\boldx, \text{ where } \boldx=(c_1,c_2,\dots, c_n)\in \R^n \amp \knowl{./knowl/xref/th_column_method.html}{\text{1.9.12}}\text{.}
-\end{align*}
-</div>
-<div class="para">The set equalities <a href="s_subspace.html#th_col_space-2-1-5" class="xref" data-knowl="./knowl/xref/eq_col_im.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.15.8">(1.15.8)–(1.15.9)</a> follow immediately from the equivalence of statements (1)-(3).</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Proof 1.15.23.1"><a href="#th_col_space-3" title="Copy heading and permalink for Proof 1.15.23.1" aria-label="Copy heading and permalink for Proof 1.15.23.1">🔗</a></div></article></details><article class="remark remark-like" id="ss_subspaces_tuples-22"><h4 class="heading">
-<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.24</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">What about the row space?</span>
-</h4>
-<div class="para" id="ss_subspaces_tuples-22-2">You might be wondering why we give the row space of a matrix such short shrift here. As it turns out, the null space and column space of a matrix will be of the most importance to us algorithmically, with row space playing more of a supporting role of convenience. That said, as we will be able to show once we know more about inner products, the row space of a matrix <span class="process-math">\(A\)</span> also has a connection with linear systems associated to <span class="process-math">\(A\text{:}\)</span> namely, it is the <em class="emphasis">orthogonal complement</em> of the null space of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-22-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Remark 1.15.24: What about the row space?"><a href="#ss_subspaces_tuples-22" title="Copy heading and permalink for Remark 1.15.24: What about the row space?" aria-label="Copy heading and permalink for Remark 1.15.24: What about the row space?">🔗</a></div></article><div class="para" id="ss_subspaces_tuples-23">For more matrices more complicated than the one in <a href="s_subspace.html#eg_fund_spaces_elem" class="xref" data-knowl="./knowl/xref/eg_fund_spaces_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.15.21: Fundamental spaces: elementary example">Example 1.15.21</a>, the key to computing the various fundamental spaces lies with Gaussian elimination. Our first theorem lays out how exactly this procedure affects the fundamental spaces of a matrix.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-23" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="para" id="ss_subspaces_tuples-24">The next theorem indicates how row reduction affects fundamental spaces.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-24" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<article class="theorem theorem-like" id="th_fundspaces_rowreduce"><h4 class="heading">
-<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.25</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Fundamental spaces and row operations.</span>
-</h4>
-<div class="para logical" id="th_fundspaces_rowreduce-2-1">
-<div class="para">Let <span class="process-math">\(A\in \ML_{m,n}(F)\text{,}\)</span> and suppose <span class="process-math">\(A\)</span> is row equivalent to <span class="process-math">\(B\text{.}\)</span>
-</div>
-<ol class="decimal" id="th_fundspaces_rowreduce-2-1-4">
-<li id="th_fundspaces_rowreduce-2-1-4-1">
-<div class="para" id="th_fundspaces_rowreduce-2-1-4-1-1">
-<span class="process-math">\(\NS A=\NS B\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_fundspaces_rowreduce-2-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item 1"><a href="#th_fundspaces_rowreduce-2-1-4-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
-</li>
-<li id="th_fundspaces_rowreduce-2-1-4-2">
-<div class="para" id="th_fundspaces_rowreduce-2-1-4-2-1">
-<span class="process-math">\(\RS A=\RS B\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_fundspaces_rowreduce-2-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item 2"><a href="#th_fundspaces_rowreduce-2-1-4-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
-</li>
-<li id="th_fundspaces_rowreduce-2-1-4-3">
-<div class="para" id="th_fundspaces_rowreduce-2-1-4-3-1">In general <span class="process-math">\(\CS A \)</span> is not equal to <span class="process-math">\(\CS B\text{.}\)</span> However, letting <span class="process-math">\(\bolda_i, \boldb_i\in F^m\)</span> be the columns of <span class="process-math">\(A\)</span> and <span class="process-math">\(B\text{,}\)</span> respectively, the columns <span class="process-math">\(\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_r}\)</span> form span <span class="process-math">\(\CS A\)</span> if and only if the columns <span class="process-math">\(\boldb_{i_1}, \boldb_{i_2},\dots, \boldb_{i_r}\)</span> span <span class="process-math">\(\CS B\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_fundspaces_rowreduce-2-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item 3"><a href="#th_fundspaces_rowreduce-2-1-4-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
-</li>
-</ol>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_fundspaces_rowreduce-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Theorem 1.15.25: Fundamental spaces and row operations"><a href="#th_fundspaces_rowreduce" title="Copy heading and permalink for Theorem 1.15.25: Fundamental spaces and row operations" aria-label="Copy heading and permalink for Theorem 1.15.25: Fundamental spaces and row operations">🔗</a></div></article><details id="th_fundspaces_rowreduce-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_fundspaces_rowreduce-3-1">Left as a homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#th_fundspaces_rowreduce-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Proof 1.15.25.1"><a href="#th_fundspaces_rowreduce-3" title="Copy heading and permalink for Proof 1.15.25.1" aria-label="Copy heading and permalink for Proof 1.15.25.1">🔗</a></div></article></details><article class="remark remark-like" id="ss_subspaces_tuples-26"><h4 class="heading">
-<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.26</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Column space and row reduction.</span>
-</h4>
-<div class="para" id="ss_subspaces_tuples-26-2">Suppose the matrices <span class="process-math">\(A\)</span> and <span class="process-math">\(B\)</span> are row equivalent. As indicated in <a href="s_subspace.html#th_fundspaces_rowreduce" class="xref" data-knowl="./knowl/xref/th_fundspaces_rowreduce.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.25: Fundamental spaces and row operations">Theorem 1.15.25</a> we typically have <span class="process-math">\(\CS A\ne \CS B\text{.}\)</span> It is useful to have simple examples of this phenomenon at the ready. <a href="s_subspace.html#eg_colspace_change" class="xref" data-knowl="./knowl/xref/eg_colspace_change.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.15.27: Column space and row reduction">Example 1.15.27</a> provides one such example.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-26-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Remark 1.15.26: Column space and row reduction"><a href="#ss_subspaces_tuples-26" title="Copy heading and permalink for Remark 1.15.26: Column space and row reduction" aria-label="Copy heading and permalink for Remark 1.15.26: Column space and row reduction">🔗</a></div></article><article class="example example-like" id="eg_colspace_change"><h4 class="heading">
-<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.15.27</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Column space and row reduction.</span>
-</h4>
-<div class="para logical" id="eg_colspace_change-2">
-<div class="para">The matrix</div>
-<div class="displaymath process-math" id="eg_colspace_change-2-1">
-\begin{align*}
-A \amp = \begin{bmatrix}1\amp 1\\ 1\amp 1 \end{bmatrix}
-\end{align*}
-</div>
-<div class="para">row reduces to the matrix</div>
-<div class="displaymath process-math" id="eg_colspace_change-2-2">
-\begin{align*}
-U \amp = \begin{bmatrix}1\amp 1\\ 0 \amp 0\end{bmatrix}
-\end{align*}
-</div>
-<div class="para">in row echelon form. By inspection we see that</div>
-<div class="displaymath process-math" id="eg_colspace_change-2-3">
-\begin{align*}
-\CS A \amp =\Span\{(1,1)\}=\{(t,t)\colon t\in \R\}\\
-\CS U \amp =\Span\{(1,0)\}=\{(t,0)\colon t\in \R\}\text{.}
-\end{align*}
-</div>
-<div class="para">It is clear algebraically from the two set descriptions that <span class="process-math">\(\CS A\ne \CS U\text{.}\)</span> Geometrically, the two spaces are two distinct lines in <span class="process-math">\(\R^2\)</span> passing through the origin: <span class="process-math">\(\CS A\)</span> is the line defined by the equation <span class="process-math">\(y=x\)</span> and <span class="process-math">\(\CS U\)</span> is the <span class="process-math">\(x\)</span>-axis.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#eg_colspace_change-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="para logical" id="eg_colspace_change-3">
-<div class="para">By contrast consider the matrix</div>
-<div class="displaymath process-math" id="eg_colspace_change-3-1">
-\begin{equation*}
-A=\begin{bmatrix}1\amp 1\\ 0\amp 1 \end{bmatrix}\text{,}
-\end{equation*}
-</div>
-<div class="para">which is row equivalent to</div>
-<div class="displaymath process-math" id="eg_colspace_change-3-2">
-\begin{equation*}
-U=\begin{bmatrix}
-1\amp 0 \\
-0\amp 1
-\end{bmatrix}      \text{.}
-\end{equation*}
-</div>
-<div class="para">In this case we have</div>
-<div class="displaymath process-math" id="eg_colspace_change-3-3">
-\begin{align*}
-\CS A \amp =\Span\{(1,0),(1,1)\}=\R^2\\
-\CS U \amp =\Span\{(1,0),(0,1)\}=\R^2\text{,}
-\end{align*}
-</div>
-<div class="para">and thus <span class="process-math">\(\CS A=\CS U\text{.}\)</span>
-</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#eg_colspace_change-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Example 1.15.27: Column space and row reduction"><a href="#eg_colspace_change" title="Copy heading and permalink for Example 1.15.27: Column space and row reduction" aria-label="Copy heading and permalink for Example 1.15.27: Column space and row reduction">🔗</a></div></article><div class="para" id="ss_subspaces_tuples-28">Using <a href="s_subspace.html#th_fundspaces_rowreduce" class="xref" data-knowl="./knowl/xref/th_fundspaces_rowreduce.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.15.25: Fundamental spaces and row operations">Theorem 1.15.25</a>, to find bases of the fundamental spaces of a matrix, we can first row reduce to a matrix <span class="process-math">\(U\)</span> in row echelon form. The question remains, how best to describe these spaces for <span class="process-math">\(U\)</span> in an efficient manner. We will have a better answer for that once we have introduced the notions of <em class="emphasis">bases</em> and <em class="emphasis">dimension</em>.<div class="autopermalink" data-description="Paragraph"><a href="#ss_subspaces_tuples-28" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Subsection 1.15.2: Subspaces of F^n"><a href="#ss_subspaces_tuples" title="Copy heading and permalink for Subsection 1.15.2: Subspaces of F^n" aria-label="Copy heading and permalink for Subsection 1.15.2: Subspaces of F^n">🔗</a></div></section><div class="autopermalink" data-description="Section 1.15: Subspaces"><a href="#s_subspace" title="Copy heading and permalink for Section 1.15: Subspaces" aria-label="Copy heading and permalink for Section 1.15: Subspaces">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Remark 1.15.19: Hyperplanes and subspaces"><a href="#rm_hyperplanes" title="Copy heading and permalink for Remark 1.15.19: Hyperplanes and subspaces" aria-label="Copy heading and permalink for Remark 1.15.19: Hyperplanes and subspaces">🔗</a></div></article><div class="autopermalink" data-description="Subsection 1.15.2: Null space of a matrix"><a href="#ss_subspaces_tuples" title="Copy heading and permalink for Subsection 1.15.2: Null space of a matrix" aria-label="Copy heading and permalink for Subsection 1.15.2: Null space of a matrix">🔗</a></div></section><div class="autopermalink" data-description="Section 1.15: Subspaces"><a href="#s_subspace" title="Copy heading and permalink for Section 1.15: Subspaces" aria-label="Copy heading and permalink for Section 1.15: Subspaces">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
-<a class="previous-button button" href="s_det_II.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="s_det_II.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="s_subspaces_II.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
