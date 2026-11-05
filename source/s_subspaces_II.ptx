@@ -74,11 +74,11 @@
   </example>
       <remark xml:id="rm_skew-symmetric">
     <p>
-      Assume <m>A</m> is a skew-symmetric <m>n\times n</m> matrix. By definition, for all <m>1\leq i\leq n</m> we must have <m>[A]_{ii}=-[A]_{ii}</m>. It follows that <m>[A]_{ii}=0</m> for all <m>1\leq i\leq n</m>. Thus the diagonal entries of a skew-symmetric matrix are always equal to 0.
+      Assume <m>A</m> is a skew-symmetric <m>n\times n</m> matrix. By definition, for all <m>1\leq i\leq n</m> we must have <m>[A]_{i,i}=-[A]_{i,i}</m>, or equivalently, <m>2[A]_{i,i}=0</m>. If <m>2\ne 0</m> in our field <m>F</m>,  it follows that <m>[A]_{i,i}=0</m> for all <m>1\leq i\leq n</m>. Thus, in any field where <m>2\ne 0</m>, the diagonal entries of a skew-symmetric matrix are all equal to zero. 
     </p>
   </remark>
   <p>
-    It will come as no surprise that all of the afore mentioned matrix families are in fact subspaces of <m>M_{nn}</m>.
+    It will come as no surprise that all of the aforementioned matrix families are in fact subspaces of <m>M_{n,n}(F)</m>.
   </p>
   <theorem xml:id="th_matrix_subspaces">
     <title>Matrix subspaces</title>
@@ -86,43 +86,43 @@
     
     <statement>
       <p>
-      Fix an integer <m>n\geq 1</m>.  Each of the following subsets of <m>M_{nn}</m> is a subspace.
+      Fix an integer <m>n\geq 1</m>.  Each of the following subsets of <m>M_{n,n}(F)</m> is a subspace.
   
       <ol>
         <li>
           <title>Diagonal matrices</title>
           <p>
-            <m>W=\{A\in M_{nn}\colon A\text{ is diagonal}\}</m>
+            <m>W=\{A\in M_{n,n}(F)\colon A\text{ is diagonal}\}</m>
           </p>
         </li>
         <li>
           <title>Upper triangular matrices</title>
           <p>
-            <m>W=\{A\in M_{nn}\colon A\text{ is upper triangular}\}</m>
+            <m>W=\{A\in M_{n,n}(F)\colon A\text{ is upper triangular}\}</m>
           </p>
         </li>
         <li>
           <title>Lower triangular matrices</title>
           <p>
-            <m>W=\{A\in M_{nn}\colon A\text{ is lower triangular}\}</m>
+            <m>W=\{A\in M_{n,n}(F)\colon A\text{ is lower triangular}\}</m>
           </p>
         </li>
         <li>
           <title>Trace-zero matrix</title>
           <p>
-            <m>W=\{A\in M_{nn}\colon \tr A=\boldzero \}</m>
+            <m>W=\{A\in M_{n,n}(F)\colon \tr A=\boldzero \}</m>
           </p>
         </li>
         <li>
           <title>Symmetric matrices</title>
           <p>
-            <m>W=\{A\in M_{nn}\colon A^T=A \}</m>
+            <m>W=\{A\in M_{n,n}(F)\colon A^T=A \}</m>
           </p>
         </li>
         <li>
           <title>Skew-symmetric matrices</title>
           <p>
-            <m>W=\{A\in M_{nn}\colon A^T=-A \}</m>
+            <m>W=\{A\in M_{n,n}(F)\colon A^T=-A \}</m>
           </p>
         </li>
       </ol>
@@ -130,15 +130,31 @@
     </statement>
     <proof>
       <p>
-        See <xref ref="ex_matrix_subspaces"/>
+       We will prove only that the set of all skew-symmetric matrices is a subspace. The other proofs are similar. Observe, that once we know that the sets of all upper triangular and lower triangular <m>n\times n</m> matrices are both subspaces, it follows from <xref ref="th_subspace_intersection"/> that the set of all diagonal matrices is a subspace, as this is precisely the intersection of the former two subspaces.
+      </p>
+      <p>
+        Let <m>W=\{A\in\ML_{n,n}(F)\mid A^T=-A\}</m>. We will use the 2-step technique to show <m>W</m> is a subspace of <m>\ML_{n,n}(F)</m>.
+      </p>
+      <p>
+        First, note that <m>\boldzero=\boldzero_{n\times n}</m>, the <m>n\times n</m> zero matrix, satisfies <m>\boldzero_{n\times n}^T=\boldzero_{n\times n}=-\boldzero_{n\times n}</m>. Thus <m>\boldzero\in W</m>. 
+      </p>
+      <p>
+        Next, assume <m>A,B\in W</m>, so that <m>A^T=-A</m> and <m>B^T=-B</m>. For any <m>c,d\in F</m>, we have 
+        <md>
+          <mrow>(cA+dB)^T \amp =cAT^+dB^T \amp (\text{transpose props.})</mrow>
+          <mrow> \amp =c(-A)+d(-B) \amp (A,B\in W)</mrow>
+          <mrow> \amp =-(cA+dB)</mrow>
+        </md>,
+        showing that <m>cA+dB\in W</m>, as desired. 
+
       </p>
     </proof>
 
   </theorem>
 </subsection>
 
-<subsection xml:id="ss_function_spaces">
-<title>Important function subspaces</title>
+<subsection xml:id="ss_polynomials_powerseries">
+<title>Polynomials and power series</title>
 <definition xml:id="d_polynomials">
 <title>Polynomial functions</title>
 <statement>
