@@ -3760,7 +3760,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.16",
   "title": "Subspaces: further examples",
-  "body": " Subspaces: further examples   Important subspaces of  In we met three families of square matrices: namely, the diagonal, upper triangular, and lower triangular matrices. (See ). We now introduce three more naturally occurring families. Before doing so, we give an official definition of the trace function.   Trace of a matrix  trace of a matrix    the trace of    Let . The trace of , denoted is defined as the sum of the diagonal entries of : , .     Trace-zero, symmetric, and skew-symmetric  trace-zero matrix  symmetric matrix  skew-symmetric matrix   Fix an integer .   A matrix is said to be a trace-zero matrix if .    A matrix is symmetric if : equivalently, if for all .    A matrix is skew-symmetric if : equivalently, if for all .        Trace-zero symmetric, and skew-symmetric matrices   The set of all trace-zero matrices can be described as . The set of all symmetric matrices can be described as . The set of all skew-symmetric matrices can be described as .     Assume is a skew-symmetric matrix. By definition, for all we must have , or equivalently, . If in our field , it follows that for all . Thus, in any field where , the diagonal entries of a skew-symmetric matrix are all equal to zero.   It will come as no surprise that all of the aforementioned matrix families are in fact subspaces of .   Matrix subspaces   Fix an integer . Each of the following subsets of is a subspace.   Diagonal matrices       Upper triangular matrices       Lower triangular matrices       Trace-zero matrix       Symmetric matrices       Skew-symmetric matrices          We will prove only that the set of all skew-symmetric matrices is a subspace. The other proofs are similar. Observe, that once we know that the sets of all upper triangular and lower triangular matrices are both subspaces, it follows from that the set of all diagonal matrices is a subspace, as this is precisely the intersection of the former two subspaces.  Let . We will use the 2-step technique to show is a subspace of .  First, note that , the zero matrix, satisfies . Thus .  Next, assume , so that and . For any , we have , showing that , as desired.      Polynomials and power series   Polynomial functions   Let be a field, and let be a nonempty subset of . Given a nonnegative integer , we define to be the set of all polynomial functions on of degree at most : , . Lastly we define to be the set of all polynomial functions on . Since any polynomial on is of the form for some , we have .     Polynomial spaces   Let be a nonempty subset of the field .    is a subspace of .     is a subspace of for all .       We prove that is a subspace, using the 2-step technique. The proof for is similar.   Recall that the zero vector of is the the zero function , defined as for all . Writing , we see that . (More generally, any constant function is an element of for all .)    Assume . By definition this means that there are constants , , such that for all . It follows that for all , showing that , as desired.       Although not necessary for the proof of , the result below will be useful to us for future discussions. In short, it says that the coefficients of a polynomial uniquely determine it (as long as the domain is infinite).    Function subspaces over   Let be an interval of that contains at least two elements.   We denote by the set of all continuous functions on : i.e., .    Fix . A function is on if is -times differentiable on and its -th derivative is continuous. The set of all functions on is denoted .    A function is on I if is infinitely differentiable on . The set of all functions on is denoted .        Function subspaces.   Let be a an interval containing at least two elements. The sets , , , , are all subspaces of , and we have the following chain of subspaces: .     This is an instance of proof by calculus . That each of these sets is closed under addition and scalar multiplication follows from elementary results in single-variable calculus: , that sums and scalar multiples of continuous functions are continuous, that sums and scalar multiples of differentiable functions are differentiable, .    "
+  "body": " Subspaces: further examples   Important subspaces of  In we met three families of square matrices: namely, the diagonal, upper triangular, and lower triangular matrices. (See ). We now introduce three more naturally occurring families. Before doing so, we give an official definition of the trace function.   Trace of a matrix  trace of a matrix    the trace of    Let . The trace of , denoted is defined as the sum of the diagonal entries of : , .     Trace-zero, symmetric, and skew-symmetric  trace-zero matrix  symmetric matrix  skew-symmetric matrix   Fix an integer .   A matrix is said to be a trace-zero matrix if .    A matrix is symmetric if : equivalently, if for all .    A matrix is skew-symmetric if : equivalently, if for all .        Trace-zero symmetric, and skew-symmetric matrices   The set of all trace-zero matrices can be described as . The set of all symmetric matrices can be described as . The set of all skew-symmetric matrices can be described as .     Assume is a skew-symmetric matrix. By definition, for all we must have , or equivalently, . If in our field , it follows that for all . Thus, in any field where , the diagonal entries of a skew-symmetric matrix are all equal to zero.   It will come as no surprise that all of the aforementioned matrix families are in fact subspaces of .   Matrix subspaces   Fix an integer . Each of the following subsets of is a subspace.   Diagonal matrices       Upper triangular matrices       Lower triangular matrices       Trace-zero matrix       Symmetric matrices       Skew-symmetric matrices          We will prove only that the set of all skew-symmetric matrices is a subspace. The other proofs are similar. Observe, that once we know that the sets of all upper triangular and lower triangular matrices are both subspaces, it follows from that the set of all diagonal matrices is a subspace, as this is precisely the intersection of the former two subspaces.  Let . We will use the 2-step technique to show is a subspace of .  First, note that , the zero matrix, satisfies . Thus .  Next, assume , so that and . For any , we have , showing that , as desired.      Power series and formal polynomials  Our next example involves a little notational slight of hand. Namely, we will introduce the vector space of power series , as well as the subspace of formal polynomials when in essence is just the set of of infinite -valued sequences indexed by , and is really just the subspace of consisting of sequences whose entries are zero for all but finally many entries.   Power series   Let be a field. The ring of power series with coefficients in in the indeterminate is the set consisting of all infinite -valued sequences . In this context, however, a sequence will be written as . Given a power series , we call the -th term of the series, and its -th coefficient . We will use function-like notation to denote elements of , favoring letters like , , and , and writing when explicitly introducing the coefficients of .  Since is equal to but with a different choice of notation, it inherits the notion of equality of , as well as its vector space structure. That is given any power series and and any scalar , we have . As an additional layer of algebraic structure, we define the product of two power series and as follows: .     Power series multiplication  Power series multiplication, that extra layer of structure mentioned above, can be thought of as the motivation for using our notation , as opposed to the usual tuple notation . For one thing, identifying as the power series with a 1 for the -th coefficient and a zero elsewhere, it is easy to see that the power series multiplication rule implies for all . General power series multiplication can then be understood as a sort of infinite foiling process, where we expand a product out via distribution, collect like terms, and then distribute again:     Properties of power series multiplication  It is easy to prove that power series multiplication is commutative, associative, and distributive. In more detail, for any , we have . Furthermore, we identify as a subset of by identifying a scalar with the power series . Note that we have , showing that this identification of as a subset of preserves the notions of addition and multiplication on .   We now define the set of formal polynomials as the subspace of consisting of all power series whose coefficients are equal to zero for all but finitely many indices.   Formal polynomials   Let be a field. Define the polynomial ring over in the indeterminate to be the subset of all power series whose coefficients are equal to zero for all but finitely many indices: , . Restricted to , the power series multiplication rule becomes the familiar polynomial multiplication rule: . As illustrated above, when denoting polynomials we will usually drop all the terms with zero coefficients: , , or .  Given a nonzero polynomial , we define its degree , , to be the largest satisfying . If , we define .  If is a polynomial of degree , we call the leading coefficient of . A polynomial with leading coefficient equal to is called monic .     Polynomials of bounded degree   Let be a field. Given , we define to be the set of polynomials of of degree at most : , Note that the zero polynomial is understood to be an element of based on the convention that for all .    Not surprisingly, the nested sets are all subspaces of one another.    Let be a field and let . The inclusions are subspace inclusions: , in the chain above, each set is a subspace of the next.    The proof is left to the reader.    Besides being used to define an interesting subspace of and , the degree function will prove to be important to us in many ways, as the next results begin to show.  The degree operation on turns out to be very useful, thanks in part to the properties articulated in the following proposition.   Polynomial degree properties   Let be a field, and let and be nonzero polynomials in .    .     .          Assume and , so that , where and . From the polynomial multiplication rule given in , we see that . It follows that . If is an integral domain, then and thus .    The proof is left to the reader.        Division algorithm for polynomials   Let be a field, let , and suppose . There is a unique pair of polynomials satisfying the following conditions.    .     or .       The proof is left as a homework exercise.     Roots of polynomials   Let be a field. Given a polynomial and element , we define . An element is a root of if .     Distinct roots of polynomials   Let be a field, and let .   For all , we have if and only if for some polynomial .    Assume . If , then has at most distinct roots.    Assume , and that satisfy . If there are distinct elements such that , then .       The proof is left as a homework exercise.      Function spaces   Polynomial functions   Let be a field, and let be a nonempty subset of . A function is a polynomial function if there is a formal polynomial such that for all . We say that the polynomial  represents  in this case.  We define to be the set of all polynomial functions on , and we define to the set of all functions that can be represented by a polynomial of degree at most : , .     Formal polynomials and polynomial functions  There is a subtle issue lurking behind this polynomial function business: namely, it is possible that a polynomial function can be represented by more than one formal polynomial . Indeed, consider the case where the subset is the singleton . In this case, any function is completely determined by its value at the one element of the domain . As a result, it is possible to give many different polynomial representation of a single function . For example, the zero function can be represented by the zero polynomial , but also by for any . We see then, that we do not always have a 1-1 correspondence between elements of and . We will be able to give a much more precise analysis of the relationship between these two spaces once we introduce linear transformations.    Polynomial spaces   Let be a nonempty subset of the field .    is a subspace of .     is a subspace of for all .       We prove that is a subspace, using the 2-step technique. The proof for is similar.   Recall that the zero vector of is the the zero function , defined as for all . Writing , we see that . (More generally, any constant function is an element of for all .)    Assume . By definition this means that there are constants , , such that for all . It follows that for all , showing that , as desired.         Function subspaces over   Let be an interval of that contains at least two elements.   We denote by the set of all continuous functions on : i.e., .    Fix . A function is on if is -times differentiable on and its -th derivative is continuous. The set of all functions on is denoted .    A function is on I if is infinitely differentiable on . The set of all functions on is denoted .        Function subspaces.   Let be a an interval containing at least two elements. The sets , , , , are all subspaces of , and we have the following chain of subspaces: .     This is an instance of proof by calculus . That each of these sets is closed under addition and scalar multiplication follows from elementary results in single-variable calculus: , that sums and scalar multiples of continuous functions are continuous, that sums and scalar multiples of differentiable functions are differentiable, .    "
 },
 {
   "id": "d_trace",
@@ -3808,20 +3808,119 @@ var ptx_lunr_docs = [
   "body": " Matrix subspaces   Fix an integer . Each of the following subsets of is a subspace.   Diagonal matrices       Upper triangular matrices       Lower triangular matrices       Trace-zero matrix       Symmetric matrices       Skew-symmetric matrices          We will prove only that the set of all skew-symmetric matrices is a subspace. The other proofs are similar. Observe, that once we know that the sets of all upper triangular and lower triangular matrices are both subspaces, it follows from that the set of all diagonal matrices is a subspace, as this is precisely the intersection of the former two subspaces.  Let . We will use the 2-step technique to show is a subspace of .  First, note that , the zero matrix, satisfies . Thus .  Next, assume , so that and . For any , we have , showing that , as desired.   "
 },
 {
+  "id": "d_power_series",
+  "level": "2",
+  "url": "s_subspaces_II.html#d_power_series",
+  "type": "Definition",
+  "number": "1.16.6",
+  "title": "Power series.",
+  "body": " Power series   Let be a field. The ring of power series with coefficients in in the indeterminate is the set consisting of all infinite -valued sequences . In this context, however, a sequence will be written as . Given a power series , we call the -th term of the series, and its -th coefficient . We will use function-like notation to denote elements of , favoring letters like , , and , and writing when explicitly introducing the coefficients of .  Since is equal to but with a different choice of notation, it inherits the notion of equality of , as well as its vector space structure. That is given any power series and and any scalar , we have . As an additional layer of algebraic structure, we define the product of two power series and as follows: .   "
+},
+{
+  "id": "ss_formal_polys_powerseries-4",
+  "level": "2",
+  "url": "s_subspaces_II.html#ss_formal_polys_powerseries-4",
+  "type": "Remark",
+  "number": "1.16.7",
+  "title": "Power series multiplication.",
+  "body": " Power series multiplication  Power series multiplication, that extra layer of structure mentioned above, can be thought of as the motivation for using our notation , as opposed to the usual tuple notation . For one thing, identifying as the power series with a 1 for the -th coefficient and a zero elsewhere, it is easy to see that the power series multiplication rule implies for all . General power series multiplication can then be understood as a sort of infinite foiling process, where we expand a product out via distribution, collect like terms, and then distribute again:   "
+},
+{
+  "id": "ss_formal_polys_powerseries-5",
+  "level": "2",
+  "url": "s_subspaces_II.html#ss_formal_polys_powerseries-5",
+  "type": "Remark",
+  "number": "1.16.8",
+  "title": "Properties of power series multiplication.",
+  "body": " Properties of power series multiplication  It is easy to prove that power series multiplication is commutative, associative, and distributive. In more detail, for any , we have . Furthermore, we identify as a subset of by identifying a scalar with the power series . Note that we have , showing that this identification of as a subset of preserves the notions of addition and multiplication on .  "
+},
+{
+  "id": "d_formal_polynomials",
+  "level": "2",
+  "url": "s_subspaces_II.html#d_formal_polynomials",
+  "type": "Definition",
+  "number": "1.16.9",
+  "title": "Formal polynomials.",
+  "body": " Formal polynomials   Let be a field. Define the polynomial ring over in the indeterminate to be the subset of all power series whose coefficients are equal to zero for all but finitely many indices: , . Restricted to , the power series multiplication rule becomes the familiar polynomial multiplication rule: . As illustrated above, when denoting polynomials we will usually drop all the terms with zero coefficients: , , or .  Given a nonzero polynomial , we define its degree , , to be the largest satisfying . If , we define .  If is a polynomial of degree , we call the leading coefficient of . A polynomial with leading coefficient equal to is called monic .   "
+},
+{
+  "id": "d_poly_bounded_n",
+  "level": "2",
+  "url": "s_subspaces_II.html#d_poly_bounded_n",
+  "type": "Definition",
+  "number": "1.16.10",
+  "title": "Polynomials of bounded degree.",
+  "body": " Polynomials of bounded degree   Let be a field. Given , we define to be the set of polynomials of of degree at most : , Note that the zero polynomial is understood to be an element of based on the convention that for all .   "
+},
+{
+  "id": "prop_poly_subspaces",
+  "level": "2",
+  "url": "s_subspaces_II.html#prop_poly_subspaces",
+  "type": "Proposition",
+  "number": "1.16.11",
+  "title": "",
+  "body": "  Let be a field and let . The inclusions are subspace inclusions: , in the chain above, each set is a subspace of the next.    The proof is left to the reader.   "
+},
+{
+  "id": "prop_deg_poly",
+  "level": "2",
+  "url": "s_subspaces_II.html#prop_deg_poly",
+  "type": "Proposition",
+  "number": "1.16.12",
+  "title": "Polynomial degree properties.",
+  "body": " Polynomial degree properties   Let be a field, and let and be nonzero polynomials in .    .     .          Assume and , so that , where and . From the polynomial multiplication rule given in , we see that . It follows that . If is an integral domain, then and thus .    The proof is left to the reader.      "
+},
+{
+  "id": "th_division_alg_poly",
+  "level": "2",
+  "url": "s_subspaces_II.html#th_division_alg_poly",
+  "type": "Theorem",
+  "number": "1.16.13",
+  "title": "Division algorithm for polynomials.",
+  "body": " Division algorithm for polynomials   Let be a field, let , and suppose . There is a unique pair of polynomials satisfying the following conditions.    .     or .       The proof is left as a homework exercise.   "
+},
+{
+  "id": "d_poly_roots",
+  "level": "2",
+  "url": "s_subspaces_II.html#d_poly_roots",
+  "type": "Definition",
+  "number": "1.16.14",
+  "title": "Roots of polynomials.",
+  "body": " Roots of polynomials   Let be a field. Given a polynomial and element , we define . An element is a root of if .   "
+},
+{
+  "id": "cor_poly_distinct_roots",
+  "level": "2",
+  "url": "s_subspaces_II.html#cor_poly_distinct_roots",
+  "type": "Corollary",
+  "number": "1.16.15",
+  "title": "Distinct roots of polynomials.",
+  "body": " Distinct roots of polynomials   Let be a field, and let .   For all , we have if and only if for some polynomial .    Assume . If , then has at most distinct roots.    Assume , and that satisfy . If there are distinct elements such that , then .       The proof is left as a homework exercise.   "
+},
+{
   "id": "d_polynomials",
   "level": "2",
   "url": "s_subspaces_II.html#d_polynomials",
   "type": "Definition",
-  "number": "1.16.6",
+  "number": "1.16.16",
   "title": "Polynomial functions.",
-  "body": " Polynomial functions   Let be a field, and let be a nonempty subset of . Given a nonnegative integer , we define to be the set of all polynomial functions on of degree at most : , . Lastly we define to be the set of all polynomial functions on . Since any polynomial on is of the form for some , we have .   "
+  "body": " Polynomial functions   Let be a field, and let be a nonempty subset of . A function is a polynomial function if there is a formal polynomial such that for all . We say that the polynomial  represents  in this case.  We define to be the set of all polynomial functions on , and we define to the set of all functions that can be represented by a polynomial of degree at most : , .   "
 },
 {
-  "id": "th_polynomial_space",
+  "id": "ss_function_spaces-3",
   "level": "2",
-  "url": "s_subspaces_II.html#th_polynomial_space",
-  "type": "Theorem",
-  "number": "1.16.7",
+  "url": "s_subspaces_II.html#ss_function_spaces-3",
+  "type": "Remark",
+  "number": "1.16.17",
+  "title": "Formal polynomials and polynomial functions.",
+  "body": " Formal polynomials and polynomial functions  There is a subtle issue lurking behind this polynomial function business: namely, it is possible that a polynomial function can be represented by more than one formal polynomial . Indeed, consider the case where the subset is the singleton . In this case, any function is completely determined by its value at the one element of the domain . As a result, it is possible to give many different polynomial representation of a single function . For example, the zero function can be represented by the zero polynomial , but also by for any . We see then, that we do not always have a 1-1 correspondence between elements of and . We will be able to give a much more precise analysis of the relationship between these two spaces once we introduce linear transformations.  "
+},
+{
+  "id": "prop_polynomial_space",
+  "level": "2",
+  "url": "s_subspaces_II.html#prop_polynomial_space",
+  "type": "Proposition",
+  "number": "1.16.18",
   "title": "Polynomial spaces.",
   "body": " Polynomial spaces   Let be a nonempty subset of the field .    is a subspace of .     is a subspace of for all .       We prove that is a subspace, using the 2-step technique. The proof for is similar.   Recall that the zero vector of is the the zero function , defined as for all . Writing , we see that . (More generally, any constant function is an element of for all .)    Assume . By definition this means that there are constants , , such that for all . It follows that for all , showing that , as desired.      "
 },
@@ -3830,7 +3929,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_subspaces_II.html#d_function_subspaces",
   "type": "Definition",
-  "number": "1.16.8",
+  "number": "1.16.19",
   "title": "Function subspaces over <span class=\"process-math\">\\(\\R\\)<\/span>.",
   "body": " Function subspaces over   Let be an interval of that contains at least two elements.   We denote by the set of all continuous functions on : i.e., .    Fix . A function is on if is -times differentiable on and its -th derivative is continuous. The set of all functions on is denoted .    A function is on I if is infinitely differentiable on . The set of all functions on is denoted .      "
 },
@@ -3839,16 +3938,16 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_subspaces_II.html#th_function_spaces",
   "type": "Theorem",
-  "number": "1.16.9",
+  "number": "1.16.20",
   "title": "Function subspaces..",
   "body": " Function subspaces.   Let be a an interval containing at least two elements. The sets , , , , are all subspaces of , and we have the following chain of subspaces: .   "
 },
 {
-  "id": "ss_polynomials_powerseries-7",
+  "id": "ss_function_spaces-7",
   "level": "2",
-  "url": "s_subspaces_II.html#ss_polynomials_powerseries-7",
+  "url": "s_subspaces_II.html#ss_function_spaces-7",
   "type": "Proof",
-  "number": "1.16.2.1",
+  "number": "1.16.3.1",
   "title": "",
   "body": " This is an instance of proof by calculus . That each of these sets is closed under addition and scalar multiplication follows from elementary results in single-variable calculus: , that sums and scalar multiples of continuous functions are continuous, that sums and scalar multiples of differentiable functions are differentiable, .  "
 },

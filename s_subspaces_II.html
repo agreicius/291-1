@@ -572,7 +572,8 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <div class="toc-title-box"><a href="s_subspaces_II.html" class="internal"><span class="codenumber">1.16</span> <span class="title">Subspaces: further examples</span></a></div>
 <ul class="structural toc-item-list active">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_subspace_matrices" class="internal"><span class="codenumber">1.16.1</span> <span class="title">Important subspaces of <span class="process-math">\(\ML_{n,n}(F)\)</span></span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_polynomials_powerseries" class="internal"><span class="codenumber">1.16.2</span> <span class="title">Polynomials and power series</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_formal_polys_powerseries" class="internal"><span class="codenumber">1.16.2</span> <span class="title">Power series and formal polynomials</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_function_spaces" class="internal"><span class="codenumber">1.16.3</span> <span class="title">Function spaces</span></a></div></li>
 </ul>
 </li>
 <li class="toc-item toc-section">
@@ -738,92 +739,339 @@ W_3=\left\{ \begin{amatrix}[rr]0\amp a\\ -a\amp 0  \end{amatrix}\colon a,b\in F\
 <div class="para">showing that <span class="process-math">\(cA+dB\in W\text{,}\)</span> as desired.</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_matrix_subspaces-3-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.16.5.1"><a href="#th_matrix_subspaces-3" title="Copy heading and permalink for Proof 1.16.5.1" aria-label="Copy heading and permalink for Proof 1.16.5.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.16.1: Important subspaces of \ML_{n,n}(F)"><a href="#ss_subspace_matrices" title="Copy heading and permalink for Subsection 1.16.1: Important subspaces of \ML_{n,n}(F)" aria-label="Copy heading and permalink for Subsection 1.16.1: Important subspaces of \ML_{n,n}(F)">🔗</a></div></section><section class="subsection" id="ss_polynomials_powerseries"><h3 class="heading hide-type">
-<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polynomials and power series</span>
+<div class="autopermalink" data-description="Proof 1.16.5.1"><a href="#th_matrix_subspaces-3" title="Copy heading and permalink for Proof 1.16.5.1" aria-label="Copy heading and permalink for Proof 1.16.5.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.16.1: Important subspaces of \ML_{n,n}(F)"><a href="#ss_subspace_matrices" title="Copy heading and permalink for Subsection 1.16.1: Important subspaces of \ML_{n,n}(F)" aria-label="Copy heading and permalink for Subsection 1.16.1: Important subspaces of \ML_{n,n}(F)">🔗</a></div></section><section class="subsection" id="ss_formal_polys_powerseries"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Power series and formal polynomials</span>
 </h3>
-<article class="definition definition-like" id="d_polynomials"><h4 class="heading">
-<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polynomial functions.</span>
+<div class="para" id="ss_formal_polys_powerseries-2">Our next example involves a little notational slight of hand. Namely, we will introduce the vector space of power series <span class="process-math">\(F[[x]]\text{,}\)</span> as well as the subspace <span class="process-math">\(F[x]\)</span> of <em class="emphasis">formal polynomials</em> when in essence <span class="process-math">\(F[[x]]\)</span> is just the set of <span class="process-math">\(F^\N\)</span> of infinite <span class="process-math">\(F\)</span>-valued sequences indexed by <span class="process-math">\(\N\text{,}\)</span> and <span class="process-math">\(F[x]\)</span> is really just the subspace of <span class="process-math">\(F^\N\)</span> consisting of sequences whose entries are zero for all but finally many entries.<div class="autopermalink" data-description="Paragraph"><a href="#ss_formal_polys_powerseries-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_power_series"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.6</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Power series.</span>
 </h4>
-<div class="para logical" id="d_polynomials-2-1">
-<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(I\)</span> be a nonempty subset of <span class="process-math">\(F\text{.}\)</span> Given a nonnegative integer <span class="process-math">\(n\text{,}\)</span> we define <span class="process-math">\(P_n(I)\)</span> to be the set of all polynomial functions on <span class="process-math">\(I\)</span> of degree at most <span class="process-math">\(n\text{:}\)</span> i.e.,</div>
-<div class="displaymath process-math" id="d_polynomials-2-1-9">
+<div class="para logical" id="d_power_series-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field. The <dfn class="terminology">ring of power series with coefficients in <span class="process-math">\(F\)</span> in the indeterminate <span class="process-math">\(x\)</span></dfn> is the set <span class="process-math">\(F[[x]]\)</span> consisting of all infinite <span class="process-math">\(F\)</span>-valued sequences <span class="process-math">\((a_n)_{n=0}^\infty\text{.}\)</span> In this context, however, a sequence <span class="process-math">\((a_n)_{n=0}^\infty\)</span> will be written as</div>
+<div class="displaymath process-math" id="eq_power_series">
+\begin{equation}
+a_0+a_1x+a_2x^2+\cdots =\sum_{k=0}^\infty a_kx^k\text{.}\tag{1.16.1}
+\end{equation}
+</div>
+<div class="para">Given a power series <span class="process-math">\(\sum_{k=0}^\infty a_kx_k\text{,}\)</span> we call <span class="process-math">\(a_kx_k\)</span> the <dfn class="terminology"><span class="process-math">\(k\)</span>-th term</dfn> of the series, and <span class="process-math">\(a_k\)</span> its <dfn class="terminology"><span class="process-math">\(k\)</span>-th coefficient</dfn>. We will use function-like notation to denote elements of <span class="process-math">\(F[[x]]\text{,}\)</span> favoring letters like <span class="process-math">\(f\text{,}\)</span> <span class="process-math">\(g\text{,}\)</span> and <span class="process-math">\(h\text{,}\)</span> and writing <span class="process-math">\(f(x)=\sum_{k=0}^\infty a_kx^k \)</span> when explicitly introducing the coefficients of <span class="process-math">\(f\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_power_series-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="d_power_series-2-2">
+<div class="para">Since <span class="process-math">\(F[[x]]\)</span> is equal to <span class="process-math">\(F^\N\)</span> but with a different choice of notation, it inherits the notion of equality of <span class="process-math">\(F^\N\text{,}\)</span> as well as its vector space structure. That is given any power series <span class="process-math">\(f(x)=\sum_{k=0}^\infty a_kx^k\)</span> and <span class="process-math">\(g(x)=\sum_{k=0}^\infty b_kx^k\)</span> and any scalar <span class="process-math">\(c\in F\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="d_power_series-2-2-7">
+\begin{align*}
+f=g \amp \iff a_k=b_k \text{ for all } k\in \N\\
+(f+g)(x) \amp =\sum_{k=0}^\infty (a_k+b_k)x^k\\
+(cf)(x) \amp =\sum_{k=0}^\infty ca_k x^k\text{.}
+\end{align*}
+</div>
+<div class="para">As an additional layer of algebraic structure, we define the <dfn class="terminology">product</dfn> of two power series <span class="process-math">\(f(x)=\sum_{k=0}^\infty a_kx^k\)</span> and <span class="process-math">\(g(x)=\sum_{k=0}^\infty b_kx^k\)</span> as follows:</div>
+<div class="displaymath process-math" id="d_power_series-2-2-11">
+\begin{align}
+(fg)(x) \amp =\sum_{k=0}^\infty c_kx^k \amp c_k=\sum_{j=0}^ka_jb_{k-j} \text{ for all } k\in \N\text{.}\tag{1.16.2}
+\end{align}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_power_series-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.16.6: Power series"><a href="#d_power_series" title="Copy heading and permalink for Definition 1.16.6: Power series" aria-label="Copy heading and permalink for Definition 1.16.6: Power series">🔗</a></div></article><article class="remark remark-like" id="ss_formal_polys_powerseries-4"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Power series multiplication.</span>
+</h4>
+<div class="para logical" id="ss_formal_polys_powerseries-4-2">
+<div class="para">Power series multiplication, that extra layer of structure mentioned above, can be thought of as the motivation for using our notation <span class="process-math">\(f(x)=\sum_{k=0}^\infty a_kx^k\text{,}\)</span> as opposed to the usual tuple notation <span class="process-math">\((a_k)_{k\in \N}\text{.}\)</span> For one thing, identifying <span class="process-math">\(x^n\)</span> as the power series with a 1 for the <span class="process-math">\(n\)</span>-th coefficient and a zero elsewhere, it is easy to see that the power series multiplication rule implies <span class="process-math">\(x^n\cdot x^m=x^{n+m}\)</span> for all <span class="process-math">\(n,m\in \N\text{.}\)</span> General power series multiplication can then be understood as a sort of infinite “foiling” process, where we expand a product out via distribution, collect like terms, and then distribute again:</div>
+<div class="displaymath process-math" id="ss_formal_polys_powerseries-4-2-8">
+\begin{align*}
+fg\amp =(a_0+a_1x+a_2x^2+\cdots )(b_0+b_1x+b_2x^2+\cdots)\\
+\amp = a_0b_0+(a_0b_1+a_1b_0)x+(a_0b_2+a_1b_1+a_2b_0)x^2+\cdots
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_formal_polys_powerseries-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.16.7: Power series multiplication"><a href="#ss_formal_polys_powerseries-4" title="Copy heading and permalink for Remark 1.16.7: Power series multiplication" aria-label="Copy heading and permalink for Remark 1.16.7: Power series multiplication">🔗</a></div></article><article class="remark remark-like" id="ss_formal_polys_powerseries-5"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Properties of power series multiplication.</span>
+</h4>
+<div class="para logical" id="ss_formal_polys_powerseries-5-2">
+<div class="para">It is easy to prove that power series multiplication is commutative, associative, and distributive. In more detail, for any <span class="process-math">\(f,g,h\in F[[x]]\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="ss_formal_polys_powerseries-5-2-2">
+\begin{align*}
+fg \amp =gf \amp f(gh)\amp=(fg)h
+\amp f(g+h) \amp =(g+h)f =fg+fh\text{.}
+\end{align*}
+</div>
+<div class="para">Furthermore, we identify <span class="process-math">\(F\)</span> as a subset of <span class="process-math">\(F[[x]]\)</span> by identifying a scalar <span class="process-math">\(c\in F\)</span> with the power series <span class="process-math">\(c=c+0x+0x^2+\cdots\text{.}\)</span> Note that we have</div>
+<div class="displaymath process-math" id="ss_formal_polys_powerseries-5-2-7">
+\begin{align*}
+(c+0x+0x^2+\cdots)+(d+0x+0x^2+\cdots) \amp = (c+d)+0x+0x^2+\cdots +c+0x+0x^2+\cdots\\
+(c+0x+0x^2+\cdots)(d+0x+0x^2+\cdots) \amp = cd+0x+0x^2+\cdots\text{,}
+\end{align*}
+</div>
+<div class="para">showing that this identification of <span class="process-math">\(F\)</span> as a subset of <span class="process-math">\(F[[x]]\)</span> preserves the notions of addition and multiplication on <span class="process-math">\(F\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#ss_formal_polys_powerseries-5-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.16.8: Properties of power series multiplication"><a href="#ss_formal_polys_powerseries-5" title="Copy heading and permalink for Remark 1.16.8: Properties of power series multiplication" aria-label="Copy heading and permalink for Remark 1.16.8: Properties of power series multiplication">🔗</a></div></article><div class="para" id="ss_formal_polys_powerseries-6">We now define the set of formal polynomials <span class="process-math">\(F[x]\)</span> as the subspace of <span class="process-math">\(F[[x]]\)</span> consisting of all power series whose coefficients are equal to zero for all but finitely many indices.<div class="autopermalink" data-description="Paragraph"><a href="#ss_formal_polys_powerseries-6" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="definition definition-like" id="d_formal_polynomials"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Formal polynomials.</span>
+</h4>
+<div class="para logical" id="d_formal_polynomials-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field. Define the <dfn class="terminology">polynomial ring over <span class="process-math">\(F\)</span> in the indeterminate <span class="process-math">\(x\)</span></dfn> to be the subset <span class="process-math">\(F[x]\subseteq F[[x]]\)</span> of all power series whose coefficients are equal to zero for all but finitely many indices: i.e.,</div>
+<div class="displaymath process-math" id="d_formal_polynomials-2-1-5">
+\begin{align*}
+F[x] \amp = \{f(x)=\sum_{n=0}^\infty a_nx^n\in F[[x]]\mid a_n=0 \text{ for all } n&gt;  N \text{ for some } N\in \Z_{\geq 0} \} \\
+\amp =\{f\in F[[x]]\mid f(x)=\sum_{n=0}^Na_nx^n \text{ for some } N\in \Z_{\geq 0}, a_n\in F\}\text{.}
+\end{align*}
+</div>
+<div class="para">Restricted to <span class="process-math">\(F[x]\text{,}\)</span> the power series multiplication rule becomes the familiar polynomial multiplication rule:</div>
+<div class="displaymath process-math" id="d_formal_polynomials-2-1-7">
+\begin{align}
+(\anpoly)\amp \cdot (\bmpoly) =\sum_{k=0}^{m+n}c_kx^k\tag{1.16.3}\\
+c_k\amp =\sum_{j=0}^k a_j b_{k-j}\text{.}\tag{1.16.4}
+\end{align}
+</div>
+<div class="para">As illustrated above, when denoting polynomials we will usually drop all the terms with zero coefficients: e.g.,  <span class="process-math">\(f(x)=a_0+a_1x+\cdots +a_nx^n\text{,}\)</span> or <span class="process-math">\(f(x)=\anpoly\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_formal_polynomials-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="d_formal_polynomials-2-2">Given a nonzero polynomial <span class="process-math">\(f\in F[x]\text{,}\)</span> we define its <dfn class="terminology">degree</dfn>, <span class="process-math">\(\deg f\text{,}\)</span> to be the largest <span class="process-math">\(n\)</span> satisfying <span class="process-math">\(a_n\ne 0\text{.}\)</span> If <span class="process-math">\(f = \boldzero\text{,}\)</span> we define <span class="process-math">\(\deg f=-\infty\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_formal_polynomials-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="d_formal_polynomials-2-3">If <span class="process-math">\(f(x)=\anpoly\)</span> is a polynomial of degree <span class="process-math">\(n\ne -\infty\text{,}\)</span> we call <span class="process-math">\(a_{n}\)</span> the <dfn class="terminology">leading coefficient</dfn> of <span class="process-math">\(f\text{.}\)</span> A polynomial with leading coefficient equal to <span class="process-math">\(1\in R\)</span> is called <dfn class="terminology">monic</dfn>.<div class="autopermalink" data-description="Paragraph"><a href="#d_formal_polynomials-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.16.9: Formal polynomials"><a href="#d_formal_polynomials" title="Copy heading and permalink for Definition 1.16.9: Formal polynomials" aria-label="Copy heading and permalink for Definition 1.16.9: Formal polynomials">🔗</a></div></article><article class="definition definition-like" id="d_poly_bounded_n"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polynomials of bounded degree.</span>
+</h4>
+<div class="para logical" id="d_poly_bounded_n-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field. Given <span class="process-math">\(n\in \N\text{,}\)</span> we define <span class="process-math">\(F[x]_{\deg \leq n}\)</span> to be the set of polynomials of <span class="process-math">\(F[x]\)</span> of degree at most <span class="process-math">\(n\text{:}\)</span> i.e.,</div>
+<div class="displaymath process-math" id="d_poly_bounded_n-2-1-7">
 \begin{equation*}
-P_n(I)=\{f\in \mathcal{F}(I,F)\mid f(x)=g(x) \text{ for all } x\in I \text{ for some } g\in F[x] \text{ with } \deg g\leq n\}\text{.}
+F[x]_{\deg \leq n}=\{f\in F[x]\mid \deg f\leq n\}.
 \end{equation*}
 </div>
-<div class="para">Lastly we define <span class="process-math">\(P(I)\)</span> to be the set of all polynomial functions on <span class="process-math">\(I\text{.}\)</span> Since any polynomial on <span class="process-math">\(I\)</span> is of the form <span class="process-math">\(f(x)=\anpoly\)</span> for some <span class="process-math">\(n\in \Z_{\geq 0}\text{,}\)</span>  we have</div>
-<div class="displaymath process-math" id="d_polynomials-2-1-15">
+<div class="para">Note that the zero polynomial <span class="process-math">\(\boldzero\)</span> is understood to be an element of <span class="process-math">\(F[x]_{\deg\leq n}\)</span> based on the convention that <span class="process-math">\(\deg \boldzero=-\infty&lt; n\)</span> for all <span class="process-math">\(n\in \N\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_poly_bounded_n-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.16.10: Polynomials of bounded degree"><a href="#d_poly_bounded_n" title="Copy heading and permalink for Definition 1.16.10: Polynomials of bounded degree" aria-label="Copy heading and permalink for Definition 1.16.10: Polynomials of bounded degree">🔗</a></div></article><div class="para" id="ss_formal_polys_powerseries-9">Not surprisingly, the nested sets <span class="process-math">\(F[x]_{\deg\leq n}\subseteq F[x]\subseteq F[[x]]\)</span> are all subspaces of one another.<div class="autopermalink" data-description="Paragraph"><a href="#ss_formal_polys_powerseries-9" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop_poly_subspaces"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.11</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="para logical" id="prop_poly_subspaces-1-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field and let <span class="process-math">\(n\in \N\text{.}\)</span> The inclusions</div>
+<div class="displaymath process-math" id="prop_poly_subspaces-1-1-3">
 \begin{equation*}
-P(I)=\bigcup_{n=0}^\infty P_n(I)\text{.}
+F[x]_{\deg\leq n}\subseteq F[x]\subseteq F[[x]]
 \end{equation*}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#d_polynomials-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">are subspace inclusions: i.e., in the chain above, each set is a subspace of the next.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_poly_subspaces-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.16.6: Polynomial functions"><a href="#d_polynomials" title="Copy heading and permalink for Definition 1.16.6: Polynomial functions" aria-label="Copy heading and permalink for Definition 1.16.6: Polynomial functions">🔗</a></div></article><article class="theorem theorem-like" id="th_polynomial_space"><h4 class="heading">
-<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.7</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polynomial spaces.</span>
+<div class="autopermalink" data-description="Proposition 1.16.11"><a href="#prop_poly_subspaces" title="Copy heading and permalink for Proposition 1.16.11" aria-label="Copy heading and permalink for Proposition 1.16.11">🔗</a></div></article><details id="prop_poly_subspaces-2" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="prop_poly_subspaces-2-1">The proof is left to the reader.<div class="autopermalink" data-description="Paragraph"><a href="#prop_poly_subspaces-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.16.11.1"><a href="#prop_poly_subspaces-2" title="Copy heading and permalink for Proof 1.16.11.1" aria-label="Copy heading and permalink for Proof 1.16.11.1">🔗</a></div></article></details><div class="para" id="ss_formal_polys_powerseries-11">Besides being used to define an interesting subspace of <span class="process-math">\(F[x]\)</span> and <span class="process-math">\(F[[x]]\text{,}\)</span> the degree function will prove to be important to us in many ways, as the next results begin to show.<div class="autopermalink" data-description="Paragraph"><a href="#ss_formal_polys_powerseries-11" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para" id="ss_formal_polys_powerseries-12">The degree operation on <span class="process-math">\(F[x]\)</span> turns out to be very useful, thanks in part to the properties articulated in the following proposition.<div class="autopermalink" data-description="Paragraph"><a href="#ss_formal_polys_powerseries-12" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="proposition theorem-like" id="prop_deg_poly"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.12</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polynomial degree properties.</span>
 </h4>
-<div class="para logical" id="th_polynomial_space-2-1">
-<div class="para">Let <span class="process-math">\(I\)</span> be a nonempty subset of the field <span class="process-math">\(F\text{.}\)</span>
+<div class="para logical" id="prop_deg_poly-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> be nonzero polynomials in <span class="process-math">\(F[x]\text{.}\)</span>
 </div>
-<ol class="decimal" id="th_polynomial_space-2-1-3">
-<li id="th_polynomial_space-2-1-3-1">
-<div class="para" id="th_polynomial_space-2-1-3-1-1">
-<span class="process-math">\(P(I)\)</span> is a subspace of <span class="process-math">\(\mathcal{F}(I,F)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_polynomial_space-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<ol class="decimal" id="prop_deg_poly-2-1-5">
+<li id="prop_deg_poly-2-1-5-1">
+<div class="para" id="prop_deg_poly-2-1-5-1-1">
+<span class="process-math">\(\deg fg=\deg f+\deg g\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_deg_poly-2-1-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item 1"><a href="#th_polynomial_space-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+<div class="autopermalink" data-description="Item 1"><a href="#prop_deg_poly-2-1-5-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
 </li>
-<li id="th_polynomial_space-2-1-3-2">
-<div class="para" id="th_polynomial_space-2-1-3-2-1">
-<span class="process-math">\(P_n(I)\)</span> is a subspace of <span class="process-math">\(\mathcal{F}(I,F)\)</span> for all <span class="process-math">\(n\in \N\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_polynomial_space-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="prop_deg_poly-2-1-5-2">
+<div class="para" id="prop_deg_poly-2-1-5-2-1">
+<span class="process-math">\(\deg(f+g)\leq \max\{\deg f, \deg g\}\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_deg_poly-2-1-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item 2"><a href="#th_polynomial_space-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+<div class="autopermalink" data-description="Item 2"><a href="#prop_deg_poly-2-1-5-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
 </li>
 </ol>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_polynomial_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_deg_poly-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 1.16.7: Polynomial spaces"><a href="#th_polynomial_space" title="Copy heading and permalink for Theorem 1.16.7: Polynomial spaces" aria-label="Copy heading and permalink for Theorem 1.16.7: Polynomial spaces">🔗</a></div></article><details id="th_polynomial_space-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="th_polynomial_space-3-1">
+<div class="autopermalink" data-description="Proposition 1.16.12: Polynomial degree properties"><a href="#prop_deg_poly" title="Copy heading and permalink for Proposition 1.16.12: Polynomial degree properties" aria-label="Copy heading and permalink for Proposition 1.16.12: Polynomial degree properties">🔗</a></div></article><details id="prop_deg_poly-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop_deg_poly-3-1">
+<ol class="decimal" id="prop_deg_poly-3-1-1">
+<li id="prop_deg_poly-3-1-1-1">
+<div class="para logical" id="prop_deg_poly-3-1-1-1-1">
+<div class="para">Assume <span class="process-math">\(\deg f=n\)</span> and <span class="process-math">\(\deg g=m\text{,}\)</span> so that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_poly_mult.html" id="prop_deg_poly-3-1-1-1-1-3">
+\begin{align*}
+f(x) \amp =\anpoly \amp \\
+g(x)\amp=\bmpoly \amp \text{,}
+\end{align*}
+</div>
+<div class="para">where <span class="process-math">\(a_n\ne 0\)</span> and <span class="process-math">\(b_m\ne 0\text{.}\)</span> From the polynomial multiplication rule given in <a href="s_subspaces_II.html#d_formal_polynomials-2-1-7" class="xref" data-knowl="./knowl/xref/eq_poly_mult.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.16.3">(1.16.3)</a>, we see that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_poly_mult.html" id="prop_deg_poly-3-1-1-1-1-7">
+\begin{align*}
+fg(x) \amp =a_nb_mx^{n+m}+\text{terms of lower degree}\text{.}
+\end{align*}
+</div>
+<div class="para">It follows that <span class="process-math">\(\deg fg\leq n+m=\deg f+\deg g\text{.}\)</span> If <span class="process-math">\(F\)</span> is an integral domain, then <span class="process-math">\(a_nb_m\ne 0\)</span> and thus <span class="process-math">\(\deg fg=m+n=\deg f+\deg g\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_deg_poly-3-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#prop_deg_poly-3-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="prop_deg_poly-3-1-1-2">
+<div class="para" id="prop_deg_poly-3-1-1-2-1">The proof is left to the reader.<div class="autopermalink" data-description="Paragraph"><a href="#prop_deg_poly-3-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#prop_deg_poly-3-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_deg_poly-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.16.12.1"><a href="#prop_deg_poly-3" title="Copy heading and permalink for Proof 1.16.12.1" aria-label="Copy heading and permalink for Proof 1.16.12.1">🔗</a></div></article></details><article class="theorem theorem-like" id="th_division_alg_poly"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.13</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Division algorithm for polynomials.</span>
+</h4>
+<div class="para logical" id="th_division_alg_poly-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, let <span class="process-math">\(f,g\in F[x]\text{,}\)</span> and suppose <span class="process-math">\(g\ne \boldzero\text{.}\)</span> There is a unique pair of polynomials <span class="process-math">\((q,r)\in F[x]\times F[x]\)</span> satisfying the following conditions.</div>
+<ol class="lower-roman ol-marker-1" id="th_division_alg_poly-2-1-5">
+<li id="th_division_alg_poly-2-1-5-1">
+<div class="para" id="th_division_alg_poly-2-1-5-1-1">
+<span class="process-math">\(f=qg+r\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_division_alg_poly-2-1-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item i"><a href="#th_division_alg_poly-2-1-5-1" title="Copy heading and permalink for Item i" aria-label="Copy heading and permalink for Item i">🔗</a></div>
+</li>
+<li id="th_division_alg_poly-2-1-5-2">
+<div class="para" id="th_division_alg_poly-2-1-5-2-1">
+<span class="process-math">\(r=\boldzero\)</span> or <span class="process-math">\(0\leq \deg r&lt; \deg g\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_division_alg_poly-2-1-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item ii"><a href="#th_division_alg_poly-2-1-5-2" title="Copy heading and permalink for Item ii" aria-label="Copy heading and permalink for Item ii">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_division_alg_poly-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.16.13: Division algorithm for polynomials"><a href="#th_division_alg_poly" title="Copy heading and permalink for Theorem 1.16.13: Division algorithm for polynomials" aria-label="Copy heading and permalink for Theorem 1.16.13: Division algorithm for polynomials">🔗</a></div></article><details id="th_division_alg_poly-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="th_division_alg_poly-3-1">The proof is left as a homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#th_division_alg_poly-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.16.13.1"><a href="#th_division_alg_poly-3" title="Copy heading and permalink for Proof 1.16.13.1" aria-label="Copy heading and permalink for Proof 1.16.13.1">🔗</a></div></article></details><article class="definition definition-like" id="d_poly_roots"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.14</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Roots of polynomials.</span>
+</h4>
+<div class="para logical" id="d_poly_roots-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field. Given a polynomial <span class="process-math">\(f(x)=\anpoly\in F[x]\)</span> and element <span class="process-math">\(r\in F\text{,}\)</span> we define</div>
+<div class="displaymath process-math" id="d_poly_roots-2-1-4">
+\begin{equation*}
+f(r)=a_nr^n+a_{n-1}r^{n-1}+\cdots a_1r+a_0\in F\text{.}
+\end{equation*}
+</div>
+<div class="para">An element <span class="process-math">\(r\in F\)</span> is a <dfn class="terminology">root</dfn> of <span class="process-math">\(f\)</span> if <span class="process-math">\(f(r)=0\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_poly_roots-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.16.14: Roots of polynomials"><a href="#d_poly_roots" title="Copy heading and permalink for Definition 1.16.14: Roots of polynomials" aria-label="Copy heading and permalink for Definition 1.16.14: Roots of polynomials">🔗</a></div></article><article class="corollary theorem-like" id="cor_poly_distinct_roots"><h4 class="heading">
+<span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.15</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Distinct roots of polynomials.</span>
+</h4>
+<div class="para logical" id="cor_poly_distinct_roots-2-1">
+<div class="para">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(f\in F[x]\text{.}\)</span>
+</div>
+<ol class="decimal" id="cor_poly_distinct_roots-2-1-3">
+<li id="cor_poly_distinct_roots-2-1-3-1">
+<div class="para" id="cor_poly_distinct_roots-2-1-3-1-1">For all <span class="process-math">\(r\in F\text{,}\)</span> we have <span class="process-math">\(f(r)=0\)</span> if and only if <span class="process-math">\(f=(x-r)g(x)\)</span> for some polynomial <span class="process-math">\(g\in F[x]\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#cor_poly_distinct_roots-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#cor_poly_distinct_roots-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="cor_poly_distinct_roots-2-1-3-2">
+<div class="para" id="cor_poly_distinct_roots-2-1-3-2-1">Assume <span class="process-math">\(f\ne \boldzero\text{.}\)</span> If <span class="process-math">\(\deg f=n\text{,}\)</span> then <span class="process-math">\(f\)</span> has at most <span class="process-math">\(n\)</span> distinct roots.<div class="autopermalink" data-description="Paragraph"><a href="#cor_poly_distinct_roots-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#cor_poly_distinct_roots-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+<li id="cor_poly_distinct_roots-2-1-3-3">
+<div class="para" id="cor_poly_distinct_roots-2-1-3-3-1">Assume <span class="process-math">\(n\in \N\text{,}\)</span> and that <span class="process-math">\(f,g\in F[x]\)</span> satisfy <span class="process-math">\(\deg f=\deg g=n\text{.}\)</span> If there are <span class="process-math">\(n+1\)</span> distinct elements <span class="process-math">\(r_1,r_2,\dots, r_{n+1}\in F\)</span> such that <span class="process-math">\(f(r_i)=g(r_i)\text{,}\)</span> then <span class="process-math">\(f=g\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#cor_poly_distinct_roots-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 3"><a href="#cor_poly_distinct_roots-2-1-3-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#cor_poly_distinct_roots-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Corollary 1.16.15: Distinct roots of polynomials"><a href="#cor_poly_distinct_roots" title="Copy heading and permalink for Corollary 1.16.15: Distinct roots of polynomials" aria-label="Copy heading and permalink for Corollary 1.16.15: Distinct roots of polynomials">🔗</a></div></article><details id="cor_poly_distinct_roots-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="cor_poly_distinct_roots-3-1">The proof is left as a homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#cor_poly_distinct_roots-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.16.15.1"><a href="#cor_poly_distinct_roots-3" title="Copy heading and permalink for Proof 1.16.15.1" aria-label="Copy heading and permalink for Proof 1.16.15.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.16.2: Power series and formal polynomials"><a href="#ss_formal_polys_powerseries" title="Copy heading and permalink for Subsection 1.16.2: Power series and formal polynomials" aria-label="Copy heading and permalink for Subsection 1.16.2: Power series and formal polynomials">🔗</a></div></section><section class="subsection" id="ss_function_spaces"><h3 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Function spaces</span>
+</h3>
+<article class="definition definition-like" id="d_polynomials"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.16</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polynomial functions.</span>
+</h4>
+<div class="para" id="d_polynomials-2-1">Let <span class="process-math">\(F\)</span> be a field, and let <span class="process-math">\(I\)</span> be a nonempty subset of <span class="process-math">\(F\text{.}\)</span> A function <span class="process-math">\(f\in \mathcal{F}(I,F)\)</span> is a <dfn class="terminology">polynomial function</dfn> if there is a formal polynomial <span class="process-math">\(g\in F[x]\)</span> such that <span class="process-math">\(f(x)=g(x)\)</span> for all <span class="process-math">\(x\in I\text{.}\)</span> We say that the polynomial <span class="process-math">\(g\)</span> <dfn class="terminology">represents</dfn> <span class="process-math">\(f\)</span> in this case.<div class="autopermalink" data-description="Paragraph"><a href="#d_polynomials-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para logical" id="d_polynomials-2-2">
+<div class="para">We define <span class="process-math">\(P(I)\)</span> to be the set of all polynomial functions on <span class="process-math">\(I\text{,}\)</span> and we define <span class="process-math">\(P_n(I)\)</span> to the set of all functions <span class="process-math">\(f\in \mathcal{F}(I,F)\)</span> that can be represented by a polynomial of degree at most <span class="process-math">\(n\text{:}\)</span> i.e.,</div>
+<div class="displaymath process-math" id="d_polynomials-2-2-7">
+\begin{align*}
+P(I) \amp =\{f\in \mathcal{F}(I,F)\mid f(x)=g(x) \text{ for all } x\in I, \text{ for some } g\in F[x]\}\\
+P_n(I) \amp =\{f\in \mathcal{F}(I,F)\mid f(x)=g(x) \text{ for all } x\in I, \text{ for some } g\in F[x]_{\deg\leq n}\}\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#d_polynomials-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Definition 1.16.16: Polynomial functions"><a href="#d_polynomials" title="Copy heading and permalink for Definition 1.16.16: Polynomial functions" aria-label="Copy heading and permalink for Definition 1.16.16: Polynomial functions">🔗</a></div></article><article class="remark remark-like" id="ss_function_spaces-3"><h4 class="heading">
+<span class="type">Remark</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.17</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Formal polynomials and polynomial functions.</span>
+</h4>
+<div class="para" id="ss_function_spaces-3-2">There is a subtle issue lurking behind this polynomial function business: namely, it is possible that a polynomial function <span class="process-math">\(f\in P(I)\)</span> can be represented by more than one formal polynomial <span class="process-math">\(g\in F[x]\text{.}\)</span> Indeed, consider the case where the subset <span class="process-math">\(I\subseteq F\)</span> is the singleton <span class="process-math">\(I=\{1\}\text{.}\)</span> In this case, any function <span class="process-math">\(f\in \mathcal{F}(I,F)\)</span> is completely determined by its value <span class="process-math">\(f(1)=c\)</span> at the one element of the domain <span class="process-math">\(I\text{.}\)</span> As a result, it is possible to give many different polynomial representation of a single function <span class="process-math">\(f\text{.}\)</span> For example, the zero function <span class="process-math">\(0_I\)</span> can be represented by the zero polynomial <span class="process-math">\(\boldzero\text{,}\)</span> but also by <span class="process-math">\(f(x)=(x-1)^n\)</span> for any <span class="process-math">\(n\in \Z_+\text{.}\)</span> We see then, that we do not always have a 1-1 correspondence between elements of <span class="process-math">\(F[x]\)</span> and <span class="process-math">\(P(I)\text{.}\)</span> We will be able to give a much more precise analysis of the relationship between these two spaces once we introduce linear transformations.<div class="autopermalink" data-description="Paragraph"><a href="#ss_function_spaces-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Remark 1.16.17: Formal polynomials and polynomial functions"><a href="#ss_function_spaces-3" title="Copy heading and permalink for Remark 1.16.17: Formal polynomials and polynomial functions" aria-label="Copy heading and permalink for Remark 1.16.17: Formal polynomials and polynomial functions">🔗</a></div></article><article class="proposition theorem-like" id="prop_polynomial_space"><h4 class="heading">
+<span class="type">Proposition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Polynomial spaces.</span>
+</h4>
+<div class="para logical" id="prop_polynomial_space-2-1">
+<div class="para">Let <span class="process-math">\(I\)</span> be a nonempty subset of the field <span class="process-math">\(F\text{.}\)</span>
+</div>
+<ol class="decimal" id="prop_polynomial_space-2-1-3">
+<li id="prop_polynomial_space-2-1-3-1">
+<div class="para" id="prop_polynomial_space-2-1-3-1-1">
+<span class="process-math">\(P(I)\)</span> is a subspace of <span class="process-math">\(\mathcal{F}(I,F)\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_polynomial_space-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#prop_polynomial_space-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li id="prop_polynomial_space-2-1-3-2">
+<div class="para" id="prop_polynomial_space-2-1-3-2-1">
+<span class="process-math">\(P_n(I)\)</span> is a subspace of <span class="process-math">\(\mathcal{F}(I,F)\)</span> for all <span class="process-math">\(n\in \N\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#prop_polynomial_space-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#prop_polynomial_space-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_polynomial_space-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proposition 1.16.18: Polynomial spaces"><a href="#prop_polynomial_space" title="Copy heading and permalink for Proposition 1.16.18: Polynomial spaces" aria-label="Copy heading and permalink for Proposition 1.16.18: Polynomial spaces">🔗</a></div></article><details id="prop_polynomial_space-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical" id="prop_polynomial_space-3-1">
 <div class="para">We prove that <span class="process-math">\(P_n(I)\)</span> is a subspace, using the 2-step technique. The proof for <span class="process-math">\(P(I)\)</span> is similar.</div>
-<ol class="lower-roman ol-marker-1" id="th_polynomial_space-3-1-3">
-<li id="th_polynomial_space-3-1-3-1">
-<div class="para logical" id="th_polynomial_space-3-1-3-1-1">
+<ol class="lower-roman ol-marker-1" id="prop_polynomial_space-3-1-3">
+<li id="prop_polynomial_space-3-1-3-1">
+<div class="para logical" id="prop_polynomial_space-3-1-3-1-1">
 <div class="para">Recall that the zero vector of <span class="process-math">\(\mathcal{F}(I,F)\)</span> is the the zero function <span class="process-math">\(O_I\colon I\rightarrow F\text{,}\)</span> defined as <span class="process-math">\(0_I(x)=0\)</span> for all <span class="process-math">\(x\in I\text{.}\)</span> Writing</div>
-<div class="displaymath process-math" id="th_polynomial_space-3-1-3-1-1-5">
+<div class="displaymath process-math" id="prop_polynomial_space-3-1-3-1-1-5">
 \begin{equation*}
 0_I(x)=0x^n+0x^{n-1}+\cdots +0x+0\text{,}
 \end{equation*}
 </div>
 <div class="para">we see that <span class="process-math">\(\boldzero=0_I\in P_n(I)\text{.}\)</span> (More generally, any constant function <span class="process-math">\(f(x)=c\)</span> is an element of <span class="process-math">\(P_n(I)\)</span> for all <span class="process-math">\(n\geq 0\text{.}\)</span>)</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_polynomial_space-3-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_polynomial_space-3-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item i"><a href="#th_polynomial_space-3-1-3-1" title="Copy heading and permalink for Item i" aria-label="Copy heading and permalink for Item i">🔗</a></div>
+<div class="autopermalink" data-description="Item i"><a href="#prop_polynomial_space-3-1-3-1" title="Copy heading and permalink for Item i" aria-label="Copy heading and permalink for Item i">🔗</a></div>
 </li>
-<li id="th_polynomial_space-3-1-3-2">
-<div class="para logical" id="th_polynomial_space-3-1-3-2-1">
+<li id="prop_polynomial_space-3-1-3-2">
+<div class="para logical" id="prop_polynomial_space-3-1-3-2-1">
 <div class="para">Assume <span class="process-math">\(f,g\in P_n(I)\text{.}\)</span> By definition this means that there are constants <span class="process-math">\(a_i, b_i\in F\text{,}\)</span> <span class="process-math">\(1\leq i\leq n\text{,}\)</span> such that</div>
-<div class="displaymath process-math" id="th_polynomial_space-3-1-3-2-1-4">
+<div class="displaymath process-math" id="prop_polynomial_space-3-1-3-2-1-4">
 \begin{align*}
 f(x) \amp = \anpoly\\
 g(x) \amp = b_nx^n+b_{n-1}x^{n-1}+\cdots+b_1x+b_0
 \end{align*}
 </div>
 <div class="para">for all <span class="process-math">\(x\in I\text{.}\)</span> It follows that</div>
-<div class="displaymath process-math" id="th_polynomial_space-3-1-3-2-1-6">
+<div class="displaymath process-math" id="prop_polynomial_space-3-1-3-2-1-6">
 \begin{align*}
 (cf+dg)(x) \amp = (a_n+b_n)x^n+(a_{n-1}+b_{n-1})x^{n-1}+\cdots+(a_1+b_1)x+(a_0+b_0) 
 \end{align*}
 </div>
 <div class="para">for all <span class="process-math">\(x\in I\text{,}\)</span> showing that <span class="process-math">\(cf+dg\in P_n(I)\text{,}\)</span> as desired.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_polynomial_space-3-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_polynomial_space-3-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item ii"><a href="#th_polynomial_space-3-1-3-2" title="Copy heading and permalink for Item ii" aria-label="Copy heading and permalink for Item ii">🔗</a></div>
+<div class="autopermalink" data-description="Item ii"><a href="#prop_polynomial_space-3-1-3-2" title="Copy heading and permalink for Item ii" aria-label="Copy heading and permalink for Item ii">🔗</a></div>
 </li>
 </ol>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_polynomial_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#prop_polynomial_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.16.7.1"><a href="#th_polynomial_space-3" title="Copy heading and permalink for Proof 1.16.7.1" aria-label="Copy heading and permalink for Proof 1.16.7.1">🔗</a></div></article></details><div class="para" id="ss_polynomials_powerseries-4">Although not necessary for the proof of <a href="s_subspaces_II.html#th_polynomial_space" class="xref" data-knowl="./knowl/xref/th_polynomial_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.16.7: Polynomial spaces">Theorem 1.16.7</a>, the result below will be useful to us for future discussions. In short, it says that the coefficients of a polynomial uniquely determine it (as long as the domain <span class="process-math">\(I\)</span> is infinite).<div class="autopermalink" data-description="Paragraph"><a href="#ss_polynomials_powerseries-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<article class="definition definition-like" id="d_function_subspaces"><h4 class="heading">
-<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Function subspaces over <span class="process-math">\(\R\)</span>.</span>
+<div class="autopermalink" data-description="Proof 1.16.18.1"><a href="#prop_polynomial_space-3" title="Copy heading and permalink for Proof 1.16.18.1" aria-label="Copy heading and permalink for Proof 1.16.18.1">🔗</a></div></article></details><article class="definition definition-like" id="d_function_subspaces"><h4 class="heading">
+<span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.19</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Function subspaces over <span class="process-math">\(\R\)</span>.</span>
 </h4>
 <div class="para logical" id="d_function_subspaces-2-1">
 <div class="para">Let <span class="process-math">\(I\)</span> be an interval of <span class="process-math">\(\R\)</span> that contains at least two elements.</div>
@@ -853,8 +1101,8 @@ C(I)=\{f\in \R^I\colon f \text{ is continuous on }I\}\text{.}
 </ol>
 <div class="autopermalink" data-description="Paragraph"><a href="#d_function_subspaces-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Definition 1.16.8: Function subspaces over \R"><a href="#d_function_subspaces" title="Copy heading and permalink for Definition 1.16.8: Function subspaces over \R" aria-label="Copy heading and permalink for Definition 1.16.8: Function subspaces over \R">🔗</a></div></article><article class="theorem theorem-like" id="th_function_spaces"><h4 class="heading">
-<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Function subspaces..</span>
+<div class="autopermalink" data-description="Definition 1.16.19: Function subspaces over \R"><a href="#d_function_subspaces" title="Copy heading and permalink for Definition 1.16.19: Function subspaces over \R" aria-label="Copy heading and permalink for Definition 1.16.19: Function subspaces over \R">🔗</a></div></article><article class="theorem theorem-like" id="th_function_spaces"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.16.20</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Function subspaces..</span>
 </h4>
 <div class="para logical" id="th_function_spaces-2-1">
 <div class="para">Let <span class="process-math">\(I\subseteq \R\)</span> be a an interval containing at least two elements. The sets <span class="process-math">\(C(I)\text{,}\)</span> <span class="process-math">\(C^{n}(I)\text{,}\)</span> <span class="process-math">\(C^{\infty}(I)\text{,}\)</span> <span class="process-math">\(P(I)\text{,}\)</span> <span class="process-math">\(P_{n}(I)\)</span> are all subspaces of <span class="process-math">\(\mathcal{F}(I,\R)\text{,}\)</span> and we have the following chain of subspaces:</div>
@@ -865,9 +1113,9 @@ P_{n}(I)\subseteq P(I)\subseteq C^{\infty}(I)\subseteq C^{n}(I)\subseteq C(I)\su
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_function_spaces-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Theorem 1.16.9: Function subspaces."><a href="#th_function_spaces" title="Copy heading and permalink for Theorem 1.16.9: Function subspaces." aria-label="Copy heading and permalink for Theorem 1.16.9: Function subspaces.">🔗</a></div></article><details id="ss_polynomials_powerseries-7" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="ss_polynomials_powerseries-7-1">This is an instance of “proof by calculus”. That each of these sets is closed under addition and scalar multiplication follows from elementary results in single-variable calculus: e.g., that sums and scalar multiples of continuous functions are continuous, that sums and scalar multiples of differentiable functions are differentiable, etc..<div class="autopermalink" data-description="Paragraph"><a href="#ss_polynomials_powerseries-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Theorem 1.16.20: Function subspaces."><a href="#th_function_spaces" title="Copy heading and permalink for Theorem 1.16.20: Function subspaces." aria-label="Copy heading and permalink for Theorem 1.16.20: Function subspaces.">🔗</a></div></article><details id="ss_function_spaces-7" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="ss_function_spaces-7-1">This is an instance of “proof by calculus”. That each of these sets is closed under addition and scalar multiplication follows from elementary results in single-variable calculus: e.g., that sums and scalar multiples of continuous functions are continuous, that sums and scalar multiples of differentiable functions are differentiable, etc..<div class="autopermalink" data-description="Paragraph"><a href="#ss_function_spaces-7-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Proof 1.16.2.1"><a href="#ss_polynomials_powerseries-7" title="Copy heading and permalink for Proof 1.16.2.1" aria-label="Copy heading and permalink for Proof 1.16.2.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.16.2: Polynomials and power series"><a href="#ss_polynomials_powerseries" title="Copy heading and permalink for Subsection 1.16.2: Polynomials and power series" aria-label="Copy heading and permalink for Subsection 1.16.2: Polynomials and power series">🔗</a></div></section><div class="autopermalink" data-description="Section 1.16: Subspaces: further examples"><a href="#s_subspaces_II" title="Copy heading and permalink for Section 1.16: Subspaces: further examples" aria-label="Copy heading and permalink for Section 1.16: Subspaces: further examples">🔗</a></div></section></div>
+<div class="autopermalink" data-description="Proof 1.16.3.1"><a href="#ss_function_spaces-7" title="Copy heading and permalink for Proof 1.16.3.1" aria-label="Copy heading and permalink for Proof 1.16.3.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.16.3: Function spaces"><a href="#ss_function_spaces" title="Copy heading and permalink for Subsection 1.16.3: Function spaces" aria-label="Copy heading and permalink for Subsection 1.16.3: Function spaces">🔗</a></div></section><div class="autopermalink" data-description="Section 1.16: Subspaces: further examples"><a href="#s_subspaces_II" title="Copy heading and permalink for Section 1.16: Subspaces: further examples" aria-label="Copy heading and permalink for Section 1.16: Subspaces: further examples">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="s_subspace.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="s_basis.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
