@@ -231,6 +231,7 @@ true);
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\diver}{div}
 \DeclareMathOperator{\flux}{flux}
+\DeclareMathOperator{\len}{len}
 \def\Gal{\operatorname{Gal}}
 \def\ord{\operatorname{ord}}
 \def\ML{\operatorname{M}}
@@ -571,8 +572,15 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <div class="toc-title-box"><a href="s_subspaces_II.html" class="internal"><span class="codenumber">1.16</span> <span class="title">Subspaces: further examples</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_subspace_matrices" class="internal"><span class="codenumber">1.16.1</span> <span class="title">Important subspaces of <span class="process-math">\(\ML_{n,n}(F)\)</span></span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_formal_polys_powerseries" class="internal"><span class="codenumber">1.16.2</span> <span class="title">Power series and formal polynomials</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_function_spaces" class="internal"><span class="codenumber">1.16.3</span> <span class="title">Important function subspaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_polynomials_powerseries" class="internal"><span class="codenumber">1.16.2</span> <span class="title">Polynomials and power series</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_basis.html" class="internal"><span class="codenumber">1.17</span> <span class="title">Bases</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_basis" class="internal"><span class="codenumber">1.17.1</span> <span class="title">Basis</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_by_inspection" class="internal"><span class="codenumber">1.17.2</span> <span class="title">Finding bases</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_finite_dim" class="internal"><span class="codenumber">1.17.3</span> <span class="title">Finite-dimensional vector spaces</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -967,7 +975,7 @@ f=(a_i)_{i\in I}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_redux-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para" id="d_tuples_redux-2-2">Given a tuple <span class="process-math">\((a_i)_{i\in I}\text{,}\)</span> we call <span class="process-math">\(a_i\)</span> its <dfn class="terminology"><span class="process-math">\(i\)</span>-th component</dfn> (or <dfn class="terminology">coordinate</dfn>, or <dfn class="terminology">entry</dfn>, or <dfn class="terminology">term</dfn>).<div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_redux-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div> <div class="para" id="d_tuples_redux-2-3">If <span class="process-math">\(I\)</span> is a finite set of cardinality <span class="process-math">\(n\text{,}\)</span> we say that <span class="process-math">\((a_i)_{i\in I}\)</span> has <dfn class="terminology">length</dfn> <span class="process-math">\(n\text{.}\)</span> Otherwise, we say that <span class="process-math">\((a_i)_{i\in I}\)</span> has infinite length.<div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_redux-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div> <div class="para" id="d_tuples_redux-2-3">If <span class="process-math">\(I\)</span> is a finite set of cardinality <span class="process-math">\(n\text{,}\)</span> we say that <span class="process-math">\((a_i)_{i\in I}\)</span> has <dfn class="terminology">length</dfn> <span class="process-math">\(n\text{,}\)</span> denoted <span class="process-math">\(\len (a_i)_{i\in I}=n\text{.}\)</span> Otherwise, we say that <span class="process-math">\((a_i)_{i\in I}\)</span> has infinite length, denoted <span class="process-math">\(\len (a_i)_{i\in I}=\infty\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_redux-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div> <div class="para" id="d_tuples_redux-2-4">In the case where <span class="process-math">\(I=\emptyset\text{,}\)</span> there is exactly one tuple in <span class="process-math">\(A^I\)</span> that we call the <dfn class="terminology">empty tuple</dfn>, denoted <span class="process-math">\(()\text{.}\)</span> Note that the the empty tuple has length zero.<div class="autopermalink" data-description="Paragraph"><a href="#d_tuples_redux-2-4" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Definition 1.6.7: Tuples"><a href="#d_tuples_redux" title="Copy heading and permalink for Definition 1.6.7: Tuples" aria-label="Copy heading and permalink for Definition 1.6.7: Tuples">🔗</a></div></article><div class="para" id="ss_lin_ind-5">Having gotten the preliminaries out of the way, we can at last define what it means for a tuple of vectors to be linearly independent.<div class="autopermalink" data-description="Paragraph"><a href="#ss_lin_ind-5" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>

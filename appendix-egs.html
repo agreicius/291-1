@@ -231,6 +231,7 @@ true);
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\diver}{div}
 \DeclareMathOperator{\flux}{flux}
+\DeclareMathOperator{\len}{len}
 \def\Gal{\operatorname{Gal}}
 \def\ord{\operatorname{ord}}
 \def\ML{\operatorname{M}}
@@ -571,8 +572,15 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <div class="toc-title-box"><a href="s_subspaces_II.html" class="internal"><span class="codenumber">1.16</span> <span class="title">Subspaces: further examples</span></a></div>
 <ul class="structural toc-item-list">
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_subspace_matrices" class="internal"><span class="codenumber">1.16.1</span> <span class="title">Important subspaces of <span class="process-math">\(\ML_{n,n}(F)\)</span></span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_formal_polys_powerseries" class="internal"><span class="codenumber">1.16.2</span> <span class="title">Power series and formal polynomials</span></a></div></li>
-<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_function_spaces" class="internal"><span class="codenumber">1.16.3</span> <span class="title">Important function subspaces</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_subspaces_II.html#ss_polynomials_powerseries" class="internal"><span class="codenumber">1.16.2</span> <span class="title">Polynomials and power series</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_basis.html" class="internal"><span class="codenumber">1.17</span> <span class="title">Bases</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_basis" class="internal"><span class="codenumber">1.17.1</span> <span class="title">Basis</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_by_inspection" class="internal"><span class="codenumber">1.17.2</span> <span class="title">Finding bases</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_finite_dim" class="internal"><span class="codenumber">1.17.3</span> <span class="title">Finite-dimensional vector spaces</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -786,6 +794,21 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 </h4>
 <div>
 <a href="s_subspaces_II.html#ss_subspace_matrices-5" class="xref" data-knowl="./knowl/list-of/ss_subspace_matrices-5.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.16.3: Trace-zero symmetric, and skew-symmetric 2\times 2 matrices">Example 1.16.3</a> Trace-zero symmetric, and skew-symmetric <span class="process-math">\(2\times 2\)</span> matrices</div>
+<h4 class="heading hide-type" title="Section 1.17: Bases">
+<span class="codenumber">1.17</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Bases</span>
+</h4>
+<div>
+<a href="s_basis.html#eg_standard_bases" class="xref" data-knowl="./knowl/list-of/eg_standard_bases.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.3: Some standard bases">Example 1.17.3</a> Some standard bases</div>
+<div>
+<a href="s_basis.html#ss_basis-6" class="xref" data-knowl="./knowl/list-of/ss_basis-6.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.4: Some nonstandard bases">Example 1.17.4</a> Some nonstandard bases</div>
+<div>
+<a href="s_basis.html#eg_basis_unique" class="xref" data-knowl="./knowl/list-of/eg_basis_unique.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.6: Unique basis representation">Example 1.17.6</a> Unique basis representation</div>
+<div>
+<a href="s_basis.html#eg_basis_onestep" class="xref" data-knowl="./knowl/list-of/eg_basis_onestep.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.8: One-step basis technique">Example 1.17.8</a> One-step basis technique</div>
+<div>
+<a href="s_basis.html#eg_byinspection_R5" class="xref" data-knowl="./knowl/list-of/eg_byinspection_R5.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.10: By-inspection basis technique">Example 1.17.10</a> By-inspection basis technique</div>
+<div>
+<a href="s_basis.html#eg_byinspection_basis" class="xref" data-knowl="./knowl/list-of/eg_byinspection_basis.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.11: By-inspection basis technique">Example 1.17.11</a> By-inspection basis technique</div>
 <div class="autopermalink" data-description="Appendix E: Examples"><a href="#appendix-egs" title="Copy heading and permalink for Appendix E: Examples" aria-label="Copy heading and permalink for Appendix E: Examples">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="appendix-thms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="appendix-sage.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
