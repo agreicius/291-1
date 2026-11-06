@@ -72,7 +72,7 @@
       </p>
     </statement>
   </example>
-      <remark xml:id="rm_skew-symmetric">
+         <remark xml:id="rm_skew-symmetric">
     <p>
       Assume <m>A</m> is a skew-symmetric <m>n\times n</m> matrix. By definition, for all <m>1\leq i\leq n</m> we must have <m>[A]_{i,i}=-[A]_{i,i}</m>, or equivalently, <m>2[A]_{i,i}=0</m>. If <m>2\ne 0</m> in our field <m>F</m>,  it follows that <m>[A]_{i,i}=0</m> for all <m>1\leq i\leq n</m>. Thus, in any field where <m>2\ne 0</m>, the diagonal entries of a skew-symmetric matrix are all equal to zero. 
     </p>
