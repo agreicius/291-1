@@ -335,7 +335,7 @@
         Given a tuple <m>(a_i)_{i\in I}</m>, we call <m>a_i</m> its <term><m>i</m>-th component</term> (or <term>coordinate</term>, or <term>entry</term>, or <term>term</term>).
     </p>
     <p>
-      If <m>I</m> is a finite set of cardinality <m>n</m>, we say that <m>(a_i)_{i\in I}</m> has <term>length</term> <m>n</m>. Otherwise, we say that <m>(a_i)_{i\in I}</m> has infinite length. 
+      If <m>I</m> is a finite set of cardinality <m>n</m>, we say that <m>(a_i)_{i\in I}</m> has <term>length</term> <m>n</m>, denoted <m>\len (a_i)_{i\in I}=n</m>. Otherwise, we say that <m>(a_i)_{i\in I}</m> has infinite length, denoted <m>\len (a_i)_{i\in I}=\infty</m>. 
     </p>
     <p>
       In the case where <m>I=\emptyset</m>, there is exactly one tuple in <m>A^I</m> that we call the <term>empty tuple</term>, denoted <m>()</m>. Note that the the empty tuple has length zero. 

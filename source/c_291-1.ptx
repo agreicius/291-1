@@ -18,6 +18,7 @@
     <xi:include href="s_det_II.ptx" />
     <xi:include href="s_subspace.ptx" />
     <xi:include href="s_subspaces_II.ptx" />
+    <xi:include href="s_basis.ptx" />
 
 
 </chapter>
