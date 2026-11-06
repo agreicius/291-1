@@ -72,7 +72,7 @@
       </p>
     </statement>
   </example>
-         <remark xml:id="rm_skew-symmetric">
+ <remark xml:id="rm_skew-symmetric">
     <p>
       Assume <m>A</m> is a skew-symmetric <m>n\times n</m> matrix. By definition, for all <m>1\leq i\leq n</m> we must have <m>[A]_{i,i}=-[A]_{i,i}</m>, or equivalently, <m>2[A]_{i,i}=0</m>. If <m>2\ne 0</m> in our field <m>F</m>,  it follows that <m>[A]_{i,i}=0</m> for all <m>1\leq i\leq n</m>. Thus, in any field where <m>2\ne 0</m>, the diagonal entries of a skew-symmetric matrix are all equal to zero. 
     </p>
@@ -152,25 +152,272 @@
 
   </theorem>
 </subsection>
+<subsection xml:id="ss_formal_polys_powerseries">
+<title>Power series and formal polynomials</title>
+<p>
+  Our next example involves a little notational slight of hand. Namely, we will introduce the vector space of power series <m>F[[x]]</m>, as well as the subspace <m>F[x]</m> of <em>formal polynomials</em> when in essence <m>F[[x]]</m> is just the set of <m>F^\N</m> of infinite <m>F</m>-valued sequences indexed by <m>\N</m>, and <m>F[x]</m> is really just the subspace of <m>F^\N</m> consisting of sequences whose entries are zero for all but finally many entries. 
+</p>
+<definition xml:id="d_power_series">
+  <title>Power series</title>
+  <statement>
+    <p>
+      Let <m>F</m> be a field. The <term>ring of power series with coefficients in <m>F</m> in the indeterminate <m>x</m></term> is the set <m>F[[x]]</m> consisting of all infinite <m>F</m>-valued sequences <m>(a_n)_{n=0}^\infty</m>. In this context, however, a sequence <m>(a_n)_{n=0}^\infty</m> will be written as 
+      <md number="yes" xml:id="eq_power_series">
+        a_0+a_1x+a_2x^2+\cdots =\sum_{k=0}^\infty a_kx^k
+      </md>.
+      Given a power series <m>\sum_{k=0}^\infty a_kx_k</m>, we call <m>a_kx_k</m> the <term><m>k</m>-th term</term> of the series, and <m>a_k</m> its <term><m>k</m>-th coefficient</term>.
+      We will use function-like notation to denote elements of <m>F[[x]]</m>, favoring letters like <m>f</m>, <m>g</m>, and <m>h</m>, and writing <m>f(x)=\sum_{k=0}^\infty a_kx^k </m> when explicitly introducing the coefficients of <m>f</m>. 
+    </p>
+    <p>
+      Since <m>F[[x]]</m> is equal to <m>F^\N</m> but with a different choice of notation, it inherits the notion of equality of <m>F^\N</m>, as well as its vector space structure. That is given any power series <m>f(x)=\sum_{k=0}^\infty a_kx^k</m> and <m>g(x)=\sum_{k=0}^\infty b_kx^k</m> and any scalar <m>c\in F</m>, we have 
+      <md>
+        <mrow>f=g \amp \iff a_k=b_k \text{ for all } k\in \N</mrow>
+        <mrow>(f+g)(x) \amp =\sum_{k=0}^\infty (a_k+b_k)x^k</mrow>
+        <mrow>(cf)(x) \amp =\sum_{k=0}^\infty ca_k x^k</mrow>
+      </md>.
+      As an additional layer of algebraic structure, we define the <term>product</term> of two power series <m>f(x)=\sum_{k=0}^\infty a_kx^k</m> and <m>g(x)=\sum_{k=0}^\infty b_kx^k</m> as follows:
+      <md number="yes">
+        <mrow>(fg)(x) \amp =\sum_{k=0}^\infty c_kx^k \amp c_k=\sum_{j=0}^ka_jb_{k-j} \text{ for all } k\in \N</mrow>
+      </md>.
+    </p>
+  </statement>
+</definition>
+<remark>
+<title>Power series multiplication</title>
+<p>
+Power series multiplication, that extra layer of structure mentioned above, can be thought of as the motivation for using our notation <m>f(x)=\sum_{k=0}^\infty a_kx^k</m>, as opposed to the usual tuple notation <m>(a_k)_{k\in \N}</m>. For one thing, identifying <m>x^n</m> as the power series with a 1 for the <m>n</m>-th coefficient and a zero elsewhere, it is easy to see that the power series multiplication rule implies <m>x^n\cdot x^m=x^{n+m}</m> for all <m>n,m\in \N</m>. General power series multiplication can then be understood as a sort of infinite <q>foiling</q> process, where we expand a product out via distribution, collect like terms, and then distribute again: 
+<md>
+  <mrow>fg\amp =(a_0+a_1x+a_2x^2+\cdots )(b_0+b_1x+b_2x^2+\cdots)</mrow>
+  <mrow> \amp = a_0b_0+(a_0b_1+a_1b_0)x+(a_0b_2+a_1b_1+a_2b_0)x^2+\cdots</mrow>
+</md>
+</p>
+</remark>
+<remark>
+<title>Properties of power series multiplication</title>
+<p>
+It is easy to prove that power series multiplication is commutative, associative, and distributive. In more detail, for any <m>f,g,h\in F[[x]]</m>, we have 
+<md>
+  <mrow>fg \amp =gf \amp f(gh)\amp=(fg)h
+  \amp f(g+h) \amp =(g+h)f =fg+fh</mrow>
+</md>.
+Furthermore, we identify <m>F</m> as a subset of <m>F[[x]]</m> by identifying a scalar <m>c\in F</m> with the power series <m>c=c+0x+0x^2+\cdots</m>. Note that we have
+<md>
+<mrow>(c+0x+0x^2+\cdots)+(d+0x+0x^2+\cdots) \amp = (c+d)+0x+0x^2+\cdots +c+0x+0x^2+\cdots</mrow>
+  <mrow>(c+0x+0x^2+\cdots)(d+0x+0x^2+\cdots) \amp = cd+0x+0x^2+\cdots</mrow>
+</md>,
+showing that this identification of <m>F</m> as a subset of <m>F[[x]]</m> preserves the notions of addition and multiplication on <m>F</m>. 
+</p>
+</remark>
+<p>
+  We now define the set of formal polynomials <m>F[x]</m> as the subspace of <m>F[[x]]</m> consisting of all power series whose coefficients are equal to zero for all but finitely many indices. 
+</p>
+<definition xml:id="d_formal_polynomials">
+  <title>Formal polynomials</title>
+<statement>
+   <p>
+  Let <m>F</m> be a field.
+  Define the <term>polynomial ring over <m>F</m> in the indeterminate <m>x</m></term> to be the subset <m>F[x]\subseteq F[[x]]</m> of all power series whose coefficients are equal to zero for all but finitely many indices: <ie/>, 
+  <md>
+    <mrow>F[x] \amp = \{f(x)=\sum_{n=0}^\infty a_nx^n\in F[[x]]\mid a_n=0 \text{ for all } n&gt;  N \text{ for some } N\in \Z_{\geq 0} \} </mrow>
+    <mrow> \amp =\{f\in F[[x]]\mid f(x)=\sum_{n=0}^Na_nx^n \text{ for some } N\in \Z_{\geq 0}, a_n\in F\}</mrow>
+  </md>.
+  Restricted to <m>F[x]</m>, the power series multiplication rule becomes the familiar polynomial multiplication rule: 
+<md number="yes">
+    <mrow xml:id="eq_poly_mult">(\anpoly)\amp \cdot (\bmpoly) =\sum_{k=0}^{m+n}c_kx^k</mrow>
+     <mrow>c_k\amp =\sum_{j=0}^k a_j b_{k-j}</mrow>
+  </md>.
+  As illustrated above, when denoting polynomials we will usually drop all the terms with zero coefficients: <eg/>,  <m>f(x)=a_0+a_1x+\cdots +a_nx^n</m>, or <m>f(x)=\anpoly</m>.
+</p>
 
-<subsection xml:id="ss_polynomials_powerseries">
-<title>Polynomials and power series</title>
+<p>
+  Given a nonzero polynomial <m>f\in F[x]</m>, we define its <term>degree</term>, <m>\deg f</m>, to be the largest <m>n</m> satisfying <m>a_n\ne 0</m>.
+  If <m>f = \boldzero</m>, we define <m>\deg f=-\infty</m>.
+</p>
+
+<p>
+  If <m>f(x)=\anpoly</m> is a polynomial of degree <m>n\ne -\infty</m>, we call <m>a_{n}</m> the <term>leading coefficient</term> of <m>f</m>.
+  A polynomial with leading coefficient equal to <m>1\in R</m> is called <term>monic</term>.
+</p>
+    </statement>
+  </definition>
+  
+  <definition xml:id="d_poly_bounded_n">
+  <title>Polynomials of bounded degree</title>
+  <statement>
+  <p>
+  Let <m>F</m> be a field. Given <m>n\in \N</m>, we define <m>F[x]_{\deg \leq n}</m> to be the set of polynomials of <m>F[x]</m> of degree at most <m>n</m>: <ie/>,
+  <md>
+    F[x]_{\deg \leq n}=\{f\in F[x]\mid \deg f\leq n\}.
+  </md>
+  Note that the zero polynomial <m>\boldzero</m> is understood to be an element of <m>F[x]_{\deg\leq n}</m> based on the convention that <m>\deg \boldzero=-\infty&lt; n</m> for all <m>n\in \N</m>. 
+  </p>
+  </statement>
+  </definition>
+  <p>
+    Not surprisingly, the nested sets <m>F[x]_{\deg\leq n}\subseteq F[x]\subseteq F[[x]]</m> are all subspaces of one another.
+  </p>
+  <proposition xml:id="prop_poly_subspaces">
+    <statement>
+      <p>
+        Let <m>F</m> be a field and let <m>n\in \N</m>. The inclusions 
+        <md>
+          F[x]_{\deg\leq n}\subseteq F[x]\subseteq F[[x]]
+        </md>
+        are subspace inclusions: <ie/>, in the chain above, each set is a subspace of the next. 
+      </p>
+    </statement>
+    <proof>
+      <p>
+        The proof is left to the reader. 
+      </p>
+    </proof>
+  </proposition>
+  <p>
+    Besides being used to define an interesting subspace of <m>F[x]</m> and <m>F[[x]]</m>, the degree function will prove to be important to us in many ways, as the next results begin to show. 
+  </p>
+
+    <p>
+        The degree operation on <m>F[x]</m> turns out to be very useful, thanks in part to the properties articulated in the following proposition.
+    </p>
+    <proposition xml:id="prop_deg_poly">
+        <title>Polynomial degree properties</title>
+        <statement>
+            <p>
+                Let <m>F</m> be a field, and let <m>f</m> and <m>g</m> be nonzero polynomials in <m>F[x]</m>.
+                <ol>
+                    <li>
+                        <p>
+                            <m>\deg fg=\deg f+\deg g</m>.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <m>\deg(f+g)\leq \max\{\deg f, \deg g\}</m>.
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </statement>
+        <proof>
+            <p>
+                <ol>
+                    <li>
+                        <p>
+                        Assume <m>\deg f=n</m> and <m>\deg g=m</m>, so that 
+                <md>
+                    <mrow>f(x) \amp =\anpoly \amp </mrow>
+                    <mrow>g(x)\amp=\bmpoly \amp </mrow>
+                </md>,
+                where <m>a_n\ne 0</m> and <m>b_m\ne 0</m>. From the polynomial multiplication rule given in <xref ref="eq_poly_mult"/>, we see that 
+                <md>
+                    <mrow>fg(x) \amp =a_nb_mx^{n+m}+\text{terms of lower degree}</mrow>
+                </md>.
+                It follows that <m>\deg fg\leq n+m=\deg f+\deg g</m>. If <m>F</m> is an integral domain, then <m>a_nb_m\ne 0</m> and thus <m>\deg fg=m+n=\deg f+\deg g</m>. 
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            The proof is left to the reader. 
+                        </p>
+                    </li>
+                </ol>
+            </p>
+        </proof>
+    </proposition>
+    <theorem xml:id="th_division_alg_poly">
+      <title>Division algorithm for polynomials</title>
+      <statement>
+        <p>
+          Let <m>F</m> be a field, let <m>f,g\in F[x]</m>, and suppose <m>g\ne \boldzero</m>. There is a unique pair of polynomials <m>(q,r)\in F[x]\times F[x]</m> satisfying the following conditions. 
+          <ol marker="(i)">
+            <li>
+              <p>
+                <m>f=qg+r</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>r=\boldzero</m> or <m>0\leq \deg r&lt; \deg g</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The proof is left as a homework exercise. 
+        </p>
+      </proof>
+    </theorem>
+    <definition xml:id="d_poly_roots">
+    <title>Roots of polynomials</title>
+    <statement>
+    <p>
+    Let <m>F</m> be a field. Given a polynomial <m>f(x)=\anpoly\in F[x]</m> and element <m>r\in F</m>, we define 
+    <md>
+      f(r)=a_nr^n+a_{n-1}r^{n-1}+\cdots a_1r+a_0\in F
+    </md>.
+    An element <m>r\in F</m> is a <term>root</term> of <m>f</m> if <m>f(r)=0</m>. 
+    </p>
+    </statement>
+    </definition>
+    
+    <corollary xml:id="cor_poly_distinct_roots">
+    <title>Distinct roots of polynomials</title>
+      <statement>
+        <p>
+          Let <m>F</m> be a field, and let <m>f\in F[x]</m>. 
+          <ol>
+            <li>
+              <p>
+                For all <m>r\in F</m>, we have <m>f(r)=0</m> if and only if <m>f=(x-r)g(x)</m> for some polynomial <m>g\in F[x]</m>. 
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume <m>f\ne \boldzero</m>. If <m>\deg f=n</m>, then <m>f</m> has at most <m>n</m> distinct roots. 
+              </p>
+            </li>
+            <li>
+              <p>
+              Assume <m>n\in \N</m>, and that <m>f,g\in F[x]</m> satisfy <m>\deg f=\deg g=n</m>. If there are <m>n+1</m> distinct elements <m>r_1,r_2,\dots, r_{n+1}\in F</m> such that <m>f(r_i)=g(r_i)</m>, then <m>f=g</m>. 
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          The proof is left as a homework exercise. 
+        </p>
+      </proof>
+    </corollary>
+</subsection>
+<subsection xml:id="ss_function_spaces">
+<title>Function spaces</title>
 <definition xml:id="d_polynomials">
 <title>Polynomial functions</title>
 <statement>
 <p>
-  Let <m>F</m> be a field, and let <m>I</m> be a nonempty subset of <m>F</m>. Given a nonnegative integer <m>n</m>, we define <m>P_n(I)</m> to be the set of all polynomial functions on <m>I</m> of degree at most <m>n</m>: <ie/>, 
+  Let <m>F</m> be a field, and let <m>I</m> be a nonempty subset of <m>F</m>. A function <m>f\in \mathcal{F}(I,F)</m> is a <term>polynomial function</term> if there is a formal polynomial <m>g\in F[x]</m> such that <m>f(x)=g(x)</m> for all <m>x\in I</m>. We say that the polynomial <m>g</m> <term>represents</term> <m>f</m> in this case.
+</p>
+<p>
+  We define <m>P(I)</m> to be the set of all polynomial functions on <m>I</m>, and we define <m>P_n(I)</m> to the set of all functions <m>f\in \mathcal{F}(I,F)</m> that can be represented by a polynomial of degree at most <m>n</m>: <ie/>, 
   <md>
-    P_n(I)=\{f\in \mathcal{F}(I,F)\mid f(x)=g(x) \text{ for all } x\in I \text{ for some } g\in F[x] \text{ with } \deg g\leq n\}
-  </md>.
-  Lastly we define <m>P(I)</m> to be the set of all polynomial functions on <m>I</m>. Since any polynomial on <m>I</m> is of the form <m>f(x)=\anpoly</m> for some <m>n\in \Z_{\geq 0}</m>,  we have 
-  <md>
-    P(I)=\bigcup_{n=0}^\infty P_n(I)
+    <mrow>P(I) \amp =\{f\in \mathcal{F}(I,F)\mid f(x)=g(x) \text{ for all } x\in I, \text{ for some } g\in F[x]\}</mrow>
+    <mrow>P_n(I) \amp =\{f\in \mathcal{F}(I,F)\mid f(x)=g(x) \text{ for all } x\in I, \text{ for some } g\in F[x]_{\deg\leq n}\}</mrow>
   </md>.
 </p>
 </statement>
 </definition>
-<theorem xml:id="th_polynomial_space">
+<remark>
+<title>Formal polynomials and polynomial functions</title>
+<p>
+There is a subtle issue lurking behind this polynomial function business: namely, it is possible that a polynomial function <m>f\in P(I)</m> can be represented by more than one formal polynomial <m>g\in F[x]</m>. Indeed, consider the case where the subset <m>I\subseteq F</m> is the singleton <m>I=\{1\}</m>. In this case, any function <m>f\in \mathcal{F}(I,F)</m> is completely determined by its value <m>f(1)=c</m> at the one element of the domain <m>I</m>. As a result, it is possible to give many different polynomial representation of a single function <m>f</m>. For example, the zero function <m>0_I</m> can be represented by the zero polynomial <m>\boldzero</m>, but also by <m>f(x)=(x-1)^n</m> for any <m>n\in \Z_+</m>. We see then, that we do not always have a 1-1 correspondence between elements of <m>F[x]</m> and <m>P(I)</m>. We will be able to give a much more precise analysis of the relationship between these two spaces once we introduce linear transformations. 
+</p>
+</remark>
+
+<proposition xml:id="prop_polynomial_space">
 <title>Polynomial spaces</title>
 <statement>
 <p>
@@ -219,10 +466,9 @@ Let <m>I</m> be a nonempty subset of the field <m>F</m>.
   </ol>
 </p>
 </proof>
-</theorem>
-<p>
-  Although not necessary for the proof of <xref ref="th_polynomial_space"/>, the result below will be useful to us for future discussions. In short, it says that the coefficients of a polynomial uniquely determine it (as long as the domain <m>I</m> is infinite). 
-</p>
+</proposition>
+
+
 <!-- <theorem xml:id="th_poly_equality">
 <title>Polynomial equality</title>
 <statement>
