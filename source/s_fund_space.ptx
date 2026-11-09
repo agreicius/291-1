@@ -4,7 +4,7 @@
     <title>Fundamental spaces</title>
 
     <p>
-      In addition to the null space, there are a number of other subspaces of that we naturally associate to a matrix <m>A\in \ML_{m,n}(F)</m>, and which make use of the span oepration: namely, the the <em>row space</em> and <em>column space</em> of the matrix. Taken together, these three subspaces associated to <m>A</m> are called its <em>fundamental spaces</em>.
+      In addition to the null space, there are a number of other subspaces of that we naturally associate to a matrix <m>A\in \ML_{m,n}(F)</m>, and which make use of the span operation: namely, the the <em>row space</em> and <em>column space</em> of the matrix. Taken together, these three subspaces associated to <m>A</m> are called its <em>fundamental spaces</em>.
     </p>
     <definition xml:id="d_fundamental_space">
       <title>Fundamental spaces</title>
@@ -170,7 +170,7 @@
       <title>Column space and linear systems</title>
       <statement>
         <p>
-          Let <m>A</m> be an <m>m\times n</m> matrix, and let <m>\boldb\in \R^m</m>. The following statements are equivalent. 
+          Let <m>A</m> be an <m>m\times n</m> matrix, and let <m>\boldb\in F^m</m>. The following statements are equivalent. 
           <ol>
             <li>
               <p>
@@ -179,7 +179,7 @@
             </li>
             <li>
               <p>
-                There exists <m>\boldx\in \R^n</m> such that <m>\boldb=A\boldx</m>.
+                There exists <m>\boldx\in F^n</m> such that <m>\boldb=A\boldx</m>.
               </p>
             </li>
             <li>
@@ -189,15 +189,15 @@
             </li>
           </ol>
           As a consequence, we have xre
-          <mdn>
-            <mrow xml:id="eq_col_im">\CS A \amp =\{\boldb\in \R^m \colon \boldb=A\boldx \text{ for some } \boldx\in \R^n\}</mrow>
-            <mrow xml:id="eq_col_consistent"> \amp = \{\boldb\in \R^m\colon \text{ the linear system } A\boldx=\boldb \text{ is consistent}\}</mrow>
-          </mdn>.
+          <md number="yes">
+            <mrow xml:id="eq_col_im">\CS A \amp =\{\boldb\in F^m \colon \boldb=A\boldx \text{ for some } \boldx\in F^n\}</mrow>
+            <mrow xml:id="eq_col_consistent"> \amp = \{\boldb\in F^m\colon \text{ the linear system } A\boldx=\boldb \text{ is consistent}\}</mrow>
+          </md>.
         </p>
       </statement>
       <proof>
         <p>
-          Statements (2) and (3) are equivalent by virtue of the definition of a consistent system. Statements (1) and (2) are equivalent thanks to the column method of matrix multiplication. Indeed, letting <m>\bolda_1, \bolda_2,\dots, \bolda_n\in \R^m</m> be the columns of <m>A</m>, so that 
+          Statements (2) and (3) are equivalent by virtue of the definition of a consistent system. Statements (1) and (2) are equivalent thanks to the column method of matrix multiplication. Indeed, letting <m>\bolda_1, \bolda_2,\dots, \bolda_n\in F^m</m> be the columns of <m>A</m>, so that 
           <md>
             A=\begin{bmatrix}
             \vert \amp \vert \amp \amp \vert \\
@@ -208,7 +208,7 @@
           we have 
           <md>
             <mrow>\boldb\in \CS A \amp \iff \boldb=c_1\bolda_1+c_2\bolda_2+\cdots +c_n\bolda_n \text{ for some } c_i\in \R \amp (\text{def.})</mrow>
-            <mrow> \amp \iff \boldb=A\boldx, \text{ where } \boldx=(c_1,c_2,\dots, c_n)\in \R^n \amp <xref ref="th_column_method" text="global"/></mrow>
+            <mrow> \amp \iff \boldb=A\boldx, \text{ where } \boldx=(c_1,c_2,\dots, c_n)\in F^n \amp <xref ref="th_column_method" text="global"/></mrow>
           </md>.
           The set equalities <xref first="eq_col_im" last="eq_col_consistent"/> follow immediately from the equivalence of statements (1)-(3). 
         </p>
@@ -244,7 +244,7 @@
             </li>
             <li>
               <p>
-                In general <m>\CS A </m> is not equal to <m>\CS B</m>. However, letting <m>\bolda_i, \boldb_i\in F^m</m> be the columns of <m>A</m> and <m>B</m>, respectively, the columns <m>\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_r}</m> form span <m>\CS A</m> if and only if the columns <m>\boldb_{i_1}, \boldb_{i_2},\dots, \boldb_{i_r}</m> span <m>\CS B</m>.
+                In general <m>\CS A </m> is not equal to <m>\CS B</m>. However, letting <m>\bolda_i, \boldb_i\in F^m</m> be the columns of <m>A</m> and <m>B</m>, respectively, the columns <m>\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_r}</m> form a basis of <m>\CS A</m> if and only if the columns <m>\boldb_{i_1}, \boldb_{i_2},\dots, \boldb_{i_r}</m> form a basis of <m>\CS B</m>.
               </p>
             </li>
           </ol>
