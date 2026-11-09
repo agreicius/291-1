@@ -120,15 +120,14 @@ eBookConfig.enableScratchAC = true;
 eBookConfig.acDefaultLanguage = 'python';
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.3.6';
+eBookConfig.runestone_version = '8.4.0';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.4beca1fdeed766a2.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.ebd33f6a21eed414.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.9963089870a016c8.css">
+<script src="_static/prefix-runtime.7e2ee203f2ecd6c8.bundle.js"></script><script src="_static/prefix-23.7d27cb317c36911a.bundle.js"></script><script src="_static/prefix-runestone.35a40fea06647cf2.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-runestone.7062ede5334282a6.css">
 <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/pretext-webwork/2.20/pretext-webwork.js"></script><script src="https://webwork-ptx.aimath.org/webwork2_files/node_modules/iframe-resizer/js/iframeResizer.min.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
 </head>
@@ -584,6 +583,14 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_finite_dim" class="internal"><span class="codenumber">1.17.3</span> <span class="title">Finite-dimensional vector spaces</span></a></div></li>
 </ul>
 </li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_dimention.html" class="internal"><span class="codenumber">1.18</span> <span class="title">Dimension</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_dimension" class="internal"><span class="codenumber">1.18.1</span> <span class="title">Definition and examples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_dimension_theory" class="internal"><span class="codenumber">1.18.2</span> <span class="title">Theoretical facts about dimension</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_null_col" class="internal"><span class="codenumber">1.18.3</span> <span class="title">Case study: fundamental spaces of a matrix</span></a></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter contains-active">
@@ -841,6 +848,34 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <a href="s_basis.html#th_finite_spanning" class="xref" data-knowl="./knowl/list-of/th_finite_spanning.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.17.14: Finite spanning tuple">Theorem 1.17.14</a> Finite spanning tuple</div>
 <div>
 <a href="s_basis.html#cor_finite_dim" class="xref" data-knowl="./knowl/list-of/cor_finite_dim.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.17.15: Infinite-dimensional spaces">Corollary 1.17.15</a> Infinite-dimensional spaces</div>
+<h4 class="heading hide-type" title="Section 1.18: Dimension">
+<span class="codenumber">1.18</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Dimension</span>
+</h4>
+<div>
+<a href="s_dimention.html#proc_dimension" class="xref" data-knowl="./knowl/list-of/proc_dimension.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.3: Computing dimension">Procedure 1.18.3</a> Computing dimension</div>
+<div>
+<a href="s_dimention.html#th_basis_dimension" class="xref" data-knowl="./knowl/list-of/th_basis_dimension.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.7: Basis bounds">Theorem 1.18.7</a> Basis bounds</div>
+<div>
+<a href="s_dimention.html#th_basis_contract_expand" class="xref" data-knowl="./knowl/list-of/th_basis_contract_expand.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.8: Contracting and expanding">Theorem 1.18.8</a> Contracting and expanding</div>
+<div>
+<a href="s_dimention.html#cor_street_smarts" class="xref" data-knowl="./knowl/list-of/cor_street_smarts.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.18.9: Street smarts">Corollary 1.18.9</a> Street smarts</div>
+<div>
+<a href="s_dimention.html#cor_dimension_subspace" class="xref" data-knowl="./knowl/list-of/cor_dimension_subspace.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.18.10: Dimension of subspaces">Corollary 1.18.10</a> Dimension of subspaces</div>
+<div>
+<a href="s_dimention.html#th_dimension_compendium" class="xref" data-knowl="./knowl/list-of/th_dimension_compendium.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.13: Dimension theory compendium">Theorem 1.18.13</a> Dimension theory compendium</div>
+<div>
+<a href="s_dimention.html#th_col_space" class="xref" data-knowl="./knowl/list-of/th_col_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.18: Column space and linear systems">Theorem 1.18.18</a> Column space and linear systems</div>
+<div>
+<a href="s_dimention.html#th_fundspaces_rowreduce" class="xref" data-knowl="./knowl/list-of/th_fundspaces_rowreduce.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.20: Fundamental spaces and row operations">Theorem 1.18.20</a> Fundamental spaces and row operations</div>
+<div>
+<a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/list-of/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">Procedure 1.18.23</a> Fundamental spaces</div>
+<div>
+<a href="s_dimention.html#th_rank_nullity_matrix" class="xref" data-knowl="./knowl/list-of/th_rank_nullity_matrix.html" data-reveal-label="Reveal" data-close-label="Close" title="Corollary 1.18.26: Rank-nullity for matrices">Corollary 1.18.26</a> Rank-nullity for matrices</div>
+<div>
+<a href="s_dimention.html#proc_contract_extend" class="xref" data-knowl="./knowl/list-of/proc_contract_extend.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.31: Contracting and extending to bases of F^n">Procedure 1.18.31</a> Contracting and extending to bases of <span class="process-math">\(F^n\)</span>
+</div>
+<div>
+<a href="s_dimention.html#th_invertibility_fund_spaces" class="xref" data-knowl="./knowl/list-of/th_invertibility_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.34: Invertibility theorem">Theorem 1.18.34</a> Invertibility theorem</div>
 <div class="autopermalink" data-description="Appendix D: Theory and procedures"><a href="#appendix-thms" title="Copy heading and permalink for Appendix D: Theory and procedures" aria-label="Copy heading and permalink for Appendix D: Theory and procedures">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="appendix-defs.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="appendix-egs.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="theorem theorem-like"><h4 class="heading">
+<span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.18.8</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Contracting and expanding.</span>
+</h4>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(V\)</span> be a vector space of dimension <span class="process-math">\(n\text{,}\)</span> and let <span class="process-math">\(S\)</span> be a tuple of vectors of <span class="process-math">\(V\text{.}\)</span>
+</div>
+<ol class="decimal" id="th_basis_contract_expand-2-1-5">
+<li>
+<span class="heading li--heading"><span class="title li--heading-title">Contract to basis.</span></span><div class="para">If <span class="process-math">\(S\)</span> spans <span class="process-math">\(V\text{,}\)</span> then there is a subtuple of <span class="process-math">\(S\)</span> that is a basis of <span class="process-math">\(V\text{:}\)</span> i.e., we can <dfn class="terminology">contract</dfn> a spanning set to a basis.<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-2-1-5-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1: Contract to basis"><a href="#th_basis_contract_expand-2-1-5-1" title="Copy heading and permalink for Item 1: Contract to basis" aria-label="Copy heading and permalink for Item 1: Contract to basis">🔗</a></div>
+</li>
+<li>
+<span class="heading li--heading"><span class="title li--heading-title">Extend to basis.</span></span><div class="para">If <span class="process-math">\(S\)</span> is linearly independent, then <span class="process-math">\(S\)</span> is a subtuple of a basis of <span class="process-math">\(V\text{:}\)</span> i.e., we can <dfn class="terminology">extend</dfn> a linearly independent tuple to a basis.<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-2-1-5-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2: Extend to basis"><a href="#th_basis_contract_expand-2-1-5-2" title="Copy heading and permalink for Item 2: Extend to basis" aria-label="Copy heading and permalink for Item 2: Extend to basis">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Theorem 1.18.8: Contracting and expanding"><a href="#th_basis_contract_expand" title="Copy heading and permalink for Theorem 1.18.8: Contracting and expanding" aria-label="Copy heading and permalink for Theorem 1.18.8: Contracting and expanding">🔗</a></div></article><details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para logical">
+<ol class="decimal" id="th_basis_contract_expand-3-1-1">
+<li>
+<div class="para">Let <span class="process-math">\(S=(v_i)_{i\in I}\)</span> and assume <span class="process-math">\(\Span S=V\text{.}\)</span> We will assume that <span class="process-math">\(S\)</span> is finite: i.e., <span class="process-math">\(\abs{I}=n&lt; \infty\text{.}\)</span> (We leave as a homework exercise the case where <span class="process-math">\(S\)</span> is infinite.) Since <span class="process-math">\(I\)</span> is finite, so too is the set <span class="process-math">\(\mathcal{P}(I)\)</span> of all subsets <span class="process-math">\(J\)</span> of <span class="process-math">\(I\text{:}\)</span> in fact, we have <span class="process-math">\(\mathcal{P}(I)=2^n\text{.}\)</span> It follows that there are <span class="process-math">\(2^n\)</span> different subtuples <span class="process-math">\((v_j)_{j\in J}\)</span>  of <span class="process-math">\(S\text{.}\)</span> Let <span class="process-math">\(\mathcal{S}=\{S_{1},S_{2},\dots, S_{r}\}\)</span> be the set of all subtuples of <span class="process-math">\(S\)</span> satisfying <span class="process-math">\(\Span S_k=V\text{,}\)</span> and let <span class="process-math">\(S'\)</span> be any element of <span class="process-math">\(\mathcal{S}\)</span> of minimal length: i.e., we have <span class="process-math">\(\Span S'=V\text{,}\)</span> and <span class="process-math">\(\Span S''\ne V\)</span> for any subtuple <span class="process-math">\(S''\)</span> of <span class="process-math">\(S\)</span> with <span class="process-math">\(\len S'' &lt; \len S'\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">We claim that <span class="process-math">\(S'\)</span>  is linearly independent, and hence a basis of <span class="process-math">\(V\text{,}\)</span> as desired. We give a proof by contradiction. If <span class="process-math">\(S'=(v_{j})_{j\in J}\)</span> were linearly dependent, then by <a href="s_span_ind.html#th_span_ind" class="xref" data-knowl="./knowl/xref/th_span_ind.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.12: Span and independence">Theorem 1.6.12</a>, there is some index <span class="process-math">\(j_0\in J\)</span> such that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_span_ind.html">
+\begin{equation*}
+\Span (v_j)_{j\in J-\{j_0\}}=\Span(v_j)_{j\in J}=V\text{.}
+\end{equation*}
+</div>
+<div class="para">But then the subtuple <span class="process-math">\(S''=(v_j)_{j\in J-\{j_0\}}\)</span> would satisfy <span class="process-math">\(\Span S''=V\)</span> and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_span_ind.html">
+\begin{equation*}
+\len S''=\abs{J}-1=\len S'-1&lt; \len S'\text{,}
+\end{equation*}
+</div>
+<div class="para">contradicting the minimal length of <span class="process-math">\(S'\text{.}\)</span> We conclude that <span class="process-math">\(S'\)</span> must be linearly independent.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 1"><a href="#th_basis_contract_expand-3-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li>
+<div class="para logical">
+<div class="para">Assume <span class="process-math">\(S\)</span> is linearly independent. Since <span class="process-math">\(\dim V=n\text{,}\)</span> we must have <span class="process-math">\(\len S\leq n\text{,}\)</span> and hence we can write <span class="process-math">\(S=(v_1,v_2,\dots, v_m)\)</span> for some <span class="process-math">\(m\leq n\text{.}\)</span>  The procedure below constructs a sequence of tuples</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_span_ind.html ./knowl/xref/th_basis_dimension.html">
+\begin{equation*}
+S=S_0, S_1\dots \subseteq S_k=B
+\end{equation*}
+</div>
+<div class="para">such that <span class="process-math">\(S_i\)</span> is a subtuple of <span class="process-math">\(S_{i+1}\)</span> for all <span class="process-math">\(0\leq i\leq k\)</span> and <span class="process-math">\(B=S_k\)</span> is a basis of <span class="process-math">\(V\text{.}\)</span>
+</div>
+<ul class="disc" id="th_basis_contract_expand-3-1-1-2-1-12">
+<li>
+<span class="heading li--heading"><span class="title li--heading-title">Initialization.</span></span><div class="para">Let <span class="process-math">\(S=S_0=(v_1,v_2,\dots, v_m)\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1-1-2-1-12-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Initialization"><a href="#th_basis_contract_expand-3-1-1-2-1-12-1" title="Copy heading and permalink for Item: Initialization" aria-label="Copy heading and permalink for Item: Initialization">🔗</a></div>
+</li>
+<li>
+<span class="heading li--heading"><span class="title li--heading-title">Expansion loop.</span></span><div class="para logical">
+<div class="para">Suppose <span class="process-math">\(S_i=(v_1,v_2,\dots, v_{m+i})\text{.}\)</span> If <span class="process-math">\(\Span S_i=V\text{,}\)</span> return <span class="process-math">\(B=S_i\text{.}\)</span> Otherwise, define</div>
+<div class="displaymath process-math">
+\begin{equation*}
+S_{i+1}=(v_1,v_2,\dots, v_{m+i}, v_{m+i+1})\text{,}
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(v_{m+i+1}\)</span> is any element of <span class="process-math">\(V\)</span> that is not contained in <span class="process-math">\(\Span S_i\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1-1-2-1-12-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item: Expansion loop"><a href="#th_basis_contract_expand-3-1-1-2-1-12-2" title="Copy heading and permalink for Item: Expansion loop" aria-label="Copy heading and permalink for Item: Expansion loop">🔗</a></div>
+</li>
+</ul>
+<div class="para">Some observations:</div>
+<ol class="lower-roman ol-marker-1" id="th_basis_contract_expand-3-1-1-2-1-13">
+<li>
+<div class="para">For all <span class="process-math">\(0\leq i\leq k\)</span> the tuple <span class="process-math">\(S_i\)</span> is linearly independent. This can be shown by induction, the crucial point being that if <span class="process-math">\(S_i\)</span> is linearly independent, then so is <span class="process-math">\(S_{i+1}\text{,}\)</span> precisely since <span class="process-math">\(v_{m+i+1}\notin \Span(v_1,v_2,\dots, v_{m+i})\text{.}\)</span> (This follows from <a href="s_span_ind.html#th_span_ind" class="xref" data-knowl="./knowl/xref/th_span_ind.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.6.12: Span and independence">Theorem 1.6.12</a>.)<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1-1-2-1-13-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2.i"><a href="#th_basis_contract_expand-3-1-1-2-1-13-1" title="Copy heading and permalink for Item 2.i" aria-label="Copy heading and permalink for Item 2.i">🔗</a></div>
+</li>
+<li>
+<div class="para">The procedure must halt. Why? Since <span class="process-math">\(\dim V=n\text{,}\)</span> and since each <span class="process-math">\(S_i\)</span> is linearly independent, we must have <span class="process-math">\(\len S_i\leq n\)</span> for all <span class="process-math">\(i\)</span> by <a href="s_dimention.html#th_basis_dimension" class="xref" data-knowl="./knowl/xref/th_basis_dimension.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.7: Basis bounds">Theorem 1.18.7</a>. Since <span class="process-math">\(\len S_i=m+i\text{,}\)</span> the procedure must halt in at most <span class="process-math">\(i=n-m\)</span> steps.<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1-1-2-1-13-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2.ii"><a href="#th_basis_contract_expand-3-1-1-2-1-13-2" title="Copy heading and permalink for Item 2.ii" aria-label="Copy heading and permalink for Item 2.ii">🔗</a></div>
+</li>
+</ol>
+<div class="para">From (ii) we may assume the procedure halts at <span class="process-math">\(S_k\)</span> for some <span class="process-math">\(k\geq 0\text{.}\)</span> From (i) we know that <span class="process-math">\(S_k\)</span> is linearly independent. Furthermore, since the procedure halts at <span class="process-math">\(S_k\text{,}\)</span> we know that <span class="process-math">\(\Span S_k=V\text{.}\)</span> It follows that <span class="process-math">\(B=S_k\)</span> is a basis containing <span class="process-math">\(S\text{,}\)</span> as desired.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2"><a href="#th_basis_contract_expand-3-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_basis_contract_expand-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Proof 1.18.8.1"><a href="#th_basis_contract_expand-3" title="Copy heading and permalink for Proof 1.18.8.1" aria-label="Copy heading and permalink for Proof 1.18.8.1">🔗</a></div></article></details><span class="incontext"><a class="internal" href="s_dimention.html#th_basis_contract_expand">in-context</a></span>
+</body>
+</html>

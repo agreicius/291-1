@@ -120,15 +120,14 @@ eBookConfig.enableScratchAC = true;
 eBookConfig.acDefaultLanguage = 'python';
 eBookConfig.build_info = "";
 eBookConfig.python3 = null;
-eBookConfig.runestone_version = '8.3.6';
+eBookConfig.runestone_version = '8.4.0';
 eBookConfig.jobehost = '';
 eBookConfig.proxyuri_runs = '';
 eBookConfig.proxyuri_files = '';
 eBookConfig.enable_chatcodes =  false;
 </script>
 <!--*** Runestone Services ***-->
-<script src="_static/prefix-runtime.4beca1fdeed766a2.bundle.js"></script><script src="_static/prefix-926.5c7038c8ef173faf.bundle.js"></script><script src="_static/prefix-runestone.ebd33f6a21eed414.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-926.229729d09512acc9.css">
-<link rel="stylesheet" type="text/css" href="_static/prefix-runestone.9963089870a016c8.css">
+<script src="_static/prefix-runtime.7e2ee203f2ecd6c8.bundle.js"></script><script src="_static/prefix-23.7d27cb317c36911a.bundle.js"></script><script src="_static/prefix-runestone.35a40fea06647cf2.bundle.js"></script><link rel="stylesheet" type="text/css" href="_static/prefix-runestone.7062ede5334282a6.css">
 <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script><script src="_static/pretext/js/pretext-webwork/2.20/pretext-webwork.js"></script><script src="https://webwork-ptx.aimath.org/webwork2_files/node_modules/iframe-resizer/js/iframeResizer.min.js"></script><script src="_static/pretext/js/lti_iframe_resizer.js"></script><script src="https://cdn.geogebra.org/apps/deployggb.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="_static/pretext/js/pretext_search.js"></script><script src="_static/pretext/js/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
 </script>
 </head>
@@ -584,6 +583,14 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_basis.html#ss_finite_dim" class="internal"><span class="codenumber">1.17.3</span> <span class="title">Finite-dimensional vector spaces</span></a></div></li>
 </ul>
 </li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_dimention.html" class="internal"><span class="codenumber">1.18</span> <span class="title">Dimension</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_dimension" class="internal"><span class="codenumber">1.18.1</span> <span class="title">Definition and examples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_dimension_theory" class="internal"><span class="codenumber">1.18.2</span> <span class="title">Theoretical facts about dimension</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_null_col" class="internal"><span class="codenumber">1.18.3</span> <span class="title">Case study: fundamental spaces of a matrix</span></a></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-item toc-backmatter contains-active">
@@ -810,6 +817,34 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <a href="s_basis.html#eg_byinspection_R5" class="xref" data-knowl="./knowl/list-of/eg_byinspection_R5.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.10: By-inspection basis technique">Example 1.17.10</a> By-inspection basis technique</div>
 <div>
 <a href="s_basis.html#eg_byinspection_basis" class="xref" data-knowl="./knowl/list-of/eg_byinspection_basis.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.17.11: By-inspection basis technique">Example 1.17.11</a> By-inspection basis technique</div>
+<h4 class="heading hide-type" title="Section 1.18: Dimension">
+<span class="codenumber">1.18</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Dimension</span>
+</h4>
+<div>
+<a href="s_dimention.html#eg_dimension_familiar" class="xref" data-knowl="./knowl/list-of/eg_dimension_familiar.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.4: Dimensions of familiar spaces">Example 1.18.4</a> Dimensions of familiar spaces</div>
+<div>
+<a href="s_dimention.html#eg_dim_R5" class="xref" data-knowl="./knowl/list-of/eg_dim_R5.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.5: Dimension of subspace">Example 1.18.5</a> Dimension of subspace</div>
+<div>
+<a href="s_dimention.html#eg_dim_symm" class="xref" data-knowl="./knowl/list-of/eg_dim_symm.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.6: Dimension of symmetric matrices">Example 1.18.6</a> Dimension of symmetric matrices</div>
+<div>
+<a href="s_dimention.html#eg_subspace_dimension" class="xref" data-knowl="./knowl/list-of/eg_subspace_dimension.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.11: Dimension of subspace">Example 1.18.11</a> Dimension of subspace</div>
+<div>
+<a href="s_dimention.html#eg_subspaces_R3" class="xref" data-knowl="./knowl/list-of/eg_subspaces_R3.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.12: Subspaces of \R^3">Example 1.18.12</a> Subspaces of <span class="process-math">\(\R^3\)</span>
+</div>
+<div>
+<a href="s_dimention.html#eg_fund_spaces_elem" class="xref" data-knowl="./knowl/list-of/eg_fund_spaces_elem.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.16: Fundamental spaces: elementary example">Example 1.18.16</a> Fundamental spaces: elementary example</div>
+<div>
+<a href="s_dimention.html#eg_colspace_change" class="xref" data-knowl="./knowl/list-of/eg_colspace_change.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.22: Column space and row reduction">Example 1.18.22</a> Column space and row reduction</div>
+<div>
+<a href="s_dimention.html#eg_fund_spaces" class="xref" data-knowl="./knowl/list-of/eg_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.24: Fundamental spaces">Example 1.18.24</a> Fundamental spaces</div>
+<div>
+<a href="s_dimention.html#eg_rank_nullity_eg" class="xref" data-knowl="./knowl/list-of/eg_rank_nullity_eg.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.27: Rank-nullity">Example 1.18.27</a> Rank-nullity</div>
+<div>
+<a href="s_dimention.html#eg_rank_nullity" class="xref" data-knowl="./knowl/list-of/eg_rank_nullity.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.28: Using the rank-nullity theorem">Example 1.18.28</a> Using the rank-nullity theorem</div>
+<div>
+<a href="s_dimention.html#ss_vid_eg_fund_space" class="xref" data-knowl="./knowl/list-of/ss_vid_eg_fund_space.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.29: Video example: fundamental spaces">Example 1.18.29</a> Video example: fundamental spaces</div>
+<div>
+<a href="s_dimention.html#ss_vid_eg_contract_basis" class="xref" data-knowl="./knowl/list-of/ss_vid_eg_contract_basis.html" data-reveal-label="Reveal" data-close-label="Close" title="Example 1.18.32: Video example: contracting to a basis">Example 1.18.32</a> Video example: contracting to a basis</div>
 <div class="autopermalink" data-description="Appendix E: Examples"><a href="#appendix-egs" title="Copy heading and permalink for Appendix E: Examples" aria-label="Copy heading and permalink for Appendix E: Examples">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
 <a class="previous-button button" href="appendix-thms.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="appendix-sage.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
