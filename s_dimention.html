@@ -163,7 +163,7 @@ var ggbApp = new GGBApplet({"appName": "classic",
     "autoHeight": true,
     "disableAutoScale": false},
 true);
-</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_basis.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
+</script><button id="light-dark-button" class="light-dark-button button" title="Dark Mode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe51c;</span><span class="name">Dark Mode</span></button></span><span class="treebuttons"><a class="previous-button button" href="s_basis.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="up-button button" href="c_291-1.html" title="Up"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Up</span></a><a class="next-button button" href="s_transformation.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a></span><span class="nav-runestone-controls"><button onclick="runestoneComponents.popupScratchAC()" class="activecode-toggle button" title="Open Scratch ActiveCode"><span class="icon material-symbols-outlined" aria-hidden="true">&#xf097;</span><span class="name">Scratch ActiveCode</span></button></span>
 </div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(\newcommand{\Z}{{\mathbb Z}}
 \newcommand{\N}{{\mathbb N}}
 \newcommand{\Q}{{\mathbb Q}}
@@ -589,6 +589,15 @@ a_{m,1} \amp  a_{m,2} \amp  \cdots \amp  a_{m,n}\amp b_{m}
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_dimension" class="internal"><span class="codenumber">1.18.1</span> <span class="title">Definition and examples</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_dimension_theory" class="internal"><span class="codenumber">1.18.2</span> <span class="title">Theoretical facts about dimension</span></a></div></li>
 <li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_dimention.html#ss_null_col" class="internal"><span class="codenumber">1.18.3</span> <span class="title">Case study: fundamental spaces of a matrix</span></a></div></li>
+</ul>
+</li>
+<li class="toc-item toc-section">
+<div class="toc-title-box"><a href="s_transformation.html" class="internal"><span class="codenumber">1.19</span> <span class="title">Linear transformations</span></a></div>
+<ul class="structural toc-item-list">
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_transformation.html#ss_transformations_def" class="internal"><span class="codenumber">1.19.1</span> <span class="title">Definition and examples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_transformation.html#ss_transform_interesting" class="internal"><span class="codenumber">1.19.2</span> <span class="title">Interesting examples</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_transformation.html#ss_transformations_bases" class="internal"><span class="codenumber">1.19.3</span> <span class="title">Transformations and bases</span></a></div></li>
+<li class="toc-item toc-subsection"><div class="toc-title-box"><a href="s_transformation.html#ss_vs_of_lin_transformations" class="internal"><span class="codenumber">1.19.4</span> <span class="title"><span class="process-math">\(\mathcal{L}(V,W)\)</span> as a vector space</span></a></div></li>
 </ul>
 </li>
 </ul>
@@ -1274,7 +1283,7 @@ A=\begin{amatrix}[rrr]
 \CS A=\Span\{(1,1),(2,2),(3,3)\}=\Span\{(1,1)\}\text{,}
 \end{equation*}
 </div>
-<div class="para">a line in <span class="process-math">\(\R^2\)</span> passing through the origin. Since the sets <span class="process-math">\(B_1=\{(1,2,3)\}\)</span> and <span class="process-math">\(B_2=\{(1,1)\}\)</span> are each linearly independent, they are clearly bases for their spans <span class="process-math">\(\RS A \)</span> and <span class="process-math">\(\CS A\text{,}\)</span> respectively. It follows that <span class="process-math">\(\dim \RS A=\dim \CS A=1\text{.}\)</span>
+<div class="para">a line in <span class="process-math">\(\R^2\)</span> passing through the origin. Since the tuples <span class="process-math">\(B_1=\left((1,2,3)\right)\)</span> and <span class="process-math">\(B_2=\left((1,1)\right)\)</span> are each linearly independent, they are clearly bases for their spans <span class="process-math">\(\RS A \)</span> and <span class="process-math">\(\CS A\text{,}\)</span> respectively. It follows that <span class="process-math">\(\dim \RS A=\dim \CS A=1\text{.}\)</span>
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces_elem-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
@@ -1303,10 +1312,10 @@ x_1+2x_2+3x_3
 <div class="para">from which we see that</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html" id="eg_fund_spaces_elem-3-2-8">
 \begin{equation*}
-\NS A=\Span\{(-2,1,0),(-3,0,1)\}\text{.}
+\NS A=\Span\left((-2,1,0),(-3,0,1)\right)\text{.}
 \end{equation*}
 </div>
-<div class="para">Since <span class="process-math">\(B_3=\{(-2,1,0),(-3,0,1)\}\)</span> is linearly independent and spans <span class="process-math">\(\NS A\text{,}\)</span> it is a basis for <span class="process-math">\(\NS A\text{.}\)</span> We conclude <span class="process-math">\(\dim \NS A=2\text{.}\)</span>
+<div class="para">Since <span class="process-math">\(B_3=\left((-2,1,0),(-3,0,1)\right)\)</span> is linearly independent and spans <span class="process-math">\(\NS A\text{,}\)</span> it is a basis for <span class="process-math">\(\NS A\text{.}\)</span> We conclude <span class="process-math">\(\dim \NS A=2\text{.}\)</span>
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces_elem-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
@@ -1326,27 +1335,27 @@ x_1+2x_2+3x_3
 <span class="type">Theorem</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.18.18</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Column space and linear systems.</span>
 </h4>
 <div class="para logical" id="th_col_space-2-1">
-<div class="para">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(m\times n\)</span> matrix, and let <span class="process-math">\(\boldb\in F^m\text{.}\)</span> The following statements are equivalent.</div>
-<ol class="decimal" id="th_col_space-2-1-4">
-<li id="th_col_space-2-1-4-1">
-<div class="para" id="th_col_space-2-1-4-1-1">
-<span class="process-math">\(\boldb\in \CS A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">Let <span class="process-math">\(A\in\ML_{m,n}(F)\text{,}\)</span> and let <span class="process-math">\(\boldb\in F^m\text{.}\)</span> The following statements are equivalent.</div>
+<ol class="decimal" id="th_col_space-2-1-3">
+<li id="th_col_space-2-1-3-1">
+<div class="para" id="th_col_space-2-1-3-1-1">
+<span class="process-math">\(\boldb\in \CS A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item 1"><a href="#th_col_space-2-1-4-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+<div class="autopermalink" data-description="Item 1"><a href="#th_col_space-2-1-3-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
 </li>
-<li id="th_col_space-2-1-4-2">
-<div class="para" id="th_col_space-2-1-4-2-1">There exists <span class="process-math">\(\boldx\in F^n\)</span> such that <span class="process-math">\(\boldb=A\boldx\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="th_col_space-2-1-3-2">
+<div class="para" id="th_col_space-2-1-3-2-1">There exists <span class="process-math">\(\boldx\in F^n\)</span> such that <span class="process-math">\(\boldb=A\boldx\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item 2"><a href="#th_col_space-2-1-4-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+<div class="autopermalink" data-description="Item 2"><a href="#th_col_space-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
 </li>
-<li id="th_col_space-2-1-4-3">
-<div class="para" id="th_col_space-2-1-4-3-1">The linear system <span class="process-math">\(A\boldx=\boldb\)</span> is consistent.<div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-4-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="th_col_space-2-1-3-3">
+<div class="para" id="th_col_space-2-1-3-3-1">The linear system <span class="process-math">\(A\boldx=\boldb\)</span> is consistent.<div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item 3"><a href="#th_col_space-2-1-4-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
+<div class="autopermalink" data-description="Item 3"><a href="#th_col_space-2-1-3-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
 </li>
 </ol>
-<div class="para">As a consequence, we have xre</div>
-<div class="displaymath process-math" id="th_col_space-2-1-5">
+<div class="para">As a consequence, we have</div>
+<div class="displaymath process-math" id="th_col_space-2-1-4">
 \begin{align}
 \CS A \amp =\{\boldb\in F^m \colon \boldb=A\boldx \text{ for some } \boldx\in F^n\}\tag{1.18.1}\\
 \amp = \{\boldb\in F^m\colon \text{ the linear system } A\boldx=\boldb \text{ is consistent}\}\text{.}\tag{1.18.2}
@@ -1372,7 +1381,7 @@ A=\begin{bmatrix}
 \amp \iff \boldb=A\boldx, \text{ where } \boldx=(c_1,c_2,\dots, c_n)\in F^n \amp \knowl{./knowl/xref/th_column_method.html}{\text{1.9.12}}\text{.}
 \end{align*}
 </div>
-<div class="para">The set equalities <a href="s_dimention.html#th_col_space-2-1-5" class="xref" data-knowl="./knowl/xref/eq_col_im.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.18.1">(1.18.1)–(1.18.2)</a> follow immediately from the equivalence of statements (1)-(3).</div>
+<div class="para">The set equalities <a href="s_dimention.html#th_col_space-2-1-4" class="xref" data-knowl="./knowl/xref/eq_col_im.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.18.1">(1.18.1)–(1.18.2)</a> follow immediately from the equivalence of statements (1)-(3).</div>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_col_space-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Proof 1.18.18.1"><a href="#th_col_space-3" title="Copy heading and permalink for Proof 1.18.18.1" aria-label="Copy heading and permalink for Proof 1.18.18.1">🔗</a></div></article></details><article class="remark remark-like" id="ss_null_col-10"><h4 class="heading">
@@ -1437,8 +1446,8 @@ U \amp = \begin{bmatrix}1\amp 1\\ 0 \amp 0\end{bmatrix}
 <div class="para">in row echelon form. By inspection we see that</div>
 <div class="displaymath process-math" id="eg_colspace_change-2-3">
 \begin{align*}
-\CS A \amp =\Span\{(1,1)\}=\{(t,t)\colon t\in \R\}\\
-\CS U \amp =\Span\{(1,0)\}=\{(t,0)\colon t\in \R\}\text{.}
+\CS A \amp =\Span\left((1,1)\right)=\{(t,t)\colon t\in \R\}\\
+\CS U \amp =\Span\left((1,0)\right)=\{(t,0)\colon t\in \R\}\text{.}
 \end{align*}
 </div>
 <div class="para">It is clear algebraically from the two set descriptions that <span class="process-math">\(\CS A\ne \CS U\text{.}\)</span> Geometrically, the two spaces are two distinct lines in <span class="process-math">\(\R^2\)</span> passing through the origin: <span class="process-math">\(\CS A\)</span> is the line defined by the equation <span class="process-math">\(y=x\)</span> and <span class="process-math">\(\CS U\)</span> is the <span class="process-math">\(x\)</span>-axis.</div>
@@ -1463,8 +1472,8 @@ U=\begin{bmatrix}
 <div class="para">In this case we have</div>
 <div class="displaymath process-math" id="eg_colspace_change-3-3">
 \begin{align*}
-\CS A \amp =\Span\{(1,0),(1,1)\}=\R^2\\
-\CS U \amp =\Span\{(1,0),(0,1)\}=\R^2\text{,}
+\CS A \amp =\Span\left((1,0),(1,1)\right)=\R^2\\
+\CS U \amp =\Span\left((1,0),(0,1)\right)=\R^2\text{,}
 \end{align*}
 </div>
 <div class="para">and thus <span class="process-math">\(\CS A=\CS U\text{.}\)</span>
@@ -1488,10 +1497,10 @@ U=\begin{bmatrix}
 </li>
 <li id="proc_fund_spaces-2-1-3-2">
 <div class="para logical" id="proc_fund_spaces-2-1-3-2-1">
-<div class="para">Let <span class="process-math">\(t_1,t_2,\dots, t_r\)</span> be the free parameters appearing in the parametric description of solutions to the linear system <span class="process-math">\(U\boldx=\boldzero\text{,}\)</span> and for all <span class="process-math">\(1\leq i\leq r\text{,}\)</span> let <span class="process-math">\(\boldv_i\)</span> be the element of <span class="process-math">\(\NS A=\NS U\)</span> obtained by setting <span class="process-math">\(t_i=1\)</span> and <span class="process-math">\(t_j=0\)</span> for all <span class="process-math">\(j\ne i\text{.}\)</span> The set</div>
+<div class="para">Let <span class="process-math">\(t_1,t_2,\dots, t_r\)</span> be the free parameters appearing in the parametric description of solutions to the linear system <span class="process-math">\(U\boldx=\boldzero\text{,}\)</span> and for all <span class="process-math">\(1\leq i\leq r\text{,}\)</span> let <span class="process-math">\(\boldv_i\)</span> be the element of <span class="process-math">\(\NS A=\NS U\)</span> obtained by setting <span class="process-math">\(t_i=1\)</span> and <span class="process-math">\(t_j=0\)</span> for all <span class="process-math">\(j\ne i\text{.}\)</span> The tuple</div>
 <div class="displaymath process-math" id="proc_fund_spaces-2-1-3-2-1-9">
 \begin{equation*}
-B=\{\boldv_1,\boldv_2,\dots, \boldv_r\}
+B=(\boldv_1,\boldv_2,\dots, \boldv_r)
 \end{equation*}
 </div>
 <div class="para">is a basis of <span class="process-math">\(\NS A\text{.}\)</span>
@@ -1501,16 +1510,16 @@ B=\{\boldv_1,\boldv_2,\dots, \boldv_r\}
 <div class="autopermalink" data-description="Item 2"><a href="#proc_fund_spaces-2-1-3-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
 </li>
 <li id="proc_fund_spaces-2-1-3-3">
-<div class="para" id="proc_fund_spaces-2-1-3-3-1">The set of nonzero rows of <span class="process-math">\(U\)</span> is a basis for <span class="process-math">\(\RS A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="proc_fund_spaces-2-1-3-3-1">The tuple of nonzero rows of <span class="process-math">\(U\)</span> is a basis for <span class="process-math">\(\RS A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Item 3"><a href="#proc_fund_spaces-2-1-3-3" title="Copy heading and permalink for Item 3" aria-label="Copy heading and permalink for Item 3">🔗</a></div>
 </li>
 <li id="proc_fund_spaces-2-1-3-4">
 <div class="para logical" id="proc_fund_spaces-2-1-3-4-1">
-<div class="para">Let <span class="process-math">\(\bolda_i, \boldu_i\)</span> be the columns of <span class="process-math">\(A\)</span> and <span class="process-math">\(U\text{,}\)</span> respectively, and let <span class="process-math">\(\boldu_{i_1},\boldu_{i_2},\dots, \boldu_{i_s}\)</span> be the columns of <span class="process-math">\(U\)</span> that contain a leading one. The set</div>
+<div class="para">Let <span class="process-math">\(\bolda_i, \boldu_i\)</span> be the columns of <span class="process-math">\(A\)</span> and <span class="process-math">\(U\text{,}\)</span> respectively, and let <span class="process-math">\(\boldu_{i_1},\boldu_{i_2},\dots, \boldu_{i_s}\)</span> be the columns of <span class="process-math">\(U\)</span> that contain a leading one. The tuple</div>
 <div class="displaymath process-math" id="proc_fund_spaces-2-1-3-4-1-6">
 \begin{equation*}
-\{\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_s}\}
+(\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_s})
 \end{equation*}
 </div>
 <div class="para">consisting of the corresponding columns of <span class="process-math">\(A\)</span> is a basis of <span class="process-math">\(\CS A\text{.}\)</span>
@@ -1522,19 +1531,20 @@ B=\{\boldv_1,\boldv_2,\dots, \boldv_r\}
 </ol>
 <div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Procedure 1.18.23: Fundamental spaces"><a href="#proc_fund_spaces" title="Copy heading and permalink for Procedure 1.18.23: Fundamental spaces" aria-label="Copy heading and permalink for Procedure 1.18.23: Fundamental spaces">🔗</a></div></article><details id="proc_fund_spaces-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="proc_fund_spaces-3-1">
-<article class="case" id="proc_fund_spaces-3-1-1"><h5 class="heading">Null space.</h5>
-<div class="para logical" id="proc_fund_spaces-3-1-1-2">
+<div class="autopermalink" data-description="Procedure 1.18.23: Fundamental spaces"><a href="#proc_fund_spaces" title="Copy heading and permalink for Procedure 1.18.23: Fundamental spaces" aria-label="Copy heading and permalink for Procedure 1.18.23: Fundamental spaces">🔗</a></div></article><details id="proc_fund_spaces-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="proc_fund_spaces-3-1">We prove each of the three cases.s<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<article class="case" id="proc_fund_spaces-3-2"><h5 class="heading">Null space.</h5>
+<div class="para logical" id="proc_fund_spaces-3-2-2">
 <div class="para">We must show that the vectors <span class="process-math">\(\boldv_j\)</span> described form a basis for <span class="process-math">\(\NS A=\NS U\text{.}\)</span> Let <span class="process-math">\(x_1,x_2,\dots, x_n\)</span> be the unknowns of the linear system corresponding to <span class="process-math">\(U\boldx=\boldzero\text{,}\)</span> and let <span class="process-math">\(x_{i_1},x_{i_2},\dots, x_{i_r}\)</span> be the free variables among these unknowns. Thus <span class="process-math">\(\boldv_j\)</span> is the vector obtained from the parametric description of the solutions to <span class="process-math">\(U\boldx=\boldzero\)</span> obtained by setting <span class="process-math">\(x_{i_j}=1\)</span> and <span class="process-math">\(x_{i_k}=0\)</span> for all <span class="process-math">\(k\ne j\text{.}\)</span> Suppose we have</div>
-<div class="displaymath process-math" id="proc_fund_spaces-3-1-1-2-11">
+<div class="displaymath process-math" id="proc_fund_spaces-3-2-2-11">
 \begin{equation*}
 a_1\boldv_1+a_2\boldv_2+\cdots +a_r\boldv_r=\boldzero\text{.}
 \end{equation*}
 </div>
-<div class="para">For each <span class="process-math">\(1\leq j\leq r\text{,}\)</span> since <span class="process-math">\(\boldv_j\)</span> is the only vector with a nonzero entry in the <span class="process-math">\(i_j\)</span>-th term, we must have <span class="process-math">\(a_j=0\text{.}\)</span> This proves that the set <span class="process-math">\(B=\{\boldv_1,\boldv_2,\dots, \boldv_r\}\)</span> is linearly independent.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-1-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">For each <span class="process-math">\(1\leq j\leq r\text{,}\)</span> since <span class="process-math">\(\boldv_j\)</span> is the only vector with a nonzero entry in the <span class="process-math">\(i_j\)</span>-th term, we must have <span class="process-math">\(a_j=0\text{.}\)</span> This proves that the tuple <span class="process-math">\(B=(\boldv_1,\boldv_2,\dots, \boldv_r)\)</span> is linearly independent.</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para logical" id="proc_fund_spaces-3-1-1-3">
+<div class="para logical" id="proc_fund_spaces-3-2-3">
 <div class="para">We now show that <span class="process-math">\(\Span B=\NS A\text{.}\)</span> Assume <span class="process-math">\(\boldv\in \NS U\text{,}\)</span> and let <span class="process-math">\(t_{i_j}\)</span> be the <span class="process-math">\(i_j\)</span>-th entry of <span class="process-math">\(\boldv\)</span> for each <span class="process-math">\(1\leq j\leq r\text{.}\)</span> In other words, these are the entries of <span class="process-math">\(\boldv\)</span> corresponding to the free variables of the system. We claim that</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_null_space_basis.html ./knowl/xref/proc_solveSystem.html" id="eq_null_space_basis">
 \begin{equation}
@@ -1542,17 +1552,15 @@ a_1\boldv_1+a_2\boldv_2+\cdots +a_r\boldv_r=\boldzero\text{.}
 \end{equation}
 </div>
 <div class="para">from which it follows that <span class="process-math">\(\Span B=\NS U\text{.}\)</span> To see why this is true, let <span class="process-math">\(\boldw\)</span> be the right side of <a href="s_dimention.html#eq_null_space_basis" class="xref" data-knowl="./knowl/xref/eq_null_space_basis.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.18.3">(1.18.3)</a>. Observe first that <span class="process-math">\(\boldw\)</span> is an element of <span class="process-math">\(\NS U\)</span> (since <span class="process-math">\(\boldv_i\in \NS U\)</span> for all <span class="process-math">\(i\)</span>), and thus a solution to <span class="process-math">\(U\boldx=\boldzero\text{.}\)</span> Furthermore, arguing as above, we see that the <span class="process-math">\(i_k\)</span>-th entry of <span class="process-math">\(\boldw\)</span> is equal to <span class="process-math">\(t_{i_k}\)</span> for all <span class="process-math">\(1\leq k\leq r\text{.}\)</span>  But according to <a href="s_linsys_solve.html#proc_solveSystem" class="xref" data-knowl="./knowl/xref/proc_solveSystem.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.8.21: Solving linear systems">Procedure 1.8.21</a>, there is a <em class="emphasis">unique</em> solution corresponding to each choice of assignment of the free variables <span class="process-math">\(x_{i_k}\text{.}\)</span> Since <span class="process-math">\(\boldv\)</span> and <span class="process-math">\(\boldw\)</span> are both solutions to <span class="process-math">\(A\boldx=\boldzero\)</span> and have the same free variable entries, we conclude that <span class="process-math">\(\boldv=\boldw\text{,}\)</span> as desired.</div>
-<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-1-1-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-2-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Case: Null space"><a href="#proc_fund_spaces-3-1-1" title="Copy heading and permalink for Case: Null space" aria-label="Copy heading and permalink for Case: Null space">🔗</a></div></article> <article class="case" id="proc_fund_spaces-3-1-2"><h5 class="heading">Row space.</h5>
-<div class="para" id="proc_fund_spaces-3-1-2-2">Since <span class="process-math">\(\RS A=\RS U\)</span> by <a href="s_dimention.html#th_fundspaces_rowreduce" class="xref" data-knowl="./knowl/xref/th_fundspaces_rowreduce.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.20: Fundamental spaces and row operations">Theorem 1.18.20</a>, it suffices to show that the that the nonzero rows of <span class="process-math">\(U\)</span> form a basis of <span class="process-math">\(\RS U\text{.}\)</span> Clearly the nonzero rows span <span class="process-math">\(\RS U\text{,}\)</span> since any linear combination of all the rows of <span class="process-math">\(U\)</span> can be expressed as a linear combination of the nonzero rows. Furthermore, since <span class="process-math">\(U\)</span> is in row echelon form, the staircase pattern of the leading ones appearing in the nonzero rows assures that these row vectors are linearly independent.<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Case: Null space"><a href="#proc_fund_spaces-3-2" title="Copy heading and permalink for Case: Null space" aria-label="Copy heading and permalink for Case: Null space">🔗</a></div></article><article class="case" id="proc_fund_spaces-3-3"><h5 class="heading">Row space.</h5>
+<div class="para" id="proc_fund_spaces-3-3-2">Since <span class="process-math">\(\RS A=\RS U\)</span> by <a href="s_dimention.html#th_fundspaces_rowreduce" class="xref" data-knowl="./knowl/xref/th_fundspaces_rowreduce.html" data-reveal-label="Reveal" data-close-label="Close" title="Theorem 1.18.20: Fundamental spaces and row operations">Theorem 1.18.20</a>, it suffices to show that the that the nonzero rows of <span class="process-math">\(U\)</span> form a basis of <span class="process-math">\(\RS U\text{.}\)</span> Clearly the nonzero rows span <span class="process-math">\(\RS U\text{,}\)</span> since any linear combination of all the rows of <span class="process-math">\(U\)</span> can be expressed as a linear combination of the nonzero rows. Furthermore, since <span class="process-math">\(U\)</span> is in row echelon form, the staircase pattern of the leading ones appearing in the nonzero rows assures that these row vectors are linearly independent.<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Case: Row space"><a href="#proc_fund_spaces-3-1-2" title="Copy heading and permalink for Case: Row space" aria-label="Copy heading and permalink for Case: Row space">🔗</a></div></article> <article class="case" id="proc_fund_spaces-3-1-3"><h5 class="heading">Column space.</h5>
-<div class="para" id="proc_fund_spaces-3-1-3-2">Left as a homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-1-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Case: Row space"><a href="#proc_fund_spaces-3-3" title="Copy heading and permalink for Case: Row space" aria-label="Copy heading and permalink for Case: Row space">🔗</a></div></article><article class="case" id="proc_fund_spaces-3-4"><h5 class="heading">Column space.</h5>
+<div class="para" id="proc_fund_spaces-3-4-2">Left as a homework exercise.<div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-4-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Case: Column space"><a href="#proc_fund_spaces-3-1-3" title="Copy heading and permalink for Case: Column space" aria-label="Copy heading and permalink for Case: Column space">🔗</a></div></article><div class="autopermalink" data-description="Paragraph"><a href="#proc_fund_spaces-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Proof 1.18.23.1"><a href="#proc_fund_spaces-3" title="Copy heading and permalink for Proof 1.18.23.1" aria-label="Copy heading and permalink for Proof 1.18.23.1">🔗</a></div></article></details><article class="example example-like" id="eg_fund_spaces"><h4 class="heading">
+<div class="autopermalink" data-description="Case: Column space"><a href="#proc_fund_spaces-3-4" title="Copy heading and permalink for Case: Column space" aria-label="Copy heading and permalink for Case: Column space">🔗</a></div></article><div class="autopermalink" data-description="Proof 1.18.23.1"><a href="#proc_fund_spaces-3" title="Copy heading and permalink for Proof 1.18.23.1" aria-label="Copy heading and permalink for Proof 1.18.23.1">🔗</a></div></article></details><article class="example example-like" id="eg_fund_spaces"><h4 class="heading">
 <span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.18.24</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Fundamental spaces.</span>
 </h4>
 <div class="para logical" id="eg_fund_spaces-2-1">
@@ -1572,7 +1580,7 @@ A=\begin{amatrix}[rrrrr]
 <div class="solutions"><details id="eg_fund_spaces-3" class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
 <div class="para logical" id="eg_fund_spaces-3-1">
 <div class="para">The matrix <span class="process-math">\(A\)</span> row reduces as</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html ./knowl/xref/proc_fund_spaces.html" id="eg_fund_spaces-3-1-2">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html" id="eg_fund_spaces-3-1-2">
 \begin{equation*}
 A\xrightarrow{\text{row ops.}} U=\begin{amatrix}[rrrrr]
 \boxed{1} \amp 3 \amp 1 \amp -3 \amp 2 \\
@@ -1583,24 +1591,23 @@ A\xrightarrow{\text{row ops.}} U=\begin{amatrix}[rrrrr]
 \end{equation*}
 </div>
 <div class="para">To compute <span class="process-math">\(\NS A=\NS U\text{,}\)</span> we first give a parametric description of the solutions to the linear system represented by <span class="process-math">\(U\boldx=\boldzero\text{,}\)</span> following <a href="s_linsys_solve.html#proc_solveSystem" class="xref" data-knowl="./knowl/xref/proc_solveSystem.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.8.21: Solving linear systems">Procedure 1.8.21</a>. We conclude</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html ./knowl/xref/proc_fund_spaces.html" id="eg_fund_spaces-3-1-6">
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html" id="eg_fund_spaces-3-1-6">
 \begin{equation*}
 \NS A=\{(2s-6t,-s+3t ,s,t,0)\colon s,t\in \R\}\text{.}
 \end{equation*}
 </div>
-<div class="para">From this parametric description we extract by inspection the spanning set</div>
-<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html ./knowl/xref/proc_fund_spaces.html" id="eg_fund_spaces-3-1-7">
-\begin{equation*}
-B_1=\{\boldx_1=(2,-1,1,0,0), \boldv_2=(-6,3,0,1,0)\}\text{.}
-\end{equation*}
+<div class="para">We produce a basis for <span class="process-math">\(\NS A\)</span> from this description by extracting the vectors corresponding to the two choices <span class="process-math">\((s,t)=(1,0)\)</span> and <span class="process-math">\((s,t)=(0,1)\text{:}\)</span>
 </div>
-<div class="para">Since <span class="process-math">\(B_1\)</span> is easily seen to be linearly independent, we conclude it is a basis. (Alternatively, <span class="process-math">\(B_1\)</span> is the basis one obtains using <a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/xref/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">Procedure 1.18.23</a>. That is, <span class="process-math">\(\boldv_1\)</span> is the result of assigning <span class="process-math">\(s=1,t=0\)</span> in our parametric description, and <span class="process-math">\(\boldv_2\)</span> is the result of assigning <span class="process-math">\(s=0\text{,}\)</span> <span class="process-math">\(t=1\text{.}\)</span>) Since <span class="process-math">\(\abs{B_1}=2\text{,}\)</span> we have <span class="process-math">\(\dim \NS A=2\text{.}\)</span>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/proc_solveSystem.html" id="eg_fund_spaces-3-1-10">
+\begin{equation*}
+B_1=\left((2,-1,1,0,0), (-6,3,0,1,0)\right)\text{.}
+\end{equation*}
 </div>
 <div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="eg_fund_spaces-3-2">According to <a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/xref/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">Procedure 1.18.23</a>, the nonzero rows of <span class="process-math">\(U\)</span> form a basis of <span class="process-math">\(\RS A\text{.}\)</span> Thus <span class="process-math">\(B_2=\{(1,3,1-3,2),(0,1,1-3,0),(0,0,0,0,1)\}\)</span> is a basis of <span class="process-math">\(\RS A\text{,}\)</span> and <span class="process-math">\(\dim \RS A=3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="eg_fund_spaces-3-2">According to <a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/xref/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">Procedure 1.18.23</a>, the nonzero rows of <span class="process-math">\(U\)</span> form a basis of <span class="process-math">\(\RS A\text{.}\)</span> Thus <span class="process-math">\(B_2=\left((1,3,1-3,2),(0,1,1-3,0),(0,0,0,0,1)\right)\)</span> is a basis of <span class="process-math">\(\RS A\text{,}\)</span> and <span class="process-math">\(\dim \RS A=3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="para" id="eg_fund_spaces-3-3">Lastly, since the first, second and fifth columns of <span class="process-math">\(U\)</span> contain leading ones, the corresponding columns of <span class="process-math">\(A\)</span> form a basis of <span class="process-math">\(\CS A\text{.}\)</span> Thus <span class="process-math">\(B_{3}=\{(1,0,-1,1),(3,1,-2,2),(2,0,-1,2)\}\)</span> is a basis of <span class="process-math">\(\CS A\text{,}\)</span> and <span class="process-math">\(\dim \CS A=3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para" id="eg_fund_spaces-3-3">Lastly, since the first, second and fifth columns of <span class="process-math">\(U\)</span> contain leading ones, the corresponding columns of <span class="process-math">\(A\)</span> form a basis of <span class="process-math">\(\CS A\text{.}\)</span> Thus <span class="process-math">\(B_{3}=\left((1,0,-1,1),(3,1,-2,2),(2,0,-1,2)\right)\)</span> is a basis of <span class="process-math">\(\CS A\text{,}\)</span> and <span class="process-math">\(\dim \CS A=3\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#eg_fund_spaces-3-3" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="autopermalink" data-description="Solution 1.18.24.1"><a href="#eg_fund_spaces-3" title="Copy heading and permalink for Solution 1.18.24.1" aria-label="Copy heading and permalink for Solution 1.18.24.1">🔗</a></div>
 </div></details></div>
@@ -1630,8 +1637,8 @@ n=\dim\NS A+\dim \CS A\text{.}
 <span class="type">Definition</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.18.25</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Rank and nullity of matrix.</span>
 </h4>
 <div class="para logical" id="d_rank_nullity_matrix-6-1">
-<div class="para">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(m\times n\)</span> matrix. The <dfn class="terminology">nullity</dfn> of <span class="process-math">\(A\text{,}\)</span> denoted <span class="process-math">\(\nullity A\text{,}\)</span> is defined as the dimension of the null space of <span class="process-math">\(A\text{;}\)</span> the <dfn class="terminology">rank</dfn> of <span class="process-math">\(A\text{,}\)</span> denoted <span class="process-math">\(\rank A\text{,}\)</span> is defined as the dimension of the column space of <span class="process-math">\(A\text{.}\)</span> In other words, we have</div>
-<div class="displaymath process-math" id="d_rank_nullity_matrix-6-1-11">
+<div class="para">Let <span class="process-math">\(A\in\ML_{m,n}(F)\text{.}\)</span> The <dfn class="terminology">nullity</dfn> of <span class="process-math">\(A\text{,}\)</span> denoted <span class="process-math">\(\nullity A\text{,}\)</span> is defined as the dimension of the null space of <span class="process-math">\(A\text{;}\)</span> the <dfn class="terminology">rank</dfn> of <span class="process-math">\(A\text{,}\)</span> denoted <span class="process-math">\(\rank A\text{,}\)</span> is defined as the dimension of the column space of <span class="process-math">\(A\text{.}\)</span> In other words, we have</div>
+<div class="displaymath process-math" id="d_rank_nullity_matrix-6-1-10">
 \begin{align*}
 \nullity A \amp =\dim \NS A \amp \rank A\amp =\dim \CS A\text{.}
 \end{align*}
@@ -1642,31 +1649,32 @@ n=\dim\NS A+\dim \CS A\text{.}
 <span class="type">Corollary</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.18.26</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Rank-nullity for matrices.</span>
 </h4>
 <div class="para logical" id="th_rank_nullity_matrix-2-1">
-<div class="para">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(m\times n\)</span> matrix.</div>
-<ol class="decimal" id="th_rank_nullity_matrix-2-1-3">
-<li id="th_rank_nullity_matrix-2-1-3-1">
-<span class="heading li--heading"><span class="title li--heading-title">Column and row space dimension.</span></span><div class="para logical" id="th_rank_nullity_matrix-2-1-3-1-2">
+<div class="para">Let <span class="process-math">\(A\in\ML_{m,n}(F)\text{.}\)</span>
+</div>
+<ol class="decimal" id="th_rank_nullity_matrix-2-1-2">
+<li id="th_rank_nullity_matrix-2-1-2-1">
+<span class="heading li--heading"><span class="title li--heading-title">Column and row space dimension.</span></span><div class="para logical" id="th_rank_nullity_matrix-2-1-2-1-2">
 <div class="displaymath process-math" id="eq_col_row">
 \begin{equation}
 \dim \CS A=\dim \RS A\text{.}\tag{1.18.4}
 \end{equation}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_rank_nullity_matrix-2-1-3-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_rank_nullity_matrix-2-1-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item 1: Column and row space dimension"><a href="#th_rank_nullity_matrix-2-1-3-1" title="Copy heading and permalink for Item 1: Column and row space dimension" aria-label="Copy heading and permalink for Item 1: Column and row space dimension">🔗</a></div>
+<div class="autopermalink" data-description="Item 1: Column and row space dimension"><a href="#th_rank_nullity_matrix-2-1-2-1" title="Copy heading and permalink for Item 1: Column and row space dimension" aria-label="Copy heading and permalink for Item 1: Column and row space dimension">🔗</a></div>
 </li>
-<li id="th_rank_nullity_matrix-2-1-3-2">
-<span class="heading li--heading"><span class="title li--heading-title">Rank-nullity.</span></span><div class="para logical" id="th_rank_nullity_matrix-2-1-3-2-2">
-<div class="displaymath process-math" id="th_rank_nullity_matrix-2-1-3-2-2-1">
+<li id="th_rank_nullity_matrix-2-1-2-2">
+<span class="heading li--heading"><span class="title li--heading-title">Rank-nullity.</span></span><div class="para logical" id="th_rank_nullity_matrix-2-1-2-2-2">
+<div class="displaymath process-math" id="th_rank_nullity_matrix-2-1-2-2-2-1">
 \begin{align}
 n \amp= \nullity A+\rank A \tag{1.18.5}\\
 \amp =\dim\NS A+\dim\CS A \tag{1.18.6}\\
 \amp =\dim\NS A+\dim\RS A \text{.}\tag{1.18.7}
 \end{align}
 </div>
-<div class="autopermalink" data-description="Paragraph"><a href="#th_rank_nullity_matrix-2-1-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#th_rank_nullity_matrix-2-1-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item 2: Rank-nullity"><a href="#th_rank_nullity_matrix-2-1-3-2" title="Copy heading and permalink for Item 2: Rank-nullity" aria-label="Copy heading and permalink for Item 2: Rank-nullity">🔗</a></div>
+<div class="autopermalink" data-description="Item 2: Rank-nullity"><a href="#th_rank_nullity_matrix-2-1-2-2" title="Copy heading and permalink for Item 2: Rank-nullity" aria-label="Copy heading and permalink for Item 2: Rank-nullity">🔗</a></div>
 </li>
 </ol>
 <div class="autopermalink" data-description="Paragraph"><a href="#th_rank_nullity_matrix-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -1731,55 +1739,51 @@ A=\begin{amatrix}[rrrrr]
 <article class="algorithm theorem-like" id="proc_contract_extend"><h4 class="heading">
 <span class="type">Procedure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.18.31</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Contracting and extending to bases of <span class="process-math">\(F^n\)</span>.</span>
 </h4>
-<div class="para" id="proc_contract_extend-2-1">Let <span class="process-math">\(S=\{\boldv_1, \boldv_2,\dots, \boldv_r\}\subseteq F^n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div> <dl class="description-list">
-<dt id="proc_contract_extend-2-2-1">Contract to a basis<div class="autopermalink" data-description="Item: Contract to a basis"><a href="#proc_contract_extend-2-2-1" title="Copy heading and permalink for Item: Contract to a basis" aria-label="Copy heading and permalink for Item: Contract to a basis">🔗</a></div>
-</dt>
-<dd>
-<div class="para" id="proc_contract_extend-2-2-1-2">Let <span class="process-math">\(W=\Span S\text{.}\)</span> To find a subset of <span class="process-math">\(S\)</span> that forms a basis of <span class="process-math">\(W\text{,}\)</span> proceed as follows.<div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para logical" id="proc_contract_extend-2-1">
+<div class="para">Let <span class="process-math">\(S=(\boldv_1, \boldv_2,\dots, \boldv_r)\)</span> be a tuple of vectors in <span class="process-math">\(F^n\text{.}\)</span>
 </div>
-<ol class="decimal" id="proc_contract_extend-2-2-1-3">
-<li id="proc_contract_extend-2-2-1-3-1">
-<div class="para" id="proc_contract_extend-2-2-1-3-1-1">Let <span class="process-math">\(A\)</span> be the <span class="process-math">\(n\times r\)</span> matrix whose <span class="process-math">\(j\)</span>-th column is given by <span class="process-math">\(\boldv_j\)</span> for all <span class="process-math">\(1\leq j\leq r\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-1-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<ol class="decimal" id="proc_contract_extend-2-1-3">
+<li id="proc_contract_extend-2-1-3-1">
+<span class="heading li--heading"><span class="title li--heading-title">Contract to a basis.</span></span><div class="para logical" id="proc_contract_extend-2-1-3-1-2">
+<div class="para">Let <span class="process-math">\(W=\Span S\text{.}\)</span> To find a subtuple of <span class="process-math">\(S\)</span> that forms a basis of <span class="process-math">\(W\text{,}\)</span> proceed as follows.</div>
+<ol class="lower-alpha lower-alpha-level-1" id="proc_contract_extend-2-1-3-1-2-4">
+<li id="proc_contract_extend-2-1-3-1-2-4-1">
+<div class="para" id="proc_contract_extend-2-1-3-1-2-4-1-1">Let <span class="process-math">\(A\)</span> be the <span class="process-math">\(n\times r\)</span> matrix whose <span class="process-math">\(j\)</span>-th column is given by <span class="process-math">\(\boldv_j\)</span> for all <span class="process-math">\(1\leq j\leq r\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1-3-1-2-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#proc_contract_extend-2-2-1-3-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item 1.a"><a href="#proc_contract_extend-2-1-3-1-2-4-1" title="Copy heading and permalink for Item 1.a" aria-label="Copy heading and permalink for Item 1.a">🔗</a></div>
 </li>
-<li id="proc_contract_extend-2-2-1-3-2">
-<div class="para" id="proc_contract_extend-2-2-1-3-2-1">Use the column space procedure (<a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/xref/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">1.18.23</a>) to compute a basis <span class="process-math">\(B\)</span> of <span class="process-math">\(\CS A\)</span> consisting of columns of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-1-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="proc_contract_extend-2-1-3-1-2-4-2">
+<div class="para" id="proc_contract_extend-2-1-3-1-2-4-2-1">Use the column space procedure (<a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/xref/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">1.18.23</a>) to compute a basis <span class="process-math">\(B\)</span> of <span class="process-math">\(\CS A\)</span> of the form <span class="process-math">\(B=(v_j)_{j\in J}\text{,}\)</span> where <span class="process-math">\(J\subseteq \{1,2,\dots, n\}\text{.}\)</span> Since <span class="process-math">\(W=\CS A\text{,}\)</span> <span class="process-math">\(B\)</span> is a basis of <span class="process-math">\(W\)</span> and a subtuple of <span class="process-math">\(S\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1-3-1-2-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#proc_contract_extend-2-2-1-3-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
-</li>
-<li id="proc_contract_extend-2-2-1-3-3">
-<div class="para" id="proc_contract_extend-2-2-1-3-3-1">The subset <span class="process-math">\(B\subseteq S\)</span> is a basis for <span class="process-math">\(W=\Span S\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-1-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item"><a href="#proc_contract_extend-2-2-1-3-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item 1.b"><a href="#proc_contract_extend-2-1-3-1-2-4-2" title="Copy heading and permalink for Item 1.b" aria-label="Copy heading and permalink for Item 1.b">🔗</a></div>
 </li>
 </ol>
-</dd>
-<dt id="proc_contract_extend-2-2-2">Extend to a basis<div class="autopermalink" data-description="Item: Extend to a basis"><a href="#proc_contract_extend-2-2-2" title="Copy heading and permalink for Item: Extend to a basis" aria-label="Copy heading and permalink for Item: Extend to a basis">🔗</a></div>
-</dt>
-<dd>
-<div class="para" id="proc_contract_extend-2-2-2-2">Assume <span class="process-math">\(S\)</span> is linearly independent. To extend <span class="process-math">\(S\)</span> to a basis <span class="process-math">\(B\)</span> of <span class="process-math">\(F^n\)</span> proceed as follows.<div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1-3-1-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<ol class="decimal" id="proc_contract_extend-2-2-2-3">
-<li id="proc_contract_extend-2-2-2-3-1">
-<div class="para" id="proc_contract_extend-2-2-2-3-1-1">Let <span class="process-math">\(A\)</span> be the <span class="process-math">\(n\times (r+n)\)</span> matrix whose first <span class="process-math">\(r\)</span> columns are the elements of <span class="process-math">\(S\text{,}\)</span> and whose remaining <span class="process-math">\(n\)</span> columns consist of <span class="process-math">\(\bolde_1, \bolde_2, \dots, \bolde_n\text{,}\)</span> the standard basis elements of <span class="process-math">\(F^n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-2-3-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
-</div>
-<div class="autopermalink" data-description="Item"><a href="#proc_contract_extend-2-2-2-3-1" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item 1: Contract to a basis"><a href="#proc_contract_extend-2-1-3-1" title="Copy heading and permalink for Item 1: Contract to a basis" aria-label="Copy heading and permalink for Item 1: Contract to a basis">🔗</a></div>
 </li>
-<li id="proc_contract_extend-2-2-2-3-2">
-<div class="para" id="proc_contract_extend-2-2-2-3-2-1">Use the column space procedure (<a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/xref/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">1.18.23</a>) to compute a basis <span class="process-math">\(B\)</span> of <span class="process-math">\(\CS A\text{,}\)</span> chosen from among the original columns of <span class="process-math">\(A\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-2-3-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="proc_contract_extend-2-1-3-2">
+<span class="heading li--heading"><span class="title li--heading-title">Extend to a basis.</span></span><div class="para logical" id="proc_contract_extend-2-1-3-2-2">
+<div class="para">Assume <span class="process-math">\(S\)</span> is linearly independent. To extend <span class="process-math">\(S\)</span> to a basis <span class="process-math">\(B\)</span> of <span class="process-math">\(F^n\)</span> proceed as follows.</div>
+<ol class="lower-alpha lower-alpha-level-1" id="proc_contract_extend-2-1-3-2-2-5">
+<li id="proc_contract_extend-2-1-3-2-2-5-1">
+<div class="para" id="proc_contract_extend-2-1-3-2-2-5-1-1">Let <span class="process-math">\(A\)</span> be the <span class="process-math">\(n\times (r+n)\)</span> matrix whose first <span class="process-math">\(r\)</span> columns are the elements of <span class="process-math">\(S\text{,}\)</span> and whose remaining <span class="process-math">\(n\)</span> columns consist of <span class="process-math">\(\bolde_1, \bolde_2, \dots, \bolde_n\text{,}\)</span> the standard basis elements of <span class="process-math">\(F^n\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1-3-2-2-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#proc_contract_extend-2-2-2-3-2" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item 2.a"><a href="#proc_contract_extend-2-1-3-2-2-5-1" title="Copy heading and permalink for Item 2.a" aria-label="Copy heading and permalink for Item 2.a">🔗</a></div>
 </li>
-<li id="proc_contract_extend-2-2-2-3-3">
-<div class="para" id="proc_contract_extend-2-2-2-3-3-1">The set <span class="process-math">\(B\)</span> is a basis for <span class="process-math">\(F^n\)</span> containing <span class="process-math">\(S\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-2-2-3-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<li id="proc_contract_extend-2-1-3-2-2-5-2">
+<div class="para" id="proc_contract_extend-2-1-3-2-2-5-2-1">Use the column space procedure (<a href="s_dimention.html#proc_fund_spaces" class="xref" data-knowl="./knowl/xref/proc_fund_spaces.html" data-reveal-label="Reveal" data-close-label="Close" title="Procedure 1.18.23: Fundamental spaces">1.18.23</a>) to compute a basis <span class="process-math">\(B\)</span> of <span class="process-math">\(\CS A\text{,}\)</span> chosen from among the original columns of <span class="process-math">\(A\text{.}\)</span> The tuple <span class="process-math">\(B\)</span> is a basis of <span class="process-math">\(\CS A=F^n\)</span> containing <span class="process-math">\(S\)</span> as a subtuble.<div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1-3-2-2-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
-<div class="autopermalink" data-description="Item"><a href="#proc_contract_extend-2-2-2-3-3" title="Copy heading and permalink for Item" aria-label="Copy heading and permalink for Item">🔗</a></div>
+<div class="autopermalink" data-description="Item 2.b"><a href="#proc_contract_extend-2-1-3-2-2-5-2" title="Copy heading and permalink for Item 2.b" aria-label="Copy heading and permalink for Item 2.b">🔗</a></div>
 </li>
 </ol>
-</dd>
-</dl>
+<div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1-3-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Item 2: Extend to a basis"><a href="#proc_contract_extend-2-1-3-2" title="Copy heading and permalink for Item 2: Extend to a basis" aria-label="Copy heading and permalink for Item 2: Extend to a basis">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
 <div class="autopermalink" data-description="Procedure 1.18.31: Contracting and extending to bases of F^n"><a href="#proc_contract_extend" title="Copy heading and permalink for Procedure 1.18.31: Contracting and extending to bases of F^n" aria-label="Copy heading and permalink for Procedure 1.18.31: Contracting and extending to bases of F^n">🔗</a></div></article><details id="proc_contract_extend-3" class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h4 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h4></summary><article class="hiddenproof knowl__content"><div class="para" id="proc_contract_extend-3-1">Let’s see why in both cases the procedure produces a basis of <span class="process-math">\(F^n\)</span> that is either a sub- or superset of <span class="process-math">\(S\text{.}\)</span><div class="autopermalink" data-description="Paragraph"><a href="#proc_contract_extend-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <article class="case" id="proc_contract_extend-3-2"><h5 class="heading">Contracting to a basis.</h5>
@@ -1913,7 +1917,7 @@ A\underset{n\times 1}{\boldx}=\underset{n\times 1}{\boldzero}
 </div>
 <div class="autopermalink" data-description="Proof 1.18.34.1"><a href="#th_invertibility_fund_spaces-3" title="Copy heading and permalink for Proof 1.18.34.1" aria-label="Copy heading and permalink for Proof 1.18.34.1">🔗</a></div></article></details><div class="autopermalink" data-description="Subsection 1.18.3: Case study: fundamental spaces of a matrix"><a href="#ss_null_col" title="Copy heading and permalink for Subsection 1.18.3: Case study: fundamental spaces of a matrix" aria-label="Copy heading and permalink for Subsection 1.18.3: Case study: fundamental spaces of a matrix">🔗</a></div></section><div class="autopermalink" data-description="Section 1.18: Dimension"><a href="#s_dimention" title="Copy heading and permalink for Section 1.18: Dimension" aria-label="Copy heading and permalink for Section 1.18: Dimension">🔗</a></div></section></div>
 <div id="ptx-content-footer" class="ptx-content-footer">
-<a class="previous-button button" href="s_basis.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="my-great-book-6.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
+<a class="previous-button button" href="s_basis.html" title="Previous"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cb;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5ce;</span><span class="name">Top</span></a><a class="next-button button" href="s_transformation.html" title="Next"><span class="name">Next</span><span class="icon material-symbols-outlined" aria-hidden="true">&#xe5cc;</span></a>
 </div></main>
 </div>
 <div id="ptx-page-footer" class="ptx-page-footer">
