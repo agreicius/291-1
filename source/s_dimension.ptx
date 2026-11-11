@@ -728,7 +728,7 @@
         <md>
           \CS A=\Span\{(1,1),(2,2),(3,3)\}=\Span\{(1,1)\}
         </md>,
-        a line in <m>\R^2</m> passing through the origin. Since the sets <m>B_1=\{(1,2,3)\}</m> and <m>B_2=\{(1,1)\}</m> are each linearly independent, they are clearly bases for their spans <m>\RS A </m> and <m>\CS A</m>, respectively. It follows that <m>\dim \RS A=\dim \CS A=1</m>. 
+        a line in <m>\R^2</m> passing through the origin. Since the tuples <m>B_1=\left((1,2,3)\right)</m> and <m>B_2=\left((1,1)\right)</m> are each linearly independent, they are clearly bases for their spans <m>\RS A </m> and <m>\CS A</m>, respectively. It follows that <m>\dim \RS A=\dim \CS A=1</m>. 
       </p>
       <p>
         Next, by definition <m>\NS A</m> is the set of vectors  <m>\boldx=(x_1,x_2,x_3)\in \R^3</m> satisfying 
@@ -754,9 +754,9 @@
         </md>,
         from which we see that 
         <md>
-          \NS A=\Span\{(-2,1,0),(-3,0,1)\}
+          \NS A=\Span\left((-2,1,0),(-3,0,1)\right)
         </md>.
-        Since <m>B_3=\{(-2,1,0),(-3,0,1)\}</m> is linearly independent and spans <m>\NS A</m>, it is a basis for <m>\NS A</m>. We conclude <m>\dim \NS A=2</m>. 
+        Since <m>B_3=\left((-2,1,0),(-3,0,1)\right)</m> is linearly independent and spans <m>\NS A</m>, it is a basis for <m>\NS A</m>. We conclude <m>\dim \NS A=2</m>. 
         </p>
         </solution>
     </example>
@@ -777,7 +777,6 @@
         </figure>
         <figure xml:id="fig_fund_spaces_col">
           <caption><m>\CS A\subseteq \R^2</m></caption>
-          
           <interactive xml:id="geogebra_col" platform="geogebra" aspect="4:3">
             <slate surface="geogebra" material="davmcjvd" aspect="4:3" material-width="400" material-height="300"  >
               setAxisSteps(1, 1, 1, 1);
@@ -795,7 +794,7 @@
       <title>Column space and linear systems</title>
       <statement>
         <p>
-          Let <m>A</m> be an <m>m\times n</m> matrix, and let <m>\boldb\in F^m</m>. The following statements are equivalent. 
+          Let <m>A\in\ML_{m,n}(F)</m>, and let <m>\boldb\in F^m</m>. The following statements are equivalent. 
           <ol>
             <li>
               <p>
@@ -813,7 +812,7 @@
               </p>
             </li>
           </ol>
-          As a consequence, we have xre
+          As a consequence, we have
           <md number="yes">
             <mrow xml:id="eq_col_im">\CS A \amp =\{\boldb\in F^m \colon \boldb=A\boldx \text{ for some } \boldx\in F^n\}</mrow>
             <mrow xml:id="eq_col_consistent"> \amp = \{\boldb\in F^m\colon \text{ the linear system } A\boldx=\boldb \text{ is consistent}\}</mrow>
@@ -949,8 +948,8 @@
     </md>
     in row echelon form. By inspection we see that 
     <md>
-      <mrow>\CS A \amp =\Span\{(1,1)\}=\{(t,t)\colon t\in \R\}</mrow>
-      <mrow>\CS U \amp =\Span\{(1,0)\}=\{(t,0)\colon t\in \R\}</mrow>
+      <mrow>\CS A \amp =\Span\left((1,1)\right)=\{(t,t)\colon t\in \R\}</mrow>
+      <mrow>\CS U \amp =\Span\left((1,0)\right)=\{(t,0)\colon t\in \R\}</mrow>
     </md>.
     It is clear algebraically from the two set descriptions that <m>\CS A\ne \CS U</m>. Geometrically, the two spaces are two distinct lines in <m>\R^2</m> passing through the origin: <m>\CS A</m> is the line defined by the equation <m>y=x</m> and <m>\CS U</m> is the <m>x</m>-axis. 
   </p>
@@ -968,8 +967,8 @@
     </md>.
     In this case we have 
     <md>
-      <mrow>\CS A \amp =\Span\{(1,0),(1,1)\}=\R^2</mrow>
-      <mrow>\CS U \amp =\Span\{(1,0),(0,1)\}=\R^2</mrow>
+      <mrow>\CS A \amp =\Span\left((1,0),(1,1)\right)=\R^2</mrow>
+      <mrow>\CS U \amp =\Span\left((1,0),(0,1)\right)=\R^2</mrow>
     </md>,
     and thus <m>\CS A=\CS U</m>.
   </p>
@@ -996,22 +995,22 @@
       </li>
       <li>
         <p>
-          Let <m>t_1,t_2,\dots, t_r</m> be the free parameters appearing in the parametric description of solutions to the linear system <m>U\boldx=\boldzero</m>, and for all <m>1\leq i\leq r</m>, let <m>\boldv_i</m> be the element of <m>\NS A=\NS U</m> obtained by setting <m>t_i=1</m> and <m>t_j=0</m> for all <m>j\ne i</m>. The set
+          Let <m>t_1,t_2,\dots, t_r</m> be the free parameters appearing in the parametric description of solutions to the linear system <m>U\boldx=\boldzero</m>, and for all <m>1\leq i\leq r</m>, let <m>\boldv_i</m> be the element of <m>\NS A=\NS U</m> obtained by setting <m>t_i=1</m> and <m>t_j=0</m> for all <m>j\ne i</m>. The tuple
           <md>
-            B=\{\boldv_1,\boldv_2,\dots, \boldv_r\}
+            B=(\boldv_1,\boldv_2,\dots, \boldv_r)
           </md>
           is a basis of <m>\NS A</m>.
         </p>
       </li>
       <li>
         <p>
-          The set of nonzero rows of <m>U</m> is a basis for <m>\RS A</m>.
+          The tuple of nonzero rows of <m>U</m> is a basis for <m>\RS A</m>.
         </p>
       </li>
       <li>
         <p>
-          Let <m>\bolda_i, \boldu_i</m> be the columns of <m>A</m> and <m>U</m>, respectively, and let <m>\boldu_{i_1},\boldu_{i_2},\dots, \boldu_{i_s}</m> be the columns of <m>U</m> that contain a leading one. The set 
-          <md>\{\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_s}\}</md>
+          Let <m>\bolda_i, \boldu_i</m> be the columns of <m>A</m> and <m>U</m>, respectively, and let <m>\boldu_{i_1},\boldu_{i_2},\dots, \boldu_{i_s}</m> be the columns of <m>U</m> that contain a leading one. The tuple
+          <md>(\bolda_{i_1}, \bolda_{i_2},\dots, \bolda_{i_s})</md>
           consisting of the corresponding columns of <m>A</m> is a basis of <m>\CS A</m>.
         </p>
       </li>
@@ -1020,6 +1019,8 @@
   </statement>
   <proof>
     <p>
+      We prove each of the three cases.s
+    </p>
       <case>
         <title>Null space</title>
           <p>
@@ -1027,7 +1028,7 @@
             <md>
               a_1\boldv_1+a_2\boldv_2+\cdots +a_r\boldv_r=\boldzero
             </md>.
-            For each <m>1\leq j\leq r</m>, since <m>\boldv_j</m> is the only vector with a nonzero entry in the <m>i_j</m>-th term, we must have <m>a_j=0</m>. This proves that the set <m>B=\{\boldv_1,\boldv_2,\dots, \boldv_r\}</m> is linearly independent.  
+            For each <m>1\leq j\leq r</m>, since <m>\boldv_j</m> is the only vector with a nonzero entry in the <m>i_j</m>-th term, we must have <m>a_j=0</m>. This proves that the tuple <m>B=(\boldv_1,\boldv_2,\dots, \boldv_r)</m> is linearly independent.  
           </p>
           <p>
             We now show that <m>\Span B=\NS A</m>. Assume <m>\boldv\in \NS U</m>, and let <m>t_{i_j}</m> be the <m>i_j</m>-th entry of <m>\boldv</m> for each <m>1\leq j\leq r</m>. In other words, these are the entries of <m>\boldv</m> corresponding to the free variables of the system. We claim that 
@@ -1076,7 +1077,6 @@
       Left as a homework exercise. 
     </p>
         </case>
-    </p>
   </proof>
 </algorithm>
 <example xml:id="eg_fund_spaces">
@@ -1109,17 +1109,16 @@
       <md>
         \NS A=\{(2s-6t,-s+3t ,s,t,0)\colon s,t\in \R\}
       </md>.
-      From this parametric description we extract by inspection the spanning set 
+      We produce a basis for <m>\NS A</m> from this description by extracting the vectors corresponding to the two choices <m>(s,t)=(1,0)</m> and <m>(s,t)=(0,1)</m>:
       <md>
-        B_1=\{\boldx_1=(2,-1,1,0,0), \boldv_2=(-6,3,0,1,0)\}
+        B_1=\left((2,-1,1,0,0), (-6,3,0,1,0)\right)
       </md>.
-      Since <m>B_1</m> is easily seen to be linearly independent, we conclude it is a basis. (Alternatively, <m>B_1</m> is the basis one obtains using <xref ref="proc_fund_spaces"/>. That is, <m>\boldv_1</m> is the result of assigning <m>s=1,t=0</m> in our parametric description, and <m>\boldv_2</m> is the result of assigning <m>s=0</m>, <m>t=1</m>.) Since <m>\abs{B_1}=2</m>, we have <m>\dim \NS A=2</m>. 
     </p>
     <p>
-      According to <xref ref="proc_fund_spaces"/>, the nonzero rows of <m>U</m> form a basis of <m>\RS A</m>. Thus <m>B_2=\{(1,3,1-3,2),(0,1,1-3,0),(0,0,0,0,1)\}</m> is a basis of <m>\RS A</m>, and <m>\dim \RS A=3</m>. 
+      According to <xref ref="proc_fund_spaces"/>, the nonzero rows of <m>U</m> form a basis of <m>\RS A</m>. Thus <m>B_2=\left((1,3,1-3,2),(0,1,1-3,0),(0,0,0,0,1)\right)</m> is a basis of <m>\RS A</m>, and <m>\dim \RS A=3</m>. 
     </p>
     <p>
-      Lastly, since the first, second and fifth columns of <m>U</m> contain leading ones, the corresponding columns of <m>A</m> form a basis of <m>\CS A</m>. Thus <m>B_{3}=\{(1,0,-1,1),(3,1,-2,2),(2,0,-1,2)\}</m> is a basis of <m>\CS A</m>, and <m>\dim \CS A=3</m>. 
+      Lastly, since the first, second and fifth columns of <m>U</m> contain leading ones, the corresponding columns of <m>A</m> form a basis of <m>\CS A</m>. Thus <m>B_{3}=\left((1,0,-1,1),(3,1,-2,2),(2,0,-1,2)\right)</m> is a basis of <m>\CS A</m>, and <m>\dim \CS A=3</m>. 
     </p>
   </solution>
 </example>
@@ -1152,7 +1151,7 @@
   </notation>
   <statement>
     <p>
-      Let <m>A</m> be an <m>m\times n</m> matrix. The <term>nullity</term> of <m>A</m>, denoted <m>\nullity A</m>, is defined as the dimension of the null space of <m>A</m>; the <term>rank</term> of <m>A</m>, denoted <m>\rank A</m>, is defined as the dimension of the column space of <m>A</m>. In other words, we have 
+      Let <m>A\in\ML_{m,n}(F)</m>. The <term>nullity</term> of <m>A</m>, denoted <m>\nullity A</m>, is defined as the dimension of the null space of <m>A</m>; the <term>rank</term> of <m>A</m>, denoted <m>\rank A</m>, is defined as the dimension of the column space of <m>A</m>. In other words, we have 
       <md>
         <mrow>\nullity A \amp =\dim \NS A \amp \rank A\amp =\dim \CS A</mrow>
       </md>.
@@ -1164,7 +1163,7 @@
   <title>Rank-nullity for matrices</title>
   <statement>
     <p>
-      Let <m>A</m> be an <m>m\times n</m> matrix. 
+      Let <m>A\in\ML_{m,n}(F)</m>. 
       <ol>
         <li>
           <title>Column and row space dimension</title>
@@ -1242,14 +1241,13 @@
       <title>Contracting and extending to bases of <m>F^n</m></title>
       <statement>
         <p>
-          Let <m>S=\{\boldv_1, \boldv_2,\dots, \boldv_r\}\subseteq F^n</m>.
-        </p>
-        <dl>
+          Let <m>S=(\boldv_1, \boldv_2,\dots, \boldv_r)</m> be a tuple of vectors in <m>F^n</m>.
+        <ol>
           <li>
             <title>Contract to a basis</title>
             <p>
-              Let <m>W=\Span S</m>. To find a subset of <m>S</m> that forms a basis of <m>W</m>, proceed as follows.
-            </p>
+              Let <m>W=\Span S</m>. To find a subtuple of <m>S</m> that forms a basis of <m>W</m>, proceed as follows.
+            
             <ol>
               <li>
                 <p>
@@ -1258,21 +1256,16 @@
               </li>
               <li>
                 <p>
-                  Use the column space procedure (<xref ref="proc_fund_spaces" text="global"/>) to compute a basis <m>B</m> of <m>\CS A</m> consisting of columns of <m>A</m>.
-                </p>
-              </li>
-              <li>
-                <p>
-                  The subset <m>B\subseteq S</m> is a basis for <m>W=\Span S</m>.
+                  Use the column space procedure (<xref ref="proc_fund_spaces" text="global"/>) to compute a basis <m>B</m> of <m>\CS A</m> of the form <m>B=(v_j)_{j\in J}</m>, where <m>J\subseteq \{1,2,\dots, n\}</m>. Since <m>W=\CS A</m>, <m>B</m> is a basis of <m>W</m> and a subtuple of <m>S</m>. 
                 </p>
               </li>
             </ol>
+            </p>
           </li>
           <li>
             <title>Extend to a basis</title>
             <p>
               Assume <m>S</m> is linearly independent. To extend <m>S</m> to a basis <m>B</m> of <m>F^n</m> proceed as follows.
-            </p>
             <ol>
               <li>
                 <p>
@@ -1281,17 +1274,14 @@
               </li>
               <li>
                 <p>
-                  Use the column space procedure (<xref ref="proc_fund_spaces" text="global"/>) to compute a basis <m>B</m> of <m>\CS A</m>, chosen from among the original columns of <m>A</m>.
-                </p>
-              </li>
-              <li>
-                <p>
-                  The set <m>B</m> is a basis for <m>F^n</m> containing <m>S</m>.
+                  Use the column space procedure (<xref ref="proc_fund_spaces" text="global"/>) to compute a basis <m>B</m> of <m>\CS A</m>, chosen from among the original columns of <m>A</m>. The tuple <m>B</m> is a basis of <m>\CS A=F^n</m> containing <m>S</m> as a subtuble. 
                 </p>
               </li>
             </ol>
+            </p>
           </li>
-        </dl>
+        </ol>
+        </p>
       </statement>
       <proof>
         <p>

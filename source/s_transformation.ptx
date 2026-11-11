@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_transformation" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Linear transformations</title>
+    <introduction>
+        <p>
+          As detailed in <xref ref="d_transformation"/> a <em>linear transformation</em> is a special type of function between two vector spaces: one that <em>respects</em> in some sense the vector operations of both spaces.
+        </p>
+    
+        <p>
+          This manner of theorizing is typical in mathematics: first we introduce a special class of objects defined axiomatically, then we introduce special functions or maps between these objects.
+          Since the original objects of study (e.g.
+          vector spaces) come equipped with special structural properties (e.g.
+          vector operations), the functions we wish to study are the ones that somehow acknowledge this structure.
+        </p>
+    
+        <p>
+          You have already seen this principle at work in your study of calculus.
+          First we give <m>\R</m> some structure by defining a notion of proximity (i.e., <m>x</m> is close to <m>y</m> if <m>\val{x-y}</m> is small), then we introduce a special family of functions that somehow respects this structure: these are precisely the <em>continuous</em> functions!
+        </p>
+    
+        <p>
+          As you will see, linear transformations are not just interesting objects of study in their own right, they also serve as invaluable tools in our continued exploration of the intrinsic properties of vector spaces.
+        </p>
+    
+        <p>
+          In the meantime rejoice in the fact that we can now give a succinct definition of linear algebra: it is the theory of vector spaces and the linear transformations between them.
+          Go shout it from the rooftops!
+        </p>
+      </introduction>
+    
+    <subsection xml:id="ss_transformations_def">
+    <title>Definition and examples</title>
+    <definition xml:id="d_transformation">
+        <title>Linear transformation</title>
+        <statement>
+        <p>
+        Let <m>V</m> and <m>W</m> be <m>F</m>-vector spaces. A <term>linear transformation</term> from <m>V</m> to <m>W</m> is a function 
+        <me>
+            T\colon V\rightarrow W
+        </me>
+        satisfying the following properties. 
+        <ol marker="(i)">
+            <li xml:id="d_lin_trans_add">
+                <p>
+                    <m>T(v+v')=T(v)+T(v')</m> for all <m>v,v'\in V</m>.
+                </p>
+            </li>
+            <li xml:id="d_lin_trans_mult">
+                <p>
+                    <m>T(cv)=cT(v)</m> for all <m>c\in F</m> and <m>v\in V</m>. 
+                </p>
+            </li>
+        </ol>
+        We let <m>\mathcal{L}(V,W)</m> denote  the set of all linear transformations from <m>V</m> to <m>W</m>: <ie/>, 
+        <me>
+            \mathcal{L}(V,W)=\{T\colon V\rightarrow W\colon T \text{ is a linear transformation}\}
+        </me>.
+        
+        </p>
+        </statement>
+        </definition>
+        <remark xml:id="rm_lin_trans">
+            <title>Linear transformations</title>
+      
+            <p>
+              So what exactly do we mean when we say that a linear transformation <q>respects</q> the vector space structures? In plain English, the two axioms defining a linear transformation read as follows: the image of a sum is the sum of the images, and the image of a scalar multiple is the scalar multiple of the image.
+              Alternatively, we could say that the application of a linear transformation to input vectors distributes over vector addition and scalar multiplication.
+            </p>
+          </remark>
+          <p>
+            Before getting to examples of linear transformations, it will perhaps be enlightening to consider how a function <m>T\colon V\rightarrow W</m> between two vector spaces could fail to be a linear transformation.
+            <xref ref="fig_nonlinear"/> is an attempt at visualizing what it means for a function could fail one of the two linear transformation axioms.
+            We will often fall back on these types of conceptual visualizations as a means of organizing our thinking about linear transformations.
+            <!-- The diagrams deliberately mirror our general function notation
+            <md>
+              <mrow>T\colon V \amp \rightarrow W</mrow>
+              <mrow>v \amp \mapsto T(v)</mrow>
+            </md>,
+            placing the domain and codomain on the left and right, respectively, and using <c>mapsto</c> notation <m>v\mapsto T(v)</m> to indicate where domain elements <m>v\in V</m> get mapped to by <m>T</m> in the codomain <m>W</m>. -->
+          </p>
+      
+          <figure xml:id="fig_nonlinear">
+            <caption>Visualizing the failure of linear transformation axioms</caption>
+            <sbsgroup widths="100">
+              <sidebyside>
+                <figure xml:id="fig_nonlinear_i">
+                  <caption><m>T</m> fails <xref ref="d_lin_trans_add">Axiom</xref>: <m>T(v_1+v_2)\ne T(v_1)+T(v_2)</m>. </caption>
+                  <image xml:id="im_fig_nonlinear_i">
+                    <latex-image>
+                  \begin{tikzpicture}
+        \node[name=V,shape=ellipse,draw, thick,minimum width=1.75in, minimum height=2.5in,label={135:$V$}] at (0,0) {};
+        \node[name=W,shape=ellipse,draw, thick,minimum width=1.75in, minimum height=2.5in, label={45:$W$}] at (8,0) {};
+        % arrow between diagrams
+          \path[->] (1.2,3.2) edge[bend left] node[above]{$T$}  (6.8,3.2);
+          %rando vector coords
+           \node (v1) at (0,1.5) {};
+           \node (v2) at (0,-1.25) {};
+           \node (v3) at (-1.25,.5) {};
+           \node (cv1) at (-2,-1) {};
+           \node (w1) at (8,2.25) {};
+           \node (w2) at (9,-2) {};
+           \node (w3) at (8.25,.75) {};
+           \node (cw1) at (7.5,-.5) {};
+          %rando vector labels
+          \draw node[above] at (v1) {$\mathbf{v}_1$};
+          \draw node[above] at (v2) {$\mathbf{v}_2$};
+          \draw node[above] at (v3) {$\mathbf{v}_1+\mathbf{v}_2$};
+        %	\draw node[above] at (cv1) {$c\mathbf{v}_1$};
+          \draw node[above] at (w1) {$T(\mathbf{v}_1)$};
+          \draw node[above] at (w2) {$T(\mathbf{v}_2)$};
+          \draw node[above] at (w3) {$T(\mathbf{v}_1+\mathbf{v}_2)$};
+          \draw node[above] at (cw1) {$T(\mathbf{v}_1)+T(\mathbf{v}_2)$};
+          %Make points at coordinates
+           \foreach \point in {v1,v2,v3,w1,w2,w3,cw1}
+                \fill [black] (\point) circle (2.25pt);
+          %Maptos
+          \path[|->] (v1) edge (w1);
+          \path[|->] (v2) edge (w2);
+          \path[|->] (v3) edge (w3);
+        %	\path[|->] (cv1) edge (cw1);
+         \end{tikzpicture}
+                    </latex-image>
+                  </image>
+                </figure>
+              </sidebyside>
+      
+              <sidebyside>
+                <figure xml:id="fig_nonlinear_ii">
+                  <caption><m>T</m> fails <xref ref="d_lin_trans_mult">Axiom</xref>: <m>T(cv)\ne cT(v)</m>. </caption>
+                  <image xml:id="im_nonliner_ii">
+                    <shortdescription>
+                      T fails axiom ii
+                    </shortdescription>
+                    <latex-image>
+                    \begin{tikzpicture}
+        \node[name=V,shape=ellipse,draw, thick,minimum width=1.75in, minimum height=2.5in,label={135:$V$}] at (0,0) {};
+        \node[name=W,shape=ellipse,draw, thick,minimum width=1.75in, minimum height=2.5in, label={45:$W$}] at (8,0) {};
+        % arrow between diagrams
+          \path[->] (1.2,3.2) edge[bend left] node[above]{$T$}  (6.8,3.2);
+          %rando vector coords
+           \node (v1) at (0,2) {};
+           \node (v2) at (-1,-1) {};
+        %	 \node (v3) at (-1.25,.5) {};
+        %	 \node (cv1) at (-2,-1) {};
+           \node (w1) at (8,2.25) {};
+           \node (w2) at (8,-2) {};
+           \node (w3) at (7.25,0) {};
+        %	 \node (cw1) at (7.5,-.5) {};
+          %rando vector labels
+          \draw node[above] at (v1) {$\mathbf{v}$};
+          \draw node[above] at (v2) {$c\mathbf{v}$};
+        %	\draw node[above] at (v3) {$\mathbf{v}_1+\mathbf{v}_2$};
+        %	\draw node[above] at (cv1) {$c\mathbf{v}_1$};
+          \draw node[above] at (w1) {$T(\mathbf{v})$};
+          \draw node[above] at (w2) {$T(c\mathbf{v})$};
+          \draw node[above] at (w3) {$cT(\mathbf{v})$};
+        %	\draw node[above] at (cw1) {$T(\mathbf{v}_1)+T(\mathbf{v}_2)$};
+          %Make points at coordinates
+           \foreach \point in {v1,v2,w1,w2,w3}
+                \fill [black] (\point) circle (2.25pt);
+          %Maptos
+          \path[|->] (v1) edge (w1);
+          \path[|->] (v2) edge (w2);
+        %	\path[|->] (v3) edge (w3);
+        %	\path[|->] (cv1) edge (cw1);
+         \end{tikzpicture}
+                    </latex-image>
+                  </image>
+                </figure>
+              </sidebyside>
+            </sbsgroup>
+          </figure>
+          <example xml:id="eg_nonlinear">
+            <title>A nonlinear example</title>
+      
+            <statement>
+              <p>
+                Let <m>T\colon \R^2\rightarrow \R^2</m> be defined as <m>T(x,y)=(x^2-y^2,2xy)</m>.
+                <ol>
+                  <li>
+                    <p>
+                      Does <m>T</m> satisfy <xref ref="d_lin_trans_add">Axiom</xref>? If so, prove it.
+                      Otherwise, give an explicit counterexample.
+                    </p>
+                  </li>
+      
+                  <li>
+                    <p>
+                      Does <m>T</m> satisfy <xref ref="d_lin_trans_mult">Axiom</xref>? If so, prove it.
+                      Otherwise, give an explicit counterexample.
+                    </p>
+                  </li>
+                </ol>
+              </p>
+            </statement>
+      
+            <solution>
+              <p>
+                <ol>
+                  <li>
+                    <p>
+                      <m>T</m> does not satisfy <xref ref="d_lin_trans_add">Axiom</xref>. Let <m>\boldx_1=(1,0)</m> and <m>\boldx_2=(0,1)</m>. We have
+                      <md>
+                        <mrow>T(\boldx_1+\boldx_2) \amp=T(1,1)</mrow>
+                        <mrow> \amp = (0,2)</mrow>
+                        <mrow>T(\boldx_1)+T(\boldx_2) \amp =T(1,0)+T(0,1)</mrow>
+                        <mrow> \amp =(1,0)+(-1,0)=0</mrow>
+                      </md>.
+                      We thus see that <m>T(\boldx_1+\boldx_2)\ne T(\boldx_1)+T(\boldx_2)</m>.
+                    </p>
+                  </li>
+      
+                  <li>
+                    <p>
+                      <m>T</m> does not satisfy <xref ref="d_lin_trans_mult">Axiom</xref>. Let <m>\boldx=(1,0)</m> and <m>c=2</m>. We have
+                      <md>
+                        <mrow>T(2\boldx) \amp=T(2,0)=(4,0)</mrow>
+                        <mrow> 2T(\boldx)\amp = 2(1,0)=(2,0)</mrow>
+                      </md>.
+                      We thus see that <m>T(2\boldx)\ne 2T(\boldx)</m>.
+                    </p>
+                  </li>
+                </ol>
+              </p>
+            </solution>
+          </example>
+      
+          <remark>
+            <title>Notational quirk</title>
+      
+            <p>
+              <xref ref="eg_nonlinear"/> brings to light a notational quirk when dealing with functions of the form <m>T\colon F^n\rightarrow W</m>. Technically speaking, given an input <m>\boldx=(x_1,x_2,\dots, x_n)\in F^n</m> we should write
+              <me>
+                T(\boldx)=T((x_1,x_2,\dots, x_n))
+              </me>.
+              And yet our inner aesthete cries out at the unnecessary nested parentheses, and pleads that the notational laws be relaxed in this specific setting.
+              We shall make it so.
+            </p>
+          </remark>
+          <assumption xml:id="fiat_paren_drop">
+          <title>Parentheses shall be dropped</title>
+      
+          <statement>
+            <p>
+              In the special case where the domain of function <m>T</m> is a subset of <m>F^n</m>, then given input <m>\boldx=(x_1,x_2,\dots, x_n)</m> we may write <m>T(x_1,x_2,\dots, x_n)</m> for <m>T((x_1,x_2,\dots, x_n))</m>.
+            </p>
+          </statement>
+          </assumption>
+      
+          <p>
+            We now turn to functions that do satisfy the linear transformation axioms.
+            As our first examples of linear transformations, we define <em>zero transformations</em> and <em>identity transformations</em>.
+          </p>
+      
+          <definition xml:id="d_transform_zero_identity">
+            <title>Zero, identity, and scaling transformations</title>
+            <statement>
+              <p>
+                Let <m>V</m> and <m>W</m> be vector spaces.
+                <ul>
+                  <li>
+                    <title>Zero transformation</title>
+      
+                    <p>
+                      The <term>zero transformation from <m>V</m> to <m>W</m></term>, denoted <m>0_{V,W}</m>, is defined as follows:
+                      <md>
+                        <mrow>0_{V,W}\colon V \amp\rightarrow W  </mrow>
+                        <mrow> v \amp\mapsto 0_{V,W}(v)=\boldzero</mrow>
+                      </md>.
+                      In other words, <m>0_{V,W}</m> is the function that maps all elements of <m>V</m> to the zero vector of <m>W</m>.
+                    </p>
+                  </li>
+      
+                  <li>
+                    <title>Identity transformation</title>
+      
+                    <p>
+                      The <term>identity transformation of <m>V</m></term>, denoted <m>\id_V</m>, is defined as follows:
+                      <md>
+                        <mrow> \id_V\colon V \amp\rightarrow V </mrow>
+                        <mrow> v \amp\mapsto \id_V(v)=v</mrow>
+                      </md>.
+                      In other words, <m>\id_V(v)=v</m> for all <m>v\in V</m>.
+                      When the underlying vector space is clear from the context, we will drop the subscript and write <m>I</m> for <m>I</m>.
+                    </p>
+                  </li>
+      
+                  <li>
+                    <title>Dilation (or scaling transformation)</title>
+                    <p>
+                      Let <m>c\in F</m> be a fixed scalar.
+                      The function
+                      <md>
+                        <mrow>c_V\colon V \amp \rightarrow V</mrow>
+                        <mrow>v \amp \mapsto c_V(v)=c v</mrow>
+                      </md>
+                      is called a <term>dilation</term> (or <term>scaling transformation</term>) with <term>scaling factor</term> <m>c</m>.
+                    </p>
+                    <p>
+                        Observe that since <m>1_c(v)=v</m> for all <m>v\in V</m>, we have <m>
+                            \id_V=1_V
+                        </m>.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </statement>
+          </definition>
+      
+          <theorem xml:id="th_transform_zero_identity_scaling">
+            <title>Zero, identity, and scaling transformations</title>
+            <statement>
+              <p>
+                Let <m>V</m> and <m>W</m> be vector spaces.
+                <ol>
+                  <li>
+                    <p>
+                      The zero transformation <m>0_{V,W}\colon V\rightarrow W</m> is a linear transformation.
+                    </p>
+                  </li>
+      
+                  
+                  <li>
+                    <p>
+                      For all scalars <m>c\in F</m> the dilation
+                       <md>
+                        <mrow>c_V\colon V \amp \rightarrow W</mrow>
+                        <mrow>v \amp \mapsto cv</mrow>
+                      </md>
+                      is a linear transformation. In particular, <m>\id_V=1_V</m> is a linear transformation. 
+                    </p>
+                  </li>
+                </ol>
+              </p>
+            </statement>
+      
+            <proof>
+              <p>
+                <ol>
+                  <li>
+                    <p>
+                      Let <m>0_{V,W}\colon V\rightarrow W</m> be the zero function.
+                      We verify each defining property separately.
+                      <ol marker="i">
+                        <li>
+                          <p>
+                            Given <m>v, w\in V</m>, we have
+                            <md>
+                              <mrow>0_{V,W}(v_1+v_2)\amp =\boldzero_W  \amp (\text{by def.}) </mrow>
+                              <mrow> \amp =\boldzero_W+\boldzero_W </mrow>
+                              <mrow>  \amp = 0_{V,W}(v_1)+0_{V,W}(v_2) \amp (\text{by def.})</mrow>
+                            </md>.
+                          </p>
+                        </li>
+      
+                        <li>
+                          <p>
+                            Given <m>c\in R</m> and <m>v\in V</m>, we have
+                            <md>
+                              <mrow>0_{V,W}(cv) \amp = \boldzero_W \amp (\text{def. of } 0_{V,W})</mrow>
+                              <mrow> \amp = c\boldzero_W \amp (<xref ref="prop_vs_props" text="global"/>
+                              ) </mrow>
+                              <mrow>  \amp = c0_{V,W}(v) \amp (\text{def. of } 0_{V,W})</mrow>
+                            </md>.
+                          </p>
+                        </li>
+                      </ol>
+                      This proves that <m>0_{V,W}\colon V\rightarrow W</m> is a linear transformation.
+                    </p>
+                  </li>
+      
+                  <li>
+                    <p>
+                      Fix a scalar <m>c\in R</m> and let <m>T\colon V\rightarrow V</m> be the scaling transformation defined as <m>T(v)=cv</m> for all <m>v\in V</m>. 
+                      <ol marker="i">
+                        <li>
+                          <p>
+                            Given <m>v, w\in V</m>, we have
+                            <md>
+                              <mrow>T(v_1+v_2)\amp =c(v_1+v_2)  \amp (\text{def. of } T)</mrow>
+                              <mrow> \amp = cv_1+cv_2 \amp (\text{vec. props.})</mrow>
+                              <mrow> \amp = cT(v_1)+cT(v_2) \amp (\text{def. of } T)</mrow>
+                            </md>.
+                          </p>
+                        </li>
+      
+                        <li>
+                          <p>
+                            Given <m>d\in R</m> and <m>v\in V</m>, we have
+                            <md>
+                              <mrow>T(dv) \amp = c(dv) \amp (\text{def. of } T)</mrow>
+                              <mrow> \amp = (cd)v \amp (\text{vec. props.}) </mrow>
+                              <mrow> \amp = (dc)v \amp (\text{real mult. is comm.})</mrow>
+                              <mrow> \amp = d(cv) \amp (\text{vec. props.})</mrow>
+                              <mrow> \amp = dT(v) \amp (\text{def. of } T)</mrow>
+                            </md>.
+                          </p>
+                        </li>
+                      </ol>
+                      This proves that <m>T\colon V\rightarrow V</m> is a linear transformation.
+                    </p>
+                  </li>
+                </ol>
+              </p>
+            </proof>
+          </theorem>
+      
+          <theorem xml:id="th_transform_basic_props">
+            <title>Basic properties of linear transformations</title>
+      
+            <statement>
+              <p>
+                Let <m>T\colon V\rightarrow W</m> be a linear transformation.
+                <ol>
+                  <li xml:id="th_trans_prop_zero">
+                    <p>
+                      We have <m>T(\boldzero)=\boldzero</m>. In other words, <m>T</m> maps the zero vector of <m>V</m> to the zero vector of <m>W</m>. 
+                    </p>
+                  </li>
+      
+                  <li xml:id="th_trans_prop_inverse">
+                    <p>
+                      For all <m>v\in V</m>, we have <m>T(-v)=-T(v)</m>.
+                    </p>
+                  </li>
+      
+                  <li xml:id="th_trans_prop_combo">
+                    <p>
+                      Let <m>S=(v_i)_{i\in i}</m> be a tuple of vectors of <m>V</m>. Given any linear combination 
+                      <me>
+                        v=\sum_{i\in I}c_iv_i
+                      </me>
+                      of the <m>v_i</m>, we have 
+                      <me>
+                        T(v)=\sum_{i\in I}c_iT(v_i)
+                      </me>.
+                    </p>
+                  </li>
+                </ol>
+              </p>
+            </statement>
+      
+      
+            <proof>
+              <p>
+                <ol>
+                  <li>
+                    <p>
+                      We employ some similar trickery to what was done in the proof of <xref ref="prop_vs_props"/>.
+                      Assuming <m>T</m> is linear:
+                      <md>
+                        <mrow>T(\boldzero)  \amp= T(\boldzero+\boldzero)</mrow>
+                        <mrow> \amp =T(\boldzero)+T(\boldzero) \amp (<xref ref="d_transformation"/>
+                        ) </mrow>
+                      </md>.
+                      Thus, whatever <m>T(\boldzero)\in W</m> may be, it satisfies
+                      <me>
+                        T(\boldzero)=T(\boldzero)+T(\boldzero)
+                      </me>.
+                      Canceling <m>T(\boldzero)</m> on both sides using <m>-T(\boldzero)</m>, we conclude
+                      <me>
+                        \boldzero=T(\boldzero_V)
+                      </me>.
+                    </p>
+                  </li>
+      
+                  <li>
+                    <p>
+                      The argument is similar:
+                      <md>
+                        <mrow>\boldzero_W \amp= T(\boldzero_V) \amp (\text{by (1)})</mrow>
+                        <mrow> \amp =T(-v+v)</mrow>
+                        <mrow>  \amp = T(-v)+T(v)</mrow>
+                      </md>.
+                      Since <m>\boldzero_W=T(-v)+T(v)</m>, adding <m>-T(v)</m> to both sides of the equation yields
+                      <me>
+                        -T(v)=T(-v)
+                      </me>.
+                    </p>
+                  </li>
+      
+                  <li>
+                    <p>
+                      Recall that by definition a linear combination is a <em>finite</em> sum of scalar multiples of the vectors <m>v_i</m>, and hence that there is a subset <m>J=\{j_1,j_2,\dots, j_n\}\subseteq I</m> such that <m>c_i=0</m> for all <m>i\notin J</m>, in which case we have  we can write 
+                      <me>
+                        v=\sum_{i\in I}c_iv_i=c_{j_1}v_{j_1}+c_{j_2}v_{j_2}+\cdots +c_{j_n}v_{j_n}
+                      </me>.
+                      An easy induction argument on <m>n</m>, using the two defining properties of a linear transformation, shows that 
+                      <me>
+                        T(v)=c_{j_1}T(v_{j_1})+c_{j_2}T(v_{j_2})+\cdots +c_{j_n}T(v_{j_n})
+                      </me>.
+                      Since <m>c_i=0</m> for all <m>i\notin J</m>, we have 
+                      <md>
+                        <mrow>T(v) \amp = c_{j_1}T(v_{j_1})+c_{j_2}T(v_{j_2})+\cdots +c_{j_n}T(v_{j_n})</mrow>
+                        <mrow> \amp =\sum_{i\in I}c_iT(v_i)</mrow>
+                      </md>,
+                      as desired. 
+                    </p>
+                  </li>
+                </ol>
+              </p>
+            </proof>
+          </theorem>
+      
+          <remark xml:id="rm_transform_dist">
+            <title>Transformations distribute over combinations</title>
+      
+            <p>
+              <xref ref="th_trans_prop_combo">Statement</xref> of <xref ref="th_transform_basic_props"/> combines and extends our distributive interpretations of <xref ref="rm_lin_trans"/>. It says that  the application of a linear transformation distributes over arbitrary linear combinations of vectors.
+            </p>
+          </remark>
+      
+           
+    </subsection>
+    <subsection xml:id="ss_transform_interesting">
+    <title>Interesting examples</title>
+    <p>
+        As a sort of converse to <xref ref="th_trans_prop_combo">statement</xref> of <xref ref="th_transform_basic_props"/>, observe that if <m>T\colon V\rightarrow W</m> satisfies
+        <me>
+          T(cv_1+dv_2)=cT(v_1)+dT(v_2)
+        </me>
+        for all <m>c, d\in R</m> and <m>v_1,v_2\in V</m>, then <m>T</m> is linear.
+        Indeed, taking the special case <m>c=d=1</m> yields <xref ref="d_lin_trans_add">Axiom</xref>  of <xref ref="d_transformation"/>; and choosing <m>d=0</m> yields <xref ref="d_lin_trans_mult">Axiom</xref> of <xref ref="d_transformation"/>.
+        As a consequence, we have the following one-step procedure for proving whether a function <m>T\colon V\rightarrow W</m> between vector spaces is a linear transformation. 
+      </p>
+  
+      <algorithm xml:id="proc_transform_onestep">
+        <title>One-step technique for transformations</title>
+  
+        <statement>
+          <p>
+            Let <m>T\colon V\rightarrow W</m> be a function between vector spaces.
+            To prove <m>T</m> is a linear transformation, show that
+            <me>
+              T(cv_1+dv_2)=cT(v_1)+dT(v_2)
+            </me>
+            for all scalars <m>c, d\in R</m> and all vectors <m>v_1,v_2\in V</m>.
+          </p>
+        </statement>
+      </algorithm>
+      <p>
+        Next we introduce an extremely important family of linear transformations: any matrix <m>A\in F^{m,n}</m> has associated to it a linear transformation <m>T_A\colon F^n\rightarrow F^m</m> called a <em>matrix transformation</em>. 
+      </p>
+  
+      <definition xml:id="d_matrix_transform">
+        <title>Matrix transformations</title>
+        <notation>
+          <usage><m>T_A</m></usage>
+          <description>
+            the matrix transformation associated to <m>A</m>
+          </description>
+        </notation>
+  
+        <statement>
+          <p>
+            Let <m>A\in F^{m,n}</m>. 
+            The <term>matrix transformation associated to <m>A</m></term> is the function <m>T_A\colon F^n\rightarrow F^m</m> defined as 
+            <me>
+                T_A(\boldx)=A\boldx
+            </me>
+            for all <m>\boldx\in F^n</m>. We call <m>A</m> the <term>standard matrix</term> of <m>T_A</m>.
+          </p>
+        </statement>
+      </definition>
+      <remark>
+      <title>Matrix transformation</title>
+      <p>
+        Observe how <xref ref="declaration_tuples_columns"/> comes into play in the definition of <m>T_A\colon F^n\rightarrow F^m</m>: given a tuple <m>\boldx=(x_1,x_2,\dots, x_n)\in F^n</m>, in order to make sense of the expression <m>A\boldx</m>, we must think of <m>\boldx</m> as the column vector
+        <me>
+            \colvec{x_1\\x_2\\ \vdots \\ x_n}
+        </me>.
+      </p>
+      </remark>
+      
+      <example xml:id="eg_matrix_transformation">
+      <title>Matrix transformation</title>
+      <statement>
+      <p>
+      Let <m>A\in F^{m,n}</m>. Prove that <m>T_A\colon F^n\rightarrow F^m</m> is a linear transformation. 
+      </p>
+      </statement>
+      <solution>
+      <p>
+      We use the 1-step technique. As you will see the proof follows directly from elementary properties of matrix multiplication. Given any <m>\boldx,\boldy\in F^n</m> and <m>c,d\in F</m>, we have 
+      <md>
+        <mrow>T_A(c\boldx+d\boldy) \amp =A(c\boldx+d\boldy) \amp (\text{def. of } T_A)</mrow>
+        <mrow> \amp = cA\boldx+dA\boldy \amp (\text{matrix mult. props.})</mrow>
+        <mrow> \amp = cT_A(\boldx)+dT_A(\boldy) \amp (\text{def. of } T_A)</mrow>
+      </md>.
+      </p>
+      </solution>
+      </example>
+      <example xml:id="eg_transposition">
+      <title>Matrix transpose</title>
+      <statement>
+      <p>
+      Define <m>S\colon F^{m,n}\rightarrow F^{n,m}</m> as <m>S(A)=A^T</m>: <ie/>, <m>S</m> is the transpose operation. Prove that <m>S</m> is a linear transformation. 
+      </p>
+      </statement>
+      <solution>
+      <p>
+      The linearity of <m>S</m> follows from elementary properties of the transpose operator. Using the one-step technique, for any <m>A,A'\in F^{m,n}</m> and scalars <m>c,d\in F</m>, we have 
+      <md>
+        <mrow>S(cA+dA') \amp =(cA+dA')^T</mrow>
+        <mrow> \amp =cA^T+d(A')^T \amp (\text{prop. of transp.})</mrow>
+        <mrow> \amp =cS(A)+dS(A')</mrow>
+      </md>.
+      This proves <m>S</m> is linear. 
+      </p>
+      </solution>
+      </example>
+      
+      <example xml:id="eg_diff_linear">
+      <title>Differentiation</title>
+      <statement>
+      <p>
+      Let <m>I</m> be an interval of <m>\R</m>. Prove that 
+      <md>
+        <mrow>T\colon C^1(I) \amp \rightarrow C(I)</mrow>
+        <mrow>f \amp \longmapsto f'</mrow>
+      </md>
+      is a linear transformation. 
+      </p>
+      </statement>
+      <solution>
+      <p>
+      The linearity of <m>T</m> follows from elementary properties of differentiation. We use the one-step technique. For any <m>f,g\in C^1(I)</m> and scalars <m>c,d\in \R</m>, we have 
+      <md>
+        <mrow>T(cf+dg) \amp = (cf+dg)'</mrow>
+        <mrow> \amp =cf'+dg' \amp (\text{props. of diff.})</mrow>
+        <mrow> \amp =cT(f)+dT(g)</mrow>
+      </md>.
+      This proves <m>T</m> is linear. 
+      </p>
+      </solution>
+    </example>
+      <example xml:id="eg_integration_trans">
+      <title>Integration</title>
+      <statement>
+      <p>
+       Let <m>[a,b]</m> be a closed interval of <m>\R</m>. Prove that the function 
+       <md>
+        <mrow>T\colon C([a,b]) \amp\rightarrow  \R </mrow>
+        <mrow>f \amp \longmapsto \int_a^bf\, dx</mrow>
+       </md>
+       is a linear transformation. 
+      </p>
+      </statement>
+      <solution>
+      <p>
+      Similarly to the above examples, the linearity of <m>T</m> follows from familiar properties of the integral: for all <m>f,g\in C([a,b])</m> and <m>c,d\in \R</m>, we have 
+      <md>
+        <mrow>T(cf+dg) \amp =\int_a^b cf+dg\, dx</mrow>
+        <mrow> \amp =c\int_a^bf\, dx+d\int_a^bg\, dx</mrow>
+        <mrow> \amp =cT(f)+dT(g)</mrow>
+      </md>. 
+      </p>
+      </solution>
+      </example>
+      <example xml:id="eg_evaluation_trans">
+      <title>Function evaluation</title>
+      <statement>
+      <p>
+      Let <m>X</m> be a nonempty set, and let <m>(x_1,x_2,\dots, x_n)</m> a list of <m>n</m> elements of <m>X</m>. Prove that the function 
+      <md>
+        <mrow>T\colon F^X \amp \rightarrow F^n</mrow>
+        <mrow>f \amp \mapsto (f(x_1),f(x_2),\dots, f(x_n))</mrow>
+      </md>
+      is a linear transformation. 
+      </p>
+      </statement>
+      <solution>
+      <p>
+      For all <m>f,g\in F^X</m> and scalars <m>c,d\in F</m>, we have 
+      <md>
+        <mrow>T(cf+dg) \amp =((cf+dg)(x_1),(cf+dg)(x_2),\dots, (cf+dg)(x_n))</mrow>
+        <mrow> \amp = (cf(x_1)+dg(x_1),cf(x_2)+dg(x_2),\dots, cf(x_n)+dg(x_n))</mrow>
+        <mrow> \amp =c(f(x_1),f(x_2),\dots, f(x_n))+d(g(x_1),g(x_2),\dots, g(x_n))</mrow>
+        <mrow> \amp =cT(f)+dT(g)</mrow>
+      </md>.
+      </p>
+      </solution>
+      </example>
+      <example xml:id="eg_shift_transform">
+        <title>Shift transformations</title>
+        <statement>
+        <p>
+        Prove that the functions <m>T_\ell</m> and <m>T_r</m> defined as 
+        <md>
+            <mrow>T_\ell\colon F^\infty \amp \rightarrow F^\infty \amp T_r\colon F^\infty\amp \rightarrow F^\infty</mrow>
+            <mrow>(a_1,a_2,a_3,\dots) \amp \longmapsto (a_2,a_3,\dots) \amp (a_1,a_2,\dots)\amp \mapsto (0,a_1,a_2,\dots)</mrow>
+        </md>
+        are linear transformations. 
+        </p>
+        </statement>
+        <solution>
+        <p>
+        We prove that <m>T_\ell</m> is a linear transformation, leaving the proof for <m>T_r</m> to the reader. Using tuple notation, we have <m>T_\ell((a_n)_{n=1}^\infty)=(a_{n+1})_{n=1}^\infty</m>. Thus, for any tuples <m>(a_n)_{n=1}^\infty, (b_n)_{n=1}^\infty\in F^\infty</m> and scalars <m>c,d\in F</m>, we have 
+        <md>
+          <mrow>T_\ell(c(a_n)_{n=1}^\infty+d(b_n)_{n=1}^\infty) \amp = T_\ell(ca_n+db_n)_{n=1}^\infty</mrow>
+          <mrow> \amp =(ca_{n+1}+db_{n+1})_{n=1}^{\infty}</mrow>
+          <mrow> \amp =c(a_{n+1})_{n=1}^\infty+d(b_{n+1})_{n=1}^\infty</mrow>
+          <mrow> \amp =cT_\ell((a_n)_{n=1}^\infty)+dT((b_n)_{n=1}^\infty)</mrow>
+        </md>.
+        </p>
+        </solution>
+        </example>
+      
+        <theorem xml:id="th_transformation_projection_subtuple">
+        <title>Projection onto subtuple</title>
+        <statement>
+        <p>
+        Let <m>F</m> be a field, <m>I</m> a nonempty set, and <m>J</m> a nonempty subset of <m>I</m>. The function <m>T\colon F^I\rightarrow F^J</m> defined as 
+        <m>T\left((a_i)_{i\in I}\right)=(a_j)_{j\in J}</m> is a linear transformation. 
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Left as an exercise.
+        </p>
+      </proof>
+        </theorem>
+        
+      
+    
+    </subsection>
+    <subsection xml:id="ss_transformations_bases">
+    <title>Transformations and bases</title>
+    <theorem xml:id="th_trans_basis">
+    <title>Transformations and bases</title>
+    <statement>
+    <p>
+    Let <m>V</m> and <m>W</m> be vector spaces, and let <m>B=(v_i)_{i\in I}</m> be a basis of <m>V</m>. 
+    <ol>
+        <li>
+            <p>
+                Give linear transformations <m>T_1,T_2\in \mathcal{L}(V,W)</m>, we have 
+                <m>T_1=T_2</m> if and only if <m>T_1(v_i)=T_2(v_i)</m> for all <m>i\in I</m>. 
+            </p>
+        </li>
+        <li>
+            <p>
+                Given any tuple <m>(w_i)_{i\in I}</m> of vectors of <m>W</m>, there is a linear transformation <m>T\colon V\rightarrow W</m> satisfying 
+                <men xml:id="eq_trans_basis">
+                    T(v_i)=w_i
+                </men> for all <m>i\in I</m>. Furthermore, as a consequence of (1), this linear transformation <m>T</m> is unique. 
+            </p>
+        </li>
+    </ol>
+    </p>
+    </statement>
+    <proof>
+    <p>
+        We assume <m>B=(v_i)_{i\in I}</m> is a basis of <m>V</m>. 
+        <ol>
+            <li>
+                <p>
+                   Assume <m>T_1,T_2\in \mathcal{L}(V,W)</m> and that <m>T_1(v_i)=T_2(v_i)</m> for all <m>i\in I</m>. Since <m>B</m> is a basis, given any <m>v\in V</m> we can write <m>v</m> as a linear combination 
+                   <me>
+                    v=\sum_{i\in I}c_iv_i
+                   </me>
+                   for some <m>c_i\in F</m>, in which case we have 
+                   <md>
+                    <mrow>T_1(v) \amp =\sum_{i\in I}c_iT_1(v_i) \amp (T_1 \text{ is linear})</mrow>
+                    <mrow> \amp = \sum_{i\in I}c_iT_2(v_i) \amp (T_1(v_i)=T_2(v_i))</mrow>
+                    <mrow> \amp = T_2(v) \amp (T_2 \text{ is linear})
+                    </mrow>
+                </md>.
+                We have shown that <m>T_1(v)=T_2(v)</m> for all <m>v\in V</m>. By definition, this means that <m>T_1=T_2</m>.
+                </p>
+            </li>
+            <li>
+                <p>
+                    Given a tuple <m>(w_i)_{i\in i}</m> of vectors of <m>W</m>, the following recipe defines a function <m>T\colon V\rightarrow W</m>:
+                    <ul>
+                        <li>
+                            <p>
+                                given <m>v\in V</m>, write <m>v=\sum_{i\in I}c_iv_i</m> as a linear combination of the vectors <m>v_i</m>;
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                define <m>T(v)=\sum_{i\in I}c_iw_i</m>.
+                            </p>
+                        </li>
+                    </ul>
+                We need to address two details of this recipe in order to convince ourselves that this determines a well-defined function <m>T</m>. Firstly, since <m>B</m> is a basis, the coefficients <m>c_i</m> in the linear combination <m>v=\sum_{i\in I}c_iv_i</m> are <em>uniquely</em> determined by <m>v</m>, making the value <m>T(v)=\sum_{i\in I}c_iw_i</m> uniquely determined. Secondly, observe that since <m>c_i=0</m> for all but finitely many <m>i\in I</m>, the expression <m>\sum_{i\in I}c_iw_i</m> is a (finite) linear combination of vectors, and thus defines an element of <m>W</m>. 
+                </p>
+                <p>
+                    From our definition of <m>T</m> it follows that <m>T(v_i)=w_i</m> for all <m>i\in I</m>. Indeed, to compute <m>T(v_i)</m> following our recipe, we write <m>v_i=1v_i</m> as a linear combination of the elements of <m>B</m>, whence it follows that <m>T(v_i)=1w_i=w_i</m>. 
+                </p>
+                <p>
+                    Lastly, we must show that <m>T</m> is linear using the 1-step technique. Given <m>v, w\in V</m> and scalars <m>c,d\in F</m>, write  
+                    <md>
+                        <mrow>v \amp =\sum_{i\in I}c_iv_i</mrow>
+                        <mrow>w \amp =\sum_{i\in I}d_iv_i</mrow>
+                    </md>
+                    as linear combinations of the <m>v_i</m>, and then compute
+                    <md>
+                        <mrow>T(cv+dw) \amp =T\left(\sum_{i\in i}cc_iv_i+\sum_{i\in I}dd_iv_i\right)</mrow>
+                        <mrow>\amp= T\left(\sum_{i\in i}(cc_i+dd_i)v_i\right)</mrow>
+                        <mrow> \amp = \sum_{i\in I}(cc_i+dd_i)w_i \amp (\text{def. of } T)</mrow>
+                        <mrow> \amp =c\sum_{i\in i}c_iw_i+d\sum_{i\in I}d_iw_i</mrow>
+                        <mrow> \amp =cT(v)+dT(w) \amp (\text{def. of } T)</mrow>
+                    </md>.
+                </p>
+            </li>
+        </ol>
+    </p>
+    </proof>
+    </theorem>
+    <remark>
+    <title>Transformations and bases</title>
+    <p>
+    The two statements of <xref ref="th_trans_basis"/> deserve some elaboration and interpretation. 
+    <ol>
+        <li>
+            <p>
+                The first statement tells us that a linear transformation <m>T\colon V\rightarrow W</m> is uniqueley determined by its values <m>T(v_i)</m> for any basis <m>B=(v_i)_{i\in I}</m>. In other words, if you know that <m>T</m> is linear, and you know where it sends each element of a basis, then you know <m>T</m> completeley! Put another way, a linear transformation is uniquely determined by its action on any given basis. 
+            </p>
+        </li>
+        <li>
+            <p>
+                Consisder the second statement as a powerful <q>transformation building</q> result. In more detail, it says the following: given a basis <m>B=(v_i)_{i\in I}</m> of <m>V</m>, given any choice of values <m>w_i\in W</m>, there is a unique linear transformation <m>T\in \mathcal{L}(V,W)</m> that sends <m>v_i</m> to <m>w_i</m> for all <m>i\in I</m>. 
+            </p>
+        </li>
+    </ol>
+    </p>
+    </remark>
+    <p>
+  Earlier we proved as an example that given <m>A\in\ML_{m,n}(F)</m>, the matrix transformation function <m>T_A\colon F^n\rightarrow F^m</m> is linear.  As our first important consequence of <xref ref="th_trans_basis"/>, we can now prove a converse to this statement: in fact <em>all</em> linear transformations <m>T\colon F^n\rightarrow F^m</m> are matrix transformations! 
+    </p>
+    <theorem xml:id="th_matrix_transform">
+      <title>Matrix transformations</title>
+
+      <statement>
+        <p>
+          Let <m>m</m> and <m>n</m> be positive integers.
+          <ol>
+            <li xml:id="th_matrix_transf_linear">
+              <title>Matrix transformations are linear</title>
+
+              <p>
+                Given any <m>A\in \ML_{m,n}(F)</m>, the function <m>T_A\colon \R^n\rightarrow \R^m</m> is a linear transformation.
+              </p>
+            </li>
+
+            <li xml:id="th_transf_is_matrix">
+              <title>Transformations from <m>\R^n</m> to <m>\R^m</m></title>
+              <p>
+                If <m>T\colon \R^n\rightarrow \R^m</m>, there is a unique matrix <m>A</m> such that <m>T=T_A</m>. In fact, we have 
+              <md number="yes" xml:id="eq_stand_matrix">
+                  A=\begin{bmatrix}\vert\amp \vert\amp  \amp \vert \\ T(\bolde_1)\amp  T(\bolde_2)\amp \cdots \amp T(\bolde_n)\\ \vert\amp \vert\amp  \amp \vert \end{bmatrix}
+                </md>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+        <ol>
+          <li>
+            <p>
+              This was shown in <xref ref="eg_matrix_transformation"/>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Let <m>B=\{\bolde_1,\bolde_2,\dots, \bolde_n\}</m> be the <xref ref="rm_standard_bases" text="custom">standard basis</xref> of <m>\R^n</m>.
+              Let <m>A\in \ML_{m,n}(\R)</m> and let <m>\bolda_j</m> denote the <m>j</m>-th column of <m>A</m> for all <m>1\leq j\leq n</m>.
+              We have
+              <md>
+                <mrow>T=T_{A} \amp \iff T(\bolde_j)=T_A(\bolde_j) \text{ for all } 1\leq j\leq n \amp (<xref ref="th_bases_transformations"/>
+                , <xref ref="th_transf_unique" text="custom">(1)</xref> ) </mrow>
+                <mrow> \amp \iff T(\bolde_j)=\bolda_j \text{ for all } 1\leq j\leq n </mrow>
+              </md>,
+              where the last equality follows from the column method of matrix multiplication:
+              <md>
+                A\bolde_j= \begin{bmatrix}\vert\amp \vert\amp  \amp \vert \\ \bolda_1\amp  \bolda_2\amp \cdots \amp \bolda_n\\ \vert\amp \vert\amp  \amp \vert \end{bmatrix}\colvec{0\\ \vdots \\ 1 \\ \vdots \\0}=1\bolda_j
+              </md>.
+              It follows that <m>T=T_A</m> if and only if <m>A</m> is the matrix whose <m>j</m>-th column is <m>T(\bolde_j)</m> for all <m>1\leq j\leq n</m>.
+              In other words,
+              <md>
+                A=\begin{bmatrix}\vert\amp \vert\amp  \amp \vert \\ T(\bolde_1)\amp  T(\bolde_2)\amp \cdots \amp T(\bolde_n)\\ \vert\amp \vert\amp  \amp \vert \end{bmatrix}
+              </md>
+              is the unique <m>m\times n</m> matrix satisfying <m>T=T_A</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+      </proof>
+    </theorem>
+    <p>
+      <xref ref="th_matrix_transform"/> provides a convenient means of showing that certain familiar geometric transformations of the plane are in fact linear transformations. As a first example, we consider rotations in <m>\R^2</m>. 
+    </p>
+
+    <definition xml:id="d_rotation">
+      <title>Rotation in the plane</title>
+
+      <idx><h>rotation</h><h>as linear transformation</h></idx>
+      <notation>
+        <usage><m>\rho_\alpha</m></usage>
+        <description>
+          rotation by <m>\alpha</m> in the plane
+        </description>
+      </notation>
+
+      <statement>
+        <p>
+          Fix an angle <m>\alpha</m> and define
+          <md>
+            \rho_\alpha\colon \R^2\rightarrow \R^2
+          </md>
+          to be the function that takes an input vector <m>\boldx=(x_1,x_2)</m>, considered as the position vector <m>\overrightarrow{OP}</m> of the point <m>P=(x_1,x_2)</m>, and returns the output <m>\boldy=(y_1,y_2)</m> obtained by rotating the vector <m>\boldx</m> by an angle of <m>\alpha</m> about the origin.
+          The function <m>\rho_\alpha</m> is called <term>rotation about the origin </term> by the angle <m>\alpha</m>.
+        </p>
+
+        <p>
+          We can extract a formula from the rule defining <m>\rho_\alpha</m> by using polar coordinates: if <m>\boldx</m> has polar coordinates <m>(r,\theta)</m>, then <m>\boldy=\rho_\alpha(\boldx)</m> has polar coordinates <m>(r,\theta+\alpha)</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <theorem xml:id="th_transform_rotation">
+      <title>Rotation is a linear transformation</title>
+
+      <statement>
+        <p>
+          Fix an angle <m>\alpha</m>.
+          The rotation function <m>\rho_{\alpha}\colon \R^2\rightarrow \R^2</m> is a linear transformation.
+          In fact, we have <m>\rho_\alpha=T_A</m>, where
+          <md number="yes" xml:id="eq_rotation_matrix_2">
+            A=\begin{amatrix}[rr] \cos\alpha\amp -\sin\alpha\\ \sin\alpha \amp \cos\alpha \end{amatrix}
+          </md>.
+        </p>
+      </statement>
+
+
+      <proof>
+        <p>
+          By  <xref ref="rm_matrix_transform_example"/>, we need only show that <m>\rho_\alpha=T_A</m> for the matrix indicated.
+        </p>
+
+        <p>
+          If the vector <m>\boldx=(x,y)</m> has polar coordinates <m>(r,\theta)</m> (so that <m>x_1=r\cos\theta</m> and <m>x_2=r\sin\theta</m>), then its image <m>\boldy=\rho_{\alpha}(P)</m> under our rotation has polar coordinates <m>(r,\theta+\alpha)</m>.
+          Translating back to rectangular coordinates, we see that
+          <md>
+            <mrow> \rho_\alpha(\boldx)\amp= \boldy </mrow>
+            <mrow>  \amp =\left(r\cos(\theta+\alpha),r\sin(\theta+\alpha)\right)</mrow>
+            <mrow> \amp =(r\cos\theta\cos\alpha-r\sin\theta\sin\alpha, r\sin\theta\cos\alpha+r\cos\theta\sin\alpha) \amp (\text{trig. identities}) </mrow>
+            <mrow>  \amp=(\cos\alpha\, x_1-\sin\alpha\, x_2, \sin\alpha\, x_1+\cos\alpha\, x_2) \amp (\text{since } x_1=r\cos\theta, x_2=r\sin\theta) </mrow>
+          </md>.
+          It follows that <m>\rho_{\alpha}=T_A</m>, where
+          <md>
+            A=\begin{amatrix}[rr] \cos\alpha\amp -\sin\alpha\\ \sin\alpha \amp \cos\alpha \end{amatrix}
+          </md>,
+          as claimed.
+        </p>
+      </proof>
+    </theorem>
+
+    <remark xml:id="rm_rotation_matrix">
+      <p>
+        Observe that it is not at all obvious geometrically that the rotation operation is <em>linear</em>: <ie />, that it preserves addition and scalar multiplication of vectors in <m>\R^2</m>.
+        Indeed, our proof does not even show this directly, but instead first gives a matrix formula for rotation and then uses <xref ref="th_transf_is_matrix" text="custom">statement (2)</xref> of <xref ref="th_matrix_transform"/>.
+      </p>
+
+      <p>
+        Since matrices of the form
+        <md>
+          \begin{amatrix}[rr] \cos\alpha\amp -\sin\alpha\\ \sin\alpha \amp \cos\alpha \end{amatrix}
+        </md>
+        can be understood as defining rotations of the plane, we call them <term>rotation matrices</term>.
+      </p>
+    </remark>
+
+    <example>
+      <title>Rotation matrices</title>
+
+      <statement>
+        <p>
+          Find formulas for <m>\rho_\pi\colon \R^2\rightarrow \R^2</m> and <m>\rho_{2\pi/3}\colon \R^2\rightarrow \R^2</m>, expressing your answer in terms of pairs (as opposed to column vectors).
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          The rotation matrix corresponding to <m>\alpha=\pi</m> is
+          <md>
+            A=\begin{amatrix}[rr]\cos\pi\amp -\sin\pi\\ \sin\pi \amp \cos\pi  \end{amatrix}= \begin{amatrix}[rr]-1\amp 0\\ 0 \amp -1  \end{amatrix}
+          </md>.
+          Thus <m>\rho_\pi=T_A</m> has formula
+          <md>
+            \rho_{\pi}(x,y)=(-x,-y)=-(x,y)
+          </md>.
+          Note: this is as expected! Rotating by 180 degrees produces the vector inverse.
+        </p>
+
+        <p>
+          The rotation matrix corresponding to <m>\alpha=2\pi/3</m> is
+          <md>
+            B=\begin{amatrix}[rr]\cos(2\pi/3)\amp -\sin(2\pi/3)\\ \sin(2\pi/3) \amp \cos(2\pi/3)  \end{amatrix}= \begin{amatrix}[rr]-\frac{1}{2}\amp -\frac{\sqrt{3}}{2}\\ \frac{\sqrt{3}}{2} \amp -\frac{1}{2}  \end{amatrix}
+          </md>.
+          Thus <m>\rho_{2\pi/3}=T_B</m> has formula
+          <md>
+            \rho_{2\pi/3}(x,y)=\frac{1}{2}(-x-\sqrt{3}y, \sqrt{3}x-y)
+          </md>.
+          Let's check our formula for <m>\rho_{2\pi/3}</m>for the vectors <m>(1,0)</m> and <m>(0,1)</m>:
+          <md>
+            <mrow>\rho_{2\pi/3}(1,0) \amp =(-1/2, \sqrt{3}/2) </mrow>
+            <mrow>\rho_{2\pi/3}(0,1) \amp =(-\sqrt{3}/2, -1/2) </mrow>
+          </md>.
+          Confirm for yourself geometrically that these are the vectors you get by rotating the vectors <m>(1,0)</m> and <m>(0,1)</m> by an angle of <m>2\pi/3</m> about the origin.
+        </p>
+      </solution>
+    </example>
+    </subsection>
+    <subsection xml:id="ss_vs_of_lin_transformations">
+    <title><m>\mathcal{L}(V,W)</m> as a vector space</title>
+    <p>
+       We end this section by providing a vector space structure to the set <m>\mathcal{L}(V,W)</m> of all linear transformations from <m>V</m> to <m>W</m>. As in <xref ref="s_vector_space"/>, we state the result as a definition with proof. 
+    </p>
+    <definition xml:id="d_linear_transformations">
+    <title>Space of linear transformations</title>
+    <statement>
+    <p>
+    Let <m>V</m> and <m>W</m> be vector spaces. Below we define a vector space structure on <m>\mathcal{L}(V,W)</m>. 
+    <ul>
+        <li>
+            <title>Vector operations</title>
+            <p>
+                Given linear transformations <m>T,S\in \mathcal{L}(V,W)</m> and scalar <m>c\in F</m>, we define linear transformations <m>T+S, cT\in \mathcal{L}(V,W)</m> as follows: 
+                <md>
+                    <mrow>(T+S)(v) \amp= T(v)+S(v) \text{ for all } v\in V </mrow>
+                    <mrow>(cT)(v) \amp =cT(v) \text{ for all } v\in V</mrow>
+                </md>.
+            </p>
+        </li>
+        <li>
+            <title>Zero vector</title>
+            <p>
+                The zero vector of <m>\mathcal{L}(V,W)</m> is the zero transformation <m>0_{V,W}\colon V\rightarrow W</m> defined as <m>0_{V,W}(v)=\boldzero</m> for all <m>v\in V</m>. 
+            </p>
+        </li>
+        <li>
+            <title>Vector inverses</title>
+            <p>
+                Given a linear transformation <m>T\in \mathcal{L}(V,W)</m>, its vector inverse is the linear transformation <m>-T\in \mathcal{L}(V,W)</m> defined as <m>(-T)(v)=-T(v)</m> for all <m>v\in V</m>. 
+            </p>
+        </li>
+    </ul>
+    We call <m>\mathcal{L}(V,W)</m>, together with these vector operations, the <term>space of linear transformations</term> from <m>V</m> to <m>W</m>. 
+    </p>
+    </statement>
+    </definition>
+    <proof>
+        <p>
+            The proof is left as an exercises. Note that before verifying the vector space axioms (i)-(viii) you must first verify that the given operations are well-defined: <ie/>, you must show that if <m>T</m> and <m>S</m> are linear transformations from <m>V</m> to <m>W</m>, then so are the functions <m>T+S</m> and <m>cT</m>.
+        </p>
+    </proof>
+    
+    </subsection>
+
+    
+    
+
+</section>
