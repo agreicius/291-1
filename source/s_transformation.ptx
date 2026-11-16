@@ -905,8 +905,8 @@
 
     <warning>
       <p>
-        Although <xref ref="th_matrix_transform"/> is very powerful, mark well its restriction: it only applies in the setting of linear transformations from <m>\R^n</m> to <m>\R^m</m>.
-      It says nothing about linear transformations whose domain or codomain is a vector space like <m>\ML_{m,n}(\R)</m> or <m>\R^\infty</m>.
+        Although <xref ref="th_matrix_transform"/> is very powerful, mark well its restriction: it only applies in the setting of linear transformations from <m>F^n</m> to <m>F^m</m>.
+      It says nothing about linear transformations whose domain or codomain is a vector space like <m>\ML_{m,n}(F)</m> or <m>F^\infty</m> or <m>C^\infty(I)</m>. 
       </p>
     </warning>
 
