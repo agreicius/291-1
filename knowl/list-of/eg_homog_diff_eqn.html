@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.20.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Homogeneous linear differential equation.</span>
+</h4>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(I\)</span> be an interval of <span class="process-math">\(\R\text{,}\)</span> let <span class="process-math">\(q_{n-1},q_{n-2},\dots, q_1\)</span> be continuous functions on <span class="process-math">\(I\)</span> (i.e., <span class="process-math">\(q_i\in C(I)\)</span>) for all <span class="process-math">\(1\leq i\leq n-1\text{,}\)</span> and define <span class="process-math">\(W\)</span> as the set of functions <span class="process-math">\(f\in C^n(I)\)</span> satisfying the linear homogeneous differential equation</div>
+<div class="displaymath process-math">
+\begin{equation}
+f^{(n)}(x)+q_{n-1}(x)f^{(n-1)}(x)+\cdots +q_1(x)f(x)=0 \text{ for all } x\in I\text{.}\tag{1.20.3}
+\end{equation}
+</div>
+<div class="para">Prove that <span class="process-math">\(W\)</span> is a subspace of <span class="process-math">\(C^n(I)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_homog_diff_eqn-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical">
+<div class="para">Define <span class="process-math">\(T\colon C^n(I) \rightarrow C(I)\)</span> as</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_lin_homog_diff_eq.html">
+\begin{equation*}
+T(f)=f^{(n)}+q_{n-1}f^{(n-1)}+\cdots +q_1f\text{.}
+\end{equation*}
+</div>
+<div class="para">We have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_lin_homog_diff_eq.html">
+\begin{align*}
+T(cf+dg) \amp = (f+g)^{(n)}+q_{n-1}(f+g)^{(n-1)}+\cdots +q_1(f+g)\\
+\amp = c(f^{(n)}+q_{n-1}f^{(n-1)}+\cdots +q_1f)+d(g^{(n)}+q_{n-1}g^{(n-1)}+\cdots +q_1g)\\
+\amp =cT(f)+dT(g)\text{,}
+\end{align*}
+</div>
+<div class="para">showing that <span class="process-math">\(T\)</span> is a linear transformation. The set of solutions to <a href="s_null_image.html#eq_lin_homog_diff_eq" class="xref" data-knowl="./knowl/xref/eq_lin_homog_diff_eq.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.20.3">(1.20.3)</a> is precisely <span class="process-math">\(\NS T\text{,}\)</span> making this set a subspace of <span class="process-math">\(C^n(I)\text{.}\)</span>
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_homog_diff_eqn-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.20.9.1"><a href="#eg_homog_diff_eqn-3" title="Copy heading and permalink for Solution 1.20.9.1" aria-label="Copy heading and permalink for Solution 1.20.9.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.20.9: Homogeneous linear differential equation"><a href="#eg_homog_diff_eqn" title="Copy heading and permalink for Example 1.20.9: Homogeneous linear differential equation" aria-label="Copy heading and permalink for Example 1.20.9: Homogeneous linear differential equation">🔗</a></div></article><span class="incontext"><a class="internal" href="s_null_image.html#eg_homog_diff_eqn">in-context</a></span>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h4 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.20.10</span><span class="period heading-divison-mark heading-divison-mark__period">.</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Matrix transformation.</span>
+</h4>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(A\)</span> be an <span class="process-math">\(m\times n\)</span> matrix, and let <span class="process-math">\(\bolda_1,\bolda_2,\dots, \bolda_n\)</span> be the <span class="process-math">\(n\)</span> columns of <span class="process-math">\(A\text{,}\)</span> considered as elements of <span class="process-math">\(F^m\text{.}\)</span>   Show that the null space and image of the corresponding matrix transformation <span class="process-math">\(T_A\colon F^n\rightarrow F^m\)</span> can be identified with the following <em class="emphasis">fundamental spaces</em> of <span class="process-math">\(A\text{:}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{align*}
+\NS T_A \amp = \NS A=\{\boldx\in F^n\colon A\boldx=\boldzero\}\\
+\im T_A \amp =\CS A=\Span(\bolda_1,\bolda_2,\dots, \bolda_n)\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_null_im_matrix-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions"><details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary><div class="solution solution-like knowl__content">
+<div class="para logical">
+<div class="para">For the null space, we have</div>
+<div class="displaymath process-math">
+\begin{align*}
+\NS T_A \amp =\{\boldx\in F^n\colon T_A(\boldx)=\boldzero\}\\
+\amp = \{\boldx\in F^n\colon A\boldx=\boldzero\}\\
+\amp = \NS A\text{.}
+\end{align*}
+</div>
+<div class="para">The statment about <span class="process-math">\(\im T_A\)</span> follows from the following observation about matrix equations: we can solve <span class="process-math">\(A\boldx=\boldy\)</span> if and only if <span class="process-math">\(\boldy\)</span> can be expressed as a linear combination of the columns <span class="process-math">\(\bolda_j\)</span> of <span class="process-math">\(A\text{.}\)</span> (This observation, in turn, follows from the <a class="external" href="https://agreicius.github.io/euc-vec-spaces/s_matrix.html#th_column_method" target="_blank">column method description of matrix multiplication</a>.) Taking this for granted, we then have</div>
+<div class="displaymath process-math">
+\begin{align*}
+\im T_A \amp =\{\boldy\in F^m\colon y=T_A(\boldx) \text{ for some } \boldx\in F^n\}\\
+\amp =\{\boldy\in F^m\colon y=A\boldx \text{ for some } \boldx\in F^n\}\\
+\amp =\{\boldy\in F^m\colon y=\sum_{j=1}^nc_j\bolda_j \text{ for some } c_j\in F\}\\
+\amp =\Span(\bolda_1,\bolda_2,\dots, \bolda_n)\\
+\amp = \CS A\text{.}
+\end{align*}
+</div>
+<div class="autopermalink" data-description="Paragraph"><a href="#eg_null_im_matrix-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" data-description="Solution 1.20.10.1"><a href="#eg_null_im_matrix-3" title="Copy heading and permalink for Solution 1.20.10.1" aria-label="Copy heading and permalink for Solution 1.20.10.1">🔗</a></div>
+</div></details></div>
+<div class="autopermalink" data-description="Example 1.20.10: Matrix transformation"><a href="#eg_null_im_matrix" title="Copy heading and permalink for Example 1.20.10: Matrix transformation" aria-label="Copy heading and permalink for Example 1.20.10: Matrix transformation">🔗</a></div></article><span class="incontext"><a class="internal" href="s_null_image.html#eg_null_im_matrix">in-context</a></span>
+</body>
+</html>
