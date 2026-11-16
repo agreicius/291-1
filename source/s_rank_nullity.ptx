@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_rank_nullity" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Rank-nullity theorem</title>
+    <p>
+        We now prove the <xref ref="th_rank_nullity" text="custom"> rank-nullity theorem </xref>, sometimes called the <em>fundamental theorem of linear algebra</em>. This theorem relates the dimensions of the null space and image of a linear transformation <m>T\colon V\rightarrow W</m>, assuming <m>V</m> is finite dimensional. Roughly speaking, it says that the bigger the null space, the smaller the image. More precisely, it tells us that
+        <me>
+          \dim V=\dim\NS T+\dim\im T
+        </me>.
+      As we will see, this elegant result can be used to significantly simplify computations with linear transformations. For example, in a situation where we wish to compute explicitly both the null space and image of a given linear transformation, we can often get away with just computing one of the two spaces and using the rank-nullity theorem (and a dimension argument) to easily determine the other. Additionally, the rank-nullity theorem will directly imply some intuitively obvious properties of linear transformations. For example, suppose <m>V</m> is a finite-dimensional vector space. It seems obvious that if <m>\dim W&gt;  \dim V</m>, then there is no linear transformation mapping <m>V</m> surjectively onto <m>W</m>: <ie />, you should not be able to map a <q>smaller</q> vector space onto a <q>bigger</q> one. Similarly, if <m>\dim W \lt \dim V</m>, then we expect that there is no injective linear transformation mapping <m>V</m> injectively into <m>W</m>. Both these results are easy consequences of the <xref ref="th_rank_nullity" text="custom"> rank-nullity theorem </xref>.
+    </p>
+        <theorem xml:id="th_rank_nullity">
+        <title>Rank-nullity theorem</title>
+        <statement>
+        <p>
+        Let <m>V</m> be a finite-dimensional vector space. If <m>T\colon V\rightarrow W</m> is a linear transformation, then 
+        <men xml:id="eq_rank_null">
+          \dim V=\dim\NS T+\dim \im T
+        </men>.
+        
+        </p>
+        </statement>
+        <proof>
+            <p>
+                Choose a basis <m>B'=(\boldv_1, \boldv_2, \dots, \boldv_k)</m> of <m>\NS T</m> and extend <m>B'</m> to a basis <m>B=(\boldv_1, \boldv_2,\dots, \boldv_k,\boldv_{k+1},\dots, \boldv_n)</m>, using <xref ref="th_basis_contract_expand"/>. From the proof of <xref ref="th_direct_sum_dim"/> it follows that 
+                <me>
+                    V=\NS T\oplus W
+                </me>,
+                where <m>W=\Span(v_{k+1},v_{k+2},\dots, v_n)</m>.
+                We claim that <m>B''=(T(\boldv_{k+1}),T(\boldv_{k+2}),\dots, T(\boldv_{n}))</m> is a basis of <m>\im T</m>. Once this is established, <xref ref="eq_rank_null"/> follows easily, since then we have 
+                <md>
+                    <mrow>\dim V \amp = \len B= n</mrow>
+                    <mrow>\dim \NS T \amp = \len B'=k </mrow>
+                    <mrow> \dim \im T\amp = \len B''=n-k</mrow>
+                </md>,
+                and thus 
+                <md>
+                <mrow>\dim V \amp = n</mrow>
+                <mrow> \amp = k+(n-k)</mrow>
+                <mrow> \amp =\dim \NS T+\dim \im T </mrow>
+                </md>.
+                We will prove <m>B''</m> is a basis of <m>\im T</m> by proving that it is linearly independent and a spanning set. 
+            </p>
+              <case>
+                <title>Proof that <m>B''</m> is linearly independent</title>
+                <p>
+                Assume 
+                <me>
+                    \sum_{j=k+1}^n c_jT(v_j)=\boldzero  
+                </me>.
+                Since <m>T</m> is linear, this implies that 
+                <me>
+                    T(\sum_{j=k+1}^nv_j)=\boldzero
+                </me>
+                and hence that <m>\sum_{j=k+1}^n c_jv_j \in \NS T</m>.
+                 On the other hand, we have 
+                 <me>\sum_{j=k+1}^n c_jv_j\in W=\Span(v_{k+1},\dots, v_n)</me>. 
+                 Since <m>V=\NS T\oplus W</m>, we have <m>\NS T\cap W=\{\boldzero\}</m>, and hence <m>\sum_{j=k+1}^n c_jv_j=\boldzero</m>. Lastly, since <m>(v_{k+1},\dots, v_n)</m> is linearly independent, we conclude that <m>c_j=0</m> for all <m>k+1\leq j\leq n</m>, as desired.
+                </p>
+            </case>
+                <case>
+                <title>Proof that <m>\Span B''=\im T</m></title>
+                <p>
+                We prove <m>\Span B''\subseteq \im T</m> and <m>\im T\subseteq \Span B''</m> separately. 
+                </p>
+                <p>
+                    Since <m>\im T</m> is a subspace, and since <m>T(v_j)\in \im T</m> for all <m>k+1\leq j\leq n</m>, it follows that <m>\Span B''\subseteq \im T</m> from statement (2) of  <xref ref="prop_span_subspace"/>. 
+                </p>
+                        <p>
+                          For the other inclusion, we have 
+                          <md>
+                            <mrow>w\in \im T \amp \implies w=T(v) \text{ for some } v\in V</mrow>
+                            <mrow> \amp \implies w=T(\sum_{j=1}^nc_jv_j) \text{ for some } c_j\in F</mrow>
+                            <mrow> \amp \implies w=\sum_{j=1}^nc_jT(v_j) \text{ for some } c_j\in F</mrow>
+                            <mrow> \amp \implies w=\sum_{j=k+1}^nc_jT(v_j) \text{ for some } c_j\in F</mrow>
+                          </md>, 
+                          since <m>T(v_j)=\boldzero</m> for all <m>1\leq j\leq k</m>. But then 
+                          <me>
+                            w=c_{k+1}T(v_{k+1})+\cdots c_nT(v_n)\in \Span B''
+                          </me>,
+                          proving that <m>\im T\subseteq \Span B''</m>.
+                </p>
+            </case>
+            
+        </proof>
+        </theorem>
+        <remark>
+          <title>Rank-nullity theorem</title>
+          <p>
+            Some textbooks will define the <em>rank</em> and <em>nullity</em> of a linear transformation <m>T</m> as <m>\dim \im T</m> and <m>\dim \NS T</m>, respectively. This is where the name of this theorem comes from. 
+          </p>
+        </remark>
+        <p>
+          The rank-nullity theorem relates the size (measured by dimension) of the two spaces <m>\NS T</m> and <m>\im T</m>. This can be useful in computations when one of these two spaces is easy to compute. 
+        </p>
+        <example xml:id="eg_rank_nullity_Rn">
+        <title>Rank-nullity: image from null space</title>
+        <statement>
+        <p>
+        Let <m>T\colon \R^4\rightarrow \R^3</m> be defined as 
+        <me>
+          T(x_1,x_2,x_3,x_4)=(x_1+x_4, x_2+x_3+x_4, x_3+x_4)
+        </me>.
+        Use the rank-nullity theorem to prove that <m>T</m> is surjective.
+        </p>
+        </statement>
+        <solution>
+        <p>
+        
+        </p>
+        </solution>
+        </example>
+        
+        <corollary xml:id="cor_inj_surj_bij">
+          <title>Injective, surjective, bijective</title>
+          <statement>
+            <p>
+              Let <m>V</m> be a finite-dimensional vector space, and  let <m>T\colon V\rightarrow W</m> be a linear transformation.
+              <ol>
+                <li>
+                  <p>
+                    If <m>\dim V&gt; \dim W</m>, then <m>T</m> is not injective. 
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If <m>\dim V&lt; \dim W</m>, then <m>T</m> is not surjective. 
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Assume further that <m>\dim V=\dim W&lt; \infty</m>. The following statements are equivalent. 
+                    <ol>
+                      <li>
+                        <p>
+                          <m>T</m> is bijective. 
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <m>T</m> is injective.
+                        </p>
+                      </li>
+                      <li>
+                        <p>
+                          <m>T</m> is surjective.
+                        </p>
+                      </li>
+                    </ol>
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </statement>
+          <proof>
+            <p>
+              <ol>
+                <li>
+                  <p>
+                    First assume <m>\dim V=n&lt; \infty</m>. 
+                    We have 
+                    <md>
+                      <mrow>\dim \NS T \amp =\dim V-\dim\im T \amp (\text{rank-nullity})</mrow>
+                      <mrow> \amp &gt; \dim W-\dim \im T \amp (\dim V&gt; \dim W)</mrow>
+                      <mrow> \amp \geq 0 \amp (\dim \im T\leq \dim W)</mrow>
+                    </md>.
+                    It follows that <m>\dim \NS T&gt; 0</m>, and hence that <m>\NS T\ne \{\boldzero\}</m>, and thus <m>T</m> is not injective. 
+                  </p>
+                  <p>
+                    Now assume that <m>\dim V=\infty</m> and <m>\dim W=m&lt; \infty</m>. Pick an infinite linearly independent tuple <m>(v_i)_{i\in i}</m> in <m>V</m>, and let <m>B=(v_{i_1}, v_{i_2},\dots, v_{i_n})</m> be any finite subtuple of length <m>n&gt; m</m>. We know from a homework exercise that <m>B</m> is linearly independent. Thus <m>V'=\Span B</m> is an <m>n</m>-dimensional subspace of <m>V</m> and satisfies <m>\dim V'&gt; \dim W</m>. Applying the previous argument to the restriction <m>T\vert_{V'}\colon V'\rightarrow W</m>, we conclude that <m>\NS T\vert_{V'}\ne\{\boldzero\}</m>. Since <m>\NS T\vert_{V'}\subseteq \NS T</m>, we conclude that <m>\NS T\ne \{\boldzero\}</m>, and thus <m>T</m> is not injective. 
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    We assume <m>\dim V=n&lt; \dim W</m>. Since 
+                    <me>
+                      \dim \im T=\dim V-\dim \NS T\leq \dim V&lt; \dim W
+                    </me>
+                    we cannot have have <m>\im T=\dim W</m>. Thus <m>T</m> is not surjective. 
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    We assume <m>\dim V=\dim W=n&lt; \infty</m>. We prove a cycle of implications (a)<m>\implies</m>(b)<m>\implies</m>(c)<m>\implies</m>(d).
+                  </p>
+                  <p>
+                    We have (a) implies (b) by definition. 
+                  </p>
+                  <p>
+                    Assume <m>T</m> is injective. By <xref ref="th_inj_surj_bij"/>, this implies <m>\NS T=\{\boldzero\}</m> and hence <m>\dim \NS T=0</m>. It follows that 
+                    <me>
+                      \dim \im T=\dim V-\dim \NS T=\dim V-0=\dim W
+                    </me>.
+                    Since <m>\im W\subseteq W</m> and <m>\dim \im W=\dim W</m>, we have <m>\im T=W</m> by <xref ref="cor_dimension_subspace"/>. Thus <m>T</m> is surjective. This proves that (b) implies (c). 
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    If <m>T</m> is surjective, then <m>\im T=W</m> in which case <m>\dim \im T=\dim W=n</m>. It follows that 
+                    <me>
+                      \dim \NS T=\dim V-\dim \im T=n-n=0
+                    </me>.
+                    Hence <m>\dim \NS T=0</m>, or equivalently, <m>\NS T=\{\boldzero\}</m>. It follows that <m>T</m> is injective. Since <m>T</m> is injective and surjective, it is bijective. This proves that (c) implies (a).
+                  </p>
+                </li>
+              </ol>
+            </p>
+          </proof>
+        </corollary>
+        <example xml:id="eg_rank_null_polys">
+        <title>Polynomial evaluation</title>
+        <statement>
+        <p>
+        Let <m>I</m> be an infinite subset of the field <m>F</m>, let <m>n</m> be a positive integer, and let <m>\boldc=(c_1,c_2,\dots, c_{n+1})\in F^{n+1}</m> be a choice of <m>n+1</m> distinct scalars that we think of as inputs. Prove that for any choice <m>\boldd=(d_1,d_2,\dots, d_{n+1})\in F^{n+1}</m> of <m>n+1</m> outputs there is a unique polynomial <m>f\in P_n(I)</m> satisfying 
+        <md>
+          <mrow>f(c_1) \amp = d_1</mrow>
+          <mrow>f(c_2) \amp = d_2</mrow>
+          <mrow> \amp \vdots </mrow>
+          <mrow>f(c_n) \amp = d_n</mrow>
+        </md>.
+        In other words, given any choice of values <m>d_k</m>, we can construct a unique polynomial <m>f\in P_n(\C)</m> whose value at <m>c_k</m> is <m>d_k</m> for all <m>1\leq k\leq n</m>. 
+        </p>
+        </statement>
+        <solution>
+        <p>
+        
+        </p>
+        </solution>
+        </example>
+        
+        
+
+</section>

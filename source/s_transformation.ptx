@@ -36,9 +36,9 @@
         <statement>
         <p>
         Let <m>V</m> and <m>W</m> be <m>F</m>-vector spaces. A <term>linear transformation</term> from <m>V</m> to <m>W</m> is a function 
-        <me>
+        <md>
             T\colon V\rightarrow W
-        </me>
+        </md>
         satisfying the following properties. 
         <ol marker="(i)">
             <li xml:id="d_lin_trans_add">
@@ -53,9 +53,9 @@
             </li>
         </ol>
         We let <m>\mathcal{L}(V,W)</m> denote  the set of all linear transformations from <m>V</m> to <m>W</m>: <ie/>, 
-        <me>
+        <md>
             \mathcal{L}(V,W)=\{T\colon V\rightarrow W\colon T \text{ is a linear transformation}\}
-        </me>.
+        </md>.
         
         </p>
         </statement>
@@ -231,9 +231,9 @@
       
             <p>
               <xref ref="eg_nonlinear"/> brings to light a notational quirk when dealing with functions of the form <m>T\colon F^n\rightarrow W</m>. Technically speaking, given an input <m>\boldx=(x_1,x_2,\dots, x_n)\in F^n</m> we should write
-              <me>
+              <md>
                 T(\boldx)=T((x_1,x_2,\dots, x_n))
-              </me>.
+              </md>.
               And yet our inner aesthete cries out at the unnecessary nested parentheses, and pleads that the notational laws be relaxed in this specific setting.
               We shall make it so.
             </p>
@@ -428,13 +428,13 @@
                   <li xml:id="th_trans_prop_combo">
                     <p>
                       Let <m>S=(v_i)_{i\in i}</m> be a tuple of vectors of <m>V</m>. Given any linear combination 
-                      <me>
+                      <md>
                         v=\sum_{i\in I}c_iv_i
-                      </me>
+                      </md>
                       of the <m>v_i</m>, we have 
-                      <me>
+                      <md>
                         T(v)=\sum_{i\in I}c_iT(v_i)
-                      </me>.
+                      </md>.
                     </p>
                   </li>
                 </ol>
@@ -455,13 +455,13 @@
                         ) </mrow>
                       </md>.
                       Thus, whatever <m>T(\boldzero)\in W</m> may be, it satisfies
-                      <me>
+                      <md>
                         T(\boldzero)=T(\boldzero)+T(\boldzero)
-                      </me>.
+                      </md>.
                       Canceling <m>T(\boldzero)</m> on both sides using <m>-T(\boldzero)</m>, we conclude
-                      <me>
+                      <md>
                         \boldzero=T(\boldzero_V)
-                      </me>.
+                      </md>.
                     </p>
                   </li>
       
@@ -474,22 +474,22 @@
                         <mrow>  \amp = T(-v)+T(v)</mrow>
                       </md>.
                       Since <m>\boldzero_W=T(-v)+T(v)</m>, adding <m>-T(v)</m> to both sides of the equation yields
-                      <me>
+                      <md>
                         -T(v)=T(-v)
-                      </me>.
+                      </md>.
                     </p>
                   </li>
       
                   <li>
                     <p>
                       Recall that by definition a linear combination is a <em>finite</em> sum of scalar multiples of the vectors <m>v_i</m>, and hence that there is a subset <m>J=\{j_1,j_2,\dots, j_n\}\subseteq I</m> such that <m>c_i=0</m> for all <m>i\notin J</m>, in which case we have  we can write 
-                      <me>
+                      <md>
                         v=\sum_{i\in I}c_iv_i=c_{j_1}v_{j_1}+c_{j_2}v_{j_2}+\cdots +c_{j_n}v_{j_n}
-                      </me>.
+                      </md>.
                       An easy induction argument on <m>n</m>, using the two defining properties of a linear transformation, shows that 
-                      <me>
+                      <md>
                         T(v)=c_{j_1}T(v_{j_1})+c_{j_2}T(v_{j_2})+\cdots +c_{j_n}T(v_{j_n})
-                      </me>.
+                      </md>.
                       Since <m>c_i=0</m> for all <m>i\notin J</m>, we have 
                       <md>
                         <mrow>T(v) \amp = c_{j_1}T(v_{j_1})+c_{j_2}T(v_{j_2})+\cdots +c_{j_n}T(v_{j_n})</mrow>
@@ -517,9 +517,9 @@
     <title>Interesting examples</title>
     <p>
         As a sort of converse to <xref ref="th_trans_prop_combo">statement</xref> of <xref ref="th_transform_basic_props"/>, observe that if <m>T\colon V\rightarrow W</m> satisfies
-        <me>
+        <md>
           T(cv_1+dv_2)=cT(v_1)+dT(v_2)
-        </me>
+        </md>
         for all <m>c, d\in R</m> and <m>v_1,v_2\in V</m>, then <m>T</m> is linear.
         Indeed, taking the special case <m>c=d=1</m> yields <xref ref="d_lin_trans_add">Axiom</xref>  of <xref ref="d_transformation"/>; and choosing <m>d=0</m> yields <xref ref="d_lin_trans_mult">Axiom</xref> of <xref ref="d_transformation"/>.
         As a consequence, we have the following one-step procedure for proving whether a function <m>T\colon V\rightarrow W</m> between vector spaces is a linear transformation. 
@@ -532,9 +532,9 @@
           <p>
             Let <m>T\colon V\rightarrow W</m> be a function between vector spaces.
             To prove <m>T</m> is a linear transformation, show that
-            <me>
+            <md>
               T(cv_1+dv_2)=cT(v_1)+dT(v_2)
-            </me>
+            </md>
             for all scalars <m>c, d\in R</m> and all vectors <m>v_1,v_2\in V</m>.
           </p>
         </statement>
@@ -556,9 +556,9 @@
           <p>
             Let <m>A\in F^{m,n}</m>. 
             The <term>matrix transformation associated to <m>A</m></term> is the function <m>T_A\colon F^n\rightarrow F^m</m> defined as 
-            <me>
+            <md>
                 T_A(\boldx)=A\boldx
-            </me>
+            </md>
             for all <m>\boldx\in F^n</m>. We call <m>A</m> the <term>standard matrix</term> of <m>T_A</m>.
           </p>
         </statement>
@@ -567,9 +567,9 @@
       <title>Matrix transformation</title>
       <p>
         Observe how <xref ref="declaration_tuples_columns"/> comes into play in the definition of <m>T_A\colon F^n\rightarrow F^m</m>: given a tuple <m>\boldx=(x_1,x_2,\dots, x_n)\in F^n</m>, in order to make sense of the expression <m>A\boldx</m>, we must think of <m>\boldx</m> as the column vector
-        <me>
+        <md>
             \colvec{x_1\\x_2\\ \vdots \\ x_n}
-        </me>.
+        </md>.
       </p>
       </remark>
       
@@ -748,6 +748,11 @@
             </p>
         </li>
     </ol>
+    The two statements above, taken together, imply that the map 
+    <md>
+      T\in \mathcal{L}(V,W)\longmapsto (T(v_i))_{i\in I}\in W^I
+    </md>
+    defines a bijection between <m>\mathcal{L}(V,W)</m> and <m>W^I</m>. 
     </p>
     </statement>
     <proof>
@@ -757,9 +762,9 @@
             <li>
                 <p>
                    Assume <m>T_1,T_2\in \mathcal{L}(V,W)</m> and that <m>T_1(v_i)=T_2(v_i)</m> for all <m>i\in I</m>. Since <m>B</m> is a basis, given any <m>v\in V</m> we can write <m>v</m> as a linear combination 
-                   <me>
+                   <md>
                     v=\sum_{i\in I}c_iv_i
-                   </me>
+                   </md>
                    for some <m>c_i\in F</m>, in which case we have 
                    <md>
                     <mrow>T_1(v) \amp =\sum_{i\in I}c_iT_1(v_i) \amp (T_1 \text{ is linear})</mrow>
@@ -856,6 +861,11 @@
               </p>
             </li>
           </ol>
+          The two statements above, taken together, imply that the map
+          <md>
+            A\in \ML_{m,n}(F)\longmapsto T_A\in \mathcal{L}(F^n, F^m)
+          </md>
+          defines a bijection between <m>\ML_{m,n}(F)</m> and <m>\mathcal{L}(F^n, F^m)</m>.
         </p>
       </statement>
       <proof>
@@ -869,12 +879,11 @@
 
           <li>
             <p>
-              Let <m>B=\{\bolde_1,\bolde_2,\dots, \bolde_n\}</m> be the <xref ref="rm_standard_bases" text="custom">standard basis</xref> of <m>\R^n</m>.
-              Let <m>A\in \ML_{m,n}(\R)</m> and let <m>\bolda_j</m> denote the <m>j</m>-th column of <m>A</m> for all <m>1\leq j\leq n</m>.
+              Let <m>B=(\bolde_1,\bolde_2,\dots, \bolde_n)</m> be the standard basis of <m>F^n</m>.
+              Let <m>A\in \ML_{m,n}(F)</m> and let <m>\bolda_j</m> denote the <m>j</m>-th column of <m>A</m> for all <m>1\leq j\leq n</m>.
               We have
               <md>
-                <mrow>T=T_{A} \amp \iff T(\bolde_j)=T_A(\bolde_j) \text{ for all } 1\leq j\leq n \amp (<xref ref="th_bases_transformations"/>
-                , <xref ref="th_transf_unique" text="custom">(1)</xref> ) </mrow>
+                <mrow>T=T_{A} \amp \iff T(\bolde_j)=T_A(\bolde_j) \text{ for all } 1\leq j\leq n \amp (<xref ref="th_trans_basis"/> ) </mrow>
                 <mrow> \amp \iff T(\bolde_j)=\bolda_j \text{ for all } 1\leq j\leq n </mrow>
               </md>,
               where the last equality follows from the column method of matrix multiplication:
@@ -893,6 +902,109 @@
       </p>
       </proof>
     </theorem>
+
+    <warning>
+      <p>
+        Although <xref ref="th_matrix_transform"/> is very powerful, mark well its restriction: it only applies in the setting of linear transformations from <m>\R^n</m> to <m>\R^m</m>.
+      It says nothing about linear transformations whose domain or codomain is a vector space like <m>\ML_{m,n}(\R)</m> or <m>\R^\infty</m>.
+      </p>
+    </warning>
+
+    <p>
+      Besides giving a complete description of linear transformations from <m>F^n</m> to <m>F^m</m> (they all come from matrices), <xref ref="th_trans_basis"/> provides a recipe for computing a <q>matrix formula</q> for a linear transformation <m>T\colon F^n\colon \rightarrow F^m</m>.
+      In other words, it tells us how to build the unique matrix <m>A\in \ML_{m,n}(F)</m> satisfying <m>T\boldx=A\boldx</m> for all <m>\boldx\in F^n</m>.
+      We call this matrix the <em>standard matrix</em> of <m>T</m>.
+    </p>
+
+    <definition xml:id="d_transformation_standard_matrix">
+      <title>Standard matrix of <m>T\in \mathcal{L}(F^n, F^m)</m></title>
+
+      <statement>
+        <p>
+          Let <m>T\in \mathcal{L}(F^n, F^m)</m>.
+          The <term>standard matrix</term> of <m>T</m> is the unique <m>m\times n</m> matrix <m>A\in \ML_{m,n}(F)</m> satisfying <m>T=T_A</m>.
+          Equivalently, <m>A</m> is the unique matrix satisfying
+          <md>
+            T(\boldx)=A\boldx
+          </md>
+          for all <m>\boldx\in F^n</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <algorithm xml:id="proc_standard_matrix">
+      <title>Standard matrix</title>
+
+      <statement>
+        <p>
+          Let <m>T\in\mathcal{L}(F^n, F^m)</m> and let <m>B=(\bolde_1,\bolde_2,\dots, \bolde_n)</m> be the standard basis of <m>F^n</m>.
+          The standard matrix of <m>T</m> is the matrix whose <m>j</m>-th column is the result of applying <m>T</m> to <m>\bolde_j</m>: <ie/>,
+          <md number="yes" xml:id="eq_standard_matrix">
+            A=\begin{bmatrix}\vert\amp \vert\amp  \amp \vert \\ T(\bolde_1)\amp  T(\bolde_2)\amp \cdots \amp T(\bolde_n)\\ \vert\amp \vert\amp  \amp \vert \end{bmatrix}
+          </md>.
+        </p>
+      </statement>
+    </algorithm>
+
+    <example xml:id="eg_standard_matrix">
+      <title>Standard matrix computation</title>
+
+      <statement>
+        <p>
+          The function <m>T\colon \R^3\rightarrow \R^2</m> defined as <m>T(x,y,z)=T(x+y+z, 2x+3y-4z)</m> is linear.
+        
+
+        <ol>
+          <li>
+            <p>
+              Use <xref ref="th_matrix_transform" text="global"/> to compute the standard matrix of <m>A</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Use <m>A</m> to compute <m>T((-2,3,4))</m>.
+            </p>
+          </li>
+        </ol>
+        </p>
+      </statement>
+
+      <solution>
+        <p>
+          We have
+          <md>
+            <mrow>A \amp = \begin{amatrix}[ccc]\vert\amp \vert\amp \vert\\ T(1,0,0)\amp T(0,1,0)\amp T(0,0,1) \\ \vert\amp \vert\amp \vert  \end{amatrix} </mrow>
+            <mrow> \amp = \begin{amatrix}[rrr] 1 \amp 1 \amp 1 \\ 2\amp 3 \amp -4 \end{amatrix} </mrow>
+          </md>.
+          Let <m>\boldx=(-2,3,4)</m>.
+          Since <m>A</m> provides a <q>matrix formula</q> for <m>T</m> we have
+          <md>
+            <mrow>T(\boldx) \amp = A\boldx </mrow>
+            <mrow> \amp = \begin{amatrix}[rrr] 1 \amp 1 \amp 1 \\ 2\amp 3 \amp -4 \end{amatrix} \colvec{-2\\ 3\\ 4}</mrow>
+            <mrow>  \amp = \colvec{5\\ -9} </mrow>
+          </md>.
+          Thus <m>T((-2,3,4))=(5,-9)</m>, as you can confirm.
+        </p>
+      </solution>
+    </example>
+
+    <remark xml:id="rm_matrix_transform_example">
+      <p>
+        It should also be noted that <xref ref="th_matrix_transform"/> gives rise to an alternative technique for showing a function <m>T\colon F^n\rightarrow F^m</m> is a linear transformation: namely, show that <m>T=T_A</m> for some matrix <m>A</m>.
+        For example, to show that the function <m>T\colon \R^2\rightarrow \R^3</m> defined as <m>T(x,y)=(7x+2y,-y,x)</m> is linear, it suffices to remark that <m>T=T_A</m> where
+        <md>
+          A=\begin{amatrix}[rr]7\amp 2\\ 0\amp -1\\ 1\amp 0  \end{amatrix}
+        </md>.
+      </p>
+    </remark>
+
+    <warning>
+      <p>
+        Although <xref ref="th_matrix_transform"/> and <xref ref="proc_standard_matrix"/> are powerful results, mark well the restriction on their application: these results can only be used for linear transformations from <m>F^n</m> to <m>F^m</m>.
+      In particular, they say nothing about linear transformations whose domain or codomain is a vector space like <m>\ML_{m,n}(F)</m> or <m>F^\infty</m>.
+      </p>
+    </warning>
     <p>
       <xref ref="th_matrix_transform"/> provides a convenient means of showing that certain familiar geometric transformations of the plane are in fact linear transformations. As a first example, we consider rotations in <m>\R^2</m>. 
     </p>
@@ -1017,6 +1129,73 @@
         </p>
       </solution>
     </example>
+    <p>
+      A second example of a geometric linear transformation is furnished by reflection through a line in <m>\R^2</m>. We give the definition here; you will prove that reflection is a linear transormation in your homework. 
+    </p>
+
+    <definition xml:id="d_reflection">
+      <title>Reflection through a line</title>
+
+      <idx><h>reflection</h><h>through a line</h></idx>
+      <statement>
+        <p>
+          Fix an angle <m>\alpha</m> with <m>0\leq \alpha \leq \pi </m>, and let <m>\ell_\alpha</m> be the line through the origin that makes an angle of <m>\alpha</m> with the positive <m>x</m>-axis.
+        </p>
+
+        <p>
+          Define <m>r_\alpha\colon \R^2\rightarrow \R^2</m> to be the function that takes an input <m>\boldx=(x_1,x_2)</m>, considered as a point <m>P</m>, and returns the coordinates <m>\boldy=(y_1,y_2)</m> of the point <m>P'</m> obtained by reflecting <m>P</m> through the line <m>\ell_\alpha</m>.
+          In more detail: if <m>P</m> lies on <m>\ell_\alpha</m>, then <m>P'=P</m>; otherwise, <m>P'</m> is obtained by drawing the perpendicular through <m>\ell_\alpha</m> that passes through <m>P</m> and taking the point on the other side of this line whose distance to <m>\ell_\alpha</m> is equal to the distance from <m>P</m> to <m>\ell_\alpha</m>.
+        </p>
+
+        <p>
+          The function <m>r_{\alpha}</m> is called <term>reflection through the line</term> <m>\ell_\alpha</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+ We end by making good on a promise we made long ago to <em>retroactively</em> make sense of the definition of matrix multiplication. The key connecting concept, as it turns out, is composition of functions. We first need a result showing that composition preserves linearity. 
+    </p>
+
+    <theorem xml:id="th_transform_composition">
+      <title>Composition of linear transformations</title>
+
+      <statement>
+        <p>
+ Let <m>V, W, U</m> be vector spaces, and suppose <m>T\colon W\rightarrow U</m> and <m>S\colon V\rightarrow W</m> are linear transformations. Then the composition 
+          <md>
+ T\circ S\colon V\rightarrow U 
+          </md>
+is a linear transformation. 
+        </p>
+      </statement>
+
+
+      <proof>
+        <p>
+ Exercise. 
+        </p>
+      </proof>
+    </theorem>
+
+    <p>
+ Turning now to matrix multiplication, suppose <m>A</m> is <m>m\times n</m> and <m>B</m> is <m>n\times r</m>. Let <m>C=AB</m> be their product. These matrices give rise to linear transformations 
+      <md>
+        <mrow>T_A\colon \R^n \amp\rightarrow \R^m \amp T_B\colon \R^r \amp\rightarrow \R^n \amp T_C\colon \R^r \amp\rightarrow \R^m  </mrow>
+      </md>.
+ According to <xref ref="th_transform_composition"/> the composition <m>T_A\circ T_B</m> is a linear transformation from <m>\R^r</m> (the domain of <m>T_B</m>) to <m>\R^m</m> (the codomain of <m>T_A</m>). We claim that <m>T_A\circ T_B=T_C</m>. Indeed, identifying elements of <m>\R^r</m> with column vectors, for all <m>\boldx\in \R^n</m> we have 
+      <md>
+        <mrow> T_A\circ T_B(\boldx) \amp = T_A(T_B(\boldx)) \amp (<xref ref="d_function_composition"/>
+) </mrow> 
+        <mrow> \amp =T_A(B\boldx) \amp (<xref ref="d_matrix_transform"/>
+)</mrow> 
+        <mrow> \amp= A(B\boldx) \amp (<xref ref="d_matrix_transform"/>
+)</mrow> 
+        <mrow>  \amp = (AB)\boldx \amp (\text{assoc.})</mrow>
+        <mrow>  \amp = T_C(\boldx) \amp (\text{since } C=AB)</mrow>
+      </md>.
+ Thus, we can now understand the definition of matrix multiplication as being chosen precisely to encode how to compute the composition of two matrix transformations. The restriction on the dimension of the ingredient matrices is now understood as guaranteeing that the corresponding matrix transformations can be composed! 
+    </p>
     </subsection>
     <subsection xml:id="ss_vs_of_lin_transformations">
     <title><m>\mathcal{L}(V,W)</m> as a vector space</title>
@@ -1064,7 +1243,7 @@
     
     </subsection>
 
-    
+    <xi:include href="s_transformation_ex.ptx" />
     
 
 </section>
