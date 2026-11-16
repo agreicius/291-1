@@ -999,12 +999,6 @@
       </p>
     </remark>
 
-    <warning>
-      <p>
-        Although <xref ref="th_matrix_transform"/> and <xref ref="proc_standard_matrix"/> are powerful results, mark well the restriction on their application: these results can only be used for linear transformations from <m>F^n</m> to <m>F^m</m>.
-      In particular, they say nothing about linear transformations whose domain or codomain is a vector space like <m>\ML_{m,n}(F)</m> or <m>F^\infty</m>.
-      </p>
-    </warning>
     <p>
       <xref ref="th_matrix_transform"/> provides a convenient means of showing that certain familiar geometric transformations of the plane are in fact linear transformations. As a first example, we consider rotations in <m>\R^2</m>. 
     </p>
