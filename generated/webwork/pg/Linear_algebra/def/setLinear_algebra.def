@@ -1,29 +1,29 @@
-openDate          = 10/30/2026 at 12:00am
-dueDate           = 04/30/2027 at 10:00pm
-answerDate        = 04/30/2027 at 10:00pm
+openDate          = 01/01/2027 at 12:00am
+dueDate           = 12/31/2027 at 10:00pm
+answerDate        = 12/31/2027 at 10:00pm
 paperHeaderFile   = Linear_algebra/header/Linear_algebra.pg
 screenHeaderFile  = Linear_algebra/header/Linear_algebra.pg
 description       = Linear algebra
 problemListV2
 problem_start
 source_file = Library/ASU-topics/set119MatrixAlgebra/p17.pg
-problem_id = 21
+problem_id = 25
 problem_end
 problem_start
 source_file = Library/Dartmouth/setMTWCh1S5/problem_1.pg
-problem_id = 22
+problem_id = 26
 problem_end
 problem_start
 source_file = Library/ASU-topics/set119MatrixAlgebra/p32.pg
-problem_id = 23
+problem_id = 27
 problem_end
 problem_start
 source_file = Library/ASU-topics/set119MatrixAlgebra/p7.pg
-problem_id = 24
+problem_id = 28
 problem_end
 problem_start
 source_file = Library/ASU-topics/set119MatrixAlgebra/p14.pg
-problem_id = 25
+problem_id = 29
 problem_end
 problem_start
 source_file = Contrib/MountAllison/1-3_Matrices_and_Matrix_Operations/true_false.pg

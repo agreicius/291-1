@@ -1652,7 +1652,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#sage_ge",
   "type": "Sage Example",
-  "number": "1",
+  "number": "1.8.17",
   "title": "Gaussian elimination.",
   "body": " Gaussian elimination  In the first Sage cell below you find a recursive implementation of Gaussian elimination in Sage that includes explanatory comments. Evaluate this cell in order to load the row_echelon_form function. The second cell allows you to apply the Gaussian elimination algorithm to a matrix of your choosing. As you can see, the show function provides a nice latex version of the output.    Sage has its own row reduction method, rref , which transforms a matrix to reduced row echelon form. Let's compare the outputs of these two algorithms.   The function row_echelon_form_steps() defined below ia a non-recursive implementation of Gaussian elimination that also displays all the steps of the algorithm. The last cell applies this function to a random matrix (with a significant number of zero entries). By modifying this cell appropriately, you can check your work when performing Gaussian elimination to the letter on a given matrix.    "
 },
@@ -1661,7 +1661,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#d_free-leading",
   "type": "Definition",
-  "number": "1.8.17",
+  "number": "1.8.18",
   "title": "Free and leading variables.",
   "body": " Free and leading variables   variables  leading    variables  free    Let be a linear system in the unknowns , and let be its associated augmented matrix. Assume (and hence ) is in row echelon form.  The unknown is a leading variable if the corresponding column in (i.e., the -th column) contains a leading one; it is a free variable if the corresponding column in does not contain a leading one.   "
 },
@@ -1670,7 +1670,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#s_solving_eg_free-leading",
   "type": "Example",
-  "number": "1.8.18",
+  "number": "1.8.19",
   "title": "Free and leading variables.",
   "body": " Free and leading variables   Let be the linear system in the unknowns with augmented matrix . Then are leading variables, since the first, second, and fourth columns of have leading ones, as indicated by the boxes. The variable is free since the third column of has no leading one.   "
 },
@@ -1679,7 +1679,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#eg_solving_system",
   "type": "Example",
-  "number": "1.8.19",
+  "number": "1.8.20",
   "title": "Solving linear systems.",
   "body": " Solving linear systems  In our model example we transformed the original system to the equivalent system below: . The free variables of are and ; the leading variables are , and .  Starting with the last equation and working our way backwards we can express each leading variable  ( ) in terms of the of the free variables  and (and possibly a constant): . It follows that any assignment of values to the free variables of the form extends to a unique solution of of the form . Thus for any choice of real numbers and we get a unique solution of the form . We conclude the set of solutions to is given as Alternatively, we can give a parametric equations description of the solutions to : .  "
 },
@@ -1688,7 +1688,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#s_solving_rm_parametric",
   "type": "Remark",
-  "number": "1.8.20",
+  "number": "1.8.21",
   "title": "Mandate.",
   "body": " Mandate  parametric equations  Get used to describing solutions to linear systems using either the set notation form of or the parametric equation form of .  Note also the distinct roles played by free and leading variables in the description of solutions. We assign each free variable freely to any choice of real parameters ( and in our example), and then solve for the leading variables in terms of these parameters in a unique manner. In particular, the leading variables are completely determined by our assignment of free variables.  "
 },
@@ -1697,7 +1697,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#proc_solveSystem",
   "type": "Procedure",
-  "number": "1.8.21",
+  "number": "1.8.22",
   "title": "Solving linear systems.",
   "body": " Solving linear systems   Let be a linear system in the unknowns , and let be the set of all solutions of . We compute as follows.   Gaussian elimination  Apply Gaussian elimination to reduce to an equivalent system in row echelon form with augmented matrix .    No solutions  If the last column of has a leading one, then is inconsistent: , is the empty set. Otherwise, proceed to the next step.    Sort variables  Determine which of the unknowns are leading variables and which are free variables by applying to .    Unique solution  If there are no free variables, solve for each unknown starting with the last equation and working backwards . In this case there is a unique solution to .    Infinite solutions  Otherwise, let be the leading variables of , and let be the free variables. Starting with the last nonzero equation and working backwards , express the leading variables as functions of the free variables: . Each solution of corresponds to a unique assignment of values to the free variables. In more detail, for each choice of assignments , we get the corresponding solution to described parametrically as follows: .      "
 },
@@ -1715,7 +1715,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#rm_free_versus_leading",
   "type": "Remark",
-  "number": "1.8.22",
+  "number": "1.8.23",
   "title": "Free versus leading.",
   "body": " Free versus leading  We observe again the important difference in the role played by free and leading variables in this procedure. Once we determine the free variables of the system (using Gaussian elimination), the general solution is obtained in a twofold manner: first assign arbitrary values to the free variables as in , then determine the values of the leading variables in terms of these assignments as in . In this manner, we see that we can freely assign any real value to the free variables, but for each such assignment, the values of the leading variables in a solution are then completely determined.  "
 },
@@ -1724,7 +1724,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#eg_solve_sys",
   "type": "Example",
-  "number": "1.8.23",
+  "number": "1.8.24",
   "title": "Solving linear systems.",
   "body": " Solving linear systems   Use to describe the set of solutions to the given linear system. Express your answer both in set notation form and, when appropriate, parametric equation form.                        First observe, using the fact that equality is transitive, that solves this chain of two equalities if and only if it solves the system , which in standard form is . The augmented matrix of the system row reduces as , as you can check yourself (or with the help of ).  Since the leading ones of the reduced matrix appear only in the first two columns, the first two unknowns and are leading variables, and the last unknown is free. Taking the corresponding system and solving for the leading variables in terms of the free variables yields . The parametric equations description of the general solution is then . Using set notation, the set of solutions is .    In this case the augmented matrix of the system row reduces as . Since the last column of the reduced matrix has a leading one, we conclude that the system is inconsistent, and hence has no solutions. Thus .    In this case the augmented matrix of the system row reduces as . From the placement of the leading ones, we see that the first and third unknowns are leading, and the rest are free. Writing the leading variables in terms of the free ones, we have . The parametric equations description of the general solution is then . Using set notation, the set of solutions is       "
 },
@@ -1733,7 +1733,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#vid_eg_GE1",
   "type": "Example",
-  "number": "1.8.24",
+  "number": "1.8.25",
   "title": "Video: solving linear systems.",
   "body": " Video: solving linear systems   Video: solving linear systems  Video: solving linear systems    "
 },
@@ -1742,7 +1742,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#vid_eg_GE2",
   "type": "Example",
-  "number": "1.8.26",
+  "number": "1.8.27",
   "title": "Video: solving linear systems.",
   "body": " Video: solving linear systems   Video: solving linear systems 2  Video: solving linear systems 2    "
 },
@@ -1751,7 +1751,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#sage_solve_system",
   "type": "Sage Example",
-  "number": "2",
+  "number": "1.8.29",
   "title": "Solving linear systems.",
   "body": " Solving linear systems  Sage has a number of means of solving systems of equations, both linear and nonlinear. In the cell below we compute the set of solutions to this section's working example. Note that the three equations are entered as a list.   Notice that the algorithm used here does not seem to follow the method we describe: the unknowns and are set as free parameters r1 and r2 , and the rest of the unknowns are expressed in terms of these. The solve routine in Sage allows for an additional option that selects a specific algorithm for solving the system. In the next cell, we specify the sympy algorithm and get an answer more in line with our example.   Now all unknowns are expressed in terms of the second and fourth unknowns and , which are treated as free variables, just as in our computed example.  Lastly, we can take a matrix approach with Sage to solve the system. Below we create the augmented matrix associated to our starting system and then reduce the system to reduced row echelon form using the rref method. From there it is a simple matter of assigning parameter names and using back-substitution, as described in .   "
 },
@@ -1760,7 +1760,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#c_qualitative",
   "type": "Corollary",
-  "number": "1.8.28",
+  "number": "1.8.30",
   "title": "<span class=\"process-math\">\\(0\\text{,}\\)<\/span> <span class=\"process-math\">\\(1\\text{,}\\)<\/span> or <span class=\"process-math\">\\(\\infty\\)<\/span>-many solutions.",
   "body": " , , or -many solutions   Let be an infinite field ( , , , ), and let be a linear system of equations over . Let be an equivalent system in row reduced form, and let be the augmented matrix associated to .  The system has either no solutions, exactly one solution, or infinitely many solutions. In more detail:   if has a leading one in its last column, then has no solutions;    if does not have a leading one in its last column and has no free variables, then has a unique solution;    if does not have a leading one in its last column and has a free variable, then has infinitely many solutions.      "
 },
@@ -1769,7 +1769,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#fig_decision_tree",
   "type": "Figure",
-  "number": "1.8.29",
+  "number": "1.8.31",
   "title": "Decision tree for number of solutions to a system",
   "body": " Decision tree for number of solutions to a system  Decision tree for the number of solutions to a linear system over an infinite field with augmented matrix in row echelon form.     "
 },
@@ -1778,7 +1778,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#s_solving_homogeneous",
   "type": "Corollary",
-  "number": "1.8.30",
+  "number": "1.8.32",
   "title": "Solutions to homogeneous equations.",
   "body": " Solutions to homogeneous equations   Let be an infinite field ( , , , ), and let be a homogeneous linear system over .   If all the variables are leading variables, then the system has a unique solution (i.e., solution).    If there is a free variable, then the system has infinitely many solutions.      "
 },
@@ -1787,7 +1787,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#s_linsys_solve-8-3",
   "type": "Example",
-  "number": "1.8.31",
+  "number": "1.8.33",
   "title": "Vector parametrization.",
   "body": " Vector parametrization  Consider the linear equation . The corresponding augmented matrix of this equation is , which is already in row echelon form. Using , we see that the general solution is . This vector parametrization description allows us to visualize the plane with equation as the set of all points obtained by translating the point by various linear combinations of and . In this manner, the two vectors and determine a (non-rectangular) grid on .   Vector parametrization of plane    Vector parametrization of plane     "
 },
@@ -1796,7 +1796,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#eg_span_ind_computation",
   "type": "Example",
-  "number": "1.8.33",
+  "number": "1.8.35",
   "title": "Span and linear independence.",
   "body": " Span and linear independence   For each vector space and tuple of vectors determine (i) whether the tuple is linearly independent, and (ii) determine .    , , where      , , where      , , where        First we decide whether is linearly independent. To this end, we ask whether there is a nonzero triple such that . Expanding the linear combination on the left and setting each coordinate equal to 0 yields the linear system . We apply to this system: . We see that the system is consistent and that the unknown is free. It follows that there are infinitely many solutions to the system, and thus in particular, a nonzero one. Thus there is a nonzero triple satisfying , and we conclude that the tuple is linearly dependent.  To determine , we ask which triples can be expressed as for some some . This is equivalent to asking for which triples is the linear system consistent. Once again, we apply . Observe how we can reuse much of the work we did above. We will take some shortcuts in our Gaussian elimination for brevity: . At this point we see that the system is consistent if and only if . We conclude that .    As the last example illustrates, when answering the two questions posed separately, we repeat a lot of the same Gaussian elimination work. Let's change things up slightly here and consider first the span question. We ask which matrices can be expressed as for some . Expanding out the linear combination of the , this equality becomes . Equating the entries of both matrice, we see that the span question is equivalent to asking for which -tuples the linear system is consistent. We apply to this system: . Since there are leading ones in all four of the columns corresponding to unknowns, we see that that system is always consistent, and furthermore, that for any there is a unique solution . We conclude that . In other words, is a spanning set for !  Turning to linear independence, our reasoning shows that for any matrix there is a unique tuple satisfying . In particular, taking , we see that there is a unique tuple satisfying . Since is such a tuple, we conclude that implies , and thus is linearly independent.    The work here is very similar to the previous part. In this case, tuples satisfying correspond to solutions of the linear system with augmented matrix . This matrix row reduces to the matrix . We conclude in this case that , the set of all symmetric matrices. The special case where we consider linear combinations of the form corresponds to the system where we set . In this case, the system is consistent (as always, since it is homogenous), and the presence of a free variable implies that there are infinitely many tuples solving the system. This in turn implies that is linearly dependent, since there are then nontrivial linear combinations of the equal to the zero matrix.   "
 },
@@ -1805,7 +1805,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_linsys_solve.html#proc_linear_independence",
   "type": "Procedure",
-  "number": "1.8.34",
+  "number": "1.8.36",
   "title": "Linear independence.",
   "body": " Linear independence   Let be a tuple of vectors of the -vector space . To decide whether is linearly independent, proceed as follows.   Write out the general expression for a linear combination equal to the zero vector: .    If possible, translate this vector equation into a homogeneous system of linear equations in the unknowns using the definition of equality for your vector space.    Decide, using Gaussian elimination, whether this system has any nonzero ( , nontrivial) solutions. If it has no nontrivial solution, is linearly independent; if it has a nontrivial solution, is linearly dependent.      "
 },
@@ -1886,7 +1886,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#sage_matrix_entries_rows_cols",
   "type": "Sage Example",
-  "number": "3",
+  "number": "1.9.8",
   "title": "Matrix entries, rows, and columns.",
   "body": " Matrix entries, rows, and columns  Sage syntax for accessing specific entries of a matrix is similar in spirit to our matrix entry notation. However, as with all things Python, we always count from 0. Thus if A is assigned to a matrix in Sage, A[i,j] is its -th entry.   Prescribed subsets of matrix entries are obtained via slicing methods: for example, A[a:b, c:d] returns the collection of entries with and , arranged as a matrix.   Leaving the left or right side of : blank in this notation removes the corresponding restriction bound (left or right) from the index in question. Thus A[2, :] returns the third row of , and A[1:, 3] returns the portion of the fourth column of beginning with its second entry.   Alternatively, we can obtain a list of all rows or columns of using the the methods rows() and columns() .   Use the empty cell below to try out some of these commands.   "
 },
@@ -1895,7 +1895,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#d_matrix_mult",
   "type": "Definition",
-  "number": "1.9.8",
+  "number": "1.9.9",
   "title": "Matrix multiplication.",
   "body": " Matrix multiplication  matrix multiplication   Let be positive integers. Given -valued matrices and , we define their product to be the matrix defined as . Equivalently, using matrix-entry notation, we have for all and .  The operation is called matrix multiplication .   "
 },
@@ -1904,7 +1904,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#fig_matrix_mult",
   "type": "Figure",
-  "number": "1.9.9",
+  "number": "1.9.10",
   "title": "Visualizing matrix multiplication",
   "body": " Visualizing matrix multiplication  In , the -th entry is computed by moving across the -th row of and down the -th column of .     "
 },
@@ -1913,7 +1913,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#ss_matrix_mult-6",
   "type": "Remark",
-  "number": "1.9.10",
+  "number": "1.9.11",
   "title": "Size and matrix multiplication.",
   "body": " Size and matrix multiplication  Observe how, like addition, matrix multiplication is not defined for any pair of matrices: there must be a certain agreement in their dimensions.  In more detail, for the product of and to be defined, we need . In other words we need the inner dimensions of and to be equal: . If this condition is met, the dimension of the resulting matrix is determined by the outer dimensions of and . Schematically, you can think of the inner dimensions as being canceled out :   "
 },
@@ -1922,7 +1922,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#eg_matrix_mult",
   "type": "Example",
-  "number": "1.9.11",
+  "number": "1.9.12",
   "title": "Matrix multiplication.",
   "body": " Matrix multiplication  Consider the real-valued matrices . Since the inner dimensions of and agree, we can form the product matrix , which has dimension . Let for all . Using , we compute . We conclude that .  "
 },
@@ -1931,7 +1931,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#ss_matrix_mult-9",
   "type": "Sage Example",
-  "number": "4",
+  "number": "1.9.13",
   "title": "Matrix arithmetic.",
   "body": " Matrix arithmetic  We use + and * for matrix addition and multiplication.   As evidence of Sage's flexibility, the same symbol * is also used for scalar multiplication.   Edit the cell below to practice these operations.   "
 },
@@ -1940,7 +1940,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#th_column_method",
   "type": "Theorem",
-  "number": "1.9.12",
+  "number": "1.9.14",
   "title": "Column method of matrix multiplication.",
   "body": " Column method of matrix multiplication  matrix multiplication column method   Let and . The column method of matrix multiplication computes using the two steps below.   Step 1  Let be the -th column of , considered as a column vector. Then .    Step 2  Let be the -th column of , considered as a column vector. Given any column vector we have .       We prove the equalities in both steps separately.   Proof of Step 1  We must show , where . First we show and have the same size. By definition of matrix multiplication, is . By construction has columns and its -th column is . Since and have size and , respectively, has size . Thus each of the columns of is an column vector. It follows that is , as desired.  Next we show that for all , . Since the -th entry of is the -th entry of the -th column of , we have .    Proof of Step 2  We must show that , where . The usual argument shows that both and are column vectors. It remains only to show that the -th entry of the column is equal to the -th entry of for all . For any such we have .    "
 },
@@ -1949,7 +1949,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#s_column_row_method-4",
   "type": "Remark",
-  "number": "1.9.13",
+  "number": "1.9.15",
   "title": "",
   "body": "  amounts to a two-step process for computing an arbitrary matrix product .  The first statement (Step 1) tells us that the -th column of the matrix can be obtained by computing the product of with the -th column of .  The second statement (Step 2) tells us that each product can itself be computed as a certain linear combination of the columns of with coefficients drawn from .  A similar remark applies to computing matrix products using the row method, as described below in .  "
 },
@@ -1958,7 +1958,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#th_row_method",
   "type": "Theorem",
-  "number": "1.9.14",
+  "number": "1.9.16",
   "title": "Row method of matrix multiplication.",
   "body": " Row method of matrix multiplication  matrix multiplication row method   Let and . The row method of matrix multiplication computes using the two steps below.   Step 1  Let be the -th row of . Then .    Step 2  Let be the -th row of . Given any row vector we have .       The proof is very similar to that of and is left to the reader.   "
 },
@@ -1967,7 +1967,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#s_matrix_ex_product",
   "type": "Example",
-  "number": "1.9.15",
+  "number": "1.9.17",
   "title": "Column and row methods.",
   "body": " Column and row methods   Let and   Compute using (a) the definition of matrix multiplication, (b) the column method, (c) the row method.       Using the definition, we see easily that     Let be the columns of , and let be the columns of . We have     Now let be the rows of , and let be the rows of . We have       "
 },
@@ -1976,7 +1976,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#s_column_row_method-7",
   "type": "Sage Example",
-  "number": "5",
+  "number": "1.9.18",
   "title": "Column and row methods.",
   "body": " Column and row methods  Let's verify the validity of the column and row methods using Sage in some specific examples. Below we generate random integer matrices and of dimension and , respectively, and compute their product .   Let's check that the -th column of is equal to the product of with the -th column of .   Alternatively, we can visually confirm these equalities using the display of in the first cell above. Observe that the result of A*colsB[i] is displayed by Sage as a tuple, though technically for us this is a column vector.   Next, let's verify that the result of multiplying and the -th column of is the corresponding linear combination of the columns of given by the coefficients of this column.   Now use the Sage cells below to demonstrate the validity of the row method for the product . Simply modify the code in the two cells above to reflect the row method, as opposed to the column method.    "
 },
@@ -1985,7 +1985,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#video_eg_matrix_mult_vid",
   "type": "Example",
-  "number": "1.9.16",
+  "number": "1.9.19",
   "title": "Video example of matrix multiplication.",
   "body": " Video example of matrix multiplication   Video: three methods of matrix multiplication    "
 },
@@ -1994,7 +1994,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#d_transpose",
   "type": "Definition",
-  "number": "1.9.18",
+  "number": "1.9.21",
   "title": "Matrix transposition.",
   "body": " Matrix transposition  matrix transposition  transpose   Given an matrix its transpose is the matrix whose -entry is the -th entry of . In other words, is the matrix satisfying for all and .   "
 },
@@ -2003,7 +2003,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#s_matrix-6-4",
   "type": "Remark",
-  "number": "1.9.19",
+  "number": "1.9.22",
   "title": "",
   "body": " Given a matrix we can give a column- or row-based description of as follows:    is the matrix whose -th row is the -th column of .     is the matrix whose -th column is the -th row of .     "
 },
@@ -2012,7 +2012,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#eg_transpose",
   "type": "Example",
-  "number": "1.9.20",
+  "number": "1.9.23",
   "title": "Transpose.",
   "body": " Transpose   Let ; then .  Let , then .   "
 },
@@ -2021,7 +2021,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#s_matrix-6-6",
   "type": "Sage Example",
-  "number": "6",
+  "number": "1.9.24",
   "title": "Matrix transposition.",
   "body": " Matrix transposition  Matrix transposition is implemented in Sage as the transpose() method. In the cell below we (a) choose random integers , (b) choose a random matrix with integer entries, and (c) compute the transpose of .   As usual, experiment with the Sage cell below.   "
 },
@@ -2030,7 +2030,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#ss_matrix_ww-2",
   "type": "WeBWorK",
-  "number": "1.9.21",
+  "number": "1.9.25",
   "title": "",
   "body": "    Enter T or F depending on whether the statement is true or false. (You must enter T or F -- True and False will not work.)    If AB is defined, then BA is also defined.    If A is a square matrix such that AA equals the 0 matrix, then A must equal the 0 matrix.         "
 },
@@ -2039,7 +2039,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#ss_matrix_ww-3",
   "type": "WeBWorK",
-  "number": "1.9.22",
+  "number": "1.9.26",
   "title": "",
   "body": "    Matrix Products: Consider the matrices   Of the possible matrix products ,  which make sense?    C       "
 },
@@ -2048,7 +2048,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#ss_matrix_ww-4",
   "type": "WeBWorK",
-  "number": "1.9.23",
+  "number": "1.9.27",
   "title": "",
   "body": "    If A is B is and C is then:  a) BA has dimension    b) CB has dimension    c) AC has dimension                                       "
 },
@@ -2057,7 +2057,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#ss_matrix_ww-5",
   "type": "WeBWorK",
-  "number": "1.9.24",
+  "number": "1.9.28",
   "title": "",
   "body": "    Determine and such that                      "
 },
@@ -2066,7 +2066,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_matrix.html#ss_matrix_ww-6",
   "type": "WeBWorK",
-  "number": "1.9.25",
+  "number": "1.9.29",
   "title": "",
   "body": "    Determine the value(s) of such that   =  Note: If there is more than one value separate them by commas.            "
 },
@@ -2435,7 +2435,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#sage_inv_matrix",
   "type": "Sage Example",
-  "number": "7",
+  "number": "1.11.7",
   "title": "Invertible matrices.",
   "body": " Invertible matrices  Sage has a number of useful tools related to invertibility. The boolean function is_invertible() tests for invertibility, and the method inverse() computes the inverse of an invertible matrix. Below we generate a random matrix with rational coefficients, test whether it is invertible, and compute its inverse if it is invertible. The density=0.5 ensures that roughly half of the matrix entries are zero; and this in turn increases the likelihood that the matrix is singular, for reasons that will become somewhat clearer later.   Evaluate the Sage cell below multiple times.    When the matrix is invertible, verify that . If you like, use the blank Sage cell to compute and .    Try increasing the density setting in random_element() ( , density=0.75 , density=.875 ) and see if the matrix is more or less likely to be invertible.       "
 },
@@ -2444,7 +2444,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#th_invertible_prod",
   "type": "Theorem",
-  "number": "1.11.7",
+  "number": "1.11.8",
   "title": "Products of invertible matrices.",
   "body": " Products of invertible matrices   Let be matrices. If and are both invertible, then so is their product . Using logical notation: . In fact when this is the case we have .   "
 },
@@ -2462,7 +2462,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#c_invertible_prod",
   "type": "Corollary",
-  "number": "1.11.8",
+  "number": "1.11.9",
   "title": "Products of invertible matrices.",
   "body": " Products of invertible matrices   More generally, if are invertible matrices, then their product is invertible. Furthermore, we have in this case .   "
 },
@@ -2480,7 +2480,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#subsec--22",
   "type": "Remark",
-  "number": "1.11.9",
+  "number": "1.11.10",
   "title": "",
   "body": " Whenever confronted with a logical implication of the form , where and denote arbitrary propositions, you should always ask whether the implication goes the other way . In other words, does the converse implication also hold?  The answer with regard to the implication is yes, though the proof of this is more difficult then you think. (See .)  The following argument is a common invalid proof of the reverse implication:   Assume is invertible.    Then has an inverse matrix.    Then the inverse of is .    Then and exist. Hence and are invertible.   Where is the flaw in our logic here? The second statement only allows us to conclude that there is some mystery matrix satisfying . We cannot yet say that , as this formula from only applies when we already know that and are both invertible. But this is exactly what we are trying to prove! As such we are guilty here of begging the question , or petitio principii in Latin.  "
 },
@@ -2489,7 +2489,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#d_matrix_powers",
   "type": "Definition",
-  "number": "1.11.10",
+  "number": "1.11.11",
   "title": "Matrix powers.",
   "body": " Matrix powers  matrix powers    matrix power    Let be an matrix, and let be an integer. We define the power matrix as follows: .   "
 },
@@ -2498,7 +2498,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#d_matrix_polynomials",
   "type": "Definition",
-  "number": "1.11.11",
+  "number": "1.11.12",
   "title": "Matrix polynomials.",
   "body": " Matrix polynomials  matrix polynomials    matrix polynomial   Let be a polynomial with real coefficients. For any square matrix of size , we define the matrix as . We call the result of evaluating the polynomial at the matrix .   "
 },
@@ -2507,7 +2507,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#rem_matrix_polynomials",
   "type": "Remark",
-  "number": "1.11.12",
+  "number": "1.11.13",
   "title": "",
   "body": " It is both easy and perilous to forget the identity matrix in the term appearing in . Take caution not to make this mistake; without an identity matrix of appropriate size, the expression simply does not make sense.  "
 },
@@ -2516,7 +2516,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#eg_matrix_polynomials",
   "type": "Example",
-  "number": "1.11.13",
+  "number": "1.11.14",
   "title": "Matrix polynomials.",
   "body": " Matrix polynomials   Let . Evaluate at the matrices and .    We have and .   "
 },
@@ -2525,7 +2525,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#s_invertible_matrices-4-8",
   "type": "Sage Example",
-  "number": "8",
+  "number": "1.11.15",
   "title": "Matrix polynomials.",
   "body": " Matrix polynomials  An integer matrix power is computed in Sage as A^n .   Of course the matrix needs to be invertible for a negative of power to be computed. Sage will throw an error in this case if the matrix is singular.   Polynomial expressions can then be easily computed manually in Sage. The next cell computes and for .   We took care to heed the warning in , making sure to include for ( identity_matrix(3) ) and for ( identity_matrix(2) ). Interestingly, Sage is smart enough to figure out what we mean even if we are sloppy in this regard.   "
 },
@@ -2534,7 +2534,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#th_power_rules",
   "type": "Theorem",
-  "number": "1.11.14",
+  "number": "1.11.16",
   "title": "Properties of matrix powers.",
   "body": " Properties of matrix powers   The following properties hold for all matrices , all scalars , and all integers for which the given expression makes sense.                        .       The proofs of the first three statements are elementary, and closely resemble proofs of similar results in real number algebra. We leave these as an (unassigned) exercise.  For the fourth statement to make sense, we must assume that is invertible. The claim here is that is invertible, and that its inverse is itself. To prove this we need only show , which follows from the definition of the inverse.  The fifth statement also tacitly assumes is invertible. To prove it, we consider the three cases , and .  If , then by definition .  If , then by definition .  Suppose . Then .   "
 },
@@ -2543,7 +2543,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#th_inverse_trans",
   "type": "Theorem",
-  "number": "1.11.15",
+  "number": "1.11.17",
   "title": "Inverse and transpose.",
   "body": " Inverse and transpose   Let be invertible. We have , in which case .    We prove both implications of the if and only if statement separately.  Suppose is invertible with inverse . To see that is invertible, with inverse as specified in , we need only show that . We verify the two equalities separately:  . In both chains of equality we make use of the obvious claim .  For the other direction, assume is invertible. Setting , we see that . By the first implication, we know that if is invertible, then so is .   "
 },
@@ -2552,7 +2552,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#d_elementary_matrix",
   "type": "Definition",
-  "number": "1.11.16",
+  "number": "1.11.18",
   "title": "Elementary matrices.",
   "body": " Elementary matrices  elementary matrix  matrix elementary    Scaling elementary matrix     Row swap elementary matrix     Row addition elementary matrix    An elementary matrix is a matrix of one of the three types below.   Given and nonzero scalar , the scaling elementary matrix is the matrix whose -th entry is , whose -th entry is for all , and whose other entries are all zero.    Given distinct indices , a row swap elementary matrix is the matrix obtained from the identity matrix by swapping the -th and -th rows.    Given and any , the row addition elementary matrix is defined as . That is, is the result of taking the identity matrix and making the -th entry equal to .      "
 },
@@ -2561,7 +2561,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#fig_elem_matrices",
   "type": "Figure",
-  "number": "1.11.17",
+  "number": "1.11.19",
   "title": "",
   "body": " Elementary matrices     Scaling elementary matrix       Row swap elementary matrix         Row addition elementary matrix        "
 },
@@ -2570,7 +2570,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#prop_elem_matrices",
   "type": "Proposition",
-  "number": "1.11.18",
+  "number": "1.11.20",
   "title": "Elementary matrices and row operations.",
   "body": " Elementary matrices and row operations   Let .   Let , and let be a nonzero scalar. The matrix is the result of multiplying the -th row of by .    Let be distinct indices. The matrix is the result of swapping the -th and -th rows of .    Let , and let . The matrix is the result of adding times the -th row of to the -th row of .       The proof is left as an exercise.   "
 },
@@ -2579,7 +2579,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#th_inverse_elem",
   "type": "Theorem",
-  "number": "1.11.19",
+  "number": "1.11.21",
   "title": "Inverses of elementary matrices.",
   "body": " Inverses of elementary matrices   Elementary matrices are invertible, and their inverses are elementary matrices. In fact, we have the following formulas:     Left as an exercise.   "
 },
@@ -2588,7 +2588,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_invertible_matrices.html#eg_elem_inverse",
   "type": "Example",
-  "number": "1.11.20",
+  "number": "1.11.22",
   "title": "Inverses of elementary matrices.",
   "body": " Inverses of elementary matrices   Fix . Verify that the following pairs of elementary matrices are indeed inverses of one another.                       We have and . You can verify for yourself that .    We have . You can verify for yourself that .    We have and . You can verify for yourself that .     "
 },
@@ -3731,7 +3731,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_subspace.html#sage_solve_matrix_eqn",
   "type": "Sage Example",
-  "number": "9",
+  "number": "1.15.18",
   "title": "Solving matrix equations.",
   "body": " Solving matrix equations  Let's use Sage and to find the set of solutions to the matrix equation . This is the matrix equation form of the linear system we investigated in . The method solve_right can be used to find a particular solution  to .   We get the entire set of solutions by translating by the particular solution : . We can illustrate this in Sage by taking random elements of (computed using right_kernel ), adding them to xp , and verifying that the result is a solution to . Each time you evaluate the cell below, a randomly generated element of will be outputted.   You may wonder just how random these elements of are, considering that the entries always seem to be integers! Indeed, soliciting information about NS from Sage, we see that it has the structure of a free module defined over the the Integer Ring .   Without getting too far into the weeds, this is a result of our initial definition of using Matrix() . Without further information, Sage interprets this as a matrix with integer coefficients, as opposed to real coefficients. All further computations ( , xp and NS ) are done in a similar spirit. More precisely, the object NS generated by Sage consists of all integer linear combinations of the two rows in the echelon basis matrix displayed in the cell above. The next cell shows you how things change when we alert Sage to the fact that we are dealing with matrices over the reals. The only change is adding RR to Matrix() , which specifies that matrix coefficients should be understood as real numbers.   "
 },
@@ -3740,7 +3740,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_subspace.html#d_hyperplane",
   "type": "Definition",
-  "number": "1.15.18",
+  "number": "1.15.19",
   "title": "Hyperplane.",
   "body": " Hyperplane   A linear equation over a field is nontrivial if for some . Given a nontrivial equation , the set of solutions is called a hyperplane in . We have the two following special cases, corresponding to and :   A hyperplane in is the set of solutions to a nontrivial equation , and is called a line .    A hyperplane in is the set of solutions to a nontrivial equation , and is called a plane .      "
 },
@@ -3749,7 +3749,7 @@ var ptx_lunr_docs = [
   "level": "2",
   "url": "s_subspace.html#rm_hyperplanes",
   "type": "Remark",
-  "number": "1.15.19",
+  "number": "1.15.20",
   "title": "Hyperplanes and subspaces.",
   "body": " Hyperplanes and subspaces  Let be the hyperplane with defining equation . In terms of , is just the set of solutions to the matrix equation , where . It follows from that is a subspace if and only if : , if and only if passes through the origin. Furthermore, if , we have , where is any solution to , and is the set of solutions to the corresponding homogeneous equation . In other words, although it is not true in general that every hyperplane is a subspace (since it may not pass through the origin), it is true that is a translate of a hyperplane that is a subspace (since passes through the origin).  "
 },
@@ -5057,6 +5057,123 @@ var ptx_lunr_docs = [
   "number": "1.20.17",
   "title": "Polynomial evaluation.",
   "body": " Polynomial evaluation   Let be an infinite subset of the field , let be a positive integer, and let be a choice of distinct scalars that we think of as inputs. Prove that for any choice of outputs there is a unique polynomial satisfying . In other words, given any choice of values , we can construct a unique polynomial whose value at is for all .       "
+},
+{
+  "id": "s_isom",
+  "level": "1",
+  "url": "s_isom.html",
+  "type": "Section",
+  "number": "1.21",
+  "title": "Isomorphisms",
+  "body": " Isomorphisms  The word isomorphism is derived from the Greek terms iso , meaning same , and morphe , meaning form . As we will see, two isomorphic vector spaces and are essentially the same creature, at least as far as linear algebraic properties are concerned. Furthermore, an isomorphism provides a one-to-one correspondence between them: a dictionary that allows us to translate statements about to statements about , and vice versa.  The definition of an isomorphism will involve the function composition operation. As such, we begin with some notational conventions and elementary properties of compositions of linear maps.   Composition of linear transformations  Given linear transformations and , we will occasionally denote their composition as .    Composition of linear transformations   Let , , and .   The composition is a linear transformation.          and .     and .       The proofs of (2)-(4) follow pretty much directly from the definitions of the function operations involved and basic set-theoretic properties of functions and their compositions. As such we content ourselves with a proof only of (1). Assume and . We use the one-step technique to show the composition is linear. Given any and scalars , we have .     Isomorphism   A linear map is an isomorphism if there is a linear transformation satisfying and . When this is the case we call the inverse of , and write . Two vector spaces and are isomorphic if there is an isomorphism .     Inverse functions  Using the language of inverse functions, we see that a linear transformation is an isomorphism if (a) it is invertible, and (b) its inverse is itself a linear transformation. As we will see in the next theorem, this second condition is automatic.    Isomorphisms   Let . The following statements are equivalent.    is an isomorphism.     is invertible.     is bijective.       The implication (1) (2) follows directly from the definition. Furthermore, the equivalence (2) (3) is a purely set-theoretic result relating invertible and bijective functions. It remains then only to show that (2) (1): , that if is linear and invertible, then its inverse is itself linear.  Assume is linear and invertible. We will use the one-step technique to prove is linear. First, given any , since and are inverses of one another, there are vectors satisfying . It then follows that given any scalars , we have .    The equivalences in give us a number of potential approaches to deciding whether a linear transformation is an isomorphism, as we detail in the next procedure.   Isomorphisms   Assume is a linear transformation. Below you find three separate approaches for deciding whether is an isomorphism. Depending on the context, one approach may be more convenient than the others.   Invertibility  Provide an inverse function , or prove that no such inverse function exists. By , an inverse function is automatically linear.    Bijection  Determine whether is bijective. This can be accomplished by computing and .     If , then the following statements are equivalent.    is an isomorphism.     is injective (equivalently, ).     is surjective (equivalently, ).           Transposition   Define as . Prove that is an isomorphism.    We saw in the the transposition operation is linear. To show it is an isomorphism, we produce an inverse. Define as . (Note that even though the rule for is the same as that for ( , take the transpose), we do not necessarily have as functions since their domains (and codomains) are not necessarily equal.) We have , proving that the two maps are indeed inverses of one another. We conclude that is invertible, and hence an isomorphism.     Formal polynomials and polynomial functions   Let be a subset of the field . The function that defines to be the function on represented by is a linear transformation.   Prove: is surjective.    Prove: is injective if and only if is infinite.    The restriction  of to the subspace defines a linear transformation .  Prove: is an isomorphism if and only if .            Evaluation   Let be distinct scalars of the field and define as .   Prove: is a linear transformation.    Prove: is in injective if and only if .    Prove: is surjective if and only if .    Prove: is an isomorphism if and only if .       We showed in that this linear transformation is bijective, and hence an isomorphism.     Isomorphisms preserve structure   Let be an isomorphism.   A tuple of vectors in is linearly independent if and only if its image is linearly independent.    Let , where is a tuple in . We have .     is a basis of if and only if is a basis of .     is finite-dimensional if and only if is finite-dimensional, and in this case we have .     is a subspace of if and only if is a subspace of .    We have for subspaces if and only if .       Most of the statements of this theorem follow almost immediately from the observation that since is an isomorphism we have for any linear combination expression in , along with the analogous statement for . Thus, for example, we have . This proves (2). The proof of (1) is similar, and (3) and (4) follow immediately from (1) and (2). Statement (5) is a result of the fact that and . We leave (6) as an exercise for the reader.     Finite-dimensional spaces   Let and be finite dimensional vector spaces. The following statements are equivalent.    is isomorphic to .     .        Matrix transformations   Prove that a matrix transformation is an isomorphism if and only if and is invertible.    We know from that matrix transformations are linear.  Assume and is invertible. We claim that . Indeed, for all , we have . This proves that and thus that , as claimed. We conclude is an isomorphism.  Lastly assume is an isomorphism. By , we conclude that , and hence that . Since is an isomorphism, it has a linear inverse ; since all linear transformations of are matrix transformations, we have for some matrix . We have . Thus , showing that is invertible.    "
+},
+{
+  "id": "s_isom-4",
+  "level": "2",
+  "url": "s_isom.html#s_isom-4",
+  "type": "Convention",
+  "number": "1.21.1",
+  "title": "Composition of linear transformations.",
+  "body": " Composition of linear transformations  Given linear transformations and , we will occasionally denote their composition as .  "
+},
+{
+  "id": "th_composition",
+  "level": "2",
+  "url": "s_isom.html#th_composition",
+  "type": "Theorem",
+  "number": "1.21.2",
+  "title": "Composition of linear transformations.",
+  "body": " Composition of linear transformations   Let , , and .   The composition is a linear transformation.          and .     and .       The proofs of (2)-(4) follow pretty much directly from the definitions of the function operations involved and basic set-theoretic properties of functions and their compositions. As such we content ourselves with a proof only of (1). Assume and . We use the one-step technique to show the composition is linear. Given any and scalars , we have .   "
+},
+{
+  "id": "d_isom",
+  "level": "2",
+  "url": "s_isom.html#d_isom",
+  "type": "Definition",
+  "number": "1.21.3",
+  "title": "Isomorphism.",
+  "body": " Isomorphism   A linear map is an isomorphism if there is a linear transformation satisfying and . When this is the case we call the inverse of , and write . Two vector spaces and are isomorphic if there is an isomorphism .   "
+},
+{
+  "id": "s_isom-7",
+  "level": "2",
+  "url": "s_isom.html#s_isom-7",
+  "type": "Remark",
+  "number": "1.21.4",
+  "title": "Inverse functions.",
+  "body": " Inverse functions  Using the language of inverse functions, we see that a linear transformation is an isomorphism if (a) it is invertible, and (b) its inverse is itself a linear transformation. As we will see in the next theorem, this second condition is automatic.  "
+},
+{
+  "id": "th_isom",
+  "level": "2",
+  "url": "s_isom.html#th_isom",
+  "type": "Theorem",
+  "number": "1.21.5",
+  "title": "Isomorphisms.",
+  "body": " Isomorphisms   Let . The following statements are equivalent.    is an isomorphism.     is invertible.     is bijective.       The implication (1) (2) follows directly from the definition. Furthermore, the equivalence (2) (3) is a purely set-theoretic result relating invertible and bijective functions. It remains then only to show that (2) (1): , that if is linear and invertible, then its inverse is itself linear.  Assume is linear and invertible. We will use the one-step technique to prove is linear. First, given any , since and are inverses of one another, there are vectors satisfying . It then follows that given any scalars , we have .   "
+},
+{
+  "id": "proc_isomorphism",
+  "level": "2",
+  "url": "s_isom.html#proc_isomorphism",
+  "type": "Procedure",
+  "number": "1.21.6",
+  "title": "Isomorphisms.",
+  "body": " Isomorphisms   Assume is a linear transformation. Below you find three separate approaches for deciding whether is an isomorphism. Depending on the context, one approach may be more convenient than the others.   Invertibility  Provide an inverse function , or prove that no such inverse function exists. By , an inverse function is automatically linear.    Bijection  Determine whether is bijective. This can be accomplished by computing and .     If , then the following statements are equivalent.    is an isomorphism.     is injective (equivalently, ).     is surjective (equivalently, ).         "
+},
+{
+  "id": "eg_isom_transposition",
+  "level": "2",
+  "url": "s_isom.html#eg_isom_transposition",
+  "type": "Example",
+  "number": "1.21.7",
+  "title": "Transposition.",
+  "body": " Transposition   Define as . Prove that is an isomorphism.    We saw in the the transposition operation is linear. To show it is an isomorphism, we produce an inverse. Define as . (Note that even though the rule for is the same as that for ( , take the transpose), we do not necessarily have as functions since their domains (and codomains) are not necessarily equal.) We have , proving that the two maps are indeed inverses of one another. We conclude that is invertible, and hence an isomorphism.   "
+},
+{
+  "id": "eg_formal_poly_polyfunction",
+  "level": "2",
+  "url": "s_isom.html#eg_formal_poly_polyfunction",
+  "type": "Example",
+  "number": "1.21.8",
+  "title": "Formal polynomials and polynomial functions.",
+  "body": " Formal polynomials and polynomial functions   Let be a subset of the field . The function that defines to be the function on represented by is a linear transformation.   Prove: is surjective.    Prove: is injective if and only if is infinite.    The restriction  of to the subspace defines a linear transformation .  Prove: is an isomorphism if and only if .          "
+},
+{
+  "id": "eg_isom_evaluation",
+  "level": "2",
+  "url": "s_isom.html#eg_isom_evaluation",
+  "type": "Example",
+  "number": "1.21.9",
+  "title": "Evaluation.",
+  "body": " Evaluation   Let be distinct scalars of the field and define as .   Prove: is a linear transformation.    Prove: is in injective if and only if .    Prove: is surjective if and only if .    Prove: is an isomorphism if and only if .       We showed in that this linear transformation is bijective, and hence an isomorphism.   "
+},
+{
+  "id": "th_isom_structure",
+  "level": "2",
+  "url": "s_isom.html#th_isom_structure",
+  "type": "Theorem",
+  "number": "1.21.10",
+  "title": "Isomorphisms preserve structure.",
+  "body": " Isomorphisms preserve structure   Let be an isomorphism.   A tuple of vectors in is linearly independent if and only if its image is linearly independent.    Let , where is a tuple in . We have .     is a basis of if and only if is a basis of .     is finite-dimensional if and only if is finite-dimensional, and in this case we have .     is a subspace of if and only if is a subspace of .    We have for subspaces if and only if .       Most of the statements of this theorem follow almost immediately from the observation that since is an isomorphism we have for any linear combination expression in , along with the analogous statement for . Thus, for example, we have . This proves (2). The proof of (1) is similar, and (3) and (4) follow immediately from (1) and (2). Statement (5) is a result of the fact that and . We leave (6) as an exercise for the reader.   "
+},
+{
+  "id": "cor_isom_finite_dim",
+  "level": "2",
+  "url": "s_isom.html#cor_isom_finite_dim",
+  "type": "Corollary",
+  "number": "1.21.11",
+  "title": "Finite-dimensional spaces.",
+  "body": " Finite-dimensional spaces   Let and be finite dimensional vector spaces. The following statements are equivalent.    is isomorphic to .     .      "
+},
+{
+  "id": "eg_isom_matrix",
+  "level": "2",
+  "url": "s_isom.html#eg_isom_matrix",
+  "type": "Example",
+  "number": "1.21.12",
+  "title": "Matrix transformations.",
+  "body": " Matrix transformations   Prove that a matrix transformation is an isomorphism if and only if and is invertible.    We know from that matrix transformations are linear.  Assume and is invertible. We claim that . Indeed, for all , we have . This proves that and thus that , as claimed. We conclude is an isomorphism.  Lastly assume is an isomorphism. By , we conclude that , and hence that . Since is an isomorphism, it has a linear inverse ; since all linear transformations of are matrix transformations, we have for some matrix . We have . Thus , showing that is invertible.   "
 },
 {
   "id": "appendix-notation",

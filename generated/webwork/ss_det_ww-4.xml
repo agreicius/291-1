@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<webwork-reps version="2" webwork2_major_version="2" webwork2_minor_version="20" xml:id="extracted-ss_det_ww-4" assembly-id="ss_det_ww-4">
+  <static seed="16" source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg">
+    <statement><p>Find <m>k</m> such that the following matrix <m>M</m> is singular.
+<me>M = \left[\begin{array}{ccc}
+2 \amp 1 \amp -1\cr
+4 \amp 4 \amp 1\cr
+5+k \amp 10 \amp 0\cr
+\end{array}\right]</me></p>
+<p><m>k=</m> <fillin characters="10" name="AnSwEr0001"/></p>
+</statement>
+    <answer>
+      <p>
+        <m>7</m>
+      </p>
+    </answer>
+  </static>
+  <rendering-data sourceFilePath="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg" origin="webwork2" domain="https://webwork-ptx.aimath.org" course-id="anonymous" user-id="anonymous" passwd="anonymous" language="en-US"/>
+  <pg source="Library/Rochester/setLinearAlgebra6Determinants/ur_la_6_8.pg"/>
+</webwork-reps>
