@@ -875,7 +875,7 @@
           </p>
       </statement>
       <proof>
-        <!-- <p>
+        <p>
           Assume that <m>A</m> is row equivalent to <m>B</m>. Using <xref ref="cor_row_equivalence_invertibility"/>, we see that this means there is an invertible matrix <m>Q</m> such that <m>B=QA</m>, and hence also <m>A=Q^{-1}B</m>. We will make use of this matrix <m>Q</m> below.
           <ol>
             <li>
@@ -922,10 +922,10 @@
           </p>
         </li>
        </ol>
-    </p> -->
-  <p>
+    </p>
+  <!-- <p>
     Left as a homework exercise. 
-  </p>
+  </p> -->
     </proof>
     </theorem>
     <remark>
@@ -1048,7 +1048,7 @@
         <case>
           <title>Column space</title>
 
-          <!-- <p>
+          <p>
         Let <m>\boldu_{i_1},\dots, \boldu_{i_s}</m> be the columns of <m>U</m> with leading ones, and let
         <m>\boldu_{j_1}, \boldu_{j_2}, \dots, \boldu_{j_r}</m> be the columns without leading ones.
         To prove the <m>\boldu_{i_k}</m> form a basis for <m>\CS U</m>, we will show that given any
@@ -1072,10 +1072,10 @@
         a unique linear combination the columns
         <m>\boldu_{i_k}</m> with leading ones equal to <m>\boldy</m>.
         This proves the claim, and shows that the columns with leading ones form a basis for <m>\CS U</m>. Lastly, by <xref ref="th_fundspaces_rowreduce"/>, the corresponding columns form a basis for <m>\CS A</m>. 
-    </p> -->
-    <p>
-      Left as a homework exercise. 
     </p>
+    <!-- <p>
+      Left as a homework exercise. 
+    </p> -->
         </case>
   </proof>
 </algorithm>
