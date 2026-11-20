@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h2 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.22.9</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h2>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(S=(A_1,A_2,A_3,A_4)\)</span> of the tuple of matrices of <span class="process-math">\(\R^{2,2}\text{,}\)</span> where</div>
+<div class="displaymath process-math">
+\begin{align*}
+A_1\amp =\begin{bmatrix}2\amp 1\\ 0\amp -2 \end{bmatrix}\amp A_2\amp =\begin{bmatrix}1\amp 1\\ 1\amp -1 \end{bmatrix} \\
+A_3\amp =\begin{bmatrix}0\amp 1\\ 2\amp 0 \end{bmatrix}\amp A_4\amp =\begin{bmatrix}-1\amp 0\\ 1\amp 1 \end{bmatrix} \text{,}
+\end{align*}
+</div>
+<div class="para">and define <span class="process-math">\(W=\Span S\text{.}\)</span>
+</div>
+<ol class="decimal" id="ss_coordinate_vectors-12-1-1-5">
+<li>
+<div class="para">Contract <span class="process-math">\(S\)</span> to a basis of <span class="process-math">\(W\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ss_coordinate_vectors-12-1-1-5-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 1"><a tabindex="-1" href="#ss_coordinate_vectors-12-1-1-5-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li>
+<div class="para">Let <span class="process-math">\(W'=\{A\in \R^{2,2}\colon \tr A=0\}\text{,}\)</span> where for any <span class="process-math">\(n\times n\)</span> matrix <span class="process-math">\(A=[a_{ij}]\text{,}\)</span> <span class="process-math">\(\tr A=\sum_{i=1}^na_ii\text{,}\)</span> the {\em trace} of <span class="process-math">\(A\text{:}\)</span> i.e., <span class="process-math">\(W'\)</span> is the space of all trace-zero <span class="process-math">\(2\times 2\)</span> matrices. Show that <span class="process-math">\(W\subseteq W'\text{,}\)</span> and determine whether <span class="process-math">\(W=W'\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ss_coordinate_vectors-12-1-1-5-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 2"><a tabindex="-1" href="#ss_coordinate_vectors-12-1-1-5-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ss_coordinate_vectors-12-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical">
+<ol class="decimal" id="ss_coordinate_vectors-12-2-1-1">
+<li>
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(B=(E_{11}, E_{12}, E_{21}, E_{22})\)</span> be the standard basis of <span class="process-math">\(\R^{2,2}\text{.}\)</span> Apply <span class="process-math">\([\phantom{v}]_B\)</span> to the elements of the given <span class="process-math">\(S\)</span> to get a corresponding set <span class="process-math">\(S'\subseteq\R^4\text{:}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+S'=(\underset{[A_1]_B}{(2,1,0,-2)}, \underset{[A_2]_B}{(1,1,1,-1)}, \underset{[A_3]_B}{(0,1,2,0)}, \underset{[A_4]_B}{(-1,0,1,1)})\text{.}
+\end{equation*}
+</div>
+<div class="para">Apply the column space procedure to contract <span class="process-math">\(S'\)</span> to a basis <span class="process-math">\(B'\)</span> of <span class="process-math">\(\Span S'\text{:}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{amatrix}[rrrr]
+2\amp 1\amp 0\amp -1 \\
+1\amp 1\amp 1\amp 0\\
+0\amp 1\amp 2\amp 1\\
+-2\amp -1\amp 0\amp 1
+\end{amatrix}
+\xrightarrow{\text{Gauss. elim.}}
+\begin{amatrix}[rrrr]
+\boxed{1} \amp \frac{1}{2} \amp 0 \amp -\frac{1}{2} \\
+0 \amp \boxed{1} \amp 2 \amp 1 \\
+0 \amp 0 \amp 0 \amp 0 \\
+0 \amp 0 \amp 0 \amp 0
+\end{amatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">We conclude that the first two vectors of <span class="process-math">\(S'\)</span> form a basis for <span class="process-math">\(\Span S'\text{;}\)</span> it follows that the first two elements of <span class="process-math">\(S\)</span> form a basis for <span class="process-math">\(W=\Span S\text{.}\)</span> That is <span class="process-math">\(W=\Span ((A_1,A_2))\text{.}\)</span> In particular, this means <span class="process-math">\(\dim W=2\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ss_coordinate_vectors-12-2-1-1-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 1"><a tabindex="-1" href="#ss_coordinate_vectors-12-2-1-1-1" title="Copy heading and permalink for Item 1" aria-label="Copy heading and permalink for Item 1">🔗</a></div>
+</li>
+<li>
+<div class="para">Since <span class="process-math">\(\tr A_i=0\)</span> for all <span class="process-math">\(1\leq i\leq 4\text{,}\)</span> we have <span class="process-math">\(A_i\in W'\)</span> for all <span class="process-math">\(i\text{,}\)</span> and hence <span class="process-math">\(W=\Span (A_1,A_2,A_3,A_4)\subseteq W'\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ss_coordinate_vectors-12-2-1-1-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="para logical">
+<div class="para">By inspection, we see that the space <span class="process-math">\(W'\)</span> of all trace-zero matrices has basis</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\left\(
+\begin{amatrix}[rr]1\amp 0\\ 0 \amp -1  \end{amatrix},
+\begin{amatrix}[rr]0\amp 1\\ 0\amp 0  \end{amatrix},
+\begin{amatrix}[rr]0 \amp 0\\ 1\amp 0  \end{amatrix}
+\right\)\text{,}
+\end{equation*}
+</div>
+<div class="para">and hence <span class="process-math">\(\dim W'=3\text{.}\)</span> Since <span class="process-math">\(\dim W&lt; \dim W'\text{,}\)</span> we conclude that <span class="process-math">\(W\ne W'\text{.}\)</span>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ss_coordinate_vectors-12-2-1-1-2-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Item 2"><a tabindex="-1" href="#ss_coordinate_vectors-12-2-1-1-2" title="Copy heading and permalink for Item 2" aria-label="Copy heading and permalink for Item 2">🔗</a></div>
+</li>
+</ol>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#ss_coordinate_vectors-12-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 1.22.9.1"><a tabindex="-1" href="#ss_coordinate_vectors-12-2" title="Copy heading and permalink for Solution 1.22.9.1" aria-label="Copy heading and permalink for Solution 1.22.9.1">🔗</a></div>
+</div></details>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Example 1.22.9"><a tabindex="-1" href="#ss_coordinate_vectors-12" title="Copy heading and permalink for Example 1.22.9" aria-label="Copy heading and permalink for Example 1.22.9">🔗</a></div>
+</article><span class="incontext"><a class="internal" href="s_matrix_reps.html#ss_coordinate_vectors-12">In Context</a></span>
+</body>
+</html>

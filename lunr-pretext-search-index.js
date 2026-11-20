@@ -5065,7 +5065,7 @@ var ptx_lunr_docs = [
   "type": "Section",
   "number": "1.21",
   "title": "Isomorphisms",
-  "body": " Isomorphisms  The word isomorphism is derived from the Greek terms iso , meaning same , and morphe , meaning form . As we will see, two isomorphic vector spaces and are essentially the same creature, at least as far as linear algebraic properties are concerned. Furthermore, an isomorphism provides a one-to-one correspondence between them: a dictionary that allows us to translate statements about to statements about , and vice versa.  The definition of an isomorphism will involve the function composition operation. As such, we begin with some notational conventions and elementary properties of compositions of linear maps.   Composition of linear transformations  Given linear transformations and , we will occasionally denote their composition as .    Composition of linear transformations   Let , , and .   The composition is a linear transformation.          and .     and .       The proofs of (2)-(4) follow pretty much directly from the definitions of the function operations involved and basic set-theoretic properties of functions and their compositions. As such we content ourselves with a proof only of (1). Assume and . We use the one-step technique to show the composition is linear. Given any and scalars , we have .     Isomorphism   A linear map is an isomorphism if there is a linear transformation satisfying and . When this is the case we call the inverse of , and write . Two vector spaces and are isomorphic if there is an isomorphism .     Inverse functions  Using the language of inverse functions, we see that a linear transformation is an isomorphism if (a) it is invertible, and (b) its inverse is itself a linear transformation. As we will see in the next theorem, this second condition is automatic.    Isomorphisms   Let . The following statements are equivalent.    is an isomorphism.     is invertible.     is bijective.       The implication (1) (2) follows directly from the definition. Furthermore, the equivalence (2) (3) is a purely set-theoretic result relating invertible and bijective functions. It remains then only to show that (2) (1): , that if is linear and invertible, then its inverse is itself linear.  Assume is linear and invertible. We will use the one-step technique to prove is linear. First, given any , since and are inverses of one another, there are vectors satisfying . It then follows that given any scalars , we have .    The equivalences in give us a number of potential approaches to deciding whether a linear transformation is an isomorphism, as we detail in the next procedure.   Isomorphisms   Assume is a linear transformation. Below you find three separate approaches for deciding whether is an isomorphism. Depending on the context, one approach may be more convenient than the others.   Invertibility  Provide an inverse function , or prove that no such inverse function exists. By , an inverse function is automatically linear.    Bijection  Determine whether is bijective. This can be accomplished by computing and .     If , then the following statements are equivalent.    is an isomorphism.     is injective (equivalently, ).     is surjective (equivalently, ).           Transposition   Define as . Prove that is an isomorphism.    We saw in the the transposition operation is linear. To show it is an isomorphism, we produce an inverse. Define as . (Note that even though the rule for is the same as that for ( , take the transpose), we do not necessarily have as functions since their domains (and codomains) are not necessarily equal.) We have , proving that the two maps are indeed inverses of one another. We conclude that is invertible, and hence an isomorphism.     Formal polynomials and polynomial functions   Let be a subset of the field . The function that defines to be the function on represented by is a linear transformation.   Prove: is surjective.    Prove: is injective if and only if is infinite.    The restriction  of to the subspace defines a linear transformation .  Prove: is an isomorphism if and only if .            Evaluation   Let be distinct scalars of the field and define as .   Prove: is a linear transformation.    Prove: is in injective if and only if .    Prove: is surjective if and only if .    Prove: is an isomorphism if and only if .       We showed in that this linear transformation is bijective, and hence an isomorphism.     Isomorphisms preserve structure   Let be an isomorphism.   A tuple of vectors in is linearly independent if and only if its image is linearly independent.    Let , where is a tuple in . We have .     is a basis of if and only if is a basis of .     is finite-dimensional if and only if is finite-dimensional, and in this case we have .     is a subspace of if and only if is a subspace of .    We have for subspaces if and only if .       Most of the statements of this theorem follow almost immediately from the observation that since is an isomorphism we have for any linear combination expression in , along with the analogous statement for . Thus, for example, we have . This proves (2). The proof of (1) is similar, and (3) and (4) follow immediately from (1) and (2). Statement (5) is a result of the fact that and . We leave (6) as an exercise for the reader.     Finite-dimensional spaces   Let and be finite dimensional vector spaces. The following statements are equivalent.    is isomorphic to .     .        Matrix transformations   Prove that a matrix transformation is an isomorphism if and only if and is invertible.    We know from that matrix transformations are linear.  Assume and is invertible. We claim that . Indeed, for all , we have . This proves that and thus that , as claimed. We conclude is an isomorphism.  Lastly assume is an isomorphism. By , we conclude that , and hence that . Since is an isomorphism, it has a linear inverse ; since all linear transformations of are matrix transformations, we have for some matrix . We have . Thus , showing that is invertible.    "
+  "body": " Isomorphisms  The word isomorphism is derived from the Greek terms iso , meaning same , and morphe , meaning form . As we will see, two isomorphic vector spaces and are essentially the same creature, at least as far as linear algebraic properties are concerned. Furthermore, an isomorphism provides a one-to-one correspondence between them: a dictionary that allows us to translate statements about to statements about , and vice versa.  The definition of an isomorphism will involve the function composition operation. As such, we begin with some notational conventions and elementary properties of compositions of linear maps.   Composition of linear transformations  Given linear transformations and , we will occasionally denote their composition as .    Composition of linear transformations   Let , , and .   The composition is a linear transformation.          and .     and .       The proofs of (2)-(4) follow pretty much directly from the definitions of the function operations involved and basic set-theoretic properties of functions and their compositions. As such we content ourselves with a proof only of (1). Assume and . We use the one-step technique to show the composition is linear. Given any and scalars , we have .     Isomorphism   A linear map is an isomorphism if there is a linear transformation satisfying and . When this is the case we call the inverse of , and write . Two vector spaces and are isomorphic if there is an isomorphism .     Inverse functions  Using the language of inverse functions, we see that a linear transformation is an isomorphism if (a) it is invertible, and (b) its inverse is itself a linear transformation. As we will see in the next theorem, this second condition is automatic.    Isomorphisms   Let . The following statements are equivalent.    is an isomorphism.     is invertible.     is bijective.       The implication (1) (2) follows directly from the definition. Furthermore, the equivalence (2) (3) is a purely set-theoretic result relating invertible and bijective functions. It remains then only to show that (2) (1): , that if is linear and invertible, then its inverse is itself linear.  Assume is linear and invertible. We will use the one-step technique to prove is linear. First, given any , since and are inverses of one another, there are vectors satisfying . It then follows that given any scalars , we have .    The equivalences in give us a number of potential approaches to deciding whether a linear transformation is an isomorphism, as we detail in the next procedure. The third statement is a consequence of .   Isomorphisms   Assume is a linear transformation. Below you find three separate approaches for deciding whether is an isomorphism. Depending on the context, one approach may be more convenient than the others.   Invertibility  Provide an inverse function , or prove that no such inverse function exists. By , an inverse function is automatically linear.    Bijection  Determine whether is bijective. This can be accomplished by computing and .     If , then the following statements are equivalent.    is an isomorphism.     is injective (equivalently, ).     is surjective (equivalently, ).           Transposition   Define as . Prove that is an isomorphism.    We saw in the the transposition operation is linear. To show it is an isomorphism, we produce an inverse. Define as . (Note that even though the rule for is the same as that for ( , take the transpose), we do not necessarily have as functions since their domains (and codomains) are not necessarily equal.) We have , proving that the two maps are indeed inverses of one another. We conclude that is invertible, and hence an isomorphism.     Formal polynomials and polynomial functions   Let be a subset of the field . The function that defines to be the function on represented by is a linear transformation.   Prove: is surjective.    Prove: is injective if and only if is infinite.    The restriction  of to the subspace defines a linear transformation .  Prove: is an isomorphism if and only if .            Evaluation   Let be distinct scalars of the field and define as .   Prove: is a linear transformation.    Prove: is in injective if and only if .    Prove: is surjective if and only if .    Prove: is an isomorphism if and only if .       We showed in that this linear transformation is bijective, and hence an isomorphism.     Matrix transformations   Prove that a matrix transformation is an isomorphism if and only if and is invertible.    We know from that matrix transformations are linear.  Assume and is invertible. We claim that . Indeed, for all , we have . This proves that and thus that , as claimed. We conclude is an isomorphism.  Lastly assume is an isomorphism. By , we conclude that , and hence that . Since is an isomorphism, it has a linear inverse ; since all linear transformations of are matrix transformations, we have for some matrix . We have . Thus , showing that is invertible.    Having gotten a decent number of examples under our belt, we now return to the observation made at the top, that isomorphic vector spaces and are essentially the same for all linear algebraic purposes, and that an isomorphism bearing witness to this fact can be used as a 1-1 dictionary for moving back and forth between the two spaces, answering questions about the one in terms of the other.   Isomorphisms and structure   Let be an isomorphism.   A tuple of vectors in is linearly independent if and only if its image is linearly independent.    Let , where is a tuple in . We have .     is a basis of if and only if is a basis of .     is finite-dimensional if and only if is finite-dimensional, and in this case we have .     is a subspace of if and only if is a subspace of .       Most of the statements of this theorem follow almost immediately from the observation that since is an isomorphism we have for any linear combination expression in , along with the analogous statement for . Thus, for example, we have . This proves (2). The proof of (1) is similar, and (3) and (4) follow immediately from (1) and (2). Statement (5) is a result of the fact that and . We leave (6) as an exercise for the reader.     Finite-dimensional spaces   Let and be finite dimensional vector spaces. The following statements are equivalent.    is isomorphic to .     .   In particular, if is an -dimensional vector space, then is isomorphic to .    Assume and are finite-dimensional vector spaces.  If and are isomorphic, then there is an isomorphism . By , if is a basis of , then is a basis of . In particular, we have .  Assume . By definition, this means that there are bases and of and respectively. By there is a unique linear transformation satisfying for all . We claim that is an isomorphism. Indeed, there is a unique linear transformation satisfying for all , and we claim that . To see why note that the linear transformations and satisfy . But then for all in the basis , showing that by the uniqueness claim in ; similarly, for all in the basis implies . This proves that , and hence that is an isomorphism.     is both fascinating, and at the same time a bit of a letdown, since it says that all of these exotic different examples of finite-dimensional vector spaces are in the end essentially the same as for some , at least linear-algebraically speaking.   Linear algebra's dirty secret   Any finite-dimensional -vector space is isomorphic to for some .    "
 },
 {
   "id": "s_isom-4",
@@ -5149,31 +5149,265 @@ var ptx_lunr_docs = [
   "body": " Evaluation   Let be distinct scalars of the field and define as .   Prove: is a linear transformation.    Prove: is in injective if and only if .    Prove: is surjective if and only if .    Prove: is an isomorphism if and only if .       We showed in that this linear transformation is bijective, and hence an isomorphism.   "
 },
 {
+  "id": "eg_isom_matrix",
+  "level": "2",
+  "url": "s_isom.html#eg_isom_matrix",
+  "type": "Example",
+  "number": "1.21.10",
+  "title": "Matrix transformations.",
+  "body": " Matrix transformations   Prove that a matrix transformation is an isomorphism if and only if and is invertible.    We know from that matrix transformations are linear.  Assume and is invertible. We claim that . Indeed, for all , we have . This proves that and thus that , as claimed. We conclude is an isomorphism.  Lastly assume is an isomorphism. By , we conclude that , and hence that . Since is an isomorphism, it has a linear inverse ; since all linear transformations of are matrix transformations, we have for some matrix . We have . Thus , showing that is invertible.   "
+},
+{
   "id": "th_isom_structure",
   "level": "2",
   "url": "s_isom.html#th_isom_structure",
   "type": "Theorem",
-  "number": "1.21.10",
-  "title": "Isomorphisms preserve structure.",
-  "body": " Isomorphisms preserve structure   Let be an isomorphism.   A tuple of vectors in is linearly independent if and only if its image is linearly independent.    Let , where is a tuple in . We have .     is a basis of if and only if is a basis of .     is finite-dimensional if and only if is finite-dimensional, and in this case we have .     is a subspace of if and only if is a subspace of .    We have for subspaces if and only if .       Most of the statements of this theorem follow almost immediately from the observation that since is an isomorphism we have for any linear combination expression in , along with the analogous statement for . Thus, for example, we have . This proves (2). The proof of (1) is similar, and (3) and (4) follow immediately from (1) and (2). Statement (5) is a result of the fact that and . We leave (6) as an exercise for the reader.   "
+  "number": "1.21.11",
+  "title": "Isomorphisms and structure.",
+  "body": " Isomorphisms and structure   Let be an isomorphism.   A tuple of vectors in is linearly independent if and only if its image is linearly independent.    Let , where is a tuple in . We have .     is a basis of if and only if is a basis of .     is finite-dimensional if and only if is finite-dimensional, and in this case we have .     is a subspace of if and only if is a subspace of .       Most of the statements of this theorem follow almost immediately from the observation that since is an isomorphism we have for any linear combination expression in , along with the analogous statement for . Thus, for example, we have . This proves (2). The proof of (1) is similar, and (3) and (4) follow immediately from (1) and (2). Statement (5) is a result of the fact that and . We leave (6) as an exercise for the reader.   "
 },
 {
   "id": "cor_isom_finite_dim",
   "level": "2",
   "url": "s_isom.html#cor_isom_finite_dim",
   "type": "Corollary",
-  "number": "1.21.11",
+  "number": "1.21.12",
   "title": "Finite-dimensional spaces.",
-  "body": " Finite-dimensional spaces   Let and be finite dimensional vector spaces. The following statements are equivalent.    is isomorphic to .     .      "
+  "body": " Finite-dimensional spaces   Let and be finite dimensional vector spaces. The following statements are equivalent.    is isomorphic to .     .   In particular, if is an -dimensional vector space, then is isomorphic to .    Assume and are finite-dimensional vector spaces.  If and are isomorphic, then there is an isomorphism . By , if is a basis of , then is a basis of . In particular, we have .  Assume . By definition, this means that there are bases and of and respectively. By there is a unique linear transformation satisfying for all . We claim that is an isomorphism. Indeed, there is a unique linear transformation satisfying for all , and we claim that . To see why note that the linear transformations and satisfy . But then for all in the basis , showing that by the uniqueness claim in ; similarly, for all in the basis implies . This proves that , and hence that is an isomorphism.   "
 },
 {
-  "id": "eg_isom_matrix",
+  "id": "mantra_dirty_secret",
   "level": "2",
-  "url": "s_isom.html#eg_isom_matrix",
+  "url": "s_isom.html#mantra_dirty_secret",
+  "type": "Mantra",
+  "number": "1.21.13",
+  "title": "Linear algebra’s dirty secret.",
+  "body": " Linear algebra's dirty secret   Any finite-dimensional -vector space is isomorphic to for some .   "
+},
+{
+  "id": "s_matrix_reps",
+  "level": "1",
+  "url": "s_matrix_reps.html",
+  "type": "Section",
+  "number": "1.22",
+  "title": "Coordinate vectors and matrix representations",
+  "body": " Coordinate vectors and matrix representations   Given a basis of a vector space , we know from that any can be expressed in a unique way as , where for all but finitely many . The notion of a coordinate vector turn this observation into a computational tool by exploiting the resulting correspondence . We will use the correspondence in two distinct ways, as described below.   Given an -dimensional vector space and basis , the correspondence is an isomorphism that allows us to treat elements of the abstract space as if they were elements of , and to then make use of our wealth of computational procedures related to -tuples.    The correspondence is also useful when working in itself. Namely, there will be situations where it is convenient to represent vectors with a particular nonstandard basis , as opposed to the standard basis . In this setting the correspondence will be used as a change of coordinates technique.       Coordinate vectors   Coordinate vectors   Let be a basis of the vector space . Given , let be the unique choice of scalars such that can be expressed as the linear combination . We define the tuple to be the coordinate vector of with respect to , denoted : , . We call the function the coordinate vector map with respect to .     Coordinate vectors   Let be a basis of the vector space , and let be the coordinate vector map with respect to .    is an injective transformation from to .     is an isomorphism from to if and only if is finite.          We use the 1-step technique to show is a linear transformation. Given and scalars , we first express as linear combinations of elements of , and then compute . Next, we prove is injective by showing that its null space is trivial. We have Given any , writing as a linear combination of the elements of , we see that . Thus .    First assume is finite, with . In this case, we have , and since is injective (by (a)), we conclude is an isomorphism ( ).  Lastly, assume is infinite. Given any , the coefficients appearing in the unique linear combination expression satisfy for all but finitely many . It follows that its image is a tuple with only finitely many nonzero coordinates. But since is infinite, there are tuples in , with infinitely many nonzero coordinates: , the tuple consisting of all 1's. It follows that is not surjective ( , ), and hence not an isomorphism.        Computing coordinate vectors   Let be a basis of the vector space . Given , compute the coordinate vector by following these steps.   Set up the vector equation in the unknowns .    Solve for the unknowns in some manner. A surefire technique is to reduce the vector equation to a linear system and use Gaussian elimination. However, there are some situations when you can simply produce the scalars by inspection.    Conclude that .       As illustrated by the next example, one setting for which we can compute by inspection (see (2) of ) is when is one of our standard ordered bases.   Standard bases   Computing coordinate vectors relative to one of our standard ordered bases for , , or amounts to just listing the coefficients or entries used to specify the given vector. The examples below serve to illustrate the general method in this setting.   Consider the standard basis of . For any we have , since .    Consider the standard basis of . For any we have since .    Let be the standard basis of , where is an infinite subset of the field . Given any polynomial , we have , since .        Coordinate vectors with respect to standarad bases  As illustrated in the example above, in the very particular case where and , the coordinate vector map is just the identity map: , we have for all . As simple as this observation is, it is worth pointing out, as this particular case often arises when computing examples (or proving theorems).    Reorderings of standard bases   If we choose an alternate ordering of one of the standard ordered bases, the entries of the coordinate vector are reordered accordingly, as illustrated by the examples below.   Consider the reordered basis of . Given we have , since .    Consider the reordered basis of . Given , we have , since .        Nonstandard bases   For a nonstandard ordered basis, we usually compute coordinate vectors by solving a relevant system of linear equations, as the examples below illustrate.   Let , , and . Compute . More generally, compute for an arbitrary .    Let , , and . Compute . More generally, compute for an arbitrary element .          Using , we compute by finding the unique pair satisfying . By inspection, we see that . We conclude that . More generally, to compute for an arbitrary , we must find the pair satisfying , or equivalently . The usual Gaussian elimination technique yields the unique solution , and thus for .    To compute we must find the unique triple satisfying . The equivalent linear system once we combine like terms and equate coefficients is , which row reduces to the system . The unique solution to this system is . We conclude . The same reasoning shows that more generally, given , we have .       Observe that computing a coordinate vector with respect to a basis involves setting up a vector equation of the form and then solving for the unknown coefficients . This is a familiar situation for us by now, and carrying out the computation involves reducing the given vector equation to a system of linear equations that we solve with our old work horse Gaussian elimination.    Let of the tuple of matrices of , where , and define .   Contract to a basis of .    Let , where for any matrix , , the {\\em trace} of : , is the space of all trace-zero matrices. Show that , and determine whether .          Let be the standard basis of . Apply to the elements of the given to get a corresponding set : . Apply the column space procedure to contract to a basis of : . We conclude that the first two vectors of form a basis for ; it follows that the first two elements of form a basis for . That is . In particular, this means .    Since for all , we have for all , and hence .  By inspection, we see that the space of all trace-zero matrices has basis , and hence . Since , we conclude that .       Consider the case where is a finite-dimensional vector space with basis . According to , the coordinate vector map gives an isomorphism between and . Practically speaking, this means any question regarding the vector space structure of can be translated to an equivalent question about the vector space . As a result, given any exotic vector space of finite dimension, once we choose an ordered basis of , questions about can be answered by taking coordinate vectors with respect to and answering the corresponding question in the more familiar setting of , where we have a wealth of computational procedures at our disposal. We memorialize this principle as a mantra.   Coordinate vector mantra   Coordinate vectors allow us to treat any -dimensional -vector space as if it were .    As an illustration of our new mantra, we describe a general method of contracting and extending subsets of a general finite-dimensional vector space to bases. The method translates the problem into using the coordinate transformation, applies the relevant algorithm available to us for subsets of , and then lifts the results back to using the coordinate transformation again.   Contracting and extending to bases in general spaces   Let be an -vector space of dimension , and let be a tuple of vectors of .   Contracting to a basis  Let . To contract to a basis , proceed as follows.   Pick any ordered basis of and let .    Use the relevant procedure of to find a subset such that is a basis for .    The tuple , a subtuple of , is a basis for .       Extending to a basis  Assume is linearly independent. To extend to a basis of proceed as follows.   Pick any ordered basis of and let .    Use the relevant procedure of to extend to a basis of .    By (3) of , for all there are vectors satisfying . The tuple is a basis of containing as a subtuple.            The set is a subset of the space . Let . Contract to a basis of and determine whether .    Let be the standard basis of . Apply to the elements of the given to get a corresponding set : . Apply the column space procedure of to contract to a basis of . This produces the subset Translating back to , we conclude that the corresponding set is a basis for . We conclude that .  Lastly the space of all trace-zero matrices is easily seen to have basis , and hence . Since , we conclude that .      Matrix representations  Of course, we are not just interested in studying vector spaces and their elements, but also linear transformations between vector spaces. Once again, by choosing bases for and we are able to get a computational grip on the transformation . When both and are finite dimensional, this takes the form of a matrix representation of .   Matrix representations of linear transformations   Let and be vector spaces with ordered bases and , respectively. Given a linear transformation , the matrix representing with respect to and , is the matrix whose -th column is , considered as a column vector: , . In the special case where and we pick we write simply .     Matrix representation   The function is linear. Compute , where and are the standard bases for and , respectively.    We have and . By definition, we have . We first compute for each : . To finish our computation, we must compute for each . Since is the standard basis of , this is not difficult: in general we have . Thus and .     Differentiation   Let be an infinite subset of , and define as . Compute , where and are the standard bases of and     Let and . We have for all . Since is standard, we easily compute . Using recipe we conclude that . In more detail, is the matrix whose first column is the zero column vector, and whose -th column for is the column vector that has in the -th entry and zeros elsewhere.     Different choice of bases   Define as .   Compute , where is the standard basis of .    Compute , where .          According to , since is the standard basis is the matrix such that : .    We have , where the last equality uses the fact that and , as you can verify yourself.   So we have and . Moral: different choices of bases yield different matrix representations.     Defining property of matrix representation   Let be a linear transformation, where and , and let be ordered bases for and , respectively.   For all we have .    Property defines uniquely: , if is an matrix satisfying for all , then .       Let .   By definition we have . Given any , we can write for some , in which case we have , as desired.    If satisfies for all , then in particular we have for all . Since is the -th element of , we have , the -th standard basis element of . Using the column method of matrix multiplciation, we see that where is the -th column of . Thus implies that the -th column of is equal to , the -th column of , for all . Since and have identical columns, we conclude that , as desired.        Uniqueness of  The uniqueness property described in (2) of provides an alternative way of computing that can be useful in certain situations: namely, if we can produce an matrix that satisfies the defining property for all , then by uniqueness we must have .  We illustrate this technique in the examples and proofs below.    Standard matrix   Let be a linear transformation. Recall that there is a unique matrix , the standard matrix of , such that . Prove that , where and are the standard bases of and , respectively. In other words, the standard matrix of is precisely the matrix representation of with respect to the standard bases.    Let be the standard matrix of . By definition, this means for all . Using the uniqueness claim of , to show that , it suffices to show that satisfies : , for all . Since and are standard bases of and , however, we have and . Thus we must show , which is precisely the defining property of the standard matrix of . Thus .     Matrix representations of composition   Let and , and let be bases for , , and , respectively. We have     Let . We prove that by showing that satisfies the defining equation of : , that for all . To this end, we have for all . We conclude that and thus , as desired.    Let , , and be as in . The defining property of can be summarized by saying that the following diagram is commutative .   Commutative diagram for  Commutative diagram for       The diagram being commutative here means that starting with an element in the top left of the diagram, whether we travel to the bottom right of the diagram either by first applying and then applying ( go right, then down ), or else by first applying and then applying ( go down, then right ), we get the same result! (The bottom map should technically be labeled , where , but this would detract from the elegance of the diagram.)  Besides commutativity, the other import feature of is that the two vertical coordinate transformations identify the domain and codomain of with the familiar spaces and isomorphically. These properties together allow us to translate any linear algebraic question about to an equivalent question about the matrix , as the following theorem indicates.   Matrix representation isomorphism   Let and be bases of the vector spaces and , respectively, where and .   The map is an isomorphism.    We have        Statement (2) follows directly from (1) since . (Alternatively, you showed on a homework that has a basis of length .) To prove (1), we will show that is linear and bijective.  The linearity of can be proved by direct appeal to the formula and the fact that the coordinate vector map is linear. Readers are invited to pursue this proof on their own. We will instead take the opportunity to make use of the defining property within a 1-step proof. Given linear maps and scalars , we will show that by showing that the matrix satisfies the relevant defining property for all . Here goes: . Since satisfies the relevant property, we conclude that , as desired.  We now show directly that is bijective: , given any matrix , we will show that there is a unique linear transformation satisfying . Let . Given , let for all , and let be the unique tuple of vectors in satisfying . (There is such a unique tuple as is an isomorphism.) By there is a unique linear map satisfying for all . We claim that : indeed, letting and using the defining property , we see that for all . Since is a basis and is an isomorphism, is a basis of . The equation above proves that and agree on the basis . It follows from (again) that , and hence that , as desired.     Matrix representations of   Let and be bases of the vector spaces and , respectively, where and , let , and let .   The restriction of to defines an isomorphism As a result, if and only if , and .    The restriction of to defines an isomorphism . As a result, if and only if , and .       This proof is left as a homework exercise.     Matrix representation of null space and image   Commutative diagram including null space and image     Having made explicit the connection between the important subspaces associtated to a linear transformation and its matrix representation, we end with a corollary that connects invertibility of a matrix transformations and its standard matrix . Recall ( ) that in this case we have , where is the standard basis of . The corollary lists 9 equivalent formulations for a matrix (or its matrix transformation ) to be invertible. The statements within each column should be fairly easily seen to be equivalent; equivalence connections between the columns are easily made using the rank-nullity theorem.   Invertible matrix theorem   Let and let be its corresponding matrix transformation. The following statements are equivalent.    is an isomorphism.               is invertible.               has a unique solution for all .     has a unique solution (viz., ).     has a solution for all .       We don't have the heart to provide a proof; this would spoil the fun of charting a path of implications around the grid above!     "
+},
+{
+  "id": "d_coor_vect",
+  "level": "2",
+  "url": "s_matrix_reps.html#d_coor_vect",
+  "type": "Definition",
+  "number": "1.22.1",
+  "title": "Coordinate vectors.",
+  "body": " Coordinate vectors   Let be a basis of the vector space . Given , let be the unique choice of scalars such that can be expressed as the linear combination . We define the tuple to be the coordinate vector of with respect to , denoted : , . We call the function the coordinate vector map with respect to .   "
+},
+{
+  "id": "th_coor_vectors",
+  "level": "2",
+  "url": "s_matrix_reps.html#th_coor_vectors",
+  "type": "Theorem",
+  "number": "1.22.2",
+  "title": "Coordinate vectors.",
+  "body": " Coordinate vectors   Let be a basis of the vector space , and let be the coordinate vector map with respect to .    is an injective transformation from to .     is an isomorphism from to if and only if is finite.          We use the 1-step technique to show is a linear transformation. Given and scalars , we first express as linear combinations of elements of , and then compute . Next, we prove is injective by showing that its null space is trivial. We have Given any , writing as a linear combination of the elements of , we see that . Thus .    First assume is finite, with . In this case, we have , and since is injective (by (a)), we conclude is an isomorphism ( ).  Lastly, assume is infinite. Given any , the coefficients appearing in the unique linear combination expression satisfy for all but finitely many . It follows that its image is a tuple with only finitely many nonzero coordinates. But since is infinite, there are tuples in , with infinitely many nonzero coordinates: , the tuple consisting of all 1's. It follows that is not surjective ( , ), and hence not an isomorphism.      "
+},
+{
+  "id": "proc_coor_vec",
+  "level": "2",
+  "url": "s_matrix_reps.html#proc_coor_vec",
+  "type": "Procedure",
+  "number": "1.22.3",
+  "title": "Computing coordinate vectors.",
+  "body": " Computing coordinate vectors   Let be a basis of the vector space . Given , compute the coordinate vector by following these steps.   Set up the vector equation in the unknowns .    Solve for the unknowns in some manner. A surefire technique is to reduce the vector equation to a linear system and use Gaussian elimination. However, there are some situations when you can simply produce the scalars by inspection.    Conclude that .      "
+},
+{
+  "id": "eg_coordinatevector_standard",
+  "level": "2",
+  "url": "s_matrix_reps.html#eg_coordinatevector_standard",
   "type": "Example",
-  "number": "1.21.12",
-  "title": "Matrix transformations.",
-  "body": " Matrix transformations   Prove that a matrix transformation is an isomorphism if and only if and is invertible.    We know from that matrix transformations are linear.  Assume and is invertible. We claim that . Indeed, for all , we have . This proves that and thus that , as claimed. We conclude is an isomorphism.  Lastly assume is an isomorphism. By , we conclude that , and hence that . Since is an isomorphism, it has a linear inverse ; since all linear transformations of are matrix transformations, we have for some matrix . We have . Thus , showing that is invertible.   "
+  "number": "1.22.4",
+  "title": "Standard bases.",
+  "body": " Standard bases   Computing coordinate vectors relative to one of our standard ordered bases for , , or amounts to just listing the coefficients or entries used to specify the given vector. The examples below serve to illustrate the general method in this setting.   Consider the standard basis of . For any we have , since .    Consider the standard basis of . For any we have since .    Let be the standard basis of , where is an infinite subset of the field . Given any polynomial , we have , since .      "
+},
+{
+  "id": "rm_coor_vec_std",
+  "level": "2",
+  "url": "s_matrix_reps.html#rm_coor_vec_std",
+  "type": "Remark",
+  "number": "1.22.5",
+  "title": "Coordinate vectors with respect to standarad bases.",
+  "body": " Coordinate vectors with respect to standarad bases  As illustrated in the example above, in the very particular case where and , the coordinate vector map is just the identity map: , we have for all . As simple as this observation is, it is worth pointing out, as this particular case often arises when computing examples (or proving theorems).  "
+},
+{
+  "id": "ss_coordinate_vectors-8",
+  "level": "2",
+  "url": "s_matrix_reps.html#ss_coordinate_vectors-8",
+  "type": "Example",
+  "number": "1.22.6",
+  "title": "Reorderings of standard bases.",
+  "body": " Reorderings of standard bases   If we choose an alternate ordering of one of the standard ordered bases, the entries of the coordinate vector are reordered accordingly, as illustrated by the examples below.   Consider the reordered basis of . Given we have , since .    Consider the reordered basis of . Given , we have , since .      "
+},
+{
+  "id": "ss_coordinate_vectors-9",
+  "level": "2",
+  "url": "s_matrix_reps.html#ss_coordinate_vectors-9",
+  "type": "Example",
+  "number": "1.22.7",
+  "title": "Nonstandard bases.",
+  "body": " Nonstandard bases   For a nonstandard ordered basis, we usually compute coordinate vectors by solving a relevant system of linear equations, as the examples below illustrate.   Let , , and . Compute . More generally, compute for an arbitrary .    Let , , and . Compute . More generally, compute for an arbitrary element .          Using , we compute by finding the unique pair satisfying . By inspection, we see that . We conclude that . More generally, to compute for an arbitrary , we must find the pair satisfying , or equivalently . The usual Gaussian elimination technique yields the unique solution , and thus for .    To compute we must find the unique triple satisfying . The equivalent linear system once we combine like terms and equate coefficients is , which row reduces to the system . The unique solution to this system is . We conclude . The same reasoning shows that more generally, given , we have .      "
+},
+{
+  "id": "ss_coordinate_vectors-11",
+  "level": "2",
+  "url": "s_matrix_reps.html#ss_coordinate_vectors-11",
+  "type": "Example",
+  "number": "1.22.8",
+  "title": "",
+  "body": "  Let of the tuple of matrices of , where , and define .   Contract to a basis of .    Let , where for any matrix , , the {\\em trace} of : , is the space of all trace-zero matrices. Show that , and determine whether .          Let be the standard basis of . Apply to the elements of the given to get a corresponding set : . Apply the column space procedure to contract to a basis of : . We conclude that the first two vectors of form a basis for ; it follows that the first two elements of form a basis for . That is . In particular, this means .    Since for all , we have for all , and hence .  By inspection, we see that the space of all trace-zero matrices has basis , and hence . Since , we conclude that .      "
+},
+{
+  "id": "mantra_coordinate_vectors",
+  "level": "2",
+  "url": "s_matrix_reps.html#mantra_coordinate_vectors",
+  "type": "Mantra",
+  "number": "1.22.9",
+  "title": "Coordinate vector mantra.",
+  "body": " Coordinate vector mantra   Coordinate vectors allow us to treat any -dimensional -vector space as if it were .   "
+},
+{
+  "id": "proc_contract_extend_general",
+  "level": "2",
+  "url": "s_matrix_reps.html#proc_contract_extend_general",
+  "type": "Procedure",
+  "number": "1.22.10",
+  "title": "Contracting and extending to bases in general spaces.",
+  "body": " Contracting and extending to bases in general spaces   Let be an -vector space of dimension , and let be a tuple of vectors of .   Contracting to a basis  Let . To contract to a basis , proceed as follows.   Pick any ordered basis of and let .    Use the relevant procedure of to find a subset such that is a basis for .    The tuple , a subtuple of , is a basis for .       Extending to a basis  Assume is linearly independent. To extend to a basis of proceed as follows.   Pick any ordered basis of and let .    Use the relevant procedure of to extend to a basis of .    By (3) of , for all there are vectors satisfying . The tuple is a basis of containing as a subtuple.         "
+},
+{
+  "id": "ss_coordinate_vectors-16",
+  "level": "2",
+  "url": "s_matrix_reps.html#ss_coordinate_vectors-16",
+  "type": "Example",
+  "number": "1.22.11",
+  "title": "",
+  "body": "  The set is a subset of the space . Let . Contract to a basis of and determine whether .    Let be the standard basis of . Apply to the elements of the given to get a corresponding set : . Apply the column space procedure of to contract to a basis of . This produces the subset Translating back to , we conclude that the corresponding set is a basis for . We conclude that .  Lastly the space of all trace-zero matrices is easily seen to have basis , and hence . Since , we conclude that .   "
+},
+{
+  "id": "d_matrix_representation",
+  "level": "2",
+  "url": "s_matrix_reps.html#d_matrix_representation",
+  "type": "Definition",
+  "number": "1.22.12",
+  "title": "Matrix representations of linear transformations.",
+  "body": " Matrix representations of linear transformations   Let and be vector spaces with ordered bases and , respectively. Given a linear transformation , the matrix representing with respect to and , is the matrix whose -th column is , considered as a column vector: , . In the special case where and we pick we write simply .   "
+},
+{
+  "id": "eg_matrixreps_std_basis",
+  "level": "2",
+  "url": "s_matrix_reps.html#eg_matrixreps_std_basis",
+  "type": "Example",
+  "number": "1.22.13",
+  "title": "Matrix representation.",
+  "body": " Matrix representation   The function is linear. Compute , where and are the standard bases for and , respectively.    We have and . By definition, we have . We first compute for each : . To finish our computation, we must compute for each . Since is the standard basis of , this is not difficult: in general we have . Thus and .   "
+},
+{
+  "id": "eg_matrix_rep_differentiation",
+  "level": "2",
+  "url": "s_matrix_reps.html#eg_matrix_rep_differentiation",
+  "type": "Example",
+  "number": "1.22.14",
+  "title": "Differentiation.",
+  "body": " Differentiation   Let be an infinite subset of , and define as . Compute , where and are the standard bases of and     Let and . We have for all . Since is standard, we easily compute . Using recipe we conclude that . In more detail, is the matrix whose first column is the zero column vector, and whose -th column for is the column vector that has in the -th entry and zeros elsewhere.   "
+},
+{
+  "id": "eg_matrixreps_different_bases",
+  "level": "2",
+  "url": "s_matrix_reps.html#eg_matrixreps_different_bases",
+  "type": "Example",
+  "number": "1.22.15",
+  "title": "Different choice of bases.",
+  "body": " Different choice of bases   Define as .   Compute , where is the standard basis of .    Compute , where .          According to , since is the standard basis is the matrix such that : .    We have , where the last equality uses the fact that and , as you can verify yourself.   So we have and . Moral: different choices of bases yield different matrix representations.   "
+},
+{
+  "id": "th_matrixrep",
+  "level": "2",
+  "url": "s_matrix_reps.html#th_matrixrep",
+  "type": "Theorem",
+  "number": "1.22.16",
+  "title": "Defining property of matrix representation.",
+  "body": " Defining property of matrix representation   Let be a linear transformation, where and , and let be ordered bases for and , respectively.   For all we have .    Property defines uniquely: , if is an matrix satisfying for all , then .       Let .   By definition we have . Given any , we can write for some , in which case we have , as desired.    If satisfies for all , then in particular we have for all . Since is the -th element of , we have , the -th standard basis element of . Using the column method of matrix multiplciation, we see that where is the -th column of . Thus implies that the -th column of is equal to , the -th column of , for all . Since and have identical columns, we conclude that , as desired.      "
+},
+{
+  "id": "rm_matrixreps_uniqueness",
+  "level": "2",
+  "url": "s_matrix_reps.html#rm_matrixreps_uniqueness",
+  "type": "Remark",
+  "number": "1.22.17",
+  "title": "Uniqueness of <span class=\"process-math\">\\([T]_B^{B'}\\)<\/span>.",
+  "body": " Uniqueness of  The uniqueness property described in (2) of provides an alternative way of computing that can be useful in certain situations: namely, if we can produce an matrix that satisfies the defining property for all , then by uniqueness we must have .  We illustrate this technique in the examples and proofs below.  "
+},
+{
+  "id": "eg_std_matrix",
+  "level": "2",
+  "url": "s_matrix_reps.html#eg_std_matrix",
+  "type": "Example",
+  "number": "1.22.18",
+  "title": "Standard matrix.",
+  "body": " Standard matrix   Let be a linear transformation. Recall that there is a unique matrix , the standard matrix of , such that . Prove that , where and are the standard bases of and , respectively. In other words, the standard matrix of is precisely the matrix representation of with respect to the standard bases.    Let be the standard matrix of . By definition, this means for all . Using the uniqueness claim of , to show that , it suffices to show that satisfies : , for all . Since and are standard bases of and , however, we have and . Thus we must show , which is precisely the defining property of the standard matrix of . Thus .   "
+},
+{
+  "id": "cor_matrix_reps_comp",
+  "level": "2",
+  "url": "s_matrix_reps.html#cor_matrix_reps_comp",
+  "type": "Corollary",
+  "number": "1.22.19",
+  "title": "Matrix representations of composition.",
+  "body": " Matrix representations of composition   Let and , and let be bases for , , and , respectively. We have     Let . We prove that by showing that satisfies the defining equation of : , that for all . To this end, we have for all . We conclude that and thus , as desired.   "
+},
+{
+  "id": "fig_comm_diag",
+  "level": "2",
+  "url": "s_matrix_reps.html#fig_comm_diag",
+  "type": "Figure",
+  "number": "1.22.20",
+  "title": "Commutative diagram for <span class=\"process-math\">\\([T]_B^{B'}\\)<\/span>",
+  "body": " Commutative diagram for  Commutative diagram for     "
+},
+{
+  "id": "th_matrix_reps_isom",
+  "level": "2",
+  "url": "s_matrix_reps.html#th_matrix_reps_isom",
+  "type": "Theorem",
+  "number": "1.22.21",
+  "title": "Matrix representation isomorphism.",
+  "body": " Matrix representation isomorphism   Let and be bases of the vector spaces and , respectively, where and .   The map is an isomorphism.    We have        Statement (2) follows directly from (1) since . (Alternatively, you showed on a homework that has a basis of length .) To prove (1), we will show that is linear and bijective.  The linearity of can be proved by direct appeal to the formula and the fact that the coordinate vector map is linear. Readers are invited to pursue this proof on their own. We will instead take the opportunity to make use of the defining property within a 1-step proof. Given linear maps and scalars , we will show that by showing that the matrix satisfies the relevant defining property for all . Here goes: . Since satisfies the relevant property, we conclude that , as desired.  We now show directly that is bijective: , given any matrix , we will show that there is a unique linear transformation satisfying . Let . Given , let for all , and let be the unique tuple of vectors in satisfying . (There is such a unique tuple as is an isomorphism.) By there is a unique linear map satisfying for all . We claim that : indeed, letting and using the defining property , we see that for all . Since is a basis and is an isomorphism, is a basis of . The equation above proves that and agree on the basis . It follows from (again) that , and hence that , as desired.   "
+},
+{
+  "id": "th_matrix_rep_null_im",
+  "level": "2",
+  "url": "s_matrix_reps.html#th_matrix_rep_null_im",
+  "type": "Theorem",
+  "number": "1.22.22",
+  "title": "Matrix representations of.",
+  "body": " Matrix representations of   Let and be bases of the vector spaces and , respectively, where and , let , and let .   The restriction of to defines an isomorphism As a result, if and only if , and .    The restriction of to defines an isomorphism . As a result, if and only if , and .       This proof is left as a homework exercise.   "
+},
+{
+  "id": "fig_matrix_reps_null_im",
+  "level": "2",
+  "url": "s_matrix_reps.html#fig_matrix_reps_null_im",
+  "type": "Figure",
+  "number": "1.22.23",
+  "title": "",
+  "body": " Matrix representation of null space and image   Commutative diagram including null space and image    "
+},
+{
+  "id": "cor_inv_theorem",
+  "level": "2",
+  "url": "s_matrix_reps.html#cor_inv_theorem",
+  "type": "Corollary",
+  "number": "1.22.24",
+  "title": "Invertible matrix theorem.",
+  "body": " Invertible matrix theorem   Let and let be its corresponding matrix transformation. The following statements are equivalent.    is an isomorphism.               is invertible.               has a unique solution for all .     has a unique solution (viz., ).     has a solution for all .       We don't have the heart to provide a proof; this would spoil the fun of charting a path of implications around the grid above!   "
 },
 {
   "id": "appendix-notation",

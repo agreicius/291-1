@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--******************************************-->
+<!--*  Authored with PreTeXt                 *-->
+<!--*  pretextbook.org                       *-->
+<!--*  Theme: default-modern                 *-->
+<!--*  Palette: blue-green                   *-->
+<!--******************************************-->
+
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<article class="example example-like"><h2 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.22.14</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Differentiation.</span>
+</h2>
+<div class="para">Let <span class="process-math">\(I\)</span> be an infinite subset of <span class="process-math">\(\R\text{,}\)</span> and define <span class="process-math">\(T\colon P_n(I)\rightarrow P_{n-1}(I)\)</span> as <span class="process-math">\(T(f)=f'\text{.}\)</span> Compute <span class="process-math">\([T]_B^{B'}\text{,}\)</span> where <span class="process-math">\(B\)</span> and <span class="process-math">\(B'\)</span> are the standard bases of <span class="process-math">\(P_n(I)\)</span> and <span class="process-math">\(P_{n-1}(I)\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#eg_matrix_rep_differentiation-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical">
+<div class="para">Let <span class="process-math">\(B=(1,x,x^2,\dots, x^n)\)</span> and <span class="process-math">\(B'=(1,x,x^2,\dots, x^n)\text{.}\)</span> We have</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_matrixrep_formula.html">
+\begin{equation*}
+T(x^k)=\frac{d}{dx}(x^k)=kx^{k-1}
+\end{equation*}
+</div>
+<div class="para">for all <span class="process-math">\(0\leq k\leq n\text{.}\)</span> Since <span class="process-math">\(B'\)</span> is standard, we easily compute</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_matrixrep_formula.html">
+\begin{equation*}
+[T(x^k)]_{B'}=(0,0,\dots, \underset{(k-1)-\text{th coor.}}{k},0,\dots, 0)\text{.}
+\end{equation*}
+</div>
+<div class="para">Using recipe <a href="s_matrix_reps.html#eq_matrixrep_formula" class="xref" data-knowl="./knowl/xref/eq_matrixrep_formula.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.22.5">(1.22.5)</a> we conclude that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/eq_matrixrep_formula.html">
+\begin{equation*}
+[T]_B^{B'}=
+\begin{bmatrix}
+0\amp 1\amp 0 \amp 0\amp  \dots \amp 0  \\
+0\amp 0\amp 2 \amp 0 \amp    \amp 0 \\
+0\amp 0\amp 0 \amp 3 \amp 0 \amp \vdots  \\
+\vdots \\
+0\amp  0 \amp 0 \amp 0 \amp  \dots  \amp n  
+\end{bmatrix}\text{.}
+\end{equation*}
+</div>
+<div class="para">In more detail, <span class="process-math">\([T]_B^{B'}\)</span> is the <span class="process-math">\((n-1)\times n\)</span> matrix whose first column is the zero column vector, and whose <span class="process-math">\(k\)</span>-th column for <span class="process-math">\(2\leq k\leq n\)</span> is the column vector that has <span class="process-math">\(k\)</span> in the  <span class="process-math">\((k-1)\)</span>-th entry and zeros elsewhere.</div>
+<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#eg_matrix_rep_differentiation-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Solution 1.22.14.1"><a tabindex="-1" href="#eg_matrix_rep_differentiation-3" title="Copy heading and permalink for Solution 1.22.14.1" aria-label="Copy heading and permalink for Solution 1.22.14.1">🔗</a></div>
+</div></details>
+</div>
+<div class="autopermalink" aria-hidden="true" data-description="Example 1.22.14: Differentiation"><a tabindex="-1" href="#eg_matrix_rep_differentiation" title="Copy heading and permalink for Example 1.22.14: Differentiation" aria-label="Copy heading and permalink for Example 1.22.14: Differentiation">🔗</a></div>
+</article><span class="incontext"><a class="internal" href="s_matrix_reps.html#eg_matrix_rep_differentiation">In Context</a></span>
+</body>
+</html>
