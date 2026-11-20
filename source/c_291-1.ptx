@@ -23,6 +23,7 @@
     <xi:include href="s_transformation.ptx" />
     <xi:include href="s_null_image.ptx" />
     <xi:include href="s_isom.ptx" />
+    <xi:include href="s_matrix_reps.ptx" />
 
 
 </chapter>

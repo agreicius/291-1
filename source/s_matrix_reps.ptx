@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s_matrix_reps" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <title>Coordinate vectors and matrix representations</title>
+    <introduction>
+        <p>
+            Given a  basis <m>B=(v_i)_{i\in I}</m> of a vector space <m>V</m>, we know from <xref ref="th_basis"/> that any <m>v\in V</m> can be expressed <em>in a unique way</em> as
+             <md>
+               v=\sum_{i\in I}c_iv_i
+             </md>,
+             where <m>c_i=0</m> for all but finitely many <m>i</m>. The notion of a 
+             <em>coordinate vector</em> turn this observation into a computational tool by exploiting the resulting correspondence
+             <md number="yes" xml:id="eq_coordinate_correspondence">
+               v\in V \longleftrightarrow (c_i)_{i\in I}\in F^I
+             </md>.
+              We will use the correspondence <xref ref="eq_coordinate_correspondence"/> in two distinct ways, as described below.
+              <ol>
+                <li>
+                  <p>
+                    Given an <m>n</m>-dimensional vector space <m>V</m> and basis <m>B</m>, the correspondence <xref ref="eq_coordinate_correspondence"/> is an isomorphism that allows us to treat elements of the abstract space <m>V</m> as if they were elements of <m>F^n</m>, and to then make use of our wealth of computational procedures related to <m>n</m>-tuples.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    The correspondence <xref ref="eq_coordinate_correspondence"/> is also useful when working in <m>F^n</m> itself. Namely, there will be situations where it is convenient to represent vectors with a particular nonstandard basis <m>B</m>, as opposed to the standard basis <m>(\bolde_1, \bolde_2, \dots, \bolde_n)</m>. In this setting the correspondence <xref ref="eq_coordinate_correspondence"/> will be used as a <q>change of coordinates</q> technique.
+                  </p>
+                </li>
+              </ol>
+        </p>
+    </introduction>
+    <subsection xml:id="ss_coordinate_vectors">
+    <title>Coordinate vectors</title>
+    <definition xml:id="d_coor_vect">
+        <title>Coordinate vectors</title>
+        <statement>
+        <p>
+        Let <m>B=(v_i)_{i\in I}</m> be a basis of the vector space <m>V</m>. Given <m>v\in V</m>, let <m>(c_i)_{i\in I}</m> be the unique choice of scalars such that <m>v</m> can be expressed as the linear combination 
+        <md number="yes" xml:id="eq_coor_vec_lincombo">
+            v=\sum_{i\in I}c_iv_i
+        </md>.
+        We define the tuple <m>(c_i)_{i\in I}\in F^I</m> to be the <term>coordinate vector</term> of <m>v</m> with respect to <m>B</m>, denoted <m>[v]_B</m>: <ie/>, 
+        <md number="yes" xml:id="eq_coor_vec">
+            [v]_B=(c_i)_{i\in I}
+        </md>.
+        We call the function 
+        <md>
+            <mrow>[\phantom{v}]_B\colon V \amp \rightarrow F^I</mrow>
+            <mrow>v \amp \longmapsto [v]_B</mrow>
+        </md>
+        the <term>coordinate vector map</term> with respect to <m>B</m>. 
+        </p>
+        </statement>
+        </definition>
+        <theorem xml:id="th_coor_vectors">
+        <title>Coordinate vectors</title>
+        <statement>
+        <p>
+        Let <m>B=(v_i)_{i\in I}</m> be a basis of the vector space <m>V</m>, and let <m>[\phantom]_B\colon V\rightarrow F^I</m> be the coordinate vector map with respect to <m>B</m>. 
+        <ol>
+            <li>
+                <p>
+                  <m>[\phantom{v}]_B</m> is an injective transformation from <m>V</m> to <m>F^I</m>.  
+                </p>
+            </li>
+            <li>
+                <p>
+                    <m>[\phantom{v}]_B</m> is an isomorphism from <m>V</m> to <m>F^I</m> if and only if <m>I</m> is finite.  
+                  </p>
+            </li>
+        </ol>
+        </p>
+        </statement>
+        <proof>
+        <p>
+          <ol>
+            <li>
+              <p>
+                We use the 1-step technique to show <m>[\phantom{v}]_B</m> is a linear transformation. Given <m>v,w\in V</m> and scalars <m>c,d\in F</m>, we first express
+                <md>
+                  <mrow>v \amp =\sum_{i\in I}c_iv_i</mrow>
+                  <mrow>w \amp =\sum_{i\in I}d_iv_i</mrow>
+                </md>
+                as linear combinations of elements of <m>B</m>, and then compute 
+                <md>
+                  <mrow>[cv+dw]_{B} \amp =[\sum_{i\in I}(cc_i+dd_i)v_i \amp (\text{vect. arith.})</mrow>
+                  <mrow> \amp =(cc_i+dd_i)_{i\in I} \amp (\text{def. of } [\phantom{v}]_B)</mrow>
+                  <mrow> \amp = c(c_i)_{i\in I}+d(d_i)_{i\in I}\amp (\text{vect. arith.}) </mrow>
+                  <mrow> \amp =c[v]_B+d[w]_B \amp (\text{def. of } [\phantom{v}]_B)</mrow>
+                </md>.
+                Next, we prove <m>[\phantom{v}]_B</m> is injective by showing that its null space is trivial. We have 
+                Given any <m>v\in V</m>, writing <m>v=\sum_{i\in i}c_iv_i</m> as a linear combination of the elements of <m>B</m>, we see that 
+                <md>
+                  <mrow>[v]_B=\boldzero \amp \iff c_i=0 \text{ for all } i\in I </mrow>
+                  <mrow> \amp \iff \sum_{i\in I}c_iv_i=\boldzero \amp (B \text{ lin. ind.})</mrow>
+                  <mrow> \amp \iff v=\boldzero</mrow>
+                </md>.
+                Thus <m>\NS [\phantom{v}]_B=\{\boldzero\}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                First assume <m>I</m> is finite, with <m>\abs{I}=n\in \Z_{\geq 0}</m>. In this case, we have
+                <md>
+                  \dim V=\dim F^I=n
+                </md>,
+                and since <m>[\phantom{v}]_B</m> is injective (by (a)), we conclude <m>[\phantom{v}]_B</m> is an isomorphism (<xref ref="th_isom" text="global"/>).
+              </p>
+              <p>
+                Lastly, assume <m>I</m> is infinite. Given any <m>v\in V</m>, the coefficients <m>c_i</m> appearing in the unique linear combination expression <m>v=\sum_{i\in I}c_iv_i</m> satisfy <m>c_i=0</m> for all but finitely many <m>i\in I</m>. It follows that its image <m>[v]_B=(c_i)_{i\in I}</m> is a tuple with only finitely many nonzero coordinates. But since <m>I</m> is infinite, there are tuples in <m>F^I</m>, with infinitely many nonzero coordinates: <eg/>, the tuple  <m>\boldy=(1)_{i\in I}</m> consisting of all 1's. It follows that <m>\im [\phantom{v}]_B</m> is not surjective (<eg/>,  <m>\boldy\notin \im [\phantom{v}]_B</m>), and hence not an isomorphism. 
+              </p>
+            </li>
+
+          </ol>
+        </p>
+        </proof>
+        </theorem>
+        
+        <algorithm xml:id="proc_coor_vec">
+            <title>Computing coordinate vectors</title>
+            <statement>
+              <p>
+                Let <m>B=(v_i)_{i\in }</m> be a basis of the vector space <m>V</m>. Given <m>v\in V</m>, compute the coordinate vector <m>[v]_B\in F^I</m> by following these steps. 
+                <ol>
+                  <li>
+                    <p>
+                      Set up the vector equation 
+                      <md number="yes" xml:id="eq_coor_vec_proc">
+                        v=\sum_{i\in i}c_iv_i
+                      </md>
+                      in the unknowns <m>c_i\in F</m>. 
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Solve for the unknowns <m>c_i</m> in some manner. A surefire technique is to reduce the vector equation <xref ref="eq_coor_vec_proc"/> to a linear system and use Gaussian elimination. However, there are some situations when you can simply produce the scalars <m>c_i</m> by inspection.  
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Conclude that <m>[v]_B=(c_i)_{i\in I}</m>.
+                    </p>
+                  </li>
+                </ol>
+              </p>
+            </statement>
+          </algorithm>
+                <p>
+                  As illustrated by the next example, one setting for which we can compute <m>[v]_B</m> by inspection (see (2) of <xref ref="proc_coor_vec"/>) is when <m>B</m> is one of our standard ordered bases. 
+                </p>
+        <example xml:id="eg_coordinatevector_standard">
+          <title>Standard bases</title>
+          <statement>
+            <p>
+              Computing coordinate vectors relative to one of our standard ordered bases for <m>F^n</m>, <m>F^{m,n}</m>, or <m>P_{n}</m> amounts to just listing the coefficients or entries used to specify the given vector. The examples below serve to illustrate the general method in this setting.
+            
+            <ol>
+              <li>
+                <p>
+                Consider the standard basis <m>B=(\bolde_1, \bolde_2, \bolde_3)</m> of <m>F^3</m>. For any <m>\boldx=(a,b,c)\in F^3</m> we have <m>[\boldx]_{B}=(a,b,c)</m>, since <m>(a,b,c)=a\bolde_1+b\bolde_2+c\bolde_3</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Consider the standard basis <m>B=(E_{11}, E_{12}, E_{21}, E_{22})</m> of <m>F^{2,2}</m>. For any <m>A=\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}</m> we have <m>[A]_B=(a,b,c,d)</m> since
+                  <md>
+                    \underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=a\underset{E_{11}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}+b\underset{E_{12}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+c\underset{E_{21}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+d\underset{E_{22}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}
+                  </md>.
+                </p>
+              </li>
+              <li>
+                <p>
+                    Let <m>B=(1,x,x^2,\dots)</m> be the standard basis of <m>P(I)</m>, where <m>I</m> is an infinite subset of the field <m>F</m>. Given any polynomial <m>f(x)=\anpoly</m>, we have 
+                    <md>
+                        [f]_B=(a_0,a_1,\dots, a_n, 0,0,\dots)
+                    </md>,
+                    since 
+                    <md>
+                        f=a_0\cdot 1+a_1x+\cdots a_nx^n+0x^{n+1}+0x^{n+2}+\cdots
+                    </md>.
+                </p>
+              </li>
+            </ol>
+        </p>
+          </statement>
+        </example>
+        <remark xml:id="rm_coor_vec_std">
+          <title>Coordinate vectors with respect to standarad bases</title>
+          <p>
+            As illustrated in the example above, in the very particular case where <m>V=F^n</m> and <m>B=(\bolde_1,\bolde_2,\dots, \bolde_n)</m>, the coordinate vector map 
+            <m>[\phantom{v}]_B\colon F^n \rightarrow F^n</m> is just the identity map: <ie/>, we have 
+            <md>
+              [(a_1,a_2,\dots, a_n)]_B=(a_1,a_2,\dots, a_n)
+            </md>
+            for all <m>(a_1,a_2,\dots, a_n)\in F^n</m>. As simple as this observation is, it is worth pointing out, as this particular case often arises when computing examples (or proving theorems). 
+            
+          </p>
+          
+        </remark>
+        <example>
+          <title>Reorderings of standard bases</title>
+          <statement>
+            <p>
+            If we choose an alternate ordering of one of the standard ordered bases, the entries of the coordinate vector are reordered accordingly, as illustrated by the examples below.
+            
+            <ol>
+              <li>
+                <p>
+                  Consider the reordered basis <m>B=(\bolde_2, \bolde_1, \bolde_3)</m> of <m>F^3</m>. Given <m>\boldx=(a,b,c)\in \R^3</m> we have <m>[\boldx]_B=(b,a,c)</m>, since
+                  <md>
+                  \boldx=b\bolde_2+a\bolde_1+c\bolde_3
+                  </md>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Consider the reordered basis <m>B=(E_{22},E_{21},E_{12},E_{11})</m> of <m>F^{2,2}</m>. Given <m>A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}</m>, we have <m>[A]_B=(d,c,b,a)</m>, since 
+                  <md>
+                    \underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=d\underset{E_{22}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}+
+                    c\underset{E_{21}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+
+                    b\underset{E_{12}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+
+                    a\underset{E_{22}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}
+                  </md>.
+                </p>
+              </li>
+            </ol>
+        </p>
+          </statement>
+        </example>
+        <example>
+          <title>Nonstandard bases</title>
+      
+          <statement>
+            <p>
+              For a nonstandard ordered basis, we usually compute coordinate vectors by solving a relevant system of linear equations, as the examples below illustrate.
+            
+            <ol>
+              <li>
+                <p>
+                  Let <m>V=\R^2</m>, <m>B=(\boldx_1=(1,2),\boldx_2=(1,1))</m>, and <m>\boldx=(3,3)</m>. Compute <m>[\boldx]_B</m>. More generally, compute <m>[(a,b)]_B</m> for an arbitrary <m>(a,b)\in \R^2</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                Let <m>V=P_2(I)</m>, <m>B=(f_1=1+x+x^2, f_2=1-x, f_3=1-x^2)</m>, and <m>f=1+2x+x^2</m>. Compute <m>[f]_B</m>. More generally, compute <m>[a+bx+cx^2]_B</m> for an arbitrary element <m>a+bx+cx^2\in P_2(I)</m>. 
+                </p>
+              </li>
+            </ol>
+        </p>
+          </statement>
+          <solution>
+            <p>
+                <ol>
+              <li>
+                <p>
+                 Using <xref ref="proc_coor_vec"/>, we compute <m>[(3,3)]_B</m> by finding the unique pair <m>(c_1, c_2)</m> satisfying
+                  <md>
+                    (3,3)=c_1(1,2)+c_2(1,1)
+                  </md>.
+                  By inspection, we see that
+                  <md>
+                    (3,3)=3(1,1)=0(1,2)+3(1,1)
+                  </md>.
+                  We conclude that
+                  <md>
+                    [\boldx]_{B}=(0,3)
+                  </md>.
+                  More generally, to compute <m>[\boldx]_B</m> for an arbitrary <m>\boldx=(a,b)\in \R^2</m>, we must find the pair <m>(c_1,c_2)</m> satisfying <m>(a,b)=c_1(1,2)+c_2(1,1)</m>, or equivalently
+                  <md>
+                    \begin{linsys}{2}
+                      c_1\amp +\amp c_2 \amp =\amp a\\
+                      2c_1\amp +\amp c_2\amp =\amp b
+                    \end{linsys}
+                  </md>.
+                   The usual Gaussian elimination technique yields the unique solution <m>(c_1,c_2)=(-a+b,2a-b)</m>, and thus
+                   <md>
+                     [\boldx]_B=(-a+b, 2a-b)
+                   </md>
+                   for <m>\boldx=(a,b)</m>.
+                </p>
+              </li>
+              <li>
+                <p>
+                 To compute <m>[f]_B</m> we must find the unique triple <m>(c_1,c_2,c_3)</m> satisfying
+                <md>
+                  1+2x+x^2=c_1(1+x+x^2)+c_2(1-x)+c_3(1-x^2)
+                </md>.
+                The equivalent linear system once we combine like terms and equate coefficients is
+                <md>
+                  \begin{linsys}{3}
+                    c_1\amp +\amp c_2\amp +\amp c_3\amp =\amp 1\\
+                    c_1\amp -\amp c_2\amp \amp \amp =\amp 2\\
+                    c_1\amp \amp \amp -\amp c_3\amp =\amp 1
+                  \end{linsys}
+                </md>, 
+                which row reduces to the system 
+                <md>
+                  \begin{linsys}{3}
+                    c_1\amp +\amp c_2\amp +\amp c_3\amp =\amp 1\\
+                    \amp \amp c_2\amp \amp \frac{1}{2}c_3\amp =\amp -\frac{1}{2}\\
+                    \amp \amp \amp \amp c_3\amp =\amp \frac{1}{3}
+                  \end{linsys}
+                </md>.
+                The unique solution to this system is <m>(c_1,c_2,c_3)=(4/3, -2/3, 1/3)</m>. We conclude
+                <md>
+                  [f]_B=\frac{1}{3}(4, -2, 1)
+                </md>.
+                The same reasoning shows that more generally, given <m>f=a+bx+cx^2</m>, we have
+                <md>
+                  [f]_B=\frac{1}{3}(a+b+c, a-2b+c, a+b-2c)
+                </md>.
+                </p>
+              </li>
+            </ol>
+        </p>
+          </solution>
+        </example>
+        <p>
+      Observe that computing a coordinate vector with respect to a basis involves setting up a vector equation of the form <xref ref="eq_coor_vec"/> and then solving for the unknown coefficients <m>c_i</m>. This is a familiar situation for us by now, and carrying out the computation involves reducing the given vector equation to a system of linear equations that we solve with our <xref ref="princ_GE" text="custom">old work horse</xref> Gaussian elimination.  
+    </p>
+       
+          <example>
+            <statement>
+              <p>
+                Let <m>S=(A_1,A_2,A_3,A_4)</m> of the tuple of matrices of <m>\R^{2,2}</m>, where 
+                <md>
+                  <mrow> A_1\amp =\begin{bmatrix}2\amp 1\\ 0\amp -2 \end{bmatrix}\amp A_2\amp =\begin{bmatrix}1\amp 1\\ 1\amp -1 \end{bmatrix} </mrow>
+                  <mrow> A_3\amp =\begin{bmatrix}0\amp 1\\ 2\amp 0 \end{bmatrix}\amp A_4\amp =\begin{bmatrix}-1\amp 0\\ 1\amp 1 \end{bmatrix} </mrow>
+                </md>,
+                and define <m>W=\Span S</m>. 
+               <ol>
+                <li>
+                  <p>
+                    Contract <m>S</m> to a basis of <m>W</m>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Let <m>W'=\{A\in \R^{2,2}\colon \tr A=0\}</m>, where for any <m>n\times n</m> matrix <m>A=[a_{ij}]</m>, <m>\tr A=\sum_{i=1}^na_ii</m>, the {\em trace} of <m>A</m>: <ie/>, <m>W'</m> is the space of all trace-zero <m>2\times 2</m> matrices. Show that <m>W\subseteq W'</m>, and determine whether <m>W=W'</m>. 
+                  </p>
+                </li>
+               </ol> 
+              </p>
+            </statement>
+            <solution>
+              <p>
+                <ol>
+                  <li>
+                    <p>
+                      Let <m>B=(E_{11}, E_{12}, E_{21}, E_{22})</m> be the standard basis of <m>\R^{2,2}</m>.
+                      Apply <m>[\phantom{v}]_B</m> to the elements of the given <m>S</m> to get a corresponding set <m>S'\subseteq\R^4</m>:
+                      <md>
+                        S'=(\underset{[A_1]_B}{(2,1,0,-2)}, \underset{[A_2]_B}{(1,1,1,-1)}, \underset{[A_3]_B}{(0,1,2,0)}, \underset{[A_4]_B}{(-1,0,1,1)})
+                      </md>.
+                      Apply the column space procedure to contract <m>S'</m> to a basis <m>B'</m> of <m>\Span S'</m>: 
+                      <md>
+                        \begin{amatrix}[rrrr]
+                        2\amp 1\amp 0\amp -1 \\
+                        1\amp 1\amp 1\amp 0\\
+                        0\amp 1\amp 2\amp 1\\
+                        -2\amp -1\amp 0\amp 1
+                        \end{amatrix}
+                        \xrightarrow{\text{Gauss. elim.}}
+                        \begin{amatrix}[rrrr]
+                        \boxed{1} \amp \frac{1}{2} \amp 0 \amp -\frac{1}{2} \\
+                        0 \amp \boxed{1} \amp 2 \amp 1 \\
+                        0 \amp 0 \amp 0 \amp 0 \\
+                        0 \amp 0 \amp 0 \amp 0
+                        \end{amatrix}
+                      </md>.
+                      We conclude that the first two vectors of <m>S'</m> form a basis for <m>\Span S'</m>; it follows that the first two elements of <m>S</m> form a basis for <m>W=\Span S</m>. That is <m>W=\Span ((A_1,A_2))</m>. In particular, this means <m>\dim W=2</m>. 
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Since <m>\tr A_i=0</m> for all <m>1\leq i\leq 4</m>, we have <m>A_i\in W'</m> for all <m>i</m>, and hence <m>W=\Span (A_1,A_2,A_3,A_4)\subseteq W'</m>. 
+                    </p>
+                    <p>
+                      By inspection, we see that the space <m>W'</m> of all trace-zero matrices has basis
+                      <md>
+                      \left\(
+                      \begin{amatrix}[rr]1\amp 0\\ 0 \amp -1  \end{amatrix},
+                      \begin{amatrix}[rr]0\amp 1\\ 0\amp 0  \end{amatrix},
+                      \begin{amatrix}[rr]0 \amp 0\\ 1\amp 0  \end{amatrix}
+                      \right\)
+                      </md>,
+                      and hence <m>\dim W'=3</m>. Since <m>\dim W&lt; \dim W'</m>, we conclude that <m>W\ne W'</m>.
+                    </p>
+                  </li>
+                </ol>
+               
+              </p>
+            </solution>
+          </example>
+    <p>
+      Consider the case where <m>V</m> is a finite-dimensional vector space with basis <m>B=(\boldv_1,\boldv_2,\dots, \boldv_n)</m>. According to <xref ref="th_coor_vectors"/>, the coordinate vector map gives an isomorphism between <m>V</m> and <m>F^n</m>.  Practically speaking, this means any question regarding the vector space structure of <m>V</m> can be translated to an equivalent question about the vector space <m>\F^n</m>. As a result, given any <q>exotic</q> vector space <m>V</m> of finite dimension, once we choose an ordered basis <m>B</m> of <m>V</m>, questions about <m>V</m> can be answered by taking coordinate vectors with respect to <m>B</m>
+    and answering the corresponding question in the more familiar setting of <m>F^n</m>, where we have a wealth of computational procedures at our disposal. We memorialize this principle as a mantra.
+  </p>
+  <principle xml:id="mantra_coordinate_vectors">
+    <title>Coordinate vector mantra</title>
+    <statement>
+      <p>
+        Coordinate vectors allow us to treat any <m>n</m>-dimensional <m>F</m>-vector space as if it were <m>F^n</m>.
+      </p>
+    </statement>
+  </principle>
+   <p>
+    As an illustration of our new mantra, we describe a general method of contracting and extending subsets of a general finite-dimensional vector space <m>V</m> to bases. The method translates the problem into <m>F^n</m> using the coordinate transformation, applies the relevant algorithm available to us for subsets of <m>F^n</m>, and then <q>lifts</q> the results back to <m>V</m> using the coordinate transformation again.
+  </p>
+  <algorithm xml:id="proc_contract_extend_general">
+    <title>Contracting and extending to bases in general spaces</title>
+    <statement>
+      <p>
+        Let <m>V</m> be an <m>F</m>-vector space of dimension <m>n</m>, and let
+        <m>S=(\boldv_1, \boldv_2,\dots, \boldv_r)</m> be a tuple of vectors of <m>V</m>.
+      
+      <ul>
+        <li>
+          <title>Contracting to a basis</title>
+          <p>
+            Let <m>W=\Span S</m>. To contract <m>S</m> to a basis <m>W</m>, proceed as follows.
+          <ol>
+            <li>
+              <p>
+                Pick any ordered basis <m>B</m> of <m>V</m> and let <m>\tilde{S}=([\boldv_1]_B, [\boldv_2]_B, \dots, [\boldv_r]_B)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use the relevant procedure of <xref ref="proc_contract_extend"/> to find a subset <m>J\subseteq \{1,2,\dots, r\}</m> such that <m>([\boldv_{j}]_B)_{j\in J}</m> is a basis for <m>\Span \tilde{S}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The tuple <m>(\boldv_j)_{j\in J}</m>, a subtuple of <m>S</m>, is a basis for <m>W=\Span S</m>.
+              </p>
+            </li>
+          </ol>
+          </p>
+        </li>
+        <li>
+          <title>Extending to a basis</title>
+          <p>
+            Assume <m>S</m> is linearly independent. To extend <m>S</m> to a basis of <m>V</m> proceed as follows.
+          
+          <ol>
+            <li>
+              <p>
+                Pick any ordered basis <m>B</m> of <m>V</m> and let <m>\tilde{S}=([\boldv_1]_B, [\boldv_2]_B, \dots, [\boldv_r]_B)\subseteq F^n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use the relevant procedure of <xref ref="proc_contract_extend"/> to extend <m>\tilde{S}</m> to a basis <m>([\boldv_1]_B, [\boldv_2]_B, \dots, [\boldv_r]_B, \boldx_{r+1}, \dots, \boldx_n)</m> of <m>F^n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                By (3) of <xref ref="th_coor_vectors"/>, for all <m>r+1\leq i\leq n</m> there are vectors <m>\boldv_{i}\in V</m> satisfying <m>[\boldv_i]_B=\boldx_i</m>. The tuple <m>(\boldv_1,\dots, \boldv_r,\boldv_{r+1},\dots,\boldv_n)</m> is a basis of <m>V</m> containing <m>S</m> as a subtuple.
+              </p>
+            </li>
+          </ol>
+          </p>
+        </li>
+      </ul>
+      </p>
+    </statement>
+  </algorithm>
+  <example>
+    <statement>
+      <p>
+        The set
+        <md>
+          S=\left \{ A_1=\begin{bmatrix}2\amp 1\\ 0\amp -2 \end{bmatrix} , A_2=\begin{bmatrix}1\amp 1\\ 1\amp -1 \end{bmatrix} , A_3=\begin{bmatrix}0\amp 1\\ 2\amp 0 \end{bmatrix} , A_4=\begin{bmatrix}-1\amp 0\\ 1\amp 1 \end{bmatrix} \right\}
+        </md>
+        is a subset of the space <m>W=\{ A\in \ML_{2,2}(\R)\colon \tr A=0\}</m>.
+        Let <m>W'=\Span S</m>. Contract <m>S</m> to a basis of <m>W'</m>
+        and determine whether <m>W'=W</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Let <m>B=(E_{11}, E_{12}, E_{21}, E_{22})</m> be the standard basis of <m>\ML_{2,2}(\R)</m>.
+        Apply <m>[\phantom{\boldv}]_B</m> to the elements of the given <m>S</m> to get a corresponding set <m>S'\subseteq\R^4</m>:
+        <md>
+          S'=\left\{ [A_1]_B=(2,1,0,-2), [A_2]_B=(1,1,1,-1), [A_3]_B=(0,1,2,0), [A_4]_B=(-1,0,1,1) \right\}
+        </md>.
+        Apply the column space procedure of <xref ref="proc_contract_extend"/> to contract <m>S'</m> to a basis <m>T'</m> of <m>\Span S'</m>. This produces the subset
+        <md>
+          T'=\{[A_1]_B=(2,1,0,-2), [A_2]_B=(1,1,1,-1)\}
+        </md>
+        Translating back to <m>V=\ML_{2,2}(\R)</m>, we conclude that the corresponding set
+        <md>
+          B=\{A_1, A_2\}
+        </md>
+        is a basis for <m>W'=\Span S</m>. We conclude that <m>\dim W'=2 </m>.
+      </p>
+      <p>
+        Lastly the space <m>W</m> of all trace-zero matrices is easily seen to have basis
+        <md>
+        \left\{
+        \begin{amatrix}[rr]1\amp 0\\ 0 \amp -1  \end{amatrix},
+        \begin{amatrix}[rr]0\amp 1\\ 0\amp 0  \end{amatrix},
+        \begin{amatrix}[rr]0 \amp 0\\ 1\amp 0  \end{amatrix}
+        \right\}
+        </md>,
+        and hence <m>\dim W=3</m>. Since <m>\dim W'\lt\dim W</m>, we conclude that <m>W'\ne W</m>.
+      </p>
+    </solution>
+  </example>
+    </subsection>
+    <subsection xml:id="ss_matrix_reps">
+    <title>Matrix representations</title>
+    <p>
+        Of course, we are not just interested in studying vector spaces and their elements, but also linear transformations <m>T\colon V\rightarrow W</m> between vector spaces. Once again, by choosing bases for <m>V</m> and <m>W</m> we are able to get a computational grip on the transformation <m>T</m>. When both <m>V</m> and <m>W</m> are finite dimensional, this takes the form of a matrix representation of <m>T</m>. 
+    </p>
+    <definition xml:id="d_matrix_representation">
+        <title>Matrix representations of linear transformations</title>
+        <statement>
+          <p>
+            Let <m>V</m> and <m>W</m> be vector spaces with ordered bases <m>B=(v_1, v_2, \dots, v_n)</m> and <m>B'</m>, respectively.  Given a linear transformation <m>T\colon V\rightarrow W</m>, the <term>matrix representing <m>T</m> with respect to <m>B</m> and <m>B'</m></term>, is the <m>m\times n</m> matrix <m>[T]_B^{B'}</m> whose <m>j</m>-th column is <m>[T(v_j)]_{B'}</m>, considered as a column vector: <ie />,
+            <md number="yes" xml:id="eq_matrixrep_formula">
+            [T]_B^{B'}=\begin{amatrix}[cccc]\vert \amp \vert \amp \amp \vert \\
+            \left[T(v_1)\right]_{B'}\amp [T(v_2)]_{B'}\amp \dots \amp [T(v_n)]_{B'} \\
+            \vert \amp \vert \amp  \amp \vert
+          \end{amatrix}
+          </md>.
+          In the special case where <m>W=V</m> and we pick <m>B'=B</m> we write simply <m>[T]_B</m>.
+        </p>
+      </statement>
+    </definition>
+    <example xml:id="eg_matrixreps_std_basis">
+      <title>Matrix representation</title>
+      <statement>
+        <p>
+          The function 
+          <md>
+            <mrow>T\colon \R^3 \amp \rightarrow \R^{2,2}</mrow>
+            <mrow>(x,y,z) \amp \mapsto \begin{bmatrix}
+            x+y+z\amp x-z\\
+            x+2y\amp y-z
+            \end{bmatrix}
+            </mrow>
+          </md>
+            is linear. Compute <m>[T]_{B}^{B'}</m>,
+          where <m>B</m> and <m>B'</m> are the standard bases for <m>\R^3</m> and <m>\R^{2,2}</m>,
+          respectively.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          We have <m>B=(\bolde_1,\bolde_2, \bolde_3)</m> and <m>B'=(E_{11},E_{12},E_{21},E_{22})</m>.
+          By definition, we have 
+          <md>
+            <mrow>[T]_{B}^{B'} \amp =\begin{bmatrix}
+              \vert \amp \vert \amp \vert \\
+              [T(\bolde_1)]_{B'} \amp [T(\bolde_2)]_{B'}\amp [T(\bolde_3)]_{B'} \\
+              \vert \amp \vert \amp \vert \end{bmatrix} </mrow>
+          </md>.
+          We first compute <m>T(\bolde_i)</m> for each <m>1\leq i\leq 3</m>: 
+          <md>
+            <mrow>T(\bolde_1) \amp = T(1,0,0)=\begin{bmatrix}1\amp 1\\ 1 \amp 0\end{bmatrix}</mrow>
+            <mrow>T(\bolde_2) \amp = T(0,1,0)=\begin{bmatrix}1\amp 0 \\ 2 \amp 1 \end{bmatrix}</mrow>
+            <mrow>T(\bolde_3) \amp = T(0,0,1)=\begin{bmatrix}1\amp -1 \\ 0 \amp -1\end{bmatrix} </mrow>
+          </md>.
+          To finish our computation, we must compute <m>[T(\bolde_i)]_{B'}</m> for each <m>1\leq i\leq 3</m>. Since <m>B'</m> is the standard basis of <m>\R^{2,2}</m>, this is not difficult: in general we have 
+          <md>
+           \left[ \begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}\right]_{B'}=(a,b,c,d)
+          </md>.
+          Thus
+          <md>
+            <mrow>[T(\bolde_1)]_{B'} \amp = (1,1,1,0)</mrow>
+            <mrow>[T(\bolde_2)]_{B'} \amp = (1,0,2,1)</mrow>
+            <mrow>[T(\bolde_3)]_{B'} \amp = (1,-1,0,-1)</mrow>
+          </md>
+          and 
+          <md>
+            [T]_{B}^{B'}=\begin{amatrix}[rrr] 1\amp 1\ \amp 1\\ 1\amp 0\amp -1\\ 1\amp 2\amp 0\\ 0\amp 1\amp -1\end{amatrix}
+          </md>.
+        </p>
+      </solution>
+    </example>
+    <example xml:id="eg_matrix_rep_differentiation">
+    <title>Differentiation</title>
+    <statement>
+    <p>
+    Let <m>I</m> be an infinite subset of <m>\R</m>, and define <m>T\colon P_n(I)\rightarrow P_{n-1}(I)</m> as <m>T(f)=f'</m>. Compute <m>[T]_B^{B'}</m>, where <m>B</m> and <m>B'</m> are the standard bases of <m>P_n(I)</m> and <m>P_{n-1}(I)</m>
+    </p>
+    </statement>
+    <solution>
+    <p>
+    Let <m>B=(1,x,x^2,\dots, x^n)</m> and <m>B'=(1,x,x^2,\dots, x^n)</m>. We have 
+    <md>
+      T(x^k)=\frac{d}{dx}(x^k)=kx^{k-1}
+    </md>
+    for all <m>0\leq k\leq n</m>. Since <m>B'</m> is standard, we easily compute 
+    <md>
+      [T(x^k)]_{B'}=(0,0,\dots, \underset{(k-1)-\text{th coor.}}{k},0,\dots, 0)
+    </md>.
+    Using recipe <xref ref="eq_matrixrep_formula"/> we conclude that 
+    <md>
+      [T]_B^{B'}=
+      \begin{bmatrix}
+      0\amp 1\amp 0 \amp 0\amp  \dots \amp 0  \\
+      0\amp 0\amp 2 \amp 0 \amp    \amp 0 \\
+      0\amp 0\amp 0 \amp 3 \amp 0 \amp \vdots  \\
+      \vdots \\
+      0\amp  0 \amp 0 \amp 0 \amp  \dots  \amp n  
+      \end{bmatrix}
+    </md>.
+    In more detail, <m>[T]_B^{B'}</m> is the <m>(n-1)\times n</m> matrix whose first column is the zero column vector, and whose <m>k</m>-th column for <m>2\leq k\leq n</m> is the column vector that has <m>k</m> in the  <m>(k-1)</m>-th entry and zeros elsewhere. 
+    </p>
+    </solution>
+    </example>
+    
+    <example xml:id="eg_matrixreps_different_bases">
+        <title>Different choice of bases</title>
+        <statement>
+          <p>
+            Define <m>T\colon \R^2\rightarrow \R^2</m> as  <m>T(x,y)=(4x-3y,2x-y)</m>.
+          
+          <ol>
+            <li>
+              <p>
+                Compute <m>[T]_B</m>, where <m>B=(\bolde_1, \bolde_2)</m> is the standard basis of <m>\R^2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute <m>[T]_{B'}</m>, where <m>B'=((1,1), (1,-1))</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+        </statement>
+        <solution>
+          <p>
+            <ol>
+            <li>
+              <p>
+                According to <xref ref="eg_std_matrix"/>, since <m>B</m> is the standard basis <m>[T]_B</m> is the matrix <m>A</m> such that <m>T=T_A</m>:
+                <md>
+                  <mrow>[T]_B\amp=\begin{bmatrix}
+                    \vert \amp \vert \\
+                    T(\bolde_1)\amp T(\bolde_2)\\
+                    \vert \amp \vert
+                  \end{bmatrix} </mrow>
+                  <mrow> \amp= \begin{amatrix}[rr]
+                    4\amp -3\\
+                    2\amp -1
+                  \end{amatrix} </mrow>
+                </md>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We have
+                <md>
+                  <mrow>[T]_{B'}=[T]_{B'}^{B'} \amp = \begin{bmatrix}
+                    \vert\amp \vert\\
+                    [T((1,1))]_{B'}\amp [T(1,-1)]_{B'}\\
+                    \vert \amp \vert
+                  \end{bmatrix} </mrow>
+                  <mrow> \amp = \begin{bmatrix}
+                    \vert\amp \vert\\
+                    [(1,1)]_{B'}\amp [(7,3)]_{B'}\\
+                    \vert \amp \vert
+                  \end{bmatrix}</mrow>
+                  <mrow>  \amp = \begin{amatrix}[rr]
+                    1\amp 5\\
+                    0\amp 2
+                  \end{amatrix}</mrow>
+                </md>,
+                where the last equality uses the fact that <m>[(1,1)]_{B'}=(1,0)</m> and <m>[(7,3)]_{B'}=(5,2)</m>, as you can verify yourself.
+              </p>
+            </li>
+          </ol>
+          So we have <m>[T]_B=\begin{amatrix}[rr]4\amp -1\\ 2\amp -1  \end{amatrix}</m> and <m>[T]_{B'}=\begin{amatrix}[rr]1\amp 5\\ 0\amp 2  \end{amatrix}</m>. Moral: different choices of bases yield different matrix representations.
+          </p>
+        </solution>
+      </example>
+      <theorem xml:id="th_matrixrep">
+        <title>Defining property of matrix representation</title>
+        <statement>
+          <p>
+            Let <m>T\colon V\rightarrow W</m> be a linear transformation, where <m>\dim V=n</m> and <m>\dim W=m</m>, and let <m>B, B'</m> be ordered bases for <m>V</m> and <m>W</m>, respectively.
+            <ol>
+              <li>
+                <p>
+                  For all <m>v\in V</m> we have
+                  <md number="yes" xml:id="eq_matrixrep_prop">
+                    [T]_{B}^{B'}[v]_B=[T(v)]_{B'}
+                  </md>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Property <xref ref="eq_matrixrep_prop"/> defines <m>[T]_B^{B'}</m> uniquely: <ie />, if <m>A</m> is an <m>m\times n</m> matrix satisfying <m>A[v]_B=[v]_{B'}</m> for all <m>v\in V</m>, then <m>A=[T]_{B}^{B''}</m>.
+                </p>
+              </li>
+            </ol>
+          </p>
+      
+      
+        </statement>
+        <proof>
+          <p>
+            Let <m>B=(v_1, v_2, \dots, v_n)</m>.
+          
+          <ol>
+            <li>
+              <p>
+                By definition we have
+                <md>
+                [T]_B^{B'}=\begin{amatrix}[cccc]\vert \amp \vert \amp \amp \vert \\
+                \left[T(v_1)\right]_{B'}\amp [T(v_2)]_{B'}\amp \dots \amp [T(v_n)]_{B'} \\
+                \vert \amp \vert \amp  \amp \vert
+              \end{amatrix}
+              </md>.
+              Given any <m>v\in V</m>, we can write
+              <md>
+              v=c_1v_1+c_2v_2+\dots +c_nv_n
+              </md>
+              for some <m>c_i\in F</m>, in which case we have 
+              <md>
+              <mrow> [T]_{B}^{B'}[v] \amp= [T]_{B}^{B'} \begin{bmatrix}
+              c_1\\ c_2\\ \vdots \\ c_n
+              \end{bmatrix} </mrow>
+              <mrow> \amp=c_1[T(v_1)]_{B'}+c_n[T(v_n)]_{B'}+\cdots +c_n[T(v_n)]_{B'} \amp (\text{column method})</mrow>
+              <mrow>  \amp = [c_1T(v_1)+c_2T(v_2)+\cdots +c_nT(v_n)]_{B'} \amp (<xref ref="th_coor_vectors" text="global"/>)</mrow>
+              <mrow>  \amp=[T(c_1v_1+c_2v_2+\cdots +c_nv_n)]_{B'} \amp (T \text{ is linear})</mrow>
+              <mrow>  \amp =[T(v)]_{B'}</mrow>
+              </md>,
+              as desired.
+            </p>
+          </li>
+          <li>
+            <p>
+              If  <m>A</m> satisfies
+              <md>
+              A[v]_B=[T(v)]_{B'}
+              </md>
+              for all <m>v\in V</m>, then in particular we have
+              <md number="yes" xml:id="eq_matrixrep_proof">
+                A[v_i]_B=[T(v_i)]_{B'}
+              </md>
+              for all <m>1\leq i\leq n</m>. Since <m>v_i</m> is the <m>i</m>-th element of <m>B</m>, we have <m>[v_i]_B=\bolde_i</m>, the <m>i</m>-th standard basis element of <m>F^n</m>. Using the column method of matrix multiplciation, we see that
+              <md>
+              A[v_i]_B=A\bolde_i=\boldc_i,
+              </md>
+              where <m>\boldc_i</m> is the <m>i</m>-th column of <m>A</m>. Thus <xref ref="eq_matrixrep_proof"/> implies that the <m>i</m>-th column of <m>A</m> is equal to <m>[T(v_i)]_{B}</m>, the <m>i</m>-th column of <m>[T]_B^{B'}</m>, for all <m>1\leq i\leq n</m>. Since <m>A</m> and <m>[T]_{B}^{B'}</m> have identical columns, we conclude that <m>A=[T]_{B}^{B'}</m>, as desired.
+            </p>
+          </li>
+          </ol>
+        </p>
+      </proof>
+      </theorem>
+      
+      <remark xml:id="rm_matrixreps_uniqueness">
+        <title>Uniqueness of <m>[T]_B^{B'}</m></title>
+        <p>
+          The uniqueness property described in (2) of  <xref ref="th_matrixrep"/> provides an alternative way of computing <m>[T]_{B}^{B'}</m> that can be useful in certain situations: namely, if we can produce an <m>m\times n</m> matrix <m>A</m> that satisfies the defining property
+          <md>
+            A[v]_B=[T(v)]_{B'}
+          </md>
+          for all <m>v\in V</m>, then by uniqueness we must have <m>A=[T]_B^{B'}</m>.
+        </p>
+        <p>
+          We illustrate this technique in the examples and proofs below. 
+        </p>
+      </remark>
+      <example xml:id="eg_std_matrix">
+        <title>Standard matrix</title>
+        <statement>
+        <p>
+        Let <m>T\colon F^n\rightarrow F^m</m> be a linear transformation. Recall that there is a unique matrix <m>A\in F^{m,n}</m>, the standard matrix of <m>T</m>, such that <m>T=T_A</m>. Prove that <m>A=[T]_B^{B'}</m>, where <m>B</m> and <m>B'</m> are the standard bases of <m>F^m</m> and <m>F^n</m>, respectively. In other words, the standard matrix of <m>T</m> is precisely the matrix representation of <m>T</m> with respect to the standard bases. 
+        </p>
+        </statement>
+        <solution>
+        <p>
+          Let <m>A</m> be the standard matrix of <m>T</m>. By definition, this means <m>A\boldx=T(\boldx)</m> for all <m>\boldx\in F^n</m>.  Using the uniqueness claim of <xref ref="th_matrixrep"/>, to show that <m>A=[T]_{B}^{B'}</m>, it suffices to show that <m>A</m> satisfies <xref ref="eq_matrixrep_prop"/>: <ie/>, 
+          <md>
+            <mrow> A[\boldx]_B \amp = [T(\boldx)]_{B'} </mrow>
+          </md>
+          for all <m>\boldx\in F^n</m>. Since <m>B</m> and <m>B'</m> are standard bases of <m>F^n</m> and <m>F^m</m>, however, we have 
+          <m>[\boldx]_B=\boldx</m> and <m>[T(\boldx)]_{B'}=T(\boldx)</m>. Thus we must show 
+          <md>
+            A\boldx=T(\boldx)
+          </md>,
+          which is precisely the defining property of the standard matrix of <m>T</m>. Thus <m>A=[T]_B^{B'}</m>. 
+        </p>
+        </solution>
+        </example>
+        <corollary xml:id="cor_matrix_reps_comp">
+          <title>Matrix representations of composition</title>
+          <statement>
+              <p>
+                  Let <m>T\in \mathcal{L}(U,V)</m> and <m>S\in \mathcal{L}(V,W)</m>, and let <m>B, B', B''</m> be bases for <m>U</m>, <m>V</m>, and <m>W</m>, respectively.
+          We have
+          <md>
+            [ST]_{B}^{B''}=[S]_{B'}^{B''}[T]_{B}^{B'}.
+          </md>
+              </p>
+          </statement>
+          <proof>
+            <p>
+            Let <m>C=[S]_{B'}^{B''}[T]_{B}^{B'}</m>. We prove that <m>[ST]_{B}^{B''}=C</m> by showing that <m>C</m> satisfies the defining equation of <m>[ST]_{B}^{B''}</m>: <ie/>, that 
+            <md>
+              C[u]_B=[ST(u)]_{B''}
+            </md>
+            for all <m>u\in U</m>. To this end, we have 
+            <md>
+              <mrow>C[u]_B \amp =[S]_{B'}^{B''}[T]_{B}^{B'}[u]_B </mrow>
+              <mrow> \amp = [S]_{B'}^{B''}[T(u)]_{B'}</mrow>
+              <mrow> \amp [S(T(u))]_{B''}</mrow>
+              <mrow> \amp = [ST(u)]_{B''}</mrow>
+            </md>
+            for all <m>u\in U</m>. We conclude that <m>C=[ST]_{B}^{B''}</m> and thus 
+            <md>
+              [S]_{B'}^{B''}[T]_{B}^{B'}=[ST]_B^{B''}
+            </md>,
+            as desired.
+            </p>
+          </proof>
+        </corollary>
+          <p>
+            Let <m>T\colon V\rightarrow W</m>, <m>B</m>, and <m>B'</m> be as in <xref ref="th_matrixrep"/>. The defining property <xref ref="eq_matrixrep_prop"/> of <m>[T]_B^{B'}</m> can be summarized by saying that the following diagram is <em>commutative</em>.
+          </p>
+          <figure xml:id="fig_comm_diag">
+            <title>Commutative diagram for <m>[T]_B^{B'}</m></title>
+            <caption>Commutative diagram for <m>[T]_B^{B'}</m></caption>
+            <image xml:id="im_comm_diag" width="30%">
+              <latex-image>
+                \begin{tikzcd}
+                V \arrow[r, "T"] \arrow[d, leftrightarrow,"{[\hspace{.1in}]}_B"'] \amp W \arrow[d,leftrightarrow,"{[\hspace{.1in}]}_{B'}"] \\
+                F^n \arrow[r, "{[T]_B^{B'}}"'] \amp F^m
+                \end{tikzcd}
+              </latex-image>
+            </image>
+          </figure>
+          <!-- <figure xml:id="fig_comm_diag">
+            <caption>Commutative diagram for <m>[T]_B^{B'}</m></caption>
+            <image xml:id="im_comm_diag" width="30%" source="./images/im_comm_diag.svg" />
+          </figure> -->
+            <p>
+              The diagram being commutative here means that starting with an element <m>v\in V</m> in the top left of the diagram, whether we travel to the bottom right of the diagram either by first applying <m>T</m> and then applying <m>[\hspace{5pt}]_{B'}</m> (<q>go right, then down</q>), or else by first applying <m>[\hspace{5pt}]_B</m> and then applying <m>[T]_B^{B'}</m> (<q>go down, then right</q>), we get the same result! (The bottom map should technically be labeled <m>T_A</m>, where <m>A=[T]_B^{B'}</m>, but this would detract from the elegance of the diagram.)
+          </p>
+          <p>
+            Besides commutativity, the other import feature of <xref ref="fig_comm_diag"/> is that the two vertical coordinate transformations identify the domain and codomain of <m>T</m> with the familiar spaces <m>F^n</m> and <m>F^m</m> isomorphically.
+            These properties together allow us to translate any linear algebraic question about <m>T</m> to an equivalent question about the matrix <m>A</m>, as the following theorem indicates.
+          </p>
+          
+
+    <theorem xml:id="th_matrix_reps_isom">
+    <title>Matrix representation isomorphism</title>
+    <statement>
+    <p>
+       Let <m>B</m> and <m>B'</m> be bases of the vector spaces <m>V</m> and <m>W</m>, respectively, where <m>\dim V=n</m> and <m>\dim W=m</m>.
+<ol>
+    <li>
+        <p>
+            The map
+        <md>
+          <mrow> [\phantom{A}]_{B}^{B'}\colon \mathcal{L}(V,W)\amp\rightarrow F^{m,n} </mrow>
+          <mrow>T \amp \longmapsto [T]_B^{B'}</mrow>
+        </md>
+          is an isomorphism.
+        </p>
+    </li>
+
+    <li>
+        <p>
+            We have
+            <md>
+                \dim \mathcal{L}(V,W)=\dim F^{m,n}=mn.
+            </md>
+        </p>
+    </li>
+</ol>
+    </p>
+    </statement>
+    <proof>
+    <p>
+      Statement (2) follows directly from (1) since <m>\dim F^{m,n}=mn</m>. (Alternatively, you showed on a homework that <m>\mathcal{L}(V,W)</m> has a basis <m>B=(T_{ij})</m> of length <m>mn</m>.) To prove (1), we will show that <m>[\phantom{AA}]_{B}^{B'}</m> is linear and bijective. 
+    </p>
+    <p>
+      The linearity of <m>[\phantom{AA}]_{B}^{B'}</m> can be proved by direct appeal to the formula <xref ref="eq_matrixrep_formula"/> and the fact that the coordinate vector map <m>[\phantom{v}]_{B'}</m> is linear. Readers are invited to pursue this proof on their own. We will instead take the opportunity to make use of the defining property <xref ref="eq_matrixrep_prop"/> within a 1-step proof. Given linear maps <m>T,S\in \mathcal{L}(V,W)</m> and scalars <m>c,d\in F</m>, we will show that 
+      <md>[cT+dS]_{B}^{B'}=c[T]_{B}^{B'}+d[S]_{B}^{B'}</md>
+      by showing that the matrix <m>C=c[T]_{B}^{B'}+d[S]_{B}^{B'}</m> satisfies the relevant defining property
+      <md>
+        C[v]_V=[(cT+dS)(v)]_{B'}
+      </md>
+      for all <m>v\in V</m>. Here goes: 
+      <md>
+        <mrow> C[v]_B \amp(c[T]_{B}^{B'}+d[S]_B^{B'})[v]_B</mrow>
+        <mrow> \amp =c[T]_{B}^{B'}[v]_B+d[S]_B^{B'}[v]_B </mrow>
+        <mrow> \amp =c[T(v)]_{B'}+d[S(v)]_{B'}</mrow>
+        <mrow> \amp =[cT(v)+dS(v)]_{B'} \amp (\text{coor. map is lin.}) </mrow>
+        <mrow> \amp =[(cT+dS)(v)]_{B'}</mrow>
+      </md>.
+      Since <m>C</m> satisfies the relevant property, we conclude that 
+      <md>
+        C=c[T]_{B}^{B'}+d[T]_{B}^{B'}=[cT+dS]_{B}^{B'}
+      </md>,
+      as desired. 
+    </p>
+    <p>
+      We now show directly that <m>[\phantom{AA}]_B^{B'}</m> is bijective: <ie/>, given any matrix <m>A\in F^{m,n}</m>, we will show that there is a <em>unique</em> linear transformation <m>T\in \mathcal{L}(V,W)</m> satisfying <m>[T]_B^{B'}</m>. Let <m>B=(v_1,v_2,\dots, v_n)</m>. Given <m>A\in F^{m,n}</m>, let 
+      <md>
+        \boldy_i=A[v_i]_B
+      </md>
+      for all <m>1\leq i\leq n</m>, and let <m>(w_1,w_2,\dots, w_n)</m> be the unique tuple of vectors in <m>W</m> satisfying <m>[w_i]_{B'}=\boldy_i</m>. (There is such a unique tuple as <m>[\phantom{v}]_{B'}</m> is an isomorphism.) By <xref ref="th_trans_basis"/> there is a <em>unique</em> linear map <m>T\in \mathcal{L}(V,W)</m> satisfying 
+      <md>
+        T(v_i)=w_i
+      </md>
+      for all <m>1\leq i\leq n</m>. We claim that <m>[T]_B^{B'}=A</m>: indeed, letting <m>A'=[T]_B^{B'}</m> and using the defining property <xref ref="eq_matrixrep_prop"/>, we see that 
+      <md>
+        A'[v_i]_B=[T]_B^{B'}[v_i]=[T(v_i)]_{B'}=[w_i]_{B'}=A[v_i]_B
+      </md>
+      for all <m>1\leq i\leq n</m>. Since <m>B</m> is a basis and <m>[\phantom{v}]_B</m> is an isomorphism, <m>B''=([v_1]_B, [v_2]_B, \dots, [v_n]_B)</m> is a basis of <m>F^n</m>. The equation above proves that <m>T_{A'}</m> and <m>T_{A}</m> agree on the basis <m>B''</m>. It follows from <xref ref="th_trans_basis"/> (again) that <m>T_{A'}=T_A</m>, and hence that <m>A'=A</m>, as desired. 
+    </p>
+    </proof>
+    </theorem>
+    <theorem xml:id="th_matrix_rep_null_im">
+    <title>Matrix representations of </title>
+    <statement>
+    <p>
+      Let <m>B</m> and <m>B'</m> be bases of the vector spaces <m>V</m> and <m>W</m>, respectively, where <m>\dim V=n</m> and <m>\dim W=m</m>, let <m>T\in \mathcal{L}(V,W)</m>, and let <m>A=[T]_{B}^{B'}</m>.
+<ol>
+  <li>
+    <p>
+      The restriction of <m>[\phantom{v}]_{B}</m> to <m>\NS T</m> defines an isomorphism <m>[\phantom{v}]_{B}\colon \NS T\rightarrow \NS T_{A}.</m> As a result, <m>v\in \NS T</m> if and only if <m>[v]_{B}\in \NS A</m>, and <m>\dim \NS T=\dim\NS A</m>.
+    </p>
+  </li>
+
+  <li>
+    <p>
+      The restriction of <m>[\phantom{v}]_{B'}</m> to <m>\range T\subseteq W</m> defines an isomorphism <m>[\phantom{v}]_{B'}\colon \range T\rightarrow \range T_{A}</m>.
+      As a result, <m>\boldw\in \range T</m> if and only if <m>[\boldw]_{B'}\in \CS A</m>, and <m>\dim \range T=\dim \CS A=\rank A</m>.
+    </p>
+  </li>
+</ol>
+    </p>
+    </statement>
+    <proof>
+    <p>
+      This proof is left as a homework exercise. 
+    </p>
+    </proof>
+    </theorem>
+    <figure xml:id="fig_matrix_reps_null_im">
+      <caption>Matrix representation of null space and image</caption>
+      <image width="65%">
+        <shortdescription>Commutative diagram including null space and image</shortdescription>
+        <latex-image>
+          \begin{tikzcd}
+    \NS T \arrow[hookrightarrow]{r} \arrow[leftrightarrow]{d}{[\phantom{v}]_{B}}
+    \amp V \arrow{r}{T} \arrow[leftrightarrow]{d}{[\phantom{v}]_B}
+    \amp W \arrow[hookleftarrow]{r} \arrow[leftrightarrow]{d}{[\phantom{v}]_{B'}}
+    \amp \im T \arrow[leftrightarrow]{d}{[\phantom{v}]_{B'}} \\
+    \NS A \arrow[hookrightarrow]{r}
+    \amp F^n \arrow{r}{T_A}
+    \amp F^m \arrow[hookleftarrow]{r}
+    \amp \CS A
+  \end{tikzcd}
+        </latex-image>
+      </image>
+      
+    </figure>
+    <p>
+      Having made explicit the connection between the important subspaces associtated to a linear transformation  and its matrix representation, we end with a corollary that connects invertibility of a matrix transformations <m>T_A\colon F^n\rightarrow F^n</m> and its standard matrix <m>A</m>. Recall (<xref ref="eg_std_matrix" text="global"/>) that in this case we have <m>A=[T]_B</m>, where <m>B</m> is the standard basis of <m>F^n</m>. The corollary lists 9 equivalent formulations for a matrix <m>A</m> (or its matrix transformation <m>T_A</m>) to be invertible. The statements within each column should be fairly easily seen to be equivalent; equivalence connections between the columns are easily made using the rank-nullity theorem. 
+    </p>
+    <corollary xml:id="cor_inv_theorem">
+      <title>Invertible matrix theorem</title>
+      <statement>
+        <p>
+          Let <m>A\in F^{n,n}</m> and let <m>T_A\colon F^n\rightarrow F^n</m> be its corresponding matrix transformation. The following statements are equivalent. 
+          <ol cols="3">
+            <li>
+              <p>
+                <m>T_A</m> is an isomorphism.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\NS T_A=\{\boldzero\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\im T_A=F^n</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A</m> is invertible.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\NS A=\{\boldzero\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\CS A=F^n</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\boldx=\boldy</m> has a unique solution for all <m>\boldy\in F^n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\boldx=\boldzero</m> has a unique solution (viz., <m>\boldx=\boldzero</m>).
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>A\boldx=\boldy</m> has a  solution for all <m>\boldy\in F^n</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We don't have the heart to provide a proof; this would spoil the fun of charting a path of implications around the <m>3\times 3</m> grid above! 
+        </p>
+      </proof>
+    </corollary>
+    </subsection>
+
+</section>

@@ -118,7 +118,7 @@ Let <m>T\in \mathcal{L}(V,W)</m>. The following statements are equivalent.
 </proof>
 </theorem>
 <p>
-    The equivalences in <xref ref="th_isom"/> give us a number of potential approaches to deciding whether a linear transformation is an isomorphism, as we detail in the next procedure. 
+    The equivalences in <xref ref="th_isom"/> give us a number of potential approaches to deciding whether a linear transformation is an isomorphism, as we detail in the next procedure. The third statement is a consequence of <xref ref="cor_isom_finite_dim"/>. 
 </p>
 <algorithm xml:id="proc_isomorphism">
     <title>Isomorphisms</title>
@@ -155,7 +155,7 @@ Let <m>T\in \mathcal{L}(V,W)</m>. The following statements are equivalent.
                             </li>
                             <li>
                                 <p>
-                                    <m>T</m> is surjective (equivalently, <m>\Im T=W</m>).
+                                    <m>T</m> is surjective (equivalently, <m>\im T=W</m>).
                                 </p>
                             </li>
                         </ol>
@@ -253,8 +253,42 @@ We showed in <xref ref="eg_poly_eval"/> that this linear transformation is bijec
 </p>
 </solution>
 </example>
+<example xml:id="eg_isom_matrix">
+    <title>Matrix transformations</title>
+    <statement>
+    <p>
+    Prove that a matrix transformation <m>T_A\colon F^n\rightarrow F^m</m> is an isomorphism if and only if <m>m=n</m> and <m>A\in \ML_{n,n}</m> is invertible. 
+    </p>
+    </statement>
+    <solution>
+    <p>
+    We know from <xref ref="eg_matrix_transformation"/> that matrix transformations are linear. 
+    </p>
+    <p>
+        Assume <m>m=n</m> and  <m>A\in \ML_{n,n}</m> is invertible. We claim that <m>T_{A^{-1}}=T_A^{-1}</m>. Indeed, for all <m>\boldx\in F^n</m>, we have 
+        <md>
+            <mrow>T_AT_{A^{-1}}\boldx \amp =T_A(A^{-1}\boldx)</mrow>
+            <mrow> \amp =AA^{-1}\boldx=\boldx</mrow>
+            <mrow>T_{A^{-1}}T_{A}\boldx \amp =T_{A^{-1}}(A\boldx)</mrow>
+            <mrow> \amp =A^{-1}A\boldx=\boldx</mrow>
+        </md>.
+        This proves that <m>T_AT_{A^{-1}}=T_{A^{-1}}T_A=\id_{F^n}</m> and thus that <m>T_{A^{-1}}=T_A^{-1}</m>, as claimed. We conclude <m>T_A</m> is an isomorphism. 
+    </p>
+    <p>
+        Lastly assume <m>T_A</m> is an isomorphism. By <xref ref="cor_isom_finite_dim"/>, we conclude that <m>\dim F^n=\dim F^m</m>, and hence that <m>n=m</m>. Since <m>T_A</m> is an isomorphism, it has a linear inverse <m>S\colon F^n\rightarrow F^n</m>; since all linear transformations of <m>F^n</m> are matrix transformations, we have <m>S=T_B</m> for some matrix <m>B\in \ML_{n,n}</m>. We have 
+        <md>
+            <mrow>T_AT_B=\id_{F^n} \amp \implies AB\boldx=\boldx \text{ for all } \boldx\in F^n\implies AB=I</mrow>
+            <mrow>T_BT_A=\id_{F^n} \amp \implies BA\boldx=\boldx \text{ for all } \boldx\in F^n\implies BA=I</mrow>
+        </md>.
+        Thus <m>B=A^{-1}</m>, showing that <m>A</m> is invertible. 
+    </p>
+    </solution>
+    </example>
+<p>
+    Having gotten a decent number of examples under our belt, we now return to the observation made at the top, that isomorphic vector spaces <m>V</m> and <m>W</m> are essentially the same for all linear algebraic purposes, and that an isomorphism <m>T\colon V\rightarrow W</m> bearing witness to this fact can be used as a 1-1 dictionary for moving back and forth between the two spaces, answering questions about the one in terms of the other. 
+</p>
 <theorem xml:id="th_isom_structure">
-<title>Isomorphisms preserve structure</title>
+<title>Isomorphisms and structure</title>
 <statement>
 <p>
 Let <m>T\colon V\rightarrow W</m> be an isomorphism. 
@@ -266,10 +300,10 @@ Let <m>T\colon V\rightarrow W</m> be an isomorphism.
     </li>
     <li>
         <p>
-            Let <m>W=\Span S</m>, where <m>S=(v_i)_{i\in I}</m> is a tuple in <m>V</m>. We have
-            <men xml:id="eq_isom_image">
-                T(W)=T(\Span S)=\Span T(S)=\Span (T(v_i))_{i\in I}
-            </men>.
+            Let <m>U=\Span S</m>, where <m>S=(v_i)_{i\in I}</m> is a tuple in <m>V</m>. We have
+            <md number="yes" xml:id="eq_isom_image">
+                T(U)=T(\Span S)=\Span T(S)=\Span (T(v_i))_{i\in I}
+            </md>.
         </p>
     </li>
     <li>
@@ -287,20 +321,15 @@ Let <m>T\colon V\rightarrow W</m> be an isomorphism.
             <m>U</m> is a subspace of <m>V</m> if and only if <m>T(U)</m> is a subspace of <m>W</m>. 
         </p>
     </li>
-    <li>
-        <p>
-            We have <m>V=V_1\oplus V_2</m> for subspaces <m>V_i\subseteq V</m> if and only if <m>W=T(V_1)\oplus T(V_2)</m>. 
-        </p>
-    </li>
 </ol>
 </p>
 </statement>
 <proof>
 <p>
     Most of the statements of this theorem follow almost immediately from the observation that since <m>T</m> is an isomorphism we have 
-    <me>
+    <md>
         \sum_{i\in I}c_iv_i=v \iff \sum_{i\in I}c_iT(v_i)=T(v)
-    </me>
+    </md>
     for any linear combination expression <m>\sum_{i\in I}c_iv_i=v</m> in <m>V</m>, along with the analogous statement for <m>T^{-1}</m>. Thus, for example, we have 
     <md>
         <mrow>w\in T(\Span S) \amp \iff w=T(v) \text{ for some } v\in \Span S</mrow>
@@ -329,39 +358,39 @@ Let <m>T\colon V\rightarrow W</m> be an isomorphism.
                     </p>
                 </li>
             </ol>
+            In particular, if <m>V</m> is an <m>n</m>-dimensional vector space, then <m>V</m> is isomorphic to <m>F^n</m>. 
         </p>
     </statement>
+    <proof>
+        <p>
+            Assume <m>V</m> and <m>W</m> are finite-dimensional vector spaces. 
+        </p>
+        <p>
+            If <m>V</m> and <m>W</m> are isomorphic, then there is an isomorphism <m>T\colon V\rightarrow W</m>. By <xref ref="th_isom_structure"/>, if <m>B=(\boldv_i)_{i=1}^n</m> is a basis of <m>V</m>, then <m>B'=T(B)=(T(v_i))_{i=1}^n</m> is a basis of <m>W</m>. In particular, we have 
+            <md>
+                \dim V=\len B=\len B'=\dim W
+            </md>.
+        </p>
+        <p>
+            Assume <m>\dim V=\dim W=n</m>. By definition, this means that there are bases <m>B=(v_1,v_2,\dots, v_n)</m> and <m>B'=(w_1,w_2,\dots, w_n)</m> of <m>V</m> and <m>W</m> respectively. By <xref ref="th_trans_basis"/> there is a unique linear transformation <m>T\in \mathcal{L}(V,W)</m> satisfying <m>T(v_i)=w_i</m> for all <m>1\leq i\leq n</m>. We claim that <m>T</m> is an isomorphism. Indeed, there is a unique linear transformation <m>S\in \mathcal{L}(W,V)</m> satisfying <m>S(w_i)=v_i</m> for all <m>1\leq i\leq n</m>, and we claim that <m>S=T^{-1}</m>. To see why note that the linear transformations <m>S\circ T</m> and <m>T\circ S</m> satisfy 
+            <md>
+                <mrow>S\circ T(v_i)\amp= S(w_i)=v_i \text{ for all } 1\leq i\leq n </mrow>
+                <mrow>T\circ S(w_i)\amp= T(v_i)=w_i \text{ for all } 1\leq i\leq n </mrow>
+            </md>.
+            But then <m>S\circ T(v_i)=\id_V(v_i)</m> for all <m>v_i</m> in the basis <m>B</m>, showing that <m>S\circ T=\id_V</m> by the uniqueness claim in <xref ref="th_trans_basis"/>; similarly, <m>T\circ S(w_i)=\id_W(w_i)</m> for all <m>w_i</m> in the basis <m>B'</m> implies <m>T\circ S=\id_W</m>. This proves that <m>S=T^{-1}</m>, and hence that <m>T</m> is an isomorphism. 
+        </p>
+    </proof>
 </corollary>
-<example xml:id="eg_isom_matrix">
-    <title>Matrix transformations</title>
+<p>
+    <xref ref="cor_isom_finite_dim"/> is both fascinating, and at the same time a bit of a letdown, since it says that all of these exotic different examples of finite-dimensional vector spaces are in the end essentially the same as <m>F^n</m> for some <m>n</m>, at least linear-algebraically speaking. 
+</p>
+<principle xml:id="mantra_dirty_secret">
+    <title>Linear algebra's dirty secret</title>
     <statement>
-    <p>
-    Prove that a matrix transformation <m>T_A\colon F^n\rightarrow F^m</m> is an isomorphism if and only if <m>m=n</m> and <m>A\in \ML_{n,n}</m> is invertible. 
-    </p>
+        <p>
+            Any finite-dimensional <m>F</m>-vector space is isomorphic to <m>F^n</m> for some <m>n\in \N</m>.
+        </p>
     </statement>
-    <solution>
-    <p>
-    We know from <xref ref="eg_matrix_transformation"/> that matrix transformations are linear. 
-    </p>
-    <p>
-        Assume <m>m=n</m> and  <m>A\in \ML_{n,n}</m> is invertible. We claim that <m>T_{A^{-1}}=T_A^{-1}</m>. Indeed, for all <m>\boldx\in F^n</m>, we have 
-        <md>
-            <mrow>T_AT_{A^{-1}}\boldx \amp =T_A(A^{-1}\boldx)</mrow>
-            <mrow> \amp =AA^{-1}\boldx=\boldx</mrow>
-            <mrow>T_{A^{-1}}T_{A}\boldx \amp =T_{A^{-1}}(A\boldx)</mrow>
-            <mrow> \amp =A^{-1}A\boldx=\boldx</mrow>
-        </md>.
-        This proves that <m>T_AT_{A^{-1}}=T_{A^{-1}}T_A=I_V</m> and thus that <m>T_{A^{-1}}=T_A^{-1}</m>, as claimed. We conclude <m>T_A</m> is an isomorphism. 
-    </p>
-    <p>
-        Lastly assume <m>T_A</m> is an isomorphism. By <xref ref="cor_isom_finite_dim"/>, we conclude that <m>\dim F^n=\dim F^m</m>, and hence that <m>n=m</m>. Since <m>T_A</m> is an isomorphism, it has a linear inverse <m>S\colon F^n\rightarrow F^n</m>; since all linear transformations of <m>F^n</m> are matrix transformations, we have <m>S=T_B</m> for some matrix <m>B\in \ML_{n,n}</m>. We have 
-        <md>
-            <mrow>T_AT_B=I_{F^n} \amp \implies AB\boldx=\boldx \text{ for all } \boldx\in F^n\implies AB=I</mrow>
-            <mrow>T_BT_A=I_{F^n} \amp \implies BA\boldx=\boldx \text{ for all } \boldx\in F^n\implies BA=I</mrow>
-        </md>.
-        Thus <m>B=A^{-1}</m>, showing that <m>A</m> is invertible. 
-    </p>
-    </solution>
-    </example>
+</principle>
 
 </section>
