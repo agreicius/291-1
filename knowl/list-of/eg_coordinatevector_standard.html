@@ -22,7 +22,7 @@
 <span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.22.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Standard bases.</span>
 </h2>
 <div class="para logical">
-<div class="para">Computing coordinate vectors relative to one of our standard ordered bases for <span class="process-math">\(F^n\text{,}\)</span> <span class="process-math">\(F^{m,n}\text{,}\)</span> or <span class="process-math">\(P_{n}\)</span> amounts to just listing the coefficients or entries used to specify the given vector. The examples below serve to illustrate the general method in this setting.</div>
+<div class="para">Computing coordinate vectors relative to one of our standard ordered bases for <span class="process-math">\(F^n\text{,}\)</span> <span class="process-math">\(\ML_{m,n}(F)\text{,}\)</span> or <span class="process-math">\(P_{n}\)</span> amounts to just listing the coefficients or entries used to specify the given vector. The examples below serve to illustrate the general method in this setting.</div>
 <ol class="decimal" id="eg_coordinatevector_standard-2-1-4">
 <li>
 <div class="para">Consider the standard basis <span class="process-math">\(B=(\bolde_1, \bolde_2, \bolde_3)\)</span> of <span class="process-math">\(F^3\text{.}\)</span> For any <span class="process-math">\(\boldx=(a,b,c)\in F^3\)</span> we have <span class="process-math">\([\boldx]_{B}=(a,b,c)\text{,}\)</span> since <span class="process-math">\((a,b,c)=a\bolde_1+b\bolde_2+c\bolde_3\text{.}\)</span><div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#eg_coordinatevector_standard-2-1-4-1-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -31,10 +31,10 @@
 </li>
 <li>
 <div class="para logical">
-<div class="para">Consider the standard basis <span class="process-math">\(B=(E_{11}, E_{12}, E_{21}, E_{22})\)</span> of <span class="process-math">\(F^{2,2}\text{.}\)</span> For any <span class="process-math">\(A=\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}\)</span> we have <span class="process-math">\([A]_B=(a,b,c,d)\)</span> since</div>
+<div class="para">Consider the standard basis <span class="process-math">\(B=(E_{1,1}, E_{1,2}, E_{2,1}, E_{2,2})\)</span> of <span class="process-math">\(\ML_{2,2}(F)\text{.}\)</span> For any <span class="process-math">\(A=\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}\)</span> we have <span class="process-math">\([A]_B=(a,b,c,d)\)</span> since</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=a\underset{E_{11}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}+b\underset{E_{12}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+c\underset{E_{21}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+d\underset{E_{22}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}\text{.}
+\underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=a\underset{E_{1,1}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}+b\underset{E_{1,2}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+c\underset{E_{2,1}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+d\underset{E_{2,2}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}\text{.}
 \end{equation*}
 </div>
 <div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#eg_coordinatevector_standard-2-1-4-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>

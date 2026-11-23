@@ -30,7 +30,7 @@
 <div class="para">The map</div>
 <div class="displaymath process-math">
 \begin{align*}
-[\phantom{A}]_{B}^{B'}\colon \mathcal{L}(V,W)\amp\rightarrow F^{m,n} \\
+[\phantom{A}]_{B}^{B'}\colon \mathcal{L}(V,W)\amp\rightarrow \ML_{m,n}(F) \\
 T \amp \longmapsto [T]_B^{B'}
 \end{align*}
 </div>
@@ -44,7 +44,7 @@ T \amp \longmapsto [T]_B^{B'}
 <div class="para">We have</div>
 <div class="displaymath process-math">
 \begin{equation*}
-\dim \mathcal{L}(V,W)=\dim F^{m,n}=mn.
+\dim \mathcal{L}(V,W)=\dim \ML_{m,n}(F)=mn.
 \end{equation*}
 </div>
 <div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#th_matrix_reps_isom-2-1-7-2-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
@@ -58,7 +58,7 @@ T \amp \longmapsto [T]_B^{B'}
 </article>
 <details class="hiddenproof born-hidden-knowl"><summary class="knowl__link"><h2 class="heading"><span class="type">Proof<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h2></summary>
 <article class="hiddenproof knowl__content">
-<div class="para">Statement (2) follows directly from (1) since <span class="process-math">\(\dim F^{m,n}=mn\text{.}\)</span> (Alternatively, you showed on a homework that <span class="process-math">\(\mathcal{L}(V,W)\)</span> has a basis <span class="process-math">\(B=(T_{ij})\)</span> of length <span class="process-math">\(mn\text{.}\)</span>) To prove (1), we will show that <span class="process-math">\([\phantom{AA}]_{B}^{B'}\)</span> is linear and bijective.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#th_matrix_reps_isom-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
+<div class="para">Statement (2) follows directly from (1) since <span class="process-math">\(\dim \ML_{m,n}(F)=mn\text{.}\)</span> (Alternatively, you showed on a homework that <span class="process-math">\(\mathcal{L}(V,W)\)</span> has a basis <span class="process-math">\(B=(T_{ij})\)</span> of length <span class="process-math">\(mn\text{.}\)</span>) To prove (1), we will show that <span class="process-math">\([\phantom{AA}]_{B}^{B'}\)</span> is linear and bijective.<div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#th_matrix_reps_isom-3-1" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical">
 <div class="para">The linearity of <span class="process-math">\([\phantom{AA}]_{B}^{B'}\)</span> can be proved by direct appeal to the formula <a href="s_matrix_reps.html#eq_matrixrep_formula" class="xref" data-knowl="./knowl/xref/eq_matrixrep_formula.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.22.5">(1.22.5)</a> and the fact that the coordinate vector map <span class="process-math">\([\phantom{v}]_{B'}\)</span> is linear. Readers are invited to pursue this proof on their own. We will instead take the opportunity to make use of the defining property <a href="s_matrix_reps.html#eq_matrixrep_prop" class="xref" data-knowl="./knowl/xref/eq_matrixrep_prop.html" data-reveal-label="Reveal" data-close-label="Close" title="Equation 1.22.6">(1.22.6)</a> within a 1-step proof. Given linear maps <span class="process-math">\(T,S\in \mathcal{L}(V,W)\)</span> and scalars <span class="process-math">\(c,d\in F\text{,}\)</span> we will show that</div>
@@ -93,7 +93,7 @@ C=c[T]_{B}^{B'}+d[T]_{B}^{B'}=[cT+dS]_{B}^{B'}\text{,}
 <div class="autopermalink" aria-hidden="true" data-description="Paragraph"><a tabindex="-1" href="#th_matrix_reps_isom-3-2" title="Copy heading and permalink for Paragraph" aria-label="Copy heading and permalink for Paragraph">🔗</a></div>
 </div>
 <div class="para logical">
-<div class="para">We now show directly that <span class="process-math">\([\phantom{AA}]_B^{B'}\)</span> is bijective: i.e., given any matrix <span class="process-math">\(A\in F^{m,n}\text{,}\)</span> we will show that there is a <em class="emphasis">unique</em> linear transformation <span class="process-math">\(T\in \mathcal{L}(V,W)\)</span> satisfying <span class="process-math">\([T]_B^{B'}\text{.}\)</span> Let <span class="process-math">\(B=(v_1,v_2,\dots, v_n)\text{.}\)</span> Given <span class="process-math">\(A\in F^{m,n}\text{,}\)</span> let</div>
+<div class="para">We now show directly that <span class="process-math">\([\phantom{AA}]_B^{B'}\)</span> is bijective: i.e., given any matrix <span class="process-math">\(A\in \ML_{m,n}(F)\text{,}\)</span> we will show that there is a <em class="emphasis">unique</em> linear transformation <span class="process-math">\(T\in \mathcal{L}(V,W)\)</span> satisfying <span class="process-math">\([T]_B^{B'}\text{.}\)</span> Let <span class="process-math">\(B=(v_1,v_2,\dots, v_n)\text{.}\)</span> Given <span class="process-math">\(A\in \ML_{m,n}(F)\text{,}\)</span> let</div>
 <div class="displaymath process-math" data-contains-math-knowls="./knowl/xref/th_trans_basis.html ./knowl/xref/eq_matrixrep_prop.html ./knowl/xref/th_trans_basis.html">
 \begin{equation*}
 \boldy_i=A[v_i]_B

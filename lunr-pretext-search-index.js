@@ -5410,6 +5410,195 @@ var ptx_lunr_docs = [
   "body": " Invertible matrix theorem   Let and let be its corresponding matrix transformation. The following statements are equivalent.    is an isomorphism.               is invertible.               has a unique solution for all .     has a unique solution (viz., ).     has a solution for all .       We don't have the heart to provide a proof; this would spoil the fun of charting a path of implications around the grid above!   "
 },
 {
+  "id": "s_change_basis",
+  "level": "1",
+  "url": "s_change_basis.html",
+  "type": "Section",
+  "number": "1.23",
+  "title": "Change of basis",
+  "body": " Change of basis   Coordinate vectors and matrix representations work in tandem to model vectors in an abstract vector space as column vectors in , and linear transformations as matrices. In both cases the model depends on our choice of basis. In this section we investigate how different basis choices affect these various models. Specifically, we consider the two questions below.   Given and two ordered bases and , what is the algebraic relation between and ?    Given and two ordered bases and , what is the relation between and ?     We will tackle each question in turn. Both answers rely on something called a change of basis matrix  .    Change of basis matrix   Change of basis matrix   Let and be bases for the vector space . The change of basis from to is the matrix defined as . In other words, the -th column of is obtained by computing the coordinate vector of the -th element of the original basis with respect to the new basis .     Change of basis matrix   Let , , and be bases of the finite-dimensional vector space .    .    For all we have In other words, to convert the -coordinates of a vector to -coordinates, simply multiply on the left by the matrix .  Furthermore, the matrix is the unique matrix satisfying : i.e., if for all , then .    The matrix is invertible and satisfies .    We have .          Let . From formula applied to , we see that the -th column of is for all . Using formula from this is precisely the -th column of for all . We conclude that .    This follows from (1) and : . The uniqueness claim follows from the uniqueness of matrix representations described in .    Let . For any vector , we have . Since is an isomorphism, it follows that for all , from whence it easily follows that . Thus . A similar argument shows and thus that .    Let . We show that by showing that it satisfies the defining property . For any , we have . Since satisfies the defining property of , we conclude that .        Bases in   Let , , and .   Compute .    Let . Compute using the change of basis formula .          Using , we have . The two coordinate vector computations and were done as usual using : that is, by setting up in turn the vector equations and solving for using Gaussian elimination.    The usual application of produces the coordinate vector . We leave the details to you. To compute , we use the change of basis formula : . This should come as now surprise since .        , standard basis   Consider the special situation where , is the standard basis, and is some nonstandard basis. In this case we have . In other words, is the matrix whose -th column is just the -th element of . Thus, in this situation we can compute by placing the elements of as columns of a matrix, and then use (2) of to compute .     standard basis of  The observation from applies more generally when is the standard basis of the given vector space and is nonstandard. In this case computing will be easy as the coordinate vectors can be produced by inspection. See .   We have seen that computing is easy when is a standard matrix; according to , in that situation we can then compute as the inverse of .   Change of basis, standard   Let , , . Compute and .    According to we have . We then compute .     Change of basis, standard   Let , (standard basis) and , where . Compute and .    We have . Here the coordinate vectors are easily computed by inspection since is the standard basis. It then follows that , where we've skipped the steps for computing the inverse matrix. As an aside, it turn out that there is an easy way to compute the matrix in this case due to the convenient fact that the columns of satisfy . We can say more about this when we discuss inner product spaces.     Taylor's formula for polynomials   Let , , and .   Prove that is a basis.    Compute .    Compute using .          As we have seen in homework, any tuple of polynomials with distinct degrees is linearly independent. Thus is linearly independent. Since , it is a basis. Street smarts!    We have . The first two coordinate vector computations are nontrivial; you can verify for yourself that and . Alternatively, see ) for a neat trick for computing these coordinate vectors.    Since is the standard basis, we see easily that . Using we have . Verify for yourself that we do indeed have .        Taylor's formula and change of basis  Let be the standard basis of . Fix any constant , and let . Since the elements of have distinct degrees, is linearly independent, and hence a basis (since it has the right length). It follows from Taylor's theorem (from single-variable calculus) that given any polynomial we have . We call this expression the expansion of about . In terms of coordinate vectors, this means that . In other words, Taylor's theorem provides a simple derivative formula for computing coordinate vectors with respect to the basis .   Before connecting change of basis matrices with matrix representations of linear transformations, it is worth gathering some of the different techniques for computing change of basis matrices we have discussed so far.   Change of basis computational tips   Let and be ordered bases of the vector space . Below you find a variety of techniques for computing and .   To compute directly, we must compute for each . This typically involves setting up and solving a linear system.    We have . This observation is useful in situations where (a) one change of basis matrix is easier to compute than the other and (b) computing inverse matrices is not too onerous.    If is the standard basis of , then is easy to compute. (See .)         Change of basis and matrix representations  We now investigate how our choice of basis affects matrix representations of linear transformations. We will only consider the special case where and we are comparing matrix representations and for two different ordered bases of .   Change of basis for transformations   Let be finite-dimensional, let be linear, and let and be two ordered bases for . We have , or equivalently .    First observe that follows from and (3) of . Next, to prove , it suffices by (2) of to show that the matrix satisfies for all . To this end, given any , we have .     Getting change of basis formulas correct  It is easy to get the various details of the change of basis formula wrong. Here is a potential way to keep things organized in your mind.   We wish to relate and with an equation of the form , where the asterisks are to be replaced with change of basis matrices or their inverses. Think of the three matrices on the right-hand side of this equation as a sequence of three things done to coordinate vectors, reading from right to left.     takes as inputs -coordinates of vectors, and outputs -coordinates. Thus the same should be true for .    Since takes as inputs -coordinates, we must first convert from -coordinates to -coordinates. So we should have .    Since outputs -coordinates, we need to then convert back to -coordinates. Thus .    If desired you may replace with .       Matrix representations and change of basis   The function is linear.   Compute , where is the the standard basis of .    Consider the nonstandard basis of . Compute directly using .    Now compute using and the change of basis formula .          According to , since is the standard basis of , is just the standard matrix of . This is easily computed as .    We compute directly using : . The coordinate vector computations in the last equality were all done by inspection: .    To use the change of basis formula , we need to compute and . Since is the standard basis of , using we see that we can build simply by placing the elements of in as its columns: . We then compute the inverse . Lastly, we compute , as we expected.       Consider the special case where : that is, when is a space of -tuples. We know from that for a unique matrix : the standard matrix of . The standard matrix of is useful, as it provides a convenient matrix formula for . To compute  directly using the recipe in , we must compute for each of the standard basis elements . For many naturally occurring transformations , this is often not so easy to do. provides an indirect method in such cases, as we now explain.  According to we have : , the standard matrix of is none other than the matrix representing with respect to the standard basis. This connection allows us to compute by first computing for some more convenient basis , and then using the change of basis formula.   Computing the standard matrix using change of basis   Let be a linear transformation, and let be its standard matrix. To compute using the change of basis formula , proceed as follows.   Find a convenient basis for which the action of is easily understood.    Compute .    Let be the standard basis of . Recall that . Now compute using the change of basis formula as .        is a powerful technique for computing matrix formulas for many interesting geometric linear transformations of : , rotations, reflections, and orthogonal projections. Often the very definition of such transformations will suggest a more convenient nonstandard basis : one that reflects the geometry involved. The next example illustrates this nicely.   Reflection in   Let be reflection through the line with equation : , maps a point to its reflection through . You may take for granted that is linear. (We will have a nice proof of this once we introduce inner product spaces.)   Using the geometric definition of reflection, come up with a basis such that and : the reflection  fixes  and flips  .    Show that .    Use the change of basis formula to compute , the standard matrix of .               Reflection in : general   Let be the line in passing through the origin with nonzero direction vector , and let be reflection through : , given point , is the point obtained by reflecting through .   Generalize the technique in to derive the standard matrix of .    Give the formula for and verify that it computes the reflection of and correctly.       The standard matrix of is just , where is the standard basis of . Let . Since , we have ; since is perpendicular to , we have . It follows that . Computing the relevant change of basis matrices and using the change of basis formula , we have . Since , we derive the formula for all . In particular, we have , as expected.      Similarity and the holy commutative tent of linear algebra   supplies an algebraic answer to the question: What is the relation between two matrix representations and ? Letting , equation becomes . Matrices satisfying such a relation are said to be similar .   Similar matrices  similar matrices  Matrices are similar if there is an invertible matrix such that .    So any two matrix representations of a linear transformation are similar in the technical sense of . In fact, a converse of sorts is also true, as articulated in the theorem below.   Similarity and matrix representations   Two matrices and are similar if and only if there is a linear transformation and bases of satisfying and .    The discussion above shows that if and , then , where ; thus and are similar in this case.  Now assume that and are similar. By definition this means there is an invertible matrix such that . Define as the matrix transformation . According to we have where is the standard basis of . Next, letting be the ordered basis whose -th element is the -th column of , we have ( ), and hence , as desired.    We will soon see that similar matrices are indeed similar algebraically speaking: , they share many of the same properties. provides the theoretical foundation to understand why this should be so: if and are similar, then they are two matrix representations of a common linear transformation ; their many shared properties are simply inherited from the single overlying linear transformation that they both represent! This circle of ideas is neatly encompassed by .   The holy commutative tent of linear algebra  The holy commutative tent of linear algebra. Here we have and .       Perhaps a little exegesis is in order here. Think of the map as a linear transformation up in abstract heaven; and think of the two matrices and as two earthly shadows of . OK, this gets at the holy bit somewhat, but why commutative? Each face of the tent is a commutative diagram, as we now explain.   Slanted sides of the tent  The commutativity of the two slanted sides of the tent is a consequence of : .    Triangular ends of the tent  Let , so that . The commutativity of the two triangular ends of the tent are consequences of : .    Base of tent  Lastly the commutativity of the base of the tent is a consequence of : or equivalently, .   In summary, the holy commutative tent conveys a close connection between the three maps . Since the base of the tent is commutative, and since the maps given by and are invertible, we can translate back and forth between the matrices and . Furthermore, since the two slanted sides of the tent are commutative, and since the coordinate vector transformations are invertible, we can translate up and down between our two matrix representations and and the overlying linear transformation . There is one true !   Similar matrices mantra   Similar matrices are but two earthly representations of the one true !     "
+},
+{
+  "id": "d_change_basis_matrix",
+  "level": "2",
+  "url": "s_change_basis.html#d_change_basis_matrix",
+  "type": "Definition",
+  "number": "1.23.1",
+  "title": "Change of basis matrix.",
+  "body": " Change of basis matrix   Let and be bases for the vector space . The change of basis from to is the matrix defined as . In other words, the -th column of is obtained by computing the coordinate vector of the -th element of the original basis with respect to the new basis .   "
+},
+{
+  "id": "th_change_basis_props",
+  "level": "2",
+  "url": "s_change_basis.html#th_change_basis_props",
+  "type": "Theorem",
+  "number": "1.23.2",
+  "title": "Change of basis matrix.",
+  "body": " Change of basis matrix   Let , , and be bases of the finite-dimensional vector space .    .    For all we have In other words, to convert the -coordinates of a vector to -coordinates, simply multiply on the left by the matrix .  Furthermore, the matrix is the unique matrix satisfying : i.e., if for all , then .    The matrix is invertible and satisfies .    We have .          Let . From formula applied to , we see that the -th column of is for all . Using formula from this is precisely the -th column of for all . We conclude that .    This follows from (1) and : . The uniqueness claim follows from the uniqueness of matrix representations described in .    Let . For any vector , we have . Since is an isomorphism, it follows that for all , from whence it easily follows that . Thus . A similar argument shows and thus that .    Let . We show that by showing that it satisfies the defining property . For any , we have . Since satisfies the defining property of , we conclude that .      "
+},
+{
+  "id": "eg_change_basis_elem",
+  "level": "2",
+  "url": "s_change_basis.html#eg_change_basis_elem",
+  "type": "Example",
+  "number": "1.23.3",
+  "title": "Bases in <span class=\"process-math\">\\(\\R^2\\)<\/span>.",
+  "body": " Bases in   Let , , and .   Compute .    Let . Compute using the change of basis formula .          Using , we have . The two coordinate vector computations and were done as usual using : that is, by setting up in turn the vector equations and solving for using Gaussian elimination.    The usual application of produces the coordinate vector . We leave the details to you. To compute , we use the change of basis formula : . This should come as now surprise since .      "
+},
+{
+  "id": "eg_changebasis_standard",
+  "level": "2",
+  "url": "s_change_basis.html#eg_changebasis_standard",
+  "type": "Example",
+  "number": "1.23.4",
+  "title": "<span class=\"process-math\">\\(V=F^n\\text{,}\\)<\/span> <span class=\"process-math\">\\(B\\)<\/span> standard basis.",
+  "body": " , standard basis   Consider the special situation where , is the standard basis, and is some nonstandard basis. In this case we have . In other words, is the matrix whose -th column is just the -th element of . Thus, in this situation we can compute by placing the elements of as columns of a matrix, and then use (2) of to compute .   "
+},
+{
+  "id": "rm_changebasis_standard",
+  "level": "2",
+  "url": "s_change_basis.html#rm_changebasis_standard",
+  "type": "Remark",
+  "number": "1.23.5",
+  "title": "<span class=\"process-math\">\\(B\\)<\/span> standard basis of <span class=\"process-math\">\\(V\\)<\/span>.",
+  "body": " standard basis of  The observation from applies more generally when is the standard basis of the given vector space and is nonstandard. In this case computing will be easy as the coordinate vectors can be produced by inspection. See .  "
+},
+{
+  "id": "ss_change_basis_matrix-8",
+  "level": "2",
+  "url": "s_change_basis.html#ss_change_basis_matrix-8",
+  "type": "Example",
+  "number": "1.23.6",
+  "title": "Change of basis, <span class=\"process-math\">\\(B\\)<\/span> standard.",
+  "body": " Change of basis, standard   Let , , . Compute and .    According to we have . We then compute .   "
+},
+{
+  "id": "eg_changebasis_standard_mat",
+  "level": "2",
+  "url": "s_change_basis.html#eg_changebasis_standard_mat",
+  "type": "Example",
+  "number": "1.23.7",
+  "title": "Change of basis, <span class=\"process-math\">\\(B\\)<\/span> standard.",
+  "body": " Change of basis, standard   Let , (standard basis) and , where . Compute and .    We have . Here the coordinate vectors are easily computed by inspection since is the standard basis. It then follows that , where we've skipped the steps for computing the inverse matrix. As an aside, it turn out that there is an easy way to compute the matrix in this case due to the convenient fact that the columns of satisfy . We can say more about this when we discuss inner product spaces.   "
+},
+{
+  "id": "ss_change_basis_matrix-10",
+  "level": "2",
+  "url": "s_change_basis.html#ss_change_basis_matrix-10",
+  "type": "Example",
+  "number": "1.23.8",
+  "title": "Taylor’s formula for polynomials.",
+  "body": " Taylor's formula for polynomials   Let , , and .   Prove that is a basis.    Compute .    Compute using .          As we have seen in homework, any tuple of polynomials with distinct degrees is linearly independent. Thus is linearly independent. Since , it is a basis. Street smarts!    We have . The first two coordinate vector computations are nontrivial; you can verify for yourself that and . Alternatively, see ) for a neat trick for computing these coordinate vectors.    Since is the standard basis, we see easily that . Using we have . Verify for yourself that we do indeed have .      "
+},
+{
+  "id": "rm_change_of_basis_taylors",
+  "level": "2",
+  "url": "s_change_basis.html#rm_change_of_basis_taylors",
+  "type": "Remark",
+  "number": "1.23.9",
+  "title": "Taylor’s formula and change of basis.",
+  "body": " Taylor's formula and change of basis  Let be the standard basis of . Fix any constant , and let . Since the elements of have distinct degrees, is linearly independent, and hence a basis (since it has the right length). It follows from Taylor's theorem (from single-variable calculus) that given any polynomial we have . We call this expression the expansion of about . In terms of coordinate vectors, this means that . In other words, Taylor's theorem provides a simple derivative formula for computing coordinate vectors with respect to the basis .  "
+},
+{
+  "id": "proc_changebasis_tips",
+  "level": "2",
+  "url": "s_change_basis.html#proc_changebasis_tips",
+  "type": "Procedure",
+  "number": "1.23.10",
+  "title": "Change of basis computational tips.",
+  "body": " Change of basis computational tips   Let and be ordered bases of the vector space . Below you find a variety of techniques for computing and .   To compute directly, we must compute for each . This typically involves setting up and solving a linear system.    We have . This observation is useful in situations where (a) one change of basis matrix is easier to compute than the other and (b) computing inverse matrices is not too onerous.    If is the standard basis of , then is easy to compute. (See .)      "
+},
+{
+  "id": "th_change_of_basis_transformations",
+  "level": "2",
+  "url": "s_change_basis.html#th_change_of_basis_transformations",
+  "type": "Theorem",
+  "number": "1.23.11",
+  "title": "Change of basis for transformations.",
+  "body": " Change of basis for transformations   Let be finite-dimensional, let be linear, and let and be two ordered bases for . We have , or equivalently .    First observe that follows from and (3) of . Next, to prove , it suffices by (2) of to show that the matrix satisfies for all . To this end, given any , we have .   "
+},
+{
+  "id": "rm_change_of_basis_transformations",
+  "level": "2",
+  "url": "s_change_basis.html#rm_change_of_basis_transformations",
+  "type": "Remark",
+  "number": "1.23.12",
+  "title": "Getting change of basis formulas correct.",
+  "body": " Getting change of basis formulas correct  It is easy to get the various details of the change of basis formula wrong. Here is a potential way to keep things organized in your mind.   We wish to relate and with an equation of the form , where the asterisks are to be replaced with change of basis matrices or their inverses. Think of the three matrices on the right-hand side of this equation as a sequence of three things done to coordinate vectors, reading from right to left.     takes as inputs -coordinates of vectors, and outputs -coordinates. Thus the same should be true for .    Since takes as inputs -coordinates, we must first convert from -coordinates to -coordinates. So we should have .    Since outputs -coordinates, we need to then convert back to -coordinates. Thus .    If desired you may replace with .     "
+},
+{
+  "id": "ss_change_basis_transformation-5",
+  "level": "2",
+  "url": "s_change_basis.html#ss_change_basis_transformation-5",
+  "type": "Example",
+  "number": "1.23.13",
+  "title": "Matrix representations and change of basis.",
+  "body": " Matrix representations and change of basis   The function is linear.   Compute , where is the the standard basis of .    Consider the nonstandard basis of . Compute directly using .    Now compute using and the change of basis formula .          According to , since is the standard basis of , is just the standard matrix of . This is easily computed as .    We compute directly using : . The coordinate vector computations in the last equality were all done by inspection: .    To use the change of basis formula , we need to compute and . Since is the standard basis of , using we see that we can build simply by placing the elements of in as its columns: . We then compute the inverse . Lastly, we compute , as we expected.      "
+},
+{
+  "id": "proc_standard_matrix_via_change_of_basis",
+  "level": "2",
+  "url": "s_change_basis.html#proc_standard_matrix_via_change_of_basis",
+  "type": "Procedure",
+  "number": "1.23.14",
+  "title": "Computing the standard matrix using change of basis.",
+  "body": " Computing the standard matrix using change of basis   Let be a linear transformation, and let be its standard matrix. To compute using the change of basis formula , proceed as follows.   Find a convenient basis for which the action of is easily understood.    Compute .    Let be the standard basis of . Recall that . Now compute using the change of basis formula as .      "
+},
+{
+  "id": "eg_changebasis_reflection",
+  "level": "2",
+  "url": "s_change_basis.html#eg_changebasis_reflection",
+  "type": "Example",
+  "number": "1.23.15",
+  "title": "Reflection in <span class=\"process-math\">\\(\\R^2\\)<\/span>.",
+  "body": " Reflection in   Let be reflection through the line with equation : , maps a point to its reflection through . You may take for granted that is linear. (We will have a nice proof of this once we introduce inner product spaces.)   Using the geometric definition of reflection, come up with a basis such that and : the reflection  fixes  and flips  .    Show that .    Use the change of basis formula to compute , the standard matrix of .             "
+},
+{
+  "id": "eg_changebasis_reflection_gen",
+  "level": "2",
+  "url": "s_change_basis.html#eg_changebasis_reflection_gen",
+  "type": "Example",
+  "number": "1.23.16",
+  "title": "Reflection in <span class=\"process-math\">\\(\\R^2\\text{:}\\)<\/span> general.",
+  "body": " Reflection in : general   Let be the line in passing through the origin with nonzero direction vector , and let be reflection through : , given point , is the point obtained by reflecting through .   Generalize the technique in to derive the standard matrix of .    Give the formula for and verify that it computes the reflection of and correctly.       The standard matrix of is just , where is the standard basis of . Let . Since , we have ; since is perpendicular to , we have . It follows that . Computing the relevant change of basis matrices and using the change of basis formula , we have . Since , we derive the formula for all . In particular, we have , as expected.   "
+},
+{
+  "id": "d_similar",
+  "level": "2",
+  "url": "s_change_basis.html#d_similar",
+  "type": "Definition",
+  "number": "1.23.17",
+  "title": "Similar matrices.",
+  "body": " Similar matrices  similar matrices  Matrices are similar if there is an invertible matrix such that .   "
+},
+{
+  "id": "th_similarity_matrixreps",
+  "level": "2",
+  "url": "s_change_basis.html#th_similarity_matrixreps",
+  "type": "Theorem",
+  "number": "1.23.18",
+  "title": "Similarity and matrix representations.",
+  "body": " Similarity and matrix representations   Two matrices and are similar if and only if there is a linear transformation and bases of satisfying and .    The discussion above shows that if and , then , where ; thus and are similar in this case.  Now assume that and are similar. By definition this means there is an invertible matrix such that . Define as the matrix transformation . According to we have where is the standard basis of . Next, letting be the ordered basis whose -th element is the -th column of , we have ( ), and hence , as desired.   "
+},
+{
+  "id": "fig_comm_tent",
+  "level": "2",
+  "url": "s_change_basis.html#fig_comm_tent",
+  "type": "Figure",
+  "number": "1.23.19",
+  "title": "The holy commutative tent of linear algebra",
+  "body": " The holy commutative tent of linear algebra  The holy commutative tent of linear algebra. Here we have and .      "
+},
+{
+  "id": "princ_similar_matrices",
+  "level": "2",
+  "url": "s_change_basis.html#princ_similar_matrices",
+  "type": "Mantra",
+  "number": "1.23.20",
+  "title": "Similar matrices mantra.",
+  "body": " Similar matrices mantra   Similar matrices are but two earthly representations of the one true !   "
+},
+{
   "id": "appendix-notation",
   "level": "1",
   "url": "appendix-notation.html",
