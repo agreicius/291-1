@@ -55,7 +55,7 @@
         <title>Coordinate vectors</title>
         <statement>
         <p>
-        Let <m>B=(v_i)_{i\in I}</m> be a basis of the vector space <m>V</m>, and let <m>[\phantom]_B\colon V\rightarrow F^I</m> be the coordinate vector map with respect to <m>B</m>. 
+        Let <m>B=(v_i)_{i\in I}</m> be a basis of the vector space <m>V</m>, and let <m>[\phantom{v}]_B\colon V\rightarrow F^I</m> be the coordinate vector map with respect to <m>B</m>. 
         <ol>
             <li>
                 <p>
@@ -151,7 +151,7 @@
           <title>Standard bases</title>
           <statement>
             <p>
-              Computing coordinate vectors relative to one of our standard ordered bases for <m>F^n</m>, <m>F^{m,n}</m>, or <m>P_{n}</m> amounts to just listing the coefficients or entries used to specify the given vector. The examples below serve to illustrate the general method in this setting.
+              Computing coordinate vectors relative to one of our standard ordered bases for <m>F^n</m>, <m>\ML_{m,n}(F)</m>, or <m>P_{n}</m> amounts to just listing the coefficients or entries used to specify the given vector. The examples below serve to illustrate the general method in this setting.
             
             <ol>
               <li>
@@ -161,9 +161,9 @@
               </li>
               <li>
                 <p>
-                  Consider the standard basis <m>B=(E_{11}, E_{12}, E_{21}, E_{22})</m> of <m>F^{2,2}</m>. For any <m>A=\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}</m> we have <m>[A]_B=(a,b,c,d)</m> since
+                  Consider the standard basis <m>B=(E_{1,1}, E_{1,2}, E_{2,1}, E_{2,2})</m> of <m>\ML_{2,2}(F)</m>. For any <m>A=\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}</m> we have <m>[A]_B=(a,b,c,d)</m> since
                   <md>
-                    \underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=a\underset{E_{11}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}+b\underset{E_{12}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+c\underset{E_{21}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+d\underset{E_{22}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}
+                    \underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=a\underset{E_{1,1}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}+b\underset{E_{1,2}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+c\underset{E_{2,1}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+d\underset{E_{2,2}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}
                   </md>.
                 </p>
               </li>
@@ -213,12 +213,12 @@
               </li>
               <li>
                 <p>
-                  Consider the reordered basis <m>B=(E_{22},E_{21},E_{12},E_{11})</m> of <m>F^{2,2}</m>. Given <m>A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}</m>, we have <m>[A]_B=(d,c,b,a)</m>, since 
+                  Consider the reordered basis <m>B=(E_{2,2},E_{2,1},E_{1,2},E_{1,1})</m> of <m>\ML_{2,2}(F)</m>. Given <m>A=\begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}</m>, we have <m>[A]_B=(d,c,b,a)</m>, since 
                   <md>
-                    \underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=d\underset{E_{22}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}+
-                    c\underset{E_{21}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+
-                    b\underset{E_{12}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+
-                    a\underset{E_{22}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}
+                    \underset{A}{\begin{bmatrix}a\amp b\\ c\amp d \end{bmatrix}}=d\underset{E_{2,2}}{\begin{bmatrix}0\amp 0 \\ 0\amp 1\end{bmatrix}}+
+                    c\underset{E_{2,1}}{\begin{bmatrix}0\amp 0 \\ 1\amp 0\end{bmatrix}}+
+                    b\underset{E_{1,2}}{\begin{bmatrix}0\amp 1 \\ 0\amp 0\end{bmatrix}}+
+                    a\underset{E_{2,2}}{\begin{bmatrix}1\amp 0 \\ 0\amp 0\end{bmatrix}}
                   </md>.
                 </p>
               </li>
@@ -321,7 +321,7 @@
           <example>
             <statement>
               <p>
-                Let <m>S=(A_1,A_2,A_3,A_4)</m> of the tuple of matrices of <m>\R^{2,2}</m>, where 
+                Let <m>S=(A_1,A_2,A_3,A_4)</m> of the tuple of matrices of <m>\ML_{2,2}(\R)</m>, where 
                 <md>
                   <mrow> A_1\amp =\begin{bmatrix}2\amp 1\\ 0\amp -2 \end{bmatrix}\amp A_2\amp =\begin{bmatrix}1\amp 1\\ 1\amp -1 \end{bmatrix} </mrow>
                   <mrow> A_3\amp =\begin{bmatrix}0\amp 1\\ 2\amp 0 \end{bmatrix}\amp A_4\amp =\begin{bmatrix}-1\amp 0\\ 1\amp 1 \end{bmatrix} </mrow>
@@ -335,7 +335,7 @@
                 </li>
                 <li>
                   <p>
-                    Let <m>W'=\{A\in \R^{2,2}\colon \tr A=0\}</m>, where for any <m>n\times n</m> matrix <m>A=[a_{ij}]</m>, <m>\tr A=\sum_{i=1}^na_ii</m>, the {\em trace} of <m>A</m>: <ie/>, <m>W'</m> is the space of all trace-zero <m>2\times 2</m> matrices. Show that <m>W\subseteq W'</m>, and determine whether <m>W=W'</m>. 
+                    Let <m>W'=\{A\in \ML_{2,2}(\R)\colon \tr A=0\}</m>, where for any <m>n\times n</m> matrix <m>A=[a_{ij}]</m>, <m>\tr A=\sum_{i=1}^na_ii</m>, the {\em trace} of <m>A</m>: <ie/>, <m>W'</m> is the space of all trace-zero <m>2\times 2</m> matrices. Show that <m>W\subseteq W'</m>, and determine whether <m>W=W'</m>. 
                   </p>
                 </li>
                </ol> 
@@ -346,7 +346,7 @@
                 <ol>
                   <li>
                     <p>
-                      Let <m>B=(E_{11}, E_{12}, E_{21}, E_{22})</m> be the standard basis of <m>\R^{2,2}</m>.
+                      Let <m>B=(E_{1,1}, E_{1,2}, E_{2,1}, E_{2,2})</m> be the standard basis of <m>\ML_{2,2}(\R)</m>.
                       Apply <m>[\phantom{v}]_B</m> to the elements of the given <m>S</m> to get a corresponding set <m>S'\subseteq\R^4</m>:
                       <md>
                         S'=(\underset{[A_1]_B}{(2,1,0,-2)}, \underset{[A_2]_B}{(1,1,1,-1)}, \underset{[A_3]_B}{(0,1,2,0)}, \underset{[A_4]_B}{(-1,0,1,1)})
@@ -479,7 +479,7 @@
     </statement>
     <solution>
       <p>
-        Let <m>B=(E_{11}, E_{12}, E_{21}, E_{22})</m> be the standard basis of <m>\ML_{2,2}(\R)</m>.
+        Let <m>B=(E_{1,1}, E_{1,2}, E_{2,1}, E_{2,2})</m> be the standard basis of <m>\ML_{2,2}(\R)</m>.
         Apply <m>[\phantom{\boldv}]_B</m> to the elements of the given <m>S</m> to get a corresponding set <m>S'\subseteq\R^4</m>:
         <md>
           S'=\left\{ [A_1]_B=(2,1,0,-2), [A_2]_B=(1,1,1,-1), [A_3]_B=(0,1,2,0), [A_4]_B=(-1,0,1,1) \right\}
@@ -534,7 +534,7 @@
         <p>
           The function 
           <md>
-            <mrow>T\colon \R^3 \amp \rightarrow \R^{2,2}</mrow>
+            <mrow>T\colon \R^3 \amp \rightarrow \ML_{2,2}(\R)</mrow>
             <mrow>(x,y,z) \amp \mapsto \begin{bmatrix}
             x+y+z\amp x-z\\
             x+2y\amp y-z
@@ -542,13 +542,13 @@
             </mrow>
           </md>
             is linear. Compute <m>[T]_{B}^{B'}</m>,
-          where <m>B</m> and <m>B'</m> are the standard bases for <m>\R^3</m> and <m>\R^{2,2}</m>,
+          where <m>B</m> and <m>B'</m> are the standard bases for <m>\R^3</m> and <m>\ML_{2,2}(\R)</m>,
           respectively.
         </p>
       </statement>
       <solution>
         <p>
-          We have <m>B=(\bolde_1,\bolde_2, \bolde_3)</m> and <m>B'=(E_{11},E_{12},E_{21},E_{22})</m>.
+          We have <m>B=(\bolde_1,\bolde_2, \bolde_3)</m> and <m>B'=(E_{1,1},E_{1,2},E_{2,1},E_{2,2})</m>.
           By definition, we have 
           <md>
             <mrow>[T]_{B}^{B'} \amp =\begin{bmatrix}
@@ -562,7 +562,7 @@
             <mrow>T(\bolde_2) \amp = T(0,1,0)=\begin{bmatrix}1\amp 0 \\ 2 \amp 1 \end{bmatrix}</mrow>
             <mrow>T(\bolde_3) \amp = T(0,0,1)=\begin{bmatrix}1\amp -1 \\ 0 \amp -1\end{bmatrix} </mrow>
           </md>.
-          To finish our computation, we must compute <m>[T(\bolde_i)]_{B'}</m> for each <m>1\leq i\leq 3</m>. Since <m>B'</m> is the standard basis of <m>\R^{2,2}</m>, this is not difficult: in general we have 
+          To finish our computation, we must compute <m>[T(\bolde_i)]_{B'}</m> for each <m>1\leq i\leq 3</m>. Since <m>B'</m> is the standard basis of <m>\ML_{2,2}(\R)</m>, this is not difficult: in general we have 
           <md>
            \left[ \begin{bmatrix}a\amp b\\ c\amp d\end{bmatrix}\right]_{B'}=(a,b,c,d)
           </md>.
@@ -772,7 +772,7 @@
         <title>Standard matrix</title>
         <statement>
         <p>
-        Let <m>T\colon F^n\rightarrow F^m</m> be a linear transformation. Recall that there is a unique matrix <m>A\in F^{m,n}</m>, the standard matrix of <m>T</m>, such that <m>T=T_A</m>. Prove that <m>A=[T]_B^{B'}</m>, where <m>B</m> and <m>B'</m> are the standard bases of <m>F^m</m> and <m>F^n</m>, respectively. In other words, the standard matrix of <m>T</m> is precisely the matrix representation of <m>T</m> with respect to the standard bases. 
+        Let <m>T\colon F^n\rightarrow F^m</m> be a linear transformation. Recall that there is a unique matrix <m>A\in \ML_{m,n}(F)</m>, the standard matrix of <m>T</m>, such that <m>T=T_A</m>. Prove that <m>A=[T]_B^{B'}</m>, where <m>B</m> and <m>B'</m> are the standard bases of <m>F^m</m> and <m>F^n</m>, respectively. In other words, the standard matrix of <m>T</m> is precisely the matrix representation of <m>T</m> with respect to the standard bases. 
         </p>
         </statement>
         <solution>
@@ -860,7 +860,7 @@
         <p>
             The map
         <md>
-          <mrow> [\phantom{A}]_{B}^{B'}\colon \mathcal{L}(V,W)\amp\rightarrow F^{m,n} </mrow>
+          <mrow> [\phantom{A}]_{B}^{B'}\colon \mathcal{L}(V,W)\amp\rightarrow \ML_{m,n}(F) </mrow>
           <mrow>T \amp \longmapsto [T]_B^{B'}</mrow>
         </md>
           is an isomorphism.
@@ -871,7 +871,7 @@
         <p>
             We have
             <md>
-                \dim \mathcal{L}(V,W)=\dim F^{m,n}=mn.
+                \dim \mathcal{L}(V,W)=\dim \ML_{m,n}(F)=mn.
             </md>
         </p>
     </li>
@@ -880,7 +880,7 @@
     </statement>
     <proof>
     <p>
-      Statement (2) follows directly from (1) since <m>\dim F^{m,n}=mn</m>. (Alternatively, you showed on a homework that <m>\mathcal{L}(V,W)</m> has a basis <m>B=(T_{ij})</m> of length <m>mn</m>.) To prove (1), we will show that <m>[\phantom{AA}]_{B}^{B'}</m> is linear and bijective. 
+      Statement (2) follows directly from (1) since <m>\dim \ML_{m,n}(F)=mn</m>. (Alternatively, you showed on a homework that <m>\mathcal{L}(V,W)</m> has a basis <m>B=(T_{ij})</m> of length <m>mn</m>.) To prove (1), we will show that <m>[\phantom{AA}]_{B}^{B'}</m> is linear and bijective. 
     </p>
     <p>
       The linearity of <m>[\phantom{AA}]_{B}^{B'}</m> can be proved by direct appeal to the formula <xref ref="eq_matrixrep_formula"/> and the fact that the coordinate vector map <m>[\phantom{v}]_{B'}</m> is linear. Readers are invited to pursue this proof on their own. We will instead take the opportunity to make use of the defining property <xref ref="eq_matrixrep_prop"/> within a 1-step proof. Given linear maps <m>T,S\in \mathcal{L}(V,W)</m> and scalars <m>c,d\in F</m>, we will show that 
@@ -904,7 +904,7 @@
       as desired. 
     </p>
     <p>
-      We now show directly that <m>[\phantom{AA}]_B^{B'}</m> is bijective: <ie/>, given any matrix <m>A\in F^{m,n}</m>, we will show that there is a <em>unique</em> linear transformation <m>T\in \mathcal{L}(V,W)</m> satisfying <m>[T]_B^{B'}</m>. Let <m>B=(v_1,v_2,\dots, v_n)</m>. Given <m>A\in F^{m,n}</m>, let 
+      We now show directly that <m>[\phantom{AA}]_B^{B'}</m> is bijective: <ie/>, given any matrix <m>A\in \ML_{m,n}(F)</m>, we will show that there is a <em>unique</em> linear transformation <m>T\in \mathcal{L}(V,W)</m> satisfying <m>[T]_B^{B'}</m>. Let <m>B=(v_1,v_2,\dots, v_n)</m>. Given <m>A\in \ML_{m,n}(F)</m>, let 
       <md>
         \boldy_i=A[v_i]_B
       </md>
